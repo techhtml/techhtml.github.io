@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>기본 이전의 기초지식 - Back to Basics CSS 2015-08-30</title>
+<meta name="description" content="CSS 이벤트 “Back to Basics” 기본 이전의 기초지식 발표자료">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" href="http://unformedbuilding.com/slide/back-to-basics-2015-08-30/css/reveal.css">
+<link rel="stylesheet" href="http://unformedbuilding.com/slide/back-to-basics-2015-08-30/css/theme/solarized.css" id="theme">
+<link rel="stylesheet" href="http://unformedbuilding.com/slide/back-to-basics-2015-08-30/lib/css/zenburn.css">
+<style>
+  .reveal, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+    font-family: "Noto Sans CJK JP", sans-serif;
+  }
+
+  .reveal {
+    font-weight: 400;
+  }
+
+  .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+    font-weight: 600;
+    text-transform: none;
+  }
+
+  .reveal pre {
+    font-size: inherit;
+    box-shadow: none;
+    max-width: -webkit-fit-content;
+    max-width: -moz-fit-content;
+    max-width: fit-content;
+    box-sizing: border-box;
+    border-left: 1ch solid #586e75;
+    border-right: 1ch solid transparent;
+    width: auto;
+  }
+
+  .reveal code {
+    font-family: "Source Han Code JP", "Source Code Pro", monospace;
+  }
+
+  .reveal code mark {
+    background-color: transparent;
+    color: #dc322f;
+    font-weight: bold;
+  }
+
+  .reveal pre code {
+    background-color: #002b36;
+    padding: 1ex;
+    color: #93a1a1;
+  }
+
+  .reveal li {
+    margin: 10px 0;
+  }
+
+  .reveal p code,
+  .reveal li code {
+    /*background-color: #eee8d5;*/
+    color: #2aa198;
+    font-weight: bold;
+    padding: 0 0.25em;
+  }
+
+  .reveal p em,
+  .reveal li em {
+    color: #d33682;
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  .reveal .logo {
+    display: block;
+    margin: 0 auto;
+    border: none;
+    box-shadow: none;
+  }
+
+  .speaker-controls-notes .value {
+    font-size: 14px;
+  }
+</style>
+<script>
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+  document.getElementsByTagName('head')[0].appendChild(link);
+</script><link rel="stylesheet" type="text/css" href="./files/paper.css">
+<!--[if lt IE 9]>
+<script src="lib/js/html5shiv.js"></script>
+<![endif]-->
+</head>
+
+<body style="transition: -webkit-transform 0.8s ease;">
+
+<div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
+
+  <div class="slides" style="width: 1280px; height: 720px; zoom: 0.67921875;">
+    <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+      <h2>주의사항</h2>
+      <ul>
+        <li>이 사이트는 발표자료용으로, 일반 사이트와 다릅니다. <br> 환경에 따라 깨질 수도 있습니다.</li>
+        <li>이 발표자료의 내용이 반드시 옳다고 할 수는 없습니다.<br>더 바르게 이해하기 위해, 직접 스펙을 읽는 걸 권장합니다.</li>
+        <li>원문 페이지<br><a href="http://unformedbuilding.com/slide/back-to-basics-2015-08-30/#/">http://unformedbuilding.com/slide/back-to-basics-2015-08-30/#/</a></li>
+        <li>이 발표자료는 원작자인 <a href="https://twitter.com/ub_pnr">國仲 義則</a>님에게 허가를 받고 번역한 자료입니다. 임의의 퍼가기는 자제해주세요.</li>
+      </ul>
+    </section>
+    <section class="past" style="top: 50.5px; display: none;" hidden="" aria-hidden="true">
+      <h1>기본 이전의 기초지식</h1>
+      <h2 style="margin-top:2em;"><img src="./files/btb-logo.png" alt="Back to Basics CSS" width="736" height="114" class="logo"><time datetime="2015-08-30" style="font-size: 50%">August 30, 2015</time></h2>
+    </section>
+    <section class="past" style="top: 163.5px; display: none;" hidden="" aria-hidden="true">
+      <h2 style="font-weight:400;">國仲 義則<br><small lang="en" style="font-size:0.5em;font-weight:200;line-height:1;">Yoshinori Kuninaka</small></h2>
+      <p>
+        （a.k.a. <a href="http://unformedbuilding.com/">Matori</a> / <a href="https://twitter.com/ub_pnr">@ub_pnr</a>）<br>
+        <a href="http://www.shiftbrain.co.jp/">株式会社シフトブレイン</a><br>
+      </p>
+    </section>
+    <section class="past" style="top: 148.5px; display: none;" hidden="" aria-hidden="true">
+      <h2>목차</h2>
+      <ol>
+        <li>CSS 기본 문법</li>
+        <li>프로퍼티 스펙과 값 구문</li>
+        <li>형과 단위</li>
+        <li>함수 표현</li>
+      </ol>
+      <aside class="notes">
+        CSS Values and Units Module Level 3을 중점적으로, 기초 지식을 살짝 소개합니다.
+      </aside>
+    </section>
+    <section class="past" style="top: 264px; display: none;" hidden="" aria-hidden="true">
+      <h2>스펙을 엿보자</h2>
+    </section>
+    <section class="past" style="top: 151px; display: none;" hidden="" aria-hidden="true">
+      <h3>스펙이란 무엇인가?</h3>
+      <ul>
+        <li><a href="http://www.w3.org/Style/CSS/current-work">CSS current work &amp; how to participate</a></li>
+        <li><a href="http://momdo.s35.xrea.com/web-html-test/CSS3-ja/">CSS3 일본어 번역 - 血統の森 web実験小屋</a></li>
+      </ul>
+      <p>
+        일본어 번역본을 볼 때는, 영어 원문과 읽는 걸 권장합니다. <br>
+        또한, 오역을 발견하면 번역자에게 연락하시는 게 좋습니다.
+      </p>
+    </section>
+    <section class="past" style="top: 264px; display: none;" hidden="" aria-hidden="true">
+      <h2>CSS 기본구문</h2>
+    </section>
+    <section class="past" style="top: 128px; display: none;" hidden="" aria-hidden="true">
+      <h3>선언</h3>
+      <pre><code>property: value<span style="padding-left: 1ch"></span></code></pre>
+      <h4>선언 단락</h4>
+      <pre><code>property: value<mark>;</mark>
+property: value<mark>;</mark></code></pre>
+      <aside class="notes">
+        속성명, 콜론, 값의 조합을 선언이라고 부릅니다.<br>
+        선언과 선언사이의 구분은 세미콜론을 사용합니다.<br>
+        마지막 선언문 뒤에는 세미콜론을 붙여도 되고 안붙여도 되지만, 나중에 무언가를 추가할 때 에러를 일으킬 가능성이 있기 때문에 기본적으로 적어두는 게 좋습니다.
+      </aside>
+    </section>
+    <section class="past" style="top: 163.5px; display: none;" hidden="" aria-hidden="true">
+      <h3>선언 블록</h3>
+      <pre><code><mark>{</mark>
+  property: value;
+  property: value;
+<mark>}</mark></code></pre>
+      <aside class="notes">
+        선언 세트를 포괄적으로 둘러싼 걸 선언 블록이라고 부릅니다.
+      </aside>
+    </section>
+    <section class="past" style="top: 99.5px; display: none;" hidden="" aria-hidden="true">
+      <h3>스타일 룰<br>（룰 세트 / 규칙 세트）</h3>
+      <pre><code>selector-lists {
+  property: value;
+  property: value;
+}</code></pre>
+      <p>셀렉터에 관련된 내용은 <a href="http://www.w3.org/TR/selectors/">Selectors Level 3</a>을 확인해주세요.</p>
+    </section>
+    <section class="past" style="top: 0px; display: none;" hidden="" aria-hidden="true">
+      <h3>@ 룰</h3>
+      <p>@ 룰은 그 역할에 따라 구문이 다릅니다. <br> 자세한 사항은 스펙을 참고해주세요.</p>
+      <pre><code>@charset "UTF-8";          </code></pre>
+      <pre><code>@import url("...");        </code></pre>
+      <pre><code>@keyframes foo {
+  from { property: value; }
+  to { property: value; }
+}</code></pre>
+      <p>외에도 여러가지 @ 룰이 있습니다</p>
+    </section>
+    <section class="past" style="top: 109px; display: none;" hidden="" aria-hidden="true">
+      <h3>주석</h3>
+      <p>주석은 1종류입니다.</p>
+      <pre><code><mark>/*</mark> 여기에 주석을 다세요 <mark>*/</mark>
+
+<mark>/*</mark>
+  여기에 주석을 다세요.
+<mark>*/</mark></code></pre>
+    </section>
+    <section class="past" style="top: 152.5px; display: none;" hidden="" aria-hidden="true">
+      <p>주석 기호부터 행의 끝까지 주석으로 삼는<br><em>1행 코멘트는 존재하지 않기</em> 때문에</p>
+      <pre><code>// 여기가 주석입니다 
+# 여기가 주석입니다    </code></pre>
+      <p>같은게 불가능합니다.</p>
+      </section>
+    <section class="past" style="top: 186px; display: none;" hidden="" aria-hidden="true">
+      <h2>각종 속성 관련 스펙을 <br> 읽는 기본 방법</h2>
+      <p>각각의 스펙에 올라있는 속성의 스펙표를 읽어봅시다.</p>
+    </section>
+    <section role="presentation" style="padding: 0px; width: 1280px; height: 720px; top: 0px; display: none; background: url(http://unformedbuilding.com/slide/back-to-basics-2015-08-30/media/ss-box-shadow-spec.png) 50% 50% / contain no-repeat;" class="past" hidden="" aria-hidden="true">
+    </section>
+    <section class="past" style="top: 91px; display: none;" hidden="" aria-hidden="true">
+      <pre><code>Name: 속성명
+<mark>Value: 정규 값과 구문</mark>
+Initial: 초기값
+Applies to: 이 속성을 사용할 수 있는 요소
+Inherited: 속성의 상속여부
+Percentages: 퍼센테이지가 어떻게 해석되는가
+Media: 이 속성을 사용할 수 있는 미디어 그룹
+Computed value: 값이 어떻게 계산되는지
+Animatable: 애니메이션 가능여부</code></pre>
+    </section>
+    <section class="past" style="top: 244.5px; display: none;" hidden="" aria-hidden="true">
+      <h3>값 구문</h3>
+      <p>
+        <a href="http://www.w3.org/TR/css3-values/#value-defs">Value Definition Syntax</a>
+      </p>
+    </section>
+    <section class="past" style="top: 132.5px; display: none;" hidden="" aria-hidden="true">
+      <h4>자주 나오는 화제</h4>
+      <p>어떤 순서로 써야 좋을까？</p>
+      <p><code>border</code> 단축 속성</p>
+      <pre><code>border: 1px solid red;
+border: red 1px solid;
+border: solid red 1px;</code></pre>
+    </section>
+    <section class="past" style="top: 161px; display: none;" hidden="" aria-hidden="true">
+      <h4>예：<code>box-shadow</code> 속성값 구문</h4>
+      <p>
+        <a href="http://www.w3.org/TR/css3-background/#the-box-shadow">Drop Shadows: the ‘box-shadow’ property</a>
+      </p>
+      <pre><code>box-shadow: none | &lt;shadow&gt; [ , &lt;shadow&gt; ]*   </code></pre>
+      <pre><code>&lt;shadow&gt; = inset? &amp;&amp; &lt;length&gt;{2,4} &amp;&amp; &lt;color&gt;?</code></pre>
+    </section>
+    <section class="past" style="top: 159px; display: none;" hidden="" aria-hidden="true">
+      <h4>키워드</h4>
+      <p>키워드는 스펙에 따라 문자 그대로 기술합니다. <code>/</code>나 <code>,</code>도 동일합니다.</p>
+      <pre><code>box-shadow: <mark>none</mark> | &lt;shadow&gt; [ <mark>,</mark> &lt;shadow&gt; ]*   </code></pre>
+      <pre><code>&lt;shadow&gt; = <mark>inset</mark>? &amp;&amp; &lt;length&gt;{2,4} &amp;&amp; &lt;color&gt;?</code></pre>
+    </section>
+    <section class="past" style="top: 159px; display: none;" hidden="" aria-hidden="true">
+      <h5>데이터 형</h5>
+      <p><code>&lt;</code>와<code>&gt;</code>로 감싸져 있는 것은 데이터형을 표시합니다.</p>
+      <pre><code>box-shadow: none | <mark>&lt;shadow&gt;</mark> [ , <mark>&lt;shadow&gt;</mark> ]*   </code></pre>
+      <pre><code><mark>&lt;shadow&gt;</mark> = inset? &amp;&amp; <mark>&lt;length&gt;</mark>{2,4} &amp;&amp; <mark>&lt;color&gt;</mark>?</code></pre>
+    </section>
+    <section class="past" style="top: 208px; display: none;" hidden="" aria-hidden="true">
+      <h5>나란히 표기</h5>
+      <p>나란히 표기되어있는 단어는, 그 순서를 지켜서 표기합니다.</p>
+      <pre style="font-size: 98%"><code>counter-set: [ <mark>&lt;custom-ident&gt; &lt;integer&gt;</mark>? ]+ | none</code></pre>
+    </section>
+    <section class="past" style="top: 207.5px; display: none;" hidden="" aria-hidden="true">
+      <h5><code>&amp;&amp;</code>（더블 앰퍼센트）</h5>
+      <p><code>&amp;&amp;</code>는 2개 이상의 구성요소의 단락으로, 기술 된 <em>모든 걸 순서 상관없이</em> 기술합니다.</p>
+      <pre><code>&lt;shadow&gt; = inset? <mark>&amp;&amp;</mark> &lt;length&gt;{2,4} <mark>&amp;&amp;</mark> &lt;color&gt;?</code></pre>
+    </section>
+    <section class="past" style="top: 208px; display: none;" hidden="" aria-hidden="true">
+      <h5><code>||</code>（더블 바）</h5>
+      <p style="font-size: 98%"><code>||</code>는 2개 이상의 구성요소의 단락으로, 기술 된 것 중 <em>1개 이상을 순서 상관없이</em> 기술합니다.</p>
+      <pre><code>border: &lt;line-width&gt; <mark>||</mark> &lt;line-style&gt; <mark>||</mark> &lt;color&gt;</code></pre>
+    </section>
+    <section class="past" style="top: 207.5px; display: none;" hidden="" aria-hidden="true">
+      <h5><code>|</code>（싱글 바）</h5>
+      <p><code>|</code>은 2개 이상의 구성요소의 단락으로, 기술 된 것 중 <em>1개를</em> 기술합니다.</p>
+      <pre><code>box-shadow: none <mark>|</mark> &lt;shadow&gt; [ , &lt;shadow&gt; ]*</code></pre>
+    </section>
+    <section class="past" style="top: 207.5px; display: none;" hidden="" aria-hidden="true">
+      <h5><code>[</code>와<code>]</code></h5>
+      <p><code>[</code>와<code>]</code> 조합은 그룹을 묶을 때 사용합니다.</p>
+      <pre><code>box-shadow: none | &lt;shadow&gt; <mark>[</mark> , &lt;shadow&gt; <mark>]</mark>*</code></pre>
+    </section>
+    <section class="past" style="top: 20px; display: none;" hidden="" aria-hidden="true">
+      <h5>우선순위: 나란히 표기 &gt; &amp;&amp; &gt; || &gt; |</h5>
+      <pre><code>  a b   |   c ||   d &amp;&amp;   e f    </code></pre>
+      <p>우선순위대로 보면……</p>
+      <pre><code>[ a b ] | [ c || [ d &amp;&amp; [ e f ]]]</code></pre>
+      <ol>
+        <li><code>[a b]</code>와<code>[e f]</code>는 그 표기대로 작성</li>
+        <li><code>d</code>와<code>[e f]</code>는 양쪽 다 필수적으로 순서 상관없음</li>
+        <li><code>c</code>와<code>[d &amp;&amp; [e f]]</code>는<code>c</code>만, <code>[d &amp;&amp; [e f]]</code>만, <br>혹은 양쪽 다 순서 상관없이 기술</li>
+        <li><code>[a b]</code>と<code>[c || [d &amp;&amp; [e f]]]</code>는 둘 중 하나를 기술</li>
+      </ol>
+    </section>
+    <section class="past" style="top: 0px; display: none;" hidden="" aria-hidden="true">
+      <h5>수식자</h5>
+      <ul>
+        <li><code>*</code>은 선행하는 형, 단어, 그룹이 <em>0회 이상</em>출현하는 걸 표현합니다.</li>
+        <li><code>+</code>은 선행하는 형, 단어, 그룹이 <em>1회 이상</em>출현하는 걸 표현합니다.</li>
+        <li><code>?</code>은 선행하는 형, 단어, 그룹이 <em>임의</em>인 경우를 표현합니다.</li>
+        <li>괄호 안에 있는 숫자 <code>{A}</code>는, 선행하는 형, 단어, 그룹이 <em>A회</em> 출현하는 걸 표현합니다.</li>
+        <li>괄호 안에 있는 콤바로 구분되어있는 숫자 페어 <code>{A,B}</code>는, 선행하는 형, 단어, 그룹이 <em>최소 A회, 최대 B회</em>출현하는 걸 표현합니다.</li>
+        <li><code>#</code>은 콤마로 구분되는 선행하는 형, 단어, 그룹이 1회이상 출현하는 걸 표현합니다.</li>
+        <li>그룹 뒤에 있는 <code>!</code>는 그 그룹이 필수인 동시에 1개 이상의 값을 생성해야한다는 걸 표현합니다.</li>
+      </ul>
+    </section>
+    <section class="past" style="top: 186px; display: none;" hidden="" aria-hidden="true">
+      <h6>즉 <code>box-shadow</code> 속성의 값은……</h6>
+      <pre><code>box-shadow: none | &lt;shadow&gt; [ , &lt;shadow&gt; ]*</code></pre>
+      <ul>
+        <li><code>none</code> 키워드, 또는 콤마로 구분하여 반복이 가능한 <code>&lt;shadow&gt;</code>형을 나타내고 있습니다.</li>
+      </ul>
+    </section>
+    <section style="text-align: left; top: 27px; display: none;" class="past" hidden="" aria-hidden="true">
+      <pre><code>&lt;shadow&gt; = inset? &amp;&amp; &lt;length&gt;{2,4} &amp;&amp; &lt;color&gt;?</code></pre>
+      <p>이기 떄문에……</p>
+      <ul>
+        <li><code>inset</code>키워드, 2회 이상 4회 이내로 반복 가능한 <code>&lt;length&gt;</code>형, <code>&lt;color&gt;</code>형의 조합이 됩니다.</li>
+        <li><code>inset</code>키워드, <code>&lt;color&gt;</code>는 필수지만, 2회이상 4회이내 반복하는 <code>&lt;length&gt;</code>와 함께 기술해야할 필요가 있습니다.</li>
+        <li>이 순서는 변화 가능합니다.</li>
+      </ul>
+      <p>
+        또한, 반복되는 <code>&lt;length&gt;</code>가 각각 무엇을 나타내는 지는 이후에 기술되어있습니다.
+      </p>
+    </section>
+    <section class="past" style="top: 57.5px; display: none;" hidden="" aria-hidden="true">
+      <h6>주의</h6>
+      <p>
+        여전히 현재 <code>&lt;shadow&gt;</code> 구문으로 표시가 잘 안되는 경우가 있습니다.<br>
+        <code>inset</code>이 <code>&lt;length&gt;{2,4}</code>와 <code>&lt;color&gt;</code> 사이에 들어간 경우입니다.<br>
+      </p>
+      <pre><code>box-shadow: 1em 1em <mark>inset</mark> red;
+box-shadow: red <mark>inset</mark> 1em 1em;</code></pre>
+      <p>
+        예전 <code>&lt;shadow&gt;</code> 구문은 아래와 같은 형태였기 때문에,<br> 현재 스펙과의 호환성이 있는 스펙에 맞춰서 적어두는게 안전합니다.
+      </p>
+      <pre><code>&lt;shadow&gt; = inset? &amp;&amp; <mark>[</mark>&lt;length&gt;{2,4} &amp;&amp; &lt;color&gt;?<mark>]</mark></code></pre>
+    </section>
+    <section class="past" style="top: 86px; display: none;" hidden="" aria-hidden="true">
+      <h4><code>border</code></h4>
+      <pre><code>&lt;line-width&gt; || &lt;line-style&gt; || &lt;color&gt;</code></pre>
+      <p>각각의 순서는 상관없어서</p>
+      <pre><code>border: 1px solid red;
+border: red 1px solid;
+border: solid red 1px;</code></pre>
+      <p>스펙상으로는 어떤 순서대로 적어도 상관없습니다.</p>
+    </section>
+    <section class="past" style="top: 232px; display: none;" hidden="" aria-hidden="true">
+      <h2>형과 단위</h2>
+      <p>
+        각 속성에 지정할 수 있는 값의 다양한 형에 대해서.
+      </p>
+      <aside class="notes">
+        先ほどの説明で小なり記号と大なり記号で囲まれたものはデータ型を示すと言いましたが、ここからは基本的なデータ型を紹介していきます。
+      </aside>
+    </section>
+    <section class="past" style="top: 276.5px; display: none;" hidden="" aria-hidden="true">
+      <h3>텍스트 데이터형</h3>
+    </section>
+    <section class="past" style="top: 130px; display: none;" hidden="" aria-hidden="true">
+      <h4>정해져있는 키워드</h4>
+      <p>
+        속성채로 정해져있는 키워드
+      </p>
+      <pre><code>margin-top: <mark>auto</mark>;
+font-size: <mark>medium</mark>;
+text-transform: <mark>uppercase</mark>;</code></pre>
+      <p>
+        아까 전 <code>box-shadow</code>로 하면 <code>none</code>과 <code>inset</code>이 여기에 속합니다.
+      </p>
+    </section>
+    <section class="past" style="top: 120px; display: none;" hidden="" aria-hidden="true">
+      <h4>CSS-wide 키워드</h4>
+      <p>
+        모든 속성에 적용 가능한 키워드<br>
+        현재는 아래 3개
+      </p>
+      <ul>
+        <li><code>initial</code>: 속성의 기초값을 나타냅니다</li>
+        <li><code>inherit</code>: 부모로부터 상속받는 값을 나타냅니다</li>
+        <li><code>unset</code>: 그 속성의 상속 여부에 따라서 <code>initial</code> 또는 <code>inherit</code>이 됩니다.</li>
+      </ul>
+    </section>
+    <section class="past" style="top: 141px; display: none;" hidden="" aria-hidden="true">
+      <h4><code>&lt;custom-ident&gt;</code></h4>
+      <p>
+        기정 키워드가 해석되지 않는, 작성자에 따른 CSS 식별자<br>
+        사용 가능한 문자의 상세내역은 스펙을 확인해주세요.
+      </p>
+      <pre><code>counter-increment: <mark>my-counter</mark>;
+animation-name: <mark>rotation360</mark>;
+will-change: <mark>transform</mark>;</code></pre>
+    </section>
+    <section class="past" style="top: 0px; display: none;" hidden="" aria-hidden="true">
+      <h5>안맞는 예</h5>
+      <p>
+        </p><pre><code>.foo { animation-name: <mark>none</mark>; }
+
+@keyframes <mark>none</mark> {
+  to { opacity: 0; }
+}</code></pre>
+        <p><code>animation-name</code>에 들어갈 수 있는 값은</p>
+        <pre><code>&lt;single-animation-name&gt;#
+&lt;single-animation-name&gt; = <mark>none</mark> | &lt;custom-ident&gt;</code></pre>
+      <p>
+        이기 때문에 <code>none</code>은 기정 키워드가 됩니다.<br>
+        그렇기 때문에 이 구문은 맞지 않습니다.
+      </p>
+    </section>
+    <section class="past" style="top: 142.5px; display: none;" hidden="" aria-hidden="true">
+      <p>위 문제를 아래와 같이 해결할 수 있습니다.</p>
+      <pre><code>.foo { animation-name: <mark>fade-out</mark>; }
+
+@keyframes <mark>fade-out</mark> {
+  to { opacity: 0; }
+}</code></pre>
+    </section>
+    <section class="past" style="top: 78.5px; display: none;" hidden="" aria-hidden="true">
+      <h4><code>&lt;string&gt;</code></h4>
+      <p>
+        <code>&lt;string&gt;</code>은 쌍따옴표나 홑따옴표에 들어가있는 문자열입니다.
+      </p>
+      <pre><code>.foo::before {
+  content: <mark>"</mark>before!<mark>"</mark>;
+}
+
+.bar::after {
+  content: <mark>'</mark>after!<mark>'</mark>;
+}</code></pre>
+    </section>
+    <section class="past" style="top: 79.5px; display: none;" hidden="" aria-hidden="true">
+      <h4><code>&lt;url&gt;</code></h4>
+      <p>리소스 경로를 지정합니다.</p>
+      <pre><code>&lt;url&gt; = url( &lt;string&gt; &lt;url-modifier&gt;* )</code></pre>
+      <p>예</p>
+      <pre><code>background-image: <mark>url(</mark>"./kawaii-icon.png"<mark>)</mark>;</code></pre>
+      <pre><code>background-image: <mark>url(</mark>"icons.svg#kawaii"<mark>)</mark>; </code></pre>
+    </section>
+    <section class="past" style="top: 114.5px; display: none;" hidden="" aria-hidden="true">
+      <p><code>@import</code>같은 경우에는 함수식이 아닌 <code>&lt;string&gt;</code>만으로 지정하는 것도 가능합니다.</p>
+      <pre><code>@import "./reset.css"</code></pre>
+      <p>호환성을 위해 따옴표 없이 정의하는 것도 가능합니다.</p>
+      <pre><code>background-image: url(./kawaii-icon.png);</code></pre>
+      <p>다만, 이러한 대체기법으로 <code>&lt;url-modifier&gt;</code>는 사용 불가합니다.</p>
+    </section>
+    <section class="past" style="top: 276.5px; display: none;" hidden="" aria-hidden="true">
+      <h3>수치 데이터</h3>
+    </section>
+    <section class="past" style="top: 94px; display: none;" hidden="" aria-hidden="true">
+      <h4><code>&lt;integer&gt;</code></h4>
+      <p>
+        정수<br>
+        하나 이상의 10진수 <code>0</code>~<code>9</code> 숫자를 늘어뜨려놓은 것으로,<br>
+        숫자 앞에 <code>+</code><code>-</code>를 붙이는 게 가능합니다. <br>
+        범위는 제한되는 경우가 있습니다.
+      </p>
+      <pre><code>z-index: <mark>0</mark>;
+order: <mark>-1</mark>;
+counter-increment: my-counter <mark>1</mark>;</code></pre>
+    </section>
+    <section class="past" style="top: 116px; display: none;" hidden="" aria-hidden="true">
+      <h4><code>&lt;number&gt;</code></h4>
+      <p>
+        실수<br>
+        <code>&lt;integer&gt;</code> 또는 0개이상의 숫자 뒤에 <code>.</code>과 1개 이상의 10진수<br>
+        그리고 임의로 <code>e</code> 또는 <code>E</code> 및 정수로 구성되어있는 지수를 나타냅니다.<br>
+        범위는 제한되는 경우가 있습니다.
+      </p>
+      <pre><code>line-height: <mark>1.6</mark>; /* 0 이상 */
+opacity: <mark>0.2</mark>; /* 0.0 ~ 1.0 */</code></pre>
+    </section>
+    <section class="past" style="top: 84px; display: none;" hidden="" aria-hidden="true">
+      <h4><code>&lt;percentage&gt;</code></h4>
+      <p>
+        퍼센테이지<br>
+        <code>&lt;number&gt;</code>와 퍼센트 기호（<code>%</code>）로 구성됩니다.<br>
+        퍼센테이지는 항상 다른 값에 상대적으로 변화합니다.
+      </p>
+      <p>
+        퍼센테이지가 사용가능한 속성은<br>
+        퍼센테이지가 무엇을 기준으로 하는지 정의합니다.
+      </p>
+      <pre><code>font-size: <mark>200%</mark>; /* 부모의 폰트 사이즈 */
+padding-top: <mark>50%</mark>; /* 대상 블록의 폭 */</code></pre>
+    </section>
+    <section class="past" style="top: 232.5px; display: none;" hidden="" aria-hidden="true">
+      <h4>디멘션</h4>
+      <p>
+        <code>&lt;number&gt;</code> 뒤에 단위가 붙는 것<br>
+        <code>&lt;percentage&gt;</code>는 포함하지 않는다.
+      </p>
+    </section>
+    <section class="past" style="top: 173.5px; display: none;" hidden="" aria-hidden="true">
+      <h3><code>&lt;length&gt;</code></h3>
+      <p>
+        길이<br>
+        길이가 <code>0</code>인 경우는<code>&lt;length&gt;</code>에 단위를 표기하지 않아도 되며、<br>
+        구문으로써는 <code>&lt;number&gt;</code>와 동일해집니다.<br>
+        또, 길이의 범위는 제한될 가능성이 있습니다.
+      </p>
+    </section>
+    <section class="past" style="top: 289px; display: none;" hidden="" aria-hidden="true">
+      <h4>상대 단위</h4>
+    </section>
+    <section class="past" style="top: 170.5px; display: none;" hidden="" aria-hidden="true">
+      <h5>폰트에 상대적인 단위</h5>
+      <ul>
+        <li><code>em</code>: 이 단위를 사용하는 요소의 <code>font-size</code> 속성의 출력값</li>
+        <li><code>ex</code>: 이용가능한 최초 폰트의 <em>x</em> 높이（x-height）</li>
+        <li><code>ch</code>: 화면에 표현할 때 사용한 폰트의 <em>0</em>（U+0030）글자의 폭</li>
+        <li><code>rem</code>: 루트 요소의 <code>font-size</code> 출력값</li>
+      </ul>
+    </section>
+    <section class="past" style="top: 30px; display: none;" hidden="" aria-hidden="true">
+      <h5>폰트에 대해 상대적인 길이에 대해서</h5>
+      <ul>
+        <li>단위 <code>rem</code>을 제외하고  폰트에 상대적인 길이는 사용되는 요소의 폰트 계량법을 참조합니다.</li>
+        <li>단 <code>font-size</code> 속성에 나타나는 경우에는 부모 요소의 폰트 계량법을 참조합니다.</li>
+        <li>부모가 없는 요소인 경우에는 <code>font</code> 속성의 초기값에 대응하는 폰트 계량법을 참조합니다.</li>
+      </ul>
+      <pre><code>margin: 1rem; /* 루트 폰트사이즈 */
+padding: 0.5ch; /* 이 요소의 폰트사이즈 */
+font-size: 1.2em; /* 부모의 폰트사이즈 */</code></pre>
+    </section>
+    <section class="past" style="top: 149.5px; display: none;" hidden="" aria-hidden="true">
+      <h6><code>rem</code>에 대해서</h6>
+      <ul>
+        <li>HTML에서 루트 요소는 <code>html</code>요소입니다.</li>
+        <li>루트요소에 사용되는 경우에는  속성의 초기값을 참조합니다.</li>
+        <li><code>font-size</code>의 초기값은 <code>medium</code>입니다.</li>
+        <li>어디에서 사용해도 항상 루트 요소의 폰트사이즈를 기본으로 하기 때문에<br>
+            산출값을 계산(예상)하기 편리한 단위입니다.</li>
+      </ul>
+    </section>
+    <section class="past" style="top: 125px; display: none;" hidden="" aria-hidden="true">
+      <h5>뷰포트에 상대적인 단위</h5>
+      <ul>
+        <li><code>vw</code>: 초기 블록의 <em>폭 1%</em></li>
+        <li><code>vh</code>: 초기 블록의 <em>높이 1%</em>。</li>
+        <li><code>vmin</code>: <code>vw</code>와 <code>vh</code>의 최소값을 지정<br>
+          <small>구 스펙에선 <code>vm</code> 단위였습니다.Internet Explorer 9이<code>vm</code>을 사용합니다.</small></li>
+        <li><code>vmax</code>: <code>vw</code>와 <code>vh</code>의 최대값을 지정<br>
+          <small>나중에 추가된 단위이기 때문에, 아직 구현되지 않은 브라우저도 있습니다.</small></li>
+      </ul>
+    </section>
+    <section class="past" style="top: 57.5px; display: none;" hidden="" aria-hidden="true">
+      <h5>뷰포트에 상대하는 비율의 길이</h5>
+      <ul>
+        <li>뷰포트에 상대하는 비율의 길이란, 초기 블록에 대응하여 상대적으로 길이를 갖는 것을 의미합니다.</li>
+        <li>초기 블록이란, 연속한 미디어(웹페이지 등)에서는 표시영역, 페이지미디어에서는 페이지 영역이 됩니다.</li>
+        <li>루트 요소의 <code>overflow</code> 값이 <code>auto</code>인 경우, 스크롤바는 존재하지 않는 걸로 측정됩니다.</li>
+        <li>예를 들어, 가로 스크롤바가 있는 경우<br>
+          <code>html {width: 100<mark>vw</mark>; }</code>와<br>
+          <code>html {width: 100<mark>%</mark>; }</code>는 다른 길이를 가집니다.</li>
+      </ul>
+    </section>
+    <section class="past" style="top: 289px; display: none;" hidden="" aria-hidden="true">
+      <h4>절대단위</h4>
+      <aside class="notes">
+        절대단위는 고정적인 길이를 가집니다.
+      </aside>
+    </section>
+    <section class="past" style="top: 113.5px; display: none;" hidden="" aria-hidden="true">
+      <h5>物理単位</h5>
+      <ul>
+        <li><code>cm</code>: 센티미터. 1cm = (96/2.54)px</li>
+        <li><code>mm</code>: 밀리미터. 1mm = (1/10)cm</li>
+        <li><code>q</code>: 쿼터 밀리미터. 1q = (1/40)cm</li>
+        <li><code>in</code>: 인치. 1in = 2.54cm = 96px</li>
+        <li><code>pc</code>: 파이카. 1pc = 1/6in</li>
+        <li><code>pt</code>: 포인트. 1pt = 1/72in</li>
+      </ul>
+    </section>
+    <section class="past" style="top: 47px; display: none;" hidden="" aria-hidden="true">
+      <h5>시야각단위</h5>
+      <p>
+        단위는 <code>px</code>뿐.
+      </p>
+      <ul>
+        <li>간단히 말하면 화면 해상도 의존 단위</li>
+        <li>저해상도 환경, 예를들어 일반적인 컴퓨터같은 경우<br>
+          <code>1px</code>은 화면의 <em>1</em>도트</li>
+        <li>예를 들어 iPhone 6에서는<code>1px</code>평방단위는<em>2x2=4도트</em>가 됩니다.<br>
+            마찬가지로, 고해상도환경인 프린터에서는 <em>4x4=16도트</em>인 경우도 있습니다</li>
+        <li>해상도가 높아질 때마다<code>1px</code>평방을 나타내는데 필요한 화면 도트수가 늘어납니다.</li>
+      </ul>
+    </section>
+    <section class="past" style="top: 177.5px; display: none;" hidden="" aria-hidden="true">
+      <h5>절대단위에 대해서</h5>
+      <ul>
+        <li>스크린을 대상으로 하는 경우는 기본적으로 <code>px</code>로 작성하면 문제없습니다.</li>
+        <li>물리단위를 이용하는 경우, 실제 스크린에 표현되는 길이가 물리적 길이와 동일하다고 확정할 수 없습니다.</li>
+        <li>절대단위 스펙은 꽤 복잡하니, 상세한 건 스펙문서를 확인해주세요.</li>
+      </ul>
+    </section>
+    <section class="past" style="top: 81.5px; display: none;" hidden="" aria-hidden="true">
+      <h3><code>&lt;angle&gt;</code></h3>
+      <p>각도를 표현합니다.</p>
+      <ul>
+        <li><code>deg</code>: 도수법. 익숙한 방법입니다. 원의 전체는 <code><em>360deg</em></code>.</li>
+        <li><code>grad</code>: 그라지안. 1 직각을 100 단위로, 원의 전체는 <code><em>400grad</em></code>.</li>
+        <li><code>rad</code>: 호도법(레디안). 원의 전체는 <code><em>2πrad</em></code>.</li>
+        <li><code>turn</code>: 회전수. 원의 전체는 <code><em>1turn</em></code>.</li>
+      </ul>
+      <p>값이 <code>0</code>이어도 단위 생략이 불가합니다.</p>
+    </section>
+    <section class="past" style="top: 137.5px; display: none;" hidden="" aria-hidden="true">
+      <h3><code>&lt;time&gt;</code></h3>
+      <p>시간을 나타냅니다.</p>
+      <ul>
+        <li><code>s</code>: 초</li>
+        <li><code>ms</code>: 밀리 초<code><em>1000ms</em></code>는 <code><em>1s</em></code>와 같습니다.</li>
+      </ul>
+      <p>값이 <code>0</code>이어도 단위 생략이 불가합니다.</p>
+    </section>
+    <section class="past" style="top: 91px; display: none;" hidden="" aria-hidden="true">
+      <h3><code>&lt;frequency&gt;</code></h3>
+      <p>
+        주파수를 나타냅니다.
+      </p>
+      <p>
+        <small>
+          지금 사용할 수 있는 방법이 없습니다.<br>
+          (현재 이 값을 지원하는 브라우저는 존재하지 않습니다)
+        </small>
+      </p>
+      <ul>
+        <li><code>Hz</code>: 헤르츠. 1초간 주파수 입니다.</li>
+        <li><code>kHz</code>: 킬로헤르츠. <code><em>1kHz</em></code>는 <code><em>1000Hz</em></code>와 같습니다.</li>
+      </ul>
+      <hr>
+      <p style="text-align: left">
+        <small><a href="http://www.w3.org/TR/CSS2/aural.html#propdef-pitch">CSS2에서 진행한 감각 미디어 그룹의 <code>pitch</code> 속성</a>에서 이용 가능하여, Opera Presto에서 지원하는 버전이 있었습니다.（현재 Opera는 Presto가 아닌 Blink를 사용합니다）</small>
+      </p>
+    </section>
+    <section class="past" style="top: 153px; display: none;" hidden="" aria-hidden="true">
+      <h3><code>&lt;resolution&gt;</code></h3>
+      <p>해상도를 나타내 미디어쿼리 등에 사용됩니다.</p>
+      <ul>
+        <li><code>dpi</code>: 인치당 도트수</li>
+        <li><code>dpcm</code>: 센티미터당 도트수</li>
+        <li><code>dppx</code>: <code>px</code>단위당 도트수</li>
+      </ul>
+    </section>
+    <section class="past" style="top: 221.5px; display: none;" hidden="" aria-hidden="true">
+      <h3>다른 모듈에서 정의되어있는 형</h3>
+      <p>
+        여기까지는 <a href="http://www.w3.org/TR/css-values/">CSS Values and Units Module Level 3</a>（<a href="https://drafts.csswg.org/css-values/">ED</a>）를 바탕으로 보았지만, 다른 모듈에서 정의하고 있는 형도 있습니다.
+      </p>
+    </section>
+    <section class="past" style="top: 0px; display: none;" hidden="" aria-hidden="true">
+      <h4><code>&lt;color&gt;</code></h4>
+      <p><a href="http://www.w3.org/TR/css3-color/">CSS Color Module Level 3</a>에서 정의합니다</p>
+      <ul>
+        <li>컬러 키워드</li>
+        <li><code>transparent</code> 키워드</li>
+        <li><code>currentColor</code> 키워드</li>
+        <li>16진수 RGB 포맷</li>
+        <li><code>rgb()</code>와 <code>rgba()</code>함수</li>
+        <li><code>hsl()</code>과 <code>hsla()</code>함수</li>
+        <li>시스템컬러 키워드도 정의되어있지만, <br>폐기 예정입니다.</li>
+      </ul>
+      <hr>
+      <p>
+        <small><a href="https://drafts.csswg.org/css-color/">CSS Color Module Level 4</a>에서는 더 늘어날 예정입니다.</small>
+      </p>
+    </section>
+    <section class="past" style="top: 13px; display: none;" hidden="" aria-hidden="true">
+      <h4>그 외 형</h4>
+      <ul>
+        <li><code>&lt;image&gt;</code></li>
+        <li><code>&lt;position&gt;</code></li>
+        <li><code>&lt;ratio&gt;</code></li>
+        <li><code>&lt;blend-mode&gt;</code></li>
+        <li><code>&lt;counter&gt;</code></li>
+        <li><code>&lt;gradient&gt;</code></li>
+        <li><code>&lt;shape&gt;</code></li>
+        <li><code>&lt;timing-function&gt;</code></li>
+      </ul>
+      <p>
+        ……등이 있습니다 (더 있어요).
+      </p>
+      <aside class="notes">
+        url関数、グラデーション、element関数などを扱うイメージ型、2次元座標を扱うポジション型、メディアクエリーから画面比率を扱うレシオ型、レイヤーの重なりの色の処理を扱うブレンドモード型、カウンター型、グラデーションを扱うグラディエント型、領域形状を表すシェイプ型、アニメーションの変化の速度を表すタイミング関数型、などがあります。
+      </aside>
+    </section>
+    <section class="past" style="top: 264px; display: none;" hidden="" aria-hidden="true">
+      <h2>함수표현</h2>
+    </section>
+    <section class="past" style="top: 18.5px; display: none;" hidden="" aria-hidden="true">
+      <h3><code>calc()</code></h3>
+      <ul>
+        <li>수식을 값으로써 이용 가능한 함수로, 수식은 사칙연산이 가능합니다.</li>
+        <li><code>&lt;length&gt;</code>, <code>&lt;frequency&gt;</code>, <code>&lt;angle&gt;</code>, <code>&lt;time&gt;</code>, <code>&lt;number&gt;</code>, <code>&lt;integer&gt;</code>가 이용 가능한 장소에서 사용 가능합니다.</li>
+        <li>덧셈<code>+</code>과 뺄셈<code>-</code> 기호 전후에는 공백이 필요합니다.</li>
+      </ul>
+      <pre><code>.foo {
+  width: <mark>calc(</mark>100% - 20px<mark>)</mark>;
+  font-size: <mark>calc(</mark>16px + 0.1vw<mark>)</mark>;
+  margin-left: <mark>calc((</mark>50% + 10vh<mark>)</mark> / 2 <mark>)</mark>;
+}</code></pre>
+    </section>
+    <section class="past" style="top: 62.5px; display: none;" hidden="" aria-hidden="true">
+      <h3><code>attr()</code></h3>
+      <p>요소의 속성값을 참조합니다</p>
+      <pre><code style="font-size: 85%">attr( &lt;attr-name&gt; &lt;type-or-unit&gt;? [ , &lt;attr-fallback&gt; ]? )</code></pre>
+      <p style="text-align: left">
+        구문이지만, 현재 브라우저에선 <code>attr(&lt;attr-name&gt;)</code> 같은 기본형만 지원하고, 사용장소는 <code>content</code> 속성 같은 형식만 지원합니다.
+      </p>
+      <p style="text-align: left">
+        스펙상으로 요소의 속성값값으로 지정된 길이나 색등 다양한 CSS의 형을 지정한채로 속성값을 참조해, 속성 값으로써 사용 가능합니다. (이후에 제거될 수도 있습니다)
+      </p>
+    </section>
+    <section class="past" style="top: 41px; display: none;" hidden="" aria-hidden="true">
+      <p>
+        현재 스펙이 전체 지원하는 경우는, <br>이런 경우에만 지원합니다.
+      </p>
+      <pre><code>&lt;div data-z="7"&gt;...&lt;/div&gt;
+---
+div { z-index: attr(data-z integer); }</code></pre>
+      <p>
+        현재는 아래와 같은 느낌으로만 사용 가능합니다.
+      </p>
+      <pre><code>&lt;div data-t="FOO!"&gt;...&lt;/div&gt;
+---
+div::before { content: attr(data-t); }</code></pre>
+    </section>
+    <section class="past" style="top: 0px; display: none;" hidden="" aria-hidden="true">
+      <h3><code>toggle()</code></h3>
+      <p>
+        지원하는 브라우저가 현재는 없습니다.
+      </p>
+      <pre><code style="font-size: 85%">ul {
+  list-style-type: toggle(disc, circle, square, box);
+}</code></pre>
+      <p>이는 아래와 같이 동작합니다.</p>
+      <pre><code style="font-size: 85%">ul { list-style-type: disc; }
+ul ul { list-style-type: circle; }
+ul ul ul { list-style-type: square; }
+ul ul ul ul { list-style-type: box; }
+ul ul ul ul ul { list-style-type: disc; }
+ul ul ul ul ul ul { list-style-type: circle; }
+...
+</code></pre>
+    </section>
+    <section class="past" style="top: 244.5px; display: block;" hidden="" aria-hidden="true">
+      <h3>그 외</h3>
+      <p>다른 모듈에서 정의된 특유의 함수가 있습니다.</p>
+    </section>
+    <section class="past" style="top: 107.5px; display: block;" hidden="" aria-hidden="true">
+      <h2>정리</h2>
+      <p style="text-align: left">
+        여러가지로 소개했지만, 한번에 기억하지 못하더라도 다양한 속성의 스펙을 읽고있으면 언젠가 기억할 수 있을거라 생각합니다.<br>
+        이러한 것들을 몰라도 CSS는 쓸 수 있지만, 스펙을 읽어나가며, 실제로 부딪혀있는 문제를 해결하는데 도움이 될거라 생각합니다.
+      </p>
+      <p style="text-align: left">
+        이번에는 조잡하게 소개해드렸지만, 더 자세한 건 스펙을 읽어보시길 바랍니다<br>
+        바라보는 것만으로도 꽤 즐겁습니다.
+      </p>
+    </section>
+    <section class="present" style="top: 264px; display: block;">
+      <h2>고맙습니다</h2>
+    </section>
+  </div>
+
+<div class="backgrounds"><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background present" data-loaded="true" style="display: block;"></div></div><div class="progress" style="display: block;"><span style="width: 966px;"></span></div><aside class="controls" style="display: block;"><div class="navigate-left enabled"></div><div class="navigate-right"></div><div class="navigate-up"></div><div class="navigate-down"></div></aside><div class="slide-number">73</div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px 1px 1px 1px);">
+      ありがとうございました
+    </div></div>
+
+<script src="./files/head.min.js"></script>
+<script src="./files/reveal.js"></script>
+
+<script>
+  // Full list of configuration options available at:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+    slideNumber: true,
+    width: 1280,
+    height: 720,
+
+    transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+    // Optional reveal.js plugins
+    dependencies: [
+      {
+        src: 'lib/js/classList.js', condition: function () {
+        return !document.body.classList;
+      }
+      },
+      {
+        src: 'plugin/markdown/marked.js', condition: function () {
+        return !!document.querySelector('[data-markdown]');
+      }
+      },
+      {
+        src: 'plugin/markdown/markdown.js', condition: function () {
+        return !!document.querySelector('[data-markdown]');
+      }
+      },
+      {src: 'plugin/zoom-js/zoom.js', async: true},
+      {src: 'plugin/notes/notes.js', async: true}
+    ]
+  });
+
+</script><script type="text/javascript" src="./files/zoom.js"></script><script type="text/javascript" src="./files/notes.js"></script>
+
+
+
+</body></html>
