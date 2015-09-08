@@ -1,4 +1,8 @@
-<!DOCTYPE html><html lang="ja"><meta charset="utf-8"><title>1 導入 — HTML5 日本語訳</title><script src="link-fixup.js"></script>
+<!DOCTYPE html>
+<html lang="ko">
+  <meta charset="utf-8">
+  <title>소개 - HTML5</title>
+  <script src="link-fixup.js"></script>
 <style type="text/css">
 body {line-height:1.5;}
      .applies thead th > * { display: block; }
@@ -351,113 +355,180 @@ body {line-height:1.5;}
 <header><span id="styleSwitch"></span>
    <p><a href="http://www.w3.org/"><img alt="W3C" height="48" src="http://www.w3.org/Icons/w3c_home" width="72"></a></p>
 
-    <h1 id="big-title">HTML5日本語訳</h1>
-    <p class="no-num no-toc subline">HTMLとXHTMLのための語彙と関連API</p>
-   <h2 class="no-num no-toc" id="w3c-recommendation-28-october-2014">W3C Recommendation 28 October 2014</h2>
+    <h1 id="big-title">HTML5</h1>
+    <p class="no-num no-toc subline">HTML과 XHTML을 위한 어휘와 관련 API</p>
+    <h2 class="no-num no-toc" id="w3c-recommendation-28-october-2014">W3C Recommendation 28 October 2014</h2>
    </header></div>
   
 
   <nav class="prev_next">
-   <a href="Overview.html#contents">目次</a> – <a href="infrastructure.html">2 共通インフラ →</a>
-  <ol class="toc"><li><a href="introduction.html#introduction"><span class="secno">1</span> 導入</a>
-  <ol><li><a href="introduction.html#background"><span class="secno">1.1</span> 背景</a></li><li><a href="introduction.html#audience"><span class="secno">1.2</span> 読者</a></li><li><a href="introduction.html#scope"><span class="secno">1.3</span> 範囲</a></li><li><a href="introduction.html#history-0"><span class="secno">1.4</span> 歴史</a></li><li><a href="introduction.html#design-notes"><span class="secno">1.5</span> 設計ノート</a>
-    <ol><li><a href="introduction.html#serializability-of-script-execution"><span class="secno">1.5.1</span> スクリプト実行の逐次性</a></li><li><a href="introduction.html#compliance-with-other-specifications"><span class="secno">1.5.2</span> 他の仕様の順守</a></li><li><a href="introduction.html#extensibility"><span class="secno">1.5.3</span> 拡張性</a></li></ol></li><li><a href="introduction.html#html-vs-xhtml"><span class="secno">1.6 </span>HTML vs XHTML</a></li><li><a href="introduction.html#structure-of-this-specification"><span class="secno">1.7</span> この文書の構成</a>
-    <ol><li><a href="introduction.html#how-to-read-this-specification"><span class="secno">1.7.1</span> この仕様の読み方</a></li><li><a href="introduction.html#typographic-conventions"><span class="secno">1.7.2</span> 表現規則</a></li></ol></li><li><a href="introduction.html#fingerprint"><span class="secno">1.8</span> プライバシーに対する懸念</a></li><li><a href="introduction.html#a-quick-introduction-to-html"><span class="secno">1.9</span> HTMLの簡単な手引き</a>
-    <ol><li><a href="introduction.html#writing-secure-applications-with-html"><span class="secno">1.9.1</span> HTMLで安全なアプリケーションを作成する</a></li><li><a href="introduction.html#common-pitfalls-to-avoid-when-using-the-scripting-apis"><span class="secno">1.9.2</span> スクリプトAPIの使用時に回避すべき共通の落とし穴</a></li><li><a href="introduction.html#how-to-catch-mistakes-when-writing-html:-validators-and-conformance-checkers"><span class="secno">1.9.3</span> HTMLを記述する際に誤りを見つける方法：バリデータと適合性チェッカー</a></li></ol></li><li><a href="introduction.html#conformance-requirements-for-authors"><span class="secno">1.10</span> 著者に対する適合性と必要条件</a>
-    <ol><li><a href="introduction.html#presentational-markup"><span class="secno">1.10.1</span> プレゼンテーション的なマークアップ</a></li><li><a href="introduction.html#syntax-errors"><span class="secno">1.10.2</span> 構文エラー</a></li><li><a href="introduction.html#restrictions-on-content-models-and-on-attribute-values"><span class="secno">1.10.3</span> コンテンツモデルと属性値の制約</a></li></ol></li><li><a href="introduction.html#suggested-reading"><span class="secno">1.11 </span> 推奨される読み物</a></li></ol></li></ol></nav>
+   <a href="Overview.html#contents">목차</a> – <a href="infrastructure.html">2 공통인프라 →</a>
+  <ol class="toc"><li><a href="introduction.html#introduction"><span class="secno">1</span> 들어가기</a>
+  <ol><li><a href="introduction.html#background"><span class="secno">1.1</span> 배경</a></li><li><a href="introduction.html#audience"><span class="secno">1.2</span> 독자</a></li><li><a href="introduction.html#scope"><span class="secno">1.3</span> 범위</a></li><li><a href="introduction.html#history-0"><span class="secno">1.4</span> 역사</a></li><li><a href="introduction.html#design-notes"><span class="secno">1.5</span> 설계노트</a>
+    <ol><li><a href="introduction.html#serializability-of-script-execution"><span class="secno">1.5.1</span> 스크립트 실행 순서</a></li><li><a href="introduction.html#compliance-with-other-specifications"><span class="secno">1.5.2</span> 다른 스펙 준수</a></li><li><a href="introduction.html#extensibility"><span class="secno">1.5.3</span> 확장성</a></li></ol></li><li><a href="introduction.html#html-vs-xhtml"><span class="secno">1.6 </span>HTML vs XHTML</a></li><li><a href="introduction.html#structure-of-this-specification"><span class="secno">1.7</span> 이 문서의 구성</a>
+    <ol><li><a href="introduction.html#how-to-read-this-specification"><span class="secno">1.7.1</span> 이 스펙 문서 읽는법</a></li><li><a href="introduction.html#typographic-conventions"><span class="secno">1.7.2</span> 표현 규칙</a></li></ol></li><li><a href="introduction.html#fingerprint"><span class="secno">1.8</span> 프라이버시 관련 우려</a></li><li><a href="introduction.html#a-quick-introduction-to-html"><span class="secno">1.9</span> HTML 살펴보기</a>
+    <ol><li><a href="introduction.html#writing-secure-applications-with-html"><span class="secno">1.9.1</span> HTML로 안전한 어플리케이션 작성하기</a></li><li><a href="introduction.html#common-pitfalls-to-avoid-when-using-the-scripting-apis"><span class="secno">1.9.2</span> 스크립트 API 사용시 회피해야 할 공통 함정</a></li><li><a href="introduction.html#how-to-catch-mistakes-when-writing-html:-validators-and-conformance-checkers"><span class="secno">1.9.3</span> 잘못된 HTML을 찾는 방법 : 밸리데이터와 적합성 검사기</a></li></ol></li><li><a href="introduction.html#conformance-requirements-for-authors"><span class="secno">1.10</span> 작성자에 대한 적합성과 필요 요건</a>
+    <ol><li><a href="introduction.html#presentational-markup"><span class="secno">1.10.1</span> 프레젠테이션 마크업</a></li><li><a href="introduction.html#syntax-errors"><span class="secno">1.10.2</span> 구문 에러</a></li><li><a href="introduction.html#restrictions-on-content-models-and-on-attribute-values"><span class="secno">1.10.3</span> 콘텐츠 모델과 속성값 제약</a></li></ol></li><li><a href="introduction.html#suggested-reading"><span class="secno">1.11 </span> 권장하는 읽을거리</a></li></ol></li></ol></nav>
 
-  <h2 id="introduction"><span class="secno">1</span> 導入</h2>
+  <h2 id="introduction"><span class="secno">1</span> 들어가기</h2>
 
-  <h3 id="background"><span class="secno">1.1</span> 背景</h3>
+  <h3 id="background"><span class="secno">1.1</span> 배경</h3>
 
-  <p><i>この節は非規範的である。</i></p>
-  <p>ワールドワイドウェブのマークアップ言語は、常にHTMLであった。長年にわたるHTMLの普遍的な設計と改良は、多岐にわたる文書形式を記述するために使用するHTMLを可能にしたが、HTMLは本来セマンティックに科学的な文書を記述するための言語として設計されたものであった。</p>
+  <p><i>이 절은 표준에 준하는 내용이 아닙니다.</i></p>
+  <p>
+    월드 와이드 웹 마크업 언어는 HTML입니다.
+    긴 시간에 이른 HTML의 설계와 개선은 HTML을 활용해 여러 형식의 문서를 기술할 수 있도록 하였지만, HTML은 본래 의미에 맞게 과학관련 문서를 기술하기 위한 언어로 설계되었습니다.
+  </p>
+  <p>
+    HTML에서 적절히 처리하지 못한 주요 영역은 웹 어플리케이션이라 불리는 애매한 문제입니다.
+    이는 과거 수년간 제기된 문제이며 이를 대응하기 위해 HTML 스펙을 갱신해왔고, 동시에 수정도 진행하고 있습니다.
+  </p>
+    
+  <h3 id="audience"><span class="secno">1.2</span> 독자</h3>
+  <p><i>이 절은 표준에 준하는 내용이 아닙니다.</i></p>
+  <p>이 스펙문서는, 이 스펙에서 정의된 기능을 사용하는 문서 및 스크립트 저자를 대상으로 하고있습니다.</p>
 
-  <p>HTMLによって適切に処理されてない主な領域は、ウェブアプリケーションと呼ばれる曖昧な問題である。この仕様は、過去数年間で提起された問題に対処するためにHTML仕様を更新しつつ、同時にこれを修正しようと試みる。</p>
-
-
-  <h3 id="audience"><span class="secno">1.2</span> 読者</h3>
-
-  <p><i>この節は非規範的である。</i></p>
-  <p>この仕様は、この仕様で定義された機能を使用する文書およびスクリプトの著者を対象としている。<span class="impl">, implementors of tools that operate on pages that
-  use the features defined in this specification, and individuals wishing to establish the
-  correctness of documents or implementations with respect to the requirements of this
-  specification</span></p>
-
-  <p>正確さのためのわかりやすさや、完全性のための簡潔さを犠牲にする場所において、おそらくこの文書は、少なくともウェブ技術について十分な知識を持たない読者には適さない。よりわかりやすいチュートリアルやオーサリングガイドが、より易しいHTML5入門を提供するだろう。</p>
-
-  <p>特に、DOMの基礎に精通することが、この仕様のより技術的な一部の要素を完全に理解するために必要である。Web IDL、HTTP、XML、Unicode、文字エンコーディング、JavaScript、およびCSSの理解も随所で役立つだろうが、必須ではない。</p>
-
-
-  <h3 id="scope"><span class="secno">1.3</span> 範囲</h3>
-
-  <p><i>この節は非規範的である。</i></p>
-  <p>この仕様は、静的な文書から動的なアプリケーションに至るまで、ウェブ上でアクセシブルなページにセマンティックレベルのマークアップ言語と関連付けられた、セマンティックレベルのスクリプトAPIを提供することに限定される。</p>
-
-  <p>この仕様の範囲は、外観のメディア固有なカスタマイズに対するメカニズムの提供を含まない（ただし、ウェブブラウザデフォルトのレンダリング規則はこの仕様の末尾に含まれ、またCSSに結びつけるための複数のメカニズムが言語の一部として提供される）。</p>
-
-  <p>この仕様の範囲は、オペレーティングシステム全体を記述することではない。具体的には、ハードウェア設定ソフトウェア、画像処理ツール、ユーザーが毎日のようにハイエンドなワークステーションで使用することが予想されるアプリケーションが範囲外である。アプリケーションの観点から、この仕様は、不定期にユーザーによって、または定期的だが低いCPU要件とともに異なる場所からの使用が予想されるアプリケーションを特に対象とする。そのようなアプリケーションの例は、オンライン購買システム、検索システム、ゲーム（特に多人数参加型オンラインゲーム）、公衆電話帳やアドレス帳、通信ソフトウェア（電子メールクライアント、インスタントメッセージクライアント、ディスカッションソフトウェア）、文書編集ソフトなどを含む。</p>
-
-
-  <h3 id="history-0"><span class="secno">1.4</span> 歴史</h3>
-
-  <p><i>この節は非規範的である。</i></p>
-  <p>最初の5年間（1990-1995）、HTMLは多数の改訂と拡張を経験した。最初はCERNで、次にIETFでホストされた。</p>
-
-  <p>W3Cの発足とともに、HTMLは再び開発の場を変えた。1995年にHTML 3.0として知られる初期の不成功に終わったHTMLを拡張する試みは、HTML 3.2として知られるより実用的なアプローチとなり、これは1997年に完了した。HTML4が同年の直後に続いた。</p>
-
-  <p>翌年、W3C会員はHTMLの展開をやめ、代わりにXHTMLとして知られるXMLベースの同等物の開発に着手することを決定した。 <!-- http://www.w3.org/MarkUp/future/#summary --> この取り組みはXMLのHTML4の再定式化を開始した。これは、新たなシリアライゼーションを除く新機能を追加しないXHTML 1.0として知られ、2000年に完了した。XHTML 1.0の後に、W3Cの中心はXHTMLモジュール化の旗印の下、XHTMLを拡張する他のワーキンググループの作業をより簡単にすることに移った。これと並行して、W3CはXHTML2と呼ばれる、それまでのHTMLやXHTML言語と互換性のない新しい言語の開発に取り組んだ。</p>
-
-  <p>HTMLの進化が1998年に停滞したころ、ブラウザベンダーによって開発されたHTMLのためのAPIの一部がDOM Level 1（1998年）とDOM Level 2 CoreおよびDOM Level 2 HTML（2000年にはじまり2003年に最高潮になる）として規定・発行された。これらの取り組みは2004年に発行されたDOM Level 3仕様とともに次第に弱まっていき、ワーキンググループはすべてのLevel 3草案を完了する前に打ち切られてしまった。</p>
-
-  <p>2003年に、ウェブフォームの次世代として位置づけられた技術であるXFormsの公表は、HTMLの代替を見つけることよりも、進化するHTML自身に再び関心を巻き起こした。この関心は、XMLの展開が、実際に展開された（HTMLのような）技術の置換というよりも、むしろウェブ技術としてもっぱら（RSSや後のAtomのような）新しい技術に限られたという認識から生まれた。</p>
-
-  <p>既存のHTMLウェブページとの非互換なレンダリングエンジンの実装をブラウザに要求することなく、XForms 1.0で導入された多数の機能を提供するためのHTML4フォームの拡張が可能だったことを示す、というコンセプトの証明は、この新たな関心の最初の結果であった。草案がすでに公然と利用可能であり、すべての資源に投入を要請されていた一方で、初期段階において、仕様はOpera Softwareの著作権下にあった。</p>
-
-  <p>HTMLの進化が再開されるべきであるという考えは2004年のW3Cワークショップで試された。ここでHTML5の作業（後述）の基礎となる原則の一部、前述のフォームに関連した機能をカバーする初期草案の計画と同じく、MozillaとOperaの共同でW3Cに提案された。この提案は以前に選択したウェブの進化の方向性と矛盾するものであるとして却下された。代わりに、W3C幹部と会員はXMLベースの代替品の開発を継続することを決議した。</p>
-
-  <p>その後まもなく、WHATWGと呼ばれる新しい舞台のもとでApple、Mozilla、Operaは共同で作業を継続する意向を発表した。公開メーリングリストが作成され、草案はWHATWGのサイトに移された。その後著作権は3ベンダー共同で所有するよう修正され、仕様の再利用を可能にした。</p>
-
-  <p>WHATWGは複数の中核となる原則に基づく。特に技術は下位互換性を持つ必要があり、たとえこれが実装よりむしろ仕様が変わることを意味しても仕様と実装は一致する必要があり、仕様は実装が相互にリバースエンジニアリングすることなしに完全な相互運用性を達成可能であることが必要だというものである。</p>
-
-  <p>特に後者の要件は、以前にHTML4、XHTML1、DOM2 HTMLという3つの異なる文書で規定されたものを含むようHTML5仕様の範囲として要求した。このことはまた、これまで慣例と考えられていたよりも多くの必要事項を含むことを意味した。</p>
-
-  <p>2006年、結局W3CはHTML5の開発に参加することに興味を示し、2007年にHTML5仕様の開発にWHATWGと協力するためのワーキンググループを設立した。Apple、Mozilla、およびOperaは、W3CにW3Cライセンスの下で仕様を公開することを許可し、WHATWGサイトのバージョンでは制限の少ないライセンスを維持した。</p>
-
-    <p>長年にわたり、両グループは、Ian Hicksonの下で一緒に働いてきた。2011年、グループは、異なる目標を持っているという結論に達した。WHATWGは継続的に仕様を維持し、新機能を追加し、HTML Living Standardの作業を続行したいとする一方で、W3CはHTML5勧告の機能に対して、一区切りつけたいというものである。2012年中旬、新しいエディタチームはHTML5勧告の作成を引き受け、次のHTMLバージョンへのワーキングドラフトを準備することをW3Cで始めた。</p>
-
-  <p>それ以来、W3C HTML仕様で登録されたバグを解決された、またはより正確にユーザーエージェントで実際に実装されて表現されたWHATWGからのパッチをW3C HTMLワーキンググループは選定している。この文書の公開時点において、<a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/">WHATWG HTML仕様</a>からのパッチはリビジョン<a href="http://html5.org/r/8152">8152</a>までマージされている。W3C HTMLエディタはまた、WHATWGによって共有されないバグの修正をW3C HTMLワーキンググループによって作成された議論や決定の結果としてのパッチを追加している。
+  <p>
+    이 문서는 쉽기보다는 정확하게, 간결하기 보다는 완전성을 중요시하기 때문에,
+    웹 기술에 대해 충분한 지식을 가지고 있지 않는 경우에는 맞지 않을 수 있습니다.
+    쉬운 튜토리얼이나 작성가이드가 HTML5에 더 쉽게 입문할 수 있게 해줄 것입니다.
   </p>
 
-  <p>この文書で指定されるHTMLとHTML4仕様で説明される言語との相違点を提供するための別の文書が発行される。<a href="references.html#refsHTMLDIFF">[HTMLDIFF]</a></p>
+  <p>
+    특히 DOM의 기본을 깨우치는 게, 이 스펙에서 특히 기술적인 몇개의 요소를 완전히 이해하는 데 필요합니다.
+    Web IDL, HTTP, XML, Uncode, 문자 인코딩, JavaScript 및 CSS 이해도 도처에 도움이 되지만 필수는 아닙니다.
+  </p>
+
+
+  <h3 id="scope"><span class="secno">1.3</span> 범위</h3>
+  <p><i>이 절은 표준에 준하는 내용이 아닙니다.</i></p>
+  <p>
+    이 스펙 문서는 정적 문서에서 동적 어플리케이션을 아우르는,
+    웹 상에서 접근 가능한 페이지의 시멘틱 레벨 마크업 언어와 관련이 있고, 시멘틱레벨의 스크립트 API를 제공하는 데 한정합니다.
+  </p>
+  <p>
+    이 스펙 문서의 범위는 외부 미디어에 유효한 커스터마이즈에 대응하는 메커니즘을 제공하지 않습니다.
+    (다만, 웹 브라우저의 기본 렌더링 규칙은 이 스펙 문서의 마지막에 포함하며, 또 CSS를 불러오기 위한 메커니즘을 언어의 일부로써 제공합니다)
+  </p>
+  <p>
+    이 스펙 문서의 범위는 오퍼레이션 시스템 전체를 기술하지는 않습니다.
+    구체적으로는 하드웨어 설정 소프트웨어, 이미지 처리 툴, 유저가 매일 고성능 워크스테이션에서 사용하는 게 예상되는 어플리케이션이 범위 밖입니다.
+
+    어플리케이션 관점에서 이 스펙 문서는 비정기적인 유저, 또 정기적이지만 낮은 CPU 요건과 함께 다른 장소에서 이용할 가능성이 있는 어플리케이션을 특히 대상으로 합니다.
+    
+    그런 어플리케이션의 예로는, 온라인 구매 시스템, 검색 시스템, 게임(특히 온라인 게임), 공중전화부나 주소록, 통신 소프트웨어(이메일 클라이언트, 인스턴트 메시지 클라이언트, 디스커션 소프트웨어), 문서편집 소프트웨어를 포함합니다.
+  </p>
+
+  <h3 id="history-0"><span class="secno">1.4</span> 역사</h3>
+  <p><i>이 절은 표준에 준하는 내용이 아닙니다.</i></p>
+
+  <p>최초 5년간(1990-1995) HTML은 여러 개정과 확장을 경험했습니다. 최초에는 CERN에서, 이후엔 IETF에서 호스트했습니다.</p>
+    
+  <p>W3C 발족과 함께 HTML은 다시 개발의 장을 바꾸었습니다. 1995년 HTML 3.0으로 알려진 초기의 실패로 끝난 HTML을 확장하여 HTML 3.2라 알려진 더 실용적인 접근방법을 통해, 이가 1997년 끝나 HTML4가 같은 해에 바로 이어졌습니다.</p>
+
+  <p>
+    수년간 W3C 회원은 HTML5의 발전을 그만두고, 대신 XHTML로 알려진 XML 베이스의 동등물 개발을 착수하기로 결정했습니다. <!-- http://www.w3.org/MarkUp/future/#summary --> 이로 인해 XML의 HTML4 재정의화를 개시했습니다. 이는, 새로운 직렬화를 제거한 신기능을 추가하지 않는 XHTML 1.0으로 알려져, 2000년 끝났습니다. XHTML 1.0 직후에 W3C의 중심은 XHTML 모듈화로 이어져, XHTML을 확장하는 다른 워킹그룹의 작업을 더 간단히 하는 작업이 많았습니다. 이와 병렬로, W3C는 XHTML2라 불리는, 그 때까지의 HTML이나 XHTML 언어와 상호호환성이 없는 새로운 언어의 개발을 진행하고 있었습니다.
+  </p>
+  <p>
+    HTML의 진화가 1998년에서 정체하고 있을 때, 브라우저 벤더사에 의해 개발된 HTML을 위한 API 일부가 DOM Level 1 (1998년), DOM Level 2 Core 및 DOM Level 2 HTML(2000년에 시작해 2003년에 절정기)로써 작성되어 발행됩니다. 이러한 대처는 20014년에 발행된 DOM Level 3 스펙 문서와 함께 차츰 약해져, 워킹 그룹은 모든 Level 3 초안을 완료하기 전에 중단하였습니다.
+  </p>
+  <p>2003년, 차세대 웹 폼으로 자리잡은 기술인 XForms의 공개는 HTML을 대체할 것을 찾기보다 진화하는 HTML에 다시 관심을 가지게 했습니다. 이 관심으로 인해 XML을 전개해나가는 게 실제로 전개된 (HTML 같은) 기술을 대체하는 것이 아닌, 웹 기술로서 (RSS나 이후의 Atom 같은) 새로운 기술에 불과하다는 인식이 생겨나게 됩니다.</p>
+
+  <p>
+    기존 HTML 웹 페이지와 호환하지 않는 렌더링 엔진 구현을 브라우저에 요구하지 않고,
+    XForms 1.0에서 도입한 여러 기능을 제공하기 위한 HTML4 폼 확장이 가능하도록 하는 컨셉을 증명함으로써 새로운 관심을 불러들이기 시작하였습니다.
+    공연히 초안단계의 스펙을 사용할 수 있었으며, 모든 자원을 투입하는 한편 초창기 스펙 문서는 Opera Software에서 지휘하고 있었습니다.
+  </p>
+
+  <p>
+    HTML 진화를 재개해야 한다는 의견은 2004년 W3C 워크샵에서 나왔습니다.
+    여기서 HTML5 작성(후술) 기초 원칙을 세우고, 폼 관련 기능을 커버하는 초안 초기 때 같이, Mozilla와 Opera가 공동으로 W3C에 제안했습니다.
+    이 제안은 이전 선택한 웹 진화 방향성과 모순하는 것이 있어 기각되었습니다.
+    대신 W3C 간부와 기업은 XML 베이스의 대체품 발전을 계속하기로 결정했습니다.
+  </p>
+
+  <p>
+    그 뒤 얼마 지나지 않아, WHATWG라는 새로운 무대에서 Apple, Mozilla, Opera 공동 작업을 진행하기로 발표했습니다.
+    공개 메일링 리스트를 생성하고, 초안은 WHATWG 사이트에 올렸습니다. 그 뒤 저작권은 3 벤더 공동 소유하기로 결정하고, 스펙을 다시 이용할 수 있게 했습니다.
+  </p>
+
+  <p>
+    WHATWG는 여러 핵심 원칙에 근거합니다.
+    특히 기술은 스펙이 변하는 것을 의미하더라도 구현은 일치해야할 필요가 있으며,
+    리버스 엔지니어링 하는 일 없이 완전히 상호 운용성을 가질 수 있어야합니다.
+  </p>
+
+  <p>
+    특히 후자는 HTML5의 범위를 HTML4, XHTML1, DOM2 HTML 같은 다른 3개의 문서에서 정의한 내용도 포함하도록 하였습니다.
+    이는 지금까지 의례적으로 간주했던 것보다 많은 사항을 포함하는 걸 의미합니다.
+  </p>
+
+  <p>
+    2006년, 결국 W3C는 HTML5 개발에 참여하는 데 관심을 보여 2007년 HTML5 스펙을 WHATWG와 함께 개발하기 위한 워킹그룹을 설립했습니다.
+    Apple, Mozilla, Opera는 W3C 라이센스 하에 스펙 공개를 허용하고, WHATWG 사이트 버전은 제한이 적은 라이센스를 적용했습니다.
+  </p>
+  <p>
+    긴 시간에 걸쳐 양 그룹은 Ian Hickson 관리 하에 함께 했습니다.
+    그런 2011년 양 그룹은 서로 다른 목표를 가지고 있다는 결론에 도달하였습니다.
+    WHATWG는 지속적으로 사양을 유지하고 새로운 기능을 추가하는 HTML Living Standard 작업을 계속하고 싶다는 한편,
+    W3C는 HTML5 권고안으로써의 기능을 일단락하고 싶어했습니다.
+    
+    2012년 중반 새로운 에디터 팀이 HTML5 권고안 제정을 맡았으며,
+    다음 버전을 위한 HTML 작업 초안을 W3C에서 준비하기 시작했습니다.
+  </p>
+  <p>
+    그 이후, W3C HTML 스펙에 등록되어 있는 버그를 해결하였거나,
+    더 정확하게 유저 에이전트에 구현되어 있는 WHATWG 패치를 W3C 워킹 그룹은 선정하고 있습니다.
+    
+    이 문서 공개 시점에는 
+    <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/">WHATWG HTML 스펙</a>에서 패치 리비젼 <a href="http://html5.org/r/8152">8152</a>까지 머지되어있습니다.
+    W3C HTML 에디터는 WHATWG에서 공유하지 않은 버그의 수정을 W3C HTML 워킹 그룹에서 작성한 논의나 결정의 결과로 패치를 추가하고있습니다.
+  </p>
+
+  <p>
+    이 문서에서 지정한 HTML과 HTML4 스펙 간 차이점을 제공하는 다른 문서도 제공합니다. 
+    <a href="references.html#refsHTMLDIFF">[HTMLDIFF]</a>
+  </p>
   
-  <h3 id="design-notes"><span class="secno">1.5</span> 設計ノート</h3>
+  <h3 id="design-notes"><span class="secno">1.5</span> 설계 노트</h3>
+  <p><i>이 절은 표준에 준하는 내용이 아닙니다.</i></p>
+  <p>
+    한 눈에 봤을 때 많은 HTML 특징들이 엉터리며 일관성이 없어보이는 걸 인정해야합니다.  
+  </p>
+  <p>
+    대부분의 HTML, HTML DOM API 지원, HTML을 지원하는 기술은 서로의 존재를 모른채로 다른 우선순위를 가진 많은 사람들에 의해 수십년동안 개발되어왔습니다.
+  </p>
+  <p>
+    이러한 기능은 많은 곳에서 발생하고 있으며, 일관된 방식으로 설계되어 있지 않습니다.
+    또한 웹이 가진 특성 중 하나로 버그가 수정되기 전 버그에 의존하는 방식으로,
+    종종 콘텐츠가 의존하여 사용하기 때문에 구현 버그가 종종 표준이 되는 경우도 이어, 지금은 기관 표준이 되어있습니다.
+  </p>
+  <p>
+    이런 상황에도 불구하고, 특정한 설계 목표에 집작하려는 시도가 이루어지고 있습니다.
+    이는 다음 장에서 설명합니다.
+  </p>
+  <h4 id="serializability-of-script-execution"><span class="secno">1.5.1</span> 스크립트 실행 순서</h4>
+  <p><i>이 절은 표준에 준하는 내용이 아닙니다.</i></p>
+  <p>
+    웹 저자가 멀티 스레드 처리 복잡성에 관여하는 걸 방지하기 위해,
+    HTML과 DOM API는 스크립트가 다른 스크립트의 동시실행을 감지하지 않도록 설계되어있습니다.
+    <a data-anolis-xref="Worker" href="infrastructure.html#worker">워커</a>와 동일한, 구현 동작이 전부 <a data-anolis-xref="browsing
+  context" href="browsers.html#browsing-context">브라우징 콘텍스트</a> 안에서 모든 스크립트 실행이 직렬화 되어있도록 생각하게 하는 의도입니다.
+  </p>
 
-  <p><i>この節は非規範的である。</i></p>
-  <p>一見しただけでは、HTMLの多くの特徴がでたらめであり一貫性のないように見えることを認めなければならない。</p>
-
-  <p>HTML、HTMLのDOM APIのサポート、およびHTMLのサポートする技術の多くは、多くの場合、互いの存在を知らない、異なる優先順位をもつ多数の人々により数十年にわたって開発されてきた。</p>
-
-  <p>このように機能は多くの出典から生じており、とりわけ一貫性のある方法で設計されていない。さらに、ウェブの特有な特性により、バグが修正される前にバグに依存する方法でコンテンツがしばしば意図せず書かれるため、実装バグはたびたびデファクトスタンダードになっており、今ではデジュールスタンダードになっている。</p>
-
-  <p>そのような状況にもかかわらず、一定の設計目標に執着する試みがなされている。これらは、次節で説明する。</p>
+  <p class="note">이 모델에서 <code data-anolis-xref="dom-navigator-yieldForStorageUpdates"><a href="webappapis.html#dom-navigator-yieldforstorageupdates">navigator.yieldForStorageUpdates()</a></code> 메소드는 호출 스크립트가 차단되어있는 동안 다른 스크립트가 실행 가능하도록 하는 것과 동일합니다.</p>
 
 
-  <h4 id="serializability-of-script-execution"><span class="secno">1.5.1</span> スクリプト実行の逐次性</h4>
+  <h4 id="compliance-with-other-specifications"><span class="secno">1.5.2</span> 다른 스펙 준수</h4>
+  <p><i>이 절은 표준에 준하는 내용이 아닙니다.</i></p>
+  
+  <p>
+    이 스펙은 여러 다른 사양과 서로 영향을 주고 의존합니다.
+    불행히도 특정 상황에서 모순하는 요구사항은 이런 다른 스펙에 속하는 요건 위반을 이 문서에서 가리킵니다.
+    이 위반이 발생한 때는 언제든지, 위반이 각각 "<dfn id="willful-violation">고의적 위반</dfn>"으로 언급되며, 위반 이유가 지적당합니다.
+  </p>
 
-  <p><i>この節は非規範的である。</i></p>
-  <p>ウェブ著者をマルチスレッド処理の複雑さに触れさせることを回避するために、HTMLとDOM APIは、スクリプトが他のスクリプトの同時実行を検出しないように設計されている。<a data-anolis-xref="Worker" href="infrastructure.html#worker">ワーカー</a>と等しい、実装の動作がすべての<a data-anolis-xref="browsing
-  context" href="browsers.html#browsing-context">ブラウジングコンテキスト</a>内におけるすべてのスクリプトの実行を完全に逐次化すると考えることができるのが意図するところである。</p>
-
-  <p class="note">このモデルにおいて、<code data-anolis-xref="dom-navigator-yieldForStorageUpdates"><a href="webappapis.html#dom-navigator-yieldforstorageupdates">navigator.yieldForStorageUpdates()</a></code>メソッドは、呼び出し元のスクリプトがブロックされている間に、他のスクリプトが実行できるようにすることと等価である。</p>
-
-
-  <h4 id="compliance-with-other-specifications"><span class="secno">1.5.2</span> 他の仕様の順守</h4>
-
-  <p><i>この節は非規範的である。</i></p>
-  <p>この仕様は、多種多様な他の仕様と互いに影響しあい、依存する。残念ながら特定の状況において、矛盾する要求は、これら他の仕様に属する要件の違反をこの仕様に導く。この違反が発生した時はいつでも、違反はそれぞれ"<dfn id="willful-violation">故意の違反</dfn>"として言及され、違反の理由が指摘される。</p>
-
-  <h4 id="extensibility"><span class="secno">1.5.3</span> 拡張性</h4>
+  <h4 id="extensibility"><span class="secno">1.5.3</span> 확장성</h4>
   
     <p><i>この節は非規範的である。</i></p>  
     <p>HTMLは、安全な方法でセマンティックを追加するために使用できる拡張性メカニズムを多数持つ：</p>
