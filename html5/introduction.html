@@ -1036,38 +1036,50 @@ a.setAttribute('href', 'http://example.com/'); // 속성 내용을 직접 변경
 
    </dd>
 
-
-
-   <dt>クリックジャッキング</dt>
+   <dt>클릭 재킹</dt>
 
    <dd>
 
-    <p>ユーザーが望まないだろう振る舞いを実行するインターフェースをユーザーに提供するようなページは、ユーザーがアクティブなインターフェースでだまされる可能性を回避するように設計する必要がある。</p>
+    <p>
+      유저가 원하지 않는 행동을 수행하는 인터페이스를 유저에게 제공하는 페이지는,
+      유저가 활성 인터페이스에 속을 가능성을 방지하도록 설계해야합니다.
+    </p>
 
-    <p>たとえば、敵対的なサイトが小さな<code><a href="embedded-content-0.html#the-iframe-element">iframe</a></code>を被害者のサイトに配置し、ユーザーがリアクションゲームをプレイすることによって、クリックするようユーザーにさせる場合、ユーザーをだます一つの手段である。ひとたびユーザーがゲームをプレイすると、敵対サイトはユーザーがクリックしようとすると同時にマウスカーソルの下にiframeを配置できる。こうして被害者サイトのインターフェースをクリックするようにユーザーをだます。</p>
+    <p>예를 들어 적대적인 사이트가 작은 <code><a href="embedded-content-0.html#the-iframe-element">iframe</a></code>을 피해자의 사이트에 배치하고 사용자가 리액션 게임을 플레하도록 하여, 클릭하도록 유저를 유도하는 것도 유저를 속이는 하나의 방법입니다. 일단 사용자가 게임을 하면 적대 사이트는 사용자가 클릭하려고 할 때 마우스 커서 바로 밑에 iframe을 배치할 수 있습니다. 이렇게 피해자 사이트 인터페이스를 클릭하도록 유도할 수 있습니다.</p>
 
-    <p>これを回避するために、フレームに使用されることを予想しないサイトは、（たとえば<code data-anolis-xref="dom-top"><a href="browsers.html#dom-top">top</a></code>属性の値に<code data-anolis-xref="dom-window"><a href="browsers.html#dom-window">window</a></code>オブジェクトを比較することによって）フレームにないことを検出した場合のみ、それらのインターフェースを有効にすることを促進する。</p>
+    <p>
+      이를 방지하기 위해 프레임 사용이 예상되는 사이트는 （예를 들어 <code data-anolis-xref="dom-top"><a href="browsers.html#dom-top">top</a></code>속성의 값에 <code data-anolis-xref="dom-window"><a href="browsers.html#dom-window">window</a></code>객체를 비교하여）프레임에 없는 것을 검출한 경우에만 인터페이스를 활성화 하는 것을 권장합니다.</p>
 
    </dd>
 
-  </dl><!--REMOVE-TOPIC:Security--><h4 id="common-pitfalls-to-avoid-when-using-the-scripting-apis"><span class="secno">1.9.2</span> スクリプトAPIの使用時に回避すべき共通の落とし穴</h4>
-
-  <p><i>この節は非規範的である。</i></p>
-  <p>HTML内のスクリプトは"実行から完了まで"のセマンティックがある。これは、イベントを発火または文書を解析し続けるなど、ほかに何かを実行する前に、一般にブラウザは途切れずスクリプトを実行することを意味する。</p>
-
-  <p>一方、HTMLファイルの解析は非同期かつ増加的に発生する。これは、パーサがスクリプトが実行できるよう任意の時点で一時停止可能であることを意味する。これは一般に良いことであるが、イベントが発火する可能性ができた後に、著者はイベントハンドラをフックするのを避けるよう注意する必要があることを意味する。</p>
-
-  <p>これを確実に行う、<a href="webappapis.html#event-handler-content-attributes">イベントハンドラのコンテンツ属性</a>を使用する、または要素を作成して同じスクリプト内でイベントハンドラを追加するという2つの方法がある。前述のように、追加のイベントが発動する前に、スクリプトが完了するまで実行されているため、後者は安全である。</p>
+  </dl><!--REMOVE-TOPIC:Security--><h4 id="common-pitfalls-to-avoid-when-using-the-scripting-apis"><span class="secno">1.9.2</span> 스크립트 API 사용시 회피해야 할 공통 함정</h4>
+  <p><i>이 절은 표준에 준하는 내용이 아닙니다.</i></p>
+  <p>
+    HTML 내부 스크립트는 "실행부터 완료까지" 의미가 있습니다.
+    이는 이벤트의 발화 및 문서 분석을 계속하는 등 다른 무언가를 실행하기 전에,
+    일반적으로 브라우저는 중단하지 않고 스크립트를 실행하는 것을 의미합니다.
+  </p>
+  <p>
+    한편 HTML 파일의 해석은 비동기적이고 점진적으로 발생합니다.
+    이는 파서가 스크립트를 실행할 수 있도록 시점에 따라 언제든지 일시 정지 할 수 있음을 의미합니다.
+    이는 일반적으로 좋은 일이지만 이벤트가 발화한 이후에,
+    에디터는 이벤트 핸들러를 후크하는걸 피하도록 주의해야한다는 것을 의미합니다.
+  </p>
+  <p>
+    이를 확실하게 할  <a href="webappapis.html#event-handler-content-attributes">이벤트 핸들러 콘텐츠 속성</a>을 사용하거나 요소를 작성할 때 같은 스크립트 안의 이벤트 핸들러를 추가하는 2가지 방법이 있습니다. 앞에서 쓴 바와 같이 추가 이벤트가 발동하기 전에는 스크립트가 끝날 때까지 실행되고 있기 때문에 후자가 안전합니다.
+  </p>
 
   <div class="example">
+   <p>이를 명시하고자 할 때 가능한 하나의 방법은 <code><a href="embedded-content-0.html#the-img-element">img</a></code>요소와 <code data-anolis-xref="event-load">load</code>이벤트입니다. 특히 이미지가 이미 (공통으로) 캐시에 들어가있는 경우 요소를 해석할 때 이벤트가 발화할 수 있습니다.</p>
 
-   <p>これが明示することができる一つの方法は、<code><a href="embedded-content-0.html#the-img-element">img</a></code>要素と<code data-anolis-xref="event-load">load</code>イベントである。特に画像がすでに（共通の）キャッシュされている場合は、要素が解析されると同時にイベントは発火することができる。</p>
-
-   <p>これは、著者は<code data-anolis-xref="event-load">load</code>イベントを捕まえるために<code><a href="embedded-content-0.html#the-img-element">img</a></code>要素に<code data-anolis-xref="handler-onload"><a href="webappapis.html#handler-onload">onload</a></code>ハンドラを使用している：</p>
+   <p>에디터는 <code data-anolis-xref="event-load">load</code> 이벤트를 잡기위해 <code><a href="embedded-content-0.html#the-img-element">img</a></code> 요소에 <code data-anolis-xref="handler-onload"><a href="webappapis.html#handler-onload">onload</a></code>핸들러를 이용할 수 있습니다：</p>
 
    <pre>&lt;img src="games.png" alt="Games" onload="gamesLogoHasLoaded(event)"&gt;</pre>
 
-   <p>要素がスクリプトによって追加されている場合、イベントハンドラは同じスクリプトで追加され、イベントが見落とされることはないだろう：</p>
+   <p>
+     요소가 스크립트를 통해 추가되는 경우, 이벤트 핸들러는 같은 스크립트 내에서 추가되어,
+     이벤트를 캐치하지 못하는 일은 없을것입니다 :
+  </p>
 
    <pre>&lt;script&gt;
  var img = new Image();
@@ -1077,7 +1089,7 @@ a.setAttribute('href', 'http://example.com/'); // 속성 내용을 직접 변경
  // img.addEventListener('load', gamesLogoHasLoaded, false); // would work also
 &lt;/script&gt;</pre>
 
-   <p>しかし、著者が最初に<code><a href="embedded-content-0.html#the-img-element">img</a></code>要素を作成し、別のスクリプトでイベントリスナーを追加した場合、<code data-anolis-xref="event-load">load</code>イベントが発火している間に、見逃す機会がある：</p>
+   <p>그러나 에디터에 최초에 <code><a href="embedded-content-0.html#the-img-element">img</a></code>요소를 작성해 다른 스크립트에서 이벤트 리스너를 추가한 경우 <code data-anolis-xref="event-load">load</code> 이벤트가 발화했을 때 놓칠 기회가 있습니다 : </p>
 
    <pre class="bad">&lt;!-- Do not use this style, it has a race condition!--&gt;
  &lt;img id="games" src="games.png" alt="Games"&gt;
@@ -1092,77 +1104,90 @@ a.setAttribute('href', 'http://example.com/'); // 속성 내용을 직접 변경
 
 
 
-  <h4 id="how-to-catch-mistakes-when-writing-html:-validators-and-conformance-checkers"><span class="secno">1.9.3</span> HTMLを記述する際に誤りを見つける方法：バリデータと適合性チェッカー</h4>
+  <h4 id="how-to-catch-mistakes-when-writing-html:-validators-and-conformance-checkers"><span class="secno">1.9.3</span> 잘못된 HTML을 찾는 방법 : 밸리데이터와 적합성 검사기</h4>
+  <p><i>이 절은 표준에 준하는 내용이 아닙니다.</i></p><!--FORK - point to W3C validator instead of whatwg wiki page SF-->
+  <p>
+    에디터는 흔히 볼 수 있는 에러를 찾을 적합성 검사(<i>밸리데이터</i>라고 불린다)를 이용하는 걸 권장합니다. W3C는 <a href="http://validator.w3.org/nu/">Nu Markup Validation Service</a>를 포함한 많은 온라인 검증 서비스를 제공합니다.</p><!-- FORK end -->
 
-  <p><i>この節は非規範的である。</i></p><!--FORK - point to W3C validator instead of whatwg wiki page SF-->
-  <p>著者は、よく目にする誤りを見つける適合性チェッカー（<i>バリデータ</i>とも呼ばれる）を利用することが推奨される。W3Cは、<a href="http://validator.w3.org/nu/">Nu Markup Validation Service</a>を含む、多くのオンライン検証サービスを提供する。</p><!-- FORK end -->
 
 
-
-  <h3 id="conformance-requirements-for-authors"><span class="secno">1.10</span> 著者に対する適合性と必要条件</h3>
-
-  <p><i>この節は非規範的である。</i></p>
-  <p>HTML仕様の以前のバージョンとは異なり、この仕様は、妥当な文書向け同様に、妥当でない文書の詳細な必要な処理を定義する。</p><!-- This has led to
+  <h3 id="conformance-requirements-for-authors"><span class="secno">1.10</span> 에디터에 대한 적합성과 필요 요건</h3>
+  <p><i>이 절은 표준에 준하는 내용이 아닙니다.</i></p>
+  <p>
+    HTML 스펙 문서의 이전 버전과는 다릴,
+    이 스펙 문서는 유효한 문서 및 유효하지 않은 문서에서 자세히 필요한 처리를 정의합니다.
+  </p><!-- This has led to
   some questioning the purpose of conformance criteria: if there is no ambiguity in how something
   will be processed, why disallow it? --> 
 
-  <p>しかし、妥当でないコンテンツの処理は、ほとんどの場合明確に定義されるけれども、文書のための適合要件は依然として重要である。実際には、相互運用性（すべての実装が、信頼性と同一または同等の方法で特定のコンテンツを処理している状況）は、文書適合要件の唯一の目標ではない。この節は、適合文書とエラーをもつ文書を区別するための、より一般的な理由の一部を列挙する。</p>
+  <p>
+    그러나 유효하지 않은 콘텐츠의 처리는 대부분의 경우 명확히 정의되지만,
+    문서에 대한 적합성 요구는 여전히 중요합니다.
+    
+    사실 상호운용성(모든 구현이 신뢰성과 동일하거나 유사한 방법으로 특정 콘텐츠를 처리하고 있는 상황)은, 문서 요구 사항을 준수하는 데 유일한 목표는 아닙니다. 이 절에서는 적합 문서와 에러를 가진 문서를 구별하기 위해 일반적인 이유의 일부를 보여줍니다.
+  </p>
 
 
-  <h4 id="presentational-markup"><span class="secno">1.10.1</span> プレゼンテーション的なマークアップ</h4>
+  <h4 id="presentational-markup"><span class="secno">1.10.1</span> 프레젠테이션 마크업</h4>
 
-  <p><i>この節は非規範的である。</i></p>
-  <p>もはや以前のHTMLバージョンからのプレゼンテーション的な機能のほとんどを使用できない。一般にプレゼンテーション的なマークアップは、多くの問題を有することが見出されている：</p>
-
-  <dl><dt>プレゼンテーション的な要素の使用は、より乏しいアクセシビリティにつながる</dt>
+  <p><i>이 절은 표준에 준하는 내용이 아닙니다.</i></p>
+  <p>
+    더 이상 이전 버전의 HTML에서 사용하던 프레젠테이션 기능은 대부분이 사용 불가능합니다.
+    일반적으로 프레젠테이션 마크업은 많은 문제를 안고 있습니다 :
+  </p>
+  <dl><dt>프레젠테이션 요소의 이용은, 부족한 접근성과 이어집니다</dt>
 
    <dd>
-
-    <p>ユーザー支援技術（AT）に満足な体験（たとえばARIAを用いて）を提供する方法でプレゼンテーション的なマークアップを使用することは可能だが、セマンティックに適切なマークアップを用いる場合よりも著しく困難である。さらに、たとえそのような技術を用いても、テキストモードブラウザのユーザーのような、AT以外の非グラフィカルユーザー向けのページをアクセシブルにする助けにはならない。</p>
-
-    <p>その一方で、メディアに依存しないマークアップの使用は、多くのユーザー（たとえばテキストブラウザ）に機能するよう作成される文書向けの容易な手段を提供する。</p>
-
+    <p>유저 지원 기술（AT）에 충분한 경험（ARIA를 이용해서）을 제공하는 방식으로 프레젠테이션 마크업을 이용하는 건 가능하지만, 시맨틱에 적절한 마크업을 이용하는 경우와 비교했을 때 현저히 부족합니다. 또한 설령 그런 기술을 사용하더라도 텍스트 모드 브라우저를 사용하는 유저 같은 AT가 아닌 비 그래픽 유저를 대상으로 할 때 페이지를 접근 가능하도록 할 수 없습니다.</p>
+    <p>한편 미디어에 의존하지 않는 마크업의 사용은 많은 사용자 (예를 들어 텍스트 브라우저)에서 정상적으로 작동하도록 작성하는 문서를 위한 쉬운 방법을 제공합니다.</p>
    </dd>
 
 
-   <dt>メンテナンスのより高いコスト</dt>
+   <dt>높은 비용의 유지보수</dt>
 
    <dd>
-
-    <p>マークアップがスタイルに依存しない方法で書かれるサイトの維持は大幅に容易である。たとえば、<code>&lt;font&nbsp;color=""&gt;</code>を使用してサイトの色を変更すると、サイト全体にわたっての変更が必要になるのに対し、CSSに基づくサイトは同様の変更を単一のファイルの変更によって可能である。</p>
-
+    <p>
+      마크업이 스타일에 의존하지 않는 방법으로 작성한 사이트의 유지는 상당히 쉽습니다.
+      예를 들어 <code>&lt;font&nbsp;color=""&gt;</code>를 사용해서 사이트의 색상을 변경하면 사이트 전체의 마크업을 변경해야하는 반면, CSS 기반의 사이트에서는 단일 파일의 변경만으로 가능합니다.</p>
    </dd>
 
 
-   <dt>より大きな文書サイズ</dt>
+   <dt>더 큰 문서 크기</dt>
 
    <dd>
-
-    <p>プレゼンテーション的なマークアップは、きわめて冗長になる傾向がある。したがって、より大きな文書サイズとなる。</p>
-
+    <p>프레젠테이션 마크업은 매우 중복되는 경향이 있습니다. 따라서 문서 크기가 더욱 커집니다.</p>
    </dd>
 
-  </dl><p>このためこのバージョンでは、プレゼンテーション的なマークアップはHTMLから削除された。この変化は驚くべきものではない。HTML4は何年も前にプレゼンテーション的なマークアップを非推奨とし、著者がプレゼンテーション的なマークアップからの脱却を支援するモード（HTML4 Transitional）を提供した。後に、XHTML 1.1は一段と踏み込み、完全にそれらの機能を廃止した。</p>
+  </dl>
+    
+  <p>
+    이를 위해 이 버전에서는 프레젠테이션 마크업을 대부분 제거했습니다.
+    이런 변화는 딱히 놀랄 일은 아니고, HTML4가 몇년 전부터 프레젠테이션 마크업을 비추천하였고,
+    에디터가 프레젠테이션 마크업에서 일부 유예기간을 갖는 모드인 （HTML4 Transitional）을 제공했습니다.
+    후에 XHTML 1.1은 더 나아가 완전히 그 기능을 폐지했습니다.
+  </p>
 
-  <p>HTMLで唯一残っているプレゼンテーション的なマークアップ機能は、<code data-anolis-xref="attr-style"><a href="dom.html#the-style-attribute">style</a></code>属性と<code><a href="document-metadata.html#the-style-element">style</a></code>要素である。<code data-anolis-xref="attr-style"><a href="dom.html#the-style-attribute">style</a></code>属性の使用は本番環境で推奨されないが、ラピッドプロトタイピング（そのルールが直接後で別のスタイルシートに移動することができる）、および独立したスタイルシートが不便である他とは異なる場合での特定のスタイルを提供するのに役立つ。同様に、<code><a href="document-metadata.html#the-style-element">style</a></code>要素は、配信またはページ固有のスタイルに有用であるが、一般にスタイルを複数ページに適用する場合、外部スタイルシートはより使いやすそうである。</p>
+  <p>HTML에 유일하게 남아있는 프레젠테이션 마크업 기능은 <code data-anolis-xref="attr-style"><a href="dom.html#the-style-attribute">style</a></code>속성과 <code><a href="document-metadata.html#the-style-element">style</a></code>요소입니다. <code data-anolis-xref="attr-style"><a href="dom.html#the-style-attribute">style</a></code>속성의 사용은 프로덕션 환경에서 권장하지 않지만, 래피드 프로토타이핑（그 특성을 직접 나중에 다른 스타일시트로 이동할 수 있습니다.） 및 독립 스타일시트로는 하기 어려운 다른 사람과 다른 경우의 스타일을 공유하고자 할 때 도움이 됩니다. 마찬가지로<code><a href="document-metadata.html#the-style-element">style</a></code> 요소는 전달할 때나 페이지 고유의 스타일을 적용하고자할 때 유용하지만, 일반적으로 같은 스타일을 여러 페이지에 적용할 경우에는 외부 스타일 시트를 사용하는 게 더 쉽습니다.</p>
 
-  <p>また、以前にプレゼンテーション的であった一部の要素がメディアに依存しないよう、この仕様で再定義されていることは注目すべきである：<code><a href="text-level-semantics.html#the-b-element">b</a></code>、<code><a href="text-level-semantics.html#the-i-element">i</a></code>、<code><a href="grouping-content.html#the-hr-element">hr</a></code>、<code><a href="text-level-semantics.html#the-s-element">s</a></code>、<code><a href="text-level-semantics.html#the-small-element">small</a></code>および<code><a href="text-level-semantics.html#the-u-element">u</a></code>。</p>
+    <p>또한 이전에는 프레젠테이션 요소였던 것들 중 일부 요소가 미디어에 의존하지 않도록 이 스펙에서 재정의하는 경우도 있어 주목해야합니다：<code><a href="text-level-semantics.html#the-b-element">b</a></code>、<code><a href="text-level-semantics.html#the-i-element">i</a></code>、<code><a href="grouping-content.html#the-hr-element">hr</a></code>、<code><a href="text-level-semantics.html#the-s-element">s</a></code>、<code><a href="text-level-semantics.html#the-small-element">small</a></code> 및 <code><a href="text-level-semantics.html#the-u-element">u</a></code>.</p>
 
 
-  <h4 id="syntax-errors"><span class="secno">1.10.2</span> 構文エラー</h4>
+  <h4 id="syntax-errors"><span class="secno">1.10.2</span> 구문 에러</h4>
 
-  <p><i>この節は非規範的である。</i></p>
-  <p>HTMLの構文は、さまざまな問題を回避するために拘束されている。</p>
+  <p><i>이 절은 표준에 준하는 내용이 아닙니다.</i></p>
+  <p>HTML 구문은 여러가지 문제를 해결하기 위해 구속되어 있습니다.</p>
 
-  <dl><dt>直感的でないエラー処理の動作</dt>
+  <dl><dt>직관적이지 않은 오류처리 동작</dt>
 
    <dd>
 
-    <p>特定の妥当でない構文構造が解析されるとき、高度に直感的でないDOMツリーをもたらす。</p>
+    <p>
+      특정 유효하지 않은 구문 구조가 해석될 때매우 직관적이지 않은 DOM 트리를 생성합니다.
+    </p>
 
     <div class="example">
 
-     <p>たとえば、次のマークアップ断片は、<code><a href="grouping-content.html#the-hr-element">hr</a></code>要素が、対応する<code><a href="tabular-data.html#the-table-element">table</a></code>要素の<em>前の</em>兄弟となるDOMをもたらす：</p>
+     <p>예를 들어 아래 샘플 마크업은 <code><a href="grouping-content.html#the-hr-element">hr</a></code>요소가 대응하는 <code><a href="tabular-data.html#the-table-element">table</a></code>요소의  <em>이전</em>형제가 되는 DOM을 가집니다:</p>
 
      <pre class="bad">&lt;table&gt;&lt;hr&gt;...</pre>
 
@@ -1171,100 +1196,127 @@ a.setAttribute('href', 'http://example.com/'); // 속성 내용을 직접 변경
    </dd>
 
 
-   <dt>オプションのエラー回復を持つエラー</dt>
+   <dt>옵션의 에러 회복을 갖는 오류</dt>
 
    <dd>
 
-    <p>より奇妙で複雑なエラー処理規則を実装することなく、制御された環境で使用できるようにするため、ユーザーエージェントは<a href="syntax.html#parse-error">解析エラー</a>に遭遇した場合に失敗が許可される。</p>
+    <p>
+      더 기묘하고 복잡한 에러 처리규칙을 구현하지 않고,
+      제어된 환경에서 사용 가능하도록 하기 위해,
+      유저 에이전트에서 <a href="syntax.html#parse-error">해석 에러</a>가 발생하는 경우 실패가 허용됩니다.</p>
+   </dd>
+
+
+   <dt>에러 처리 동작이 스트리밍 유저 에이전트와 호환하지 않는 에러</dt>
+
+   <dd>
+
+    <p>위에서 작성한 <code data-anolis-xref="">&lt;table&gt;&lt;hr&gt;...</code>에 대한 동작 등, 일부 에러 처리 동작 방식은 스트리밍 유저 에이전트（상태를 저장하지 않고 1회 패스로 HTML 파일을 처리하는 유저 에이전트）와 호환하지 않습니다. 그런 유저 에이전트와 상호 운용성 문제를 해결하기 위한 어떤 구문도 타당하지 않다고 봅니다.
+    </p>
+   </dd>
+
+
+   <dt>infoset을 강제할 가능성이 있는 에러</dt>
+
+   <dd>
+
+    <p>
+      XML을 기반으로 두는 유저 에이전트가 HTML 파서에 연결하는 경우,
+      주석에서 이어지는 2개의 하이픈을 포함할 수 없다는 등의 XML에서 강제하는 특정 요건은 HTML 파일에 의해 침해당할 가능성이 있습니다.
+      이를 처리할 경우 파서가 XML 호환 infoset에 HTML DOM을 강제하는 걸 요구할 수 있습니다.
+      이러한 처리를 요구하는 대부분의 구문 구조는 유효하지 않다고 간주합니다.
+    </p>
 
    </dd>
 
 
-   <dt>エラー処理の動作がストリーミングのユーザーエージェントとの互換性がないエラー</dt>
+   <dt>불균형한 퍼포먼스 저하로 이어지는 오류</dt>
 
    <dd>
 
-    <p>前述した<code data-anolis-xref="">&lt;table&gt;&lt;hr&gt;...</code>のような例に対する振る舞いなど、一部のエラー処理動作は、ストリーミングのユーザーエージェント（状態を保存することなく、1回のパスでHTMLファイルを処理するユーザーエージェント）と互換性がない。そのようなユーザーエージェントとの相互運用性の問題を回避するために、そのような振る舞いに起因するいかなる構文も妥当でないと見なされる。</p>
-
-   </dd>
-
-
-   <dt>infoset強制をもたらす可能性のあるエラー</dt>
-
-   <dd>
-
-    <p>XMLに基づくユーザーエージェントがHTMLパーサに接続される場合、コメントで2つの連続するハイフンを含むことがないというような、XMLが強制する特定の不変条件は、HTMLファイルによって侵害される可能性がある。これを処理すると、パーサがXML互換のinfosetにHTML DOMを強要することを要求できる。このような処理を要求するほとんどの構文構造は妥当でないとみなされる。</p>
-
-   </dd>
-
-
-   <dt>不均衡なパフォーマンスの低下につながるエラー</dt>
-
-   <dd>
-
-    <p>特定の構文構造は不均衡なパフォーマンスの低下につながることがある。このような構造の使用を思いとどまらせるために、典型的な不適合とする。</p>
+    <p>
+      특정 구문 구조는 불균형한 성능 저하로 이어질 수 있습니다.
+      이러한 구조의 사용을 단념시키기 위해, 전형적으로 부적합합니다.
+    </p>
 
     <div class="example">
 
-     <p>たとえば、すべての閉じられていない<code><a href="text-level-semantics.html#the-i-element">i</a></code>要素が各段落で再構成されなければならないために、次のマークアップはパフォーマンスの低下をもたらし、各段落で次第により多くの要素をもたらす：</p>
+     <p>
+       예를 들어, 모든 닫히지 않은 <code><a href="text-level-semantics.html#the-i-element">i</a></code> 요소가 각 단락에서 재구성되어야만 하기 ㄷ때문에, 다음 마크업은 퍼포먼스 저하를 초래하고 각 단락에서 점차적으로 더 많은 요소를 가집니다 : </p>
 
      <pre class="bad">&lt;p&gt;&lt;i&gt;He dreamt.
 &lt;p&gt;&lt;i&gt;He dreamt that he ate breakfast.
 &lt;p&gt;&lt;i&gt;Then lunch.
 &lt;p&gt;&lt;i&gt;And finally dinner.</pre>
 
-     <p>The resulting DOM for this fragment would be:</p>
+     <p>이는 DOM으로 해석되었을 때 :</p>
 
      <ul class="domTree"><li class="t1"><code><a href="grouping-content.html#the-p-element">p</a></code><ul><li class="t1"><code><a href="text-level-semantics.html#the-i-element">i</a></code><ul><li class="t3"><code><a href="infrastructure.html#text-0">#text</a></code>: <span data-anolis-xref="">He dreamt.</span></li></ul></li></ul></li><li class="t1"><code><a href="grouping-content.html#the-p-element">p</a></code><ul><li class="t1"><code><a href="text-level-semantics.html#the-i-element">i</a></code><ul><li class="t1"><code><a href="text-level-semantics.html#the-i-element">i</a></code><ul><li class="t3"><code><a href="infrastructure.html#text-0">#text</a></code>: <span data-anolis-xref="">He dreamt that he ate breakfast.</span></li></ul></li></ul></li></ul></li><li class="t1"><code><a href="grouping-content.html#the-p-element">p</a></code><ul><li class="t1"><code><a href="text-level-semantics.html#the-i-element">i</a></code><ul><li class="t1"><code><a href="text-level-semantics.html#the-i-element">i</a></code><ul><li class="t1"><code><a href="text-level-semantics.html#the-i-element">i</a></code><ul><li class="t3"><code><a href="infrastructure.html#text-0">#text</a></code>: <span data-anolis-xref="">Then lunch.</span></li></ul></li></ul></li></ul></li></ul></li><li class="t1"><code><a href="grouping-content.html#the-p-element">p</a></code><ul><li class="t1"><code><a href="text-level-semantics.html#the-i-element">i</a></code><ul><li class="t1"><code><a href="text-level-semantics.html#the-i-element">i</a></code><ul><li class="t1"><code><a href="text-level-semantics.html#the-i-element">i</a></code><ul><li class="t1"><code><a href="text-level-semantics.html#the-i-element">i</a></code><ul><li class="t3"><code><a href="infrastructure.html#text-0">#text</a></code>: <span data-anolis-xref="">And finally dinner.</span></li></ul></li></ul></li></ul></li></ul></li></ul></li></ul></div>
 
    </dd>
 
 
-   <dt>壊れやすい構文構造に関係したエラー</dt>
+   <dt>깨지기 쉬운 구문 구조 관련 에러</dt>
 
    <dd>
 
-    <p>歴史的な理由により、比較的壊れやすい構文構造が存在する。そのような問題に偶発的に陥るユーザーの数を減らすために、これらを適合しないようにする。</p>
+    <p>
+      역사적인 이유로 인해 상대적으로 약한 구문 구조가 존재합니다.
+      그런 문제에 우발적으로 빠지는 유저를 줄이기 위해, 이를 적합하지 않다고 판단합니다.
+    </p>
 
     <div class="example">
 
-     <p>たとえば、属性における指定文字参照の特定の構文解析は、閉じセミコロンが省略されても起こる。指定文字参照を形成しない文字が続くアンパサンドを含むのは安全であるが、その文字が指定文字参照を形成<em>する</em>文字列に変更された場合、その文字列は代わりに文字として解釈されるだろう。</p>
+     <p>
+       
+       예를 들어, 속성에서 지정된 문자참조의 특정 구문 분석은, 닫힘 세미콜론을 생략해도 발생합니다.
+       지정 문자 참조를 형성하지 않는 문자가 계속하여 앰퍼샌드를 포함하는건 안전하지만,
+       그 문자가 지정 문자 참조를 형성<em>하는</em> 문자열로 변경된 경우, 그 문자열 대신 문자로써 해석될 것입니다.</p>
 
-     <p>次の断片で、属性値は"<code data-anolis-xref="">?bill&amp;ted</code>"となる：</p>
+     <p>아래 예제에서 속성값은 "<code data-anolis-xref="">?bill&amp;ted</code>"이 됩니다:</p>
 
      <pre class="bad">&lt;a href="?bill&amp;ted"&gt;Bill and Ted&lt;/a&gt;</pre>
 
-     <p>しかし、次の断片では、属性値は"<code data-anolis-xref="">?art&amp;copy</code>"を意図<em>せず</em>、実際には"<code data-anolis-xref="">?art©</code>"となる。なぜならば最後のセミコロンがなく、"<code data-anolis-xref="">&amp;copy</code>"は"<code data-anolis-xref="">&amp;copy;</code>"と同様に扱われ、したがって"<code data-anolis-xref="">©</code>"として解釈される：</p>
+     <p>그러나, 아래 예제에서 속성값은 "<code data-anolis-xref="">?art&amp;copy</code>"이 <em>아닌</em>, 실제로는 "<code data-anolis-xref="">?art©</code>"가 됩니다. 왜냐하면 마지막 세미콜론이 없는 "<code data-anolis-xref="">&amp;copy</code>"와 "<code data-anolis-xref="">&amp;copy;</code>"와 동일하게 취급합니다. 따라서 "<code data-anolis-xref="">©</code>"로 해석됩니다 : </p>
 
      <pre class="bad">&lt;a href="?art&amp;copy"&gt;Art and Copy&lt;/a&gt;</pre>
 
-     <p>この問題を回避するため、すべての指定文字参照はセミコロンで終了する必要があり、セミコロンなしの指定文字参照の使用は、エラーとしてフラグ付けされる。</p>
+     <p>
+       이 문제를 해결하기 위해, 모든 지정 문자 참조는 세미콜론으로 종료할 필요가 있으며,
+       세미콜론이 없는 지정문자참조의 사용은 에러로 플래그를 지정합니다.
+     </p>
 
-     <p>よって、上記の例を表現するためのふさわしい方法は、次のとおり：</p>
+     <p>따라서 위 예제는 아래와 같이 변경합니다 : </p>
 
-     <pre>&lt;a href="?bill&amp;ted"&gt;Bill and Ted&lt;/a&gt; &lt;!-- &amp;tedは指定文字参照でないのでOK --&gt;</pre>
-     <pre>&lt;a href="?art&amp;amp;copy"&gt;Art and Copy&lt;/a&gt; &lt;!-- &amp;copyは指定文字参照<em>なので</em>、&amp;はエスケープされる必要がある --&gt;</pre>
+     <pre>&lt;a href="?bill&amp;ted"&gt;Bill and Ted&lt;/a&gt; &lt;!-- &amp;ted는 지정 문자 참조가 아니므로 OK --&gt;</pre>
+     <pre>&lt;a href="?art&amp;amp;copy"&gt;Art and Copy&lt;/a&gt; &lt;!-- &amp;copy는 지정 문자 참조<em>이기 때문에 </em>、&amp;를 에스케이프할 필요가 있다 --&gt;</pre>
 
     </div>
 
    </dd>
 
 
-   <dt>レガシーユーザーエージェントにおける既知の相互運用性の問題に関係したエラー</dt>
+   <dt>레거시 유저 에이전트에 알려진 상호운용성 문제 관련 오류</dt>
 
    <dd>
 
-    <p>特定の構文構造は、レガシーユーザーエージェントでは特に微妙または重大な問題を引き起こすことが知られており、したがって著者が回避するのを助けるために不適合としてマークされる。</p>
+    <p>
+      특정 구문 구조는 레거시 유저 에이전트에서는 특히 미묘하거나 중대한 문제를 일으키는 걸로 알려져 있으며,
+      따라서 에디터가 피할 것을 돕기 위해 부적합으로 표시합니다.
+    </p>
 
     <div class="example">
 
-     <p>たとえば、これは"`"（U+0060）文字が引用符なしの属性で許可されない理由となる。特定のレガシーユーザーエージェントでは、 <!-- namely IE --> これは時に引用符として扱われる。</p>
+     <p>
+       예를 들어 "`"（U+0060）문자를 인용되지 않은 속성에서 허용되지 않는 이유 중 하나입니다.
+       특정 레거시 유저 에이전트<!-- namely IE -->는 이를 따옴표로 처리합니다.
+     </p>
 
     </div>
 
     <div class="example">
 
-     <p>もう一つの例は、<a href="infrastructure.html#no-quirks-mode">非互換モード</a>のトリガーに必要なDOCTYPEである。なぜなら<a href="infrastructure.html#quirks-mode">互換モード</a>でのレガシーユーザーエージェントの動作は文書化されていないことが多いためである。</p>
+     <p>또 다른 예는 <a href="infrastructure.html#no-quirks-mode">호환 모드</a> 트리거에 필요한 DOCTYPE 입니다. <a href="infrastructure.html#quirks-mode">쿼크 모드</a>에서 레거시 유저 에이전트의 동작은 문서화되어있지 않는 경우가 많기 때문입니다.</p>
 
     </div>
 
@@ -1272,15 +1324,16 @@ a.setAttribute('href', 'http://example.com/'); // 속성 내용을 직접 변경
 
 
 
-   <dt>著者をセキュリティ攻撃にさらす危険のあるエラー</dt>
+   <dt>에디터가 시큐리티 공격에 노출될 위험이 있는 오류</dt>
 
    <dd>
 
-    <p>一定の制限は、純粋に既知のセキュリティ問題を回避するために存在している。</p>
+    <p>일부 제한사항은 순수하게 알려져있는 보안 문제를 해결하기 위해 존재합니다.</p>
 
     <div class="example">
 
-     <p>たとえば、UTF-7を使用する上での制限事項は、UTF-7を用いた既知のクロスサイトスクリプティング攻撃に対して純粋に著者が犠牲になるのを避けるために存在している。<a href="references.html#refsUTF7">[UTF7]</a></p>
+     <p>
+       예를 들어 UTF-7을 사용할 때 제한사항은, UTF-7을 이용하여 크로스 사이트 스크립팅 공격에 대해 순수하게 희생되는 걸 막기 위해 존재합니다.<a href="references.html#refsUTF7">[UTF7]</a></p>
 
     </div>
 
@@ -1288,15 +1341,18 @@ a.setAttribute('href', 'http://example.com/'); // 속성 내용을 직접 변경
 
 
 
-   <dt>著者の意図が不明であるケース</dt>
+   <dt>에디터의 의도를 알 수 없는 경우</dt>
 
    <dd>
 
-    <p>著者の意図が極めて不明確であるマークアップは、多くの場合不適合とされる。このエラーの早期の修正が以降のメンテナンスをより容易にする。</p>
+    <p>
+      에디터의 의도가 매우 불명확한 마크업은 부적합으로 나타납니다.
+      이 오류를 초기에 수정하는게 이후 유지보수에 도움이 됩니다.
+    </p>
 
     <div class="example">
 
-     <p>たとえば、次の著者の意図は<code><a href="sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h1</a></code>見出しか<code><a href="sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h2</a></code>見出しなのか不明瞭である：</p>
+     <p>예를 들어 이 예제에서 에디터의 의도가 <code><a href="sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h1</a></code>인지 <code><a href="sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h2</a></code>인지 명확하지 않습니다 : </p>
 
      <pre class="bad">&lt;h1&gt;Contact details&lt;/h2&gt;</pre>
 
@@ -1305,124 +1361,155 @@ a.setAttribute('href', 'http://example.com/'); // 속성 내용을 직접 변경
    </dd>
 
 
-   <dt>タイプミスである可能性が高いケース</dt>
+   <dt>오타일 가능성이 높은 경우</dt>
 
    <dd>
 
-    <p>ユーザーが単純なタイプミスをした場合、エラーが早期に発見できれば手助けとなり、デバッグに要する時間を大幅に節約できるだろう。したがってこの仕様は、この仕様で定義される名前と一致しない要素名、属性名、およびその他の使用をエラーとみなす。</p>
+    <p>
+      유저가 단순히 오타를 한 경우, 에러를 초기에 발견할 수 있고 디버깅 시간을 크게 절약할 수 있을 것입니다.
+      따라서 이 스펙에 정의되어있는 이름과 일치하지 않은 요소명, 속성명 및 기타 사용을 에러로 간주합니다.
+    </p>
 
     <div class="example">
 
-     <p>たとえば、著者が<code><a href="tabular-data.html#the-caption-element">&lt;caption&gt;</a></code>の代わりに<code>&lt;capton&gt;</code>を入力した場合、これをエラーとしてフラグ付けすれば、著者はすぐにタイプミスを修正できるだろう。</p>
+     <p>예를 들어 <code><a href="tabular-data.html#the-caption-element">&lt;caption&gt;</a></code> 대신에 <code>&lt;capton&gt;</code>을 입력한 경우, 바로 오타를 수정할 수 있습니다.</p>
 
     </div>
 
    </dd>
 
 
-   <dt>将来的に新しい構文を妨害する可能性のあるエラー</dt>
+   <dt>미래에 추가될 새로운 구문을 방해할 가능성이 있는 에러</dt>
 
    <dd>
 
-    <p>言語構文は、将来的に拡張できるようにするために、特定のその他の無害な機能を禁止している。</p>
+    <p>언어 구문은 미래에 확장이 가능하도록 무해하더라도 특정 기능을 금지하고 있습니다.</p>
 
     <div class="example">
 
-     <p>たとえば、終了タグの"属性"は現在無視され、むしろ妥当でなく、将来に言語が変更する場合は、既に展開された（かつ妥当な）コンテンツと競合することなく、その構文機能の利用を整える。</p>
+     <p>
+       예를 들어 닫는 태그에 들어가는 "속성"은 현재 무시되며, 오히려 유효하지 않습니다.
+       미래에 언어를 변경하려면 이미 배포된 (그리고 유효한) 콘텐츠와 충돌하지 않고 그 구문을 이용할 수 있어야 합니다.
+     </p>
 
     </div>
 
    </dd>
 
 
-  </dl><p>一部の著者は、常にすべての属性を引用符でくくる、および任意のタグを含む習慣が有益であること見いだし、HTML構文の柔軟性を利用することによって与えられる簡潔さの小さな利益を乗り越えて、そのような習慣に由来する堅牢性を好む。そうした著者を支援するため、適合性チェッカーは、このような規則が適用される動作モードを提供できる。</p>
+  </dl>
+  <p>
+    일부 작성자는 항상 모든 특성을 따옴표로 묶고 임의의 태그를 태그를 포함한 습관이 도움이 될 것이란 걸 발견,
+    HTML 구문의 유연성을 이용한 간결함을 단순히 편리를 뛰어넘어, 습관에서 유래한 견고성을 좋아합니다.
+    
+    그런 작성자를 지원하기 위해 적합성 검사는 이러한 규칙을 적용하는 모든 동작모드를 제공합니다.
+  </p>
 
 
 
-  <h4 id="restrictions-on-content-models-and-on-attribute-values"><span class="secno">1.10.3</span> コンテンツモデルと属性値の制約</h4>
+  <h4 id="restrictions-on-content-models-and-on-attribute-values"><span class="secno">1.10.3</span> 콘텐츠 모델과 속성값 제약</h4>
 
-  <p><i>この節は非規範的である。</i></p>
-  <p>言語構文の範囲を超えて、この仕様は要素や属性を指定できる方法も制限する。この制限は、同様の理由で存在している：</p>
+  <p><i>이 절은 표준에 준하는 내용이 아닙니다.</i></p>
+  <p>
+    언어 구문의 범위를 넘어, 이 스펙문서는 요소나 속성을 지정할 수 있는 방법도 제한합니다.
+    이 제한은 비슷한 이유로 존재합니다 : 
+  </p>
 
-  <dl><dt>あいまいなセマンティックを持つコンテンツに関係したエラー</dt>
+  <dl><dt>애매한 의미를 갖는 콘텐츠에 관한 에러</dt>
 
    <dd>
 
-    <p>定義済みの意味を持つ要素の誤用を避けるために、コンテンツモデルは、入れ子があいまいな値を持つだろう場合の、要素が入れ子にすることができる方法の制限が定義される。</p>
+    <p>
+    정의된 의미를 가지는 요소의 오용을 방지하기 위해서,
+    콘텐츠 모델의 자식이 애매한 값을 가지는 경우,
+    요소가 자식으로 하는 것이 가능한 방법에 제한을 둡니다.
+   </p>
 
-    <p class="example">たとえば、著者がセクション全体がキー入力すべきであると示すことはまずないため、この仕様は、<code><a href="text-level-semantics.html#the-kbd-element">kbd</a></code>要素の内側に<code><a href="sections.html#the-section-element">section</a></code>要素を入れ子にするのを禁止する。</p>
+    <p class="example">예를 들어 에디터가 전체 섹션이 키를 입력해야한다고 주정하는 것은 우선 없기 때문에 이 스펙에서는 <code><a href="text-level-semantics.html#the-kbd-element">kbd</a></code>요소 내부에<code><a href="sections.html#the-section-element">section</a></code>요소 입력을 금지합니다.</p>
 
    </dd>
 
 
-   <dt>表明セマンティックにおける矛盾を伴うエラー</dt>
+   <dt>표명하는 의미에 모순을 갖는 에러</dt>
 
    <dd>
 
-    <p>同様に、要素の誤用に著者の注意を引くため、セマンティックにおいて明らかな矛盾がある表現も適合性エラーと見なされる。</p>
+    <p>마찬가지로 요소의 오용에 에디터의 관심을 끌기 위해서,
+      의미 상 명백히 모순이 있는 표현도 적합성 에러로 간주합니다.
+   </p>
 
     <div class="example">
 
-     <p>たとえば以下の断片では、セマンティックは無意味となる：水平線とセルは両立することはできず、ラジオボタンとプログレスバーも両立し得ない。</p>
+     <p>
+       아래 예제에서는 시맨틱이 무의미해집니다.
+       수평선과 셀은 양립할 수 없으며, 라디오 버튼과 프로그레스 바도 양립할 수 없습니다.
+     </p>
 
      <pre class="bad">&lt;hr role="cell"&gt;</pre>
      <pre class="bad">&lt;input type=radio role=progressbar&gt;</pre>
 
     </div>
 
-    <p class="example">別の例では、<code><a href="grouping-content.html#the-li-element">li</a></code>要素のみを子にできる<code><a href="grouping-content.html#the-ul-element">ul</a></code>要素の内容モデルには制約がある。定義によりリストは0個以上のリスト項目のみからなり、<code><a href="grouping-content.html#the-ul-element">ul</a></code>要素は<code><a href="grouping-content.html#the-li-element">li</a></code>要素以外のものが含まれる場合、意図するものが明らかでない。</p>
+    <p class="example">다른 예로는<code><a href="grouping-content.html#the-li-element">li</a></code>요소만 자식으로 갖는 <code><a href="grouping-content.html#the-ul-element">ul</a></code>요소의 내용 모델 제약이 있습니다.
+      정의에 따라 리스트는 0개 이상의 리스트 항목으로 이루어지며 <code><a href="grouping-content.html#the-ul-element">ul</a></code>요소는 <code><a href="grouping-content.html#the-li-element">li</a></code>요소 의외의 것이 포함되는 경우 의도가 불명확해집니다.</p>
 
    </dd>
 
 
-   <dt>デフォルトのスタイルが混乱を招く可能性があるケース</dt>
+   <dt>기본 스타일이 혼란을 초래할 가능성이 있는 케이스</dt>
 
    <dd>
 
-    <p>特定の要素は、混乱につながる可能性が高い組み合わせとなるデフォルトのスタイルや振る舞いがある。この問題がなく同等の選択肢を持つ場所では、混乱する組み合わせは許可されない。</p>
+    <p>
+      특정 요소에서는, 혼란으로 이어질 가능성이 높은 조합의 기본 스타일이나 동작이 있습니다.
+      이 문제가 없이 동등한 선택권을 가진 장소에서는 혼란하는 조합은 허용하지 않습니다.
+    </p>
 
-    <p class="example">たとえば、<code><a href="grouping-content.html#the-div-element">div</a></code>要素はブロックボックスとして、<code><a href="text-level-semantics.html#the-span-element">span</a></code>要素はインラインボックスとしてレンダリングされる。インラインボックスの内側にブロックボックスを置くことは不必要な混乱を招く。<code><a href="grouping-content.html#the-div-element">div</a></code>要素のみをネストにする、または<code><a href="text-level-semantics.html#the-span-element">span</a></code>要素のみをネストする、または<code><a href="grouping-content.html#the-div-element">div</a></code>の内側に<code><a href="text-level-semantics.html#the-span-element">span</a></code>要素をネストすることのいずれも、すべて<code><a href="text-level-semantics.html#the-span-element">span</a></code>要素で<code><a href="grouping-content.html#the-div-element">div</a></code>要素をネストするのと同じ目的を果たすが、後者はインラインボックスにブロックボックスを含み、この組み合わせは許可されない。</p>
+    <p class="example">예를 들어 <code><a href="grouping-content.html#the-div-element">div</a></code>요소는 블록박스로, <code><a href="text-level-semantics.html#the-span-element">span</a></code> 요소는 인라인 박스로 렌더링 됩니다. 인라인 박스 내부에 블록 박스를 넣는 건 불필요한 혼란을 낳습니다.<code><a href="grouping-content.html#the-div-element">div</a></code> 요소만 포함하거나, <code><a href="text-level-semantics.html#the-span-element">span</a></code>요소만 포함하거나 <code><a href="grouping-content.html#the-div-element">div</a></code> 내부에 <code><a href="text-level-semantics.html#the-span-element">span</a></code>요소를 포함하는 어느쪽이 되었던 간에 모두<code><a href="text-level-semantics.html#the-span-element">span</a></code>요소에서 <code><a href="grouping-content.html#the-div-element">div</a></code>요소를 포함하는 것 모두 같은 목적을 이룰 수 있지만, 후자와 같이 인라인 박스에서 블록 박스를 포함하는 조합은 허가하지 않습니다.</p>
 
-    <p class="example">もう一つの例は、<a href="dom.html#interactive-content-0">インタラクティブコンテンツ</a>は入れ子にできないことだろう。たとえば、<code><a href="forms.html#the-button-element">button</a></code>要素は<code><a href="forms.html#the-textarea-element">textarea</a></code>要素を含めることはできない。これは、そのような入れ子となるインタラクティブな要素のデフォルトの動作がユーザーに極度の混乱をもたらすことがあるためである。これらの要素を入れ子にする代わりに、並置することができる。</p>
+    <p class="example">또 하나의 예는 <a href="dom.html#interactive-content-0">인터렉티브 콘텐츠</a>는 자식을 가질 수 없습니다. 예를 들어 <code><a href="forms.html#the-button-element">button</a></code>요소는 <code><a href="forms.html#the-textarea-element">textarea</a></code>요소를 포함하는 것이 불가합니다. 이는 자식이 되는 인터렉티브 요소의 기본 동작이 유저에게 매우 혼란을 일으킬 가능성이 있기 때문입니다. 이러한 요소를 자식으로 두는 대신 나란히 둘 수 있습니다.</p>
 
    </dd>
 
 
-   <dt>仕様の誤解する可能性を示すエラー</dt>
+   <dt>스펙문서를 오해할 가능성을 나타내는 에러</dt>
 
    <dd>
 
-    <p>ときに、著者の混乱を起こす可能性のために認められないものがある。</p>
+    <p>때에 따라 에디터의 혼란을 일으킬 가능성이 있는 명확하지 않은 것도 있습니다.</p>
 
-    <p class="example">たとえば、値"<code data-anolis-xref="">false</code>"を<code data-anolis-xref="attr-fe-disabled"><a href="forms.html#attr-fe-disabled">disabled</a></code>属性に設定することは許可されない。これは、要素が見かけ上enabledになることを意味するにもかかわらず、実際には要素が<em>disabled</em>を意味する（実装のために重要なものはその値ではなく、属性の存在である）ためである。</p>
+    <p class="example">예를 들어, 값 "<code data-anolis-xref="">false</code>"를 <code data-anolis-xref="attr-fe-disabled"><a href="forms.html#attr-fe-disabled">disabled</a></code>속성에 정의하는 걸 허가하지 않습니다. 이는 요소의 외관 상 enabled가 되지 않는다는 걸 의미하지만 실제 요소가 <em>disabled</em>를 의미하기（구현을 위해 중요한 건 그 값이 아닌 속성의 존재 여부입니다）때문입니다.</p>
 
    </dd>
 
 
-   <dt>単に言語に簡素化を強制する制限を含むエラー</dt>
+   <dt>단순히 언어 단순화 강제 제한을 포함한 오류</dt>
 
    <dd>
 
-    <p>一部の適合性エラーは、著者が学ぶ必要のある言語を平易にする。</p>
+    <p>일부 적합성 에러는 에디터가 학습해야할 필요가 있는 언어를 평이하게 합니다.</p>
 
-    <p class="example">たとえば、<code><a href="embedded-content-0.html#the-area-element">area</a></code>要素の<code data-anolis-xref="attr-area-shape"><a href="embedded-content-0.html#attr-area-shape">shape</a></code>属性は、実際には同義なものとして<code data-anolis-xref="attr-area-shape-keyword-circ"><a href="embedded-content-0.html#attr-area-shape-keyword-circ">circ</a></code>と<code data-anolis-xref="attr-area-shape-keyword-circle"><a href="embedded-content-0.html#attr-area-shape-keyword-circle">circle</a></code>の値の両方を受け入れるにもかかわらず、チュートリアルやその他の学習補助を平易にするよう、<code data-anolis-xref="attr-area-shape-keyword-circ"><a href="embedded-content-0.html#attr-area-shape-keyword-circ">circ</a></code>値の使用を許可しない。両者を許可しても利益はないだろうが、言語を教える際に余計な混乱を引き起こすだろう。</p>
+    <p class="example">예를 들어<code><a href="embedded-content-0.html#the-area-element">area</a></code>요소의 <code data-anolis-xref="attr-area-shape"><a href="embedded-content-0.html#attr-area-shape">shape</a></code>속성은 <code data-anolis-xref="attr-area-shape-keyword-circ"><a href="embedded-content-0.html#attr-area-shape-keyword-circ">circ</a></code>와 <code data-anolis-xref="attr-area-shape-keyword-circle"><a href="embedded-content-0.html#attr-area-shape-keyword-circle">circle</a></code>의 값을 모두 수용함에도 불구하고 튜토리얼 및 기타 학습 보조를 평이하게 하기 위해 <code data-anolis-xref="attr-area-shape-keyword-circ"><a href="embedded-content-0.html#attr-area-shape-keyword-circ">circ</a></code>값의 사용을 허용하지 않습니다. 양자 모두 허용해도 불이익은 없겠지만, 언어를 가르칠 때 불필요한 혼란을 일으킬 것입니다.</p>
 
    </dd>
 
 
-   <dt>パーサの特殊性を伴うエラー</dt>
+   <dt>파서의 특수성을 수반하는 에러</dt>
 
    <dd>
 
-    <p>特定の要素はやや風変わりな方法（一般には歴史的な理由）で解析され、その要素の内容モデルの制約は、これらの問題に著者がさらされることの回避を意図する。</p>
+    <p>
+      특정 요소는 다소 색다른 방법 (일반적으로는 역사적인 이유 때문에)으로 해석되어,
+      그 요소의 내용 모델 제약은 이러한 문제에 에디터가 노출되는 걸 회피하도록 의도합니다.
+    </p>
 
     <div class="example">
 
-     <p>たとえば、<code><a href="forms.html#the-form-element">form</a></code>要素は<a href="dom.html#phrasing-content-1">フレージングコンテンツ</a>の内側で許可されない。なぜならHTMLとして解析される場合、<code><a href="forms.html#the-form-element">form</a></code>要素の開始タグは、<code><a href="grouping-content.html#the-p-element">p</a></code>要素の終了タグを意味するのである。したがって、1つではなく2つの<a data-anolis-xref="paragraph" href="dom.html#paragraph">段落</a>をもたらす：</p>
+     <p>예를 들어 <code><a href="forms.html#the-form-element">form</a></code>요소는 <a href="dom.html#phrasing-content-1">프레이징 콘텐츠</a> 내부에 두는 걸 허용하지 않습니다. 왜냐하면 HTML로써 해석하는 경우 <code><a href="forms.html#the-form-element">form</a></code> 요소의 여는 태그는 <code><a href="grouping-content.html#the-p-element">p</a></code>요소의 닫는 태그를 의미하기 때문입니다. 이에 따라 1개가 아닌 2개의 <a data-anolis-xref="paragraph" href="dom.html#paragraph">p 요소</a>를 가집니다:</p>
 
      <pre>&lt;p&gt;Welcome. &lt;form&gt;&lt;label&gt;Name:&lt;/label&gt; &lt;input&gt;&lt;/form&gt;</pre>
 
-     <p>It is parsed exactly like the following:</p>
+     <p>이는 다음과 같이 파싱됩니다 :</p>
 
      <pre>&lt;p&gt;Welcome. &lt;/p&gt;&lt;form&gt;&lt;label&gt;Name:&lt;/label&gt; &lt;input&gt;&lt;/form&gt;</pre>
 
@@ -1431,78 +1518,103 @@ a.setAttribute('href', 'http://example.com/'); // 속성 내용을 직접 변경
    </dd>
 
 
-   <dt>スクリプトにデバッグ困難な手段に失敗をもたらすエラー</dt>
+   <dt>스크립트 디버깅이 어려운 수단의 실패를 초래하는 에러</dt>
 
    <dd>
 
-    <p>一部のエラーは、デバッグ困難だろうスクリプトの問題を防ぐ手助けを意図している。</p>
+    <p>
+      일부 에러는 디버그가 어려운 스크립트의 문제를 방지할 의도를 갖고 있습니다.
+   </p>
 
-    <p class="example">例えば、同じ値を持つ2つの<code data-anolis-xref="attr-id"><a href="dom.html#the-id-attribute">id</a></code>属性を持つことは不適合である理由となる。二重のIDは、時には悲惨な結果とその原因を究明するのを困難にするとともに、間違った要素の選択をもたらす。</p>
+    <p class="example">예를 들어, 같은 값을 가지는 2개의 <code data-anolis-xref="attr-id"><a href="dom.html#the-id-attribute">id</a></code>속성을 가지는 건 부적합 사유가 됩니다. 이중 ID는 때에 따라 비참한 결과와 그 원인을 규명하는 걸 어렵게 함과 동시에 잘못된 요소의 선택을 이끌어냅니다.</p>
 
    </dd>
 
 
-   <dt>オーサリング時間を浪費するエラー</dt>
+   <dt>제작 시간을 낭비할 수 있는 에러</dt>
 
    <dd>
 
-    <p>一部の構造は許可されない。なぜなら、そのような構造は歴史的に無駄なオーサリング時間の多くの原因であり、その構造を避けるよう著者に推奨することで、著者は将来の取り組みに時間を節約できるためである。</p>
+    <p>
+      일부 구조는 역사적으로 불필요한 제작시간이 걸린 원인이며 그 구조를 취하지 않도록 저자에게 권장함으로써 미래에 들일 시간을 절약할 수 있기 때문에 허용하지 않습니다.
+    </p>
 
-    <p class="example">たとえば、<code><a href="scripting-1.html#the-script-element">script</a></code>要素の<code data-anolis-xref="attr-script-src"><a href="scripting-1.html#attr-script-src">src</a></code>属性は、要素の内容を無視する。しかし、これは明らかでなく、特に要素の内容が実行可能なスクリプトのように見える場合。スクリプトが実行されないことに気づくことなく、著者がインラインスクリプトをデバッグしようする多くの時間を費やすことにつながるだろう。この問題を軽減するため、この仕様は<code data-anolis-xref="attr-script-src"><a href="scripting-1.html#attr-script-src">src</a></code>属性が存在する場合、<code><a href="scripting-1.html#the-script-element">script</a></code>要素内に実行可能なスクリプトを不適合とする。これは、文書を検証する著者が、この種の誤りとともに時間を無駄にする可能性を低くすることを意味する。</p>
+    <p class="example">예를 들어 <code><a href="scripting-1.html#the-script-element">script</a></code>요소의 <code data-anolis-xref="attr-script-src"><a href="scripting-1.html#attr-script-src">src</a></code>속성은 요소의 내용을 무시합니다. 그러나 이는 분명하지 않고, 요소의 내용이 실행 가능한 스크립트처럼 보이는 경우 스크립트가 실행되지 않는 다는 것을 알 수 없이 에디터가 인라인 스크립트를 디버깅하는데 많은 시간을 할애할 것입니다.
+      이 문제를 완화하기 위해 이 스펙은 <code data-anolis-xref="attr-script-src"><a href="scripting-1.html#attr-script-src">src</a></code> 속성이 존재하는 경우 <code><a href="scripting-1.html#the-script-element">script</a></code>요소 내에 실행 가능한 스크립트를 부적합하다고 간주합니다. 이는 이 문서를 검증하는 에디터가 이런 종류의 에러로 인해 시간을 낭비할 가능성을 낮게 함을 의미합니다.</p>
 
    </dd>
 
 
-   <dt>XHTMLからの移行する著者に影響する範囲を伴うエラー</dt>
+   <dt>XHTML에서 이동하는 에디터에게 영향을 주는 범위의 에러</dt>
 
    <dd>
 
-    <p>一部の著者は、XMLとHTMLの両方で同様の結果に解釈可能なファイルを書くことを好む。この習慣は無数の微妙な困難さ（特にスクリプト、スタイル、または自動化されたシリアライゼーションの任意の種類を含む場合）のために一般的に推奨されないけれども、この仕様は、少なくとも多少の困難の軽減を意図するいくつかの制約がある。これは、著者がHTMLとXHTMLとの間で移行する場合に過渡的な段階として容易に使用できるようにする。</p>
+    <p>
+      일부 에디터는 XML과 HTML 양쪽에서 동일한 결과를 해석할 수 있는 파일을 쓰는 걸 좋아합니다. 이 습관은 수많은 미묘한 어려움 (특히 스크립트, 스타일, 자동화된 직렬화의 임의 종류를 포함한 경우) 때문에 일반적으로 권장되지 않더라도 이 스펙에서는 적어도 약간의 어려움을 완화하기 위한 몇가지 제약이 있습니다. 이는 에디터가 HTML과 XHTML 사이에서 마이그레이션 하는 경우 과도한 단계로써 쉽게 사용할 수 있도록 합니다.</p>
 
-    <p class="example">たとえば、<code data-anolis-xref="attr-lang"><a href="dom.html#attr-lang">lang</a></code>と<code data-anolis-xref="attr-xml-lang"><a href="dom.html#attr-xml-lang">xml:lang</a></code>という属性が2つの同期を維持することを目的とするやや複雑な規則がある。</p>
+    <p class="example">예를 들어 <code data-anolis-xref="attr-lang"><a href="dom.html#attr-lang">lang</a></code>과 <code data-anolis-xref="attr-xml-lang"><a href="dom.html#attr-xml-lang">xml:lang</a></code> 속성이 동기화를 유지하는 것을 목적으로 하는 다소 복잡한 규칙이 있습니다.</p>
 
-    <p class="example">もう一つの例は、適合文書中の要素が、HTMLまたはXMLとして処理したかどうか、同じ名前空間に終わることの確認を意図されるようなHTMLシリアライゼーションで<code data-anolis-xref="">xmlns</code>属性の値を制限するだろう。</p>
+    <p class="example">또 다른 예는 적합한 문서에서 요소가 HTML이나 XML로 처리했는지, 같은 네임스페이스에서 끝났는 지 등을 확인하기 위한 의도로 HTML에서 <code data-anolis-xref="">xmlns</code> 속성 값을 제한합니다.</p>
 
    </dd>
 
 
-   <dt>将来の拡張のために予約される範囲を伴うエラー</dt>
+   <dt>미래 확장을 위해 예약된 범위의 에러</dt>
 
    <dd>
 
-    <p>言語の今後の改正で新しい構文を可能にするために意図された構文の制限と同様に、要素や属性値の内容モデルに対する一部の制限は、HTML語彙の将来の拡張を可能にするために意図されている。</p>
+    <p>
+      언어의 향후 개정에서 새로운 구문을 사용 가능하게 하기 위해 의도된 구문과,
+      요소나 속성값 내용 모델에 대한 일부 제한은 HTML 어휘가 미래에 확장 가능하도록 예정되어있습니다.
+    </p>
 
-    <p class="example">たとえば、"_"（U+005F）の文字で始まる<code data-anolis-xref="attr-hyperlink-target"><a href="links.html#attr-hyperlink-target">target</a></code>属性値を特定の事前に定義された値のみに制限することは、新たな事前定義された値を、著者が定義した値と競合することなく将来の時点で導入することができる。</p>
+    <p class="example">예를 들어 "_"（U+005F） 문자로 시작하는 <code data-anolis-xref="attr-hyperlink-target"><a href="links.html#attr-hyperlink-target">target</a></code>속성값을 특정 정의 값으로 제한하는 이유는, 새로운 사전 정의 값이 이후에 에디터가 정의한 값과 충돌 없이 도입할 수 있기 때문입니다.</p>
 
    </dd>
 
 
-   <dt>他の仕様の誤使用を示すエラー</dt>
+   <dt>다른 스펙의 오용을 나타내는 에러</dt>
 
    <dd>
 
-    <p>一定の制約は他の仕様によって作られた制約のサポートを意図する。</p>
+    <p>일정 제약사항은 다른 스펙에 따라 만들어진 제약 지원을 의도합니다.</p>
 
-    <p class="example">たとえば、メディアクエリを取る属性が<em>妥当な</em>メディアクエリのみの使用を要求することは、その仕様の適合規則に従うことの重要性を強調している。</p>
+    <p class="example">예를 들어 미디어 쿼리를 취하는 속성이 <em>유효한</em> 미디어 쿼리만을 사용하도록 요구함으로써, 그 스펙 준수 규칙에 따르는 중요성을 강조하고 있습니다.</p>
 
    </dd>
 
-  </dl><h3 id="suggested-reading"><span class="secno">1.11 </span> 推奨される読み物</h3>
-
-  <p><i>この節は非規範的である。</i></p>
-  <p>以下の文書は、この仕様書の読者が興味をもつかもしれない。</p>
+  </dl><h3 id="suggested-reading"><span class="secno">1.11 </span> 권장할만한 읽을거리</h3>
+  <p><i>이 절은 표준에 준하는 내용이 아닙니다.</i></p>
+  
+  <p>아래 문서는, 이 스펙서의 독자가 흥미를 가질만한 읽을거리입니다.</p>
 
   <dl><dt><cite>Character Model for the World Wide Web 1.0: Fundamentals</cite> <a href="references.html#refsCHARMOD">[CHARMOD]</a></dt>
 
-   <dd><blockquote><p>このアーキテクチャの仕様は、Unicode標準とISO/IEC 10646で共同定義した国際文字集合として、ウェブ上で相互運用可能なテキスト操作のための共通の基準を仕様書の著者、ソフトウェア開発者、およびコンテンツ開発者に提供する。テーマは、用語'文字'、'エンコーディング'および'文字列'の使用、参照処理モデル、文字エンコーディングの識別と選択、文字エスケープ、および文字列の索引付けを含む対処である。</blockquote></dd>
+   <dd><blockquote><p>This Architectural Specification provides authors of specifications, software
+   developers, and content developers with a common reference for interoperable text manipulation on
+   the World Wide Web, building on the Universal Character Set, defined jointly by the Unicode
+   Standard and ISO/IEC 10646. Topics addressed include use of the terms 'character', 'encoding' and
+   'string', a reference processing model, choice and identification of character encodings,
+   character escaping, and string indexing.</p></blockquote></dd>
 
    <dt><cite>Unicode Security Considerations</cite> <a href="references.html#refsUTR36">[UTR36]</a></dt>
 
-   <dd><blockquote><p>Unicodeは極めて多数の文字を含み、世界の様々な書記体系を包含するため、誤った使用方法は、プログラムやシステムをセキュリティ攻撃にさらす可能性がある。次々に製品は国際化されるので、これは特に重要である。この文書は、プログラマ、システムアナリスト、規格の開発者、およびユーザーが考慮すべきセキュリティ上の考慮事項の一部について説明し、問題のリスクを軽減するために明確な推奨事項を提供する。</blockquote></dd>
+   <dd><blockquote><p>Because Unicode contains such a large number of characters and incorporates
+   the varied writing systems of the world, incorrect usage can expose programs or systems to
+   possible security attacks. This is especially important as more and more products are
+   internationalized. This document describes some of the security considerations that programmers,
+   system analysts, standards developers, and users should take into account, and provides specific
+   recommendations to reduce the risk of problems.</p></blockquote></dd>
 
    <dt><cite>Web Content Accessibility Guidelines (WCAG) 2.0</cite> <a href="references.html#refsWCAG">[WCAG]</a></dt>
 
-   <dd><blockquote><p>ウェブコンテンツ・アクセシビリティー・ガイドライン（WCAG）2.0は、ウェブコンテンツをよりアクセシブルにするための幅広い推奨事項を扱う。このガイドラインに従うことにより、失明や弱視、ろうおよび難聴、学習障害、認知制限、運動制限、言語障害、光線過敏症およびこれらの組み合わせを持つ人々の広い範囲にアクセシブルなコンテンツを提供できる。このガイドラインに従うことはまた、多くの場合一般のユーザーに対してウェブコンテンツをより使いやすくする。</blockquote></dd>
+   <dd><blockquote><p>Web Content Accessibility Guidelines (WCAG) 2.0 covers a wide range of
+   recommendations for making Web content more accessible. Following these guidelines will make
+   content accessible to a wider range of people with disabilities, including blindness and low
+   vision, deafness and hearing loss, learning disabilities, cognitive limitations, limited
+   movement, speech disabilities, photosensitivity and combinations of these. Following these
+   guidelines will also often make your Web content more usable to users in
+   general.</p></blockquote></dd>
 
    <dt class="impl"><cite>Authoring Tool Accessibility Guidelines (ATAG) 2.0</cite> <a href="references.html#refsATAG">[ATAG]</a></dt>
 
@@ -1524,11 +1636,28 @@ a.setAttribute('href', 'http://example.com/'); // 속성 내용을 직접 변경
 
    <dt><cite>Polyglot Markup: HTML-Compatible XHTML Documents</cite> <a href="references.html#refsPOLYGLOT">[POLYGLOT]</a></dt>
 
-   <dd><blockquote><p>ポリグロットマークアップを使用する文書は、HTMLとして処理およびXMLとして処理された場合に、（ルート要素のxmlns属性を除く）同一の文書ツリーに解析されたバイトストリームである文書である。定義された制約のセットを満たすポリグロットマークアップは、HTML5の仕様を通して、HTMLとしてまたはXHTMLとして処理されるかどうかにかかわらず、互換性があると解釈される。ポリグロットマークアップは、特定のDOCTYPE、名前空間宣言、および特定の活字ケース―通常は小文字だが、時折キャメルケース（先頭文字を大文字）―を要素名や属性名に用いる。ポリグロットマークアップは、特定の属性値に小文字を使用する。さらに、空要素、指定実体参照、およびスクリプトとスタイルの使用に関する制約を含む。</blockquote></dd><!--(the following is not included in the WHATWG spec for quality reasons)--><!--HPAAIG-->
+   <dd><blockquote><p>A document that uses polyglot markup is a document
+   that is a stream of bytes that parses into identical document trees
+   (with the exception of the xmlns attribute on the root element)
+   when processed as HTML and when processed as XML. Polyglot markup
+   that meets a well defined set of constraints is interpreted as
+   compatible, regardless of whether they are processed as HTML or as
+   XHTML, per the HTML5 specification. Polyglot markup uses a specific
+   DOCTYPE, namespace declarations, and a specific case —
+   normally lower case but occasionally camel case — for element
+   and attribute names. Polyglot markup uses lower case for certain
+   attribute values. Further constraints include those on empty
+   elements, named entity references, and the use of scripts and
+   style.</p></blockquote></dd><!--(the following is not included in the WHATWG spec for quality reasons)--><!--HPAAIG-->
 
 
    <dt><cite>HTML to Platform Accessibility APIs Implementation Guide</cite> <a href="references.html#refsHPAAIG">[HPAAIG]</a></dt>
 
-   <dd><blockquote><p>これは、HTML要素と属性をさまざまなプラットフォーム上でのアクセシビリティーAPIロール、ステートおよびプロパティーに割り当てたドラフト文書である。これは、HTML要素にアクセシブルな名前と説明を見いだす上での勧告を提供する。また、アクセシブルな機能の実装例を示す。</blockquote></dd><!--HPAAIG-->
+   <dd><blockquote><p>This is draft documentation mapping HTML
+   elements and attributes to accessibility API Roles, States and
+   Properties on a variety of platforms. It provides recommendations
+   on deriving the accessible names and descriptions for HTML
+   elements. It also provides accessible feature implementation
+   examples.</p></blockquote></dd><!--HPAAIG-->
 
   </dl></body></html>
