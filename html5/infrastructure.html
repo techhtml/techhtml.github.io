@@ -401,56 +401,52 @@ body {line-height:1.5;}
 
   <hr><p>간결함을 위해 문서를 유저에게 표시되는 방법을 참조할 때 （원문에서 말하는）<dfn data-anolis-xref="">shown</dfn>、<dfn data-anolis-xref="">displayed</dfn>、<dfn data-anolis-xref="">visible</dfn> 같은 용어가 사용될 지도 모릅니다. 이 용어는 시각 매체를 의미하지 않으며, 동일한 방법으로 다른 미디어에 적용한다고 생각해야 합니다.</p>
 
-  <div class="impl">
-
-  <p>When an algorithm B says to return to another algorithm A, it implies that A called B. Upon
-  returning to A, the implementation must continue from where it left off in calling B.</p>
-
-  </div><!-- should find somewhere more appropriate to put this -->
-
-  
   <p>용어 "transparent black"은 red, green, blue 및 알파 채널을 모두 0으로 처리한 색상을 가리킵니다.</p>
 
 
-  <h4 id="resources"><span class="secno">2.1.1</span> リソース</h4>
+  <h4 id="resources"><span class="secno">2.1.1</span> 리소스</h4>
 
-  <p>仕様は、ユーザーエージェントが外部リソースのセマンティックをデコード可能な実装を持つかどうかを参照する場合に用語<dfn data-anolis-xref="">サポートされる</dfn>を使用する。フォーマットまたはタイプは、重要なリソースの機能を無視されることなく、実装がそのフォーマットやタイプの外部リソースを処理できる場合は<i>サポートされる</i>と言われる。特定のリソースが<i>サポートされる</i>かどうかは、リソースのフォーマットのどの機能が使用されるかに依存するだろう。</p>
+  <p>
+    스펙 문서는 유저 에이전트가 외부 리소스 시맨틱을 디코드 가능한 구현을 가가지고 있는지에 대해 참조하는 경우 용어 <dfn data-anolis-xref="">지원함</dfn>을 사용합니다. 포맷 또는 타입은 중요한 리소스 기능을 무시하는 일 없이 구현이 그 포맷이나 타입의 리소스를 처리 가능한 경우 <i>지원함</i>이라 기술합니다. 특정 리소스가 <i>지원함</i>인지 아닌지는 리소스 포맷의 어느 기능이 사용하고 있는지에 의존합니다.</p>
 
-  <p class="example">たとえば、たとえ実装の知らないうちに、画像がアニメーションデータを含む場合でも、画像のピクセルデータがデコードされレンダリングされるならば、PNG画像はサポートされるフォーマットであると見なされるだろう。</p>
+  <p class="example">예를 들어 비록 구현되어있는 지 모르더라도 이미지가 애니메이션 데이터를 포함하더라도 픽셀 데이터를 디코딩하여 렌더링된다면, PNG 이미지는 지원 포맷으로 간주될 것입니다.</p>
 
-  <p class="example">たとえ実装がファイルのメタデータからムービーの寸法を決定可能でも、使用される圧縮形式がサポートされていなかった場合、MPEG-4ビデオファイルはサポートされるフォーマットであるとみなされない。</p>
+  <p class="example">
+    비록 구현이 파일의 메타데이터에서 동영상의 크기를 결정 가능해도, 사용하는 합축형식이 지원하지 않을 경우,
+    MPEG-4 비디오 파일을 지원하는 형식으로 간주하지 않습니다.
+  </p>
 
-  <p>特にHTTP仕様において、一部の仕様が<i>representation</i>と表されるものは、この仕様で<dfn data-anolis-xref="">リソース</dfn>として表される。<a href="references.html#refsHTTP">[HTTP]</a></p>
+  <p>특히 HTML 스펙에서 일부 스펙이 <i>representation</i>이라 표현하는 걸 이 스펙에서는 <dfn data-anolis-xref="">리소스</dfn>로 표현합니다.<a href="references.html#refsHTTP">[HTTP]</a></p>
 
-  <p>用語<dfn id="mime-type">MIMEタイプ</dfn>は、プロトコルの文献で時折<i>インターネットメディアタイプ</i>と呼ばれるものを指すのに使用される。この仕様において、用語<i>メディアタイプ</i>は、CSS仕様により用いられるように、プレゼンテーションのために意図されるメディアの種類を指示するために使用される。<a href="references.html#refsRFC2046">[RFC2046]</a> <a href="references.html#refsMQ">[MQ]</a></p>
+  <p>용어 <dfn id="mime-type">MIME 타입</dfn>은 프로토콜 문헌에서 가끔 <i>인터넷 미디어 타입</i>이라는 걸 가리키는 데 사용합니다. 이 스펙에서 용어 <i>미디어 타입</i>은 CSS 스펙에서 사용하는 바와 같이, 프레젠테이션을 위해 예정되는 미디어 종류를 표시하기 위해 사용합니다. <a href="references.html#refsRFC2046">[RFC2046]</a> <a href="references.html#refsMQ">[MQ]</a></p>
 
-  <p>メディアタイプがRFC 7231の3.1.1.1節"Media Types"で定義される<code data-anolis-xref="">media-type</code>規則に一致する場合、文字列は<dfn id="valid-mime-type">妥当なMIMEタイプ</dfn>となる。具体的には、<a href="#valid-mime-type">妥当なMIMEタイプ</a>はMIMEタイプのパラメータを含んでもよい。<a href="references.html#refsHTTP">[HTTP]</a></p>
+  <p>미디어 타입이 RFC 7231의 3.1.1.1절 "Media Types"에서 정의하는 <code data-anolis-xref="">media-type</code> 규칙에 일치하는 경우 문자열은 <dfn id="valid-mime-type">유효한 MIME 타입</dfn>이 됩니다. 구체적으로 <a href="#valid-mime-type">유효한 MIME 타입</a>은 MIME타입의 파라미터를 표현할 수 있습니다. <a href="references.html#refsHTTP">[HTTP]</a></p>
 
-  <p>";"（U+003B）文字を含まないが、RFC 7231の3.1.1.1節"Media Types"で定義される<code data-anolis-xref="">media-type</code>規則に一致した場合、文字列は<dfn id="valid-mime-type-with-no-parameters">パラメータなしの妥当なMIMEタイプ</dfn>となる。言い換えれば、MIMEタイプのパラメータがない、タイプおよびサブタイプのみから構成される場合である。<a href="references.html#refsHTTP">[HTTP]</a></p>
+  <p>";"（U+003B）문자를 포함하지 않지만 RFC 7231의 3.1.1.1절 "Media Types"에서 정의하는 <code data-anolis-xref="">media-type</code>규칙과 일치하는 경우 문자열은 <dfn id="valid-mime-type-with-no-parameters">파라미터 없이 유효한 MIME 타입</dfn>이 됩니다. 즉 MIME 타입의 파라미터가 없는 타입 및 서브 타입으로만 구성된 경우입니다.<a href="references.html#refsHTTP">[HTTP]</a></p>
 
-  <p>用語<dfn id="html-mime-type">HTML MIMEタイプ</dfn>は、<a href="#mime-type">MIMEタイプ</a>が<code><a href="iana.html#text/html">text/html</a></code>を表すために使用される。</p>
+  <p>용어 <dfn id="html-mime-type">HTML MIME 타입</dfn>은 <a href="#mime-type">MIME 타입</a>이<code><a href="iana.html#text/html">text/html</a></code>을 나타내기 위해 사용됩니다.</p>
 
-  <p>リソースの<dfn id="critical-subresources">クリティカルサブリソース</dfn>は、リソースが正しく処理されるために使用できる状態にしておく必要があるものである。どのリソースがクリティカルかどうかとみなされるかは、リソースのフォーマットを定義する仕様によって定義されない。</p>
+  <p>리소스의 <dfn id="critical-subresources">크리티컬 서브 리소스</dfn>는 리소스가 제대로 처리되는 데 사용할 수 있는 상태로 유지해야할 필요가 있습니다. 어떤 리소스가 크리티컬한지 간주하는 데에 리소스의 포맷을 정의하는 스펙에서 정의하지 않습니다.</p>
 
-  <p>用語<dfn data-anolis-xref="data protocol" id="data-protocol"><code data-anolis-xref="">data:</code> URL</dfn>は、<code data-anolis-xref="">data:</code>スキームを用いる<span data-anolis-xref="URL">URL</span>を指す。<a href="references.html#refsRFC2397">[RFC2397]</a></p>
+  <p>용어 <dfn data-anolis-xref="data protocol" id="data-protocol"><code data-anolis-xref="">data:</code> URL</dfn>은 <code data-anolis-xref="">data:</code>스킴을 이용해 <span data-anolis-xref="URL">URL</span>을 가리킵니다.<a href="references.html#refsRFC2397">[RFC2397]</a></p>
 
 
   <h4 id="xml"><span class="secno">2.1.2</span> XML</h4>
 
-  <p id="html-namespace">HTMLからXHTMLへの移行を容易にするため、この仕様に準拠するユーザーエージェントは、少なくともDOMとCSSのために、<code>http://www.w3.org/1999/xhtml</code>名前空間にHTMLで要素を配置するだろう。この仕様で使用される用語"<dfn id="html-elements">HTML要素</dfn>"は、その名前空間内の任意の要素を指す。したがって、HTMLとXHTMLの要素の両方を指す。</p>
+  <p id="html-namespace">HTML에서 XHTML로 마이그레이션을 용이하게 하기 위해, 이 스펙ㅇ을 준수하는 유저 에이전트는 적어도 DOM과 CSS를 위해 <code>http://www.w3.org/1999/xhtml</code> 네임스페이스에 HTML 요소를 기술할 것입니다. 이 스펙에서 사용하는 용어 "<dfn id="html-elements">HTML 요소</dfn>"는 그 네임스페이스 내 임의의 요소를 가리킵니다. 따라서 HTML과 XHTML 요소 모두를 가리킵니다.</p>
 
-  <p>他に記載される場合を除き、この仕様で定義または記載されるすべての要素は<a href="#html-namespace-0">HTML名前空間</a>（"<code>http://www.w3.org/1999/xhtml</code>"）であり、この仕様で定義または記載されるすべての属性は名前空間を持たない。</p>
+  <p>달리 작성하는 경우를 제외하고 이 스펙에서 정의하거나 작성한 모든 요소는 <a href="#html-namespace-0">HTML 네임스페이스</a>（"<code>http://www.w3.org/1999/xhtml</code>"）이며, 이 스펙에서 정의하거나 작성한 모든 속성은 네임스페이스를 지 않습니다.</p>
 
-  <p>用語<dfn id="element-type">要素タイプ</dfn>は、与えられたローカル名と名前空間を持つ要素の集合を参照するために使用される。たとえば、<code><a href="forms.html#the-button-element">button</a></code>要素は要素型<code><a href="forms.html#the-button-element">button</a></code>をもつ要素であり、ローカル名"<code data-anolis-xref="">button</code><a href="#html-namespace-0"></a>"および（上で定義されるように暗黙のうちに）HTML名前空間を持つことを意味する。</p>
+  <p>용어 <dfn id="element-type">요소 타입</dfn>은 주어진 로컬명과 네임스페이스를 가진 요소의 집할을 참조하기 위해 사용됩니다. 예를 들어 <code><a href="forms.html#the-button-element">button</a></code>요소는 요소 타입 <code><a href="forms.html#the-button-element">button</a></code>을 가진 요소이며, 로컬 명 "<code data-anolis-xref="">button</code><a href="#html-namespace-0"></a>" 및 （암묵적으로 위에서 정의하도록）HTML 네임스페스를 가지는 것을 의미합니다.</p>
 
-  <p>属性名がXMLで定義された<a href="http://www.w3.org/TR/xml/#NT-Name"><code data-anolis-xref="">Name</code></a>生成物と一致し、":"（U+003A）文字を含まず、かつ最初の3文字の文字列が<a href="#ascii-case-insensitive">ASCII大文字・小文字不区別</a>で文字列"<code data-anolis-xref="">xml</code>"に一致しない場合、属性名は<dfn id="xml-compatible">XML互換</dfn>であると言われる。<a href="references.html#refsXML">[XML]</a></p>
+  <p>속성명이 XML로 정의된 <a href="http://www.w3.org/TR/xml/#NT-Name"><code data-anolis-xref="">Name</code></a> 생성물과 일치하며여 ":"（U+003A）문자를 포함하지 않고 첫 세 문자의 문자열이 <a href="#ascii-case-insensitive">ASCII 대소문자 구분하지 않음</a>인 문자열 "<code data-anolis-xref="">xml</code>"에 일치하지 않는 경우 속성명은 <dfn id="xml-compatible">XML 호환</dfn>이라 말합니다.<a href="references.html#refsXML">[XML]</a></p>
 
-  <p>用語<dfn id="xml-mime-type">XML MIMEタイプ</dfn>は、<a data-anolis-xref="MIME type" href="#mime-type">MIMEタイプ</a><code data-anolis-xref="">text/xml</code>、<code data-anolis-xref="">application/xml</code>、subtypeが4文字"<code data-anolis-xref="">+xml</code>"で終わる任意の<a href="#mime-type">MIMEタイプ</a>を参照するために使用される。<a href="references.html#refsRFC7303">[RFC7303]</a></p>
+  <p>용어 <dfn id="xml-mime-type">XML MIME 타입</dfn>은 <a data-anolis-xref="MIME type" href="#mime-type">MIME 타입</a><code data-anolis-xref="">text/xml</code>、<code data-anolis-xref="">application/xml</code>、subtype이 4글자 "<code data-anolis-xref="">+xml</code>"로 끝나는 임의의 <a href="#mime-type">MIME 타입</a>을 참조하기 위해 사용됩니다. <a href="references.html#refsRFC7303">[RFC7303]</a></p>
 
 
-  <h4 id="dom-trees"><span class="secno">2.1.3</span> DOMツリー</h4>
+  <h4 id="dom-trees"><span class="secno">2.1.3</span> DOM 트리</h4>
 
-  <p><dfn id="root-element-of-a-document-object"><code>Document</code>オブジェクトのルート要素</dfn>は、もしあれば、その<code><a href="dom.html#document">Document</a></code>が持つ最初の要素の子である。もしないならば、<code><a href="dom.html#document">Document</a></code>はルート要素を持たない。</p>
+  <p><dfn id="root-element-of-a-document-object"><code>Document</code> 객체의 루트 요소</dfn>는 만약 있다면 그 <code><a href="dom.html#document">Document</a></code>의 첫번째 자식이 되고, 만약 없다면 <code><a href="dom.html#document">Document</a></code>가 루트 요소를 가지지 않습니다.</p>
 
   <p><code><a href="dom.html#document">Document</a></code>オブジェクトのルート要素を示さない場合、用語<dfn id="root-element">ルート要素</dfn>は、議論されるノードでの最も遠い先祖要素ノード、または先祖を持たないノード自身を意味する。ノードが文書の一部である場合、ノードの<a href="#root-element">ルート要素</a>は文書のルート要素そのものである。しかし、一般にノードが文書ツリーの一部でないならば、ルート要素は孤立したノードだろう。</p>
 
