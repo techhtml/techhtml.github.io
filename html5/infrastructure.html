@@ -3,8 +3,9 @@
   <meta charset="utf-8">
   <title>공통 인프라 - HTML5</title>
   <script src="link-fixup.js"></script>
+  <link href='bower_components/NanumBarunGothic/nanumbarungothic.css' rel='stylesheet' type='text/css'>
 <style type="text/css">
-body {line-height:1.5;}
+     body {line-height:1.5;font-family:'Nanum Barun Gothic', sans-serif !important}
      .applies thead th > * { display: block; }
      .applies thead code { display: block; }
      .applies tbody th { white-space: nowrap; }
@@ -448,12 +449,14 @@ body {line-height:1.5;}
 
   <p><dfn id="root-element-of-a-document-object"><code>Document</code> 객체의 루트 요소</dfn>는 만약 있다면 그 <code><a href="dom.html#document">Document</a></code>의 첫번째 자식이 되고, 만약 없다면 <code><a href="dom.html#document">Document</a></code>가 루트 요소를 가지지 않습니다.</p>
 
-  <p><code><a href="dom.html#document">Document</a></code>オブジェクトのルート要素を示さない場合、用語<dfn id="root-element">ルート要素</dfn>は、議論されるノードでの最も遠い先祖要素ノード、または先祖を持たないノード自身を意味する。ノードが文書の一部である場合、ノードの<a href="#root-element">ルート要素</a>は文書のルート要素そのものである。しかし、一般にノードが文書ツリーの一部でないならば、ルート要素は孤立したノードだろう。</p>
+  <p><code><a href="dom.html#document">Document</a></code> 객체의 루토 요소를 나타내지 않는 경우, 용어 <dfn id="root-element">루트 요소</dfn>는 논의 대상 노드에서 가장 먼 조상 노드, 혹은 조상이 없는 노드 자신을 의미합니다. 노드가 문서의 일부인 경우, 노드의 <a href="#root-element">루트 요소</a>는 문서의 루트 요소 그 자체입니다. 그러나 일반적으로 노드가 문서 트리의 일부가 아니라면 루트 요소는 독립 노드일 것입니다.</p>
 
-  <p>要素の<a href="#root-element">ルート要素</a>が<a href="#root-element-of-a-document-object"><code>Document</code>オブジェクトのルート要素</a>である場合、ノードは<dfn id="in-a-document"><code>Document</code>内</dfn>にあると言われる。ノードの<a href="#root-element">ルート要素</a>が変化してかつ現在の文書の<a href="#root-element">ルート要素</a>である場合、ノードは<dfn data-anolis-xref="insert an element into a document" id="insert-an-element-into-a-document">挿入された文書</dfn>であると言われる。同様に、文書の<a href="#root-element">ルート要素</a>から別の要素に<a href="#root-element">ルート要素</a>が変わる場合、ノードは<dfn data-anolis-xref="remove an element from a
-  document" id="remove-an-element-from-a-document">削除された文書</dfn>であると言われる。</p>
+  <p>요소의 <a href="#root-element">루트 요소</a>가 <a href="#root-element-of-a-document-object"><code>Document</code> 객체의 루토 요소</a>인 경우 
+    노드는 <dfn id="in-a-document"><code>Document</code> 내</dfn>에 있다고 말할 수 있습니다. 노드의 <a href="#root-element">루트 요소</a>가 변화하여 현재 문서의 <a href="#root-element">루트 요소</a>인 경우 노드는 <dfn data-anolis-xref="insert an element into a document" id="insert-an-element-into-a-document">문서 내 삽입</dfn>이라고 불립니다. 마찬가지로 문서의 <a href="#root-element">루트 요소</a>에서 별도의 요소에 <a href="#root-element">루트 요소</a>가 변하는 경우 노드는 <dfn data-anolis-xref="remove an element from a
+  document" id="remove-an-element-from-a-document">문서에서 제거된 요소</dfn>라 부릅니다</p>
 
-  <p>ノードの<dfn id="home-subtree">ホームサブツリー</dfn>は、そのノードの<a href="#root-element">ルート要素</a>をルートとするサブツリーである。ノードが<a href="#in-a-document"><code>Document</code>内に</a>ある場合、ノードの<a href="#home-subtree">ホームサブツリー</a>は、ノードの<code><a href="dom.html#document">Document</a></code>ツリーである。</p>
+  <p>노드의 <dfn id="home-subtree">홈 서브 트리</dfn>는 그 노드의 <a href="#root-element">루트 요소</a>를 루트로 삼는 서브 트리입니다.
+    노드가 <a href="#in-a-document"><code>Document</code> 안에 </a> 존재하는 경우, 노드의 <a href="#home-subtree">홈 서브 트리</a>는 노드의 <code><a href="dom.html#document">Document</a></code> 트리 입니다.</p>
 
   <p>（要素のような）ある<code><a href="#node">Node</a></code>の<code><a href="dom.html#document">Document</a></code>は、<code><a href="#node">Node</a></code>の<code data-anolis-xref="dom-Node-ownerDocument"><a href="#dom-node-ownerdocument">ownerDocument</a></code>IDL属性が返す<code><a href="dom.html#document">Document</a></code>である。ある<code><a href="#node">Node</a></code>が<a href="#in-a-document"><code>Document</code>内に</a>ある場合、その<code><a href="dom.html#document">Document</a></code>は常に<code><a href="#node">Node</a></code>の<code><a href="dom.html#document">Document</a></code>であり、したがって<code><a href="#node">Node</a></code>の<code data-anolis-xref="dom-Node-ownerDocument"><a href="#dom-node-ownerdocument">ownerDocument</a></code>IDL属性は常にその<code><a href="dom.html#document">Document</a></code>を返す。</p>
 
