@@ -458,74 +458,55 @@
   <p>노드의 <dfn id="home-subtree">홈 서브 트리</dfn>는 그 노드의 <a href="#root-element">루트 요소</a>를 루트로 삼는 서브 트리입니다.
     노드가 <a href="#in-a-document"><code>Document</code> 안에 </a> 존재하는 경우, 노드의 <a href="#home-subtree">홈 서브 트리</a>는 노드의 <code><a href="dom.html#document">Document</a></code> 트리 입니다.</p>
 
-  <p>（要素のような）ある<code><a href="#node">Node</a></code>の<code><a href="dom.html#document">Document</a></code>は、<code><a href="#node">Node</a></code>の<code data-anolis-xref="dom-Node-ownerDocument"><a href="#dom-node-ownerdocument">ownerDocument</a></code>IDL属性が返す<code><a href="dom.html#document">Document</a></code>である。ある<code><a href="#node">Node</a></code>が<a href="#in-a-document"><code>Document</code>内に</a>ある場合、その<code><a href="dom.html#document">Document</a></code>は常に<code><a href="#node">Node</a></code>の<code><a href="dom.html#document">Document</a></code>であり、したがって<code><a href="#node">Node</a></code>の<code data-anolis-xref="dom-Node-ownerDocument"><a href="#dom-node-ownerdocument">ownerDocument</a></code>IDL属性は常にその<code><a href="dom.html#document">Document</a></code>を返す。</p>
+  <p>（요소 같은）특정 <code><a href="#node">Node</a></code>의 <code><a href="dom.html#document">Document</a></code>는 <code><a href="#node">Node</a></code>의 <code data-anolis-xref="dom-Node-ownerDocument"><a href="#dom-node-ownerdocument">ownerDocument</a></code> IDL 속성이 반환하는 <code><a href="dom.html#document">Document</a></code>입니다. 특정 <code><a href="#node">Node</a></code>가 <a href="#in-a-document"><code>Document</code> 내에</a> 있는 경우 그 <code><a href="dom.html#document">Document</a></code>는 항상 <code><a href="#node">Node</a></code>의<code><a href="dom.html#document">Document</a></code>이며 따라서 <code><a href="#node">Node</a></code>의 <code data-anolis-xref="dom-Node-ownerDocument"><a href="#dom-node-ownerdocument">ownerDocument</a></code>IDL 속성은 항상 그 <code><a href="dom.html#document">Document</a></code> 반환합니다.</p>
 
-  <p>コンテンツ属性の<code><a href="dom.html#document">Document</a></code>は、属性の要素の<code><a href="dom.html#document">Document</a></code>である。</p>
+  <p>콘텐츠 속성의 <code><a href="dom.html#document">Document</a></code>는 속성 요소의 <code><a href="dom.html#document">Document</a></code>입니다.</p>
 
-  <p>用語<dfn id="tree-order">ツリー順</dfn>は先行順を意味し、（<code data-anolis-xref="dom-Node-parentNode"><a href="#dom-node-parentnode">parentNode</a></code>/<code data-anolis-xref="dom-Node-childNodes"><a href="#dom-node-childnodes">childNodes</a></code>の関係を通して）DOMノードの縦型走査に関係する。</p>
+  <p>용어 <dfn id="tree-order">트리 순서</dfn>는 선행관계를 의미하며 （<code data-anolis-xref="dom-Node-parentNode"><a href="#dom-node-parentnode">parentNode</a></code>/<code data-anolis-xref="dom-Node-childNodes"><a href="#dom-node-childnodes">childNodes</a></code> 관계를 통해）DOM 노드의 수직 조사에 관계합니다.</p>
 
-  <p>ノードが一部の要素または属性が<dfn data-anolis-xref="ignore" id="ignore">無視</dfn>されると言われる、または他の値として扱われる、または何か他のものであったかのように扱われる場合、これはDOMになった後の、ノードの処理のみを指す。 <span class="impl">A user agent must not mutate the
-  DOM in such situations.</span></p>
+  <p>노드가 일부 요소 혹은 속성을 <dfn data-anolis-xref="ignore" id="ignore">무시</dfn>한다고 말하거나 다른 값처럼 취급되거나 다른 것인 마냥 다루어지는 경우, 이는 DOM이 된 후 노드 처리만을 가리킵니다.  <span class="impl">유저 에이전트는 이런 상황에서 DOM을 변화시켜서는 안됩니다.</span></p>
 
-  <p>新しい値が前の値と異なっている場合のみ、コンテンツ属性は値を<dfn data-anolis-xref="">変更する</dfn>と言われる。既に持つ属性値を設定することは変更ではない。</p>
-
-  <p>用語<dfn data-anolis-xref="">空</dfn>は、属性値、<code><a href="#text-0">Text</a></code>ノード、または文字列で使用された場合、テキストの長さがゼロであることを意味する（つまり、スペースや<a href="#control-characters">制御文字</a>すら含まない）。</p>
-
-
-  <h4 id="scripting-0"><span class="secno">2.1.4</span> スクリプティング</h4>
-
-  <p>構造体"<code>Foo</code>オブジェクト"は、<code>Foo</code>が実際にインターフェースである場合、時折より正確な"<code>Foo</code>インターフェースを実装するオブジェクト"の代わりに使用される。</p>
-
-  <p>IDL属性は、その値が（著者のスクリプトなどによって）取得時に<dfn data-anolis-xref="">取得される</dfn>と言われ、新しい値が割り当てられる際に<dfn data-anolis-xref="">設定される</dfn>と言われる。</p>
-
-  <p>DOMオブジェクトが<dfn id="live">ライブ</dfn>であると言われる場合、そのオブジェクトの属性とメソッドは、データのスナップショットではなく、実際の元となるデータを操作する。
-  <span class="impl">must</span> </p>
-
-  <p>イベントのコンテキストにおいて、用語<i>発火</i>や<i>送出</i>は、DOM仕様で定義されるとおりに使用される。イベントの<dfn data-anolis-xref="concept-event-fire" id="concept-event-fire">発火</dfn>は、イベントを作成し<a data-anolis-xref="concept-event-dispatch" href="#concept-event-dispatch">送出する</a>ことを意味し、イベントの<dfn data-anolis-xref="concept-event-dispatch" id="concept-event-dispatch">送出</dfn>は、ツリーを介してイベントを伝播する手順を実行することを意味する。用語<dfn data-anolis-xref="concept-events-trusted" id="concept-events-trusted">信頼済みイベント</dfn>は、<code data-anolis-xref="dom-event-isTrusted"><a href="#dom-event-istrusted">isTrusted</a></code>属性がtrueに初期化されたイベントを参照するために使用される。<a href="references.html#refsDOM">[DOM]</a></p>
+  <p>
+    새로운 값이 이전 값과 다른 경우에만,
+    콘텐츠 속성은 값을 <dfn data-anolis-xref="">변경한다</dfn>라 부릅니다. 이미 존재하는 속성값을 설정하는 건 변경이 아닙니다.
+  </p>
+  <p>용어 <dfn data-anolis-xref="">공백</dfn>은 속성값, <code><a href="#text-0">Text</a></code>노드, 혹은 문자열에서 사용되는 경우 텍스트의 길이가 0인 것을 의미합니다. (즉 스페이스나 <a href="#control-characters">제어문자</a>조차 포함하지 않습니다）</p>
 
 
-  <h4 id="plugins"><span class="secno">2.1.5</span> プラグイン</h4>
+  <h4 id="scripting-0"><span class="secno">2.1.4</span> 스크립팅</h4>
 
-  <p>用語<dfn id="plugin">プラグイン</dfn>は、<code><a href="dom.html#document">Document</a></code>オブジェクトの属するユーザーエージェントのレンダリングに関与可能な、ユーザーエージェントによって使用されるコンテンツハンドラの組に定義されるユーザーエージェントを参照するが、<code><a href="dom.html#document">Document</a></code>の<a data-anolis-xref="child browsing context" href="browsers.html#child-browsing-context">子ブラウジングコンテキスト</a>として振る舞うことも、任意の<code><a href="#node">Node</a></code>オブジェクトを<code><a href="dom.html#document">Document</a></code>のDOMに導入することもない。</p>
+  <p>구조체 "<code>Foo</code> 객체"는 <code>Foo</code>가 실제 인터페이스인 경우에 보다 정확한 "<code>Foo</code> 인터페이스를 구현하는 객체" 대신 사용합니다</p>
 
-  <p>通常、そのようなコンテンツハンドラは、第三者によって提供される。もっともユーザーエージェントもまた、プラグインとしてビルトインコンテンツのハンドラを指定できる。</p>
+  <p>IDL 속성은 그 값이 （에디터의 스크립트 등에 의해）취득 되는 경우 <dfn data-anolis-xref="">취득 당함</dfn>이라 부르며 새로운 값을 할당할 때 <dfn data-anolis-xref="">설정됨</dfn>이라 부릅니다.</p>
 
-  <div class="impl">
+  <p>DOM 객체가 <dfn id="live">live</dfn>라 불리는 경우 그 객체의 속성과 메소드는 데이터 스스냅샷이 아닌  실제에 바탕을 두는 데이터를 조작합니다.</p>
 
-  <p>A user agent must not consider the types <code>text/plain</code> and
-  <code>application/octet-stream</code> as having a registered <a href="#plugin">plugin</a>.</p> <!-- because
-  of the way <object> handles those types, if nothing else (it also doesn't make any sense to have a
-  plugin registered for those types, of course) -->
+  <p>
+    이벤트의 콘텍스트에 있어 용어 <i>발화</i>나 <i>송출</i>은 DOM 스펙에서 정의되는 그대로 사용합니다.
+    이벤트의 <dfn data-anolis-xref="concept-event-fire" id="concept-event-fire">발화</dfn>는 이벤트를 작성할 때 <a data-anolis-xref="concept-event-dispatch" href="#concept-event-dispatch">송출하는</a> 것을 의미하며, 이벤트의 <dfn data-anolis-xref="concept-event-dispatch" id="concept-event-dispatch">송출</dfn>은 트리를 통해 이벤트를 전파하는 단계를 수행하는 걸 의미합니다. 용어 <dfn data-anolis-xref="concept-events-trusted" id="concept-events-trusted">신뢰할 수 있는 이벤트</dfn>는 <code data-anolis-xref="dom-event-isTrusted"><a href="#dom-event-istrusted">isTrusted</a></code>속성이 true로 초기화된 이벤트를 참조하기 위해 사용합니다.<a href="references.html#refsDOM">[DOM]</a></p>
 
-  </div>
 
-  <p class="example">プラグインの一例は、ユーザーがPDFファイルを操作するときに<a href="browsers.html#browsing-context">ブラウジングコンテキスト</a>でインスタンスを生成されたPDFビューアであろう。これは、実装されたPDFビューアコンポーネントがユーザーエージェント自身に実装されたものと同じメーカーかどうかにかかわらず、プラグインとしてカウントされるだろう。しかし、ユーザーエージェント（同じインターフェースを使用するのではない）とは別に起動するPDFビューアアプリケーションは、この定義によるプラグインではない。</p>
+  <h4 id="plugins"><span class="secno">2.1.5</span> 플러그인</h4>
 
-  <p class="note">プラグインはユーザーエージェント固有かつプラットフォーム固有であることが予測されるので、この仕様はプラグインと情報交換するためのメカニズムを定義しない。一部のユーザーエージェントは、NetscapeプラグインAPIのようなプラグイン機構をサポートすることを選ぶかもしれない。他のユーザーエージェントは、リモートコンテンツコンバータを使用するか、または特定の種類のビルトインサポートを持つかもしれない。実際に、この仕様はユーザーエージェントにプラグインのサポートを一切要求しない。<a href="references.html#refsNPAPI">[NPAPI]</a></p>
+  <p>용어 <dfn id="plugin">플러그인</dfn>은 <code><a href="dom.html#document">Document</a></code> 객체가 속한 유저에이전트의 렌더링에 관여 가능한 유저 에이전트의 의해 사용되는 콘텐츠 핸들러에 의해 정의된 유저 에이전트를 참조하지만 <code><a href="dom.html#document">Document</a></code>의 <a data-anolis-xref="child browsing context" href="browsers.html#child-browsing-context">자식 브라우징 콘텍스트</a>로써 행동할 임의의 <code><a href="#node">Node</a></code> 객체를 <code><a href="dom.html#document">Document</a></code> DOM에 넣을 수 없습니다.</p>
 
-  <p><code data-anolis-xref="attr-iframe-sandbox"><a href="embedded-content-0.html#attr-iframe-sandbox">sandbox</a></code>属性のセマンティックを受け取る場合、プラグインは<dfn data-anolis-xref="concept-plugin-secure" id="concept-plugin-secure">保護される</dfn>だろう。</p>
+  <p>보통 그런 컨텐츠 핸들러는 제3자에 의해 제공됩니다. 무엇보다 유저 에이전트 또한 플러그인으로 빌트 인 콘텐츠 핸들러를 정의 가능합니다.</p>
 
-  <p class="example">たとえば、保護されるプラグインは、プラグインがサンドボックス化される<code><a href="embedded-content-0.html#the-iframe-element">iframe</a></code>内部でインスタンス化される際、コンテンツがポップアップウィンドウを生成することから防ぐだろう。</p>
-
-  <div class="impl">
-
-  <p class="warning">Browsers should take extreme care when interacting with external content
-  intended for <a data-anolis-xref="plugin" href="#plugin">plugins</a>. When third-party software is run with the same
-  privileges as the user agent itself, vulnerabilities in the third-party software become as
-  dangerous as those in the user agent.</p>
-
-  <p>Since different users having differents sets of <a data-anolis-xref="plugin" href="#plugin">plugins</a> provides a
-  fingerprinting vector that increases the chances of users being uniquely identified, user agents
-  are encouraged to support the exact same set of <a data-anolis-xref="plugin" href="#plugin">plugins</a> for each
-  user.
-  <a class="fingerprint" data-anolis-xref="fingerprinting vector" href="introduction.html#fingerprinting-vector"><img alt="(This is a fingerprinting vector.)" height="21" src="images/fingerprint.png" width="15"></a>
+  <p class="example">
+    플러그인 예시로는 유저가 PDF 파일을 조작할 때 사용하는 <a href="browsers.html#browsing-context">브라우징 콘텍스트</a>로 인스턴스를 생성한 PDF 뷰어일 것입니다.
+    이는 구현된 PDF 뷰어 컴포넌트가 유저 에이전트 자신에 구현된 것과 동일한 메이커인지는 관계 없이 플러그인으로써 카운트 됩니다.
+    그러나 유저 에이전트(같은 인터페이스를 사용하는 건 아닙니다)와는 별개로 동작하는 PDF 뷰어 어플리케이션은 이 정의에 의한 플러그인은 아닙니다.
   </p>
 
-  </div>
+  <p class="note">이 명세에서는 플러그인과 상호작용하는 메커니즘에 대해서는 정의하지 않습니다. 그것은 사용자 에이전트의 몫이며 운영체제에 따라 다르기 때문입니다. 일부 사용자 에이전트는 넷스케이프의 플러그인 API와 같은 것을 선택할 수 있으며, 다른 일부는 내용 형식을 변화시키는 방법을 빌릴 수도 있고 또는 몇가지 타입에 대해 내장된 지원을 선택할 수도 있습니다. <a href="references.html#refsNPAPI">[NPAPI]</a></p>
 
+  <p><code data-anolis-xref="attr-iframe-sandbox">
+    
+    <a href="embedded-content-0.html#attr-iframe-sandbox">sandbox</a></code> 속성 시멘틱을 부여받은 경우 플러그인은 <dfn data-anolis-xref="concept-plugin-secure" id="concept-plugin-secure">보호 될</dfn> 것입니다.</p>
 
+  <p class="example">예를 들어 보호되는 플러그인은 플러그인이 샌드박스화 되는 <code><a href="embedded-content-0.html#the-iframe-element">iframe</a></code>내부에서 인스턴스화 될 때 콘텐츠가 팝업창을 생성하는 걸 방지할 것입니다.</p>
 
-  <h4 id="encoding-terminology"><span class="secno">2.1.6</span> 文字エンコーディング</h4>
+    <h4 id="encoding-terminology"><span class="secno">2.1.6</span> 문자 인코딩</h4>
 
   <p><dfn data-anolis-xref="encoding" id="encoding">文字エンコーディング</dfn>、または曖昧でない箇所での単に<i><a href="#encoding">エンコーディング</a></i>は、エンコーディング標準で定義されるように、バイトストリームとUnicode文字列との間での変換方法を定義する。<a href="#encoding">エンコーディング</a>は、エンコーディング仕様でエンコーディングの<i>名前</i>および<i>ラベル</i>として参照される、<dfn id="encoding-name">エンコーディング名</dfn>および1つ以上の<dfn data-anolis-xref="encoding label" id="encoding-label">エンコーディングラベル</dfn>を持つ。<a href="references.html#refsENCODING">[ENCODING]</a></p>
 
