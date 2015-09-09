@@ -508,43 +508,40 @@
 
     <h4 id="encoding-terminology"><span class="secno">2.1.6</span> 문자 인코딩</h4>
 
-  <p><dfn data-anolis-xref="encoding" id="encoding">文字エンコーディング</dfn>、または曖昧でない箇所での単に<i><a href="#encoding">エンコーディング</a></i>は、エンコーディング標準で定義されるように、バイトストリームとUnicode文字列との間での変換方法を定義する。<a href="#encoding">エンコーディング</a>は、エンコーディング仕様でエンコーディングの<i>名前</i>および<i>ラベル</i>として参照される、<dfn id="encoding-name">エンコーディング名</dfn>および1つ以上の<dfn data-anolis-xref="encoding label" id="encoding-label">エンコーディングラベル</dfn>を持つ。<a href="references.html#refsENCODING">[ENCODING]</a></p>
+  <p><dfn data-anolis-xref="encoding" id="encoding">문자 인코딩</dfn>또는 애매하지 않은 곳에서 간단히 <i><a href="#encoding">인코딩</a></i>은 인코딩 표준에서 정의하는 바와 같이 바이트 스트림과 Unicode 문자열 사이의 변환 방법을 정의합니다. <a href="#encoding">인코딩</a>은 인코딩 스펙에서 인코딩의 <i>이름</i> 및 <i>라벨</i>로 참조되어 <dfn id="encoding-name">인코딩 네임</dfn> 및 1개 이상의 <dfn data-anolis-xref="encoding label" id="encoding-label">인코딩 라벨</dfn>을 가집니다.<a href="references.html#refsENCODING">[ENCODING]</a></p>
 
-  <p><dfn id="ascii-compatible-character-encoding">ASCII互換文字エンコーディング</dfn>は、バイト0x09、0x0A、0x0C、0x0D、0x20-0x22、0x26、0x27、0x2C-0x3F、0x41-0x5Aおよび0x61-0x7Aが単一バイトまたは可変長<a href="#encoding">エンコーディング</a>であり、マルチバイト配列の2バイト目以降のバイトを無視する、Windows-1252においてこれらのバイトと同一のUnicode文字に変換する単一バイトシーケンスに対応する。<a href="references.html#refsENCODING">[ENCODING]</a></p>
+  <p><dfn id="ascii-compatible-character-encoding">ASCII 호환 문자 인코딩</dfn>이란 바이트 0x09、0x0A、0x0C、0x0D、0x20-0x22、0x26、0x27、0x2C-0x3F、0x41-0x5A 및 0x61-0x7A이 단일 바이트 혹은 가변성 <a href="#encoding">인코딩</a>이며 멀티 바이트 배열의 2번째 것 이후의 바이트를 무시한 Windows-1252에 있어서 이런 바이트들 전체가 Unicode 문자에 변환하는 간단한 바이트 시퀀스를 대응합니다.<a href="references.html#refsENCODING">[ENCODING]</a></p>
 
-  <p class="note">たとえエンコーディングで0x70のようなバイトにとってASCIIとしての解釈とは無関係な、より長いシーケンスの一部である可能性があるとしても、これは、Shift_JIS、HZ-GB-2312およびISO-2022の亜種などのエンコーディングを含む。これは、UTF-7、GSM03.38、およびEBCDICの亜種のような旧式のレガシーエンコーディングを除外する。</p><!--
+  <p class="note">비록 인코딩에서 0x70 같은 바이트에 있어서 ASCII로써의 해석과는 관계 없는, 더 나은 시퀀스의 일부일 가능성이 있다고 하더라도, 여기에는 Shift_JIS、HZ-GB-2312 ISO-2022 같은 변종 인코딩을 포함합니다. 그러나 UTF-7、GSM03.38, EBCDIC 같은 구식 인코딩 방식은 제외합니다.</p><!--
    We'll have to change that if anyone comes up with a way to have a document that is valid as two
    different encodings at once, with different <meta charset> elements applying in each case.
   -->
 
-  
+  <p>용어 <dfn id="a-utf-16-encoding">UTF-16 인코딩</dfn>은 UTF-16의 임의 변종, BOM 유무에 상관 없이 UTF-16LE 혹은 UTF-16BE를 가리킵니다.<a href="references.html#refsENCODING">[ENCODING]</a></p>
 
-  <p>用語<dfn id="a-utf-16-encoding">UTF-16エンコーディング</dfn>はUTF-16の任意の変種、BOMのあるなしに関わらず、UTF-16LEまたはUTF-16BEを指す。<a href="references.html#refsENCODING">[ENCODING]</a></p>
+  <p>용어 <dfn id="code-unit">코드 유닛</dfn>은 Web IDL 스펙에서 정의된 바와 같이 16 비트 부호없는 정수, <code>DOMString</code>의 최소 기본 컴포넌트로써 사용됩니다. （이는 Unicode에서 사용되는 것보다 더 좁은 정의이며 <i>코드 포인트</i>와 동일하지 않습니다.）<a href="references.html#refsWEBIDL">[WEBIDL]</a></p>
 
-  <p>用語<dfn id="code-unit">コード単位</dfn>はWeb IDL仕様で定義されるとおり、16ビット符号なし整数、<code>DOMString</code>の最小の基本コンポーネントとして使用される。（これは、Unicodeで使用されるものより狭い定義であり、<i>コードポイント</i>と同一ではない。）<a href="references.html#refsWEBIDL">[WEBIDL]</a></p>
+  <p>용어 <dfn id="unicode-code-point">Unicode 코드 포인트</dfn>는 가능하다면 <i data-anolis-xref="">Unicode 스칼라 값</i>을, 그렇지 않다면 독립 서로게이트 코드 포인트를 의미합니다. 적합 요건이 문자 혹은 Unicode 코드 포인트로 정의되어 있는 경우 하위 서로게이트에서 계속하며 상위 서로게이트에 갖춰진<a data-anolis-xref="code unit" href="#code-unit">코드 단위</a>의 한 쌍은 한 쌍의 서로게이트에서 표시되어 단일 코드 포인트로써 처리되어야 하지만, 독립한 서로게이트는 서로게이트의 값을 가진 단일 코드 포인트로써 각각 취급되어야 합니다.<a href="references.html#refsUNICODE">[UNICODE]</a></p>
 
-  <p>用語<dfn id="unicode-code-point">Unicodeコードポイント</dfn>は、可能であれば<i data-anolis-xref="">Unicodeスカラー値</i>を、そうでないならば孤立サロゲートコードポイントを意味する。適合要件が文字またはUnicodeコードポイントの用語で定義される場合、下位サロゲートに続く上位サロゲートから成る<a data-anolis-xref="code unit" href="#code-unit">コード単位</a>のペアは、サロゲートペアで表される単一のコードポイントとして扱われなければならないが、孤立したサロゲートは、サロゲートの値を持つ単一のコードポイントとしてそれぞれ扱われなければならない。<a href="references.html#refsUNICODE">[UNICODE]</a></p>
+  <p>이 스펙에 있어서 용어 <dfn id="character">문자</dfn>는 <em>Unicode</em> 문자의 자격이 되지 않는 경우 용어 <a href="#unicode-code-point">Unicode코드 포인트</a>와 같은 의미입니다.</p>
 
-  <p>この仕様において、用語<dfn id="character">文字</dfn>は、<em>Unicode</em>文字として修飾されてい場合、用語<a href="#unicode-code-point">Unicodeコードポイント</a>と同義である。</p>
+  <p>용어 <dfn id="unicode-character">Unicode 문자</dfn>는 <i data-anolis-xref="">Unicode 스칼라 값</i>（즉 서로게이트 코드포인트가 아닌 임의의 Unicode 코드 포인트）를 의미하는 데 사용합니다.<a href="references.html#refsUNICODE">[UNICODE]</a></p>
 
-  <p>用語<dfn id="unicode-character">Unicode文字</dfn>は、<i data-anolis-xref="">Unicodeスカラー値</i>（すなわち、サロゲートコードポイントでない任意のUnicodeコードポイント）を意味するために使用される。<a href="references.html#refsUNICODE">[UNICODE]</a></p>
+  <p>문자열의 <dfn id="code-unit-length">코드 유닛 길이</dfn>는 그 문자열의 <a data-anolis-xref="code unit" href="#code-unit">코드 유닛</a> 갯수입니다.</p>
 
-  <p>文字列の<dfn id="code-unit-length">コード単位長さ</dfn>は、その文字列の<a data-anolis-xref="code unit" href="#code-unit">コード単位</a>の数である。</p>
+  <p class="note">이러한 복잡성은, <a data-anolis-xref="Unicode character" href="#unicode-character">Unicode 문자</a> 관점보다 16비트（UTF-16）<a data-anolis-xref="code unit" href="#code-unit">코드 유닛</a> 관점에서 DOM API를 정의하기 위한 역사적인 결정에 유래합니다.</p><!--FIXUP microdata +1--><!--FIXUP 2dcontext +1-->
 
-  <p class="note">この複雑さは、<a data-anolis-xref="Unicode character" href="#unicode-character">Unicode文字</a>の観点よりむしろ、16ビット（UTF-16）<a data-anolis-xref="code unit" href="#code-unit">コード単位</a>の観点でDOM APIを定義するための歴史的な決定に由来する。</p><!--FIXUP microdata +1--><!--FIXUP 2dcontext +1-->
+  <h3 id="conformance-requirements"><span class="secno">2.2</span> 적합성 조건</h3><!--FIXUP 2dcontext -1--><!--FIXUP microdata -1-->
 
-
-
- 
-
-
-  <h3 id="conformance-requirements"><span class="secno">2.2</span> 適合性要件</h3><!--FIXUP 2dcontext -1--><!--FIXUP microdata -1-->
-
-
-
-  <p>この仕様において、すべての図、例、注は非規範的であり、非規範的と明示された節も同様である。この仕様におけるその他すべては規範的である。</p>
-
-  <p>この文書の規範部分においてキーワード"MUST"、"MUST NOT"、"REQUIRED"、"SHOULD"、"SHOULD NOT"、"MAY"、"OPTIONAL"は、RFC 2119で示されたとおりに解釈される。この文書の規範部分でのキーワード"OPTIONALLY"は、"MAY"または"OPTIONAL"としての意味と同一に解釈される。読みやすさのために、これらの単語は本仕様において大文字のみで出現しない。<a href="references.html#refsRFC2119">[RFC2119]</a></p>
+  <p>
+    이 스펙 문서에 있어서, 모든 그림, 예시, 주의는 표준에 준하는 내용이 아니며,
+    표준에 준하지 않는다는 내용을 명시하고 있습니다.
+    
+    그 외의 모든 것은 표준에 준합니다.
+  </p>
+    
+  <p>
+    이 문서의 스펙 섹션에 있어서 키워드 "MUST"、"MUST NOT"、"REQUIRED"、"SHOULD"、"SHOULD NOT"、"MAY"、"OPTIONAL"은 RFC 2119에서 표현하는 바 그대로 해석하면 됩니다. 이 문서의 스펙 섹션에서 키워드 "OPTIONALLY"은 "MAY" 혹은 "OPTIONAL"로써 같은 의미로 해석됩니다. 가독성을 높이기 위해 이런 단어들은 대문자로만 표기합니다.<a href="references.html#refsRFC2119">[RFC2119]</a></p>
 
   <div class="impl">
 
@@ -1396,10 +1393,14 @@
 
 
 
-  <h4 id="extensibility-0"><span class="secno">2.2.3</span> 拡張性</h4><!--FIXUP dev-html +1-->
+  <h4 id="extensibility-0"><span class="secno">2.2.3</span> 확장성</h4><!--FIXUP dev-html +1-->
 
 
-  <p>ユーザーエージェントがこの仕様を拡張するベンダー固有のプロパティーを強く推奨しない。そうすることは、特定のユーザーエージェントのユーザーだけが当該のコンテンツにアクセスすることができ、相互運用性を減少させユーザーベースを分断するので、文書はそのような拡張を使用してはならない。</p>
+  <p>
+    유저 에이전트가 이 스펙을 확장하여 벤더 고유의 속성을 추가하는 걸 매우 권장하지 않습니다.
+    이는 특정 유저 에이전트의 유저만 해당 콘텐츠에 접근할 수 있도록 하기 때문에,
+    상호운용성을 감소시켜 유저 베이스를 분단하기 때문에 문서는 그러한 확장을 해선 안됩니다.
+  </p>
 
   <div class="impl">
 
@@ -1476,11 +1477,23 @@
 
   </div>
 
-  <hr><p>この仕様にベンダー中立の拡張が必要になった場合、この仕様が状況に応じて更新されうる、または拡張仕様がこの仕様の要求を上書きされうるかのいずれかである。この仕様に活動を適用するある人が、そのような拡張仕様の要件を承認することを決定する場合、拡張仕様は<dfn data-anolis-xref="other applicable specifications" id="other-applicable-specifications">適用可能な仕様</dfn>になる。
+  <hr>
+    
+    <p>
+      이 스펙에서 벤더 중립의 확장이 필요한 경우 이 스펙을 상황에 따라 갱신할 수도 있으며, 확장 스펙이 이 스펙의 요구 사항을 재정의할 수도 있습니다.
+      이 스펙에서 활동하는 사람이, 그런 확장 스펙의 요건을 승인하기로 결정하면 확장 스펙은 <dfn data-anolis-xref="other applicable specifications" id="other-applicable-specifications">적용 가능한 스펙</dfn>이 됩니다.
 
-  <p>文書に対する適合用語は、そのような適用可能な仕様によって導入される変更の性質、およびコンテンツと意図される文書の解釈に依存する。適用可能な仕様は、新しい文書コンテンツ（たとえばfoobar要素）を定義してもよく、特定のほかの適合コンテンツを禁止してもよく（たとえば&lt;TABLE&gt;の使用を禁止する）、この仕様で定義されるコンテンツに対するセマンティック、DOMの変換、または処理規則を変更してもよい。文書が、適用可能な仕様の用途に依存しない<a href="#conforming-documents">適合HTML5文書</a>であるかどうか：与えられた<a href="#conforming-documents">適合HTML5文書</a>の構文およびセマンティックが、適用可能な仕様の使用によって変更されない場合、その文書は<a href="#conforming-documents">適合HTML5文書</a>のままである。与えられた（ほかの適合）文書のセマンティックまたは処理が、適用可能な仕様の使用によって変更される場合、それは<a href="#conforming-documents">適合HTML5文書</a>ではない。このような場合、その適用可能な仕様は、適合用語を定義すべきである。</p>
+  <p>
+    문서에 대한 적합용어는 적용 가능한 스펙에 따라 도입되는 변경점의 성질 및 콘텐츠와 의도 된 문서의 해석에 의존합니다.
+    적용 가능한 스펙은 새로운 문서 콘텐츠 (예를 들면 footer 요소)를 정의해도 좋고,
+    특정한 것 외의 적합 콘텐츠를 금지하는 것（예를 들어 &lt;TABLE&gt; 사용을 금지한다）,
+    이 스펙에서 정의된 콘텐츠에 대한 시맨틱, DOM 변환 또는 처리규칙을 변경해도 좋다.
+    문서가 적용 가능한 스펙의 용도에 의존하지 않는 <a href="#conforming-documents">적합 HTML5 문서</a>인지 아닌지 : 
+    주어진 <a href="#conforming-documents">적합 HTML5 문서</a>의 구문 및 시멘틱이 적용 가능한 스펙의 사용으로 인해 변경되지 않는 경우 그 문서는 <a href="#conforming-documents">적합 HTML5 문서</a>인채로 유지됩니다. 주어진 （다른 적합）문서의 시맨틱 혹은 처리가 적용 가능한 스펙의 사용에 의해 변경되는 경우 그는 <a href="#conforming-documents">적합 HTML5 문서</a>가 아닙니다.
+    이런 경우 적용 가능한 스펙은 적합 용어를 정의해야만 합니다.
+  </p>
 
-  <p class="note">提案されたが必須でない慣習として、そのような仕様は、"適合HTML5+XXX文書"のような適合用語を定義するかもしれない。ここでXXXは適用可能な仕様に対する短い名前である。（例："適合HTML5+自動拡張文書"）。</p>
+  <p class="note">제안되었지만 필수는 아닌 관습으로써, 그런 스펙은 "적합 HTML5 + XXX문서" 같은 적합용어를 정의할 수도 있습니다. 여기서 XXX는 적용 가능한 스펙에 대한 짧은 이름입니다.（예："적합 HTML5 + 자동 확장 문서"）。</p>
  
   <p class="note">上に与えられる規則の結果は、特定の文法的に正しいHTML5文書が適用可能な仕様の存在下で<a href="#conforming-documents">適合HTML5文書</a>でないかもしれない。（例：適用可能な仕様がひとまとまりの付属品のように&lt;table&gt;を定義する―たとえ要素がHTML5の構文的に正しく生じても、その仕様書に書かれてかつ&lt;table&gt;要素を含む文書は、<a href="#conforming-documents">適合HTML5文書</a>ではない。）</p><!--CONFORMANCE--><!--FORK-->
 
