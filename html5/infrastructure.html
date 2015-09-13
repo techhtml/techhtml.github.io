@@ -883,776 +883,92 @@
   <!-- TODO : 번역 진행 중 -->
   
   <h4 id="keywords-and-enumerated-attributes"><span class="secno">2.4.3</span> 키워드 및 열거 속성</h4>
-  <p>一部の属性は、有限集合のキーワードのいずれかを取るように定義されている。このような属性は<dfn data-anolis-xref="enumerated attribute" id="enumerated-attribute">列挙属性</dfn>と呼ばれる。キーワードは、特定の<em>状態</em>にそれぞれ対応付けて定義される（キーワードの一部が互いに同義語となる場合、複数のキーワードは同じ状態に対応づけられる。加えて、一部のキーワードは不適合であると言うことができる。これは、歴史的な理由のためだけの仕様である）。さらに、2つのデフォルト状態を挙げることができる。1つは<i>妥当でない値のデフォルト</i>であり、もう1つは<i>欠落した値のデフォルト</i>である。</p>
+  <p>
+    일부 속성은 제한이 있는 키워드 중 하나를 얻도록 정의되어있습니다.
+    이러한 속성은 <dfn data-anolis-xref="enumerated attribute" id="enumerated-attribute">열거 속성</dfn>이라 불립니다.
+    키워드는, 특정 <em>상태</em>에 매치하여 정의되어 있습니다.
+    (일부 키워드가 서로 일치하는 뜻을 가지는 단어일 경우, 
+     여러 키워드는 동일한 키워드로 사용할 수 있습니다. 더해서, 일부 키워드는 부적합하다고 말할 수 있습니다. 이는 역사적인 이유로 남아있는 스펙입니다).
+    또한 두개의 디폴트 상태를 가질 수 있습니다.
+    1개는 <i>유효하지 않은 기본 값</i>이며, 또 다른 하나는 <i>누락된 기본 값</i>입니다.
+  </p>
+  <p>
+    열거 속성이 지정된 경우, 속성값은, 앞 뒤에 공백 없이, 적합하게 주어진 키워드 중 하나를 <a href="#ascii-case-insensitive">ASCII 대소문자 비구분</a>과 일치해야 합니다.
+  </p>
 
-  <p>列挙属性が指定される場合、属性値は、先行または後続の空白なしで、不適合でないとされる与えられたキーワードのいずれかと<a href="#ascii-case-insensitive">ASCII大文字・小文字不区別</a>で一致しなければならない。</p>
+  <p>
+    속성이 정의될 때 그 값이 지정된 키워드 중 하나이며 <a href="#ascii-case-insensitive">ASCII 대소문자 비구분</a>과 일치하는 경우, 속성 키워드 상태는 속성이 나타내는 상태입니다.
+    속성값이 지정된 키워드와 일치하지 않지만, 속성이 <i>유효하지 않은 기본값</i>을 가질 경우, 그 속성은 그 상태를 나타냅니다.
+    그렇지 않을 경우 속성값이 키워드의 어느 것과 일치하지 않지만 <i>누락된 기본값</i> 상태를 정의한 경우, <em>그</em>는 속성에 의해 표현되는 상태입니다.
+    그렇지 않을 경우, 기본값은 존재하지 않고 아무것도 표현하지 않는 상태를 의미하는 유효하지 않은 값입니다.
 
-  <p>属性が指定される際に、その値が与えられたキーワードのいずれかと<a href="#ascii-case-insensitive">ASCII大文字・小文字不区別</a>で一致する場合、属性のキーワードの状態は、属性が表す状態である。属性値が与えられたキーワードのいずれにも一致しないが、属性が<i>妥当でない値のデフォルト</i>を持つ場合、その属性はその状態を表す。そうでなければ、属性値がキーワードのいずれにも一致しないが<i>欠落値のデフォルト</i>状態定義が存在する場合、<em>それ</em>は属性によって表される状態である。そうでなければ、デフォルトは存在せず、何も表さない状態を意味する妥当でない値である。</p>
+  <p class="note">공백 문자열은 유효한 키워드가 될 수 있습니다.</p>
 
-  <p>属性が指定<em>されない</em>際に、<i>欠落値のデフォルト</i>定義状態がある場合、それは（欠落）属性によって表される状態である。そうでなければ、属性の不在は何も状態を表さないことを意味する。</p>
+  <h4 id="numbers"><span class="secno">2.4.4</span> 숫자</h4>
 
-  <p class="note">空文字列は妥当なキーワードとなりうる。</p>
+  <h5 id="signed-integers"><span class="secno">2.4.4.1</span> 부호 있는 정수</h5>
 
-  <h4 id="numbers"><span class="secno">2.4.4</span> 数字</h4>
+  <p>
+    문자열이 하나 이상의 <a href="#ascii-digits">ASCII 숫자</a>, 임의의 접두사 "-"（U+002D）문자를 가지는 경우, 문자열은 <dfn id="valid-integer">유효한 정수</dfn>입니다.</p>
 
-  <h5 id="signed-integers"><span class="secno">2.4.4.1</span> 符号付き整数</h5>
+  <p>접두사 "-"（U+002D）가 없는 <a href="#valid-integer">유효한 정수</a>는 10진수를 표현합니다. 접두사 "-"（U+002D）가 <em>있는</em> <a href="#valid-integer">유효한 정수</a>는 U+002D HYPHEN-MINUS에서 이어지는 10신주를 나타내며, 0부터 감소합니다.</p>
 
-  <p>文字列が1つ以上の<a href="#ascii-digits">ASCII 数字</a>、任意で接頭辞"-"（U+002D）文字を持つ場合、文字列は<dfn id="valid-integer">妥当な整数</dfn>である。</p>
+  <h5 id="non-negative-integers"><span class="secno">2.4.4.2</span> 양의 정수</h5>
 
-  <p>"-"（U+002D）接頭辞なしの<a href="#valid-integer">妥当な整数</a>は、10進数を表す。"-"（U+002D）接頭辞<em>あり</em>の<a href="#valid-integer">妥当な整数</a>は、U+002D HYPHEN-MINUSに続く10進数を表し、ゼロから減算される。</p>
+  <p>하나 이상의 <a href="#ascii-digits">ASCII숫자</a>에서 시작하는 경우 문자열은 <dfn id="valid-non-negative-integer">유효한 양의 정수</dfn>입니다.</p>
 
-  <div class="impl">
-    <p>The <dfn id="rules-for-parsing-integers">rules for parsing integers</dfn> are as given in the following algorithm. When invoked, the steps must be followed in the order given, aborting at the first step that returns a value. This algorithm will return either an integer or an error.</p>
+  <p><a href="#valid-non-negative-integer">유효한 양의 정수</a>는 10진수로 수를 나타냅니다.</p>
 
-    <ol>
-      <li>
-        <p>Let <var data-anolis-xref="">input</var> be the string being parsed.</p>
-      </li>
+  <h5 id="floating-point-numbers"><span class="secno">2.4.4.3</span> 부동소수점</h5>
 
-      <li>
-        <p>Let <var data-anolis-xref="">position</var> be a pointer into <var data-anolis-xref="">input</var>, initially pointing at the start of the string.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">sign</var> have the value "positive".</p>
-      </li>
-
-      <li>
-        <p><a href="#skip-whitespace">Skip whitespace</a>.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">position</var> is past the end of <var data-anolis-xref="">input</var>, return an error.</p>
-      </li>
-
-      <li>
-        <p>If the character indicated by <var data-anolis-xref="">position</var> (the first character) is a "-" (U+002D) character:</p>
-
-        <ol>
-          <li>Let <var data-anolis-xref="">sign</var> be "negative".</li>
-
-          <li>Advance <var data-anolis-xref="">position</var> to the next character.</li>
-
-          <li>If <var data-anolis-xref="">position</var> is past the end of <var data-anolis-xref="">input</var>, return an error.</li>
-        </ol>
-
-        <p>Otherwise, if the character indicated by <var data-anolis-xref="">position</var> (the first character) is a "+" (U+002B) character:</p>
-
-        <ol>
-          <li>Advance <var data-anolis-xref="">position</var> to the next character. (The "<code data-anolis-xref="">+</code>" is ignored, but it is not conforming.)</li>
-
-          <li>If <var data-anolis-xref="">position</var> is past the end of <var data-anolis-xref="">input</var>, return an error.</li>
-        </ol>
-      </li>
-
-      <li>
-        <p>If the character indicated by <var data-anolis-xref="">position</var> is not an <a data-anolis-xref="ASCII digits" href="#ascii-digits">ASCII digit</a>, then return an error.</p>
-      </li><!-- Ok. At this point we know we have a number. It might have
-   trailing garbage which we'll ignore, but it's a number, and we
-   won't return an error. -->
-
-      <li>
-        <p><a href="#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are <a href="#ascii-digits">ASCII digits</a>, and interpret the resulting sequence as a base-ten integer. Let <var data-anolis-xref="">value</var> be that integer.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">sign</var> is "positive", return <var data-anolis-xref="">value</var>, otherwise return the result of subtracting <var data-anolis-xref="">value</var> from zero.</p>
-      </li>
-    </ol>
-  </div>
-
-  <h5 id="non-negative-integers"><span class="secno">2.4.4.2</span> 非負整数</h5>
-
-  <p>1つ以上の<a href="#ascii-digits">ASCII数字</a>からなる場合、文字列は<dfn id="valid-non-negative-integer">妥当な非負整数</dfn>である。</p>
-
-  <p><a href="#valid-non-negative-integer">妥当な非負整数</a>は、10進数である数を表す。</p>
-
-  <div class="impl">
-    <p>The <dfn id="rules-for-parsing-non-negative-integers">rules for parsing non-negative integers</dfn> are as given in the following algorithm. When invoked, the steps must be followed in the order given, aborting at the first step that returns a value. This algorithm will return either zero, a positive integer, or an error.</p>
-
-    <ol>
-      <li>
-        <p>Let <var data-anolis-xref="">input</var> be the string being parsed.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">value</var> be the result of parsing <var data-anolis-xref="">input</var> using the <a href="#rules-for-parsing-integers">rules for parsing integers</a>.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">value</var> is an error, return an error.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">value</var> is less than zero, return an error.</p>
-      </li>
-
-      <li>
-        <p>Return <var data-anolis-xref="">value</var>.</p>
-      </li>
-    </ol><!-- Implications: A leading + is ignored. A leading - is ignored if the value is zero. -->
-  </div>
-
-  <h5 id="floating-point-numbers"><span class="secno">2.4.4.3</span> 浮動小数点数</h5>
-
-  <p>次の場合、文字列は<dfn id="valid-floating-point-number">妥当な浮動小数点数</dfn>である：</p>
+  <p>아래와 같은 경우, 문자열은 <dfn id="valid-floating-point-number">유효한 부동소수점</dfn>입니다：</p>
 
   <ol class="brief">
-    <li>任意で、"-"（U+002D）文字。</li>
+    <li>임의의 "-"（U+002D）문자</li>
 
-    <li>次のいずれかまたは両方の、与えられた順：
+    <li>다음 중 하나, 혹은 둘 다 주어진 순서 :
 
       <ol>
-        <li>ひと続きの1つ以上の<a href="#ascii-digits">ASCII数字</a>。
+        <li>1개 이상의 이어지는 <a href="#ascii-digits">ASCII 숫자</a>.
         </li>
-
         <li>
           <ol>
-            <li>1つの"."（U+002E）文字。</li>
-
-            <li>ひと続きの1つ以上の<a href="#ascii-digits">ASCII数字</a>。
+            <li>1개의 "."（U+002E）문자</li>
+            <li>1개 이상의 이어지는 <a href="#ascii-digits">ASCII숫자</a>.
             </li>
           </ol>
         </li>
       </ol>
     </li>
 
-    <li>任意で：
+    <li>임의의:
 
       <ol>
-        <li>"e"（U+0065）文字または"E"（U+0045）文字のいずれか。</li>
+        <li>"e"（U+0065）문자 혹은 "E"（U+0045）문자 중 하나</li>
 
-        <li>任意で、"-"（U+002D）文字または"+"（U+002B）文字。</li>
+        <li>임의의 "-"（U+002D）문자 혹은 "+"（U+002B）문자</li>
 
-        <li>ひと続きの1つ以上の<a href="#ascii-digits">ASCII数字</a>。
+        <li>1개 이상의 이어지는 <a href="#ascii-digits">ASCII 숫자</a>.
         </li>
       </ol>
     </li>
   </ol>
 
-  <p><a href="#valid-floating-point-number">妥当な浮動小数点数</a>は、10の累乗による仮数部の乗算によって得られる。ここで乗算は最初の数であり、10進数として解釈される（もしあれば、小数点および小数点の後の数を含み、文字列全体が"-"（U+002D）文字で始まるおよび数値がゼロでない場合、負数として仮数部を解釈する）。またここで、もしあれば、指数はEの後の数字である（Eと数字と数字の間に"-"（U+002D）文字がある場合、負数として解釈され、数字がゼロでない、またはその他Eと数字の間に"+"（U+002B）文字が存在する場合無視できる）。Eが存在しない場合、指数はゼロとして扱われる。</p>
+  <p><a href="#valid-floating-point-number">유효한 부동소수점</a>은, 10의 제곱에 의한 가수의 곱셈에 의해 이루어집니다. 여기서 곱셈은 최초의 수이며, 10진수로 해석됩니다.
+    (만약 소수점 및 소수점 뒤의 숫자를 포함한 문자열 전체가 "-"(U+002D)문자로 시작하거나 숫자 값이 0이 아닌 경우, 음수로 가수를 해석합니다)
+    또 여기서 만약 존재한다면, 가수는 E 뒤의 숫자입니다(E와 숫자와 숫자 사이에 "-"(U+002D) 문자가 있는 경우, 음수로 해석되며, 숫자가 0이 아닌, 또는 그 외 E와 숫자 사이에 "+"(U+002B) 문자가 존재하는 경우 무시 가능합니다). E가 존재하지 않는 경우, 지수는 0으로 인식됩니다.</p>
+    
+  <p class="note">무한대 및 비수（NaN）값은 <a data-anolis-xref="valid floating-point number" href="#valid-floating-point-number">유효한 부동소수점</a>이 아닙니다.</p>
 
-  <p class="note">無限大および非数（NaN）値は<a data-anolis-xref="valid floating-point number" href="#valid-floating-point-number">妥当な浮動小数点数</a>ではない。</p>
+  <h5 id="lists-of-integers"><span class="secno">2.4.4.5</span> 정수 목록</h5>
 
-  <div class="impl">
-    <p>The <dfn data-anolis-xref="best representation of the number as a floating-point number" id="best-representation-of-the-number-as-a-floating-point-number">best representation of the number <var data-anolis-xref="">n</var> as a floating-point number</dfn> is the string obtained from applying the JavaScript operator ToString to <var data-anolis-xref="">n</var>. The JavaScript operator ToString is not uniquely determined. When there are multiple possible strings that could be obtained from the JavaScript operator ToString for a particular value, the user agent must always return the same string for that value (though it may differ from the value used by other user agents).</p>
+  <p><dfn id="valid-list-of-integers">유효한 정수 목록</dfn>은 U+002C COMMA 문자로 구분된 다수의 <a data-anolis-xref="valid integer" href="#valid-integer">유효한 정수</a>이며, 다른 문자를 가지지 않습니다(예를 들어 <a data-anolis-xref="space character" href="#space-character">공백 문자</a>도 없습니다）. 거기에 주어진 정수의 값, 또는 계산된 값의 범위에 제한이 있을 수도 있습니다.</p>
 
-    <p>The <dfn id="rules-for-parsing-floating-point-number-values">rules for parsing floating-point number values</dfn> are as given in the following algorithm. This algorithm must be aborted at the first step that returns something. This algorithm will return either a number or an error.</p>
-
-    <ol>
-      <li>
-        <p>Let <var data-anolis-xref="">input</var> be the string being parsed.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">position</var> be a pointer into <var data-anolis-xref="">input</var>, initially pointing at the start of the string.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">value</var> have the value 1.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">divisor</var> have the value 1.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">exponent</var> have the value 1.</p>
-      </li>
-
-      <li>
-        <p><a href="#skip-whitespace">Skip whitespace</a>.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">position</var> is past the end of <var data-anolis-xref="">input</var>, return an error.</p>
-      </li>
-
-      <li>
-        <p>If the character indicated by <var data-anolis-xref="">position</var> is a U+002D HYPHEN-MINUS character (-):</p>
-
-        <ol>
-          <li>Change <var data-anolis-xref="">value</var> and <var data-anolis-xref="">divisor</var> to −1.</li>
-
-          <li>Advance <var data-anolis-xref="">position</var> to the next character.</li>
-
-          <li>If <var data-anolis-xref="">position</var> is past the end of <var data-anolis-xref="">input</var>, return an error.</li>
-        </ol>
-
-        <p>Otherwise, if the character indicated by <var data-anolis-xref="">position</var> (the first character) is a "+" (U+002B) character:</p>
-
-        <ol>
-          <li>Advance <var data-anolis-xref="">position</var> to the next character. (The "<code data-anolis-xref="">+</code>" is ignored, but it is not conforming.)</li>
-
-          <li>If <var data-anolis-xref="">position</var> is past the end of <var data-anolis-xref="">input</var>, return an error.</li>
-        </ol>
-      </li>
-
-      <li>
-        <p>If the character indicated by <var data-anolis-xref="">position</var> is a "." (U+002E), and that is not the last character in <var data-anolis-xref="">input</var>, and the character after the character indicated by <var data-anolis-xref="">position</var> is an <a data-anolis-xref="ASCII digits" href="#ascii-digits">ASCII digit</a>, then set <var data-anolis-xref="">value</var> to zero and jump to the step labeled <i>fraction</i>.</p><!-- we have to check there's a number so that ".e1" fails to parse but ".0"
-   does not -->
-      </li>
-
-      <li>
-        <p>If the character indicated by <var data-anolis-xref="">position</var> is not an <a data-anolis-xref="ASCII digits" href="#ascii-digits">ASCII digit</a>, then return an error.</p>
-      </li>
-
-      <li>
-        <p><a href="#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are <a href="#ascii-digits">ASCII digits</a>, and interpret the resulting sequence as a base-ten integer. Multiply <var data-anolis-xref="">value</var> by that integer.</p>
-      </li>
-
-      <li>If <var data-anolis-xref="">position</var> is past the end of <var data-anolis-xref="">input</var>, jump to the step labeled <i>conversion</i>.</li>
-
-      <li>
-        <p><i>Fraction</i>: If the character indicated by <var data-anolis-xref="">position</var> is a "." (U+002E), run these substeps:</p>
-
-        <ol>
-          <li>
-            <p>Advance <var data-anolis-xref="">position</var> to the next character.</p>
-          </li>
-
-          <li>
-            <p>If <var data-anolis-xref="">position</var> is past the end of <var data-anolis-xref="">input</var>, or if the character indicated by <var data-anolis-xref="">position</var> is not an <a data-anolis-xref="ASCII digits" href="#ascii-digits">ASCII digit</a>, "e" (U+0065), or "E" (U+0045), then jump to the step labeled <i>conversion</i>.</p>
-          </li>
-
-          <li>
-            <p>If the character indicated by <var data-anolis-xref="">position</var> is a "e" (U+0065) character or a "E" (U+0045) character, skip the remainder of these substeps.</p>
-          </li>
-
-          <li>
-            <p><i>Fraction loop</i>: Multiply <var data-anolis-xref="">divisor</var> by ten.</p>
-          </li>
-
-          <li>Add the value of the character indicated by <var data-anolis-xref="">position</var>, interpreted as a base-ten digit (0..9) and divided by <var data-anolis-xref="">divisor</var>, to <var data-anolis-xref="">value</var>.</li>
-
-          <li>
-            <p>Advance <var data-anolis-xref="">position</var> to the next character.</p>
-          </li>
-
-          <li>
-            <p>If <var data-anolis-xref="">position</var> is past the end of <var data-anolis-xref="">input</var>, then jump to the step labeled <i>conversion</i>.</p>
-          </li>
-
-          <li>
-            <p>If the character indicated by <var data-anolis-xref="">position</var> is an <a data-anolis-xref="ASCII digits" href="#ascii-digits">ASCII digit</a>, jump back to the step labeled <i>fraction loop</i> in these substeps.</p>
-          </li>
-        </ol>
-      </li>
-
-      <li>
-        <p>If the character indicated by <var data-anolis-xref="">position</var> is a "e" (U+0065) character or a "E" (U+0045) character, run these substeps:</p>
-
-        <ol>
-          <li>
-            <p>Advance <var data-anolis-xref="">position</var> to the next character.</p>
-          </li>
-
-          <li>
-            <p>If <var data-anolis-xref="">position</var> is past the end of <var data-anolis-xref="">input</var>, then jump to the step labeled <i>conversion</i>.</p>
-          </li>
-
-          <li>
-            <p>If the character indicated by <var data-anolis-xref="">position</var> is a "-" (U+002D) character:</p>
-
-            <ol>
-              <li>Change <var data-anolis-xref="">exponent</var> to −1.</li>
-
-              <li>Advance <var data-anolis-xref="">position</var> to the next character.</li>
-
-              <li>
-                <p>If <var data-anolis-xref="">position</var> is past the end of <var data-anolis-xref="">input</var>, then jump to the step labeled <i>conversion</i>.</p>
-              </li>
-            </ol>
-
-            <p>Otherwise, if the character indicated by <var data-anolis-xref="">position</var> is a "+" (U+002B) character:</p>
-
-            <ol>
-              <li>Advance <var data-anolis-xref="">position</var> to the next character.</li>
-
-              <li>
-                <p>If <var data-anolis-xref="">position</var> is past the end of <var data-anolis-xref="">input</var>, then jump to the step labeled <i>conversion</i>.</p>
-              </li>
-            </ol>
-          </li>
-
-          <li>
-            <p>If the character indicated by <var data-anolis-xref="">position</var> is not an <a data-anolis-xref="ASCII digits" href="#ascii-digits">ASCII digit</a>, then jump to the step labeled <i>conversion</i>.</p>
-          </li>
-
-          <li>
-            <p><a href="#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are <a href="#ascii-digits">ASCII digits</a>, and interpret the resulting sequence as a base-ten integer. Multiply <var data-anolis-xref="">exponent</var> by that integer.</p>
-          </li>
-
-          <li>
-            <p>Multiply <var data-anolis-xref="">value</var> by ten raised to the <var data-anolis-xref="">exponent</var>th power.</p>
-          </li>
-        </ol>
-      </li>
-
-      <li>
-        <p><i>Conversion</i>: Let <var data-anolis-xref="">S</var> be the set of finite IEEE 754 double-precision floating-point values except −0, but with two special values added: 2<sup data-anolis-xref="">1024</sup> and −2<sup data-anolis-xref="">1024</sup>.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">rounded-value</var> be the number in <var data-anolis-xref="">S</var> that is closest to <var data-anolis-xref="">value</var>, selecting the number with an even significand if there are two equally close values. (The two special values 2<sup data-anolis-xref="">1024</sup> and −2<sup data-anolis-xref="">1024</sup> are considered to have even significands for this purpose.)</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">rounded-value</var> is 2<sup data-anolis-xref="">1024</sup> or −2<sup data-anolis-xref="">1024</sup>, return an error.</p>
-      </li>
-
-      <li>
-        <p>Return <var data-anolis-xref="">rounded-value</var>.</p>
-      </li>
-    </ol>
-  </div>
-
-  <div class="impl">
-    <h5 id="percentages-and-dimensions"><span class="secno">2.4.4.4</span> Percentages and lengths</h5>
-
-    <p>The <dfn id="rules-for-parsing-dimension-values">rules for parsing dimension values</dfn> are as given in the following algorithm. When invoked, the steps must be followed in the order given, aborting at the first step that returns a value. This algorithm will return either a number greater than or equal to 1.0, or an error; if a number is returned, then it is further categorized as either a percentage or a length.</p>
-
-    <ol>
-      <li>
-        <p>Let <var data-anolis-xref="">input</var> be the string being parsed.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">position</var> be a pointer into <var data-anolis-xref="">input</var>, initially pointing at the start of the string.</p>
-      </li>
-
-      <li>
-        <p><a href="#skip-whitespace">Skip whitespace</a>.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">position</var> is past the end of <var data-anolis-xref="">input</var>, return an error.</p>
-      </li>
-
-      <li>
-        <p>If the character indicated by <var data-anolis-xref="">position</var> is a U+002B PLUS SIGN character (+), advance <var data-anolis-xref="">position</var> to the next character.</p>
-      </li>
-
-      <li>
-        <p><a href="#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are "0" (U+0030) characters, and discard them.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">position</var> is past the end of <var data-anolis-xref="">input</var>, return an error.</p>
-      </li>
-
-      <li>
-        <p>If the character indicated by <var data-anolis-xref="">position</var> is not one of "1" (U+0031) to "9" (U+0039), then return an error.</p>
-      </li><!-- Ok. At this point we know we have a number. It might have trailing garbage which we'll
-   ignore, but it's a number, and we won't return an error. -->
-
-      <li>
-        <p><a href="#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are <a href="#ascii-digits">ASCII digits</a>, and interpret the resulting sequence as a base-ten integer. Let <var data-anolis-xref="">value</var> be that number.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">position</var> is past the end of <var data-anolis-xref="">input</var>, return <var data-anolis-xref="">value</var> as a length.</p>
-      </li>
-
-      <li>
-        <p>If the character indicated by <var data-anolis-xref="">position</var> is a U+002E FULL STOP character (.):</p>
-
-        <ol>
-          <li>
-            <p>Advance <var data-anolis-xref="">position</var> to the next character.</p>
-          </li>
-
-          <li>
-            <p>If <var data-anolis-xref="">position</var> is past the end of <var data-anolis-xref="">input</var>, or if the character indicated by <var data-anolis-xref="">position</var> is not an <a data-anolis-xref="ASCII digits" href="#ascii-digits">ASCII digit</a>, then return <var data-anolis-xref="">value</var> as a length.</p>
-          </li>
-
-          <li>
-            <p>Let <var data-anolis-xref="">divisor</var> have the value 1.</p>
-          </li>
-
-          <li>
-            <p><i>Fraction loop</i>: Multiply <var data-anolis-xref="">divisor</var> by ten.</p>
-          </li>
-
-          <li>Add the value of the character indicated by <var data-anolis-xref="">position</var>, interpreted as a base-ten digit (0..9) and divided by <var data-anolis-xref="">divisor</var>, to <var data-anolis-xref="">value</var>.</li>
-
-          <li>
-            <p>Advance <var data-anolis-xref="">position</var> to the next character.</p>
-          </li>
-
-          <li>
-            <p>If <var data-anolis-xref="">position</var> is past the end of <var data-anolis-xref="">input</var>, then return <var data-anolis-xref="">value</var> as a length.</p>
-          </li>
-
-          <li>
-            <p>If the character indicated by <var data-anolis-xref="">position</var> is an <a data-anolis-xref="ASCII digits" href="#ascii-digits">ASCII digit</a>, return to the step labeled <i>fraction loop</i> in these substeps.</p>
-          </li>
-        </ol>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">position</var> is past the end of <var data-anolis-xref="">input</var>, return <var data-anolis-xref="">value</var> as a length.</p>
-      </li>
-
-      <li>
-        <p>If the character indicated by <var data-anolis-xref="">position</var> is a "%" (U+0025) character, return <var data-anolis-xref="">value</var> as a percentage.</p>
-      </li>
-
-      <li>
-        <p>Return <var data-anolis-xref="">value</var> as a length.</p>
-      </li>
-    </ol>
-  </div>
-
-  <h5 id="lists-of-integers"><span class="secno">2.4.4.5</span> 整数リスト</h5>
-
-  <p><dfn id="valid-list-of-integers">妥当な整数リスト</dfn>は、U+002C COMMA文字によって区切られる多数の<a data-anolis-xref="valid integer" href="#valid-integer">妥当な整数</a>であり、他の文字を持たない（たとえば<a data-anolis-xref="space character" href="#space-character">空白文字</a>のない）。さらに、与えられる整数の数、または許可される値の範囲には制限があるかもしれない。</p>
-
-  <div class="impl">
-    <p>The <dfn id="rules-for-parsing-a-list-of-integers">rules for parsing a list of integers</dfn> are as follows:</p>
-
-    <ol>
-      <li>
-        <p>Let <var data-anolis-xref="">input</var> be the string being parsed.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">position</var> be a pointer into <var data-anolis-xref="">input</var>, initially pointing at the start of the string.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">numbers</var> be an initially empty list of integers. This list will be the result of this algorithm.</p>
-      </li>
-
-      <li>
-        <p>If there is a character in the string <var data-anolis-xref="">input</var> at position <var data-anolis-xref="">position</var>, and it is either a U+0020 SPACE, U+002C COMMA, or U+003B SEMICOLON character, then advance <var data-anolis-xref="">position</var> to the next character in <var data-anolis-xref="">input</var>, or to beyond the end of the string if there are no more characters.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">position</var> points to beyond the end of <var data-anolis-xref="">input</var>, return <var data-anolis-xref="">numbers</var> and abort.</p>
-      </li>
-
-      <li>
-        <p>If the character in the string <var data-anolis-xref="">input</var> at position <var data-anolis-xref="">position</var> is a U+0020 SPACE, U+002C COMMA, or U+003B SEMICOLON character, then return to step 4.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">negated</var> be false.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">value</var> be 0.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">started</var> be false. This variable is set to true when the parser sees a number or a "-" (U+002D) character.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">got number</var> be false. This variable is set to true when the parser sees a number.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">finished</var> be false. This variable is set to true to switch parser into a mode where it ignores characters until the next separator.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">bogus</var> be false.</p>
-      </li>
-
-      <li>
-        <p><i>Parser</i>: If the character in the string <var data-anolis-xref="">input</var> at position <var data-anolis-xref="">position</var> is:</p>
-
-        <dl class="switch">
-          <dt>A U+002D HYPHEN-MINUS character</dt>
-
-          <dd>
-            <p>Follow these substeps:</p>
-
-            <ol>
-              <li>If <var data-anolis-xref="">got number</var> is true, let <var data-anolis-xref="">finished</var> be true.</li>
-
-              <li>If <var data-anolis-xref="">finished</var> is true, skip to the next step in the overall set of steps.</li>
-
-              <li>If <var data-anolis-xref="">started</var> is true, let <var data-anolis-xref="">negated</var> be false.</li>
-
-              <li>Otherwise, if <var data-anolis-xref="">started</var> is false and if <var data-anolis-xref="">bogus</var> is false, let <var data-anolis-xref="">negated</var> be true.</li>
-
-              <li>Let <var data-anolis-xref="">started</var> be true.</li>
-            </ol>
-          </dd>
-
-          <dt>
-            An <a data-anolis-xref="ASCII digits" href="#ascii-digits">ASCII digit</a>
-          </dt>
-
-          <dd>
-            <p>Follow these substeps:</p>
-
-            <ol>
-              <li>If <var data-anolis-xref="">finished</var> is true, skip to the next step in the overall set of steps.</li>
-
-              <li>Multiply <var data-anolis-xref="">value</var> by ten.</li>
-
-              <li>Add the value of the digit, interpreted in base ten, to <var data-anolis-xref="">value</var>.</li>
-
-              <li>Let <var data-anolis-xref="">started</var> be true.</li>
-
-              <li>Let <var data-anolis-xref="">got number</var> be true.</li>
-            </ol>
-          </dd>
-
-          <dt>A U+0020 SPACE character</dt>
-
-          <dt>A U+002C COMMA character</dt>
-
-          <dt>A U+003B SEMICOLON character</dt>
-
-          <dd>
-            <p>Follow these substeps:</p>
-
-            <ol>
-              <li>If <var data-anolis-xref="">got number</var> is false, return the <var data-anolis-xref="">numbers</var> list and abort. This happens if an entry in the list has no digits, as in "<code data-anolis-xref="">1,2,x,4</code>".</li>
-
-              <li>If <var data-anolis-xref="">negated</var> is true, then negate <var data-anolis-xref="">value</var>.</li>
-
-              <li>Append <var data-anolis-xref="">value</var> to the <var data-anolis-xref="">numbers</var> list.</li>
-
-              <li>Jump to step 4 in the overall set of steps.</li>
-            </ol>
-          </dd><!-- <dt>A U+002E FULL STOP character</dt> -->
-
-          <dt>A character in the range U+0001 to U+001F, <!-- space --> U+0021 to U+002B, <!-- comma --> U+002D to U+002F, <!-- digits --> U+003A, <!-- semicolon --> U+003C to U+0040, <!-- a-z --> U+005B to U+0060, <!-- A-Z --> U+007b to U+007F (i.e. any other non-alphabetic ASCII character)</dt><!--
- Test: http://www.hixie.ch/tests/adhoc/html/flow/image-maps/004-demo.html
- IE6 on Wine treats the following characters like this also: U+1-U+1f, U+21-U+2b, U+2d-U+2f, U+3a,
- U+3c-U+40, U+5b-U+60, U+7b-U+82, U+84-U+89, U+8b, U+8d, U+8f-U+99, U+9b, U+9d, U+a0-U+bf, U+d7,
- U+f7, U+1f6-U+1f9, U+218-U+24f, U+2a9-U+385, U+387, U+38b, U+38d, U+3a2, U+3cf, U+3d7-U+3d9, U+3db,
- U+3dd, U+3df, U+3e1, U+3f4-U+400, U+40d, U+450, U+45d, U+482-U+48f, U+4c5-U+4c6, U+4c9-U+4ca,
- U+4cd-U+4cf, U+4ec-U+4ed, U+4f6-U+4f7, U+4fa-U+530, U+557-U+560, U+588-U+5cf, U+5eb-U+5ef,
- U+5f3-U+620, U+63b-U+640, U+64b-U+670, U+6b8-U+6b9, U+6bf, U+6cf, U+6d4, U+6d6-U+904, U+93a-U+957,
- U+962-U+984, U+98d-U+98e, U+991-U+992, U+9a9, U+9b1, U+9b3-U+9b5, U+9ba-U+9db, U+9de, U+9e2-U+9ef,
- U+9f2-U+a04, U+a0b-U+a0e, U+a11-U+a12, U+a29, U+a31, U+a34, U+a37, U+a3a-U+a58, U+a5d, U+a5f-U+a84,
- U+a8c, U+a8e, U+a92, U+aa9, U+ab1, U+ab4, U+aba-U+adf, U+ae1-U+b04, U+b0d-U+b0e, U+b11-U+b12,
- U+b29, U+b31, U+b34-U+b35, U+b3a-U+b5b, U+b5e, U+b62-U+b84, U+b8b-U+b8d, U+b91, U+b96-U+b98, U+b9b,
- U+b9d, U+ba0-U+ba2, U+ba5-U+ba7, U+bab-U+bad, U+bb6, U+bba-U+c04, U+c0d, U+c11, U+c29, U+c34,
- U+c3a-U+c5f, U+c62-U+c84, U+c8d, U+c91, U+ca9, U+cb4, U+cba-U+cdd, U+cdf, U+ce2-U+d04, U+d0d,
- U+d11, U+d29, U+d3a-U+d5f, U+d62-U+e00, U+e2f, U+e31, U+e34-U+e3f, U+e46-U+e80, U+e83, U+e85-U+e86,
- U+e89, U+e8b-U+e8c, U+e8e-U+e93, U+e98, U+ea0, U+ea4, U+ea6, U+ea8-U+ea9, U+eac, U+eaf-U+edb,
- U+ede-U+109f, U+10c6-U+10cf, U+10f7-U+10ff, U+115a-U+115e, U+11a3-U+11a7, U+11fa-U+1dff,
- U+1e9b-U+1e9f, U+1efa-U+1eff, U+1f16-U+1f17, U+1f1e-U+1f1f, U+1f46-U+1f47, U+1f4e-U+1f4f, U+1f58,
- U+1f5a, U+1f5c, U+1f5e, U+1f7e-U+1f7f, U+1fb5, U+1fbd-U+1fc1, U+1fc5, U+1fcd-U+1fcf, U+1fd4-U+1fd5,
- U+1fdc-U+1fdf, U+1fed-U+1ff1, U+1ff5, U+1ffd-U+249b, U+24ea-U+3004, U+3006-U+3040, U+3095-U+309a,
- U+309f-U+30a0, U+30fb, U+30ff-U+3104, U+312d-U+3130, U+318f-U+4dff, U+9fa6-U+abff, U+d7a4-U+d7ff,
- U+e000-U+f8ff, U+fa2e-U+faff, U+fb07-U+fb12, U+fb18-U+fb1e, U+fb37, U+fb3d, U+fb3f, U+fb42, U+fb45,
- U+fbb2-U+fbd2, U+fbe9, U+fce1, U+fd3e-U+fd4f, U+fd90-U+fd91, U+fdc8-U+fdef, U+fdfc-U+fe7f,
- U+fefd-U+ff20, U+ff3b-U+ff40, U+ff5b-U+ff65, U+ffa0, U+ffbf-U+ffc1, U+ffc8-U+ffc9, U+ffd0-U+ffd1,
- U+ffd8-U+ffd9, U+ffdd-U+ffff
- IE7 on Win2003 treats the following characters like this also instead: U+1-U+1f, U+21-U+2b,
- U+2d-U+2f, U+3a, U+3c-U+40, U+5b-U+60, U+7b-U+82, U+84-U+89, U+8b, U+8d, U+8f-U+99, U+9b, U+9d,
- U+a0-U+a9, U+ab-U+b4, U+b6-U+b9, U+bb-U+bf, U+d7, U+f7, U+220-U+221, U+234-U+24f, U+2ae-U+2af,
- U+2b9-U+2ba, U+2c2-U+2df, U+2e5-U+2ed, U+2ef-U+344, U+346-U+379, U+37b-U+385, U+387, U+38b, U+38d,
- U+3a2, U+3cf, U+3d8-U+3d9, U+3f4-U+3ff, U+482-U+48b, U+4c5-U+4c6, U+4c9-U+4ca, U+4cd-U+4cf,
- U+4f6-U+4f7, U+4fa-U+530, U+557-U+558, U+55a-U+560, U+588-U+5cf, U+5eb-U+5ef, U+5f3-U+620,
- U+63b-U+640, U+656-U+66f, U+6d4, U+6dd-U+6e0, U+6e9-U+6ec, U+6ee-U+6f9, U+6fd-U+70f, U+72d-U+72f,
- U+740-U+77f, U+7b1-U+900, U+904, U+93a-U+93c, U+94d - U+94f, U+951-U+957, U+964-U+980, U+984,
- U+98d-U+98e, U+991-U+992, U+9a9, U+9b1, U+9b3-U+9b5, U+9ba-U+9bd, U+9c5-U+9c6, U+9c9-U+9ca,
- U+9cd-U+9d6, U+9d8-U+9db, U+9de, U+9e4-U+9ef, U+9f2-U+a01, U+a03-U+a04, U+a0b-U+a0e, U+a11-U+a12,
- U+a29, U+a31, U+a34, U+a37, U+a3a-U+a3d, U+a43-U+a46, U+a49-U+a4a, U+a4d-U+a58, U+a5d, U+a5f-U+a6f,
- U+a75-U+a80, U+a84, U+a8c, U+a8e, U+a92, U+aa9, U+ab1, U+ab4, U+aba-U+abc, U+ac6, U+aca,
- U+acd-U+acf, U+ad1-U+adf, U+ae1-U+b00, U+b04, U+b0d-U+b0e, U+b11-U+b12, U+b29, U+b31, U+b34-U+b35,
- U+b3a-U+b3c, U+b44-U+b46, U+b49 - U+b4a, U+b4d-U+b55, U+b58-U+b5b, U+b5e, U+b62-U+b81, U+b84,
- U+b8b-U+b8d, U+b91, U+b96-U+b98, U+b9b, U+b9d, U+ba0 - U+ba2, U+ba5-U+ba7, U+bab-U+bad, U+bb6,
- U+bba-U+bbd, U+bc3-U+bc5, U+bc9, U+bcd-U+bd6, U+bd8-U+c00, U+c04, U+c0d, U+c11, U+c29, U+c34,
- U+c3a-U+c3d, U+c45, U+c49, U+c4d-U+c54, U+c57-U+c5f, U+c62-U+c81, U+c84, U+c8d, U+c91, U+ca9,
- U+cb4, U+cba-U+cbd, U+cc5, U+cc9, U+ccd-U+cd4, U+cd7-U+cdd, U+cdf, U+ce2-U+d01, U+d04, U+d0d,
- U+d11, U+d29, U+d3a-U+d3d, U+d44-U+d45, U+d49, U+d4d-U+d56, U+d58-U+d5f, U+d62-U+d81, U+d84,
- U+d97-U+d99, U+db2, U+dbc, U+dbe - U+dbf, U+dc7-U+dce, U+dd5, U+dd7, U+de0-U+df1, U+df4-U+e00,
- U+e3b-U+e3f, U+e4f-U+e80, U+e83, U+e85-U+e86, U+e89, U+e8b-U+e8c, U+e8e-U+e93, U+e98, U+ea0, U+ea4,
- U+ea6, U+ea8-U+ea9, U+eac, U+eba, U+ebe-U+ebf, U+ec5-U+ecc, U+ece-U+edb, U+ede-U+eff, U+f01-U+f3f,
- U+f48, U+f6b-U+f70, U+f82-U+f87, U+f8c-U+f8f, U+f98, U+fbd-U+fff, U+1022, U+1028, U+102b,
- U+1033-U+1035, U+1037, U+1039-U+104f, U+105a-U+109f, U+10c6-U+10cf, U+10f7-U+10ff, U+115a - U+115e,
- U+11a3-U+11a7, U+11fa-U+11ff, U+1207, U+1247, U+1249, U+124e-U+124f, U+1257, U+1259, U+125e-U+125f,
- U+1287, U+1289, U+128e-U+128f, U+12af, U+12b1, U+12b6-U+12b7, U+12bf, U+12c1, U+12c6-U+12c7,
- U+12cf, U+12d7, U+12ef, U+130f, U+1311, U+1316-U+1317, U+131f, U+1347, U+135b-U+139f,
- U+13f5-U+1400, U+166d-U+166e, U+1677-U+1680, U+169b - U+169f, U+16eb-U+177f, U+17c9-U+181f, U+1843,
- U+1878-U+187f, U+18aa-U+1dff, U+1e9c-U+1e9f, U+1efa-U+1eff, U+1f16-U+1f17, U+1f1e-U+1f1f,
- U+1f46-U+1f47, U+1f4e-U+1f4f, U+1f58, U+1f5a, U+1f5c, U+1f5e, U+1f7e-U+1f7f, U+1fb5, U+1fbd,
- U+1fbf-U+1fc1, U+1fc5, U+1fcd-U+1fcf, U+1fd4-U+1fd5, U+1fdc-U+1fdf, U+1fed-U+1ff1, U+1ff5,
- U+1ffd-U+207e, U+2080-U+2101, U+2103-U+2106, U+2108-U+2109, U+2114, U+2116-U+2118, U+211e-U+2123,
- U+2125, U+2127, U+2129, U+212e, U+2132, U+213a-U+215f, U+2184-U+3005, U+3008-U+3020, U+302a-U+3037,
- U+303b-U+3104, U+312d-U+3130, U+318f - U+319f, U+31b8-U+33ff, U+4db6-U+4dff, U+9fa6-U+9fff,
- U+a48d-U+abff, U+d7a4-U+d7ff, U+e000-U+f8ff, U+fa2e-U+faff, U+fb07-U+fb12, U+fb18-U+fb1c, U+fb1e,
- U+fb29, U+fb37, U+fb3d, U+fb3f, U+fb42, U+fb45, U+fbb2-U+fbd2, U+fd3e-U+fd4f, U+fd90-U+fd91,
- U+fdc8-U+fdef, U+fdfc-U+fe6f, U+fe73, U+fe75, U+fefd-U+ff20, U+ff3b-U+ff40, U+ff5b-U+ff9f,
- U+ffbf-U+ffc1, U+ffc8-U+ffc9, U+ffd0-U+ffd1, U+ffd8-U+ffd9, U+ffdd-U+ffff
--->
-
-          <dd>
-            <p>Follow these substeps:</p>
-
-            <ol>
-              <li>If <var data-anolis-xref="">got number</var> is true, let <var data-anolis-xref="">finished</var> be true.</li>
-
-              <li>If <var data-anolis-xref="">finished</var> is true, skip to the next step in the overall set of steps.</li>
-
-              <li>Let <var data-anolis-xref="">negated</var> be false.</li>
-            </ol>
-          </dd>
-
-          <dt>Any other character</dt><!-- alphabetic a-z A-Z, and non-ASCII -->
-
-          <dd>
-            <p>Follow these substeps:</p>
-
-            <ol>
-              <li>If <var data-anolis-xref="">finished</var> is true, skip to the next step in the overall set of steps.</li>
-
-              <li>Let <var data-anolis-xref="">negated</var> be false.</li>
-
-              <li>Let <var data-anolis-xref="">bogus</var> be true.</li>
-
-              <li>If <var data-anolis-xref="">started</var> is true, then return the <var data-anolis-xref="">numbers</var> list, and abort. (The value in <var data-anolis-xref="">value</var> is not appended to the list first; it is dropped.)</li>
-            </ol>
-          </dd>
-        </dl>
-      </li>
-
-      <li>
-        <p>Advance <var data-anolis-xref="">position</var> to the next character in <var data-anolis-xref="">input</var>, or to beyond the end of the string if there are no more characters.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">position</var> points to a character (and not to beyond the end of <var data-anolis-xref="">input</var>), jump to the big <i>Parser</i> step above.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">negated</var> is true, then negate <var data-anolis-xref="">value</var>.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">got number</var> is true, then append <var data-anolis-xref="">value</var> to the <var data-anolis-xref="">numbers</var> list.</p>
-      </li>
-
-      <li>
-        <p>Return the <var data-anolis-xref="">numbers</var> list and abort.</p>
-      </li>
-    </ol>
-  </div>
-
-  <div class="impl">
-    <h5 id="lists-of-dimensions"><span class="secno">2.4.4.6</span> Lists of dimensions</h5><!-- no definition of a type since no conforming feature uses this syntax (it's only used in
-  cols="" and rows="" on <frameset> -->
-
-    <p>The <dfn id="rules-for-parsing-a-list-of-dimensions">rules for parsing a list of dimensions</dfn> are as follows. These rules return a list of zero or more pairs consisting of a number and a unit, the unit being one of <i>percentage</i>, <i>relative</i>, and <i>absolute</i>.</p>
-
-    <ol>
-      <li>
-        <p>Let <var data-anolis-xref="">raw input</var> be the string being parsed.</p>
-      </li>
-
-      <li>
-        <p>If the last character in <var data-anolis-xref="">raw input</var> is a "," (U+002C) character, then remove that character from <var data-anolis-xref="">raw input</var>.</p>
-      </li>
-
-      <li>
-        <p><a data-anolis-xref="split a string on commas" href="#split-a-string-on-commas">Split the string <var data-anolis-xref="">raw input</var> on commas</a>. Let <var data-anolis-xref="">raw tokens</var> be the resulting list of tokens.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">result</var> be an empty list of number/unit pairs.</p>
-      </li>
-
-      <li>
-        <p>For each token in <var data-anolis-xref="">raw tokens</var>, run the following substeps:</p>
-
-        <ol>
-          <li>
-            <p>Let <var data-anolis-xref="">input</var> be the token.</p>
-          </li>
-
-          <li>
-            <p>Let <var data-anolis-xref="">position</var> be a pointer into <var data-anolis-xref="">input</var>, initially pointing at the start of the string.</p>
-          </li>
-
-          <li>
-            <p>Let <var data-anolis-xref="">value</var> be the number 0.</p>
-          </li>
-
-          <li>
-            <p>Let <var data-anolis-xref="">unit</var> be <i>absolute</i>.</p>
-          </li>
-
-          <li>
-            <p>If <var data-anolis-xref="">position</var> is past the end of <var data-anolis-xref="">input</var>, set <var data-anolis-xref="">unit</var> to <i>relative</i> and jump to the last substep.</p>
-          </li>
-
-          <li>
-            <p>If the character at <var data-anolis-xref="">position</var> is an <a data-anolis-xref="ASCII digits" href="#ascii-digits">ASCII digit</a>, <a href="#collect-a-sequence-of-characters">collect a sequence of characters</a> that are <a href="#ascii-digits">ASCII digits</a>, interpret the resulting sequence as an integer in base ten, and increment <var data-anolis-xref="">value</var> by that integer.</p>
-          </li>
-
-          <li>
-            <p>If the character at <var data-anolis-xref="">position</var> is a "." (U+002E) character, run these substeps:</p>
-
-            <ol>
-              <li>
-                <p><a href="#collect-a-sequence-of-characters">Collect a sequence of characters</a> consisting of <a data-anolis-xref="space character" href="#space-character">space characters</a> and <a href="#ascii-digits">ASCII digits</a>. Let <var data-anolis-xref="">s</var> be the resulting sequence.</p>
-              </li>
-
-              <li>
-                <p>Remove all <a data-anolis-xref="space character" href="#space-character">space characters</a> in <var data-anolis-xref="">s</var>.</p>
-              </li>
-
-              <li>
-                <p>If <var data-anolis-xref="">s</var> is not the empty string, run these subsubsteps:</p>
-
-                <ol>
-                  <li>
-                    <p>Let <var data-anolis-xref="">length</var> be the number of characters in <var data-anolis-xref="">s</var> (after the spaces were removed).</p>
-                  </li>
-
-                  <li>
-                    <p>Let <var data-anolis-xref="">fraction</var> be the result of interpreting <var data-anolis-xref="">s</var> as a base-ten integer, and then dividing that number by <span data-anolis-xref="">10<sup data-anolis-xref=""><var data-anolis-xref="">length</var></sup></span>.</p>
-                  </li>
-
-                  <li>
-                    <p>Increment <var data-anolis-xref="">value</var> by <var data-anolis-xref="">fraction</var>.</p>
-                  </li>
-                </ol>
-              </li>
-            </ol>
-          </li>
-
-          <li>
-            <p><a href="#skip-whitespace">Skip whitespace</a>.</p>
-          </li>
-
-          <li>
-            <p>If the character at <var data-anolis-xref="">position</var> is a "%" (U+0025) character, then set <var data-anolis-xref="">unit</var> to <i>percentage</i>.</p>
-
-            <p>Otherwise, if the character at <var data-anolis-xref="">position</var> is a U+002A ASTERISK character (*), then set <var data-anolis-xref="">unit</var> to <i>relative</i>.</p>
-          </li><!-- the remaining characters in /input/ are ignored -->
-
-          <li>
-            <p>Add an entry to <var data-anolis-xref="">result</var> consisting of the number given by <var data-anolis-xref="">value</var> and the unit given by <var data-anolis-xref="">unit</var>.</p>
-          </li>
-        </ol>
-      </li>
-
-      <li>
-        <p>Return the list <var data-anolis-xref="">result</var>.</p>
-      </li>
-    </ol>
-  </div>
-
-  <h4 id="dates-and-times"><span class="secno">2.4.5</span> 日付および時刻</h4>
+  <h4 id="dates-and-times"><span class="secno">2.4.5</span> 날짜 및 시간</h4>
 
   <p>下記のアルゴリズムにおいて、<dfn id="number-of-days-in-month-month-of-year-year">年<var data-anolis-xref="">year</var>の月<var data-anolis-xref="">month</var>の日数</dfn>は：<var data-anolis-xref="">month</var>が1、3、5、7、8、10、12ならば<em>31</em>である。<var data-anolis-xref="">month</var>が4、6、9、11ならば<em>30</em>である。<var data-anolis-xref="">month</var>が2かつ<var data-anolis-xref="">year</var>が400で割り切れる数、または<var data-anolis-xref="">year</var>が4で割り切れるが100で割り切れないならば<em>29</em>であり、そうでなければ<em>28</em>である。これは、グレゴリオ暦の閏年を考慮に入れている。<a href="references.html#refsGREGORIAN">[GREGORIAN]</a></p>
 
   <p><a href="#ascii-digits">ASCII数字</a>がこの節で定義される日付および時刻の構文で使用される場合、これらは10進数で表現される。</p>
-
-  <div class="impl">
-    <p class="note">While the formats described here are intended to be subsets of the corresponding ISO8601 formats, this specification defines parsing rules in much more detail than ISO8601. Implementors are therefore encouraged to carefully examine any date parsing libraries before using them to implement the parsing rules described below; ISO8601 libraries might not parse dates and times in exactly the same manner. <a href="references.html#refsISO8601">[ISO8601]</a></p>
-  </div>
 
   <p>この仕様が<dfn id="proleptic-gregorian-calendar">先発グレゴリオ暦</dfn>を参照する場合、これは、1年に遡って挿入された現代のグレゴリオ暦を意味する。<dfn id="proleptic-gregorian-date">先発グレゴリオ日付</dfn>として明示的に参照される<a href="#proleptic-gregorian-calendar">先発グレゴリオ暦</a>での日付は、たとえ暦が問題の時刻（または場所）で使用されていないとしても、その暦を使用して説明される。<a href="references.html#refsGREGORIAN">[GREGORIAN]</a></p>
 
