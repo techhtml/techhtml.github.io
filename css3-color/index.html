@@ -961,8 +961,7 @@ em { color: rgb(110%, 0%, 0%) }  /* clipped to rgb(100%,0%,0%) */
   <p lang=en>Other devices, such as printers, have different gamuts than sRGB; some
    colors outside the 0..255 sRGB range will be representable (inside the
    device gamut), while other colors inside the 0..255 sRGB range will be
-   outside the device gamut and will thus be mapped.
-
+   outside the device gamut and will thus be mapped.</p>
   <h4 id=rgba-color><span class=secno>4.2.2. </span>RGBA color 값</h4>
 
   <p lang=ko><span class=index-def id=rgba-def title="rgba()">RGB 컬러 모델이 
@@ -986,24 +985,35 @@ em { color: rgb(100%,0%,0%) }   /* float range 0.0% - 100.0% */
 em { color: rgba(100%,0%,0%,1) } /* the same, with explicit opacity of 1 */
 </pre>
   </div>
-
-  <p>Unlike RGB values, there is no hexadecimal notation for an RGBA value.
-
-  <p> The format of an RGBA value in the functional notation is &lsquo;<code
+  <p lang=ko>RGB 값과 달리, RGBA는 16진수로 표현하는 게 불가합니다.
+  <p lang=en>Unlike RGB values, there is no hexadecimal notation for an RGBA value.
+  <p lang=ko>
+    함수 표기식 RGBA 값의 포맷은 &lsquo;<code class=css>rgba(</code>&rsquo; 뒤에
+    콤마로 구분되는 세개의 숫자 값 (3개의 정수 혹은 퍼센테이지 값) 목록 에 이어
+    <a class=index-inst href="#alphavaluedt" id=ltalphavaluegt>&lt;alphavalue&gt;</a>를 입력하고,
+    그 뒤에 &lsquo;<code class=css>)</code>&rsquo;로 닫습니다.
+    
+    정수 값은 255가 100%와 같으며, rgba(255,255,255,0.8) = rgba(100%,100%,100%,0.8).
+    공백 문자는 숫자 사이에 넣어도 무관합니다.
+  </p>
+  <p lang=en>The format of an RGBA value in the functional notation is &lsquo;<code
    class=css>rgba(</code>&rsquo; followed by a comma-separated list of three
    numerical values (either three integer values or three percentage values),
    followed by an <a class=index-inst href="#alphavaluedt"
    id=ltalphavaluegt>&lt;alphavalue&gt;</a>, followed by &lsquo;<code
    class=css>)</code>&rsquo;. The integer value 255 corresponds to 100%,
    rgba(255,255,255,0.8) = rgba(100%,100%,100%,0.8). White space characters
-   are allowed around the numerical values.
+   are allowed around the numerical values.</p>
 
-  <p>Implementations must clip the red, green, and blue components of RGBA
+  <p lang=ko>
+    구현 시 RGBA 컬러 값의 red, green, blue를
+    RGB 색상 값 섹션에서 기록한 규칙에 따라서 장치의 색 영역에 두어야 합니다.
+  </p>
+  <p lang=en>Implementations must clip the red, green, and blue components of RGBA
    color values to the device gamut according to the rules for the RGB color
    value composed of those components.
-
-  <p>These examples specify effects that are possible with the rgba()
-   notation:
+  <p lang=ko>다음 세개의 예제는 rgba() 기법으로 색을 지정한 것입니다.
+  <p lang=en>These examples specify effects that are possible with the rgba() notation:
 
   <div class=example>
    <p style="display:none">Example(s):</p>
@@ -1013,8 +1023,12 @@ p { color: rgba(0,0,255,0.5) }        /* semi-transparent solid blue */
 p { color: rgba(100%, 50%, 0%, 0.1) } /* very transparent solid orange */
 </pre>
   </div>
-
-  <p class=note><strong>Note.</strong> If RGBA values are not supported by a
+  <p class=note lang=ko><strong>Note.</strong> 
+    만약 RBBA 값을 user agent에서 지원하지 않을 경우,
+    그는 CSS의 전방 호환 파싱 규칙 (<a href="#CSS21" rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a>, 챕터 4)에 따라
+    인식할 수 없는 값으로 구분해야 합니다.
+    RGBA 값은 불투명도를 <em>무시한</em> RGB 값으로 취급해서는 안됩니다.
+  <p class=note lang=en><strong>Note.</strong> If RGBA values are not supported by a
    user agent, they should be treated like unrecognized values per the CSS
    forward compatibility parsing rules (<a href="#CSS21"
    rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a>, Chapter 4). RGBA values must
@@ -1022,9 +1036,20 @@ p { color: rgba(100%, 50%, 0%, 0.1) } /* very transparent solid orange */
 
   <h4 id=transparent><span class=secno>4.2.3. </span>&lsquo;<a
    href="#transparent-def"><code class=css>transparent</code></a>&rsquo;
-   color keyword</h4>
-
-  <p>CSS1 introduced the &lsquo;<a href="#transparent-def"><code
+   color 키워드</h4>
+  <p lang=ko>CSS1은 &lsquo;<a href="#transparent-def"><code class=css>transparent</code></a>&rsquo;를
+    background-color 속성을 위한 값으로 소개하고 있습니다.
+    CSS2에서는 border-color에서도 &lsquo;<a href="#transparent-def"><code class=css>transparent</code></a>&rsquo;를
+    사용할 수 있도록 하고있습니다.
+    Open eBook(tm) Publication Structure 1.0.1<a href="#OEB101" rel=biblioentry>[OEB101]<!--{{OEB101}}--></a>에서는
+    <a href="#color0"><code class=property>color</code></a>&rsquo; 속성을 확장시켜
+    &lsquo;<a href="#transparent-def"><code class=css>transparent</code></a>&rsquo; 키워드를 값으로
+    사용할 수 있도록 하였습니다.
+    CSS3에서는  &lsquo;<a href="#transparent-def"><code class=css>transparent</code></a>&rsquo; 값을 더욱 확장시켜,
+    color를 값으로 사용하는 모든 속성에 사용 가능하도록 하였습니다.
+    이로 인해서 CSS3에서 속성정의를 더 심플하게 하였습니다.
+    
+  <p lang=en>CSS1 introduced the &lsquo;<a href="#transparent-def"><code
    class=css>transparent</code></a>&rsquo; value for the background-color
    property. CSS2 allowed border-color to also accept the &lsquo;<a
    href="#transparent-def"><code class=css>transparent</code></a>&rsquo;
@@ -1040,34 +1065,61 @@ p { color: rgba(100%, 50%, 0%, 0.1) } /* very transparent solid orange */
 
   <dl>
    <dt><dfn id=transparent-def>transparent</dfn>
-
-   <dd>Fully transparent. This keyword can be considered a shorthand for
-    transparent black, rgba(0,0,0,0), which is its computed value.
+  
+   <dd lang=ko>
+     완전히 투명한 상태를 나타냅니다.
+     이 키워드는 투명한 black, 즉 그 계산값인 rgba(0,0,0,0)과 동일합니다.
+     <div lang=en>Fully transparent. This keyword can be considered a shorthand for
+     transparent black, rgba(0,0,0,0), which is its computed value.</div>
   </dl>
 
-  <h4 id=hsl-color><span class=secno>4.2.4. </span>HSL color values</h4>
-
-  <p>CSS3 adds numerical <span class=index-def id=hsl-def
+  <h4 id=hsl-color><span class=secno>4.2.4. </span>HSL color 값</h4>
+  <p lang=ko>CSS3에서는 <span class=index-def id=hsl-def
+  title="hsl()">RGB 컬러에는 다음과 같은 제약사항이 있었기 때문에, 
+    RGB 값을 완전히 표현 가능하며 숫자로 이루어진 hue-saturation-lightness (HSL) 컬러 값을 추가하였습니다.
+  </span></p>
+  <p lang=en>CSS3 adds numerical <span class=index-def id=hsl-def
    title="hsl()">hue-saturation-lightness (HSL) colors as a complement to
    numerical RGB colors. It has been observed that RGB colors have the
    following limitations: </span>
 
   <ul>
-   <li>RGB is hardware-oriented: it reflects the use of CRTs.
-
-   <li>RGB is non-intuitive. People can learn how to use RGB, but actually by
-    internalizing how to translate hue, saturation and lightness, or
-    something similar, to RGB.
+   <li lang=ko>
+     RGB는 CRT를 사용한다는 걸 전제로 두는 하드웨어 지향적인 것이었습니다.
+     <div lang=en>RGB is hardware-oriented: it reflects the use of CRTs.</div>
+  
+   <li lang=ko>
+     RGB는 직관적이지 않습니다.
+     사람들이 RGB를 어떻게 사용하는 지 배워도,
+     실제로는 색상, 채도, 명도를 RGB로 변환하는 것에 불과합니다.
+     <div lang=en>RGB is non-intuitive. People can learn how to use RGB, but actually by
+     internalizing how to translate hue, saturation and lightness, or
+     something similar, to RGB.</div>
   </ul>
-
-  <p> There are several other color schemes possible. Some advantages of HSL
+  <p lang=ko>
+    다른 여러 컬러 스킴도 사용 가능했습니다.
+    하지만 HSL에는 밝기와 어두움이 대칭한다는 (HSV와는 맞지 않는) 이점이 있었고,
+    이로 인해 HSL에서 RGB로 변환이 쉬웠습니다.
+  <p lang=en>There are several other color schemes possible. Some advantages of HSL
    are that it is symmetrical to lightness and darkness (which is not the
    case with HSV for example), and it is trivial to convert HSL to RGB.
+  <p lang=ko> HSL은 세개의 값(색상&lsquo;hue&rsquo;, 채도&lsquo;saturation&rsquo;, 명도&lsquo;lightness&rsquo;0로 표현합니다.
+    색상&lsquo;hue&rsquo;은 color circle(즉 무지개를 동그라미로 나타낸 것)로 표현합니다.
+    이 각도는 일반적으로 CSS에 암포된 단위를 나타내는 각도를 의미하기 떄문에, 문법적으로는 &lt;number&gt;만 작성하게 됩니다.
+    red = 0 = 360이며, 다른 색상은 green=120, blue=240 등 원형에 따라 표기합니다.
+    각도이기 때문에, -120=240 이며 480=120이라는 대응관계가 있습니다.
+    표현하고 있는 각도를 x로 구현하며 그 각도를 (((x mod 360) + 360) mod 360)에서 계산한 다음,
+    [0,360) (<em>즉 </em> 0 이상 360 미만) 범위 내에서 정규화할 수 있습니다.
+    채도와 명도는 퍼센테이지로 표현합니다.
+    100%는 full saturation, 0%는 shade of gray를 의미합니다.
+    0% lightness는 black, 100% lightness는 white, 50% lightness는 &ldquo;normal&rdquo;입니다.
+    
 
-  <p> HSL colors are encoding as a triple (hue, saturation, lightness). Hue
+  <p lang=en> HSL colors are encoding as a triple (hue, saturation, lightness). Hue
    is represented as an angle of the color circle (i.e. the rainbow
-   represented in a circle). This angle is so typically measured in degrees
-   that the unit is implicit in CSS; syntactically, only a &lt;number&gt; is
+   represented in a circle). This angle is so typically measured in degrees that the unit is implicit in CSS;
+    
+    syntactically, only a &lt;number&gt; is
    given. By definition red=0=360, and the other colors are spread around the
    circle, so green=120, blue=240, etc. As an angle, it implicitly wraps
    around such that -120=240 and 480=120. One way an implementation could
@@ -1077,7 +1129,7 @@ p { color: rgba(100%, 50%, 0%, 0.1) } /* very transparent solid orange */
    100% is full saturation, and 0% is a shade of gray. 0% lightness is black,
    100% lightness is white, and 50% lightness is &ldquo;normal&rdquo;.
 
-  <p>So for instance:
+  <p>예를 들면:
 
   <div class=example>
    <p style="display:none">Example(s):</p>
@@ -1090,20 +1142,28 @@ p { color: rgba(100%, 50%, 0%, 0.1) } /* very transparent solid orange */
 * { color: hsl(120, 75%, 75%) }  /* pastel green, and so on */
 </pre>
   </div>
-
-  <p> The advantage of HSL over RGB is that it is far more intuitive: you can
+  <p lang=ko>RGB에 비해 HSL이 가지는 장점은 표현이 훨씬 직관적인 것입니다.
+    어떤 색상을 표현하고 싶은 것인지 추측하여 변경할 수 있습니다.
+    또한 같은 계열인 색상 세트도 (색상을 고정한 뒤 밝기 및 채도만 변경하여) 쉽게 작성할 수 있습니다.
+    
+  <p lang=en> The advantage of HSL over RGB is that it is far more intuitive: you can
    guess at the colors you want, and then tweak. It is also easier to create
    sets of matching colors (by keeping the hue the same and varying the
    lightness/darkness, and saturation)
-
-  <p>If saturation is less than 0%, implementations must clip it to 0%. If
+  <p lang=ko>만약 채도가 0% 미만일 경우, 구현체는 이를 0%에 두어야합니다.
+    만약 디바이스가 표현 가능한 색 밖에 있는 경우, 구현체는 그 색을 표현 가능한 색으로 두어야합니다.
+    이 경우 가능한 비슷한 색상을 표현해야하며, 그렇지 않은 경우는 정의하지 않습니다.
+    (이는 아래에 기술한 HSL을 RGB로 변경하는 알고리즘을 적용한 후 RGB 색상을 추출해내는 룰을 적용하는 것과는 다릅니다)
+  <p lang=en>If saturation is less than 0%, implementations must clip it to 0%. If
    the resulting value is outside the device gamut, implementations must clip
    it to the device gamut. This clipping should preserve the hue when
    possible, but is otherwise undefined. (In other words, the clipping is
    different from applying the rules for clipping of RGB colors after
    applying the algorithm below for converting HSL to RGB.)
-
-  <p> The algorithm to translate HSL to RGB is simple (here expressed in ABC
+  <p lang=ko>HSL을 RGB로 변경하는 알고리즘은 매우 간단합니다.
+    (테이블을 생성하는 데 사용한 ABC 기법<a href="#ABC" rel=biblioentry>[ABC]<!--{{ABC}}--></a>을 나타냅니다)
+    이 알고리즘에서, 3개의 값(H, S, L)은 각각 0..1 분수를 나타냅니다.
+  <p lang=en> The algorithm to translate HSL to RGB is simple (here expressed in ABC
    <a href="#ABC" rel=biblioentry>[ABC]<!--{{ABC}}--></a> which was used to
    generate the tables.) In these algorithms, all three values (H, S and L)
    have been normalized to fractions 0..1:
@@ -1128,17 +1188,19 @@ p { color: rgba(100%, 50%, 0%, 0.1) } /* very transparent solid orange */
        RETURN m1
 </pre>
 
-  <h5 id=hsl-examples><span class=secno>4.2.4.1. </span>HSL examples</h5>
-
-  <p> Each table below represents one hue. Twelve equally spaced colors (i.e.
+  <h5 id=hsl-examples><span class=secno>4.2.4.1. </span>HSL 예시</h5>
+  <p lang=ko>각 표는 하나의 색을 표시합니다.
+    색은 color circle을 12등분(즉 30&deg; 마다 등분)하고 red, yellow, green, cyan, blue, magenta 및 
+    중간색 (마지막 색상은 magenta와 red의 중간색)을 선택하고 있습니다.
+  <p lang=en> Each table below represents one hue. Twelve equally spaced colors (i.e.
    at 30&deg; intervals) have been chosen from the color circle: red, yellow,
    green, cyan, blue, magenta, with all the intermediate colors (the last is
    the color between magenta and red).
-
-  <p> The X axis of each table represents the saturation (100%, 75%, 50%,
+  <p lang=ko>표의 X축은 채도(100%, 75%, 50%, 25%, 0%)를 나타냅니다.</p>
+  <p lang=en> The X axis of each table represents the saturation (100%, 75%, 50%,
    25%, 0%).
-
-  <p> The Y axis represents the lightness. 50% is &ldquo;normal&rdquo;.
+  <p lang=ko>표의 Y축은 밝기를 나타냅니다 50%는 &ldquo;normal&rdquo;을 나타냅니다.
+  <p lang=en> The Y axis represents the lightness. 50% is &ldquo;normal&rdquo;.
 
   <table class=hslexample>
    <tbody>
@@ -2857,9 +2919,16 @@ p { color: rgba(100%, 50%, 0%, 0.1) } /* very transparent solid orange */
   </table>
 
   <h4 id=hsla-color style="margin-top:2em"><span class=secno>4.2.5.
-   </span>HSLA color values</h4>
-
-  <p><span class=index-def id=hsla-def title="hsla()">Just as the
+   </span>HSLA color 값</h4>
+  <p lang=ko><span class=index-def id=hsla-def title="hsla()">단순히
+   &lsquo;<code class=css>rgb()</code>&rsquo;의 함수 표현식에
+   &lsquo;<code class=css>rgba()</code>&rsquo;로 알파값을 표현하듯,
+   &lsquo;<code class=css>hsl()</code>&rsquo; 함수에 알파값을 지정하기 위해
+   &lsquo;<code class=css>hsla()</code>&rsquo; 함수가 존재합니다.</span> 
+    자세한 내용은 <a href="#alpha">간단한 alpha 합성</a>을 보시길 바랍니다.
+    다음 예제는 동일한 색을 나타냅니다:
+    
+  <p lang=en><span class=index-def id=hsla-def title="hsla()">Just as the
    &lsquo;<code class=css>rgb()</code>&rsquo; functional notation has the
    &lsquo;<code class=css>rgba()</code>&rsquo; alpha counterpart, the
    &lsquo;<code class=css>hsl()</code>&rsquo; functional notation has the
@@ -2875,20 +2944,25 @@ em { color: hsl(120, 100%, 50%) }     /* green */
 em { color: hsla(120, 100%, 50%, 1) } /* the same, with explicit opacity of 1 */
 </pre>
   </div>
-
-  <p>The format of an HSLA color value in the functional notation is
+  <p lang=ko>HSLA 색상 값의 함수 표기 방법은 &lsquo;<code class=css>hsla(</code>&rsquo; 뒤에 색상 각도를 표기하고,
+    명도와 채도를 퍼센테이지로 입력한 뒤, <a class=index-inst
+   href="#alphavaluedt" id=ltalphavaluegt0>&lt;alphavalue&gt;</a>를 입력한 뒤, 
+    &lsquo;<code class=css>)</code>&rsquo;로 닫아줍니다.
+    각 숫자 값 사이에 공백문자를 넣어도 무관합니다.
+    
+  <p lang=en>The format of an HSLA color value in the functional notation is
    &lsquo;<code class=css>hsla(</code>&rsquo; followed by the hue in degrees,
    saturation and lightness as a percentage, and an <a class=index-inst
    href="#alphavaluedt" id=ltalphavaluegt0>&lt;alphavalue&gt;</a>, followed
    by &lsquo;<code class=css>)</code>&rsquo;. White space characters are
    allowed around the numerical values.
-
-  <p>Implementations must clip the hue, saturation, and lightness components
+  <p lang=ko>구현체는 반드시 HSLA 컬러 값의 색상, 채도, 명도를 HSL 컬러 값 섹션에서 기록한 규칙에 따라,
+    디바이스가 표현가능한 색 영역 내에 두어야합니다.
+  <p lang=en>Implementations must clip the hue, saturation, and lightness components
    of HSLA color values to the device gamut according to the rules for the
    HSL color value composed of those components.
-
-  <p>These examples specify effects that are possible with the hsla()
-   notation:
+  <p lang=ko>다음 예제는 hsla() 표기법을 사용해서 색을 표현하는 방법입니다.
+  <p lang=en>These examples specify effects that are possible with the hsla() notation:
 
   <div class=example>
    <p style="display:none">Example(s):</p>
@@ -2899,9 +2973,17 @@ p { color: hsla(30, 100%, 50%, 0.1) }  /* very transparent solid orange */
 </pre>
   </div>
 
-  <h3 id=svg-color><span class=secno>4.3. </span>Extended color keywords</h3>
-
-  <p>The table below provides a list of the X11 colors <a href="#X11COLORS"
+  <h3 id=svg-color><span class=secno>4.3. </span>확장 color 키워드</h3>
+  <p lang=ko>
+     아래 표는 많은 브라우저에서 지원하는 X11 색상 목록 <a href="#X11COLORS"
+   rel=biblioentry>[X11COLORS]<!--{{X11COLORS}}--></a>에 SVG 1.0의 gray/grey 관련 키워드를 추가한 것입니다.
+    표의 내용은 <a href="http://www.w3.org/TR/SVG/types.html#ColorKeywords">SVG 1.0 color
+   keyword names</a>와 거의 동일합니다.
+    이 스펙은 SVG에서 정의한 내용을 확장한 것입니다.
+    표 왼쪽에 있는 2열의 다른 색상 표기는 의미가 있으며,
+    첫번째 열은 color 이름으로, 두번째 열은 수치를 지정하여 배경색을 표현하고 있습니다.
+  
+  <p lang=en>The table below provides a list of the X11 colors <a href="#X11COLORS"
    rel=biblioentry>[X11COLORS]<!--{{X11COLORS}}--></a> supported by popular
    browsers with the addition of gray/grey variants from SVG 1.0. The
    resulting list is precisely the same as the <a
@@ -2914,15 +2996,15 @@ p { color: hsla(30, 100%, 50%, 0.1) }  /* very transparent solid orange */
   <table class=colortable>
    <tbody>
     <tr>
-     <th style="background:black">Named
+     <th style="background:black">이름표기
 
-     <th>Numeric
+     <th>숫자표기
 
-     <th>Color&nbsp;name
+     <th>색상&nbsp;명
 
-     <th>Hex&nbsp;rgb
+     <th>16&nbsp;진수
 
-     <th>Decimal
+     <th>10진수
 
     <tr>
      <td class=c style="background:aliceblue">&nbsp;
@@ -4543,10 +4625,24 @@ p { color: hsla(30, 100%, 50%, 0.1) }  /* very transparent solid orange */
   </table>
 
   <h3 id=currentcolor><span class=secno>4.4. </span>&lsquo;<a
-   href="#currentColor-def"><code class=css>currentColor</code></a>&rsquo;
-   color keyword</h3>
-
-  <p>CSS1 and CSS2 defined the initial value of <a
+   href="#currentColor-def"><code class=css>currentColor</code></a>&rsquo; color 키워드</h3>
+  <p lang=ko>
+    CSS1과 CSS2에서는 <code class=property>border-color</code>&rsquo; 속성</a>의 초기 값을
+    <q cite="http://www.w3.org/TR/REC-CSS1#border-color">&lsquo;<a href="#color0"><code class=property>color</code></a>&rsquo; 속성의 값</q>으로 정의했지만, 관련 키워드를 명확히 정의하지는 않았습니다.
+    이 생략 부분을 SVG에서 정의하였으며, <a
+   href="http://www.w3.org/TR/SVG/color.html#ColorProperty">SVG 1.0
+   에서 &lsquo;<code class=css>currentColor</code>&rsquo; 값</a>을 <code class=property>fill</code>&rsquo;, &lsquo;<code
+   class=property>stroke</code>&rsquo;, &lsquo;<code
+   class=property>stop-color</code>&rsquo;, &lsquo;<code
+   class=property>flood-color</code>&rsquo;, and &lsquo;<code
+   class=property>lighting-color</code>&rsquo; 속성을 위한 값으로 정의하였습니다.
+      
+   CSS3는 이 &lsquo;<a href="#currentColor-def"><code
+   class=css>currentColor</code></a>&rsquo; 키워드를 &lt;color&gt; 값을 
+   사용하는 모든 속성에서 이용 가능하도록 하여, color 값을 확장시켰습니다.
+   CSS3에서 해당 키워드를 확장하며, 속성 정의도 간소화되었습니다.
+  
+  <p lang=en>CSS1 and CSS2 defined the initial value of <a
    href="http://www.w3.org/TR/REC-CSS1#border-color">the &lsquo;<code
    class=property>border-color</code>&rsquo; property</a> to be <q
    cite="http://www.w3.org/TR/REC-CSS1#border-color">the value of the
@@ -4559,8 +4655,9 @@ p { color: hsla(30, 100%, 50%, 0.1) }  /* very transparent solid orange */
    class=property>stroke</code>&rsquo;, &lsquo;<code
    class=property>stop-color</code>&rsquo;, &lsquo;<code
    class=property>flood-color</code>&rsquo;, and &lsquo;<code
-   class=property>lighting-color</code>&rsquo; properties. CSS3 extends the
-   color value to include the &lsquo;<a href="#currentColor-def"><code
+   class=property>lighting-color</code>&rsquo; properties. 
+    
+    CSS3 extends the color value to include the &lsquo;<a href="#currentColor-def"><code
    class=css>currentColor</code></a>&rsquo; keyword to allow its use with all
    properties that accept a &lt;color&gt; value. This simplifies the
    definition of those properties in CSS3.
@@ -4568,7 +4665,15 @@ p { color: hsla(30, 100%, 50%, 0.1) }  /* very transparent solid orange */
   <dl>
    <dt><dfn id=currentColor-def>currentColor</dfn>
 
-   <dd>The value of the &lsquo;<a href="#color0"><code
+   <dd lang=ko>
+     &lsquo;<a href="#color0"><code class=property>color</code></a>&rsquo; 속성의 값.
+     &lsquo;<a href="#currentColor-def"><code class=css>currentColor</code></a>&rsquo;의 계산값은,
+     &lsquo;<a href="#color0"><code class=property>color</code></a>&rsquo; 값의 계산값입니다.
+     &lsquo;<a href="#currentColor-def"><code class=css>currentColor</code></a>&rsquo; 키워드가
+     &lsquo;<a href="#color0"><code class=property>color</code></a>&rsquo; 속성의 값으로 사용된 경우,
+     이는 &lsquo;<code class=css>color: inherit</code>&rsquo;과 동일합니다.
+     
+     <div lang=en>The value of the &lsquo;<a href="#color0"><code
     class=property>color</code></a>&rsquo; property. The computed value of
     the &lsquo;<a href="#currentColor-def"><code
     class=css>currentColor</code></a>&rsquo; keyword is the computed value of
@@ -4577,25 +4682,33 @@ p { color: hsla(30, 100%, 50%, 0.1) }  /* very transparent solid orange */
     class=css>currentColor</code></a>&rsquo; keyword is set on the &lsquo;<a
     href="#color0"><code class=property>color</code></a>&rsquo; property
     itself, it is treated as &lsquo;<code class=css>color:
-    inherit</code>&rsquo;.
+    inherit</code>&rsquo;.</div>
   </dl>
 
-  <h3 id=css-system><span class=secno>4.5. </span>CSS system colors</h3>
+  <h3 id=css-system><span class=secno>4.5. </span>CSS 시스템 컬러</h3>
 
-  <h4 id=css2-system><span class=secno>4.5.1. </span>CSS2 system colors</h4>
-
-  <p><strong>Deprecated.</strong> <span class=index-def id=system-colors-def
+  <h4 id=css2-system><span class=secno>4.5.1. </span>CSS2 시스템 컬러</h4>
+  <p lang=ko><strong>폐지됨.</strong><span class=index-def id=system-colors-def
+   title="system colors">color 키워드를 텍스트와 배경에 사용하는 것 외에도,
+   <a href="http://www.w3.org/TR/REC-CSS2/ui.html#system-colors">CSS2</a>는
+   제작자가 사용자의 그래픽 환경과 통합된 형태로 색을 지정하는 기능을 정의했습니다.</span>
+  <p lang=en><strong>Deprecated.</strong> <span class=index-def id=system-colors-def
    title="system colors">In addition to being able to assign color keyword
    values to text, backgrounds, etc., <a
    href="http://www.w3.org/TR/REC-CSS2/ui.html#system-colors">CSS2</a>
    allowed authors to specify colors in a manner that integrated them into
    the user's graphic environment.</span>
-
-  <p>For systems that do not have a corresponding value, the specified value
+  <p lang=ko>해당하는 값이 없는 시스템에서 해당 값은,
+    가장 가까운 시스템 색상값 혹은 기본 색상값으로 매핑되어야 합니다.
+    시스템 색상을 지원하지 않는 CSS 프로파일이 존재할 가능성에 주의하여야합니다.
+  <p lang=en>For systems that do not have a corresponding value, the specified value
    should be mapped to the nearest system color value, or to a default color.
    Note that some profiles of CSS may not support System Colors at all.
-
-  <p>The following lists additional values for color-related CSS values and
+  <p lang=ko>다음 목록은 색에 관련된 CSS 값을 그 의미와 함께 열거한 것입니다.
+    모든 color 관련 속성에 이 키워드들을 지정할 수 있습니다.
+    키워드는 case-insensitive지만, 색 이름을 더 읽기 쉽게 하기 위해,
+    써져있는대로 사용하기를 권장합니다.
+  <p lang=en>The following lists additional values for color-related CSS values and
    their general meaning. Any color property can take one of the following
    names. Although these are case-insensitive, it is recommended that the
    mixed capitalization shown below be used, to make the names more legible.
@@ -4603,134 +4716,201 @@ p { color: hsla(30, 100%, 50%, 0.1) }  /* very transparent solid orange */
   <dl>
    <dt><dfn id=activeborder>ActiveBorder</dfn>
 
-   <dd>Active window border.
+   <dd lang=ko>
+     활성화된 window의 border.
+     <div lang=en>Active window border.</div>
 
    <dt><dfn id=activecaption>ActiveCaption</dfn>
 
-   <dd>Active window caption.
+   <dd lang=ko>
+     활성화된 window의 caption.
+     <div lang=en>Active window caption.</div>
 
    <dt><dfn id=appworkspace>AppWorkspace</dfn>
 
-   <dd>Background color of multiple document interface.
+   <dd lang=ko>
+     여러 문서 인터페이스의 배경 색
+     <div lang=en>Background color of multiple document interface.</div>
 
    <dt><dfn id=background>Background</dfn>
 
-   <dd>Desktop background.
+   <dd lang=ko>
+     데스크탑 배경색
+     <div lang=en>Desktop background.</div>
 
    <dt><dfn id=buttonface>ButtonFace</dfn>
 
-   <dd>The face background color for 3-D elements that appear 3-D due to one
-    layer of surrounding border.
+   <dd lang=ko>
+    주위 border를 입체적으로 보이는 요소의 가장 앞쪽 면 색상 
+    <div lang=en>The face background color for 3-D elements that appear 3-D due to one
+    layer of surrounding border.</div>
 
    <dt><dfn id=buttonhighlight>ButtonHighlight</dfn>
 
-   <dd>The color of the border facing the light source for 3-D elements that
-    appear 3-D due to one layer of surrounding border.
+   <dd lang=ko>
+    주위 border를 입체적으로 보이는 요소에서,
+    빛에 접한 border의 색
+    <div lang=en>The color of the border facing the light source for 3-D elements that
+    appear 3-D due to one layer of surrounding border.</div>
 
    <dt><dfn id=buttonshadow>ButtonShadow</dfn>
 
-   <dd>The color of the border away from the light source for 3-D elements
-    that appear 3-D due to one layer of surrounding border.
+   <dd lang=ko>
+    주위 border를 입체적으로 보이는 요소에서,
+    빛에 떨어져있는 border의 색
+    <div lang=en>The color of the border away from the light source for 3-D elements
+    that appear 3-D due to one layer of surrounding border.</div>
 
    <dt><dfn id=buttontext>ButtonText</dfn>
 
-   <dd>Text on push buttons.
+   <dd lang=ko>
+     버튼의 문자색
+     <div lang=en>Text on push buttons.</div>
 
    <dt><dfn id=captiontext>CaptionText</dfn>
 
-   <dd>Text in caption, size box, and scrollbar arrow box.
+   <dd lang=ko>
+     caption, size box, scrollbar arrow box의 문자색
+     <div lang=en>Text in caption, size box, and scrollbar arrow box.</div>
 
    <dt><dfn id=graytext>GrayText</dfn>
 
-   <dd>Grayed (disabled) text. This color is set to #000 if the current
-    display driver does not support a solid gray color.
+   <dd lang=ko>
+     (무효화된) 회색 문자색. 디스플레이 드라이버가 회색을 지원하지 않는 경우 #000입니다.
+     <div lang=en>
+     Grayed (disabled) text. This color is set to #000 if the current
+       display driver does not support a solid gray color.</div>
 
    <dt><dfn id=highlight>Highlight</dfn>
 
-   <dd>Item(s) selected in a control.
+   <dd lang=ko>
+     선택한 컨트롤의 색상값
+     <div lang=en>Item(s) selected in a control.</div>
 
    <dt><dfn id=highlighttext>HighlightText</dfn>
 
-   <dd>Text of item(s) selected in a control.
+   <dd lang=ko>
+     선택한 컨트롤의 문자색
+     <div lang=en>Text of item(s) selected in a control.</div>
 
    <dt><dfn id=inactiveborder>InactiveBorder</dfn>
 
-   <dd>Inactive window border.
+   <dd lang=ko>
+     액티브 윈도우의 border
+     <div lang=en>Inactive window border.</div>
 
    <dt><dfn id=inactivecaption>InactiveCaption</dfn>
 
-   <dd>Inactive window caption.
+   <dd lang=ko>
+     액티브 윈도우의 caption
+     <div lang=en>Inactive window caption.</div>
 
    <dt><dfn id=inactivecaptiontext>InactiveCaptionText</dfn>
 
-   <dd>Color of text in an inactive caption.
+   <dd lang=ko>
+     액티브 캡션의 문자색
+     <div lang=en>Color of text in an inactive caption.</div>
 
    <dt><dfn id=infobackground>InfoBackground</dfn>
 
-   <dd>Background color for tooltip controls.
+   <dd lang=ko>
+     툴팁 컨트롤의 배경색
+     <div lang=en>Background color for tooltip controls.</div>
 
    <dt><dfn id=infotext>InfoText</dfn>
 
-   <dd>Text color for tooltip controls.
+   <dd lang=ko>
+     툴팁 컨트롤의 문자색
+     <div lang=en>Text color for tooltip controls.</div>
 
    <dt><dfn id=menu>Menu</dfn>
 
-   <dd>Menu background.
+   <dd lang=ko>
+     메뉴 배경색
+     <div lang=en>Menu background.</div>
 
    <dt><dfn id=menutext>MenuText</dfn>
 
-   <dd>Text in menus.
+   <dd lang=ko>
+     메뉴의 문자색
+     <div lang=en>Text in menus.</div>
 
    <dt><dfn id=scrollbar>Scrollbar</dfn>
 
-   <dd>Scroll bar gray area.
+   <dd lang=ko>
+     스크롤 바의 회색영역
+     <div lang=en>Scroll bar gray area.</div>
 
    <dt><dfn id=threeddarkshadow>ThreeDDarkShadow</dfn>
 
-   <dd>The color of the darker (generally outer) of the two borders away from
+   <dd lang=ko>
+    레이어를 감싼 border가 입체적으로 보이는 요소의 border 중,
+    광원에서부터 멀리 떨어져있는 어두운 두 면(기본적으로 외부)의 색상
+    <div lang=en>The color of the darker (generally outer) of the two borders away from
     the light source for 3-D elements that appear 3-D due to two concentric
-    layers of surrounding border.
+    layers of surrounding border.</div>
 
    <dt><dfn id=threedface>ThreeDFace</dfn>
 
-   <dd>The face background color for 3-D elements that appear 3-D due to two
-    concentric layers of surrounding border.
+   <dd lang=ko>
+     레이어를 감싼 border가 입체적으로 보이는 요소의 표면 배경색
+     <div lang=en>The face background color for 3-D elements that appear 3-D due to two
+     concentric layers of surrounding border.</div>
 
    <dt><dfn id=threedhighlight>ThreeDHighlight</dfn>
 
-   <dd>The color of the lighter (generally outer) of the two borders facing
+   <dd lang=ko>
+     레이어를 감싼 border가 입체적으로 보이는 요소의 border 중,
+    광원에서부터 가까이 있는 밝은 두 면(기본적으로 외부)의 색상
+     <div lang=en>The color of the lighter (generally outer) of the two borders facing
     the light source for 3-D elements that appear 3-D due to two concentric
-    layers of surrounding border.
+       layers of surrounding border.</div>
 
    <dt><dfn id=threedlightshadow>ThreeDLightShadow</dfn>
 
-   <dd>The color of the darker (generally inner) of the two borders facing
+   <dd lang=ko>
+     레이어를 감싼 border가 입체적으로 보이는 요소의 border 중,
+    광원에서부터 멀리 떨어져있는 어두운 두 면(기본적으로 내부)의 색상
+     <div lang=en>
+     The color of the darker (generally inner) of the two borders facing
     the light source for 3-D elements that appear 3-D due to two concentric
-    layers of surrounding border.
+       layers of surrounding border.</div>
 
    <dt><dfn id=threedshadow>ThreeDShadow</dfn>
 
-   <dd>The color of the lighter (generally inner) of the two borders away
+   <dd lang=ko>
+    레이어를 감싼 border가 입체적으로 보이는 요소의 border 중,
+    광원에서부터 가까이 있는 밝은 두 면(기본적으로 내부)의 색상
+    <div lang=en>
+    The color of the lighter (generally inner) of the two borders away
     from the light source for 3-D elements that appear 3-D due to two
-    concentric layers of surrounding border.
+      concentric layers of surrounding border.</div>
 
    <dt><dfn id=window>Window</dfn>
 
-   <dd>Window background.
+   <dd>
+     window의 배경
+     <div lang=en>Window background.</div>
 
    <dt><dfn id=windowframe>WindowFrame</dfn>
 
-   <dd>Window frame.
+   <dd>
+     window의 프레임
+     <div lang=en>Window frame.</div>
 
    <dt><dfn id=windowtext>WindowText</dfn>
 
-   <dd>Text in windows.
+   <dd>
+     윈도우 내 텍스트
+     <div lang=en>Text in windows.</div>
   </dl>
 
   <div class="example deprecated-example">
    <p style="display:none">DEPRECATED EXAMPLE(S):
-
-   <p> For example, to set the foreground and background colors of a
+  
+  <p lang=ko> 예를 들어, 유저 윈도우와 같은 전경색, 배경색을 문장에 적용하려면 아래와 같이 작성하면 됩니다:
+   <p lang=en>
+    For example, to set the foreground and background colors of a
     paragraph to the same foreground and background colors of the user's
     window, write the following:</p>
 
@@ -4738,8 +4918,13 @@ p { color: hsla(30, 100%, 50%, 0.1) }  /* very transparent solid orange */
 p { color: WindowText; background-color: Window }
 </pre>
   </div>
-
-  <p class=note><strong>Note.</strong> The CSS2 System Color values have been
+  <p class=note lang=ko><strong>Note.</strong> CSS2 시스템 컬러 값은 CSS3 UI &lsquo;<code class=css><a
+   class=index-inst href="http://www.w3.org/TR/css3-ui/#appearance"
+   id=appearance>appearance</a></code>&rsquo; 속성의 도입으로 인해 사라졌습니다.
+    UI 관련 요소 혹은 컨트롤의 외관을 모방하고 싶은 경우,
+    시스템 컬러의 조합이 아닌 &lsquo;<code class=property>appearance</code>&rsquo; 속성을 이용하길 바랍니다.
+    
+  <p class=note lang=en><strong>Note.</strong> The CSS2 System Color values have been
    deprecated in favor of the CSS3 UI &lsquo;<code class=css><a
    class=index-inst href="http://www.w3.org/TR/css3-ui/#appearance"
    id=appearance>appearance</a></code>&rsquo; property. If you want to
@@ -4748,9 +4933,12 @@ p { color: WindowText; background-color: Window }
    instead of attempting to mimic a user interface element through a
    combination of system colors.
 
-  <h3 id=notes><span class=secno>4.6. </span>Notes on using colors</h3>
-
-  <p>Although colors can add significant amounts of information to document
+  <h3 id=notes><span class=secno>4.6. </span>color의 이용에 관해</h3>
+  <p lang=ko>
+    color를 이용해서, 문서에 여러 정보를 부여하거나, 문서를 더 읽기 쉽게 할 수 있지만,
+    문서 내에서 color를 이용할 때는 W3C 웹 콘텐츠 접근성 가이드라인 <a href="#WCAG20"
+   rel=biblioentry>[WCAG20]<!--{{WCAG20}}--></a>을 고려해주길 바랍니다.
+  <p lang=en>Although colors can add significant amounts of information to document
    and make them more readable, please consider the W3C Web Content
    Accessibility Guidelines <a href="#WCAG20"
    rel=biblioentry>[WCAG20]<!--{{WCAG20}}--></a> when including color in your
@@ -4762,11 +4950,28 @@ p { color: WindowText; background-color: Window }
     Use of Color:</em> Color is not used as the only visual means of
     conveying information, indicating an action, prompting a response, or
     distinguishing a visual element</a>
+    <li>
+      <a href="http://www.w3c.or.kr/Translation/WCAG20/#visual-audio-contrast">
+      1.4.1 색의 사용: 색만으로 정보를 전달하고, 행동을 지시하고, 반응을 유발하고, 
+      시각적 요소를 식별하는 시각적인 용도로 사용되면 안된다. (레벨 A)
+      </a>
+      <br><span class="transnote">역주: 위 가이드라인은 한국어 번역본입니다.</span>
+    </li>
   </ul>
 
-  <h2 id=alpha><span class=secno>5. </span>Simple alpha compositing</h2>
-
-  <p>When drawing, implementations must <span class=index-def
+  <h2 id=alpha><span class=secno>5. </span>간단한 alpha 합성</h2>
+  <p lang=ko>
+    구현체는 그릴 때 <a href="#SVG11"
+   rel=biblioentry>[SVG11]<!--{{!SVG11}}--></a>의 <a
+   href="http://www.w3.org/TR/2003/REC-SVG11-20030114/masking.html#SimpleAlphaBlending">Section
+   14.2 Simple alpha compositing</a>에 정의된 규칙에 따라 <span class=index-def
+   id=compositing-def title=compositing>알파를 정의</span>해야합니다.
+   (만약 해당 섹션에서 언급하는
+    &lsquo;<code class=css><span class=index-inst id=color-interpolation>color-interpolation</span></code>&rsquo;나
+   &lsquo;<code class=css><span class=index-inst id=color-rendering>color-rendering</span></code>&rsquo; 속성이
+    구현되지 않거나 적용되지 않을 경우, 구현체는 초기 값을 가지고 있는 것으로 간주해야합니다)
+  </p>
+  <p lang=en>When drawing, implementations must <span class=index-def
    id=compositing-def title=compositing>handle alpha</span> according to the
    rules in <a
    href="http://www.w3.org/TR/2003/REC-SVG11-20030114/masking.html#SimpleAlphaBlending">Section
@@ -4779,9 +4984,11 @@ p { color: WindowText; background-color: Window }
    mentioned in that section are not implemented or do not apply,
    implementations must act as though they have their initial values.)
 
-  <h2 id=sample><span class=secno>6. </span>Sample style sheet for (X)HTML</h2>
-
-  <p>This appendix is informative, not normative. This style sheet could be
+  <h2 id=sample><span class=secno>6. </span>(X)HTML의 샘플 스타일시트</h2>
+  <p lang=ko>이 부록은 참고자료이며 표준에 준하는 내용이 아닙니다.
+    이 스타일 시트는 구현체에서 HTML4, XHTML1, XHTML 1.1, XHTML Basic, 다른 XHMTL Family 문서의 
+    기본 스타일 시트의 일부로 사용할 수 있을겁니다.
+  <p lang=en>This appendix is informative, not normative. This style sheet could be
    used by an implementation as part of its default styling of HTML4, XHTML1,
    XHTML1.1, XHTML Basic, and other XHTML Family documents.
 
@@ -4802,13 +5009,16 @@ html {
 }
 </pre>
 
-  <h2 id=profiles><span class=secno>7. </span>Profiles</h2>
-
-  <p>Each specification using <span class=modulename>CSS3 Color</span> must
+  <h2 id=profiles><span class=secno>7. </span>프로필</h2>
+  <p lang=ko><span class=modulename>CSS3 Color</span>를 이용하는 스펙은 CSS3 color에서 정의된 기능 중
+    무엇을 받아들이고 무엇을 제외하고 다른 어떤 제약이 있는 지를 기록한 부분집합을 정의해야합니다.
+    
+  <p lang=en>Each specification using <span class=modulename>CSS3 Color</span> must
    define the subset of CSS3 Color features it allows and excludes, and
    describe the local meaning of all the components of that subset.
 
-  <p>Non normative examples:
+  <p lang=ko>표준에 준하지 않는 예시입니다:
+  <p lang=en>Non normative examples:
 
   <div class=profile>
    <table border=1 class=tprofile width="75%">
@@ -4980,8 +5190,13 @@ html {
   </div>
 
   <h2 id=testsuite><span class=secno>8. </span>Test suite</h2>
-
-  <p>A CSS Color Module <a
+  <p lang=ko>CSS Color Module의 <a href="http://www.w3.org/Style/CSS/Test/CSS3/Color/current/">Test Suite</a>가 준비되어있습니다.
+    이 test suite는 UA가 스펙에 적합하는 지 확인하는 용도입니다.
+    이 test suite는 포괄적인 내용을 의도하지 않으며 사용가능한 모든 숫자 color 값 조합을 확인하는 게 아닙니다.
+    이 test suite는 <a
+   href="http://www.w3.org/Style/CSS/Test/CSS3/Color/current/">http://www.w3.org/Style/CSS/Test/CSS3/Color/current/</a>에서도
+    활용 가능합니다.
+  <p lang=en>A CSS Color Module <a
    href="http://www.w3.org/Style/CSS/Test/CSS3/Color/current/">Test Suite</a> has
    been developed, although further tests may be added. This test suite is
    intended to allow user agents to verify their basic conformance to the
@@ -4991,10 +5206,23 @@ html {
    href="http://www.w3.org/Style/CSS/Test/CSS3/Color/current/">http://www.w3.org/Style/CSS/Test/CSS3/Color/current/</a>.
    
 
-  <h2 id=dropped><span class=secno>9. </span>Call for Implementations of
-   dropped features</h2>
-
-  <p> <!-- named anchors for all of the IDs in the sections containing the
+  <h2 id=dropped><span class=secno>9. </span>삭제된 기능의 미래 구현</h2>
+  <p lang=ko>
+    <!-- named anchors for all of the IDs in the sections containing the
+     dropped features -->
+   <span id=icc-color></span> <span id=name-1></span> <span
+   id=color-profile></span> <span id=renderingintent></span> <span
+   id=name-2></span> <span id=rendering-intent></span> <span
+   id=atcolorprofile></span> <span id=name-descriptor></span> <span
+   id=propdef-color-profile-name></span> <span id=src-descriptor></span>
+   <span id=propdef-color-profile-src></span> <span
+   id=rendering-intent0></span> <span id=propdef-rendering-intent></span>
+   <span id=flavor></span> 
+    2003년 5월 14일자 후보 권고안에 정의된 기능의 대부분을 이 스펙에서 제거하였습니다.
+    그러나 삭제된 기능의 구현을 계속 호소하고 있으며 충분한 구현 및 상호 운용성을 보장하기 위한
+    test suite가 있으면 추후에 포함할 수 있습니다.
+    삭제된 기능은 다음과 같습니다.
+  <p lang=en> <!-- named anchors for all of the IDs in the sections containing the
      dropped features -->
    <span id=icc-color></span> <span id=name-1></span> <span
    id=color-profile></span> <span id=renderingintent></span> <span
@@ -5044,15 +5272,18 @@ html {
    community. And thanks to Chris Lilley for being the resident CSS Color
    expert.
 
-  <h2 id=changes><span class=secno>11. </span>Changes</h2>
-
-  <p>This document differs from the previous, 28 October 2010, Proposed Recommendation
+  <h2 id=changes><span class=secno>11. </span>변경점</h2>
+  <p lang=ko>
+    이 문서는, 한단계 전인 2010년 10월 28일 공개된 후보 권고안에서,
+    W3C 권고안 오픈에 맞춰 날짜, 상태, 스타일 변경, 참고 문서를 업데이트 하였습니다.
+    이에 따른 스펙의 변경은 크게는 없습니다.
+  <p lang=en>This document differs from the previous, 28 October 2010, Proposed Recommendation
    document as follows: the date, status and styling are updated for W3C Recommendation, 
    the references are updated, and this changes appendix lists no substantive changes.
 
-  <h2 id=references><span class=secno>12. </span>References</h2>
+  <h2 id=references><span class=secno>12. </span>참고문서</h2>
 
-  <h3 id=normative><span class=secno>12.1. </span>Normative</h3>
+  <h3 id=normative><span class=secno>12.1. </span>표준 문서</h3>
   <!--begin-normative-->
   <!-- Sorted by label -->
 
@@ -5097,7 +5328,7 @@ html {
   </dl>
   <!--end-normative-->
 
-  <h3 id=informative><span class=secno>12.2. </span>Informative</h3>
+  <h3 id=informative><span class=secno>12.2. </span>참고 정보</h3>
   <!--begin-informative-->
   <!-- Sorted by label -->
 
@@ -5743,7 +5974,7 @@ html {
   </ul>
   <!--end-index-->
 
-  <h2 class=no-num id=property>Property index</h2>
+  <h2 class=no-num id=property>속성 인덱스</h2>
   <!--begin-properties-->
 
   <table class=proptable>
