@@ -62,7 +62,7 @@ h6 {font-size:110%}
 
  <body>
   <div class=headernotes>
-    <p>이 문서는 <a href=http://www.w3.org/TR/2011/REC-css3-color-20110607>CSS Color Module Level 3 (W3C Recommendation 07 June 2011)</a>의 한국어 번역본입니다.</p>
+    <p>이 문서는 <a href="http://www.w3.org/TR/2011/REC-css3-color-20110607">CSS Color Module Level 3 (W3C Recommendation 07 June 2011)</a>의 한국어 번역본입니다.</p>
     <dl class=meta>
       <dt>공개일: 2015-09-28</dt>
       <dd>미정</dd>
@@ -467,8 +467,7 @@ h6 {font-size:110%}
          키워드 &lsquo;<a href="#transparent-def"><code class=css><span class=index-inst id=transparent0>transparent</span></code></a>&rsquo;는
          RGBA 10진수 네 쌍 모두에 0이 주어진 것과 동일합니다. 즉 <span class=example>rgba(0,0,0,0)</span>.
          <div lang=en>The computed value of the keyword &lsquo;<a
-          href="#transparent-def"><code class=css><span class=index-inst
-          id=transparent0>transparent</span></code></a>&rsquo; is the
+          href="#transparent-def"><code class=css><span class=index-inst>transparent</span></code></a>&rsquo; is the
           quadruplet of all zero numerical RGBA values, e.g. <span
           class=example>rgba(0,0,0,0)</span>.</div>
        </li>
@@ -476,8 +475,7 @@ h6 {font-size:110%}
         키워드 &lsquo;<code class=css><a class=index-inst href="#currentcolor" id=currentcolor0>currentColor</a></code>&rsquo;가
         어떻게 값을 계산하는 지는 키워드의 정의를 참고하시길 바랍니다.
         <div lang=en>See the definition of the &lsquo;<code class=css><a
-        class=index-inst href="#currentcolor"
-        id=currentcolor0>currentColor</a></code>&rsquo; for how its computed
+        class=index-inst href="#currentcolor">currentColor</a></code>&rsquo; for how its computed
          value is determined.</div>
        </li>
         <li lang=ko>다른 값의 계산값은 지정값입니다.
@@ -495,10 +493,10 @@ h6 {font-size:110%}
   </p>
   <p lang=en>This property describes the foreground color of an element's text
    content. In addition it is used to provide a potential indirect value (<a
-   class=index-inst href="#currentcolor" id=currentcolor1>currentColor</a>)
+   class=index-inst href="#currentcolor">currentColor</a>)
    for any <em>other</em> properties that accept color values. If the
    &lsquo;<a href="#currentColor-def"><code class=css><span class=index-inst
-   id=currentcolor2>currentColor</span></code></a>&rsquo; keyword is set on
+   >currentColor</span></code></a>&rsquo; keyword is set on
    the &lsquo;<a href="#color0"><code class=property>color</code></a>&rsquo;
    property itself, it is treated as &lsquo;<code class=css>color:
    inherit</code>&rsquo;.
@@ -653,7 +651,7 @@ em { color: rgb(0,255,0) }       /* RGB 범위 0-255   */
 
   <h2 id=colorunits><span class=secno>4. </span>Color 단위</h2>
   <p lang=ko><dfn class=value-def-color id=valuea-def-color>&lt;color&gt;</dfn>는 키워드 혹은 숫자로 이루어져 있습니다.</p>
-  <p lang=en>A <dfn class=value-def-color id=valuea-def-color>&lt;color&gt;</dfn> is
+  <p lang=en>A <dfn class=value-def-color>&lt;color&gt;</dfn> is
    either a keyword or a numerical specification.
 
   <h3 id=html4><span class=secno>4.1. </span>기본 color 키워드</h3>
@@ -874,7 +872,7 @@ h2 { color: olive }
   <h4 id=rgb-color><span class=secno>4.2.1. </span>RGB color 값</h4>
   <p lang=ko><span class=index-def id=rgb-def title="rgb()">RGB color
    model</span>은 숫자 color 표현에 사용합니다. 이 예제는 모두 같은 색상을 나타냅니다.
-  <p lang=en><span class=index-def id=rgb-def title="rgb()">RGB color
+  <p lang=en><span class=index-def title="rgb()">RGB color
    model</span> is used in numerical color specifications. These examples all
    specify the same color:
 
@@ -900,8 +898,8 @@ em { color: rgb(100%, 0%, 0%) }
   <p lang=en> The format of an RGB value in hexadecimal notation is a &lsquo;<code
    class=css>#</code>&rsquo; immediately followed by either three or six
    hexadecimal characters. The three-digit RGB notation (<span
-   class=index-def id=rgb>#rgb</span>) is converted into six-digit form
-   (<span class=index-def id=rrggbb>#rrggbb</span>) by replicating digits,
+   class=index-def>#rgb</span>) is converted into six-digit form
+   (<span class=index-def>#rrggbb</span>) by replicating digits,
    not by adding zeros. For example, #fb0 expands to #ffbb00. This ensures
    that white (#ffffff) can be specified with the short notation (#fff) and
    removes any dependencies on the color depth of the display.
@@ -924,7 +922,7 @@ em { color: rgb(100%, 0%, 0%) }
     sRGB를 이용하여 색상이 무엇인지 객관적인 측정기준을 통해 모호하지 않게 정할 수 있습니다.
     또한 국제 표준과도 연관있습니다. (<a href="#COLORIMETRY" rel=biblioentry>[COLORIMETRY]<!--{{!COLORIMETRY}}--></a>)
   <p lang=en>All RGB colors are specified in the <span class=index-def
-   id="sRGB-def">sRGB</span> color space (see <a href="#SRGB"
+   >sRGB</span> color space (see <a href="#SRGB"
    rel=biblioentry>[SRGB]<!--{{!SRGB}}--></a>). User agents may vary in the
    fidelity with which they represent these colors, but using sRGB provides
    an unambiguous and objectively measurable definition of what the color
@@ -969,7 +967,7 @@ em { color: rgb(110%, 0%, 0%) }  /* clipped to rgb(100%,0%,0%) */
     <a href="#alpha">간단한 alpha 합성</a>에서 자세한 사항을 볼 수 있습니다.
     아래는 모두 같은 색을 지정합니다</span>
   </p>
-  <p lang=en>The <span class=index-def id=rgba-def title="rgba()">RGB color model is
+  <p lang=en>The <span class=index-def title="rgba()">RGB color model is
    extended in this specification to include &ldquo;alpha&rdquo; to allow
    specification of the opacity of a color. See <a href="#alpha">simple alpha
    compositing</a> for details. These examples all specify the same
@@ -1000,7 +998,7 @@ em { color: rgba(100%,0%,0%,1) } /* the same, with explicit opacity of 1 */
    class=css>rgba(</code>&rsquo; followed by a comma-separated list of three
    numerical values (either three integer values or three percentage values),
    followed by an <a class=index-inst href="#alphavaluedt"
-   id=ltalphavaluegt>&lt;alphavalue&gt;</a>, followed by &lsquo;<code
+   >&lt;alphavalue&gt;</a>, followed by &lsquo;<code
    class=css>)</code>&rsquo;. The integer value 255 corresponds to 100%,
    rgba(255,255,255,0.8) = rgba(100%,100%,100%,0.8). White space characters
    are allowed around the numerical values.</p>
@@ -1078,7 +1076,7 @@ p { color: rgba(100%, 50%, 0%, 0.1) } /* very transparent solid orange */
   title="hsl()">RGB 컬러에는 다음과 같은 제약사항이 있었기 때문에, 
     RGB 값을 완전히 표현 가능하며 숫자로 이루어진 hue-saturation-lightness (HSL) 컬러 값을 추가하였습니다.
   </span></p>
-  <p lang=en>CSS3 adds numerical <span class=index-def id=hsl-def
+  <p lang=en>CSS3 adds numerical <span class=index-def
    title="hsl()">hue-saturation-lightness (HSL) colors as a complement to
    numerical RGB colors. It has been observed that RGB colors have the
    following limitations: </span>
@@ -2928,7 +2926,7 @@ p { color: rgba(100%, 50%, 0%, 0.1) } /* very transparent solid orange */
     자세한 내용은 <a href="#alpha">간단한 alpha 합성</a>을 보시길 바랍니다.
     다음 예제는 동일한 색을 나타냅니다:
     
-  <p lang=en><span class=index-def id=hsla-def title="hsla()">Just as the
+  <p lang=en><span class=index-def title="hsla()">Just as the
    &lsquo;<code class=css>rgb()</code>&rsquo; functional notation has the
    &lsquo;<code class=css>rgba()</code>&rsquo; alpha counterpart, the
    &lsquo;<code class=css>hsl()</code>&rsquo; functional notation has the
@@ -2953,7 +2951,7 @@ em { color: hsla(120, 100%, 50%, 1) } /* the same, with explicit opacity of 1 */
   <p lang=en>The format of an HSLA color value in the functional notation is
    &lsquo;<code class=css>hsla(</code>&rsquo; followed by the hue in degrees,
    saturation and lightness as a percentage, and an <a class=index-inst
-   href="#alphavaluedt" id=ltalphavaluegt0>&lt;alphavalue&gt;</a>, followed
+   href="#alphavaluedt">&lt;alphavalue&gt;</a>, followed
    by &lsquo;<code class=css>)</code>&rsquo;. White space characters are
    allowed around the numerical values.
   <p lang=ko>구현체는 반드시 HSLA 컬러 값의 색상, 채도, 명도를 HSL 컬러 값 섹션에서 기록한 규칙에 따라,
@@ -4627,7 +4625,7 @@ p { color: hsla(30, 100%, 50%, 0.1) }  /* very transparent solid orange */
   <h3 id=currentcolor><span class=secno>4.4. </span>&lsquo;<a
    href="#currentColor-def"><code class=css>currentColor</code></a>&rsquo; color 키워드</h3>
   <p lang=ko>
-    CSS1과 CSS2에서는 <code class=property>border-color</code>&rsquo; 속성</a>의 초기 값을
+    CSS1과 CSS2에서는 <a href="http://www.w3.org/TR/REC-CSS1#border-color"><code class=property>border-color</code>&rsquo; 속성</a>의 초기 값을
     <q cite="http://www.w3.org/TR/REC-CSS1#border-color">&lsquo;<a href="#color0"><code class=property>color</code></a>&rsquo; 속성의 값</q>으로 정의했지만, 관련 키워드를 명확히 정의하지는 않았습니다.
     이 생략 부분을 SVG에서 정의하였으며, <a
    href="http://www.w3.org/TR/SVG/color.html#ColorProperty">SVG 1.0
@@ -4692,7 +4690,7 @@ p { color: hsla(30, 100%, 50%, 0.1) }  /* very transparent solid orange */
    title="system colors">color 키워드를 텍스트와 배경에 사용하는 것 외에도,
    <a href="http://www.w3.org/TR/REC-CSS2/ui.html#system-colors">CSS2</a>는
    제작자가 사용자의 그래픽 환경과 통합된 형태로 색을 지정하는 기능을 정의했습니다.</span>
-  <p lang=en><strong>Deprecated.</strong> <span class=index-def id=system-colors-def
+  <p lang=en><strong>Deprecated.</strong> <span class=index-def 
    title="system colors">In addition to being able to assign color keyword
    values to text, backgrounds, etc., <a
    href="http://www.w3.org/TR/REC-CSS2/ui.html#system-colors">CSS2</a>
@@ -4927,7 +4925,7 @@ p { color: WindowText; background-color: Window }
   <p class=note lang=en><strong>Note.</strong> The CSS2 System Color values have been
    deprecated in favor of the CSS3 UI &lsquo;<code class=css><a
    class=index-inst href="http://www.w3.org/TR/css3-ui/#appearance"
-   id=appearance>appearance</a></code>&rsquo; property. If you want to
+   >appearance</a></code>&rsquo; property. If you want to
    emulate the look of a user interface related element or control, please
    use the &lsquo;<code class=property>appearance</code>&rsquo; property
    instead of attempting to mimic a user interface element through a
@@ -4972,15 +4970,15 @@ p { color: WindowText; background-color: Window }
     구현되지 않거나 적용되지 않을 경우, 구현체는 초기 값을 가지고 있는 것으로 간주해야합니다)
   </p>
   <p lang=en>When drawing, implementations must <span class=index-def
-   id=compositing-def title=compositing>handle alpha</span> according to the
+    title=compositing>handle alpha</span> according to the
    rules in <a
    href="http://www.w3.org/TR/2003/REC-SVG11-20030114/masking.html#SimpleAlphaBlending">Section
    14.2 Simple alpha compositing</a> of <a href="#SVG11"
    rel=biblioentry>[SVG11]<!--{{!SVG11}}--></a>. (If the &lsquo;<code
    class=css><span class=index-inst
-   id=color-interpolation>color-interpolation</span></code>&rsquo; or
+   >color-interpolation</span></code>&rsquo; or
    &lsquo;<code class=css><span class=index-inst
-   id=color-rendering>color-rendering</span></code>&rsquo; properties
+   >color-rendering</span></code>&rsquo; properties
    mentioned in that section are not implemented or do not apply,
    implementations must act as though they have their initial values.)
 
@@ -5224,14 +5222,7 @@ html {
     삭제된 기능은 다음과 같습니다.
   <p lang=en> <!-- named anchors for all of the IDs in the sections containing the
      dropped features -->
-   <span id=icc-color></span> <span id=name-1></span> <span
-   id=color-profile></span> <span id=renderingintent></span> <span
-   id=name-2></span> <span id=rendering-intent></span> <span
-   id=atcolorprofile></span> <span id=name-descriptor></span> <span
-   id=propdef-color-profile-name></span> <span id=src-descriptor></span>
-   <span id=propdef-color-profile-src></span> <span
-   id=rendering-intent0></span> <span id=propdef-rendering-intent></span>
-   <span id=flavor></span> A number of features that were present in the 14
+   A number of features that were present in the 14
    May 2003 Candidate Recommendation are no longer present in this
    specification. However, the call for implementations for these features
    remains, and they may be included in a future level of this specification
