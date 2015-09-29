@@ -41,4 +41,10 @@ span.transnote {
   margin: 0;
   padding: 0.2em;
 }
-
+.transbuttons {
+  position:fixed;
+  right:10px;
+  top:10px;
+  background:#999;
+  padding:0 13px;
+}

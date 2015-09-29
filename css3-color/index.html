@@ -11,7 +11,22 @@
   <link href="default.css" rel=stylesheet type="text/css">
   <link href="trans.css" rel="stylesheet" type="text/css">
   <style type="text/css">
-    [lang=en] {display:none} 
+    [lang=en] {
+      font-size:0.7em;
+      margin:0;
+      line-height:1.2em;
+      color:#333;
+    }
+    [lang=en]:before {
+      content:"영문: ";
+      color:#333;
+    }
+    .view-on [lang=en] {
+      display:block; 
+    }
+    .view-off [lang=en] {
+      display:none;
+    }
   </style>
   <style type="text/css">
 .example pre {
@@ -59,7 +74,6 @@ h6 {font-size:110%}
   <script src='http://www.w3c-test.org/css/harness/annotate.js#CSS3-COLOR_DEV' type='text/javascript' defer></script>
   -->
 
-
  <body>
   <div class=headernotes>
     <p>이 문서는 <a href="http://www.w3.org/TR/2011/REC-css3-color-20110607">CSS Color Module Level 3 (W3C Recommendation 07 June 2011)</a>의 한국어 번역본입니다.</p>
@@ -69,6 +83,10 @@ h6 {font-size:110%}
       <dt>번역자:</dt>
       <dd>조은 &lt;<a href="mailto:apes0123@gmail.com">apes0123@gmail.com</a>&gt;</dd>
     </dl>
+  </div>
+  <div class=transbuttons>
+    <button class=btn-hide id=btn-hide type="button">영문 가리기</button>
+    <button class=btn-view id=btn-view type="button">영문 보이기</button> 
   </div>
   <div class=head> <!--begin-logo-->
    <p><a href="http://www.w3.org/"><img alt=W3C height=48
@@ -6006,8 +6024,19 @@ html {
      <td>N/A
 
      <td>visual
-  </table>
+     </table>
   <!--end-properties-->
+  <script type="text/javascript">
+        btnView = document.getElementById("btn-view"),
+        btnHide = document.getElementById("btn-hide");
+        
+    btnView.onclick = function() {
+      document.body.className = "view-on";
+    }
+    btnHide.onclick = function() {
+      document.body.className = "view-off";
+    }
+  </script>
 </html>
 <!-- Keep this comment at the end of the file
 Local variables:
