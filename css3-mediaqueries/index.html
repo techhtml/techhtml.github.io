@@ -1,0 +1,1421 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang=ko-KR>
+  <head>
+  <meta content="text/html;charset=UTF-8" http-equiv=Content-type>
+  <title>미디어 쿼리</title>
+  <style type="text/css">
+    blockquote { 
+      background: #eef;
+      padding: 0.5em;
+      margin: 1em 0;
+      border: thin solid black; }   
+    pre { font-family: courier, monospace; font-weight: bold; white-space: pre-wrap }
+    .example pre em { font-style: normal }
+    span.label { font-style: italic }
+  </style>
+  <link type="text/css" href="default.css" rel=stylesheet>
+  <link type="text/css" href="trans.css" rel=stylesheet>
+  <link type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-REC" rel=stylesheet>
+ <body>
+ <div class=headernotes>
+  <p>이 문서는 <a href="http://www.w3.org/TR/css-style-attr/">Media Queries (W3C Recommendation 19 June 2012)</a>의 한국어 번역본입니다.</p>
+  <dl class=meta>
+    <dt>공개일</dt>
+    <dd>미정</dd>
+    <dt>번역자:</dt>
+    <dd>조은 &lt;<a href="mailto:apes0123@gmail.com">apes0123@gmail.com</a>&gt;</dd>
+  </dl>
+</div>
+  <div class=head> <!--begin-logo-->
+   <p><a href="http://www.w3.org/"><img alt=W3C height=48
+    src="http://www.w3.org/Icons/w3c_home" width=72></a> <!--end-logo-->
+
+   <h1 id=media-queries>미디어 쿼리</h1>
+
+   <h2 class="no-num no-toc" id=w3c-working>2012년 6월 19일 W3C 권고안</h2>
+
+   <dl>
+    <dt>이 버전:
+
+    <dd><a
+     href="http://www.w3.org/TR/2012/REC-css3-mediaqueries-20120619/">http://www.w3.org/TR/2012/REC-css3-mediaqueries-20120619/</a>
+
+    <dt>마지막 버전:
+
+    <dd><a
+     href="http://www.w3.org/TR/css3-mediaqueries/">http://www.w3.org/TR/css3-mediaqueries/</a>
+
+    <dt>마지막 에디터 문서:
+
+    <dd><a
+     href="http://dev.w3.org/csswg/css3-mediaqueries/">http://dev.w3.org/csswg/css3-mediaqueries/</a>
+
+    <dt>이전 버전:
+
+    <dd><a
+     href="http://www.w3.org/TR/2012/PR-css3-mediaqueries-20120426/">http://www.w3.org/TR/2012/PR-css3-mediaqueries-20120426/</a>
+
+    <dt>Disposition of Comments:
+
+    <dd><a
+     href="http://www.w3.org/Style/2012/MediaQueriesDisposalOfComments.html">http://www.w3.org/Style/2012/MediaQueriesDisposalOfComments.html</a>
+     
+
+    <dt>Editors:
+
+    <dd class=vcard><span class=given-name>Florian</span> <span
+     class=family-name>Rivoal</span> &lt;<span
+     class=email>florianr&nbsp;@opera.com</span>&gt;
+
+    <dt>Previous Editors:
+
+    <dd class=vcard><a class="url fn n"
+     href="http://people.opera.com/howcome/" lang=no> <span
+     class=given-name>H&aring;kon</span> <span
+     class=additional-name>Wium</span> <span class=family-name>Lie</span></a>
+     &lt;<span class=email>howcome&nbsp;@opera.com</span>&gt;
+
+    <dd class=vcard><a class="url fn" href="http://tantek.com/"
+     lang=tr>Tantek &Ccedil;elik</a> &lt;<span
+     class=email>tantek&nbsp;@cs.stanford.edu</span>&gt;
+
+    <dd class=vcard><span class=given-name>Daniel</span> <span
+     class=family-name>Glazman</span> &lt;<span
+     class=email>daniel.glazman&nbsp;@disruptive-innovations.com</span>&gt;
+
+    <dd class=vcard><a class="url fn n" href="http://annevankesteren.nl/"
+     hreflang=en lang=nl>Anne van Kesteren</a> &lt;<span
+     class=email>annevk@opera.com</span>&gt;
+   </dl>
+   
+   <p>스펙 문서의 규범적인 정의에 수정이 있을 가능성이 있기 때문에 <a href="http://www.w3.org/Style/2012/REC-mediaqueries-20120619-errata.html"><strong>errata</strong></a>를 확인하시길 바랍니다.</p>
+   
+   <p><a href="http://www.w3.org/2003/03/Translations/byTechnology?technology=css3-mediaqueries"> <strong>번역본</strong></a>도 있습니다. <span class="transnote">이 번역본은 한국어 번역본 입니다</span></p>
+   
+   <!--begin-copyright-->
+   <p class=copyright><a
+    href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright"
+    rel=license>Copyright</a> &copy; 2012 <a href="http://www.w3.org/"><abbr
+    title="World Wide Web Consortium">W3C</abbr></a><sup>&reg;</sup> (<a
+    href="http://www.csail.mit.edu/"><abbr
+    title="Massachusetts Institute of Technology">MIT</abbr></a>, <a
+    href="http://www.ercim.eu/"><abbr
+    title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>,
+    <a href="http://www.keio.ac.jp/">Keio</a>), All Rights Reserved. W3C <a
+    href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
+    <a
+    href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a>
+    and <a
+    href="http://www.w3.org/Consortium/Legal/copyright-documents">document
+    use</a> rules apply.</p>
+   <!--end-copyright-->
+   <hr title="Separator for header">
+  </div>
+
+  <h2 class="no-num no-toc" id=abstract>개요</h2>
+  <p lang="ko">
+    HTML4와 CSS2는 현재, 다른 미디어 타입에 맞춰 미디어 고유 스타일 시트를 넣는 걸 지원합니다.
+    예를 들어, 문서가 화면상에 표시될 때는 sans-serif로, 프린트될 때는 serif 폰트를 사용할 수 있습니다.
+    &lsquo;<code class=css>screen</code>&rsquo;과 &lsquo;<code class=css>print</code>&rsquo;는
+    2개의 정의 미디어 타입입니다. <em>미디어 쿼리</em>는 스타일 시트를 이용해 매우 정교한 라벨링이 가능하여, 미디어 타입 기능을 확장합니다.
+  </p>
+  <p lang="en">HTML4 and CSS2 currently support media-dependent style sheets tailored
+   for different <em>media types</em>. For example, a document may use
+   sans-serif fonts when displayed on a screen and serif fonts when printed.
+   &lsquo;<code class=css>screen</code>&rsquo; and &lsquo;<code
+   class=css>print</code>&rsquo; are two media types that have been defined.
+   <em>Media queries</em> extend the functionality of media types by allowing
+   more precise labeling of style sheets.
+  <p lang="ko">
+    미디어 쿼리는 미디어 타입과 특정 미디어 속성의 상태를 확인하는 0개 이상의 식으로 구성합니다.
+    미디어 쿼리에서 사용 가능한 미디어 속성에는 &lsquo;<code
+    class=css>width</code>&rsquo;, &lsquo;<code
+    class=css>height</code>&rsquo;, &lsquo;<code
+    class=css>color</code>&rsquo; 등이 있습니다.
+    미디어 쿼리을 사용함으로써, 콘텐츠 자체를 변경하지 않고
+    출력 디바이스의 고유 범위에 맞춰 표시하는 게 가능합니다.
+  </p>
+  <p lang="en">A media query consists of a media type and zero or more expressions that
+   check for the conditions of particular <em>media features</em>. Among the
+   media features that can be used in media queries are &lsquo;<code
+   class=css>width</code>&rsquo;, &lsquo;<code
+   class=css>height</code>&rsquo;, and &lsquo;<code
+   class=css>color</code>&rsquo;. By using media queries, presentations can
+   be tailored to a specific range of output devices without changing the
+   content itself.
+
+  <h2 class="no-num no-toc" id=status>이 문서의 상태</h2>
+  <!--begin-status-->
+  <p lang="ko">
+    이 섹션은 이 문서를 공개했을 때 상태에 대해 설명합니다.
+    다른 문서가 이 문서를 덮어쓸 가능성이 있으니 주의하시길 바랍니다.
+    이 문서 및 W3C에서 공개한 다른 문서의 최신 버전은 
+    <a href="http://www.w3.org/TR/">W3C technical reports index</a> at http://www.w3.org/TR/에서
+    확인 가능합니다.
+  </p>
+  <p lang="en"><em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current W3C publications and the latest revision of this technical report can be found in the <a href="http://www.w3.org/TR/">W3C technical reports index</a> at http://www.w3.org/TR/.</em></p>
+  <p lang="ko">
+    W3C 권고안은, 구현 가능하도록 광범위하게 리뷰를 받은 뒤 공개한 성숙한 문서입니다.
+    W3C는 가능한한 모두가 이 스펙 문서의 내용을 구현하기를 장려합니다.
+    이 스펙문서와 관련한 토론은 (<a
+   href="http://lists.w3.org/Archives/Public/www-style/">archived</a>) 공개 메일링 리스트 <a
+   href="mailto:www-style@w3.org?Subject=%5Bcss3-mediaqueries%5D%20PUT%20SUBJECT%20HERE">
+   www-style@w3.org</a> (<a href="http://www.w3.org/Mail/Request">참가안내서</a>)에서 하는 것이 바람직하며,
+   메일을 보낼 때에는 제목에 &#8220;css3-mediaqueries&#8221;를 기입해주시길 바랍니다. 이는 곧,
+   &#8220;[<!---->css3-mediaqueries<!---->] <em>&hellip;본문 요약&hellip;</em>&#8221; 같은 형태일 것입니다.
+  </p>
+  <p lang="en">A W3C Recommendation is a mature document that has been widely reviewed and has been shown to be implementable. 
+  W3C encourages everybody to implement this specification.
+  The (<a
+   href="http://lists.w3.org/Archives/Public/www-style/">archived</a>) public
+   mailing list <a
+   href="mailto:www-style@w3.org?Subject=%5Bcss3-mediaqueries%5D%20PUT%20SUBJECT%20HERE">
+   www-style@w3.org</a> (see <a
+   href="http://www.w3.org/Mail/Request">instructions</a>) is preferred for
+   discussion of this specification. When sending e-mail, please put the text
+   &#8220;css3-mediaqueries&#8221; in the subject, preferably like this:
+   &#8220;[<!---->css3-mediaqueries<!---->] <em>&hellip;summary of
+   comment&hellip;</em>&#8221;. </p>
+   <p lang="ko">이 문서는 W3C 멤버, 소프트웨어 개발자, 그리고 다른 W3C 그룹 및 관계자들이 평가를 진행하여, 디렉터에 의해 W3C 권고안으로 발표했습니다. 
+    이 문서는 안정적이며, 참고자료로 사용하거나 다른 문서에서 인용해도 좋습니다. 
+    스펙 문서의 권고를 통해 W3C가 하는 역할은 스펙 문서에 관심을 모으고 다방면으로 퍼뜨리는 일입니다. 
+    이를 통해 웹의 기능과 상호운용성 향상을 기대할 수 있습니다.</p>
+   <p lang="en">This document has been reviewed by W3C Members, by software developers, and by other W3C groups and interested parties, and is endorsed by the Director as a W3C Recommendation. It is a stable document and may be used as reference material or cited from another document. W3C's role in making the Recommendation is to draw attention to the specification and to promote its widespread deployment. This enhances the functionality and interoperability of the Web.</p>
+  <p lang="ko">
+   워킹 그룹의 <a href="http://www.w3.org/Style/CSS/Test/MediaQueries/20120229/reports/implement-report.html">구현 레포트</a>
+   및 미디어쿼리 <a href="http://www.w3.org/Style/CSS/Test/MediaQueries/">Test Suite</a>를 확인하시길 바랍니다.
+  </p>
+<p lang="en">Please see the Working Group's <a href="http://www.w3.org/Style/CSS/Test/MediaQueries/20120229/reports/implement-report.html">implementation report</a>
+and the Media Queries <a href="http://www.w3.org/Style/CSS/Test/MediaQueries/">Test Suite</a>.</p>
+   <p lang="ko">
+     <a href="http://www.w3.org/TR/2012/PR-css3-mediaqueries-20120426/">이전 후보 권고안</a>과 관련한 
+     <a href="#changes">변경점</a> 및 <a href="http://www.w3.org/Style/2012/MediaQueriesDisposalOfComments.html">Disposition of comments</a>를 확인할 수 있습니다.
+   </p>
+   <p lang="en">Also see the <a href="http://www.w3.org/Style/2012/MediaQueriesDisposalOfComments.html">Disposition of comments</a> and a <a href="#changes">list of changes</a> relative to the <a href="http://www.w3.org/TR/2012/PR-css3-mediaqueries-20120426/">previous Proposed Recommendation</a>.</p>
+  <p lang="ko">
+   W3C의 권고안으로 공개하는 것이 모든 W3C 멤버의 승인을 의미하지 않습니다. 
+   이는 초안 문서이므로 다른 문서에 의해 언제든지 업데이트 되거나, 교체되거나 폐기될 수 있습니다.
+   작업 중 이외에 이 문서를 인용하는 것은 바람직하지 않습니다.
+  </p>
+  <p lang="en">Publication as a W3C Recommendation does not imply endorsement by the W3C Membership. This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress.   </p>
+
+  <p lang="ko">
+    이 문서는 (<a href="/Style/">Style Activity</a>의 일원인) 
+    <a href="/Style/CSS/members">CSS Working Group</a>에서 제공합니다.
+  </p>
+  <p lang="en">This document was produced by the <a href="/Style/CSS/members">CSS
+   Working Group</a> (part of the <a href="/Style/">Style Activity</a>).
+  <p lang="ko">이 문서는 <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/">2004년 2월 6일 W3C 특허 정책</a>을 따르는 그룹에서 작성하였습니다.
+    W3C는 그룹의 성과물에 관련하여 <a href="http://www.w3.org/2004/01/pp-impl/40318/status" rel="disclosure">모든 공개 특허 공개 리스트</a>를 관리합니다.
+    여기에는 특허 공개에 대한 지시사항도 포함합니다.
+    특허에 대해서 충분한 지식이 있는 사람이, 스펙 문서의 <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential Claim(s)</a>에 인정된다고 파악되는 경우, <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">W3C 특허 정책 제 6장</a>에 의거하여 정보를 공개해야 할 필요가 있습니다.</p>
+  <p lang="en">This document was produced by a group operating under the <a
+   href="/Consortium/Patent-Policy-20040205/">5 February 2004 W3C Patent
+   Policy</a>. W3C maintains a <a href="/2004/01/pp-impl/32061/status"
+   rel=disclosure>public list of any patent disclosures</a> made in
+   connection with the deliverables of the group; that page also includes
+   instructions for disclosing a patent. An individual who has actual
+   knowledge of a patent which the individual believes contains <a
+   href="/Consortium/Patent-Policy-20040205/#def-essential">Essential
+   Claim(s)</a> must disclose the information in accordance with <a
+   href="/Consortium/Patent-Policy-20040205/#sec-Disclosure">section 6 of the
+   W3C Patent Policy</a>.</p>
+   <p lang="ko" id="changes">이 문서는 스타일 시트의 제외, title 및 date 같은 표기 정보 수정, 오래된 변경점 섹션 제거를 제외하고 이전 후보 권고안과 동일합니다.</p>
+   <p lang="en">This document is the same as the previous, Proposed Recommendation version: except for the style sheet, editorial changes to the front matter such as the title and date, and removal of the older changes section. </p>
+  <!--end-status-->
+
+  <h2 class="no-num no-toc" id=contents>목차</h2>
+  <!--begin-toc-->
+
+  <ul class=toc>
+   <li><a href="#background"><span class=secno>1. </span>Background</a>
+
+   <li><a href="#media0"><span class=secno>2. </span>Media Queries</a>
+
+   <li><a href="#syntax"><span class=secno>3. </span>Syntax</a>
+    <ul class=toc>
+     <li><a href="#error-handling"><span class=secno>3.1. </span>Error
+      Handling</a>
+    </ul>
+
+   <li><a href="#media1"><span class=secno>4. </span>Media features</a>
+    <ul class=toc>
+     <li><a href="#width"><span class=secno>4.1. </span>width</a>
+
+     <li><a href="#height"><span class=secno>4.2. </span>height</a>
+
+     <li><a href="#device-width"><span class=secno>4.3.
+      </span>device-width</a>
+
+     <li><a href="#device-height"><span class=secno>4.4.
+      </span>device-height</a>
+
+     <li><a href="#orientation"><span class=secno>4.5. </span>orientation</a>
+      
+
+     <li><a href="#aspect-ratio"><span class=secno>4.6.
+      </span>aspect-ratio</a>
+
+     <li><a href="#device-aspect-ratio"><span class=secno>4.7.
+      </span>device-aspect-ratio</a>
+
+     <li><a href="#color"><span class=secno>4.8. </span>color</a>
+
+     <li><a href="#color-index"><span class=secno>4.9. </span>color-index</a>
+      
+
+     <li><a href="#monochrome"><span class=secno>4.10. </span>monochrome</a>
+
+     <li><a href="#resolution"><span class=secno>4.11. </span>resolution</a>
+
+     <li><a href="#scan"><span class=secno>4.12. </span>scan</a>
+
+     <li><a href="#grid"><span class=secno>4.13. </span>grid</a>
+    </ul>
+
+   <li><a href="#values"><span class=secno>5. </span>Values</a>
+
+   <li><a href="#units"><span class=secno>6. </span>Units</a>
+    <ul class=toc>
+     <li><a href="#resolution0"><span class=secno>6.1. </span>Resolution</a>
+    </ul>
+
+   <li class=no-num><a href="#acknowledgments">Acknowledgments</a>
+
+   <li class=no-num><a href="#references">References</a>
+    <ul class=toc>
+     <li class=no-num><a href="#normative-references">Normative
+      references</a>
+
+     <li class=no-num><a href="#other-references">Other references</a>
+    </ul>
+  </ul>
+  <!--end-toc-->
+
+  <h2 id=background><span class=secno>1. </span>배경</h2>
+  
+  <p lang="ko">(이 섹션은 표준에 준하는 내용이 아닙니다.)
+  <p lang="en">(This section is not normative.)
+  <p lang="ko">
+    HTML4 <a href="#HTML401" rel=biblioentry>[HTML401]<!--{{HTML401}}--></a>와
+    CSS2<a href="#CSS21" rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a>는 현재
+    다른 미디어 타입에 따라 미디어 고유의 스타일 시트를 적용하는 걸 지원합니다.
+    예를 들어, 문서가 화면에 보여질 때와 인쇄를 할 때 다른 스타일 시트를 이용할 수 있습니다.
+    HTML 4에서는 아래와 같이 작성합니다.
+  </p>
+  <p lang="en">HTML4 <a href="#HTML401" rel=biblioentry>[HTML401]<!--{{HTML401}}--></a>
+   and CSS2 <a href="#CSS21" rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a>
+   currently support media-dependent style sheets tailored for different
+   media types. For example, a document may use different style sheets for
+   screen and print. In HTML4, this can be written as:
+
+  <div class=example>
+   <pre><code>&lt;link rel="stylesheet" type="text/css" media="screen" href="sans-serif.css">
+&lt;link rel="stylesheet" type="text/css" media="print" href="serif.css"></code></pre>
+  </div>
+  <p lang="ko">CSS 스타일 시트에서는 특정 미디어 타입에서만 적용할 부분을 선언할 수 있습니다.</p>
+  <p lang="en">Inside a CSS style sheet, one can declare that sections apply to certain
+   media types:
+
+  <div class=example>
+   <pre><code>@media screen {
+  * { font-family: sans-serif }
+}</code></pre>
+  </div>
+  <p lang="ko">
+   미디어 타입 &lsquo;<code class=css>print</code>&rsquo;와 &lsquo;<code class=css>screen</code>&rsquo;은
+   HTML4에서 정의되었습니다.
+   HTML4에서 정의된 미디어 타입의 전체 목록은 &lsquo;<code
+   class=css>aural</code>&rsquo;, &lsquo;<code
+   class=css>braille</code>&rsquo;, &lsquo;<code
+   class=css>handheld</code>&rsquo;, &lsquo;<code
+   class=css>print</code>&rsquo;, &lsquo;<code
+   class=css>projection</code>&rsquo;, &lsquo;<code
+   class=css>screen</code>&rsquo;, &lsquo;<code class=css>tty</code>&rsquo;,
+   &lsquo;<code class=css>tv</code>&rsquo;입니다.
+    
+   CSS2에서도 같은 리스트를 정의하지만,
+   &lsquo;<code class=css>aural</code>&rsquo;을 제거하고,
+   &lsquo;<code class=css>embossed</code>&rsquo;와 &lsquo;<code class=css>speech</code>&rsquo;를 추가했습니다.
+   또한 &lsquo;<code class=css>all</code>&rsquo;은 모든 미디어 타입에서 적용할 스타일 시트를 나타낼 때 사용합니다.
+  </p>
+  <p lang="en">The &lsquo;<code class=css>print</code>&rsquo; and &lsquo;<code
+   class=css>screen</code>&rsquo; media types are defined in HTML4. The
+   complete list of media types in HTML4 is: &lsquo;<code
+   class=css>aural</code>&rsquo;, &lsquo;<code
+   class=css>braille</code>&rsquo;, &lsquo;<code
+   class=css>handheld</code>&rsquo;, &lsquo;<code
+   class=css>print</code>&rsquo;, &lsquo;<code
+   class=css>projection</code>&rsquo;, &lsquo;<code
+   class=css>screen</code>&rsquo;, &lsquo;<code class=css>tty</code>&rsquo;,
+   &lsquo;<code class=css>tv</code>&rsquo;. CSS2 defines the same list,
+   deprecates &lsquo;<code class=css>aural</code>&rsquo; and adds
+   &lsquo;<code class=css>embossed</code>&rsquo; and &lsquo;<code
+   class=css>speech</code>&rsquo;. Also, &lsquo;<code
+   class=css>all</code>&rsquo; is used to indicate that the style sheet
+   applies to all media types.
+  <p lang="ko">
+   미디어 고유 스타일 시트는 여러 유저 에이전트에서 지원합니다.
+   가장 일반적으로 사용되는 타입은 &lsquo;<code
+   class=css>screen</code>&rsquo;과 &lsquo;<code
+   class=css>print</code>&rsquo;입니다.
+  </p>
+  <p lang="en">Media-specific style sheets are supported by several user agents. The
+   most commonly used feature is to distinguish between &lsquo;<code
+   class=css>screen</code>&rsquo; and &lsquo;<code
+   class=css>print</code>&rsquo;.
+  <p lang="ko">
+    출력 디바이스의 어떤 타입에 스타일시트를 적용해야하는 지 디테일하게 설명하기 위한 방법에 대한 요청이 있었습니다.
+    다행히도 HTML4에서 이러한 요청을 예상하고 미디어 타입에 대한 상위호환성을 가진 구문을 정의해두었습니다.
+    여기에서는 <a href="http://www.w3.org/TR/1999/REC-html401-19991224/types.html#h-6.13">HTML4 섹션 6.13</a>을 인용합니다.
+  </p>
+  <p lang="en">There have been requests for ways to describe in more detail what type
+   of output devices a style sheet applies to. Fortunately HTML4 foresaw
+   these requests and defined a forward-compatible syntax for media types.
+   Here is a quote from <a
+   href="http://www.w3.org/TR/1999/REC-html401-19991224/types.html#h-6.13">HTML4, section 6.13</a>:
+
+  <blockquote
+   cite="http://www.w3.org/TR/1999/REC-html401-19991224/types.html#h-6.13">
+   <p lang="ko">
+    이후의 HTML 버전에서 새로운 값이 추가될 가능성 및 파라미터화된 값이 허용될 가능성이 있습니다.
+    이러한 형태의 확장이 가능하도록 하기 위해서는, 적합하는 유저 에이전트가 아래와 같이 <a
+    href="http://www.w3.org/TR/1999/REC-html401-19991224/present/styles.html#adef-media"><samp>media</samp></a> 
+    속성을 해석해야만 합니다.
+    <span lang="en" style="display:block">Future versions of HTML may introduce new values and may allow
+    parameterized values. To facilitate the introduction of these extensions,
+    conforming user agents must be able to parse the <a
+    href="http://www.w3.org/TR/1999/REC-html401-19991224/present/styles.html#adef-media"><samp>media</samp></a>
+    attribute value as follows:</span>
+
+   <ol>
+    <li>값은 콤마로 구분한 항목의 리스트여야 합니다. 예를 들어,
+     <pre><code>media="screen, 3d-glasses, print and resolution > 90dpi"</code></pre>
+
+     <p>이는 아래 형태와 매핑됩니다 :</p>
+
+     <pre><code>"screen"
+"3d-glasses"
+"print and resolution > 90dpi"</code></pre>
+
+    <li>
+      각 항목은, US ASCII 문자 [a-zA-Z] (유니코드 10진수 65-90, 97-122), 
+      숫자 [0-9] (유니코드 10진수 30-39), 혹은 하이픈 (45)로 시작하는 첫번째 문자 외에는 잘립니다.
+      현재 예시에서는 다음과 같이 됩니다.
+      <span lang="en" style="display:block">Each entry is truncated just before the first character that isn't a
+     US ASCII letter [a-zA-Z] (Unicode decimal 65-90, 97-122), digit [0-9]
+     (Unicode hex 30-39), or hyphen (45). In the example, this gives:</span>
+     <pre><code>"screen"
+"3d-glasses"
+"print"</code></pre>
+   </ol>
+  </blockquote>
+  <p lang="ko">
+    이 스펙문서에서 설명하는 미디어 쿼리는 HTML4에서 정의한 메커니즘을 기본으로 삼습니다.
+    미디어 쿼리 문법은 HTML 4에서 이미 정의해둔 미디어 쿼리 문법에 적합합니다.
+    HTML4 <code class=html>media</code> 속성은, XHTML 및 일반적인 XML에도 존재합니다.
+    같은 문법을 CSS &lsquo;<code class=css>@media</code>&rsquo; 및
+    &lsquo;<code class=css>@import</code>&rsquo;규칙에서도
+    사용할 수 있습니다.
+  </p>
+  <p lang="en">Media queries, as described in this specification, build on the
+   mechanism outlined in HTML4. The syntax of media queries fit into the
+   media type syntax reserved in HTML4. The <code class=html>media</code>
+   attribute of HTML4 also exists in XHTML and generic XML. The same syntax
+   can also be used inside in the &lsquo;<code class=css>@media</code>&rsquo;
+   and &lsquo;<code class=css>@import</code>&rsquo; rules of CSS.
+  <p lang="ko">그러나, 미디어 쿼리 해석규칙은 CSS에서 사용되는 미디어 쿼리와 정합성을 가지기 때문에 HTML4 규칙과는 호환성이 없습니다.</p>
+  <p lang="en">However, the parsing rules for media queries are incompatible with those
+   of HTML4 so that they are consistent with those of media queries used in
+   CSS.
+
+  <p class=note lang="ko">
+    HTML5 <a href="#HTML5" rel=biblioentry>[HTML5]<!--{{HTML5}}--></a> (이 문서를 공개할 때는 아직 작성중)는,
+    미디어 쿼리 스펙을 직접 참조하고 있어, HTML의 규칙을 변경하고 있습니다.
+    <span lang="en" style="display:block">HTML5 <a href="#HTML5"
+   rel=biblioentry>[HTML5]<!--{{HTML5}}--></a> (at the moment of writing
+   still work in progress) references the Media Queries specification
+   directly and thus updates the rules for HTML.</span>
+
+  <h2 id=media0><span class=secno>2. </span>미디어 쿼리</h2>
+   <p lang="ko">
+     미디어 쿼리는 미디어 타입과 특정 미디어 타입의 <span class=index id=media-features>특성</span>을 체크하는 0개 이상의 <span class=index id=expressions>표현식</span>으로 구성합니다.
+   </p>
+   <p lang="en">A media query consists of a media type and zero or more <span
+   class=index>expressions</span> that check for the
+   conditions of particular <span class=index>media
+   features</span>.
+  <p lang="ko">
+    이 섹션에서 작성하는 미디어 쿼리에 관한 내용은 
+    <a href="#syntax">문법 섹션</a>을 준수하고 있다는 걸 전제로 합니다.
+    문법을 준수하지 않는 미디어 쿼리에 대해서는 <a href="#error-handling">에러 처리 섹션</a>에
+    작성되어 있습니다. 즉 이 섹션에서 설명하는 요건보다 문법이 먼저입니다.
+  </p>
+  <p lang="en">Statements regarding media queries in this section assume the <a
+   href="#syntax">syntax section</a> is followed. Media queries that do not
+   conform to the syntax are discussed in the <a href="#error-handling">error
+   handling section</a>. I.e. the syntax takes precedence over requirements
+   in this section.
+
+  <div class=example>
+   <p>HTML로 작성한 간단한 예제입니다.</p>
+
+   <pre><code>&lt;link rel="stylesheet" media="screen and (color)" href="example.css" /></code></pre>
+
+   <p>이 예제는 특정 스타일시트(<code>example.css</code>)가
+     어떤 특성을 가진 미디어 타입(&lsquo;<code class=css>screen</code>&rsquo;) 디바이스에 적용되는
+     (컬러 스크린이여야만 하는) 것을 의미합니다.
+   </p>
+  </div>
+
+  <div class=example>
+   <p>같은 미디어 쿼리를 CSS의 @import 규칙에서 작성하면 이렇습니다:</p>
+
+   <pre><code>@import url(color.css) screen and (color);</code></pre>
+  </div>
+  <p lang="ko">
+    미디어 쿼리는 값이 true거나 false인 표현식입니다.
+    미디어 쿼리는 미디어 쿼리의 미디어 타입이 유저 에이전트가 동작하고 있는 디바이스의 미디어 타입
+    ("Applies to" 라인에 정의되어 있는)과 일치하며,
+    미디어 쿼리 내 모든 식이 true라면 true입니다.
+  </p>
+  <p lang="en">A media query is a logical expression that is either true or false. A
+   media query is true if the media type of the media query matches the media
+   type of the device where the user agent is running (as defined in the
+   "Applies to" line), and all expressions in the media query are true.
+  <p lang="ko">
+    모든 미디어 타입에 적용 가능한 미디어 쿼리는, 단축문법을 사용하고 있으며,
+    &lsquo;<code class=css>all</code>&rsquo; 키워드는 (&lsquo;<code class=css>and</code>&rsquo;와 함께) 생략 가능합니다.
+    즉 미디어 타입을 명시하지 않은 경우에는 &lsquo;<code class=css>all</code>&rsquo;입니다.
+  </p>
+  <p lang="en">A shorthand syntax is offered for media queries that apply to all media
+   types; the keyword &lsquo;<code class=css>all</code>&rsquo; can be left
+   out (along with the trailing &lsquo;<code class=css>and</code>&rsquo;).
+   I.e. if the media type is not explicitly given it is &lsquo;<code
+   class=css>all</code>&rsquo;.
+
+  <div class=example>
+   <p>즉 아래 두 예제는 동일합니다:</p>
+
+   <pre><code>@media all and (min-width:500px) { &hellip; }
+@media (min-width:500px) { &hellip; }</code></pre>
+
+   <p>아래 예제 또한 동일합니다:</p>
+
+   <pre><code>@media (orientation: portrait) { &hellip; }
+@media all and (orientation: portrait) { &hellip; }</code></pre>
+  </div>
+  <p lang="ko">
+    여러 미디어 쿼리를 하나의 미디어 쿼리 목록으로 묶을 수 있습니다.
+    콤마로 구분한 리스트 내 미디어 쿼리 중 하나 이상이 true라면 전체 리스트는 true이며, 그 외에는 모두 false입니다.
+    미디어 쿼리 문법에서 콤마는 논리 OR을 나타내며, 
+    &lsquo;<code class=css>and</code>&rsquo; 키워드는 논리 AND를 나타냅니다.
+  </p>
+  <p lang="en">Several media queries can be combined in a media query list. A
+   comma-separated list of media queries. If one or more of the media queries
+   in the comma-separated list are true, the whole list is true, and
+   otherwise false. In the media queries syntax, the comma expresses a
+   logical OR, while the &lsquo;<code class=css>and</code>&rsquo; keyword
+   expresses a logical AND.
+
+  <div class=example>
+   <p>
+    CSS에서 @media 룰을 사용해서 콤마 구분 리스트를 이용해 다수의 미디어 쿼리를 표현한 예시입니다.
+   </p>
+
+   <pre><code>@media <em>screen and (color), projection and (color)</em> { &hellip; }</code></pre>
+  </div>
+  <p lang="ko">
+   미디어 쿼리 리스트가 공백(즉, 선언에 공백문자 혹은 빈 문자열)인 경우 true로 간주됩니다.
+  </p>
+  <p>If the media query list is empty (i.e. the declaration is the empty
+   string or consists solely of whitespace) it evaluates to true.
+
+  <div class=example>
+   <p>즉 아래 두 예제는 동일합니다:</p>
+
+   <pre><code>@media all { &hellip; }
+@media { &hellip; }</code></pre>
+  </div>
+  <p>논리 NOT은 &lsquo;<code class=css>not</code>&rsquo; 키워드를 통해 표현합니다.
+    미디어 쿼리 앞에 &lsquo;<code class=css>not</code>&rsquo; 키워드가 존재한다면, 결과는 부정으로 됩니다.
+    즉, &lsquo;<code class=css>not</code>&rsquo;키워드가 없는 미디어 쿼리가 false인 경우의 반대와 동일합니다.
+    (HTML4에서 설명하는 바와 같이) 미디어 타입만을 지원하는 유저 에이전트는 &lsquo;<code class=css>not</code>&rsquo; 키워드를
+    알아보지 않고, 따라서 관련 스타일 시트는 적용되지 않습니다.
+  </p>
+  <p lang="en">The logical NOT can be expressed through the &lsquo;<code
+   class=css>not</code>&rsquo; keyword. The presence of the keyword
+   &lsquo;<code class=css>not</code>&rsquo; at the beginning of the media
+   query negates the result. I.e., if the media query had been true without
+   the &lsquo;<code class=css>not</code>&rsquo; keyword it will become false,
+   and vice versa. User agents that only support media types (as described in
+   HTML4) will not recognize the &lsquo;<code class=css>not</code>&rsquo;
+   keyword and the associated style sheet is therefore not applied.
+
+  <div class=example>
+   <pre><code>&lt;link rel="stylesheet" media="<em>not screen and (color)</em>" href="example.css" /&gt;</code></pre>
+  </div>
+  <p lang="ko">
+   &lsquo;<code class=css>only</code>&rsquo; 키워드를 사용해서 오래된 유저 에이전트에서 스타일 시트를 보이지 않게 할 수 있습니다.
+    유저 에이전트는 &lsquo;<code class=css>only</code>&rsquo;로 시작하는 미디어 쿼리를,
+    &lsquo;<code class=css>only</code>&rsquo;라는 키워드가 존재하지 않는 것 마냥 처리해야합니다.
+  </p>
+  <p lang="en">The keyword &lsquo;<code class=css>only</code>&rsquo; can also be used
+   to hide style sheets from older user agents. User agents must process
+   media queries starting with &lsquo;<code class=css>only</code>&rsquo; as
+   if the &lsquo;<code class=css>only</code>&rsquo; keyword was not present.
+
+  <div class=example>
+   <pre><code>&lt;link rel="stylesheet" media="<em>only screen and (color)</em>" href="example.css" /&gt;</code></pre>
+  </div>
+  <p lang="ko">
+    미디어 쿼리 문법은 HTML, XHTML, XML <a href="#XMLSTYLE" rel=biblioentry>[XMLSTYLE]<!--{{XMLSTYLE}}--></a> 및
+    CSS의 @import와 @media 룰에서 사용합니다.
+  </p>
+  <p lang="en">The media queries syntax can be used with HTML, XHTML, XML <a
+   href="#XMLSTYLE" rel=biblioentry>[XMLSTYLE]<!--{{XMLSTYLE}}--></a> and the
+   @import and @media rules of CSS.
+
+  <div class=example>
+   <p>HTML, XHTML, XML, @import, @media로 작성한 같은 쿼리입니다:</p>
+
+   <pre><code>&lt;link rel="stylesheet" media="<em>screen and (color), projection and (color)</em>" rel="stylesheet" href="example.css"></code></pre>
+
+   <pre><code>&lt;link rel="stylesheet" media="<em>screen and (color), projection and (color)</em>" rel="stylesheet" href="example.css" /></code></pre>
+
+   <pre><code>&lt;?xml-stylesheet media="<em>screen and (color), projection and (color)</em>" rel="stylesheet" href="example.css" ?></code></pre>
+
+   <pre><code>@import url(example.css) <em>screen and (color), projection and (color)</em>;</code></pre>
+
+   <pre><code>@media <em>screen and (color), projection and (color)</em> { &hellip; }</code></pre>
+
+   <p class=note><a href="#XMLSTYLE"
+    rel=biblioentry>[XMLSTYLE]<!--{{XMLSTYLE}}--></a> 스펙에서는 <code>media</code> 가상 속성에서 
+     미디어 쿼리를 사용 가능하도록 갱신하지 않았습니다.</p>
+  </div>
+  <p lang="ko">
+    유저에이전트가 동작하고 있는 디바이스에서 적용할 수 없는 미디어 특성이 존재하는 경우,
+    해당 미디어 특성과 관련하는 모든 식은 false가 됩니다.
+   </p>
+  <p>If a media feature does not apply to the device where the UA is running,
+   expressions involving the media feature will be false.
+
+  <div class=example>
+   <p>&lsquo;<code
+    class=css>device-aspect-ratio</code>&rsquo; 미디어 특성은 비주얼 디바이스에서만 사용 가능합니다.
+     음성 디바이스는, &lsquo;<code class=css>device-aspect-ratio</code>&rsquo;를 포함하는 식은 항상 false일 것입니다.
+    </p>
+
+   <pre><code>&lt;link rel="stylesheet" media="aural and (device-aspect-ratio: 16/9)" href="example.css" /&gt;</code></pre>
+  </div>
+
+  <p lang="ko">디바이스에서 허용하지 않는 단위를 사용한 경우, 식은 항상 false가 됩니다.</p>
+  <p lang="en">
+    Expressions will always be false if the unit of measurement does not
+   apply to the device.</p>
+
+  <div class=example>
+   <p>&lsquo;<code class=css>px</code>&rsquo; 단위는 
+    &lsquo;<code class=css>speech</code>&rsquo; 디바이스에서 적용되지 않고, 이에 따라 아래 미디어 쿼리는 항상 false일 것입니다.</p>
+
+   <pre><code>&lt;link rel="stylesheet" media="speech and (min-device-width: 800px)" href="example.css" /&gt;</code></pre>
+
+   <p>
+     미디어 쿼리 맨 앞에 &lsquo;<code class=css>not</code>&rsquo; 키워드를 추가한다면,
+     이 예시의 미디어 쿼리가 true임에 주의하십시오.
+  </div>
+  <p lang="ko">
+    순환 의존관계를 피하기 위해, 식을 평가하기 위한 스타일시트를 적용할 필요는 없습니다.
+    예를 들어, print 문서의 종횡비는, 스타일 시트의 영향을 받을 수도 있지만,
+    &lsquo;<code class=css>device-aspect-ratio</code>&rsquo; 관련 식은,
+    유저 에이전트의 디폴트 종횡비에 맞출 것입니다.
+  </p>
+  <p lang="en">To avoid circular dependencies, it is never necessary to apply the style
+   sheet in order to evaluate expressions. For example, the aspect ratio of a
+   printed document may be influenced by a style sheet, but expressions
+   involving &lsquo;<code class=css>device-aspect-ratio</code>&rsquo; will be
+   based on the default aspect ratio of the user agent.
+
+  <p class=note>
+    필수조건은 아니지만 유저 에이전트에서 디바이스가 랜드스케이프 모드에서 포트레이트 모드로 변경되는 등
+    유저의 환경 변화에 대응하여 페이지를 재계산해 레이아웃을 다시 잡을 것으로 기대합니다.
+
+  <h2 id=syntax><span class=secno>3. </span>문법</h2>
+  <p lang="ko">
+   미디어쿼리 문법은 <a href="http://www.w3.org/TR/CSS21/grammar.html">CSS2 grammar</a>에서 설명하고 있습니다.
+   여기서 정의하지 않은 문법은 CSS2에서 정의하고 있습니다.
+   아래에 정의되어있는 <code>media_query_list</code> 생성 규칙은,
+   CSS2의 <code>media_list</code> 생성 규칙을 교체하는 것입니다.
+   <a href="#CSS21" rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a>
+  </p>
+  <p lang="en">The media query syntax is described in terms of the <a
+   href="http://www.w3.org/TR/CSS21/grammar.html">CSS2 grammar</a>. As such,
+   rules not defined here are defined in CSS2. The
+   <code>media_query_list</code> production defined below replaces the
+   <code>media_list</code> production from CSS2. <a href="#CSS21"
+   rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a>
+
+  <pre>media_query_list
+ : S* [media_query [ ',' S* media_query ]* ]?
+ ;
+media_query
+ : [ONLY | NOT]? S* media_type S* [ AND S* expression ]*
+ | expression [ AND S* expression ]*
+ ;
+media_type
+ : IDENT
+ ;
+expression
+ : '(' S* media_feature S* [ ':' S* expr ]? ')' S*
+ ;
+media_feature
+ : IDENT
+ ;</pre>
+  <p lang="ko">
+    CSS2에서 정의한 COMMENT 토큰은,
+    (가독성을 갖기 위해) 문법 내에서 나타나지 않지만,
+    다른 토큰 사이 어디에라도 몇번이든지 나타날 수 있습니다.
+    <a href="#CSS21" rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a>
+  </p>
+  <p lang="en">COMMENT tokens, as defined by CSS2, do not occur in the grammar (to keep
+   it readable), but any number of these tokens may appear anywhere between
+   other tokens. <a href="#CSS21"
+   rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a>
+  <p lang="ko">새로운 정의 내용이 추가되었습니다.</p>
+  <p lang="en">The following new definitions are introduced:
+
+  <pre>L  l|\\0{0,4}(4c|6c)(\r\n|[ \t\r\n\f])?|\\l
+Y  y|\\0{0,4}(59|79)(\r\n|[ \t\r\n\f])?|\\y</pre>
+  <p lang="ko">새로운 토큰이 추가되었습니다.</p>
+  <p lang="en">The following new tokens are introduced:
+
+  <pre>{O}{N}{L}{Y}      {return ONLY;}
+{N}{O}{T}         {return NOT;}
+{A}{N}{D}         {return AND;}
+{num}{D}{P}{I}    {return RESOLUTION;}
+{num}{D}{P}{C}{M} {return RESOLUTION;}</pre>
+
+  <p lang="ko"><code>RESOLUTION</code>이 CSS2 <code>term</code> 생성 규칙에 추가되어있습니다.
+  <p lang="en"><code>RESOLUTION</code> is to be added to the CSS2 <code>term</code> production.</p>
+  <p lang="ko">CSS 스타일 시트는 일반적으로 대소문자를 구분하지 않으며, 이는 미디어쿼리에서도 동일합니다.</p>
+  <p lang="en">CSS style sheets are generally case-insensitive, and this is also the
+   case for media queries.
+  <p lang="ko">구문의 적합 외에 개별 미디어 쿼리가 준수하는 것으로 간주되기 위해서는
+   관련 스펙에 따라 미디어 타입과 특성을 사용해야할 필요가 있습니다.</p>
+  <p lang="en">In addition to conforming to the syntax, each media query needs to use
+   media types and media features according to their respective specification
+   in order to be considered conforming.
+
+  <div class=example>
+   <p>
+     아래 예제에서 "example"이라는 미디어 쿼리는 존재하지 않기 때문에
+     첫번째 미디어 쿼리만 적용됩니다.
+   </p>
+
+   <pre><code>@media all { body { background:lime } }
+@media example { body { background:red } }</code></pre>
+  </div>
+
+  <h3 id=error-handling><span class=secno>3.1. </span>에러 처리</h3>
+  <p lang="ko">
+    올바르지 않은 미디어 쿼리에 대해 유저 에이전트는 
+    이 섹션에서 설명하는 규칙을 지킬 필요가 있습니다.
+  </p>
+  <p lang="en">
+   For media queries that are not conforming user agents need to follow the
+   rules described in this section.
+  <ul>
+   <li>
+    <p lang="en"><strong>알 수 없는 미디어타입</strong>
+     알 수 없는 미디어 타입은 false로 간주합니다.
+     사실 상, 디바이스의 미디어 타입과 일치하지 않고 알려진 미디어 타입은 모두 동일하게 처리합니다.
+    </p>
+     
+    <p lang="en"><strong>Unknown media types.</strong> Unknown media types evaluate to
+     false. Effectively, they are treated identically to known media types
+     that do not match the media type of the device.</p>
+
+    <div class=example>
+     <p>"<code>unknown</code>" 미디어 쿼리가 실제로 지원하는 미디어 타입이 아닌 경우
+      <code>unknown</code>은 false입니다. 마찬가지로 "<code>not unknown</code>"은 true입니다.</p>
+    </div>
+
+    <p class=note>
+      알 수 없는 미디어 타입은, IDENT 생성 규칙과 실제로 일치하지 않는 미디어 타입과는 다릅니다.
+      이는, 부정 미디어 쿼리 섹션에 해당합니다.
+    </p>
+
+   <li>
+     <p lang="ko"><strong>알 수 없는 미디어 특성.</strong>
+     유저 에이전트는 정의된 미디어 특성 1개가 알려지지 않은 경우,
+     미디어 쿼리를 "<code>not all</code>"로 표현합니다.
+     </p>
+     
+    <p lang="en"><strong>Unknown media features.</strong> User agents are to represent
+     a media query as "<code>not all</code>" when one of the specified media
+     features is not known.</p>
+
+    <div class=example>
+     <pre><code>&lt;link rel="stylesheet" media="screen and (max-weight: 3kg) and (color), (color)" href="example.css" /&gt;</code></pre>
+     <p lang="ko">이 예에서 첫번째 미디어 쿼리는 "<code>not all</code>"로 간주되어 false가 됩니다.
+       그리고 2번째 미디어 쿼리는 사실상 첫번째 쿼리가 지정되지 않은 것과 동일하게 평가됩니다.
+     </p>
+      
+     <p lang="en">In this example, the first media query will be represented as
+      "<code>not all</code>" and evaluate to false and the second media query
+      is evaluated as if the first had not been specified, effectively.</p>
+    </div>
+
+    <div class=example>
+     <pre><code>@media (min-orientation:portrait) { &hellip; }</code></pre>
+
+     <p>&lsquo;<code
+      class=css>orientation</code>&rsquo; 특성은 
+      &lsquo;<code class=css>min-</code>&rsquo; 접두사를 지원하지 않기 때문에
+       이 쿼리는 "<code>not all</code>"로 표현됩니다.</p>
+    </div>
+
+   <li>
+    <p lang="ko"><strong>알 수 없는 미디어 특성 값.</strong> 
+      유저에이전트는 알 수 없는 미디어 특성과 마찬가지로
+      미디어 특성 값 1개가 알 수 없는 경우, 미디어 쿼리를 "<code>not all</code>"로 표현합니다.
+    </p>
+    <p lang="en"><strong>Unknown media feature values.</strong> As with unknown media
+    features, user agents are to represent a media query as "<code>not
+    all</code>" when one of the specified media feature values is not known.</p>
+
+    <div class=example>
+     <p><code>(color:20example)</code> 미디어 쿼리는
+       &lsquo;<code class=css>color</code>&rsquo; 미디어 특성에 알 수 없는 값을 사용하여
+       "<code>not all</code>"로 표현합니다.
+     </p>
+    </div>
+
+    <div class=example>
+     <p>이 미디어 쿼리는 &lsquo;<code class=css>width</code>&rsquo; 미디어 특성에서 음수 길이를 허용하지 않기 때문에
+       "<code>not all</code>"로 표현합니다.</p>
+    
+     <pre><code>@media (min-width: -100px) { &hellip; }</code></pre>
+    </div>
+
+   <li>
+    <p lang="ko"><strong>올바르지 않은 미디어쿼리.</strong>
+     유저 에이전트는 미디어의 마지막까지 읽고 미디어를 해석하는 동안
+      (), [], {}, "", and &#39;&#39; <a
+     href="http://www.w3.org/TR/CSS21/syndata.html#block">매칭 규칙</a>에 따르거나,
+     에스케이프를 적절히 처리해나가면서 발생한 예기치 않은 토큰을 처리합니다.
+     예기치않은 토큰을 포함한 미디어 쿼리는 "<code>not all</code>"로 표현합니다.
+     <a href="#CSS21" rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a>
+     </p>
+      
+     <p lang="en"><strong>Malformed media query.</strong> User agents are to handle
+     unexpected tokens encountered while parsing a media query by reading
+     until the end of the media query, while observing <a
+     href="http://www.w3.org/TR/CSS21/syndata.html#block">the rules for
+     matching pairs</a> of (), [], {}, "", and &#39;&#39;, and correctly
+     handling escapes. Media queries with unexpected tokens are represented
+     as "<code>not all</code>". <a href="#CSS21"
+     rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a>
+
+    <div class=example>
+     <pre><code>@media (example, all,), speech { /* only applicable to speech devices */ }
+@media &amp;test, screen           { /* only applicable to screen devices */ }</code></pre>
+    </div>
+
+    <div class=example>
+     <p>아래 예제는,&lsquo;<code class=css>and</code>&rsquo;와 식 사이에
+       공백문자가 없는 것을 허용하지 않기 때문에 올바르지 않은 미디어 쿼리입니다.
+       (이는 함수 표기 문법에 이미 정의되어 있습니다)
+     </p>
+     <pre><code>@media all and(color) { &hellip; }</code></pre>
+    </div>
+
+    <p>미디어 쿼리는 호스트 언어의 에러 처리 규칙에도 따르기를 기대합니다.</p>
+
+    <div class=example>
+     <pre><code>@media test;,all { body { background:lime } }</code></pre>
+
+     <p>세미콜론이 CSS <code>@media</code> 규칙을 종료시키기 때문에 적용되지 않습니다.</p>
+    </div>
+  </ul>
+
+  <h2 id=media1><span class=secno>4. </span>미디어 특성</h2>
+
+  <p lang="ko">
+   문법적으로 미디어 특성은 CSS 속성과 닮아있습니다.
+   미디어 특성은 이름과 특정 값을 가집니다.
+   그러나 CSS 속성과 미디어 특성에는 몇가지 큰 차이가 있습니다.
+  </p>
+  <p lang="en">
+   Syntactically, media features resemble CSS properties: they have names
+   and accept certain values. There are, however, several important
+   differences between properties and media features:
+
+  <ul>
+   <li>
+    <div lang="ko">
+    CSS 속성은 <em>선언</em> 내에서 사용하며 문서의 표현방법에 대한 정보를 제공합니다.
+    미디어 특성은, <em>표현식</em> 내에서 사용하며 출력 디바이스의 요건을 설명합니다.
+    </div>
+    <div lang="en">
+     Properties are used in <em>declarations</em> to give information about
+    how to present a document. Media features are used in
+    <em>expressions</em> to describe requirements of the output device.
+    </div>
+   <li>
+    <div lang="ko">
+      대부분의 미디어 특성은 &lsquo;<code class=css>min-</code>&rsquo;이나 &lsquo;<code class=css>max-</code>&rsquo;
+      접두어를 "~이상", "~이하"를 표현할 때 옵션으로 사용할 수 있도록 허용합니다.
+      이 문법은 HTML이나 XML과 충돌 가능성이 있는 "&lt;"와 "&gt;" 문자를 피하기 위해 사용합니다.
+      접두어가 붙어있는 미디어 특성은 접두어와 함께 사용하는 것이 가장 일반적이지만,
+      단독으로 사용되기도 합니다.
+    </div>
+    <div lang="en">
+    Most media features accept optional &lsquo;<code
+    class=css>min-</code>&rsquo; or &lsquo;<code class=css>max-</code>&rsquo;
+    prefixes to express "greater or equal to" and "smaller or equal to"
+    constraints. This syntax is used to avoid "&lt;" and "&gt;" characters
+    which may conflict with HTML and XML. Those media features that accept
+    prefixes will most often be used with prefixes, but can also be used
+    alone.</div>
+   
+   <li>
+    <div lang="ko">
+      CSS 속성은 선언을 형식화하기 위해 항상 값을 필요로 합니다.
+      한편 미디어 특성은 값 없이 사용하는 게 가능합니다.
+      미디어 특성의 <var>feature</var>인 경우, 0 혹은 단위를 가진 0이 아닌 (즉<code>0</code>,
+      <code>0px</code>, <code>0em</code>이 아닌) 값 <var>x</var>에 대해서<code>(<var>feature</var>:<var>x</var>)</code> true인 경우
+      <code>(<var>feature</var>)</code>는 true입니다.
+      max/min 접두어가 붙은 미디어 특성은 값을 반드시 가져야합니다.
+      min/max 접두어가 붙은 미디어 특성을 값 없이 사용하면, 미디어 쿼리는 올바르지 않다고 간주합니다.
+    </div>
+    <div lang="en">
+    Properties always require a value to form a declaration. Media
+    features, on the other hand, can also be used without a value. For a
+    media feature <var>feature</var>, 
+    <code>(<var>feature</var>)</code> will
+    evaluate to true if <code>(<var>feature</var>:<var>x</var>)</code> will
+    evaluate to true for a value <var>x</var> other than zero or zero
+    followed by a unit identifier (i.e., other than <code>0</code>,
+    <code>0px</code>, <code>0em</code>, etc.). Media features that are
+    prefixed by min/max cannot be used without a value. When a media feature
+    prefixed with min/max is used without a value it makes the media query
+    malformed.
+    </div>
+
+   <li>
+    <div lang="ko">
+      CSS 속성에서는 다수의 다른 값을 포함하는 계산식 등 복잡한 값을 가질 수 있습니다.
+      미디어 특성에서는 1개의 키워드, 1개의 값, 단위가 붙은 숫자 등 1개의 값만 가질 수 있습니다.
+      (다만 &lsquo;<code class=css>aspect-ratio</code>&rsquo;와 &lsquo;<code class=css>device-aspect-ratio</code>&rsquo;는 제외입니다)
+    </div> 
+    <div lang="en">
+    Properties may accept more complex values, e.g., calculations that
+    involve several other values. Media features only accept single values:
+    one keyword, one number, or a number with a unit identifier. (The only
+    exceptions are the &lsquo;<code class=css>aspect-ratio</code>&rsquo; and
+    &lsquo;<code class=css>device-aspect-ratio</code>&rsquo; media features.)
+    </div>
+    
+  </ul>
+
+  <div class=example>
+   <p>예를 들면, &lsquo;<code class=css>color</code>&rsquo; 미디어 특성은
+     값이 없는 식(&lsquo;<codeclass=css>(color)</code>&rsquo;), 값이 있는 식(&lsquo;<code
+    class=css>(min-color: 1)</code>&rsquo;)이 될 가능성이 있습니다..</p>
+  </div>
+
+  <p class=note>
+    이 스펙문서에서는 시각 및 청각 디바이스에서 사용 가능한 미디어 특성을 정의하고 있습니다.
+    비슷하게 미디어 특성은 aural 미디어 타입에서 대해서도 정의하고 있습니다.
+
+  <h3 id=width><span class=secno>4.1. </span>width</h3>
+
+  <div class=media-feature><span class=label>값:</span> &lt;length&gt;<br>
+   <span class=label>적용 가능 범위:</span> 시각 및 청각 미디어 타입<br>
+   <span class=label>min/max 접두어 사용 가능 여부:</span> yes<br>
+  </div>
+
+  <p>&lsquo;<code class=css>width</code>&rsquo; 미디어 특성은
+    출력 디바이스의 대상 디스플레이 영역의 width를 설명합니다.
+    연속 미디어인 경우, 현재 표시되어 있는 스크롤 바(가 존재한다면)의 사이즈를 포함한 뷰포트의 (CSS2 섹션 9.9.1에서 설명하는<a href="#CSS21" rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a>) width입니다.
+    페이지 미디어에서는 페이지 박스 (CSS2 섹션 13.2에서 설명하는<a href="#CSS21" rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a>)의 width입니다.
+   
+   <p lang="en">
+   the &lsquo;<code class=css>width</code>&rsquo; media feature describes
+   the width of the targeted display area of the output device. For
+   continuous media, this is the width of the viewport (as described by CSS2,
+   section 9.1.1 <a href="#CSS21"
+   rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a>) including the size of a
+   rendered scroll bar (if any). For paged media, this is the width of the
+   page box (as described by CSS2, section 13.2 <a href="#CSS21"
+   rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a>).
+  <p lang="ko">&lt;length&gt;에 음수는 사용할 수 없습니다.</p>
+  <p lang="en">A specified &lt;length&gt; cannot be negative.
+
+  <div class=example>
+   <p>
+     예를 들어 다음 미디어 쿼리는 25em 이상의 width에서 인쇄할 때 사용하는 스타일 시트를 표현합니다.
+   </p>
+
+   <pre><code>&lt;link rel="stylesheet" media="print and (min-width: 25cm)" href="http://&hellip;" /></code></pre>
+  </div>
+
+  <div class=example>
+   <p>
+    이 미디어 쿼리는 디바이스의 뷰포트 사이즈 (문서 렌더링 부분의 screen/paper)가 400 ~ 700 픽셀 사이인 경우에만
+    사용 가능한 스타일 시트를 표현합니다.
+   </p>
+
+   <pre><code>@media screen and (min-width: 400px) and (max-width: 700px) { &hellip; }</code></pre>
+  </div>
+
+  <div class=example>
+   <p>
+    이 스타일 시트는 handheld 디바이스 및 screen 디바이스에서,
+    뷰포트의 width가 20em 이상인 경우에 사용 가능한 스타일 시트를 표현합니다.
+    This media query expresses that style sheet is usable on screen and
+    handheld devices if the width of the viewport is greater than 20em.</p>
+
+   <pre><code>@media handheld and (min-width: 20em), 
+  screen and (min-width: 20em) { &hellip; }</code></pre>
+   
+   <p>&lsquo;<code class=css>em</code>&rsquo; 값은 'font-size'에 상대적입니다.</p>
+  </div>
+
+  <h3 id=height><span class=secno>4.2. </span>height</h3>
+
+  <div class=media-feature><span class=label>Value:</span> &lt;length&gt;<br>
+   <span class=label>Applies to:</span> visual and tactile media types<br>
+   <span class=label>Accepts min/max prefixes:</span> yes<br>
+  </div>
+
+  <p>The &lsquo;<code class=css>height</code>&rsquo; media feature describes
+   the height of the targeted display area of the output device. For
+   continuous media, this is the height of the viewport including the size of
+   a rendered scroll bar (if any). For paged media, this is the height of the
+   page box.
+
+  <p>A specified &lt;length> cannot be negative.
+
+  <h3 id=device-width><span class=secno>4.3. </span>device-width</h3>
+
+  <div class=media-feature><span class=label>Value:</span> &lt;length&gt;<br>
+   <span class=label>Applies to:</span> visual and tactile media types<br>
+   <span class=label>Accepts min/max prefixes:</span> yes<br>
+  </div>
+
+  <p>The &lsquo;<code class=css>device-width</code>&rsquo; media feature
+   describes the width of the rendering surface of the output device. For
+   continuous media, this is the width of the screen. For paged media, this
+   is the width of the page sheet size.
+
+  <p>A specified &lt;length> cannot be negative.
+
+  <div class=example>
+   <pre><code>@media screen and (device-width: 800px) { &hellip; }</code></pre>
+
+   <p>In the example above, the style sheet will apply only to screens that
+    currently displays exactly 800 horizontal pixels. The &lsquo;<code
+    class=css>px</code>&rsquo; unit is of the logical kind, as described in
+    the <a href="#units">Units</a> section.</p>
+  </div>
+
+  <h3 id=device-height><span class=secno>4.4. </span>device-height</h3>
+
+  <div class=media-feature><span class=label>Value:</span> &lt;length&gt;<br>
+   <span class=label>Applies to:</span> visual and tactile media types<br>
+   <span class=label>Accepts min/max prefixes:</span> yes<br>
+  </div>
+
+  <p>The &lsquo;<code class=css>device-height</code>&rsquo; media feature
+   describes the height of the rendering surface of the output device. For
+   continuous media, this is the height of the screen. For paged media, this
+   is the height of the page sheet size.
+
+  <p>A specified &lt;length> cannot be negative.
+
+  <div class=example>
+   <pre><code>&lt;link rel="stylesheet" media="screen and (device-height: 600px)" /&gt;</code></pre>
+
+   <p>In the example above, the style sheet will apply only to screens that
+    have exactly 600 vertical pixels. Note that the definition of the
+    &lsquo;<code class=css>px</code>&rsquo; unit is the same as in other
+    parts of CSS.</p>
+  </div>
+
+  <h3 id=orientation><span class=secno>4.5. </span>orientation</h3>
+
+  <div class=media-feature><span class=label>Value:</span> portrait |
+   landscape<br>
+   <span class=label>Applies to:</span> bitmap media types<br>
+   <span class=label>Accepts min/max prefixes:</span> no<br>
+  </div>
+
+  <p>The &lsquo;<code class=css>orientation</code>&rsquo; media feature is
+   &lsquo;<code class=css>portrait</code>&rsquo; when the value of the
+   &lsquo;<code class=css>height</code>&rsquo; media feature is greater than
+   or equal to the value of the &lsquo;<code class=css>width</code>&rsquo;
+   media feature. Otherwise &lsquo;<code class=css>orientation</code>&rsquo;
+   is &lsquo;<code class=css>landscape</code>&rsquo;.
+
+  <div class=example>
+   <pre><code>@media all and (orientation:portrait) { &hellip; }
+@media all and (orientation:landscape) { &hellip; }</code></pre>
+  </div>
+
+  <h3 id=aspect-ratio><span class=secno>4.6. </span>aspect-ratio</h3>
+
+  <div class=media-feature><span class=label>Value:</span> &lt;ratio&gt;<br>
+   <span class=label>Applies to:</span> bitmap media types<br>
+   <span class=label>Accepts min/max prefixes:</span> yes<br>
+  </div>
+
+  <p>The &lsquo;<code class=css>aspect-ratio</code>&rsquo; media feature is
+   defined as the ratio of the value of the &lsquo;<code
+   class=css>width</code>&rsquo; media feature to the value of the
+   &lsquo;<code class=css>height</code>&rsquo; media feature.
+
+  <h3 id=device-aspect-ratio><span class=secno>4.7.
+   </span>device-aspect-ratio</h3>
+
+  <div class=media-feature><span class=label>Value:</span> &lt;ratio&gt;<br>
+   <span class=label>Applies to:</span> bitmap media types<br>
+   <span class=label>Accepts min/max prefixes:</span> yes<br>
+  </div>
+
+  <p>The &lsquo;<code class=css>device-aspect-ratio</code>&rsquo; media
+   feature is defined as the ratio of the value of the &lsquo;<code
+   class=css>device-width</code>&rsquo; media feature to the value of the
+   &lsquo;<code class=css>device-height</code>&rsquo; media feature.
+
+  <div class=example>
+   <p>For example, if a screen device with square pixels has 1280 horizontal
+    pixels and 720 vertical pixels (commonly referred to as "16:9"), the
+    following Media Queries will all match the device:</p>
+
+   <pre><code>@media screen and (device-aspect-ratio: 16/9) { &hellip; }
+@media screen and (device-aspect-ratio: 32/18) { &hellip; }
+@media screen and (device-aspect-ratio: 1280/720) { &hellip; }
+@media screen and (device-aspect-ratio: 2560/1440) { &hellip; }</code></pre>
+  </div>
+
+  <h3 id=color><span class=secno>4.8. </span>color</h3>
+
+  <div class=media-feature><span class=label>Value:</span>
+   &lt;integer&gt;<br>
+   <span class=label>Applies to:</span> visual media types<br>
+   <span class=label>Accept min/max prefixes:</span> yes<br>
+  </div>
+
+  <p>The &lsquo;<code class=css>color</code>&rsquo; media feature describes
+   the number of bits per color component of the output device. If the device
+   is not a color device, the value is zero.
+
+  <p>A specified &lt;integer> cannot be negative.
+
+  <div class=example>
+   <p>For example, these two media queries express that a style sheet applies
+    to all color devices:</p>
+
+   <pre><code>@media all and (color) { &hellip; }
+@media all and (min-color: 1) { &hellip; }</code></pre>
+  </div>
+
+  <div class=example>
+   <p>This media query expresses that a style sheet applies to color devices
+    with 2 or more bits per color component:</p>
+
+   <pre><code>@media all and (min-color: 2) { &hellip; }</code></pre>
+  </div>
+
+  <p>If different color components are represented by different number of
+   bits, the smallest number is used.
+
+  <div class=example>
+   <p>For instance, if an 8-bit color system represents the red component
+    with 3 bits, the green component with 3 bits and the blue component with
+    2 bits, the &lsquo;<code class=css>color</code>&rsquo; media feature will
+    have a value of 2.</p>
+  </div>
+
+  <p>In a device with indexed colors, the minimum number of bits per color
+   component in the lookup table is used.
+
+  <p class=note>The described functionality is only able to describe color
+   capabilities at a superficial level. If further functionality is required,
+   RFC2531 <a href="#RFC2531" rel=biblioentry>[RFC2531]<!--{{RFC2531}}--></a>
+   provides more specific media features which may be supported at a later
+   stage.
+
+  <h3 id=color-index><span class=secno>4.9. </span>color-index</h3>
+
+  <div class=media-feature><span class=label>Value:</span>
+   &lt;integer&gt;<br>
+   <span class=label>Applies to:</span> visual media types<br>
+   <span class=label>Accepts min/max prefixes:</span> yes<br>
+  </div>
+
+  <p>The &lsquo;<code class=css>color-index</code>&rsquo; media feature
+   describes the number of entries in the color lookup table of the output
+   device. If the device does not use a color lookup table, the value is
+   zero.
+
+  <p>A specified &lt;integer> cannot be negative.
+
+  <div class=example>
+   <p>For example, here are two ways to express that a style sheet applies to
+    all color index devices:</p>
+
+   <pre><code>@media all and (color-index) { &hellip; }
+@media all and (min-color-index: 1) { &hellip; }</code></pre>
+  </div>
+
+  <div class=example>
+   <p>This media query expresses that a style sheet applies to a color index
+    device with 256 or more entries:</p>
+
+   <pre><code>&lt;?xml-stylesheet media="all and (min-color-index: 256)" 
+  href="http://www.example.com/&hellip;" ?&gt;</code></pre>
+  </div>
+
+  <h3 id=monochrome><span class=secno>4.10. </span>monochrome</h3>
+
+  <div class=media-feature><span class=label>Value:</span>
+   &lt;integer&gt;<br>
+   <span class=label>Applies to:</span> visual media types<br>
+   <span class=label>Accepts min/max prefixes:</span> yes<br>
+  </div>
+
+  <p>The &lsquo;<code class=css>monochrome</code>&rsquo; media feature
+   describes the number of bits per pixel in a monochrome frame buffer. If
+   the device is not a monochrome device, the output device value will be 0.
+
+  <p>A specified &lt;integer> cannot be negative.
+
+  <div class=example>
+   <p>For example, here are two ways to express that a style sheet applies to
+    all monochrome devices:</p>
+
+   <pre><code>@media all and (monochrome) { &hellip; }
+@media all and (min-monochrome: 1) { &hellip; }</code></pre>
+  </div>
+
+  <div class=example>
+   <p>Express that a style sheet applies to monochrome devices with more than
+    2 bits per pixels:</p>
+
+   <pre><code>@media all and (min-monochrome: 2) { &hellip; }</code></pre>
+  </div>
+
+  <div class=example>
+   <p>Express that there is one style sheet for color pages and another for
+    monochrome:</p>
+
+   <pre><code>&lt;link rel="stylesheet" media="print and (color)" href="http://&hellip;" /&gt;
+&lt;link rel="stylesheet" media="print and (monochrome)" href="http://&hellip;" /&gt;</code></pre>
+  </div>
+
+  <h3 id=resolution><span class=secno>4.11. </span>resolution</h3>
+
+  <div class=media-feature><span class=label>Value:</span>
+   &lt;resolution&gt;<br>
+   <span class=label>Applies to:</span> bitmap media types<br>
+   <span class=label>Accepts min/max prefixes:</span> yes<br>
+  </div>
+
+  <p>The &lsquo;<code class=css>resolution</code>&rsquo; media feature
+   describes the resolution of the output device, i.e. the density of the
+   pixels. When querying devices with non-square pixels, in &lsquo;<code
+   class=css>min-resolution</code>&rsquo; queries the least-dense dimension
+   must be compared to the specified value and in &lsquo;<code
+   class=css>max-resolution</code>&rsquo; queries the most-dense dimensions
+   must be compared instead. A &lsquo;<code
+   class=css>resolution</code>&rsquo; (without a "min-" or "max-" prefix)
+   query never matches a device with non-square pixels.
+
+  <p>For printers, this corresponds to the screening resolution (the
+   resolution for printing dots of arbitrary color).
+
+  <div class=example>
+   <p>For example, this media query expresses that a style sheet is usable on
+    devices with resolution greater than 300 dots per inch:</p>
+
+   <pre><code>@media print and (min-resolution: 300dpi) { &hellip; }</code></pre>
+  </div>
+
+  <div class=example>
+   <p>This media query expresses that a style sheet is usable on devices with
+    resolution greater than 118 dots per centimeter:</p>
+
+   <pre><code>@media print and (min-resolution: 118dpcm) { &hellip; }</code></pre>
+  </div>
+
+  <h3 id=scan><span class=secno>4.12. </span>scan</h3>
+
+  <div class=media-feature><span class=label>Value:</span> progressive |
+   interlace<br>
+   <span class=label>Applies to:</span> "tv" media types<br>
+   <span class=label>Accepts min/max prefixes:</span> no<br>
+  </div>
+
+  <p>The &lsquo;<code class=css>scan</code>&rsquo; media feature describes
+   the scanning process of "tv" output devices.
+
+  <div class=example>
+   <p>For example, this media query expresses that a style sheet is usable on
+    tv devices with progressive scanning:</p>
+
+   <pre><code>@media tv and (scan: progressive) { &hellip; }</code></pre>
+  </div>
+
+  <h3 id=grid><span class=secno>4.13. </span>grid</h3>
+
+  <div class=media-feature><span class=label>Value:</span>
+   &lt;integer&gt;<br>
+   <span class=label>Applies to:</span> visual and tactile media types<br>
+   <span class=label>Accepts min/max prefixes:</span> no<br>
+  </div>
+
+  <p>The &lsquo;<code class=css>grid</code>&rsquo; media feature is used to
+   query whether the output device is grid or bitmap. If the output device is
+   grid-based (e.g., a "tty" terminal, or a phone display with only one fixed
+   font), the value will be 1. Otherwise, the value will be 0.
+
+  <p>Only 0 and 1 are valid values. (This includes -0.) Thus everything else
+   creates a malformed media query.
+
+  <div class=example>
+   <p>Here are two examples:</p>
+
+   <pre><code>@media handheld and (grid) and (max-width: 15em) { &hellip; }</code>
+<code>@media handheld and (grid) and (device-max-height: 7em) { &hellip; }</code></pre>
+  </div>
+
+  <h2 id=values><span class=secno>5. </span>Values</h2>
+
+  <p>This specification also introduces two new values.
+
+  <p>The &lt;ratio> value is a positive (not zero or negative) &lt;integer>
+   followed by optional whitespace, followed by a solidus (&lsquo;<code
+   class=css>/</code>&rsquo;), followed by optional whitespace, followed by a
+   positive &lt;integer>.
+
+  <p>The &lt;resolution> value is a positive &lt;number> immediately followed
+   by a unit identifier (&lsquo;<code class=css>dpi</code>&rsquo; or
+   &lsquo;<code class=css>dpcm</code>&rsquo;).
+
+  <p>Whitespace, &lt;integer>, &lt;number> and other values used by this
+   specification are the same as in other parts of CSS, normatively defined
+   by CSS 2.1. <a href="#CSS21" rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a>
+
+  <h2 id=units><span class=secno>6. </span>Units</h2>
+
+  <p>The units used in media queries are the same as in other parts of CSS.
+   For example, the pixel unit represents CSS pixels and not physical pixels.
+
+  <p>Relative units in media queries are based on the initial value, which
+   means that units are never based on results of declarations. For example,
+   in HTML, the &lsquo;<code class=css>em</code>&rsquo; unit is relative to
+   the initial value of &lsquo;<code class=property>font-size</code>&rsquo;.
+
+  <h3 id=resolution0><span class=secno>6.1. </span>Resolution</h3>
+
+  <p>The &lsquo;<code class=css>dpi</code>&rsquo; and &lsquo;<code
+   class=css>dpcm</code>&rsquo; units describe the resolution of an output
+   device, i.e., the density of device pixels. Resolution unit identifiers
+   are:
+
+  <dl>
+   <dt>dpi
+
+   <dd>dots per CSS &lsquo;<code class=css>inch</code>&rsquo;
+
+   <dt>dpcm
+
+   <dd>dots per CSS &lsquo;<code class=css>centimeter</code>&rsquo;
+  </dl>
+
+  <p>In this specification, these units are only used in the &lsquo;<code
+   class=css>resolution</code>&rsquo; media feature.
+
+  
+  <h2 class=no-num id=acknowledgments>Acknowledgments</h2>
+
+  <p>This specification is the product of the W3C Working Group on Cascading
+   Style Sheets.
+
+  <p>Comments from Bj&ouml;rn H&ouml;hrmann, Christoph P&auml;per, Chris
+   Lilley, Simon Pieters, Rijk van Geijtenbeek, Sigurd Lerstad, Arve
+   Bersvendsen, Susan Lesch, Philipp Hoschka, Roger Gimson, Steven Pemberton,
+   Simon Kissane, Melinda Grant, and L. David Baron improved this
+   specification.
+
+  <h2 class=no-num id=references>References</h2>
+
+  <h3 class=no-num id=normative-references>Normative references</h3>
+  <!--begin-normative-->
+  <!-- Sorted by label -->
+
+  <dl class=bibliography>
+   <dt style="display: none"><!-- keeps the doc valid if the DL is empty -->
+    <!---->
+
+   <dt id=CSS21>[CSS21]
+
+   <dd>Bert Bos; et al. <a
+    href="http://www.w3.org/TR/2011/REC-CSS2-20110607"><cite>Cascading Style
+    Sheets Level 2 Revision 1 (CSS&#160;2.1) Specification.</cite></a> 7 June
+    2011. W3C Recommendation. URL: <a
+    href="http://www.w3.org/TR/2011/REC-CSS2-20110607">http://www.w3.org/TR/2011/REC-CSS2-20110607</a>
+    </dd>
+   <!---->
+  </dl>
+  <!--end-normative-->
+
+  <h3 class=no-num id=other-references>Other references</h3>
+  <!--begin-informative-->
+  <!-- Sorted by label -->
+
+  <dl class=bibliography>
+   <dt style="display: none"><!-- keeps the doc valid if the DL is empty -->
+    <!---->
+
+   <dt id=HTML401>[HTML401]
+
+   <dd>Dave Raggett; Arnaud Le Hors; Ian Jacobs. <a
+    href="http://www.w3.org/TR/1999/REC-html401-19991224"><cite>HTML 4.01
+    Specification.</cite></a> 24 December 1999. W3C Recommendation. URL: <a
+    href="http://www.w3.org/TR/1999/REC-html401-19991224">http://www.w3.org/TR/1999/REC-html401-19991224</a>
+    </dd>
+   <!---->
+
+   <dt id=HTML5>[HTML5]
+
+   <dd>Ian Hickson. <a
+    href="http://www.w3.org/TR/2012/WD-html5-20120329/"><cite>HTML5.</cite></a>
+    29 March 2012. W3C Working Draft. (Work in progress.) URL: <a
+    href="http://www.w3.org/TR/2012/WD-html5-20120329/">http://www.w3.org/TR/2012/WD-html5-20120329/</a>
+    </dd>
+   <!---->
+
+   <dt id=RFC2531>[RFC2531]
+
+   <dd>G. Klyne; L. McIntyre. <a
+    href="http://www.ietf.org/rfc/rfc2531.txt"><cite>Content Feature Schema
+    for Internet Fax.</cite></a> March 1999. Internet RFC 2531. URL: <a
+    href="http://www.ietf.org/rfc/rfc2531.txt">http://www.ietf.org/rfc/rfc2531.txt</a>
+    </dd>
+   <!---->
+
+   <dt id=XMLSTYLE>[XMLSTYLE]
+
+   <dd>James Clark; Simon Pieters; Henry S. Thompson <a
+    href="http://www.w3.org/TR/2010/REC-xml-stylesheet-20101028/"><cite>Associating Style Sheets 
+    with XML documents 1.0 (Second Edition)</cite></a> 28 October 2010. W3C
+    Recommendation. URL: <a
+    href="http://www.w3.org/TR/2010/REC-xml-stylesheet-20101028/">http://www.w3.org/TR/2010/REC-xml-stylesheet-20101028/</a>
+    </dd>
+   <!---->
+  </dl>
+  <!--end-informative-->
