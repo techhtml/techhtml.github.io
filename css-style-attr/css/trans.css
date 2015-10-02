@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+
+.headernotes {
+  margin: 0;
+  margin-bottom: 2em;
+  padding: .5em 2em;
+  border: solid thin #c99;
+  color: #800;
+  background-color: #fff5f5;
+  font-size: smaller;
+  border-radius: 4px;
+}
+.headernotes a {
+  color:blue;
+}
+.headernotes p {
+  margin: 0.8em 0;
+}
+
+.headernotes em {
+  font-style :normal;
+  font-weight :bold;
+}
+
+.headernotes .meta dt {
+  width: 4em;
+  float: left;
+  clear: left;
+  font-weight: normal;
+}
+.headernotes .meta dd {
+  margin:0;
+}
+
+.transnote {
+  margin: 1em 0;
+  padding: .5em 2em;
+  border: solid thin #c99;
+  color: #800;
+  background-color: #fff5f5;
+  font-size: smaller;
+}
+
+span.transnote {
+  margin: 0;
+  padding: 0.2em;
+}
+.transbuttons {
+  position:fixed;
+  right:10px;
+  top:10px;
+  background:#999;
+  padding:0 13px;
+}
+[lang=en] {
+  font-size:0.7em;
+  margin:0;
+  line-height:1.2em;
+  color:#333;
+}
+[lang=en]:before {
+  content:"영문: ";
+  color:#333;
+}
+.view-on [lang=en] {
+  display:block; 
+}
+.view-off [lang=en] {
+  display:none;
+}

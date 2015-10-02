@@ -1,0 +1,472 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="ko">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CSS 스타일 속성</title>
+    <link href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright" rel="license">
+    <link href="http://www.w3.org/TR/css-style-attr/#contents" rel="contents">
+    <link href="./css/default.css" rel="stylesheet" type="text/css">
+    <!--link href="../csslogo.ico" rel="shortcut icon" type="image/x-icon"-->
+    <link href="./css/trans.css" rel="stylesheet" type="text/css">
+    <link href="http://www.w3.org/StyleSheets/TR/W3C-REC.css" rel="stylesheet" type="text/css">
+  </head>
+  <body class="h-entry">
+  <div class=headernotes>
+    <p>이 문서는 <a href="http://www.w3.org/TR/css-style-attr/">CSS Style Attributes (W3C Recommendation 07 November 2013)</a>의 한국어 번역본입니다.</p>
+    <dl class=meta>
+      <dt>공개일</dt>
+      <dd>2015-10-02</dd>
+      <dt>번역자:</dt>
+      <dd>조은 &lt;<a href="mailto:apes0123@gmail.com">apes0123@gmail.com</a>&gt;</dd>
+    </dl>
+  </div>
+  <div class="head"> <!--begin-logo-->
+   <p><a href="http://www.w3.org/"><img alt=W3C height=48
+    src="http://www.w3.org/Icons/w3c_home" width=72></a> <!--end-logo-->
+
+   </p><h1 class="p-name">CSS 스타일 속성</h1>
+  
+   <h2 class="no-num no-toc" id="longstatus-date"><span class="dt-updated"><span class="value-title" title="20131107">2013년 11월 7일</span></span> W3C 권고안</h2>
+
+   <dl>
+    <dt>현재 버전:
+
+    </dt><dd><!--a class=u-url
+     href="http://dev.w3.org/csswg/css-style-attr/">http://dev.w3.org/csswg/css-style-attr/</a-->
+     <a class="u-url" href="http://www.w3.org/TR/2013/REC-css-style-attr-20131107/">http://www.w3.org/TR/2013/REC-css-style-attr-20131107/</a>
+
+    </dd><dt>최신 버전:
+
+    </dt><dd><a href="http://www.w3.org/TR/css-style-attr">http://www.w3.org/TR/css-style-attr</a>
+
+    </dd><dt>Editor's draft:
+
+    </dt><dd><a href="http://dev.w3.org/csswg/css-style-attr/">http://dev.w3.org/csswg/css-style-attr/</a>
+     (<a href="https://dvcs.w3.org/hg/csswg/log/tip/css-style-attr/Overview.src.html">change
+     log</a>)
+
+    </dd><dt>이전 버전:
+
+    </dt><dd><!--a class=u-url
+     href="http://dev.w3.org/csswg/css-style-attr/">http://dev.w3.org/csswg/css-style-attr/</a-->
+     <a class="u-url" href="http://www.w3.org/TR/2013/PR-css-style-attr-20131003/">http://www.w3.org/TR/2013/PR-css-style-attr-20131003/</a>
+
+    </dd><dt>피드백:
+
+    </dt><dd><a href="mailto:www-style@w3.org?subject=%5Bcss-style-attr%5D%20feedback">www-style@w3.org</a>
+     with subject line “<kbd>[css-style-attr] <var>… message topic
+     …</var></kbd>” (<a href="http://lists.w3.org/Archives/Public/www-style/" rel="discussion">archives</a>)
+
+    </dd><dt>Editors:
+
+    </dt><dd class="p-author h-card vcard"> <a class="p-name fn u-url url" href="http://tantek.com/" lang="tr" rel="author">Tantek Çelik</a> (<a class="p-org org h-org" href="https://mozilla.org/">Mozilla</a>, and
+     formerly at <a href="http://microsoft.com/">Microsoft Corporation</a>)
+     &lt;<a class="u-email email" href="mailto:tantek@cs.stanford.edu">tantek@cs.stanford.edu</a>&gt;
+
+    </dd><dd class="p-author h-card vcard"> <a class="p-name fn n u-url url" href="http://fantasai.inkedblade.net/contact" rel="author"><span class="p-given-name given-name">Elika</span> <abbr class="p-additional-name additional-name">J.</abbr> <span class="p-family-name family-name">Etemad</span></a> (<a class="p-org org h-org" href="https://mozilla.org/">Mozilla</a>)
+
+    </dd><dt>Previous Editors:
+
+    </dt><dd class="vcard"><a class="fn url" href="http://www.w3.org/People/Bos/">Bert Bos</a> (<a class="org" href="http://www.w3.org/">W3C</a>), &lt;<a class="email" href="mailto:bert@w3.org">bert@w3.org</a>&gt;
+
+    </dd><dd class="vcard"><span class="fn">Marc Attinasi</span> (<span class="org">AOL/Netscape</span>), &lt;<a class="email" href="mailto:attinasi@netscape.com">attinasi@netscape.com</a>&gt;
+
+    </dd><dt>Test suite:
+
+    </dt><dd> <a href="http://test.csswg.org/suites/css-style-attr/nightly-unstable/">http://test.csswg.org/suites/css-style-attr/nightly-unstable/</a>
+   </dd></dl>
+
+   <p>스펙 문서의 규범적인 정의에 수정이 있을 가능성이 있기 때문에 <a href="http://www.w3.org/Style/2013/REC-css-style-attr-20131107-errata.html"><strong>errata</strong></a>를 확인하시기 바랍니다.</p>
+
+<p><a href="http://www.w3.org/2003/03/Translations/byTechnology?technology=css-style-attr"> <strong>번역본</strong></a>도 있습니다. <span class="transnote">이 번역본은 한국어 번역본 입니다</span></p>
+
+   <!--begin-copyright-->
+   <p class="copyright"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright" rel="license">Copyright</a> © 2013 <a href="http://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="http://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>,
+    <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved. W3C <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
+    <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a>
+    and <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document
+    use</a> rules apply.</p>
+   <!--end-copyright-->
+   <hr title="Separator for header">
+  </div>
+
+  <h2 class="no-num no-toc" id="abstract">개요</h2>
+  <p lang=ko>
+   <span class="p-summary">
+     HTML <a href="http://www.w3.org/TR/css-style-attr/#HTML401" rel="biblioentry">[HTML401]<!--{{HTML401}}--></a>과
+     SVG <a href="http://www.w3.org/TR/css-style-attr/#SVG11" rel="biblioentry">[SVG11]<!--{{SVG11}}--></a> 같은
+     마크업 언어에서 대부분의 요소에 style 속성을 제공하며, 해당 요소에서 인라인 스타일 정보를 보유하도록 합니다.
+     이 문서에서는 style 속성에 적용 가능한 CSS 조각의 문법 및 해석에 대해 설명하고 있습니다.
+   </span>  
+  </p>
+  <p lang=en><span class="p-summary"> Markup languages such as HTML <a href="http://www.w3.org/TR/css-style-attr/#HTML401" rel="biblioentry">[HTML401]<!--{{HTML401}}--></a> and SVG <a href="http://www.w3.org/TR/css-style-attr/#SVG11" rel="biblioentry">[SVG11]<!--{{SVG11}}--></a> provide a style attribute on
+   most elements, to hold inline style information that applies to those
+   elements. This draft describes the syntax and interpretation of the CSS
+   fragment that can be used in such style attributes. </span>
+
+  </p><h2 class="no-num no-toc" id="status">이 문서의 상태</h2>
+  <!--begin-status-->
+  <p lang=ko>
+    이 섹션은 이 문서를 공개했을 때 상태에 대해 설명합니다.
+    다른 문서가 이 문서를 덮어쓸 가능성이 있으니 주의하시길 바랍니다.
+    이 문서 및 W3C에서 공개한 다른 문서의 최신 버전은 
+    <a href="http://www.w3.org/TR/">W3C technical reports index</a> at http://www.w3.org/TR/에서
+    확인 가능합니다.
+  </p>
+  <p lang=en>This section describes the status of this document at the
+time of its publication. Other documents may supersede this
+document. A list of current W3C publications and the latest
+revision of this technical report can be found in the 
+<a href="http://www.w3.org/TR/">W3C technical reports index</a> at
+http://www.w3.org/TR/.
+  </p>
+  <p lang="ko">이 문서는 W3C 멤버, 소프트웨어 개발자, 그리고 다른 W3C 그룹 및 관계자들이 평가를 진행하여, 디렉터에 의해 W3C 권고안으로 발표했습니다. 
+    이 문서는 안정적이며, 참고자료로 사용하거나 다른 문서에서 인용해도 좋습니다. 
+    스펙 문서의 권고를 통해 W3C가 하는 역할은 스펙 문서에 관심을 모으고 다방면으로 퍼뜨리는 일입니다. 
+    이를 통해 웹의 기능과 상호운용성 향상을 기대할 수 있습니다.</p>
+
+  <p lang=en>
+    This document has been reviewed by W3C Members, by
+    software developers, and by other W3C groups and
+    interested parties, and is endorsed by the Director as a
+    W3C Recommendation. It is a stable document and may be
+    used as reference material or cited from another
+    document. W3C's role in making the Recommendation is to
+    draw attention to the specification and to promote its
+    widespread deployment. This enhances the functionality
+    and interoperability of the Web.
+  </p>
+    <p lang=ko>
+      워킹 그룹의 <a href="http://test.csswg.org/suites/css-style-attr/nightly-unstable/report/results.html">
+      구현 레포트</a>를 확인하시길 바랍니다. 테스트 중 하나를 통과하지 못했지만,
+      이는 xml:base 및 attribute (non)ordering의 브라우저 구현체에서 발생하는 버그이며,
+      style 속성 자체의 버그가 아닙니다.
+      동일한 테스트를 (HTML5의 xml serialisation에서 소개하는) HTML에서 진행했을 때,
+      다수의 구현체에서 통과했습니다.
+    </p>
+    <p lang=en>Please see the Working Group's <a href="http://test.csswg.org/suites/css-style-attr/nightly-unstable/report/results.html">
+    implementation report</a>. One test is not passed, although this is
+    due to bugs in browser implementation of xml:base and attribute (non)ordering, 
+    not the style attribute itself. The equivalent test for HTML (including the xml 
+    serialisation of HTML5) is passed by multiple implementations.</p>
+    <p lang=ko>이 문서의 이전 버전에서 변경된 사항은 없습니다.</p>
+    <p lang=en>No changes to this document have been made since the previous version.</p>
+    <p lang="ko">
+     이 스펙문서에 대한 토론은, 공개 메일링 리스트(<a href="http://lists.w3.org/Archives/Public/www-style/">아카이브</a>)인 
+      <a href="mailto:www-style@w3.org?Subject=%5Bcss-style-attr%5D%20PUT%20SUBJECT%20HERE">www-style@w3.org</a>
+      (<a href="http://www.w3.org/Mail/Request">참가안내서</a>)에서 하는 것이 바람직합니다.
+      메일을 보낼 때, 제목에 "css-style-attr"을 포함해주시길 바랍니다.
+      예를 들면, “<!---->[css-style-attr]<!----> <em>…코멘트 요약…</em>” 같은 형태가 바람직 할 것입니다.
+    </p>
+  <p lang=en>The (<a href="http://lists.w3.org/Archives/Public/www-style/">archived</a>) public
+   mailing list <a href="mailto:www-style@w3.org?Subject=%5Bcss-style-attr%5D%20PUT%20SUBJECT%20HERE">
+   www-style@w3.org</a> (see <a href="http://www.w3.org/Mail/Request">instructions</a>) is preferred for
+   discussion of this specification. When sending e-mail, please put the text
+   “css-style-attr” in the subject, preferably like this:
+   “[<!---->css-style-attr<!---->] <em>…summary of comment…</em>”
+  </p>
+    <p lang=ko>
+      이 문서는 <a href="http://www.w3.org/Style/">Style Activity</a>의 <a href="http://www.w3.org/Style/CSS/members">CSS Working Group</a>에서 제공합니다.
+    </p>
+    <p lang=en>This document was produced by the <a href="http://www.w3.org/Style/CSS/members">CSS Working Group</a> (part of
+   the <a href="http://www.w3.org/Style/">Style Activity</a>).
+   </p>
+    <p lang="ko">이 문서는 <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/">2004년 2월 6일 W3C 특허 정책</a>을 따르는 그룹에서 작성하였습니다.
+    W3C는 그룹의 성과물에 관련하여 <a href="http://www.w3.org/2004/01/pp-impl/40318/status" rel="disclosure">모든 공개 특허 공개 리스트</a>를 관리합니다.
+    여기에는 특허 공개에 대한 지시사항도 포함합니다.
+    특허에 대해서 충분한 지식이 있는 사람이, 스펙 문서의 <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential Claim(s)</a>에 인정된다고 파악되는 경우, <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">W3C 특허 정책 제 6장</a>에 의거하여 정보를 공개해야 할 필요가 있습니다.</p>
+    <p lang=en>This document was produced by a group operating under the <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/">5 February
+   2004 W3C Patent Policy</a>. W3C maintains a <a href="http://www.w3.org/2004/01/pp-impl/32061/status" rel="disclosure">public list of any patent disclosures</a> made in
+   connection with the deliverables of the group; that page also includes
+   instructions for disclosing a patent. An individual who has actual
+   knowledge of a patent which the individual believes contains <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential
+   Claim(s)</a> must disclose the information in accordance with <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section
+   6 of the W3C Patent Policy</a>.</p>
+    
+  <!--end-status-->
+
+ 
+  <h2 class="no-num no-toc" id="contents">Table of Contents</h2>
+  <!--begin-toc-->
+
+  <ul class="toc">
+   <li><a href="#intro"><span class="secno">1. </span>소개</a>
+
+   </li><li><a href="#conformance"><span class="secno">2. </span>적합성</a>
+
+   </li><li><a href="#syntax"><span class="secno">3. </span>문법 및 파싱</a>
+
+   </li><li><a href="#interpret"><span class="secno">4. </span>캐스케이딩과 해석</a>
+
+   </li><li><a href="http://www.w3.org/TR/css-style-attr/#ack"><span class="secno">5. </span>Acknowledgments</a>
+
+   </li><li><a href="http://www.w3.org/TR/css-style-attr/#references"><span class="secno">6. </span>참고 문서</a>
+    <ul class="toc">
+     <li class="no-num"><a href="http://www.w3.org/TR/css-style-attr/#normative-references">표준 문서</a>
+
+     </li><li class="no-num"><a href="http://www.w3.org/TR/css-style-attr/#informative-references">참고 정보</a>
+    </li></ul>
+  </li></ul>
+  <!--end-toc-->
+
+  <h2 id="intro"><span class="secno">1. </span>소개</h2>
+  <p lang=ko>
+    문서 포맷 중 일부는 <dfn id="style-attribute">style 속성</dfn>을
+    문서 내 요소에 바로 적용하여 style 정보를 줄 수 있도록 허용합니다.
+    만약 문서 포맷이 (‘<code class="property">style</code>’ 혹은 
+    다른 이름으로 정의된) style 속성을 정의하고 있고 그 값에 CSS를 허용한다면,
+    이 스펙 문서에서 정의하는 <dfn id="style-attribute0">style
+    속성</dfn>의 문법 및 해석을 정의할 것입니다.
+  </p>
+  <p lang=en>Some document formats have a <dfn id="style-attribute">style
+   attribute</dfn> to permit the author to directly apply style information
+   to specific elements in documents. If a document format defines a style
+   attribute (whether named ‘<code class="property">style</code>’ or
+   something else) and the attribute accepts CSS as its value, then this
+   specification defines that <dfn id="style-attribute0">style
+   attribute</dfn>’s syntax and interpretation.
+
+  </p><div class="example">
+   <p lang=ko>다음 예제는 HTML 내에서 <code>style</code> 속성을 사용하는 예시를 보여줍니다. <a href="http://www.w3.org/TR/css-style-attr/#HTML401" rel="biblioentry">[HTML401]<!--{{HTML401}}--></a>:
+   </p>
+   <p lang=en>The following example shows the use of the <code>style</code> attribute
+    in HTML <a href="http://www.w3.org/TR/css-style-attr/#HTML401" rel="biblioentry">[HTML401]<!--{{HTML401}}--></a>:
+   </p>
+    <pre>&lt;p style="<em>color: #090; line-height: 1.2</em>"&gt;...&lt;/p&gt;</pre>
+  </div>
+
+  <h2 id="conformance"><span class="secno">2. </span>적합성</h2>
+  <p lang=ko>
+    문서나 구현체는 CSS 스타일 속성을 반드시 따라야 하지만,
+    1개 이상의 style 속성을 가지는 문서 언어 내에서 정의한 style 속성을
+    CSS와 함께 구현하였을 때 이 스펙 문서의 적합성 요구사항을 만족할 경우
+    CSS Style 속성의 적합성에 문제를 제기할 수 있습니다.
+  </p>
+  <p lang=en>A document or implementation cannot conform to CSS Style Attributes
+   alone, but can claim conformance to CSS Style Attributes if it satisfies
+   the conformance requirements in this specification when implementing CSS
+   together with style attribute handling as defined in a document language
+   that has one or more CSS style attributes.
+  </p>
+  <p lang=ko>CSS Style 속성의 적합성은 두개의 클래스로 정의합니다.</p>
+  <p lang=en>Conformance to CSS Style Attributes is defined for two classes:
+  </p>
+  <dl>
+   <dt><dfn id="document">document</dfn>
+
+   </dt><dd>
+    하나 이상의 요소에 적용한 style 속성을 정의하고 있는 문서 언어를 보여주는 문서.
+    <div lang=en>A document represented in a document language that defines a style
+      attribute for one or more of its elements.</div>
+
+   </dd><dt><dfn id="interpreter">interpreter</dfn>
+
+   </dt><dd>
+    문서 및 그와 관련된 style 정보의 시맨틱을 해석가능한 사람 혹은 어떤 것.
+    (대부분의 CSS <a href="http://www.w3.org/TR/CSS21/conform.html#user-agent">user agents</a>가 이 부류에 속합니다.)
+    <div lang=en>Someone or something that interprets the semantics of a document and
+    its associated style information. (Most CSS <a href="http://www.w3.org/TR/CSS21/conform.html#user-agent">user agents</a>
+    fall under this category.)</div>
+  </dd></dl>
+  <p lang=ko>
+    적합성 요구사항은 서술적인 묘사 및 RFC 2119 용어의 조합으로 표현합니다.
+    키워드는 "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
+    "SHOULD NOT", "RECOMMENDED", "MAY" 및 "OPTIONAL"이 있으며,
+    이 문서의 표준 파트에서 사용하는 의미는 RFC 2119에서 설명하는 의미와 동일합니다.
+    
+    그러나 가독성을 위해, 이 스펙 문서에서 이 단어들은 모두 대문자로 보이지 않을 것입니다.
+    이 스펙 문서에서 표준에 준하는 내용이 아니라 명시된 섹션 및 예제, 노트를 제외한 모든 내용은 표준에 준하는 내용입니다.
+    <a href="http://www.w3.org/TR/css-style-attr/#RFC2119" rel="biblioentry">[RFC2119]<!--{{!RFC2119}}--></a>
+  </p>
+  <p lang=en>The conformance requirements are expressed with a combination of
+   descriptive assertions and RFC 2119 terminology. The key words "MUST",
+   "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT",
+   "RECOMMENDED", "MAY", and "OPTIONAL" in the normative parts of this
+   document are to be interpreted as described in RFC 2119. However, for
+   readability, these words do not appear in all uppercase letters in this
+   specification. All of the text of this specification is normative except
+   sections explicitly marked as non-normative, examples, and notes. <a href="http://www.w3.org/TR/css-style-attr/#RFC2119" rel="biblioentry">[RFC2119]<!--{{!RFC2119}}--></a>
+
+  </p>
+    <p lang=ko>
+       이 스펙문서의 예제는 "for example"이라는 단어 혹은 <code>class="example"</code>을 이용해
+      따른 표준 텍스트보다 돋보이게 보여집니다:
+    </p>
+    <p lang=en>Examples in this specification are introduced with the words "for
+   example" or are set apart from the normative text with
+   <code>class="example"</code>, like this:
+
+  </p><div class="example">
+   <p>유용한 정보를 주는 예제의 예제입니다.
+  </p></div>
+
+  <p lang=ko>유용한 정보를 주는 노트는 "Note"라는 단어와 함께 시작하거나 <code>class="note"</code>를 이용해
+    다른 표준 텍스트보다 돋보이게 보여집니다:
+  </p>
+  <p lang=en>Informative notes begin with the word "Note" and are set apart from the normative text with <code>class="note"</code>, like this:</p>
+  <p class="note">Note, 유용한 정보를 주는 노트입니다.</p>
+    
+    <h2 id="syntax"><span class="secno">3. </span>문법 및 파싱</h2>
+    <p lang=ko>
+      style 속성의 값은 반드시 (선언 중괄호를 제외한) CSS <a href="http://www.w3.org/TR/CSS21/syndata.html#rule-sets">declaration
+   block</a>의 콘텐츠 문법을 따라야하며, 형식 문법은 <a href="http://www.w3.org/TR/CSS21/syndata.html#syntax">CSS core
+   grammar</a>의 컨벤션과 정의 아래의 내용을 따릅니다:
+    </p>
+  <p lang=en>The value of the style attribute must match the syntax of the contents
+   of a CSS <a href="http://www.w3.org/TR/CSS21/syndata.html#rule-sets">declaration
+   block</a> (excluding the delimiting braces), whose formal grammar is given
+   below in the terms and conventions of the <a href="http://www.w3.org/TR/CSS21/syndata.html#syntax">CSS core
+   grammar</a>:
+
+  </p><pre>
+declaration-list
+
+  : S* declaration? [ ';' S* declaration? ]*
+
+  ;
+
+</pre>
+
+  <p class="note" lang="ko">
+  아래의 CSS 2.1 컨벤션을 주의하시길 바랍니다.
+  주석 토큰은 보이지 않습니다.
+  </p>
+  <p class="note" lang="en">
+  Note that following the CSS2.1 convention, comment tokens are
+  not shown in the rule above.
+  </p>
+  <p lang="ko">
+    인터프리터는 style 속성의 값을 일반 CSS 스타일 시트의
+    선업언 블록을 파싱할 때 쓰는 것과 같은 forward-compatible 파싱 규칙을 
+    이용해서 파싱해야합니다.
+    <a href="http://www.w3.org/TR/CSS21/syndata.html">CSS 2.1 스펙의 챕터 4</a>에서 디테일을 확인할 수 있습니다.
+    <a href="http://www.w3.org/TR/css-style-attr/#CSS21" rel="biblioentry">[CSS21]<!--{{!CSS21}}--></a>
+  </p>
+  <p lang="en">The interpreter must parse the style attribute's value using the same
+   forward-compatible parsing rules that apply to parsing declaration block
+   contents in a normal CSS style sheet. See <a href="http://www.w3.org/TR/CSS21/syndata.html">chapter 4 of the CSS2.1
+   specification</a> for details. <a href="http://www.w3.org/TR/css-style-attr/#CSS21" rel="biblioentry">[CSS21]<!--{{!CSS21}}--></a>
+  </p>
+  <p class="note" lang="ko">
+    이 이유는 CSS style 속성 문법의 선언 목록 내에 여는 중괄호가 존재하지 않으며,
+    style 속성의 값에 닫는 중괄호(<code>}</code>)가 없어 style 데이터를 제거하지 않기 때문입니다.
+    이는 단순히 유효하지 않은 토큰입니다.
+  </p>
+  <p class="note" lang="en">Note that because there is no open brace delimiting the
+   declaration list in the CSS style attribute syntax, a close brace
+   (<code>}</code>) in the style attribute's value does not terminate the
+   style data: it is merely an invalid token.
+  </p>
+  <h2 id="interpret"><span class="secno">4. </span>캐스케이딩과 해석</h2>
+  <p lang="ko">
+    style 속성 내의 선언은 속성이 속해있는 요소에 적용합니다.
+    cascade에서, 이 선언은 작성자 고유이며 다른 셀렉터보다 가장 먼저 정의된 걸로 여겨집니다.
+    CSS 2.1에서는 스타일시트와 style 속성이 함께 cascade될 때 어떻게 작동하는지 <a href="http://www.w3.org/TR/CSS21/cascade.html#specificity">정의</a>합니다.
+    <a href="http://www.w3.org/TR/css-style-attr/#CSS21" rel="biblioentry">[CSS21]<!--{{!CSS21}}--></a>
+    속성의 값을 해석할 때 스타일 데이터의 상대 URL은 스타일 속성의 요소(혹은 문서에 해당 요소의 해상도가 정의되어있지 않은 경우)를 기준으로 해결해야합니다.
+  </p>
+  <p lang="en">The declarations in a style attribute apply to the element to which the
+   attribute belongs. In the cascade, these declarations are considered to
+   have author origin and a specificity higher than any selector. CSS2.1 <a href="http://www.w3.org/TR/CSS21/cascade.html#specificity">defines</a> how
+   style sheets and style attributes are cascaded together. <a href="http://www.w3.org/TR/css-style-attr/#CSS21" rel="biblioentry">[CSS21]<!--{{!CSS21}}--></a> Relative URLs in the style
+   data must be resolved relative to the style attribute's element (or to the
+   document if per-element resolution is not defined) when the attribute's
+   value is parsed<!-- so dynamic changes to the base URL don't affect the CSS ~Hixie -->.
+  </p>
+  <p lang="ko">
+    cascading 내 차이점을 제외하고, style 속성 내의 선언문은
+    요소에 적용되는 CSS style 룰에 주어지는 그대로 해석해야 합니다.
+  </p>
+  <p lang="en">Aside from the differences in cascading, the declarations in a style
+   attribute must be interpreted exactly as if they were given in a CSS style
+   rule that applies to the element.
+  </p>
+  <p lang="ko">
+    CSS 워킹 그룹은 하나의 요소에 여러개의 CSS style 속성을 허용하지 않도록 강하게 권장합니다.
+    만약 문서 언어가 여러개의 CSS style 속성을 허용한다면, 
+    각각을 독립적으로 해석해야하며, 다른 style 룰로 적용해야 하며,
+    문서 언어에 의해 정리해야 하며, 이가 아닐 경우 undefined입니다.
+  </p>
+  <p lang="en">The CSS Working Group strongly recommends that document languages do not
+   allow multiple CSS style attributes on a single element. If a document
+   language allows multiple CSS style attributes, each must be parsed
+   independently and treated as a separate style rule, the ordering of which
+   should be defined by the document language, else is undefined.
+
+  </p><h2 id="ack"><span class="secno">5. </span>Acknowledgments</h2>
+
+  <p>Thanks to feedback from <span class="vcard"><span class="fn">Daniel
+   Glazman</span></span>, <span class="vcard"><span class="fn">Ian
+   Hickson</span></span>, <span class="vcard"><span class="fn n"><span class="given-name">Eric</span> <abbr class="additional-name">A.</abbr> <span class="family-name">Meyer</span></span></span>, <span class="vcard"><span class="fn">Björn Höhrmann</span></span>.
+
+  </p><h2 id="references"><span class="secno">6. </span>참고 문서</h2>
+
+  <h3 class="no-num" id="normative-references">표준 문서</h3>
+  <!--begin-normative-->
+  <!-- Sorted by label -->
+
+  <dl class="bibliography">
+   <dd style="display: none"><!-- keeps the doc valid if the DL is empty -->
+    <!---->
+
+   </dd><dt id="CSS21">[CSS21]
+
+   </dt><dd>Bert Bos; et al. <a href="http://www.w3.org/TR/2011/REC-CSS2-20110607"><cite>Cascading Style
+    Sheets Level 2 Revision 1 (CSS&nbsp;2.1) Specification.</cite></a> 7 June
+    2011. W3C Recommendation. URL: <a href="http://www.w3.org/TR/2011/REC-CSS2-20110607">http://www.w3.org/TR/2011/REC-CSS2-20110607</a>
+   </dd>
+   <!---->
+
+   <dt id="RFC2119">[RFC2119]
+
+   </dt><dd>S. Bradner. <a href="http://www.ietf.org/rfc/rfc2119.txt"><cite>Key
+    words for use in RFCs to Indicate Requirement Levels.</cite></a> Internet
+    RFC 2119. URL: <a href="http://www.ietf.org/rfc/rfc2119.txt">http://www.ietf.org/rfc/rfc2119.txt</a>
+   </dd>
+   <!---->
+  </dl>
+  <!--end-normative-->
+
+  <h3 class="no-num" id="informative-references">참고 정보</h3>
+  <!--begin-informative-->
+  <!-- Sorted by label -->
+
+  <dl class="bibliography">
+   <dd style="display: none"><!-- keeps the doc valid if the DL is empty -->
+    <!---->
+
+   </dd><dt id="HTML401">[HTML401]
+
+   </dt><dd>Dave Raggett; Arnaud Le Hors; Ian Jacobs. <a href="http://www.w3.org/TR/1999/REC-html401-19991224"><cite>HTML 4.01
+    Specification.</cite></a> 24 December 1999. W3C Recommendation. URL: <a href="http://www.w3.org/TR/1999/REC-html401-19991224">http://www.w3.org/TR/1999/REC-html401-19991224</a>
+   </dd>
+   <!---->
+
+   <dt id="SVG11">[SVG11]
+
+   </dt><dd>Erik Dahlström; et al. <a href="http://www.w3.org/TR/2011/REC-SVG11-20110816/"><cite>Scalable
+    Vector Graphics (SVG) 1.1 (Second Edition).</cite></a> 16 August 2011.
+    W3C Recommendation. URL: <a href="http://www.w3.org/TR/2011/REC-SVG11-20110816/">http://www.w3.org/TR/2011/REC-SVG11-20110816/</a>
+   </dd>
+   <!---->
+  </dl>
+  <!--end-informative-->
+
+<!-- Keep this comment at the end of the file
+
+Local variables:
+
+mode: sgml
+
+sgml-declaration:"~/SGML/HTML4.decl"
+
+sgml-default-doctype-name:"html"
+
+sgml-minimize-attributes:t
+
+sgml-nofill-elements:("pre" "style" "br")
+
+End:
+
+-->
+</body></html>
