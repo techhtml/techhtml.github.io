@@ -12,6 +12,7 @@
     pre { font-family: courier, monospace; font-weight: bold; white-space: pre-wrap }
     .example pre em { font-style: normal }
     span.label { font-style: italic }
+    :lang(en) {display:none}
   </style>
   <link type="text/css" href="default.css" rel=stylesheet>
   <link type="text/css" href="trans.css" rel=stylesheet>
@@ -21,7 +22,7 @@
   <p>이 문서는 <a href="http://www.w3.org/TR/css-style-attr/">Media Queries (W3C Recommendation 19 June 2012)</a>의 한국어 번역본입니다.</p>
   <dl class=meta>
     <dt>공개일</dt>
-    <dd>미정</dd>
+    <dd>2015년 10월 3일</dd>
     <dt>번역자:</dt>
     <dd>조은 &lt;<a href="mailto:apes0123@gmail.com">apes0123@gmail.com</a>&gt;</dd>
   </dl>
@@ -228,17 +229,16 @@ and the Media Queries <a href="http://www.w3.org/Style/CSS/Test/MediaQueries/">T
   <!--begin-toc-->
 
   <ul class=toc>
-   <li><a href="#background"><span class=secno>1. </span>Background</a>
+   <li><a href="#background"><span class=secno>1. </span>배경</a>
 
-   <li><a href="#media0"><span class=secno>2. </span>Media Queries</a>
+   <li><a href="#media0"><span class=secno>2. </span>미디어 쿼리</a>
 
-   <li><a href="#syntax"><span class=secno>3. </span>Syntax</a>
+   <li><a href="#syntax"><span class=secno>3. </span>문법</a>
     <ul class=toc>
-     <li><a href="#error-handling"><span class=secno>3.1. </span>Error
-      Handling</a>
+     <li><a href="#error-handling"><span class=secno>3.1. </span>에러 처리</a>
     </ul>
 
-   <li><a href="#media1"><span class=secno>4. </span>Media features</a>
+   <li><a href="#media1"><span class=secno>4. </span>미디어 특성</a>
     <ul class=toc>
      <li><a href="#width"><span class=secno>4.1. </span>width</a>
 
@@ -273,21 +273,20 @@ and the Media Queries <a href="http://www.w3.org/Style/CSS/Test/MediaQueries/">T
      <li><a href="#grid"><span class=secno>4.13. </span>grid</a>
     </ul>
 
-   <li><a href="#values"><span class=secno>5. </span>Values</a>
+   <li><a href="#values"><span class=secno>5. </span>값</a>
 
-   <li><a href="#units"><span class=secno>6. </span>Units</a>
+   <li><a href="#units"><span class=secno>6. </span>단위</a>
     <ul class=toc>
-     <li><a href="#resolution0"><span class=secno>6.1. </span>Resolution</a>
+     <li><a href="#resolution0"><span class=secno>6.1. </span>해상도</a>
     </ul>
 
    <li class=no-num><a href="#acknowledgments">Acknowledgments</a>
 
-   <li class=no-num><a href="#references">References</a>
+   <li class=no-num><a href="#references">참고 문서</a>
     <ul class=toc>
-     <li class=no-num><a href="#normative-references">Normative
-      references</a>
+     <li class=no-num><a href="#normative-references">표준 참고 문서</a>
 
-     <li class=no-num><a href="#other-references">Other references</a>
+     <li class=no-num><a href="#other-references">다른 참고 문서</a>
     </ul>
   </ul>
   <!--end-toc-->
@@ -382,7 +381,7 @@ and the Media Queries <a href="http://www.w3.org/Style/CSS/Test/MediaQueries/">T
     이러한 형태의 확장이 가능하도록 하기 위해서는, 적합하는 유저 에이전트가 아래와 같이 <a
     href="http://www.w3.org/TR/1999/REC-html401-19991224/present/styles.html#adef-media"><samp>media</samp></a> 
     속성을 해석해야만 합니다.
-    <span lang="en" style="display:block">Future versions of HTML may introduce new values and may allow
+    <span lang="en">Future versions of HTML may introduce new values and may allow
     parameterized values. To facilitate the introduction of these extensions,
     conforming user agents must be able to parse the <a
     href="http://www.w3.org/TR/1999/REC-html401-19991224/present/styles.html#adef-media"><samp>media</samp></a>
@@ -402,7 +401,7 @@ and the Media Queries <a href="http://www.w3.org/Style/CSS/Test/MediaQueries/">T
       각 항목은, US ASCII 문자 [a-zA-Z] (유니코드 10진수 65-90, 97-122), 
       숫자 [0-9] (유니코드 10진수 30-39), 혹은 하이픈 (45)로 시작하는 첫번째 문자 외에는 잘립니다.
       현재 예시에서는 다음과 같이 됩니다.
-      <span lang="en" style="display:block">Each entry is truncated just before the first character that isn't a
+      <span lang="en">Each entry is truncated just before the first character that isn't a
      US ASCII letter [a-zA-Z] (Unicode decimal 65-90, 97-122), digit [0-9]
      (Unicode hex 30-39), or hyphen (45). In the example, this gives:</span>
      <pre><code>"screen"
@@ -932,7 +931,7 @@ Y  y|\\0{0,4}(59|79)(\r\n|[ \t\r\n\f])?|\\y</pre>
   <h3 id=width><span class=secno>4.1. </span>width</h3>
 
   <div class=media-feature><span class=label>값:</span> &lt;length&gt;<br>
-   <span class=label>적용 가능 범위:</span> 시각 및 청각 미디어 타입<br>
+   <span class=label>적용 가능 범위:</span> 시각 및 촉각 미디어 타입<br>
    <span class=label>min/max 접두어 사용 가능 여부:</span> yes<br>
   </div>
 
@@ -985,74 +984,97 @@ Y  y|\\0{0,4}(59|79)(\r\n|[ \t\r\n\f])?|\\y</pre>
 
   <h3 id=height><span class=secno>4.2. </span>height</h3>
 
-  <div class=media-feature><span class=label>Value:</span> &lt;length&gt;<br>
-   <span class=label>Applies to:</span> visual and tactile media types<br>
-   <span class=label>Accepts min/max prefixes:</span> yes<br>
+  <div class=media-feature><span class=label>값:</span> &lt;length&gt;<br>
+   <span class=label>적용 가능 범위:</span> 시각 및 촉각 미디어 타입<br>
+   <span class=label>min/max 접두어 사용 가능 여부:</span> yes<br>
   </div>
+  
+  <p lang="ko">&lsquo;<code class=css>height</code>&rsquo; 미디어 특성은 출력 디바이스에서 디스플레이 영역의 높이를 의미합니다.
+    계속하는 미디어에서, (만약 존재한다면) 현재 렌더링된 스크롤 바의 사이즈를 포함한 뷰포트의 높이입니다.
+    페이지 미디어에서, 페이지 박스의 높이입니다.
 
-  <p>The &lsquo;<code class=css>height</code>&rsquo; media feature describes
+   
+  <p lang="ko">&lsquo;<code class=css>height</code>&rsquo; media feature describes
    the height of the targeted display area of the output device. For
    continuous media, this is the height of the viewport including the size of
    a rendered scroll bar (if any). For paged media, this is the height of the
    page box.
 
-  <p>A specified &lt;length> cannot be negative.
+  <p lang="ko">&lt;length&gt;에 음수는 사용할 수 없습니다.
+  <p lang="en">A specified &lt;length> cannot be negative.
 
   <h3 id=device-width><span class=secno>4.3. </span>device-width</h3>
 
-  <div class=media-feature><span class=label>Value:</span> &lt;length&gt;<br>
-   <span class=label>Applies to:</span> visual and tactile media types<br>
-   <span class=label>Accepts min/max prefixes:</span> yes<br>
+  <div class=media-feature><span class=label>값:</span> &lt;length&gt;<br>
+   <span class=label>적용 가능 범위:</span> 시각 및 촉각 미디어 타입<br>
+   <span class=label>min/max 접두어 사용 가능 여부:</span> yes<br>
   </div>
-
-  <p>The &lsquo;<code class=css>device-width</code>&rsquo; media feature
+  
+   
+  <p lang="ko">
+   &lsquo;<code class=css>device-width</code>&rsquo; 미디어 특성은
+    출력 디바이스 렌더링 표면의 너비를 나타냅니다.
+    이어지는 콘텐츠에서 스크린의 너비를 의미합니다.
+    페이지 미디어에서 페이지 시트 사이즈의 너비를 의미합니다.
+  <p lang="en">The &lsquo;<code class=css>device-width</code>&rsquo; media feature
    describes the width of the rendering surface of the output device. For
    continuous media, this is the width of the screen. For paged media, this
    is the width of the page sheet size.
 
-  <p>A specified &lt;length> cannot be negative.
+  <p lang="ko">&lt;length&gt;에 음수는 사용할 수 없습니다.
+  <p lang="en">A specified &lt;length> cannot be negative.
 
   <div class=example>
    <pre><code>@media screen and (device-width: 800px) { &hellip; }</code></pre>
 
-   <p>In the example above, the style sheet will apply only to screens that
-    currently displays exactly 800 horizontal pixels. The &lsquo;<code
-    class=css>px</code>&rsquo; unit is of the logical kind, as described in
-    the <a href="#units">Units</a> section.</p>
+   <p>
+    예제의 스타일 시트는 현재 디스플레이의 가로 픽셀이 정확히 800 픽셀인 스크린에서만 적용됩니다.
+    &lsquo;<code class=css>px</code>&rsquo;은 논리적인 단위이며, <a href="#units">Units</a> 섹션에서 소개합니다.
   </div>
 
   <h3 id=device-height><span class=secno>4.4. </span>device-height</h3>
 
-  <div class=media-feature><span class=label>Value:</span> &lt;length&gt;<br>
-   <span class=label>Applies to:</span> visual and tactile media types<br>
-   <span class=label>Accepts min/max prefixes:</span> yes<br>
+  <div class=media-feature><span class=label>값:</span> &lt;length&gt;<br>
+   <span class=label>적용 가능 범위:</span> 시각 및 촉각 미디어 타입<br>
+   <span class=label>min/max 접두어 사용 가능 여부:</span> yes<br>
   </div>
-
-  <p>The &lsquo;<code class=css>device-height</code>&rsquo; media feature
+  <p lang="ko">
+   &lsquo;<code class=css>device-height</code>&rsquo; 미디어 특성은
+    출력 디바이스 렌더링 표면의 높이를 나타냅니다.
+    이어지는 콘텐츠에서 스크린의 높이를 의미합니다.
+    페이지 미디어에서 페이지 시트 사이즈의 높이를 의미합니다.
+    
+  <p lang="en">The &lsquo;<code class=css>device-height</code>&rsquo; media feature
    describes the height of the rendering surface of the output device. For
    continuous media, this is the height of the screen. For paged media, this
    is the height of the page sheet size.
 
-  <p>A specified &lt;length> cannot be negative.
-
+  <p lang="ko">&lt;length&gt;에 음수는 사용할 수 없습니다.
+  <p lang="en">A specified &lt;length> cannot be negative.
+    
   <div class=example>
    <pre><code>&lt;link rel="stylesheet" media="screen and (device-height: 600px)" /&gt;</code></pre>
 
-   <p>In the example above, the style sheet will apply only to screens that
-    have exactly 600 vertical pixels. Note that the definition of the
-    &lsquo;<code class=css>px</code>&rsquo; unit is the same as in other
-    parts of CSS.</p>
+   <p>
+    예제의 스타일시트는 현재 디스플레이의 세로 픽셀이 정확히 600 픽셀인 스크린에서만 적용됩니다.
+    &lsquo;<code class=css>px</code>&rsquo; 단위의 정의는 CSS의 다른 파트에서 설명하는 것과 동일합니다.
   </div>
 
   <h3 id=orientation><span class=secno>4.5. </span>orientation</h3>
 
-  <div class=media-feature><span class=label>Value:</span> portrait |
-   landscape<br>
-   <span class=label>Applies to:</span> bitmap media types<br>
-   <span class=label>Accepts min/max prefixes:</span> no<br>
+  <div class=media-feature><span class=label>값:</span> portrait | landscape<br>
+   <span class=label>적용 가능 범위:</span> 비트맵 미디어 타입<br>
+   <span class=label>min/max 접두어 사용 가능 여부:</span> no<br>
   </div>
-
-  <p>The &lsquo;<code class=css>orientation</code>&rsquo; media feature is
+  <p lang="ko">
+    &lsquo;<code class=css>orientation</code>&rsquo; 미디어 특성은
+    &lsquo;<code class=css>width</code>&rsquo; 미디어 특성의 값보다 
+    &lsquo;<code class=css>height</code>&rsquo; 미디어 특성의 값이 크거나 같을 때를
+    나타내는 값인 &lsquo;<code class=css>portrait</code>&rsquo;와
+    그 외의 &lsquo;<code class=css>orientation</code>&rsquo;을 나타내는
+    &lsquo;<code class=css>landscape</code>&rsquo;가 있습니다.
+  </p>
+  <p lang="en">The &lsquo;<code class=css>orientation</code>&rsquo; media feature is
    &lsquo;<code class=css>portrait</code>&rsquo; when the value of the
    &lsquo;<code class=css>height</code>&rsquo; media feature is greater than
    or equal to the value of the &lsquo;<code class=css>width</code>&rsquo;
@@ -1066,12 +1088,17 @@ Y  y|\\0{0,4}(59|79)(\r\n|[ \t\r\n\f])?|\\y</pre>
 
   <h3 id=aspect-ratio><span class=secno>4.6. </span>aspect-ratio</h3>
 
-  <div class=media-feature><span class=label>Value:</span> &lt;ratio&gt;<br>
-   <span class=label>Applies to:</span> bitmap media types<br>
-   <span class=label>Accepts min/max prefixes:</span> yes<br>
+  <div class=media-feature><span class=label>값:</span> &lt;ratio&gt;<br>
+   <span class=label>적용 가능 범위:</span> 비트맵 미디어 타입<br>
+   <span class=label>min/max 접두어 사용 가능 여부:</span> yes<br>
   </div>
-
-  <p>The &lsquo;<code class=css>aspect-ratio</code>&rsquo; media feature is
+   
+  <p lang="ko">
+    &lsquo;<code class=css>aspect-ratio</code>&rsquo; 미디어 특성은
+    &lsquo;<code class=css>width</code>&rsquo; 미디어 특성 값 및 
+    &lsquo;<code class=css>height</code>&rsquo; 미디어 특성 값의 비율을 정의합니다.
+    
+  <p lang="en">The &lsquo;<code class=css>aspect-ratio</code>&rsquo; media feature is
    defined as the ratio of the value of the &lsquo;<code
    class=css>width</code>&rsquo; media feature to the value of the
    &lsquo;<code class=css>height</code>&rsquo; media feature.
@@ -1079,20 +1106,25 @@ Y  y|\\0{0,4}(59|79)(\r\n|[ \t\r\n\f])?|\\y</pre>
   <h3 id=device-aspect-ratio><span class=secno>4.7.
    </span>device-aspect-ratio</h3>
 
-  <div class=media-feature><span class=label>Value:</span> &lt;ratio&gt;<br>
-   <span class=label>Applies to:</span> bitmap media types<br>
-   <span class=label>Accepts min/max prefixes:</span> yes<br>
+  <div class=media-feature><span class=label>값:</span> &lt;ratio&gt;<br>
+   <span class=label>적용 가능 범위:</span> 비트맵 미디어 타입<br>
+   <span class=label>min/max 접두어 사용 가능 여부:</span> yes<br>
   </div>
-
-  <p>The &lsquo;<code class=css>device-aspect-ratio</code>&rsquo; media
+  <p lang="ko">
+    &lsquo;<code class=css>device-aspect-ratio</code>&rsquo; 미디어 특성은
+    &lsquo;<code class=css>device-width</code>&rsquo; 미디어 특성 값 및 
+    &lsquo;<code class=css>device-height</code>&rsquo; 미디어 특성 값의 비율을 정의합니다.
+  </p>
+  <p lang="en">The &lsquo;<code class=css>device-aspect-ratio</code>&rsquo; media
    feature is defined as the ratio of the value of the &lsquo;<code
    class=css>device-width</code>&rsquo; media feature to the value of the
    &lsquo;<code class=css>device-height</code>&rsquo; media feature.
 
   <div class=example>
-   <p>For example, if a screen device with square pixels has 1280 horizontal
-    pixels and 720 vertical pixels (commonly referred to as "16:9"), the
-    following Media Queries will all match the device:</p>
+   <p>
+    예를 들어, (보통 16:9를 나타내는) 가로사이즈 1280 픽셀 및 세로사이즈 720 픽셀을 가진 사각형 픽셀 스크린 디바이스가 존재할 때,
+     아래 미디어 쿼리가 이 디바이스에서 매치할 것입니다:
+   </p>
 
    <pre><code>@media screen and (device-aspect-ratio: 16/9) { &hellip; }
 @media screen and (device-aspect-ratio: 32/18) { &hellip; }
@@ -1102,78 +1134,83 @@ Y  y|\\0{0,4}(59|79)(\r\n|[ \t\r\n\f])?|\\y</pre>
 
   <h3 id=color><span class=secno>4.8. </span>color</h3>
 
-  <div class=media-feature><span class=label>Value:</span>
-   &lt;integer&gt;<br>
-   <span class=label>Applies to:</span> visual media types<br>
-   <span class=label>Accept min/max prefixes:</span> yes<br>
+  <div class=media-feature><span class=label>값:</span>&lt;정수&gt;<br>
+   <span class=label>적용 가능 범위:</span> 비주얼 미디어 타입<br>
+   <span class=label>min/max 접두어 사용 가능 여부:</span> yes<br>
   </div>
-
-  <p>The &lsquo;<code class=css>color</code>&rsquo; media feature describes
+  <p lang="ko">
+   &lsquo;<code class=css>color</code>&rsquo; 미디어 특성은
+    출력 디바이스의 컬러 컴포넌트 당 비트의 갯수를 나타냅니다.
+    만약 디바이스가 컬러 디바이스가 아니라면, 값은 0입니다.
+  </p>
+  <p lang="en">The &lsquo;<code class=css>color</code>&rsquo; media feature describes
    the number of bits per color component of the output device. If the device
    is not a color device, the value is zero.
-
-  <p>A specified &lt;integer> cannot be negative.
+  
+  <p lang="ko">&lt;정수&gt;에 음수는 사용할 수 없습니다.
+  <p lang="en">A specified &lt;integer> cannot be negative.
 
   <div class=example>
-   <p>For example, these two media queries express that a style sheet applies
-    to all color devices:</p>
+   <p>
+    예를 들어 다음 두 미디어쿼리는 모든 색상 디바이스에서 적용되는 미디어쿼리를 나타냅니다. 
+   </p>
 
    <pre><code>@media all and (color) { &hellip; }
 @media all and (min-color: 1) { &hellip; }</code></pre>
   </div>
 
   <div class=example>
-   <p>This media query expresses that a style sheet applies to color devices
-    with 2 or more bits per color component:</p>
+   <p>
+     아래 미디어 쿼리는 컬러 컴포넌트 당 비트의 갯수가 2거나 그 이상인 컬러 디바이스에서 적용되는
+     스타일 시트를 표현합니다.</p>
 
    <pre><code>@media all and (min-color: 2) { &hellip; }</code></pre>
   </div>
 
-  <p>If different color components are represented by different number of
-   bits, the smallest number is used.
+  <p lang="ko">만약 컬러 컴포넌트가 각각 다른 갯수의 비트를 표현할 경우, 그 수 중 제일 작은 숫자만 사용합니다.
 
   <div class=example>
-   <p>For instance, if an 8-bit color system represents the red component
-    with 3 bits, the green component with 3 bits and the blue component with
-    2 bits, the &lsquo;<code class=css>color</code>&rsquo; media feature will
-    have a value of 2.</p>
+   <p>
+    예를 들어, 8비트 컬러 시스템이 3비트의 red 컴포넌트, 3비트의 green 컴포넌트, 2bit의 blue 컴포넌트를 표현하고자 할 때,
+    &lsquo;<code class=css>color</code>&rsquo; 미디어 특성은 2 값만 사용합니다.
   </div>
 
-  <p>In a device with indexed colors, the minimum number of bits per color
-   component in the lookup table is used.
+  <p lang="ko">
+   인덱스 컬러를 가진 디바이스에서는,
+   룩업 테이블 내 컬러 컴포넌트 당 비트의 갯수가 가장 작은걸 사용합니다.
 
-  <p class=note>The described functionality is only able to describe color
-   capabilities at a superficial level. If further functionality is required,
-   RFC2531 <a href="#RFC2531" rel=biblioentry>[RFC2531]<!--{{RFC2531}}--></a>
-   provides more specific media features which may be supported at a later
-   stage.
+  <p class=note>
+   여기에서 설명하는 기능은, 디스플레이 수준에서 컬러 기능만을 표현합니다.
+   이 이상의 기능이 필요한 경우, 이후에 지원할지도 모르는 미디어 특성을 RFC 2531 <a href="#RFC2531" rel=biblioentry>[RFC2531]<!--{{RFC2531}}--></a>에서 제공하고 있습니다.
 
   <h3 id=color-index><span class=secno>4.9. </span>color-index</h3>
 
-  <div class=media-feature><span class=label>Value:</span>
-   &lt;integer&gt;<br>
-   <span class=label>Applies to:</span> visual media types<br>
-   <span class=label>Accepts min/max prefixes:</span> yes<br>
+  <div class=media-feature><span class=label>값:</span>&lt;정수&gt;<br>
+   <span class=label>적용 가능 범위:</span> 비주얼 미디어 타입<br>
+   <span class=label>min/max 접두어 사용 가능 여부:</span> yes<br>
   </div>
 
-  <p>The &lsquo;<code class=css>color-index</code>&rsquo; media feature
-   describes the number of entries in the color lookup table of the output
-   device. If the device does not use a color lookup table, the value is
-   zero.
+  <p lang="ko">
+    
+   &lsquo;<code class=css>color-index</code>&rsquo; 미디어 특성은,
+    출력 디바이스의 컬러 참조 테이블의 항목수를 설명합니다.
+    만약 디바이스에 어떤 컬러 참조 테이블도 없을 경우, 값은 0입니다.
 
-  <p>A specified &lt;integer> cannot be negative.
+  <p lang="ko">&lt;정수&gt;에 음수는 사용할 수 없습니다.
 
   <div class=example>
-   <p>For example, here are two ways to express that a style sheet applies to
-    all color index devices:</p>
+   <p>
+    예를 들어, 다음 두 미디어 쿼리는 모든 컬러 인덱스 디바이스에 적용되는 스타일시트를 표현합니다. 
+   </p>
 
    <pre><code>@media all and (color-index) { &hellip; }
 @media all and (min-color-index: 1) { &hellip; }</code></pre>
   </div>
 
   <div class=example>
-   <p>This media query expresses that a style sheet applies to a color index
-    device with 256 or more entries:</p>
+   <p>
+    아래 미디어 쿼리는 256 이상의 항목을 지원하는 컬러 인덱스 디바이스에 적용되는 스타일시트를 표현합니다. 
+   </p>
 
    <pre><code>&lt;?xml-stylesheet media="all and (min-color-index: 256)" 
   href="http://www.example.com/&hellip;" ?&gt;</code></pre>
@@ -1181,36 +1218,38 @@ Y  y|\\0{0,4}(59|79)(\r\n|[ \t\r\n\f])?|\\y</pre>
 
   <h3 id=monochrome><span class=secno>4.10. </span>monochrome</h3>
 
-  <div class=media-feature><span class=label>Value:</span>
-   &lt;integer&gt;<br>
-   <span class=label>Applies to:</span> visual media types<br>
-   <span class=label>Accepts min/max prefixes:</span> yes<br>
+  <div class=media-feature><span class=label>값:</span>&lt;정수&gt;<br>
+   <span class=label>적용 가능 범위:</span> 비주얼 미디어 타입<br>
+   <span class=label>min/max 접두어 사용 가능 여부:</span> yes<br>
   </div>
 
-  <p>The &lsquo;<code class=css>monochrome</code>&rsquo; media feature
-   describes the number of bits per pixel in a monochrome frame buffer. If
-   the device is not a monochrome device, the output device value will be 0.
+  <p>&lsquo;<code class=css>monochrome</code>&rsquo; 미디어 특성은
+    흑백 프레임 버퍼의 픽셀당 비트수를 나타냅니다.
+    만약 디바이스가 흑백디바이스가 아니라면, 출력 디바이스값은 0입니다.
 
-  <p>A specified &lt;integer> cannot be negative.
+  <p lang="ko">&lt;정수&gt;에 음수는 사용할 수 없습니다.
 
   <div class=example>
-   <p>For example, here are two ways to express that a style sheet applies to
-    all monochrome devices:</p>
+   <p>
+     예를 들어 다음 두 미디어 쿼리는 모든 흑백 디바이스에 적용되는 스타일시트를 표현합니다.
+   </p>
 
    <pre><code>@media all and (monochrome) { &hellip; }
 @media all and (min-monochrome: 1) { &hellip; }</code></pre>
   </div>
 
   <div class=example>
-   <p>Express that a style sheet applies to monochrome devices with more than
-    2 bits per pixels:</p>
+   <p>
+     아래 예제는 픽셀당 2 비트 이상을 가지는 흑백 디바이스에 적용되는 스타일 시트를 표현합니다.
+   </p>
 
    <pre><code>@media all and (min-monochrome: 2) { &hellip; }</code></pre>
   </div>
 
   <div class=example>
-   <p>Express that there is one style sheet for color pages and another for
-    monochrome:</p>
+   <p>
+    하나는 색상을 지원하는 페이지를 위한, 또 다른 하나는 흑백 페이지를 위한 스타일 시트를 표현하는 예시입니다.
+    </p>
 
    <pre><code>&lt;link rel="stylesheet" media="print and (color)" href="http://&hellip;" /&gt;
 &lt;link rel="stylesheet" media="print and (monochrome)" href="http://&hellip;" /&gt;</code></pre>
@@ -1218,13 +1257,20 @@ Y  y|\\0{0,4}(59|79)(\r\n|[ \t\r\n\f])?|\\y</pre>
 
   <h3 id=resolution><span class=secno>4.11. </span>resolution</h3>
 
-  <div class=media-feature><span class=label>Value:</span>
-   &lt;resolution&gt;<br>
-   <span class=label>Applies to:</span> bitmap media types<br>
-   <span class=label>Accepts min/max prefixes:</span> yes<br>
+  <div class=media-feature><span class=label>값:</span>&lt;resolution&gt;<br>
+   <span class=label>적용 가능 범위:</span> 비트맵 미디어 타입<br>
+   <span class=label>min/max 접두어 사용 가능 여부:</span> yes<br>
   </div>
-
-  <p>The &lsquo;<code class=css>resolution</code>&rsquo; media feature
+  <p lang="ko">
+   &lsquo;<code class=css>resolution</code>&rsquo; 미디어 특성은 출력 디바이스의 해상도를 설명합니다. 
+    즉 픽셀의 밀도를 나타냅니다.
+    사각형이 아닌 픽셀을 가진 디바이스에서 쿼리를 실행할 때,
+    &lsquo;<code class=css>min-resolution</code>&rsquo; 쿼리에서는 최소밀도를
+    &lsquo;<code class=css>max-resolution</code>&rsquo; 쿼리에서는 최대 밀도를 비교해야만 합니다.
+    ("min-"과 "max-" 접두어를 제외한) &lsquo;<code class=css>resolution</code>&rsquo; 쿼리는
+    사각형이 아닌 픽셀을 가진 디바이스와는 절대로 매치하지 않습니다.
+  </p>
+  <p lang="en">The &lsquo;<code class=css>resolution</code>&rsquo; media feature
    describes the resolution of the output device, i.e. the density of the
    pixels. When querying devices with non-square pixels, in &lsquo;<code
    class=css>min-resolution</code>&rsquo; queries the least-dense dimension
@@ -1233,111 +1279,119 @@ Y  y|\\0{0,4}(59|79)(\r\n|[ \t\r\n\f])?|\\y</pre>
    must be compared instead. A &lsquo;<code
    class=css>resolution</code>&rsquo; (without a "min-" or "max-" prefix)
    query never matches a device with non-square pixels.
-
-  <p>For printers, this corresponds to the screening resolution (the
+  <p lang="ko">
+   프린터에서 이는 스크린 해상도(임의의 색 인쇄 도트 해상도)에 적용됩니다. 
+  </p>
+  <p lang="en">For printers, this corresponds to the screening resolution (the
    resolution for printing dots of arbitrary color).
 
   <div class=example>
-   <p>For example, this media query expresses that a style sheet is usable on
-    devices with resolution greater than 300 dots per inch:</p>
-
+   <p lang="ko">
+    예를 들어, 아래 미디어 쿼리는 300 dpi 이상의 해상도를 가진 디바이스에서 적용하는 스타일 시트를 표현합니다. 
+   </p>
    <pre><code>@media print and (min-resolution: 300dpi) { &hellip; }</code></pre>
   </div>
 
   <div class=example>
-   <p>This media query expresses that a style sheet is usable on devices with
-    resolution greater than 118 dots per centimeter:</p>
+   <p>
+    아래 미디어 쿼리는 118dpcm 이상의 해상도를 가진 디바이스에서 적용하는 스타일 시트를 표현합니다. 
+   </p>
 
    <pre><code>@media print and (min-resolution: 118dpcm) { &hellip; }</code></pre>
   </div>
 
   <h3 id=scan><span class=secno>4.12. </span>scan</h3>
 
-  <div class=media-feature><span class=label>Value:</span> progressive |
-   interlace<br>
-   <span class=label>Applies to:</span> "tv" media types<br>
-   <span class=label>Accepts min/max prefixes:</span> no<br>
+  <div class=media-feature><span class=label>값:</span> progressive | interlace<br>
+   <span class=label>적용 가능 범위 :</span> "tv" 미디어 타입<br>
+   <span class=label>min/max 접두어 사용 가능 여부 :</span> no<br>
   </div>
 
-  <p>The &lsquo;<code class=css>scan</code>&rsquo; media feature describes
-   the scanning process of "tv" output devices.
+  <p>The &lsquo;<code class=css>scan</code>&rsquo; 미디어 특성은 
+    "tv" 출력 디바이스의 스캐닝 프로세스를 설명합니다.
 
   <div class=example>
-   <p>For example, this media query expresses that a style sheet is usable on
-    tv devices with progressive scanning:</p>
+   <p>
+    예를 들어 다음 미디어 쿼리는 프로그레시브 스캐닝 방식의 tv 디바이스에서
+    적용하는 스타일 시트를 표현합니다.
+    </p>
 
    <pre><code>@media tv and (scan: progressive) { &hellip; }</code></pre>
   </div>
 
   <h3 id=grid><span class=secno>4.13. </span>grid</h3>
 
-  <div class=media-feature><span class=label>Value:</span>
-   &lt;integer&gt;<br>
-   <span class=label>Applies to:</span> visual and tactile media types<br>
-   <span class=label>Accepts min/max prefixes:</span> no<br>
+  <div class=media-feature><span class=label>값:</span>&lt;정수&gt;<br>
+   <span class=label>적용 가능 범위 :</span> 시각 및 촉각 미디어 타입<br>
+   <span class=label>min/max 접두어 사용 가능 여부 :</span> no<br>
   </div>
+  
+  <p>
+    &lsquo;<code class=css>grid</code>&rsquo; 미디어 특성은
+    출력 디바이스가 그리드 혹은 비트맵인지 쿼리를 사용하기 위해 사용합니다.
+    만약 출력 디바이스가 그리드 베이스(즉, "tty" 터미널, 하나의 정해진 폰트로 보여지는 휴대폰 디스플레이)인 경우 값은 1입니다. 
+    그렇지 않은 경우 0입니다.
 
-  <p>The &lsquo;<code class=css>grid</code>&rsquo; media feature is used to
-   query whether the output device is grid or bitmap. If the output device is
-   grid-based (e.g., a "tty" terminal, or a phone display with only one fixed
-   font), the value will be 1. Otherwise, the value will be 0.
-
-  <p>Only 0 and 1 are valid values. (This includes -0.) Thus everything else
-   creates a malformed media query.
+  <p>
+   (-0을 포함한) 0과 1만이 유효값입니다.
+    따라서 이 외에는 모두 올바르지 않은 미디어 쿼리입니다.
 
   <div class=example>
-   <p>Here are two examples:</p>
+   <p>두 예제가 있습니다:</p>
 
    <pre><code>@media handheld and (grid) and (max-width: 15em) { &hellip; }</code>
 <code>@media handheld and (grid) and (device-max-height: 7em) { &hellip; }</code></pre>
   </div>
 
-  <h2 id=values><span class=secno>5. </span>Values</h2>
+  <h2 id=values><span class=secno>5. </span>값</h2>
 
-  <p>This specification also introduces two new values.
+  <p>이 스펙문서에서는 두개의 새로운 값을 소개합니다.
+   
+  <p>&lt;ratio> 값은 양수 (0 및 음수가 아닌) &lt;정수&gt;로
+    뒤에 옵션적으로 공백문자, 뒤에 사선&lsquo;<code class=css>/</code>&rsquo;,
+    뒤에 옵션적으로 공백문자, 뒤에 양수 &lt;정수&gt;가 이어집니다.
 
-  <p>The &lt;ratio> value is a positive (not zero or negative) &lt;integer>
-   followed by optional whitespace, followed by a solidus (&lsquo;<code
-   class=css>/</code>&rsquo;), followed by optional whitespace, followed by a
-   positive &lt;integer>.
+  <p>
+    &lt;resolution> 값은 양수 &lt;number>로, 바로 뒤에 단위(&lsquo;<code class=css>dpi</code>&rsquo;나
+   &lsquo;<code class=css>dpcm</code>&rsquo;)가 붙습니다.
 
-  <p>The &lt;resolution> value is a positive &lt;number> immediately followed
-   by a unit identifier (&lsquo;<code class=css>dpi</code>&rsquo; or
-   &lsquo;<code class=css>dpcm</code>&rsquo;).
+  <p>
+   이 스펙에서 사용하는 공백, &lt;정수>, &lt;number> 및 다른 값은 
+   CSS2.1.에서 표준으로 정의한 CSS의 다른 파트와 동일합니다,
+   <a href="#CSS21" rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a>
 
-  <p>Whitespace, &lt;integer>, &lt;number> and other values used by this
-   specification are the same as in other parts of CSS, normatively defined
-   by CSS 2.1. <a href="#CSS21" rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a>
+  <h2 id=units><span class=secno>6. </span>단위</h2>
 
-  <h2 id=units><span class=secno>6. </span>Units</h2>
+  <p>
+   미디어쿼리에서 사용하는 단위는 CSS의 다른 파트와 동일합니다.
+   예를 들어, pixel 유닛은 CSS 픽셀을 나타내며 물리적인 픽셀을 의미하지 않습니다.
 
-  <p>The units used in media queries are the same as in other parts of CSS.
-   For example, the pixel unit represents CSS pixels and not physical pixels.
+  <p>
+   미디어쿼리에서 상대적인 단위는 기본값을 기준으로 합니다.
+   이는 단위가 선언 결과에 기준을 두지 않는 것을 의미합니다.
+   예를 들어 HTML에서 &lsquo;<code class=css>em</code>&rsquo; 단위는
+   &lsquo;<code class=property>font-size</code>&rsquo;의 기본 값에 상대적입니다.
 
-  <p>Relative units in media queries are based on the initial value, which
-   means that units are never based on results of declarations. For example,
-   in HTML, the &lsquo;<code class=css>em</code>&rsquo; unit is relative to
-   the initial value of &lsquo;<code class=property>font-size</code>&rsquo;.
+  <h3 id=resolution0><span class=secno>6.1. </span>해상도</h3>
 
-  <h3 id=resolution0><span class=secno>6.1. </span>Resolution</h3>
-
-  <p>The &lsquo;<code class=css>dpi</code>&rsquo; and &lsquo;<code
-   class=css>dpcm</code>&rsquo; units describe the resolution of an output
-   device, i.e., the density of device pixels. Resolution unit identifiers
-   are:
+  <p>&lsquo;<code class=css>dpi</code>&rsquo;와 &lsquo;<code
+   class=css>dpcm</code>&rsquo; 단위는 출력 디바이스의 해상도를 표현합니다.
+    즉 디바이스 픽셀의 밀도입니다.
+    해상도 단위는 다음과 같습니다:
 
   <dl>
    <dt>dpi
 
-   <dd>dots per CSS &lsquo;<code class=css>inch</code>&rsquo;
+   <dd>CSS &lsquo;<code class=css>inch</code>&rsquo; 당 도트수
 
    <dt>dpcm
 
-   <dd>dots per CSS &lsquo;<code class=css>centimeter</code>&rsquo;
+   <dd>&lsquo;<code class=css>centimeter</code>&rsquo; 당 도트수
   </dl>
 
-  <p>In this specification, these units are only used in the &lsquo;<code
-   class=css>resolution</code>&rsquo; media feature.
+  <p>
+   이 스펙문서에서, 이 단위는 오로지 &lsquo;<code
+   class=css>resolution</code>&rsquo; 미디어 특성을 위해 사용됩니다.
 
   
   <h2 class=no-num id=acknowledgments>Acknowledgments</h2>
@@ -1351,9 +1405,9 @@ Y  y|\\0{0,4}(59|79)(\r\n|[ \t\r\n\f])?|\\y</pre>
    Simon Kissane, Melinda Grant, and L. David Baron improved this
    specification.
 
-  <h2 class=no-num id=references>References</h2>
+  <h2 class=no-num id=references>참고 문서</h2>
 
-  <h3 class=no-num id=normative-references>Normative references</h3>
+  <h3 class=no-num id=normative-references>표준 참고 문서</h3>
   <!--begin-normative-->
   <!-- Sorted by label -->
 
@@ -1373,7 +1427,7 @@ Y  y|\\0{0,4}(59|79)(\r\n|[ \t\r\n\f])?|\\y</pre>
   </dl>
   <!--end-normative-->
 
-  <h3 class=no-num id=other-references>Other references</h3>
+  <h3 class=no-num id=other-references>다른 참고 문서</h3>
   <!--begin-informative-->
   <!-- Sorted by label -->
 
