@@ -184,7 +184,7 @@
    <p lang="en">This document has been reviewed by W3C Members, by software developers, and by other W3C groups and interested parties, and is endorsed by the Director as a W3C Recommendation. It is a stable document and may be used as reference material or cited from another document. W3C's role in making the Recommendation is to draw attention to the specification and to promote its widespread deployment. This enhances the functionality and interoperability of the Web.</p>
   <p lang="ko">
    워킹 그룹의 <a href="http://www.w3.org/Style/CSS/Test/MediaQueries/20120229/reports/implement-report.html">구현 레포트</a>
-   및 미디어쿼리 <a href="http://www.w3.org/Style/CSS/Test/MediaQueries/">Test Suite</a>를 확인하시길 바랍니다.
+   및 미디어 쿼리 <a href="http://www.w3.org/Style/CSS/Test/MediaQueries/">Test Suite</a>를 확인하시길 바랍니다.
   </p>
 <p lang="en">Please see the Working Group's <a href="http://www.w3.org/Style/CSS/Test/MediaQueries/20120229/reports/implement-report.html">implementation report</a>
 and the Media Queries <a href="http://www.w3.org/Style/CSS/Test/MediaQueries/">Test Suite</a>.</p>
@@ -641,7 +641,7 @@ and the Media Queries <a href="http://www.w3.org/Style/CSS/Test/MediaQueries/">T
 
   <h2 id=syntax><span class=secno>3. </span>문법</h2>
   <p lang="ko">
-   미디어쿼리 문법은 <a href="http://www.w3.org/TR/CSS21/grammar.html">CSS2 grammar</a>에서 설명하고 있습니다.
+   미디어 쿼리 문법은 <a href="http://www.w3.org/TR/CSS21/grammar.html">CSS2 grammar</a>에서 설명하고 있습니다.
    여기서 정의하지 않은 문법은 CSS2에서 정의하고 있습니다.
    아래에 정의되어있는 <code>media_query_list</code> 생성 규칙은,
    CSS2의 <code>media_list</code> 생성 규칙을 교체하는 것입니다.
@@ -696,7 +696,7 @@ Y  y|\\0{0,4}(59|79)(\r\n|[ \t\r\n\f])?|\\y</pre>
 
   <p lang="ko"><code>RESOLUTION</code>이 CSS2 <code>term</code> 생성 규칙에 추가되어있습니다.
   <p lang="en"><code>RESOLUTION</code> is to be added to the CSS2 <code>term</code> production.</p>
-  <p lang="ko">CSS 스타일 시트는 일반적으로 대소문자를 구분하지 않으며, 이는 미디어쿼리에서도 동일합니다.</p>
+  <p lang="ko">CSS 스타일 시트는 일반적으로 대소문자를 구분하지 않으며, 이는 미디어 쿼리에서도 동일합니다.</p>
   <p lang="en">CSS style sheets are generally case-insensitive, and this is also the
    case for media queries.
   <p lang="ko">구문의 적합 외에 개별 미디어 쿼리가 준수하는 것으로 간주되기 위해서는
@@ -798,7 +798,7 @@ Y  y|\\0{0,4}(59|79)(\r\n|[ \t\r\n\f])?|\\y</pre>
     </div>
 
    <li>
-    <p lang="ko"><strong>올바르지 않은 미디어쿼리.</strong>
+    <p lang="ko"><strong>올바르지 않은 미디어 쿼리.</strong>
      유저 에이전트는 미디어의 마지막까지 읽고 미디어를 해석하는 동안
       (), [], {}, "", and &#39;&#39; <a
      href="http://www.w3.org/TR/CSS21/syndata.html#block">매칭 규칙</a>에 따르거나,
@@ -920,7 +920,7 @@ Y  y|\\0{0,4}(59|79)(\r\n|[ \t\r\n\f])?|\\y</pre>
 
   <div class=example>
    <p>예를 들면, &lsquo;<code class=css>color</code>&rsquo; 미디어 특성은
-     값이 없는 식(&lsquo;<codeclass=css>(color)</code>&rsquo;), 값이 있는 식(&lsquo;<code
+     값이 없는 식(&lsquo;<code class=css>(color)</code>&rsquo;), 값이 있는 식(&lsquo;<code
     class=css>(min-color: 1)</code>&rsquo;)이 될 가능성이 있습니다..</p>
   </div>
 
@@ -1152,7 +1152,7 @@ Y  y|\\0{0,4}(59|79)(\r\n|[ \t\r\n\f])?|\\y</pre>
 
   <div class=example>
    <p>
-    예를 들어 다음 두 미디어쿼리는 모든 색상 디바이스에서 적용되는 미디어쿼리를 나타냅니다. 
+    예를 들어 다음 두 미디어 쿼리는 모든 색상 디바이스에서 적용되는 미디어 쿼리를 나타냅니다. 
    </p>
 
    <pre><code>@media all and (color) { &hellip; }
@@ -1363,11 +1363,11 @@ Y  y|\\0{0,4}(59|79)(\r\n|[ \t\r\n\f])?|\\y</pre>
   <h2 id=units><span class=secno>6. </span>단위</h2>
 
   <p>
-   미디어쿼리에서 사용하는 단위는 CSS의 다른 파트와 동일합니다.
+   미디어 쿼리에서 사용하는 단위는 CSS의 다른 파트와 동일합니다.
    예를 들어, pixel 유닛은 CSS 픽셀을 나타내며 물리적인 픽셀을 의미하지 않습니다.
 
   <p>
-   미디어쿼리에서 상대적인 단위는 기본값을 기준으로 합니다.
+   미디어 쿼리에서 상대적인 단위는 기본값을 기준으로 합니다.
    이는 단위가 선언 결과에 기준을 두지 않는 것을 의미합니다.
    예를 들어 HTML에서 &lsquo;<code class=css>em</code>&rsquo; 단위는
    &lsquo;<code class=property>font-size</code>&rsquo;의 기본 값에 상대적입니다.
