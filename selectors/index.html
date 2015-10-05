@@ -914,13 +914,22 @@
 
      <td class=origin>3
   </table>
-
-  <p>The meaning of each selector is derived from the table above by
+  <p lang="ko">
+   각 셀렉터의 의미는 테이블의 "의미" 열 내 각 셀의 콘텐츠에 "~와 일치한다"라는 말을 붙여서 알 수 있습니다.
+  <p lang="en">
+   The meaning of each selector is derived from the table above by
    prepending "matches" to the contents of each cell in the "Meaning" column.
 
-  <h2 id=casesens><span class=secno>3. </span>Case sensitivity</h2>
+  <h2 id=casesens><span class=secno>3. </span>대소문자 구별</h2>
 
-  <p>All Selectors syntax is case-insensitive within the ASCII range (i.e.
+  <p lang="ko">
+    모든 셀렉터 문법은 ASCII 범위(즉 [a-z][A-Z]와 동등) 내에서, 셀렉터의 제어 영역이 아닌 부분을 제외하면 대소문자를 구별하지 않습니다.
+    문서 언어에 의존하는 셀렉터 내에서 문서 언어의 요소명, 속성명, 속성값은 대소문자를 구별합니다.
+    HTML을 예로 들면 요소명이 대소문자를 구별하지 않습니다.
+    하지만 XML에서는 대소문자를 구별합니다.
+    네임스페이스 접두사의 대소문자 구별은 <a href="#CSS3NAMESPACE" rel=biblioentry>[CSS3NAMESPACE]<!--{{!CSS3NAMESPACE}}--></a>에서 정의합니다.
+  </p>
+  <p lang="en">All Selectors syntax is case-insensitive within the ASCII range (i.e.
    [a-z] and [A-Z] are equivalent), except for parts that are not under the
    control of Selectors. The case sensitivity of document language element
    names, attribute names, and attribute values in selectors depends on the
@@ -929,7 +938,7 @@
    namespace prefixes is defined in <a href="#CSS3NAMESPACE"
    rel=biblioentry>[CSS3NAMESPACE]<!--{{!CSS3NAMESPACE}}--></a>.
 
-  <h2 id=selector-syntax><span class=secno>4. </span>Selector syntax</h2>
+  <h2 id=selector-syntax><span class=secno>4. </span>셀렉터 문법</h2>
 
   <p>A <dfn id=selector>selector</dfn> is a chain of one or more <a
    href="#sequence">sequences of simple selectors</a> separated by <a
