@@ -1160,7 +1160,7 @@ h3 { font-family: sans-serif }</pre>
    previously <a href="#nsdecl">declared</a> for namespaced selectors is an
    <a href="#Conformance">invalid</a> selector.
   <p lang=ko>네임스페이스를 이해하는 클라이언트에서, 타입 셀렉터의 요소명 부분 (네임스페이스 구분자 이후 부분)은 <a
-   href="http://www.w3.org/TR/REC-xml-names/#ns-qualnames">qualified name</a>의 <a
+   href="http://www.w3.org/TR/REC-xml-names/#ns-qualnames">수식명</a>의 <a
    href="http://www.w3.org/TR/REC-xml-names/#NT-LocalPart">local part</a>에만 대응해 매치합니다.
   <p lang=en>In a namespace-aware client, the name part of element type selectors
    (the part after the namespace separator, if it is present) will only match
@@ -1352,6 +1352,7 @@ h3 { font-family: sans-serif }</pre>
    <dd>
     <code>att</code> 속성을 가지며 속성의 값이 <a href="#whitespace">공백 문자</a>로 구분된 문자의 목록일 때,
     목록 중 하나가 "val"와 일치하는 요소를 나타냅니다.
+    만약 "val"이 빈 문자열이라면, 그 무엇도 표현하지 않습니다.
     
     <div lang=en>Represents an element with the <code>att</code> attribute whose value
     is a <a href="#whitespace">whitespace</a>-separated list of words, one of
@@ -1360,8 +1361,17 @@ h3 { font-family: sans-serif }</pre>
     Also if "val" is the empty string, it will never represent anything.</div>
 
    <dt><code>[att|=val]</code>
-
-   <dd>Represents an element with the <code>att</code> attribute, its value
+   
+   <dd>
+    <code>att</code> 속성을 가지며,
+    그 값이 "val" 혹은, "val"에 이어 "-"(U+002D) 문자열로 이어지는 문자열로 시작하는 요소를 나타냅니다.
+    이 셀렉터는 특히, BCP 47 (<a href="#BCP47"
+    rel=biblioentry>[BCP47]<!--{{BCP47}}--></a>) 혹은 그 개정판에서 정의하는
+     언어의 서브코드 매칭(HTML <code>a</code> 요소의 <code>hreflang</code> 속성 등)을 할 수 있게 이루어져 있습니다.
+    <code>lang</code> (혹은 <code>xml:lang</code>)속성에 의한 언어 서브코드 매칭은
+    <a href="#lang-pseudo">the <code>:lang</code> 의사 클래스</a>를 확인하시길 바랍니다.
+     
+    <div lang="en">Represents an element with the <code>att</code> attribute, its value
     either being exactly "val" or beginning with "val" immediately followed
     by "-" (U+002D). This is primarily intended to allow language subcode
     matches (e.g., the <code>hreflang</code> attribute on the <code>a</code>
@@ -1369,10 +1379,16 @@ h3 { font-family: sans-serif }</pre>
     rel=biblioentry>[BCP47]<!--{{BCP47}}--></a>) or its successor. For
     <code>lang</code> (or <code>xml:lang</code>) language subcode matching,
     please see <a href="#lang-pseudo">the <code>:lang</code>
-    pseudo-class</a>.
+    pseudo-class</a>.</div>
   </dl>
-
-  <p>Attribute values must be CSS <a
+  
+  <p lang=ko>속성명은 반드시 CSS 
+   <a href="http://www.w3.org/TR/CSS21/syndata.html#value-def-identifier">식별자</a>나
+   <a href="http://www.w3.org/TR/CSS21/syndata.html#strings">문자열</a>이여야 합니다.
+   <a href="#CSS21" rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a> 
+   셀렉터 내의 속성명과 값의 대소문자 구별에 관해서는 문서 언어에 의존합니다.
+    
+  <p lang=en>Attribute values must be CSS <a
    href="http://www.w3.org/TR/CSS21/syndata.html#value-def-identifier">identifiers</a>
    or <a href="http://www.w3.org/TR/CSS21/syndata.html#strings">strings</a>.
    <a href="#CSS21" rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a> The
@@ -1380,83 +1396,127 @@ h3 { font-family: sans-serif }</pre>
    document language.
 
   <div class=example>
-   <p>Examples:</p>
+   <p>예제:</p>
 
-   <p>The following attribute selector represents an <code>h1</code> element
-    that carries the <code>title</code> attribute, whatever its value:</p>
+   <p>
+     아래 예제는 <code>title</code> 속성을 갖고 있는 <code>h1</code> 요소를 나타내며, 값은 상관 없습니다:
+    <span lang=en>The following attribute selector represents an <code>h1</code> element
+      that carries the <code>title</code> attribute, whatever its value:</span></p>
 
    <pre>h1[title]</pre>
 
-   <p>In the following example, the selector represents a <code>span</code>
+   <p>
+    아래 예제에서, 셀렉터는 <code>class</code> 속성을 가지고 그 값이 정확히 "example"과 일치하는
+     <code>span</code> 요소를 나타냅니다.
+    <span lang=en>In the following example, the selector represents a <code>span</code>
     element whose <code>class</code> attribute has exactly the value
-    "example":</p>
+    "example":</span></p>
 
    <pre>span[class="example"]</pre>
 
-   <p>Multiple attribute selectors can be used to represent several
+   <p>
+    하나의 요소의 여러가지 속성을 나타내거나, 같은 속성에 다른 조건을 주기 위해 다중 속성 셀렉터를 사용할 수 있습니다.
+    다음 예제에서 셀렉터는 <code>hello</code> 속성을 가지며 그 값이 "Cleveland"이고,
+    <code>goodbye</code> 속성을 가지며 그 값이 "Columbus"인 <code>span</code> 요소를 나타냅니다.
+    <span lang="en">
+    Multiple attribute selectors can be used to represent several
     attributes of an element, or several conditions on the same attribute.
     Here, the selector represents a <code>span</code> element whose
     <code>hello</code> attribute has exactly the value "Cleveland" and whose
-    <code>goodbye</code> attribute has exactly the value "Columbus":</p>
+    <code>goodbye</code> attribute has exactly the value "Columbus":</span></p>
 
    <pre>span[hello="Cleveland"][goodbye="Columbus"]</pre>
 
-   <p>The following CSS rules illustrate the differences between "=" and
+   <p>
+    다음 CSS 규칙은 "="과 "~=" 사이의 차이점에 대해 소개합니다.
+     첫번째 셀렉터는 <code>a</code> 요소의 <code>rel</code> 속성 값이
+     "copyright copyleft copyeditor"인 경우 매치할 것이며,
+     두번째 셀렉터는 <code>a</code> 요소의 <code>href</code> 속성 값이 정확히
+     "http://www.w3.org/"인 경우 매치할 것입니다.
+    <span lang=en>The following CSS rules illustrate the differences between "=" and
     "~=". The first selector would match, for example, an <code>a</code>
     element with the value "copyright copyleft copyeditor" on a
     <code>rel</code> attribute. The second selector would only match an
     <code>a</code> element with an <code>href</code> attribute having the
-    exact value "http://www.w3.org/".</p>
+    exact value "http://www.w3.org/".</span></p>
 
    <pre>a[rel~="copyright"] { ... }
 a[href="http://www.w3.org/"] { ... }</pre>
 
-   <p>The following selector represents an <code>a</code> element whose
-    <code>hreflang</code> attribute is exactly "fr".</p>
+   <p>
+    다음 셀렉터는 <code>a</code> 요소의 <code>hreflang</code> 속성이 정확히 "fr"인 경우를 나타냅니다.
+    <span lang=en>The following selector represents an <code>a</code> element whose
+    <code>hreflang</code> attribute is exactly "fr".</span></p>
 
    <pre>a[hreflang=fr]</pre>
 
-   <p>The following selector represents an <code>a</code> element for which
+   <p>
+    다음 셀렉터는 <code>a</code> 요소의 <code>hreflang</code> 속성이 "en"으로 시작하는 것을 나타내며,
+    이는 "en", "en-US", "en-scouse"를 포함합니다.
+    <span lang="en">The following selector represents an <code>a</code> element for which
     the value of the <code>hreflang</code> attribute begins with "en",
-    including "en", "en-US", and "en-scouse":</p>
+    including "en", "en-US", and "en-scouse":</span></p>
 
    <pre>a[hreflang|="en"]</pre>
 
-   <p>The following selectors represent a <code>DIALOGUE</code> element
+   <p>
+    다음 셀렉터는 <code>character</code> 속성에
+    두개의 다른 값 중 하나를 가질 수 있는 <code>DIALOGUE</code> 요소를 나타냅니다.
+    <span lang="en">The following selectors represent a <code>DIALOGUE</code> element
     whenever it has one of two different values for an attribute
-    <code>character</code>:</p>
+    <code>character</code>:</span></p>
 
    <pre>DIALOGUE[character=romeo]
 DIALOGUE[character=juliet]</pre>
   </div>
 
-  <h4 id=attribute-substrings><span class=secno>6.3.2. </span>Substring
-   matching attribute selectors</h4>
+  <h4 id=attribute-substrings><span class=secno>6.3.2. </span>부분 매칭 속성 셀렉터</h4>
 
-  <p>Three additional attribute selectors are provided for matching
+  <p lang=ko>
+    속성 값에 부분 매칭하기 위한 세 추가 셀렉터를 제공합니다.
+  <p lang=en>
+   Three additional attribute selectors are provided for matching
    substrings in the value of an attribute:
 
   <dl>
    <dt><code>[att^=val]</code>
 
-   <dd>Represents an element with the <code>att</code> attribute whose value
+   <dd>
+    <code>att</code> 속성을 가지며 해당 속성 값이 "val" 접두사로 시작하는 요소를 나타냅니다.
+     만약 "val"이 빈 문자열이라면 셀렉터는 아무 것도 나타내지 않습니다.
+    <div lang=en>
+    Represents an element with the <code>att</code> attribute whose value
     begins with the prefix "val". If "val" is the empty string then the
-    selector does not represent anything.
+    selector does not represent anything.</div>
 
    <dt><code>[att$=val]</code>
 
-   <dd>Represents an element with the <code>att</code> attribute whose value
+   <dd>
+    <code>att</code> 속성을 가지며 해당 속성 값이 "val" 접미사로 끝나는 요소를 나타냅니다.
+    만약 "val"이 빈 문자열이라면 셀렉터는 아무 것도 나타내지 않습니다.
+    <div lang=en>
+    Represents an element with the <code>att</code> attribute whose value
     ends with the suffix "val". If "val" is the empty string then the
-    selector does not represent anything.
-
+    selector does not represent anything.</div>
+     
    <dt><code>[att*=val]</code>
-
-   <dd>Represents an element with the <code>att</code> attribute whose value
+   
+   <dd>
+    <code>att</code> 속성을 가지며 해당 속성 값이 "val" 부분 문자열을 최소 1개 이상 포함하는 요소를 나타냅니다.
+     만약 "val"이 빈 문자열이라면 셀렉터는 아무 것도 나타내지 않습니다.
+    <div lang=en>
+    Represents an element with the <code>att</code> attribute whose value
     contains at least one instance of the substring "val". If "val" is the
-    empty string then the selector does not represent anything.
+    empty string then the selector does not represent anything.</div>
   </dl>
-
-  <p>Attribute values must be CSS <a
+  <p lang=ko>속성명은 반드시 CSS 
+   <a href="http://www.w3.org/TR/CSS21/syndata.html#value-def-identifier">식별자</a>나
+   <a href="http://www.w3.org/TR/CSS21/syndata.html#strings">문자열</a>이여야 합니다.
+   <a href="#CSS21" rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a> 
+   셀렉터 내의 속성명과 값의 대소문자 구별에 관해서는 문서 언어에 의존합니다.
+    
+  <p lang=en>
+   Attribute values must be CSS <a
    href="http://www.w3.org/TR/CSS21/syndata.html#value-def-identifier">identifiers</a>
    or <a href="http://www.w3.org/TR/CSS21/syndata.html#strings">strings</a>.
    <a href="#CSS21" rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a> The
@@ -1464,28 +1524,40 @@ DIALOGUE[character=juliet]</pre>
    language.
 
   <div class=example>
-   <p>Examples:</p>
+   <p>예제:</p>
 
-   <p>The following selector represents an HTML <code>object</code>,
-    referencing an image:</p>
+   <p>
+    아래 셀렉터는 image를 참조하는 HTML <code>object</code> 객체를 나타냅니다.
+    <span lang=en>The following selector represents an HTML <code>object</code>,
+    referencing an image:</span></p>
 
    <pre>object[type^="image/"]</pre>
 
-   <p>The following selector represents an HTML anchor <code>a</code> with an
-    <code>href</code> attribute whose value ends with ".html".</p>
+   <p>
+    아래 셀렉터는 <code>href</code> 속성 값이 ".html"로 끝나는 HTML 앵커 <code>a</code> 요소를 나타냅니다.
+    <span lang=en>The following selector represents an HTML anchor <code>a</code> with an
+    <code>href</code> attribute whose value ends with ".html".</span></p>
 
    <pre>a[href$=".html"]</pre>
 
-   <p>The following selector represents an HTML paragraph with a
-    <code>title</code> attribute whose value contains the substring "hello"</p>
+   <p>
+    아래 셀렉터는 <code>title</code> 속성의 값에 "hello" 부분 문자열을 포함하는 HTML 문장(p요소)을 나타냅니다.
+    <span lang="en">The following selector represents an HTML paragraph with a
+    <code>title</code> attribute whose value contains the substring "hello"</span></p>
 
    <pre>p[title*="hello"]</pre>
   </div>
 
-  <h4 id=attrnmsp><span class=secno>6.3.3. </span>Attribute selectors and
-   namespaces</h4>
-
-  <p>The attribute name in an attribute selector is given as a <a
+  <h4 id=attrnmsp><span class=secno>6.3.3. </span>속성 셀렉터와 네임스페이스</h4>
+  <p lang=ko>
+    셀렉터 내의 속성명은 <a href="http://www.w3.org/TR/css3-namespace/#css-qnames">CSS 수식명</a>으로써 제공됩니다:
+    네임스페이스가 사전에 <a href="#nsdecl">선언</a>된 경우,
+    속성명 앞에 접두사를 네임스페이스 구분자&quot;vertical bar&quot; (<code>|</code>)로 구분해 표현하는 것이 가능합니다.
+    XML 내 네임스페이스 권고안과 스펙을 맞추기 위해, 기본 네임스페이스는 속성에 사용하지 않습니다.
+    즉, 네임스페이스 컴포넌트를 가지지 않는 속성 셀렉터는, 네임스페이스에 속하지 않는 속성만 사용합니다
+    (이는 "<code>|attr</code>"과 동일합니다. 또 이 속성은 "per-element-type namespace partition"에 있다고 간주합니다).
+    셀렉터가 네임스페이스에 상관없이 모든 속성에 매치한다는 걸 나타내고 싶을 때, 별표를 네임스페이스 접두사로 사용할 수 있습니다.
+  <p lang=en>The attribute name in an attribute selector is given as a <a
    href="http://www.w3.org/TR/css3-namespace/#css-qnames">CSS qualified
    name</a>: a namespace prefix that has been previously <a
    href="#nsdecl">declared</a> may be prepended to the attribute name
@@ -1498,13 +1570,15 @@ DIALOGUE[character=juliet]</pre>
    An asterisk may be used for the namespace prefix indicating that the
    selector is to match all attribute names without regard to the attribute's
    namespace.
-
-  <p>An attribute selector with an attribute name containing a namespace
+  <p lang=ko>속성 셀렉터 내의 속성명에 네임스페이스 접두사르 가지면서,
+    그 접두사에 대한 <a href="#nsdecl">선언</a>을 하지 않은 경우, 
+    이는 <a href="#Conformance">유효하지 않은</a> 셀렉터입니다.
+  <p lang=en>An attribute selector with an attribute name containing a namespace
    prefix that has not been previously <a href="#nsdecl">declared</a> is an
    <a href="#Conformance">invalid</a> selector.
 
   <div class=example>
-   <p>CSS examples:</p>
+   <p>CSS 예제:</p>
 
    <pre>@namespace foo "http://www.example.com";
 [foo|att=val] { color: blue }
@@ -1512,49 +1586,67 @@ DIALOGUE[character=juliet]</pre>
 [|att] { color: green }
 [att] { color: green }</pre>
 
-   <p>The first rule will match only elements with the attribute
+   <p>
+    첫번째 규칙은 "http://www.example.com" 네임스페이스 안에서 <code>att</code>  속성을 가지며, 
+    값이 "val"인 요소를 나타냅니다.
+    <span lang=en>The first rule will match only elements with the attribute
     <code>att</code> in the "http://www.example.com" namespace with the value
-    "val".</p>
+    "val".</span></p>
 
-   <p>The second rule will match only elements with the attribute
+   <p>
+    두번째 규칙은 (네임스페이스가 없는 걸 포함하여) 네임스페이스에 상관 없이 <code>att</code> 속성을 가지는
+     요소를 나타냅니다.
+    <span lang=en>The second rule will match only elements with the attribute
     <code>att</code> regardless of the namespace of the attribute (including
-    no namespace).</p>
+    no namespace).</span></p>
 
-   <p>The last two rules are equivalent and will match only elements with the
-    attribute <code>att</code> where the attribute is not in a namespace.</p>
+   <p>
+    마지막 두 규칙은 동일하며, 네임스페이스에 속하지 않는 <code>att</code> 속성을 가진 요소를 나타냅니다.
+    <span lang="en">The last two rules are equivalent and will match only elements with the
+    attribute <code>att</code> where the attribute is not in a namespace.</span></p>
   </div>
 
-  <h4 id=def-values><span class=secno>6.3.4. </span>Default attribute values
-   in DTDs</h4>
-
-  <p>Attribute selectors represent attribute values in the document tree. How
+  <h4 id=def-values><span class=secno>6.3.4. </span>DTD 내 기본 속성값</h4>
+  <p lang=ko>
+    속성 셀렉터는 문서 트리 내의 속성 값을 나타냅니다.
+    문서 트리가 어떻게 구축되어 있는 지는 셀렉터 스펙의 범위 밖입니다.
+    몇몇 문서 포맷은 DTD 혹은 그 외의 방법으로 속성의 기본값을 정의 가능하지만,
+    속성 셀렉터를 이용해 선택 가능한 건 기본 값이 문서 트리에 나타날 때 뿐입니다.
+    이를 위해, 문서 트리에 기본 값이 있던 없던 동작 가능하도록 셀렉터를 설계하고 있습니다.
+  <p lang=en>Attribute selectors represent attribute values in the document tree. How
    that document tree is constructed is outside the scope of Selectors. In
    some document formats default attribute values can be defined in a DTD or
    elsewhere, but these can only be selected by attribute selectors if they
    appear in the document tree. Selectors should be designed so that they
    work whether or not the default values are included in the document tree.
-
-  <p>For example, a XML UA may, but is <em>not</em> required to read an
+  <p lang=ko>예를 들어, XML UA는 <em>필수는 아니지만</em> DTD의 "외부 서브셋"을 읽어올 수 있습니다.
+    그러나 문서 "내부 서브셋" 안의 어떤 속성 기본 값을 찾는 데는 DTD가 필수입니다.
+    (서브셋 정의에 관련된 내용은 <a href="#XML10" rel=biblioentry>[XML10]<!--{{XML10}}--></a> 참고)
+    DTD의 외부 서브셋에 의해 정의된 속성의 기본 값은, UA에 따라 문서 트리에 나타나거나, 나타나지 않거나 할 것입니다.
+  <p lang=en>For example, a XML UA may, but is <em>not</em> required to read an
    "external subset" of the DTD but <em>is</em> required to look for default
    attribute values in the document's "internal subset." (See, e.g., <a
    href="#XML10" rel=biblioentry>[XML10]<!--{{XML10}}--></a> for definitions
    of these subsets.) Depending on the UA, a default attribute value defined
    in the external subset of the DTD might or might not appear in the
    document tree.
-
-  <p>A UA that recognizes an XML namespace may, but is not required to use
+  <p lang=ko>XML 네임스페이스를 이해하는 UA는 필수는 아니지만, 네임스페이스를 이용해서 속성의 기본값이
+    문서 트리 안에 나타나고 있는 듯 표현하는 게 가능합니다.
+    (예를 들어, XHTML UA는 XHTML DTD의 정의를 이용하지 않아도 됩니다.
+    자세한 내용은 Namespaces in XML 1.0을 참조하시길 바랍니다. <a href="#XML-NAMES" rel=biblioentry>[XML-NAMES]<!--{{XML-NAMES}}--></a>
+  <p lang=en>A UA that recognizes an XML namespace may, but is not required to use
    its knowledge of that namespace to treat default attribute values as if
    they were present in the document. (For example, an XHTML UA is not
    required to use its built-in knowledge of the XHTML DTD. See, e.g., <a
    href="#XML-NAMES" rel=biblioentry>[XML-NAMES]<!--{{XML-NAMES}}--></a> for
    details on namespaces in XML 1.0.)
-
-  <p class=note><strong>Note:</strong> Typically, implementations choose to
+  <p class=note lang=ko><strong>노트:</strong> 일반적으로, 구현체는 외부 서브셋을 무시합니다.
+    이는 XML 스펙에 있어 유효성 검사를 진행하지 않은 서브셋의 동작에 일치하고 있습니다.
+  <p class=note lang=en><strong>Note:</strong> Typically, implementations choose to
    ignore external subsets. This corresponds to the behaviour of
    non-validating processors as defined by the XML specification.
-
   <div class=example>
-   <p>Example:</p>
+   <p>예제:</p>
 
    <p>Consider an element <code>EXAMPLE</code> with an attribute
     <code>radix</code> that has a default value of <code>"decimal"</code>.
