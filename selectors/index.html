@@ -939,30 +939,61 @@
    rel=biblioentry>[CSS3NAMESPACE]<!--{{!CSS3NAMESPACE}}--></a>.
 
   <h2 id=selector-syntax><span class=secno>4. </span>셀렉터 문법</h2>
-
-  <p>A <dfn id=selector>selector</dfn> is a chain of one or more <a
+  <p lang="ko">
+    <dfn id=selector>셀렉터</dfn>는 <a href="#combinators">콤비네이터</a>로 구분된 한개 이상의 
+    <a href="#sequence">심플 셀렉터 시퀀스</a> 체인입니다.
+    셀렉터 중 심플 셀렉터의 마지막 시퀀스인 경우 하나의 
+    <a href="#pseudo-elements">의사 요소</a>를 넣는 것도 가능합니다.
+  </p>
+  <p lang="en">A selector is a chain of one or more <a
    href="#sequence">sequences of simple selectors</a> separated by <a
    href="#combinators">combinators</a>. One <a
    href="#pseudo-elements">pseudo-element</a> may be appended to the last
    sequence of simple selectors in a selector.
-
-  <p>A <dfn id=sequence-of-simple-selectors><a name=sequence>sequence of
-   simple selectors</a></dfn> is a chain of <a
+  <p lang="ko">
+    <dfn id=sequence-of-simple-selectors><a name=sequence>심플 셀렉터 시퀀스</a></dfn>는
+    <a href="#combinators">콤비네이터</a>로 구분되지 않은 <a
+   href="#simple-selectors-dfn">심플 셀렉터</a> 체인입니다.
+    이는 항상 <a href="#type-selectors">타입 셀렉터</a>나
+    <a href="#universal-selector">전역 셀렉터</a>로 시작합니다.
+    다른 타입 셀렉터나 전역 셀렉터를 시퀀스에서 허용하지 않습니다.
+  </p>
+  <p lang="en">A <a name=sequence>sequence of
+   simple selectors</a> is a chain of <a
    href="#simple-selectors-dfn">simple selectors</a> that are not separated
    by a <a href="#combinators">combinator</a>. It always begins with a <a
    href="#type-selectors">type selector</a> or a <a
    href="#universal-selector">universal selector</a>. No other type selector
    or universal selector is allowed in the sequence.
+  
+       
+  <p lang="ko"><dfn id=simple-selector><a name=simple-selectors-dfn></a><a
+   href="#simple-selectors">심플 셀렉터</a></dfn>는 <a
+   href="#type-selectors">타입 셀렉터</a>, <a
+   href="#universal-selector">전역 셀렉터</a>, <a
+   href="#attribute-selectors">속성 셀렉터</a>, <a
+   href="#class-html">클래스 셀렉터</a>, <a href="#id-selectors">ID
+   셀렉터</a>, 혹은 <a href="#pseudo-classes">의사 클래스</a> 중 하나입니다.
 
-  <p>A <dfn id=simple-selector><a name=simple-selectors-dfn></a><a
+  <p lang="en">A <dfn><a name=simple-selectors-dfn></a><a
    href="#simple-selectors">simple selector</a></dfn> is either a <a
    href="#type-selectors">type selector</a>, <a
    href="#universal-selector">universal selector</a>, <a
    href="#attribute-selectors">attribute selector</a>, <a
    href="#class-html">class selector</a>, <a href="#id-selectors">ID
    selector</a>, or <a href="#pseudo-classes">pseudo-class</a>.
+  
+  <p lang="ko"><dfn id=combinators0>콤비네이터</dfn>는: 공백 문자,
+   &quot;~보다 큰 기호&quot; (U+003E, <code>&gt;</code>), &quot;덧셈 기호&quot; (U+002B, <code>+</code>) 및 &quot;물결표시&quot; (U+007E,
+   <code>~</code>)입니다. 콤비네이터와 심플 셀렉터 사이에 공백 문자를 표시할 수 있습니다.
+    <a name=whitespace></a>공백 문자에는
+   "space" (U+0020), "tab" (U+0009), "line feed" (U+000A), "carriage return"
+   (U+000D), "form feed" (U+000C) 문자만 사용할 수 있습니다.
+    
+   "em-space" (U+2003)나 "ideographic space"(U+3000) 같은
+    다른 공백과 비슷한 문자는 공백 문자로 사용할 수 없습니다.
 
-  <p><dfn id=combinators0>Combinators</dfn> are: whitespace,
+  <p lang="en"><dfn>Combinators</dfn> are: whitespace,
    &quot;greater-than sign&quot; (U+003E, <code>&gt;</code>), &quot;plus
    sign&quot; (U+002B, <code>+</code>) and &quot;tilde&quot; (U+007E,
    <code>~</code>). White space may appear between a combinator and the
@@ -971,26 +1002,43 @@
    (U+000D), and "form feed" (U+000C) can occur in whitespace. Other
    space-like characters, such as "em-space" (U+2003) and "ideographic space"
    (U+3000), are never part of whitespace.
-
-  <p>The elements of a document tree that are represented by a selector are
-   the <dfn id=subjects-of-the-selector><a name=subject></a>subjects of the
+  <p lang="ko">셀렉터로 인해 나타나는 문서 내 요소는 
+    <dfn id=subjects-of-the-selector><a name=subject></a>셀렉터 대상</dfn>이라 부릅니다.
+    하나의 심플 셀렉터 시퀀스로 구성된 셀렉터는 요구사항을 만족하는 어떤 요소라도 나타냅니다.
+    여기에 새로운 심플 셀렉터 시퀀스를 주어, 이를 콤비네이터로 엮은 케이스는, 매치하는 제한을 더합니다.
+    이렇게하면 셀렉터 대상은 항상 마지막 심플 셀렉터 시퀀스로 표현된 요수의 일부가 됩니다.
+  </p>
+  <p lang="en">The elements of a document tree that are represented by a selector are
+   the <dfn><a name=subject></a>subjects of the
    selector</dfn>. A selector consisting of a single sequence of simple
-   selectors represents any element satisfying its requirements. Prepending
-   another sequence of simple selectors and a combinator to a sequence
+   selectors represents any element satisfying its requirements. 
+    Prepending another sequence of simple selectors and a combinator to a sequence
    imposes additional matching constraints, so the subjects of a selector are
    always a subset of the elements represented by the last sequence of simple
    selectors.
-
-  <p>An empty selector, containing no sequence of simple selectors and no
+  <p lang="ko">빈 셀렉터, 심플 셀렉터 시퀀스를 포함하지 않았거나 의사 요소가 없는 경우에
+    <a href="#Conformance">유효하지 않은 셀렉터</a>가 됩니다.
+  <p lang="en">An empty selector, containing no sequence of simple selectors and no
    pseudo-element, is an <a href="#Conformance">invalid selector</a>.
-
-  <p>Characters in Selectors can be escaped with a backslash according to the
+  <p lang="ko">셀렉터 내 문자는 CSS의 <a href="http://www.w3.org/TR/CSS21/syndata.html#characters">escaping rules</a>와
+    동일하게 백슬래쉬와 함께 해석할 수 있습니다 <a href="#CSS21"
+   rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a>.
+  <p lang="en">Characters in Selectors can be escaped with a backslash according to the
    same <a href="http://www.w3.org/TR/CSS21/syndata.html#characters">escaping
    rules</a> as CSS. <a href="#CSS21"
    rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a>.
-
-  <p id=nsdecl>Certain selectors support namespace prefixes. The mechanism by
-   which namespace prefixes are <dfn id=declared>declared</dfn> should be
+  <p lang="ko" id=nsdecl>
+    몇가지 셀렉터는 네임스페이스 접두사를 지원합니다.
+    어떤 네임스페이스 접두사가 <dfn id=declared>선언</dfn>되었는지 알기 위한 메커니즘은
+    셀렉터를 이용하는 언어에 의해 정해져야만 합니다.
+    만약 언어가 네임스페이스 접두사 메커니즘을 정의하지 않은 경우, 접두사는 선언되지 않습니다.
+    CSS에서, 네임스페이스 접두사는 <a
+   href="http://www.w3.org/TR/css3-namespace/#declaration"><code>@namespace</code></a> 룰에 따라
+    선언합니다. <a href="#CSS3NAMESPACE"
+   rel=biblioentry>[CSS3NAMESPACE]<!--{{!CSS3NAMESPACE}}--></a>
+  </p>
+  <p lang="en">Certain selectors support namespace prefixes. The mechanism by
+   which namespace prefixes are <dfn> declared</dfn> should be
    specified by the language that uses Selectors. If the language does not
    specify a namespace prefix declaration mechanism, then no prefixes are
    declared. In CSS, namespace prefixes are declared with the <a
@@ -998,30 +1046,36 @@
    rule. <a href="#CSS3NAMESPACE"
    rel=biblioentry>[CSS3NAMESPACE]<!--{{!CSS3NAMESPACE}}--></a>
 
-  <h2 id=grouping><span class=secno>5. </span>Groups of selectors</h2>
-
-  <p>A comma-separated list of selectors represents the union of all elements
+  <h2 id=grouping><span class=secno>5. </span>셀렉터 그룹</h2>
+  <p lang=ko>콤마로 구분한 셀렉터의 목록은 리스트 안의 각 셀렉터로 인해 가져온 모든 요소의 연합을 나타냅니다. (콤마는 U+002C)
+  예를 들어, CSS에서 같은 선언을 공유하는 여러개의 셀렉터를 가질 때, 콤마로 구분된 목록으로 그룹핑 할 수 있습니다.
+  공백 문자는 콤마의 앞 뒤에 존재할 수 있습니다.
+  <p lang=en>A comma-separated list of selectors represents the union of all elements
    selected by each of the individual selectors in the list. (A comma is
    U+002C.) For example, in CSS when several selectors share the same
    declarations, they may be grouped into a comma-separated list. White space
    may appear before and/or after the comma.
 
   <div class=example>
-   <p>CSS example:</p>
+   <p>CSS 예제:</p>
 
-   <p>In this example, we condense three rules with identical declarations
-    into one. Thus,</p>
+   <p>이 예제에서, 동일한 선언을 나타내는 세개의 규칙을 하나로 정리합니다.</p>
 
    <pre>h1 { font-family: sans-serif }
 h2 { font-family: sans-serif }
 h3 { font-family: sans-serif }</pre>
 
-   <p>is equivalent to:</p>
+   <p>이는 아래와 같습니다.</p>
 
    <pre>h1, h2, h3 { font-family: sans-serif }</pre>
   </div>
 
-  <p><strong>Warning</strong>: the equivalence is true in this example
+  <p lang="ko"><strong>주의</strong>: 
+    이 예제가 true인 이유는 예제의 셀렉터가 모두 유효한 셀렉터이기 때문입니다.
+    만약 이 예제 중 하나라도 유효하지 않다면, 모든 셀렉터 그룹은 유효하지 않다고 간주어집니다.
+    후자에서 그렇게 되면, 3개 헤딩 요소 모두 규칙이 유효하지 않다고 간주합니다.
+    전자에서는 그렇게 되더라도, 유효하지 않은 셀렉터를 가진 규칙만 유효하지 않다고 간주어지니다.
+  <p lang="en"><strong>Warning</strong>: the equivalence is true in this example
    because all the selectors are valid selectors. If just one of these
    selectors were invalid, the entire group of selectors would be invalid.
    This would invalidate the rule for all three heading elements, whereas in
@@ -1029,26 +1083,30 @@ h3 { font-family: sans-serif }</pre>
    invalidated.
 
   <div class=example>
-   <p>Invalid CSS example:</p>
+   <p>유효하지 않은 CSS 예제:</p>
 
    <pre>h1 { font-family: sans-serif }
 h2..foo { font-family: sans-serif }
 h3 { font-family: sans-serif }</pre>
 
-   <p>is not equivalent to:</p>
+   <p>이는 아래와 동일하지 않습니다:</p>
 
    <pre>h1, h2..foo, h3 { font-family: sans-serif }</pre>
 
-   <p>because the above selector (<code>h1, h2..foo, h3</code>) is entirely
-    invalid and the entire style rule is dropped. (When the selectors are not
-    grouped, only the rule for <code>h2..foo</code> is dropped.)</p>
+   <p>왜냐하면 위 셀렉터(<code>h1, h2..foo, h3</code>)는 모든 규칙을 유효하지 않다고 간주하여 모든 스타일 규칙을 적용하지 않기 때문입니다.
+     (셀렉터를 그룹화하지 않았을 때, <code>h2..foo</code> 룰만 적용하지 않습니다.)
+   </p>
   </div>
 
-  <h2 id=simple-selectors><span class=secno>6. </span>Simple selectors</h2>
+  <h2 id=simple-selectors><span class=secno>6. </span>심플 셀렉터</h2>
 
-  <h3 id=type-selectors><span class=secno>6.1. </span>Type selector</h3>
-
-  <p>A <dfn id=type-selector>type selector</dfn> is the name of a document
+  <h3 id=type-selectors><span class=secno>6.1. </span>타입 셀렉터</h3>
+  <p lang=ko><dfn id=type-selector>타입 셀렉터</dfn>는 <a
+   href="http://www.w3.org/TR/css3-namespace/#css-qnames">CSS qualified
+    names</a> 문법을 이용해 작성한 문서 언어 요소 타입 이름입니다. <a href="#CSS3NAMESPACE"
+   rel=biblioentry>[CSS3NAMESPACE]<!--{{!CSS3NAMESPACE}}--></a>
+   타입 셀렉터는 문서 트리 안에 있는 요소 타입의 인스턴스를 나타냅니다.
+  <p lang=en>A <dfn>type selector</dfn> is the name of a document
    language element type written using the syntax of <a
    href="http://www.w3.org/TR/css3-namespace/#css-qnames">CSS qualified
    names</a> <a href="#CSS3NAMESPACE"
@@ -1056,44 +1114,55 @@ h3 { font-family: sans-serif }</pre>
    selector represents an instance of the element type in the document tree.
 
   <div class=example>
-   <p>Example:</p>
+   <p>예제:</p>
 
-   <p>The following selector represents an <code>h1</code> element in the
-    document tree:</p>
+   <p>아래 셀렉터는 문서 트리 안에 있는 <code>h1</code> 요소를 나타냅니다:</p>
 
    <pre>h1</pre>
   </div>
 
-  <h4 id=typenmsp><span class=secno>6.1.1. </span>Type selectors and
-   namespaces</h4>
-
-  <p>Type selectors allow an optional namespace component: a namespace prefix
+  <h4 id=typenmsp><span class=secno>6.1.1. </span>타입 셀렉터와 네임스페이스</h4>
+  <p lang=ko>타입 셀렉터는 옵션으로 네임스페이스 컴포넌트 사용을 허용합니다:
+    네임스페이스 컴포넌트는 사전에 <a href="#nsdecl">선언</a>된 네임스페이스 접두사와 요소명을
+    네임스페이스 구분자 &quot;vertical bar&quot; (U+007C, <code>|</code>)로 구분한 것을 나타냅니다.
+    (XML에서 사용하는 네임스페이스 이용 예시는 <a href="#XML-NAMES" rel=biblioentry>[XML-NAMES]<!--{{XML-NAMES}}--></a>를 참고하시길 바랍니다)
+    
+  <p lang=en>Type selectors allow an optional namespace component: a namespace prefix
    that has been previously <a href="#nsdecl">declared</a> may be prepended
    to the element name separated by the namespace separator &quot;vertical
    bar&quot; (U+007C, <code>|</code>). (See, e.g., <a href="#XML-NAMES"
    rel=biblioentry>[XML-NAMES]<!--{{XML-NAMES}}--></a> for the use of
    namespaces in XML.)
 
-  <p>The namespace component may be left empty (no prefix before the
+  <p lang=ko>셀렉터가 어떤 네임스페이스에도 속하지 않는 요소를 나타내기 위해,
+    네임스페이스 컴포넌트는 빈 (접두사와 구분자를 가지지 않는) 상태로 있어도 좋습니다
+  <p lang=en>The namespace component may be left empty (no prefix before the
    namespace separator) to indicate that the selector is only to represent
    elements with no namespace.
-
-  <p>An asterisk may be used for the namespace prefix, indicating that the
+  <p lang=ko>셀렉터가 네임스페이스 접두사와 상관없이 (네임스페이스가 없는 요소도 포함하여) 요소를 선택 가능하도록 하기 위해,
+    네임스페이스 접두사에 별표를 사용할 수 있습니다.
+  <p lang=en>An asterisk may be used for the namespace prefix, indicating that the
    selector represents elements in any namespace (including elements with no
    namespace).
-
-  <p>Element type selectors that have no namespace component (no namespace
+  <p lang="ko">네임스페이스 컴포넌트를 가지지 않는 (네임스페이스 구분자를 갖지 않는) 타입 셀렉터는
+    네임스페이스에 속하지 않는 요소("<code>*|</code>"와 동등)를 나타냅니다.
+    그러나, 네임스페이스 가지는 셀렉터 (CSS 스타일 시트 등) 기본 네임스페이스가 <a href="#nsdecl">선언</a>된 경우에는 이와 다릅니다.
+    기본 네임스페이스가 선언된 경우, 네임스페이스를 가지지 않는 타입 셀렉터는 기본 네임스페이스 내 요소만을 나타냅니다.
+  <p lang=en>Element type selectors that have no namespace component (no namespace
    separator) represent elements without regard to the element's namespace
    (equivalent to "<code>*|</code>") unless a default namespace has been <a
    href="#nsdecl">declared</a> for namespaced selectors (e.g. in CSS, in the
    style sheet). If a default namespace has been declared, such selectors
    will represent only elements in the default namespace.
-
-  <p>A type selector containing a namespace prefix that has not been
+  <p lang=ko>타입 셀렉터가 네임스페이스 접두사를 가지면서, 그 접두사에 대응하는 네임스페이스가 <a href="#nsdecl">정의</a>되어있지 안않다면
+    그 셀렉터는 <a href="#Conformance">유효하지 않은</a> 셀렉터입니다.
+  <p lang=en>A type selector containing a namespace prefix that has not been
    previously <a href="#nsdecl">declared</a> for namespaced selectors is an
    <a href="#Conformance">invalid</a> selector.
-
-  <p>In a namespace-aware client, the name part of element type selectors
+  <p lang=ko>네임스페이스를 이해하는 클라이언트에서, 타입 셀렉터의 요소명 부분 (네임스페이스 구분자 이후 부분)은 <a
+   href="http://www.w3.org/TR/REC-xml-names/#ns-qualnames">qualified name</a>의 <a
+   href="http://www.w3.org/TR/REC-xml-names/#NT-LocalPart">local part</a>에만 대응해 매치합니다.
+  <p lang=en>In a namespace-aware client, the name part of element type selectors
    (the part after the namespace separator, if it is present) will only match
    against the <a
    href="http://www.w3.org/TR/REC-xml-names/#NT-LocalPart">local part</a> of
@@ -1101,31 +1170,30 @@ h3 { font-family: sans-serif }</pre>
    href="http://www.w3.org/TR/REC-xml-names/#ns-qualnames">qualified
    name</a>.
 
-  <p>In summary:
+  <p>이를 요약하면:
 
   <dl>
    <dt><code>ns|E</code>
 
-   <dd>elements with name E in namespace ns
+  <dd>네임스페이스 ns 안에 E라는 이름을 가진 요소 <div lang=en>elements with name E in namespace ns</div>
 
    <dt><code>*|E</code>
 
-   <dd>elements with name E in any namespace, including those without a
-    namespace
+   <dd>네임스페이스를 가지지 않는 것을 포함하여, 모든 네임스페이스 안의 E라는 이름을 가진 요소 <div lang=en>elements with name E in any namespace, including those without a namespace</div>
 
    <dt><code>|E</code>
 
-   <dd>elements with name E without a namespace
+   <dd>네임스페이스를 가지지 않는 E라는 이름을 가진 요소<div lang=en>elements with name E without a namespace</div>
 
    <dt><code>E</code>
 
-   <dd>if no default namespace has been <a href="#nsdecl">declared</a> for
-    selectors, this is equivalent to *|E. Otherwise it is equivalent to ns|E
-    where ns is the default namespace.
+   <dd>
+    셀렉터에 대한 기본 네임스페이스가 <a href="#nsdecl">정의</a>되어있지 않은 경우를 나타내며 이는 *|E와 동등합니다.
+    그 외의 경우에는 기본 네임스페이스를 ns로 하며 ns|E와 동일하게 취급합니다.
   </dl>
 
   <div class=example>
-   <p>CSS examples:</p>
+   <p>CSS 예제:</p>
 
    <pre>@namespace foo url(http://www.example.com);
  foo|h1 { color: blue }  /* first rule */
@@ -1134,26 +1202,49 @@ h3 { font-family: sans-serif }</pre>
  *|h1 { color: green }
  h1 { color: green }</pre>
 
-   <p>The first rule (not counting the <code>@namespace</code> at-rule) will
+   <p>
+    (<code>@namespace</code> 규칙을 포함하지 않는) 첫번째 룰은 
+    "http://www.example.com" 네임스페이스 내 <code>h1</code> 요소에만 매치할 것입니다.
+    <div lang=en>The first rule (not counting the <code>@namespace</code> at-rule) will
     match only <code>h1</code> elements in the "http://www.example.com"
-    namespace.</p>
+    namespace.</div>
+  </p>
 
-   <p>The second rule will match all elements in the "http://www.example.com"
-    namespace.</p>
+   <p>
+     두번째 규칙은 "http://www.example.com" 네임스페이스 내 모든 요소에 매치할 것입니다.
+    <div lang="en">The second rule will match all elements in the "http://www.example.com"
+    namespace.</div></p>
 
-   <p>The third rule will match only <code>h1</code> elements with no
-    namespace.</p>
+   <p>
+    세번째 규칙은 네임스페이스를 가지지 않는 <code>h1</code> 요소에만 매치할 것입니다.
+    <div lang=en>The third rule will match only <code>h1</code> elements with no
+    namespace.</div></p>
 
-   <p>The fourth rule will match <code>h1</code> elements in any namespace
-    (including those without any namespace).</p>
+   <p>
+    네번째 규칙은 (네임스페이스를 가지지 않는 것을 포함한) 어떤 네임스페이스 내의 <code>h1</code> 요소에도 매치할 것입니다.
+    <div lang=en>The fourth rule will match <code>h1</code> elements in any namespace
+    (including those without any namespace).</div></p>
 
-   <p>The last rule is equivalent to the fourth rule because no default
-    namespace has been defined.</p>
+   <p>
+    마지막 규칙은 기본 네임스페이스를 정의하지 않았기 때문에 네번째 규칙과 동일합니다.
+    <div lang=en>The last rule is equivalent to the fourth rule because no default
+    namespace has been defined.</div></p>
   </div>
 
-  <h3 id=universal-selector><span class=secno>6.2. </span>Universal selector</h3>
+  <h3 id=universal-selector><span class=secno>6.2. </span>전역 셀렉터</h3>
 
-  <p>The <dfn id=universal-selector0>universal selector</dfn>, written as a
+  <p lang=ko>
+   로컬명으로 별표(<code>*</code> U+002A)와 함께 <a href="http://www.w3.org/TR/css3-namespace/#css-qnames">CSS qualified
+   name</a> <a href="#CSS3NAMESPACE" rel=biblioentry>[CSS3NAMESPACE]<!--{{!CSS3NAMESPACE}}--></a>으로써 작성된
+   <dfn id=universal-selector0>전역셀렉터</dfn>는, 모든 요소 타입의 수식명을 나타냅니다.
+    
+   이는 기본 네임스페이스가 셀렉터에 대해 지정되어있는 경우를 제외하고, 
+   (네임스페이스가 없는 것을 포함한) 모든 네임스페이스 내 문서 트리 안 모든 개별 요소를 나타냅니다.
+    
+   만약 기본 네임스페이스가 정의되어 있다면,
+   <a href="#univnmsp">전역 셀렉터와 네임스페이스</a>를 참고하시길 바랍니다.
+  
+  <p lang=en>The <dfn>universal selector</dfn>, written as a
    <a href="http://www.w3.org/TR/css3-namespace/#css-qnames">CSS qualified
    name</a> <a href="#CSS3NAMESPACE"
    rel=biblioentry>[CSS3NAMESPACE]<!--{{!CSS3NAMESPACE}}--></a> with an
@@ -1163,8 +1254,11 @@ h3 { font-family: sans-serif }</pre>
    if no default namespace has been specified for selectors. If a default
    namespace has been specified, see <a href="#univnmsp">Universal selector
    and Namespaces</a> below.
-
-  <p>If a universal selector represented by <code>*</code> (i.e. without a
+  <p lang=ko>전역셀렉터 <code>*</code>이, (즉 네임스페이스 접두사를 갖지 않는)
+    <a href="#sequence">심플 셀렉터 시퀀스</a> 내 컴포넌트 하나가 아니며,
+    바로 뒤에 <a href="#pseudo-elements">의사 요소</a>가 존재하지 않는 경우,
+    그 *을 생략하여 전역 셀렉터의 존재를 나타내도 무관합니다.
+  <p lang=en>If a universal selector represented by <code>*</code> (i.e. without a
    namespace prefix) is not the only component of a <a
    href="#sequence">sequence of simple selectors</a> selectors or is
    immediately followed by a <a href="#pseudo-elements">pseudo-element</a>,
@@ -1172,86 +1266,98 @@ h3 { font-family: sans-serif }</pre>
    presence implied.
 
   <div class=example>
-   <p>Examples:</p>
+   <p>예제:</p>
 
    <ul>
-    <li><code>*[hreflang|=en]</code> and <code>[hreflang|=en]</code> are
-     equivalent,
+    <li><code>*[hreflang|=en]</code>과 <code>[hreflang|=en]</code>는 동일하며,
 
-    <li><code>*.warning</code> and <code>.warning</code> are equivalent,
+    <li><code>*.warning</code>과 <code>.warning</code>은 동일하며,
 
-    <li><code>*#myid</code> and <code>#myid</code> are equivalent.
+    <li><code>*#myid</code>와 <code>#myid</code>은 동일합니다.
    </ul>
   </div>
-
-  <p class=note><strong>Note:</strong> it is recommended that the
+  <p class=note lang=ko><strong>노트:</strong>혼란을 피하기 위해 <code>*</code>을 생략하지 않는걸 권장합니다.
+   예를 들어 <code style="white-space: nowrap">div :first-child</code>과 <code style="white-space:nowrap">div:first-child</code>를
+   생각해보면 이해가 빠릅니다. 여기서 <code style="white-space:nowrap">div *:first-child</code>가 더 가독성이 좋을 것입니다.
+  <span lang=en><strong>Note:</strong> it is recommended that the
    <code>*</code> not be omitted, because it decreases the potential
    confusion between, for example, <code style="white-space: nowrap">div
    :first-child</code> and <code style="white-space:
    nowrap">div:first-child</code>. Here, <code style="white-space:
-   nowrap">div *:first-child</code> is more readable.
+   nowrap">div *:first-child</code> is more readable.</span>
 
-  <h4 id=univnmsp><span class=secno>6.2.1. </span>Universal selector and
-   namespaces</h4>
+  <h4 id=univnmsp><span class=secno>6.2.1. </span>전역 셀렉터와 네임스페이스</h4>
 
-  <p>The universal selector allows an optional namespace component. It is
-   used as follows:
+  <p>전역 셀렉터는 옵션적으로 네임스페이스 컴포넌트 사용을 허용합니다.
+    이는 다음과 같이 사용합니다.
+    <span lang=en>The universal selector allows an optional namespace component. It is
+      used as follows:</span>
 
   <dl>
    <dt><code>ns|*</code>
 
-   <dd>all elements in namespace ns
+   <dd>네임스페이스 ns 내 모든 요소 <div lang=en>all elements in namespace ns</div>
 
    <dt><code>*|*</code>
 
-   <dd>all elements
+   <dd>모든 요소 <div lang=en>all elements</div>
 
    <dt><code>|*</code>
 
-   <dd>all elements without a namespace
+   <dd>네임스페이스를 가지지 않는 모든 요소 <div lang=en>all elements without a namespace</div>
 
    <dt><code>*</code>
 
-   <dd>if no default namespace has been specified, this is equivalent to *|*.
-    Otherwise it is equivalent to ns|* where ns is the default namespace.
+   <dd>
+    기본 네임스페이스가 선언되어있지 않은 경우, 이는 *|*과 동일합니다.
+    그 외의 경우, ns는 기본 네임스페이스로 간주하여 ns|*와 동일합니다.
+    <div lang=en>if no default namespace has been specified, this is equivalent to *|*.
+    Otherwise it is equivalent to ns|* where ns is the default namespace.</div>
   </dl>
-
-  <p>A universal selector containing a namespace prefix that has not been
+  <p lang=ko><a href="#nsdecl">선언</a>되지 않은 네임 스페이스를 포함한 전역 셀렉터는 <a
+   href="#Conformance">유효하지 않은</a> 셀렉터 입니다.
+  <p lang=en>A universal selector containing a namespace prefix that has not been
    previously <a href="#nsdecl">declared</a> is an <a
    href="#Conformance">invalid</a> selector.
 
-  <h3 id=attribute-selectors><span class=secno>6.3. </span>Attribute
-   selectors</h3>
-
-  <p>Selectors allow the representation of an element's attributes. When a
+  <h3 id=attribute-selectors><span class=secno>6.3. </span>속성 셀렉터</h3>
+  <p lang=ko>셀렉터는 요소 속성 표현도 가능합니다.
+    셀렉터를 요소에 매치하는 표현식으로 사용할 떄,
+    속성 셀렉터는 그 셀렉터에 의해 표현하는 속성에 매치하는 속성을 가진 요소에 매치합니다.
+  <p lang=en>Selectors allow the representation of an element's attributes. When a
    selector is used as an expression to match against an element, attribute
    selectors must be considered to match an element if that element has an
    attribute that matches the attribute represented by the attribute
    selector.
 
-  <h4 id=attribute-representation><span class=secno>6.3.1. </span>Attribute
-   presence and value selectors</h4>
+  <h4 id=attribute-representation><span class=secno>6.3.1. </span>속성 의존 셀렉터와 속성값 셀렉터</h4>
 
-  <p>CSS2 introduced four attribute selectors:
+  <p>CSS2는 네 속성 셀렉터를 소개합니다:
 
   <dl>
    <dt><code>[att]</code>
 
-   <dd>Represents an element with the <code>att</code> attribute, whatever
-    the value of the attribute.
+   <dd>Represents an element with the <code>att</code> 속성을 가진 요소를 나타내며, 속성값은 무관합니다.
+    <div lang=en>Represents an element with the <code>att</code> attribute, whatever
+    the value of the attribute.</div>
 
    <dt><code>[att=val]</code>
 
-   <dd>Represents an element with the <code>att</code> attribute whose value
-    is exactly "val".
+   <dd>
+    <code>att</code> 속성을 가지며 속성의 값이 "val"와 일치하는 요소를 나타냅니다.
+    <div lang=en>Represents an element with the <code>att</code> attribute whose value
+    is exactly "val".</div>
 
    <dt><code>[att~=val]</code>
-
-   <dd>Represents an element with the <code>att</code> attribute whose value
+   <dd>
+    <code>att</code> 속성을 가지며 속성의 값이 <a href="#whitespace">공백 문자</a>로 구분된 문자의 목록일 때,
+    목록 중 하나가 "val"와 일치하는 요소를 나타냅니다.
+    
+    <div lang=en>Represents an element with the <code>att</code> attribute whose value
     is a <a href="#whitespace">whitespace</a>-separated list of words, one of
     which is exactly "val". If "val" contains whitespace, it will never
     represent anything (since the words are <em>separated</em> by spaces).
-    Also if "val" is the empty string, it will never represent anything.
+    Also if "val" is the empty string, it will never represent anything.</div>
 
    <dt><code>[att|=val]</code>
 
