@@ -1641,50 +1641,81 @@ DIALOGUE[character=juliet]</pre>
    href="#XML-NAMES" rel=biblioentry>[XML-NAMES]<!--{{XML-NAMES}}--></a> for
    details on namespaces in XML 1.0.)
   <p class=note lang=ko><strong>노트:</strong> 일반적으로, 구현체는 외부 서브셋을 무시합니다.
-    이는 XML 스펙에 있어 유효성 검사를 진행하지 않은 서브셋의 동작에 일치하고 있습니다.
+    이는 XML 스펙에 있어 유효성 검사를 진행하지 않은 서브셋의 동작과 일치합니다.
   <p class=note lang=en><strong>Note:</strong> Typically, implementations choose to
    ignore external subsets. This corresponds to the behaviour of
    non-validating processors as defined by the XML specification.
   <div class=example>
    <p>예제:</p>
 
-   <p>Consider an element <code>EXAMPLE</code> with an attribute
-    <code>radix</code> that has a default value of <code>"decimal"</code>.
-    The DTD fragment might be</p>
+   <p>
+    <code>radix</code> 속성의 기본 값이 <code>"demical"</code>인 요소 <code>EXAMPLE</code>이 있다고 했을 때,
+    DTD는 아래와 같이 구성합니다.
+    <span lang=en> Consider an element <code>EXAMPLE</code> with an attribute <code>radix</code> that has a default value of <code>"decimal"</code>. The DTD fragment might be </span>
+   </p>
 
    <pre
     class=dtd-example>&lt;!ATTLIST EXAMPLE radix (decimal,octal) "decimal"></pre>
 
-   <p>If the style sheet contains the rules</p>
+   <p>
+     여기서 스타일 시트가 아래와 같은 규칙을 가진다고 하였을 때
+     <span lang=en>If the style sheet contains the rules</span>
+   </p>
 
    <pre>EXAMPLE[radix=decimal] { /*... default property settings ...*/ }
 EXAMPLE[radix=octal]   { /*... other settings...*/ }</pre>
 
-   <p>the first rule might not match elements whose <code>radix</code>
-    attribute is set by default, i.e. not set explicitly. To catch all cases,
-    the attribute selector for the default value must be dropped:</p>
+   <p>
+    첫번째 규칙은 <code>radix</code> 속성이 기본으로 설정되어있는 요소,
+    즉 속성이 명시적으로 지정되어있지 않은 것에 매치하지 않을 가능성이 있습니다.
+    모든 가능성에 대비하기 위해, 기본 값에 대한 속성 셀렉터는 제거하지 않으면 안됩니다.
+    <span lang=en>
+      the first rule might not match elements whose <code>radix</code> attribute is set by default, 
+      i.e. not set explicitly. To catch all cases, the attribute selector for the default value must be dropped:</span>
+   </p>
 
    <pre>EXAMPLE                { /*... default property settings ...*/ }
 EXAMPLE[radix=octal]   { /*... other settings...*/ }</pre>
 
-   <p>Here, because the selector <code>EXAMPLE[radix=octal]</code> is more
+   <p>
+    <code>EXAMPLE[radix=octal]</code>는 타입 셀렉터보다 상세하기 때문에,
+     <code>radix</code> 속성값이 <code>"octal"</code>인 요소에서는
+     2번째 규칙에 있는 스타일 선언이 1번째 스타일 선언을 덮어쓸 것입니다.
+     디폴트 상태에서 적용하는 모든 속성 선언은,
+     그 외의 상태에 대해 적용하는 스타일 룰에 덮어쓰여지는 점에 주의하시길 바랍니다.
+     
+    <span lang=en>Here, because the selector <code>EXAMPLE[radix=octal]</code> is more
     specific than the type selector alone, the style declarations in the
     second rule will override those in the first for elements that have a
     <code>radix</code> attribute value of <code>"octal"</code>. Care has to
     be taken that all property declarations that are to apply only to the
-    default case are overridden in the non-default cases' style rules.</p>
+    default case are overridden in the non-default cases' style rules.</span></p>
   </div>
 
-  <h3 id=class-html><span class=secno>6.4. </span>Class selectors</h3>
+  <h3 id=class-html><span class=secno>6.4. </span>클래스 셀렉터</h3>
 
-  <p>Working with HTML, authors may use the "period" notation (also known as
+  <p lang=ko>
+    HTML에서, 작성자는 <code>~=</code> 기호를 대신해서
+    "페리오드" 표기법 (또한 "마침표"로 알려져있는, U+002E, <code>.</code>)을 사용할 수 있습니다.
+    HTML을 가져올 때 <code>div.value</code>와 <code>div[class~=value)</code>는 같은 의미입니다.
+    속성 값은 반드시 마침표 (<code>.</code>) 뒤에 표기해야 합니다.
+ <p lang=en>Working with HTML, authors may use the "period" notation (also known as
    "full stop", U+002E, <code>.</code>) as an alternative to the
    <code>~=</code> notation when representing the <code>class</code>
    attribute. Thus, for HTML, <code>div.value</code> and
    <code>div[class~=value]</code> have the same meaning. The attribute value
    must immediately follow the full stop (<code>.</code>).
-
-  <p>UAs may apply selectors using the period (.) notation in XML documents
+  <p lang=ko>네임스페이스에 있어서 속성이 "class" 속성을 결정하는, 네임스페이스 고유의 처리를 UA가 가지고 있는 경우,
+    UA는 "마침표" 기호를 그 XML 문서에서도 사용할 수 있습니다.
+    메임스페이스 고유의 처리를 예로 들자면 스펙 문장에서 정의되어 있습니다.
+    (예: SVG 1.0 <a href="#SVG11" rel=biblioentry>[SVG11]<!--{{SVG11}}--></a>은
+    <a href="http://www.w3.org/TR/2001/PR-SVG-20010719/styling.html#ClassAttribute">SVG
+   <code>class</code> 속성</a>을 정의하며, UA가 어떻게 해석해야하는 지 설명하고 있습니다.
+    MathML 1.01 <a href="#MATHML" rel=biblioentry>[MATHML]<!--{{MATHML}}--></a>도 마찬가지로 <a
+   href="http://www.w3.org/1999/07/REC-MathML-19990707/chapter2.html#sec2.3.4">MathML
+   <code>class</code> 속성</a>을 정의하고 있습니다)
+    
+  <p lang=en>UAs may apply selectors using the period (.) notation in XML documents
    if the UA has namespace-specific knowledge that allows it to determine
    which attribute is the "class" attribute for the respective namespace. One
    such example of namespace-specific knowledge is the prose in the
@@ -1698,37 +1729,54 @@ EXAMPLE[radix=octal]   { /*... other settings...*/ }</pre>
    <code>class</code> attribute</a>.)
 
   <div class=example>
-   <p>CSS examples:</p>
+   <p>CSS 예제:</p>
 
-   <p>We can assign style information to all elements with
-    <code>class~="pastoral"</code> as follows:</p>
+   <p>
+    <code>class~="pastoral"</code>인 모든 요소에 대해 스타일을 적용할 때 아래와 같이 작성합니다.
+    <span lang=en>We can assign style information to all elements with
+    <code>class~="pastoral"</code> as follows:</span></p>
 
    <pre>*.pastoral { color: green }  /* all elements with class~=pastoral */</pre>
 
-   <p>or just</p>
+   <p>
+     혹은 단순하게
+     <span lang=en>or just</span> 
+   </p>
 
    <pre>.pastoral { color: green }  /* all elements with class~=pastoral */</pre>
 
-   <p>The following assigns style only to H1 elements with
-    <code>class~="pastoral"</code>:</p>
+   <p>
+    <code>class~="pastoral"</code>인 H1 요소에 스타일을 적용할 때 아래와 같이 작성합니다.
+    <span lang=en>The following assigns style only to H1 elements with
+   <code>class~="pastoral"</code>:</span></p>
 
    <pre>H1.pastoral { color: green }  /* H1 elements with class~=pastoral */</pre>
 
-   <p>Given these rules, the first <code>H1</code> instance below would not
-    have green text, while the second would:</p>
+   <p>
+    이 규칙을 적용했을 때, 첫번째 <code>H1</code> 인스턴스는 녹색이 아니지만,
+    두번째 <code>H1</code>은 녹색입니다.
+    <span lang=en>Given these rules, the first <code>H1</code> instance below would not
+    have green text, while the second would:</span></p>
 
    <pre>&lt;H1&gt;Not green&lt;/H1&gt;
 &lt;H1 class="pastoral"&gt;Very green&lt;/H1&gt;</pre>
 
-   <p>The following rule matches any <code>P</code> element whose
+   <p>
+    아래 규칙은 <code>P</code> 요소 중에서,
+     <code>class</code> 속성값에 <code>pastoral</code>과 <code>maring</code>을 포함한 것을 매치합니다.
+     이 때 <code>class</code> 속성값은 <a href="#whitespace">공백 문자</a>로 구분된 값의 리스트입니다.
+    <span lang=en>The following rule matches any <code>P</code> element whose
     <code>class</code> attribute has been assigned a list of <a
     href="#whitespace">whitespace</a>-separated values that includes both
-    <code>pastoral</code> and <code>marine</code>:</p>
+    <code>pastoral</code> and <code>marine</code>:</span></p>
 
    <pre>p.pastoral.marine { color: green }</pre>
 
-   <p>This rule matches when <code>class="pastoral blue aqua marine"</code>
-    but does not match for <code>class="pastoral blue"</code>.</p>
+   <p>
+    위 규칙은  <code>class="pastoral blue aqua marine"</code>에 매치하지만,
+    <code>class="pastoral blue"</code>에는 매치하지 않습니다.
+    <span lang=en>This rule matches when <code>class="pastoral blue aqua marine"</code>
+    but does not match for <code>class="pastoral blue"</code>.</span></p>
   </div>
 
   <p class=note><strong>Note:</strong> Because CSS gives considerable power
