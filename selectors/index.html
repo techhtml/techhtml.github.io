@@ -1794,7 +1794,7 @@ EXAMPLE[radix=octal]   { /*... other settings...*/ }</pre>
    often have recognized and accepted meanings and author-defined classes may
    not.
   <p class=note lang=ko><strong>노트:</strong> 요소가 복수의 class 속성을 가지고 있는 경우,
-    각각의 값은 클래스를 검색하기 전에 공백문자로 결합되어있어야 합니다.
+    각각의 값은 클래스를 검색하기 전에 공백 문자로 결합되어있어야 합니다.
     그러나 현 시점에서 CSS 워킹 그룹은 그런 사태를 상정한 상황을 인식하고 있지 않기 때문에,
     이 동작은 표준에 준하는 내용은 아닙니다.
   <p class=note lang=en><strong>Note:</strong> If an element has multiple class
@@ -2250,10 +2250,17 @@ html:lang(de)
 
   <h5 id=checked><span class=secno>6.6.4.2. </span>:checked 의사 클래스</h5>
   <p lang="ko">
-    Radio와 checkbox 요소는 유저가 토글할 수 있는 요소입니다.
-    
+    라디오 버튼과 체크박스 요소는 유저가 토글하는 요소입니다.
+    몇개의 메뉴 아이템은 유저가 선택할 때 "checked" 상태가 됩니다.
+    이러한 "checked" 상태에 있는 요소에 <code>:checked</code> 의사 클래스를 적용합니다.
+    <code>:checked</code> 의사 클래스는 동적인 성질을 가지며,
+    문서의 의미적 속성의 존재에 따라 적용될 때도 있어 유저의 행동에 의해 변경되며, 모든 매체에 적용됩니다.
+    예를 들어 <code>:checked</code> 의사 클래스는 <a
+   href="http://www.w3.org/TR/REC-html40/interact/forms.html#h-17.2.1">HTML4 17.2.1 섹션</a>의 내용대로 <code>selected</code>나
+   <code>checked</code> 속성을 가진 요소에 먼저 적용되지만 이러한 것들은 당연히 "off"가 가능하며,
+   그 결과가 적용된 <code>:checked</code> 의사 클래스는 적용되지 않습니다.
   </p>
-  <p>Radio and checkbox elements can be toggled by the user. Some menu items
+  <p lang="en">Radio and checkbox elements can be toggled by the user. Some menu items
    are "checked" when the user selects them. When such elements are toggled
    "on" the <code>:checked</code> pseudo-class applies. While the
    <code>:checked</code> pseudo-class is dynamic in nature, and can altered
@@ -2267,16 +2274,18 @@ html:lang(de)
    in which case the <code>:checked</code> pseudo-class would no longer
    apply.
 
-  <h5 id=indeterminate><span class=secno>6.6.4.3. </span>The :indeterminate
-   pseudo-class</h5>
+  <h5 id=indeterminate><span class=secno>6.6.4.3. </span>:indeterminate 의사 클래스</h5>
 
   <div class=note>
-   <p><strong>Note:</strong> Radio and checkbox elements can be toggled by
+   <p lang=ko><strong>노트:</strong> 유저에 의해 토글되는 라디오 버튼이나 체크박스는,
+   때로 체크 되어있지도 체크되어있지도 않은 불확정 상태가 됩니다.
+   이는 요소의 속성이나 DOM의 조작에 의해 발생합니다.
+   <p lang=en><strong>Note:</strong> Radio and checkbox elements can be toggled by
     the user, but are sometimes in an indeterminate state, neither checked
     nor unchecked. This can be due to an element attribute, or DOM
     manipulation.</p>
-
-   <p>A future version of this specification may introduce an
+   <p lang=ko>미래의 셀렉터 스펙이 그러한 요소에 적용할 <code>:indeterminate</code> 의사 클래스를 도입할 가능성이 있습니다.
+   <p lang=en>A future version of this specification may introduce an
     <code>:indeterminate</code> pseudo-class that applies to such elements.
     <!--While the <code>:indeterminate</code> pseudo-class is dynamic in
 nature, and is altered by user action, since it can also be based on
@@ -2286,29 +2295,36 @@ the presence of an element attribute, it applies to all media.</p>
 are an example of :indeterminate state.--></p>
   </div>
 
-  <h4 id=structural-pseudos><span class=secno>6.6.5. </span>Structural
-   pseudo-classes</h4>
-
-  <p>Selectors introduces the concept of <dfn
-   id=structural-pseudo-classes>structural pseudo-classes</dfn> to permit
+  <h4 id=structural-pseudos><span class=secno>6.6.5. </span>구조 의사 클래스</h4>
+  <p lang=ko>셀렉터 스펙은 문서 트리 안 정보 중 다른 심플 셀렉터나 콤비네이터로는 표현 불가능한
+  셀렉트를 가능하도록 <dfn id=structural-pseudo-classes>구조 의사 클래스</dfn>를 정의합니다.
+  <p lang=en>Selectors introduces the concept of <dfn>structural pseudo-classes</dfn> to permit
    selection based on extra information that lies in the document tree but
    cannot be represented by other simple selectors or combinators.
-
-  <p>Standalone text and other non-element nodes are not counted when
+  <p lang=ko>단일 텍스트와 요소가 아닌 노드는, 트리 구조에서 요소의 위치를 계산할 때 계산되지 않습니다.
+  요소의 위치를 계산 할 때, 인덱스는 1로 시작합니다.
+  <p lang=en>Standalone text and other non-element nodes are not counted when
    calculating the position of an element in the list of children of its
    parent. When calculating the position of an element in the list of
    children of its parent, the index numbering starts at 1.
 
-  <h5 id=root-pseudo><span class=secno>6.6.5.1. </span>:root pseudo-class</h5>
-
-  <p>The <code>:root</code> pseudo-class represents an element that is the
+  <h5 id=root-pseudo><span class=secno>6.6.5.1. </span>:root 의사 클래스</h5>
+  <p lang=ko><code>:root</code> 의사 클래스는 문서의 루트 요소를 나타냅니다.
+  HTML 4에서는 항상 <code>HTML</code> 요소 입니다.
+  <p lang=en>The <code>:root</code> pseudo-class represents an element that is the
    root of the document. In HTML 4, this is always the <code>HTML</code>
    element.
-
-  <h5 id=nth-child-pseudo><span class=secno>6.6.5.2. </span>:nth-child()
-   pseudo-class</h5>
-
-  <p>The <code>:nth-child(<var>a</var><code>n</code>+<var>b</var>)</code>
+  <h5 id=nth-child-pseudo><span class=secno>6.6.5.2. </span>:nth-child() 의사 클래스</h5>
+  <p lang=ko><code>:nth-child(<var>a</var><code>n</code>+<var>b</var>)</code> 의사 클래스는
+  문서 트리에서 어떤 요소의 자식에서 그 <strong>앞에</strong> <var>a</var><code>n</code>+<var>b</var>-1개
+  (<code>n</code>은 양의 정수 혹은 0)의 형제를 가지는 상태를 나타냅니다.
+  의사 클래스는 요소의 자식을 <code>a</code>개씩 그룹으로 나누어 (마지막 그룹은 나머지를 모두 가집니다)
+  각각의 그룹에서 <code>b</code>번째 요소를 선택합니다.
+  예를 들어, 이 셀렉터는 table 내 행을 선택하는 일이나,
+  4개의 문장을 하나의 그룹으로 하여, 그룹 내 문장에 각각 다른 색을 주는 것이 가능합니다.
+  <code>a</code>와 <code>b</code>의 값은 정수(양수, 음수, 0)여야 합니다.
+  요소의 첫번째 자식 인덱스는 1입니다.
+  <p lang=en>The <code>:nth-child(<var>a</var><code>n</code>+<var>b</var>)</code>
    pseudo-class notation represents an element that has
    <var>a</var><code>n</code>+<var>b</var>-1 siblings <strong>before</strong>
    it in the document tree, for any positive integer or zero value of
@@ -2320,16 +2336,20 @@ are an example of :indeterminate state.--></p>
    and could be used to alternate the color of paragraph text in a cycle of
    four. The <var>a</var> and <var>b</var> values must be integers (positive,
    negative, or zero). The index of the first child of an element is 1.
-
-  <p>In addition to this, <code>:nth-child()</code> can take &lsquo;<code
+  <p lang=ko>여기에 더해 <code>:nth-child()</code>는 &lsquo;<code class=css><code>odd</code></code>&rsquo; 및
+  &lsquo;<code class=css><code>even</code></code>&rsquo;를 인수로 사용할 수 있습니다.
+	&lsquo;<code class=css><code>odd</code></code>&rsquo;는 <code>2n+1</code>과 동일하며,
+  &lsquo;<code class=css><code>even</code></code>&rsquo;은 <code>2n</code>과 동일합니다.
+  <p lang=en>In addition to this, <code>:nth-child()</code> can take &lsquo;<code
    class=css><code>odd</code></code>&rsquo; and &lsquo;<code
    class=css><code>even</code></code>&rsquo; as arguments instead.
    &lsquo;<code class=css><code>odd</code></code>&rsquo; has the same
    signification as <code>2n+1</code>, and &lsquo;<code
    class=css><code>even</code></code>&rsquo; has the same signification as
    <code>2n</code>.
-
-  <p>The argument to <code>:nth-child()</code> must match the grammar below,
+  <p lang=ko><code>:nth-child()</code> 인수는 아래 문법을 준수해야 합니다.
+   <code>INTEGER</code>는 토큰 <code>[0-9]+</code>에 매치하며, 그 외의 토큰은 섹션 10.2 <a href="#lex">Lexical scanner</a>에서 정의합니다.
+  <p lang=en>The argument to <code>:nth-child()</code> must match the grammar below,
    where <code>INTEGER</code> matches the token <code>[0-9]+</code> and the
    rest of the tokenization is given by the <a href="#lex">Lexical
    scanner</a> in section 10.2:
@@ -2340,7 +2360,7 @@ are an example of :indeterminate state.--></p>
   ;</pre>
 
   <div class=example>
-   <p>Examples:</p>
+   <p>예제:</p>
 
    <pre>tr:nth-child(2n+1) /* represents every odd row of an HTML table */
 tr:nth-child(odd)  /* same */
@@ -2353,20 +2373,23 @@ p:nth-child(4n+2) { color: green; }
 p:nth-child(4n+3) { color: maroon; }
 p:nth-child(4n+4) { color: purple; }</pre>
   </div>
-
-  <p>When the value <var>b</var> is preceded by a negative sign, the "+"
+  <p lang=ko><var>b</var> 값 앞에 음수기호가 있는 경우, 식 안의 "+"는 제거해야만 합니다.
+  (<var>b</var> 음수 값을 표현할 "-"로 인해 결과적으로 바뀌기 때문입니다)
+  <p lang=en>When the value <var>b</var> is preceded by a negative sign, the "+"
    character in the expression must be removed (it is effectively replaced by
    the "-" character indicating the negative value of <var>b</var>).
 
   <div class=example>
-   <p>Examples:</p>
+   <p>예제:</p>
 
    <pre>:nth-child(10n-1)  /* represents the 9th, 19th, 29th, etc, element */
 :nth-child(10n+9)  /* Same */
 :nth-child(10n+-1) /* Syntactically invalid, and would be ignored */</pre>
   </div>
-
-  <p>When <var>a</var>=0, the <var>a</var><code>n</code> part need not be
+  <p lang=ko><var>a</var>=0일 때, <var>a</var><code>n</code>를 포함할 필요는 없습니다. (다만, <var>b</var>가 이미 생략되어 있는 경우는 제외합니다)
+  <var>a</var><code>n</code>가 인수에 포함되어있지 않고, <var>b</var>가 음수가 아닌 경우, <var>b</var> 앞에 있는 "+" 기호는 생략 가능합니다.
+  이 경우 문법을 <code>:nth-child(<var>b</var>)</code>같이 간단하게 작성할 수 있습니다.
+  <p lang=en>When <var>a</var>=0, the <var>a</var><code>n</code> part need not be
    included (unless the <var>b</var> part is already omitted). When
    <var>a</var><code>n</code> is not included and <var>b</var> is
    non-negative, the <code>+</code> sign before <var>b</var> (when allowed)
@@ -2374,44 +2397,48 @@ p:nth-child(4n+4) { color: purple; }</pre>
    <code>:nth-child(<var>b</var>)</code>.
 
   <div class=example>
-   <p>Examples:</p>
+   <p>예제:</p>
 
    <pre>foo:nth-child(0n+5)   /* represents an element foo that is the 5th child
                          of its parent element */
 foo:nth-child(5)      /* same */</pre>
   </div>
 
-  <p>When <var>a</var>=1, or <var>a</var>=-1, the number may be omitted from
+  <p lang=ko><var>a</var>=1이거나 <var>a</var>=-1일 때, 숫자는 선언에서 생략 가능합니다.
+  <p lang=en>When <var>a</var>=1, or <var>a</var>=-1, the number may be omitted from
    the rule.
 
   <div class=example>
-   <p>Examples:</p>
+   <p>예제:</p>
 
-   <p>The following selectors are therefore equivalent:</p>
+   <p>
+    아래 셀렉터는 위 규칙에 따라 동일합니다.
+    <span lang=en>The following selectors are therefore equivalent:</span></p>
 
    <pre>bar:nth-child(1n+0)   /* represents all bar elements, specificity (0,1,1) */
 bar:nth-child(n+0)    /* same */
 bar:nth-child(n)      /* same */
 bar                   /* same but lower specificity (0,0,1) */</pre>
   </div>
-
-  <p>If <var>b</var>=0, then every <var>a</var>th element is picked. In such
+  <p lang=ko><var>b</var>=0일 때, <var>a</var>번째 요소 모두가 선택됩니다.
+    이 경우 <var>a</var>가 이미 생략되어 있는 경우는 제외하여 +<var>b</var> (혹은 -<var>b</var>)을 생략하는 게 가능합니다.
+  <p lang=en>If <var>b</var>=0, then every <var>a</var>th element is picked. In such
    a case, the +<var>b</var> (or -<var>b</var>) part may be omitted unless
    the <var>a</var> part is already omitted.
 
   <div class=example>
-   <p>Examples:</p>
+   <p>예제:</p>
 
    <pre>tr:nth-child(2n+0) /* represents every even row of an HTML table */
 tr:nth-child(2n) /* same */</pre>
   </div>
-
-  <p>Whitespace is permitted after the "(", before the ")", and on either
+  <p lang=ko>공백 문자는 "(" 뒤, ")" 앞, <var>a</var><code>n</code>와 <var>b</var> 부분을 나누는 "+" 혹은 "-" 전후에 입력할 수 있습니다.
+  <p lang=en>Whitespace is permitted after the "(", before the ")", and on either
    side of the "+" or "-" that separates the <var>a</var><code>n</code> and
    <var>b</var> parts when both are present.
 
   <div class=example>
-   <p>Valid Examples with white space:</p>
+   <p>공백 문자를 사용한 유효한 예제입니다.</p>
 
    <pre>
 :nth-child( 3n + 1 )
@@ -2420,7 +2447,7 @@ tr:nth-child(2n) /* same */</pre>
 :nth-child( +6 )
 </pre>
 
-   <p>Invalid Examples with white space:</p>
+   <p>공백 문자를 사용한 유효하지 않은 예제입니다.</p>
 
    <pre>
 :nth-child(3 n)
@@ -2428,24 +2455,30 @@ tr:nth-child(2n) /* same */</pre>
 :nth-child(+ 2)
 </pre>
   </div>
-
-  <p>If both <var>a</var> and <var>b</var> are equal to zero, the
+  <p lang=ko>
+    만약 <var>a</var>와 <var>b</var>모두 0과 동일하다면,
+    의사 클래스는 문서 트리 내 요소를 표현하지 않습니다.
+  <p lang=en>
+   If both <var>a</var> and <var>b</var> are equal to zero, the
    pseudo-class represents no element in the document tree.
-
-  <p>The value <var>a</var> can be negative, but only the positive values of
+  <p lang=ko><var>a</var> 값은 음수는 가능하나, 
+  <var>a</var><code>n</code>+<var>b</var>가 양수 값을 가지는 경우에만 문서 트리의 요소를 나타내는 게 가능합니다.
+  <p lang=en>The value <var>a</var> can be negative, but only the positive values of
    <var>a</var><code>n</code>+<var>b</var>, for <code>n</code>&ge;0, may
    represent an element in the document tree.
 
   <div class=example>
-   <p>Example:</p>
+   <p>예제:</p>
 
    <pre>html|tr:nth-child(-n+6)  /* represents the 6 first rows of XHTML tables */</pre>
   </div>
 
-  <h5 id=nth-last-child-pseudo><span class=secno>6.6.5.3.
-   </span>:nth-last-child() pseudo-class</h5>
-
-  <p>The <code>:nth-last-child(<var>a</var>n+<var>b</var>)</code>
+  <h5 id=nth-last-child-pseudo><span class=secno>6.6.5.3.</span>:nth-last-child() 의사 클래스</h5>
+  <p lang=ko><code>:nth-last-child(<var>a</var>n+<var>b</var>)</code> 의사 클래스는 문서 트리 내 어떤 요소의 자식에서,
+  그 <strong>마지막에서</strong> <var>a</var><code>n</code>+<var>b</var>-1 개(<code>n</code>은 양의 정수 혹은 0) 형제를 가진 상태를 나타냅니다.
+  인수에 대해서는 <a href="#nth-child-pseudo"><code>:nth-child</code></a>를 참조하시길 바랍니다.
+  <code>:nth-child</code>와 동일하게 &lsquo;<code class=css><code>even</code></code>&rsquo;과 &lsquo;<code class=css><code>odd</code></code>&rsquo;을 가질 수 있습니다.
+  <p lang=en>The <code>:nth-last-child(<var>a</var>n+<var>b</var>)</code>
    pseudo-class notation represents an element that has
    <var>a</var><code>n</code>+<var>b</var>-1 siblings <strong>after</strong>
    it in the document tree, for any positive integer or zero value of
@@ -2456,7 +2489,7 @@ tr:nth-child(2n) /* same */</pre>
    class=css><code>odd</code></code>&rsquo; values as arguments.
 
   <div class=example>
-   <p>Examples:</p>
+   <p>예제:</p>
 
    <pre>tr:nth-last-child(-n+2)    /* represents the two last rows of an HTML table */
 
@@ -2464,10 +2497,12 @@ foo:nth-last-child(odd)    /* represents all odd foo elements in their parent el
                               counting from the last one */</pre>
   </div>
 
-  <h5 id=nth-of-type-pseudo><span class=secno>6.6.5.4. </span>:nth-of-type()
-   pseudo-class</h5>
-
-  <p>The <code>:nth-of-type(<var>a</var>n+<var>b</var>)</code> pseudo-class
+  <h5 id=nth-of-type-pseudo><span class=secno>6.6.5.4. </span>:nth-of-type() 의사 클래스</h5>
+  <p lang=ko><code>:nth-of-type(<var>a</var>n+<var>b</var>)</code> 의사 클래스는 문서 트리 내 어떤 요소의 자식에서,
+  그 요소와 같은 요소명을 가진 요소가 그 <strong>전에</strong> <var>a</var><code>n</code>+<var>b</var>-1 개(<code>n</code>은 양의 정수 혹은 0) 있는 상태를 나타냅니다.
+  인수에 대해서는 <a href="#nth-child-pseudo"><code>:nth-child</code></a>를 참조하시길 바랍니다.
+  <code>:nth-child</code>와 동일하게 &lsquo;<code class=css><code>even</code></code>&rsquo;과 &lsquo;<code class=css><code>odd</code></code>&rsquo;을 가질 수 있습니다.
+  <p lang=en>The <code>:nth-of-type(<var>a</var>n+<var>b</var>)</code> pseudo-class
    notation represents an element that has
    <var>a</var><code>n</code>+<var>b</var>-1 siblings with the same expanded
    element name <strong>before</strong> it in the document tree, for any zero
@@ -2478,18 +2513,22 @@ foo:nth-last-child(odd)    /* represents all odd foo elements in their parent el
    class=css><code>odd</code></code>&rsquo; values.
 
   <div class=example>
-   <p>CSS example:</p>
+   <p>CSS 예제:</p>
 
-   <p>This allows an author to alternate the position of floated images:</p>
+   <p>
+     아래 규칙으로 작성자가 이미지를 교차로 float 시킬 수 있습니다.
+     <span lang=en>This allows an author to alternate the position of floated images:</span></p>
 
    <pre>img:nth-of-type(2n+1) { float: right; }
 img:nth-of-type(2n) { float: left; }</pre>
   </div>
 
-  <h5 id=nth-last-of-type-pseudo><span class=secno>6.6.5.5.
-   </span>:nth-last-of-type() pseudo-class</h5>
-
-  <p>The <code>:nth-last-of-type(<var>a</var>n+<var>b</var>)</code>
+  <h5 id=nth-last-of-type-pseudo><span class=secno>6.6.5.5.</span>:nth-last-of-type() 의사 클래스</h5>
+  <p lang=ko><code>:nth-last-of-type(<var>a</var>n+<var>b</var>)</code> 의사 클래스는 문서 트리 내 어떤 요소의 자식에서
+  그 요소와 같은 요소명을 가진 요소가 그 <strong>후에</strong> <var>a</var><code>n</code>+<var>b</var>-1개 (<code>n</code>은 양의 정수 혹은 0) 있는 상태를 나타냅니다.
+  인수에 대해서는 <a href="#nth-child-pseudo"><code>:nth-child</code></a>를 참조하시길 바랍니다.
+  <code>:nth-child</code>와 동일하게 &lsquo;<code class=css><code>even</code></code>&rsquo;과 &lsquo;<code class=css><code>odd</code></code>&rsquo;을 가질 수 있습니다.
+  <p lang=en>The <code>:nth-last-of-type(<var>a</var>n+<var>b</var>)</code>
    pseudo-class notation represents an element that has
    <var>a</var><code>n</code>+<var>b</var>-1 siblings with the same expanded
    element name <strong>after</strong> it in the document tree, for any zero
@@ -2500,88 +2539,112 @@ img:nth-of-type(2n) { float: left; }</pre>
    class=css><code>odd</code></code>&rsquo; values.
 
   <div class=example>
-   <p>Example:</p>
+   <p>예제:</p>
 
-   <p>To represent all <code>h2</code> children of an XHTML <code>body</code>
-    except the first and last, one could use the following selector:</p>
+   <p>
+    XHTML <code>body</code> 요소의 자식인 모든 <code>h2</code>요소 중,
+    첫번째와 마지막을 제외한 모든 요소를 나타내고 싶을 때 아래와 같은 셀렉터를 사용합니다.
+    <span lang=en>To represent all <code>h2</code> children of an XHTML <code>body</code>
+    except the first and last, one could use the following selector:</span></p>
 
    <pre>body &gt; h2:nth-of-type(n+2):nth-last-of-type(n+2)</pre>
 
-   <p>In this case, one could also use <code>:not()</code>, although the
-    selector ends up being just as long:</p>
+   <p>
+    이 경우, 작성자는 <code>:not()</code>을 사용할 수 있지만, 길이는 크게 다르지 않습니다.
+    <span lang=en>In this case, one could also use <code>:not()</code>, although the
+    selector ends up being just as long:</span></p>
 
    <pre>body &gt; h2:not(:first-of-type):not(:last-of-type)</pre>
   </div>
 
-  <h5 id=first-child-pseudo><span class=secno>6.6.5.6. </span>:first-child
-   pseudo-class</h5>
-
-  <p>Same as <code>:nth-child(1)</code>. The <code>:first-child</code>
+  <h5 id=first-child-pseudo><span class=secno>6.6.5.6. </span>:first-child 의사 클래스</h5>
+  <p lang=ko><code>:nth-child(1)</code>과 동일합니다. <code>:first-child</code> 의사 클래스는
+    특정 요소의 첫번째 자식 요소를 나타냅니다.
+  <p lang=en>Same as <code>:nth-child(1)</code>. The <code>:first-child</code>
    pseudo-class represents an element that is the first child of some other
    element.
 
   <div class=example>
-   <p>Examples:</p>
+   <p>예제:</p>
 
-   <p>The following selector represents a <code>p</code> element that is the
-    first child of a <code>div</code> element:</p>
+   <p>
+    아래 셀렉터는 <code>div</code> 요소의 첫번째 자식인 <code>p</code>요소를 나타냅니다.
+    <span lang=en>The following selector represents a <code>p</code> element that is the
+    first child of a <code>div</code> element:</span></p>
 
    <pre>div &gt; p:first-child</pre>
 
-   <p>This selector can represent the <code>p</code> inside the
-    <code>div</code> of the following fragment:</p>
+   <p>
+    이 셀렉터는 아래 코드에서 <code>div</code> 안의 <code>p</code>만 나타낼 수 있습니다.
+    <span lang=en>This selector can represent the <code>p</code> inside the
+    <code>div</code> of the following fragment:</span></p>
 
    <pre>&lt;p&gt; The last P before the note.&lt;/p&gt;
 &lt;div class="note"&gt;
    &lt;p&gt; The first P inside the note.&lt;/p&gt;
 &lt;/div&gt;</pre>
-   but cannot represent the second <code>p</code> in the following fragment:
+   <p>
+     하지만 아래 코드에서 두번째 <code>p</code>요소는 나타내지 않습니다.
+     <span lang=en>but cannot represent the second <code>p</code> in the following fragment:</span>
    <pre>&lt;p&gt; The last P before the note.&lt;/p&gt;
 &lt;div class="note"&gt;
    &lt;h2&gt; Note &lt;/h2&gt;
    &lt;p&gt; The first P inside the note.&lt;/p&gt;
 &lt;/div&gt;</pre>
 
-   <p>The following two selectors are usually equivalent:</p>
+   <p>아래 두 예제는 보통 동등합니다.
+      <span lang=en>The following two selectors are usually equivalent:</span></p>
 
    <pre>* &gt; a:first-child /* a is first child of any element */
 a:first-child /* Same (assuming a is not the root element) */</pre>
   </div>
 
-  <h5 id=last-child-pseudo><span class=secno>6.6.5.7. </span>:last-child
-   pseudo-class</h5>
+  <h5 id=last-child-pseudo><span class=secno>6.6.5.7. </span>:last-child 의사 클래스</h5>
 
-  <p>Same as <code>:nth-last-child(1)</code>. The <code>:last-child</code>
+  <p lang=ko><code>:nth-last-child(1)</code>과 동일합니다. <code>:last-child</code> 의사 클래스는
+    특정 요소의 마지막 자식 요소를 나타냅니다.
+  <p lang=en>Same as <code>:nth-last-child(1)</code>. The <code>:last-child</code>
    pseudo-class represents an element that is the last child of some other
    element.
 
   <div class=example>
-   <p>Example:</p>
+   <p>예제:</p>
 
-   <p>The following selector represents a list item <code>li</code> that is
-    the last child of an ordered list <code>ol</code>.
+   <p>
+    아래 셀렉터는 순서 있는 목록 <code>ol</code> 내 마지막 자식 요소인 리스트 아이템 <code>li</code>를 나타냅니다.
+    <span lang=en>The following selector represents a list item <code>li</code> that is
+    the last child of an ordered list <code>ol</code>.</span>
 
    <pre>ol &gt; li:last-child</pre>
   </div>
 
   <h5 id=first-of-type-pseudo><span class=secno>6.6.5.8.
-   </span>:first-of-type pseudo-class</h5>
+   </span>:first-of-type 의사 클래스</h5>
 
-  <p>Same as <code>:nth-of-type(1)</code>. The <code>:first-of-type</code>
+  <p lang=ko>
+   <code>:nth-of-type(1)</code>과 동일합니다. <code>:first-of-type</code> 의사 클래스는
+   부모 요소의 자식 목록에서 해당 타입을 갖는 첫번째 형제 요소입니다.
+  <p lang=en>Same as <code>:nth-of-type(1)</code>. The <code>:first-of-type</code>
    pseudo-class represents an element that is the first sibling of its type
    in the list of children of its parent element.
 
   <div class=example>
-   <p>Example:</p>
+   <p>예제:</p>
 
-   <p>The following selector represents a definition title <code>dt</code>
+   <p>
+    아래 셀렉터는 정의 목록 <code>dl</code>내 정의 제목 <code>dt</code>를 나타내며,
+    이 <code>dt</code>는 그 부모 요소의 자식 목록의 타입 중 첫번째 요소여야 합니다.
+    <span lang=en>The following selector represents a definition title <code>dt</code>
     inside a definition list <code>dl</code>, this <code>dt</code> being the
-    first of its type in the list of children of its parent element.</p>
+    first of its type in the list of children of its parent element.</span></p>
 
    <pre>dl dt:first-of-type</pre>
 
-   <p>It is a valid description for the first two <code>dt</code> elements in
-    the following example but not for the third one:</p>
+   <p>
+    아래 예제에서 첫번째와 두번째 <code>dt</code> 요소는 유효하지만,
+    세번째 <code>dt</code>요소는 그렇지 않습니다.
+    <span lang=en>It is a valid description for the first two <code>dt</code> elements in
+    the following example but not for the third one:</span></p>
 
    <pre>&lt;dl&gt;
  &lt;dt&gt;gigogne&lt;/dt&gt;
@@ -2596,43 +2659,56 @@ a:first-child /* Same (assuming a is not the root element) */</pre>
 &lt;/dl&gt;</pre>
   </div>
 
-  <h5 id=last-of-type-pseudo><span class=secno>6.6.5.9. </span>:last-of-type
-   pseudo-class</h5>
-
-  <p>Same as <code>:nth-last-of-type(1)</code>. The
+  <h5 id=last-of-type-pseudo><span class=secno>6.6.5.9. </span>:last-of-type 의사 클래스</h5>
+  <p lang=ko>
+   <code>:nth-last-of-type(1)</code>과 동일합니다. <code>:last-of-type</code> 의사 클래스는
+   부모 요소의 자식 목록에서 해당 타입을 갖는 마지막 형제 요소입니다.
+  <p lang=en>Same as <code>:nth-last-of-type(1)</code>. The
    <code>:last-of-type</code> pseudo-class represents an element that is the
    last sibling of its type in the list of children of its parent element.
 
   <div class=example>
-   <p>Example:</p>
+   <p>예제:</p>
 
-   <p>The following selector represents the last data cell <code>td</code> of
-    a table row <code>tr</code>.</p>
+   <p>
+    다음 셀렉터는 테이블 행 <code>tr</code>의 마지막 데이터 셀 <code>td</code>를 나타냅니다.
+    <span lang=en>The following selector represents the last data cell <code>td</code> of
+    a table row <code>tr</code>.</span></p>
 
    <pre>tr &gt; td:last-of-type</pre>
   </div>
 
-  <h5 id=only-child-pseudo><span class=secno>6.6.5.10. </span>:only-child
-   pseudo-class</h5>
-
-  <p>Represents an element that has a parent element and whose parent element
+  <h5 id=only-child-pseudo><span class=secno>6.6.5.10. </span>:only-child 의사 클래스</h5>
+  <p lang=ko>
+    부모 요소를 가지며, 그 부모 요소에서 다른 자식 요소가 없는 요소를 나타냅니다.
+    <code>:first-child:last-child</code>와 동일하며 <code>:nth-child(1):nth-last-child(1)</code>과도 동일하지만,
+    이에 비교하면 덜 특별합니다.
+  <p lang=en>Represents an element that has a parent element and whose parent element
    has no other element children. Same as
    <code>:first-child:last-child</code> or
    <code>:nth-child(1):nth-last-child(1)</code>, but with a lower
    specificity.
 
-  <h5 id=only-of-type-pseudo><span class=secno>6.6.5.11. </span>:only-of-type
-   pseudo-class</h5>
+  <h5 id=only-of-type-pseudo><span class=secno>6.6.5.11. </span>:only-of-type 의사</h5>
+  <p lang=en>
+    부모 요소를 가지며, 그 부모 요소에서 같은 요소명을 가진 다른 자식 요소가 없는 요소를 나타냅니다.
+    <code>:first-of-type:last-of-type</code>과 동일하며 <code>:nth-of-type(1):nth-last-of-type(1)</code>과도 동일하지만,
+    이에 비교하면 덜 특별합니다.
 
-  <p>Represents an element that has a parent element and whose parent element
+  <p lang=en>Represents an element that has a parent element and whose parent element
    has no other element children with the same expanded element name. Same as
    <code>:first-of-type:last-of-type</code> or
    <code>:nth-of-type(1):nth-last-of-type(1)</code>, but with a lower
    specificity.
 
-  <h5 id=empty-pseudo><span class=secno>6.6.5.12. </span>:empty pseudo-class</h5>
-
-  <p>The <code>:empty</code> pseudo-class represents an element that has no
+  <h5 id=empty-pseudo><span class=secno>6.6.5.12. </span>:empty 의사 클래스</h5>
+  <p lang=ko><code>:empty</code> 의사 클래스는 자식을 가지지 않은 요소를 나타냅니다.
+    문서 트리 관점에서 생각하면, 요소 노드와 콘텐츠 노드 (DOM <a href="#DOM-LEVEL-3-CORE"
+   rel=biblioentry>[DOM-LEVEL-3-CORE]<!--{{DOM-LEVEL-3-CORE}}--></a> 텍스트 노트,
+   CDATA 노드, 엔티티 참조 같은)가 0이 아닌 길이의 정보를 가진 경우,
+   이는 요소가 비어있는 지 확인하는데 영향을 주는 것으로써 처리해야만 합니다.
+   주석, 처리 명령, 그 외 노드는 요소가 공백인지 확인하는데 영향을 주지 않습니다.
+  <p lang=en>The <code>:empty</code> pseudo-class represents an element that has no
    children at all. In terms of the document tree, only element nodes and
    content nodes (such as DOM <a href="#DOM-LEVEL-3-CORE"
    rel=biblioentry>[DOM-LEVEL-3-CORE]<!--{{DOM-LEVEL-3-CORE}}--></a> text
@@ -2642,15 +2718,19 @@ a:first-child /* Same (assuming a is not the root element) */</pre>
    considered empty or not.
 
   <div class=example>
-   <p>Examples:</p>
+   <p>예제:</p>
 
-   <p><code>p:empty</code> is a valid representation of the following
-    fragment:</p>
+   <p>
+    아래 코드에서 <code>p:empty</code>는 유효합니다.
+    <span lang=en><code>p:empty</code> is a valid representation of the following
+    fragment:</span></p>
 
    <pre>&lt;p&gt;&lt;/p&gt;</pre>
 
-   <p><code>foo:empty</code> is not a valid representation for the following
-    fragments:</p>
+   <p>
+    아래 코드에서 <code>foo:empry</code>는 유효하지 않습니다.
+    <span lang=en><code>foo:empty</code> is not a valid representation for the following
+    fragments:</span></p>
 
    <pre>&lt;foo&gt;bar&lt;/foo&gt;</pre>
 
@@ -2659,71 +2739,94 @@ a:first-child /* Same (assuming a is not the root element) */</pre>
    <pre>&lt;foo&gt;this is not &lt;bar&gt;:empty&lt;/bar&gt;&lt;/foo&gt;</pre>
   </div>
 
-  <h4 id=content-selectors><span class=secno>6.6.6. </span>Blank</h4>
+  <h4 id=content-selectors><span class=secno>6.6.6. </span>공백</h4>
   <!-- It's the Return of Appendix H!!! Run away! -->
-
-  <p>This section intentionally left blank. (This section previously defined
+  <p lang=ko>이 섹션은 의도적으로 비어있습니다. 
+    (이 섹션에는 원래 <code>:contains()</code> 의사 클래스가 정의되어 있었습니다)
+  <p lang=en>This section intentionally left blank. (This section previously defined
    a <code>:contains()</code> pseudo-class.)</p>
   <!-- (used to be :contains()) -->
 
-  <h4 id=negation><span class=secno>6.6.7. </span>The negation pseudo-class</h4>
+  <h4 id=negation><span class=secno>6.6.7. </span>부정 의사 클래스</h4>
 
-  <p>The negation pseudo-class, <code>:not(<var>X</var>)</code>, is a
+  <p lang=ko>부정 의사 클래스, <code>:not(<var>X</var>)</code>은 함수 표기식이며,
+  (부정 의사 클래스 본인을 제외한) <a href="#simple-selectors-dfn">심플 셀렉터</a>를 인수로 가집니다.
+  부정 의사 클래스는 인수 내 요소에서 표현하지 않는 요소를 나타냅니다.
+  
+  <p lang=en>The negation pseudo-class, <code>:not(<var>X</var>)</code>, is a
    functional notation taking a <a href="#simple-selectors-dfn">simple
    selector</a> (excluding the negation pseudo-class itself) as an argument.
    It represents an element that is not represented by its argument.
 
-  <p>Negations may not be nested; <code>:not(:not(...))</code> is invalid.
+  <p lang=ko>부정 의사 클래스는 포함할 수 없습니다. <code>:not(:not(...))</code>은 유효하지 않습니다.
+    또 의사 요소는 심플 셀렉터가 아니기 때문에, <code>:not()</code>에 넣을 수 있는 유효한 인수가 아닙니다.
+  <p lang=en>Negations may not be nested; <code>:not(:not(...))</code> is invalid.
    Note also that since pseudo-elements are not simple selectors, they are
    not a valid argument to <code>:not()</code>.
 
   <div class=example>
-   <p>Examples:</p>
+   <p>예제:</p>
 
-   <p>The following selector matches all <code>button</code> elements in an
-    HTML document that are not disabled.</p>
+   <p>
+    아래 셀렉터는 HTML 문서 내 <code>button</code> 중, 사용 불가능하지 않은(즉 사용 가능한) 것 모두에 매치합니다.
+    <span lang=en>The following selector matches all <code>button</code> elements in an
+    HTML document that are not disabled.</span></p>
 
    <pre>button:not([DISABLED])</pre>
 
-   <p>The following selector represents all but <code>FOO</code> elements.</p>
+   <p>
+     아래 셀렉터는 <code>FOO</code> 요소를 제외한 모든 요소를 나타냅니다.
+     <span lang=en>The following selector represents all but <code>FOO</code> elements.</span></p>
 
    <pre>*:not(FOO)</pre>
 
-   <p>The following group of selectors represents all HTML elements except
-    links.</p>
+   <p>
+    아래 셀렉터는, 링크가 아닌 모든 HTML 요소를 나타냅니다.
+    <span lang=en>The following group of selectors represents all HTML elements except links.</span></p>
 
    <pre>html|*:not(:link):not(:visited)</pre>
   </div>
-
-  <p>Default namespace declarations do not affect the argument of the
+  <p lang=ko>기본 네임스페이스 선언은, 부정 의사 클래스의 인수에 영향을 주지 않습니다.
+    그러나, 인수가 전역 셀렉터 혹은 타입 셀렉터인 경우를 제외합니다.
+  <p lang=en>Default namespace declarations do not affect the argument of the
    negation pseudo-class unless the argument is a universal selector or a
    type selector.
 
   <div class=example>
-   <p>Examples:</p>
+   <p>예제:</p>
 
-   <p>Assuming that the default namespace is bound to "http://example.com/",
+   <p>
+    기본 네임스페이스가 "http://example.com"이라고 했을 때,
+    아래 셀렉터는 그 네임스페이스에 속하지 않은 모든 요소를 나타냅니다. 
+    <span lang=en>Assuming that the default namespace is bound to "http://example.com/",
     the following selector represents all elements that are not in that
-    namespace:</p>
+    namespace:</span></p>
 
    <pre>*|*:not(*)</pre>
 
-   <p>The following selector matches any element that is not being hovered,
+   <p>
+    아래 셀렉터는 네임스페이스를 묻지 않고, 호버 상태가 아닌 요소 모두에 매치합니다.
+    이는 기본 네임스페이스에 속하며,  호버 상태가 아닌 요소에 한정하지 않습니다.
+    여기에 더해, 기본 네임스페이스에 속하지 않는 요소가 호버 상태인 경우, 그 요소는 매치하지 않습니다.
+    <span lang=en>The following selector matches any element that is not being hovered,
     regardless of its namespace. In particular, it is not limited to only
     matching elements in the default namespace that are not being hovered,
     and elements not in the default namespace don't match the rule when they
-    <em>are</em> being hovered.</p>
+    <em>are</em> being hovered.</span></p>
 
    <pre>*|*:not(:hover)</pre>
   </div>
-
-  <p class=note><strong>Note</strong>: the :not() pseudo allows useless
+  
+  <p class=note><strong>노트</strong>: not() 의사 클래스를 사용해서 의미 없는 셀렉터를 작성할 수 있습니다.
+  예를 들어, <code>:not(*|*)</code> 등의 요소도 나타내지 않습니다.
+  그 외에도, <code>foo:not(bar)</code>같은 셀렉터도 작성할 수 있습니다.
+  이는  <code>foo</code>와 동일하지만, <code>foo</code>보다 더 높은 상세도를 가집니다.
+  <p class=note lang=en><strong>Note</strong>: the :not() pseudo allows useless
    selectors to be written. For instance <code>:not(*|*)</code>, which
    represents no element at all, or <code>foo:not(bar)</code>, which is
    equivalent to <code>foo</code> but with a higher specificity.
 
-  <h2 id=pseudo-elements><span class=secno>7. </span>Pseudo-elements</h2>
-
+  <h2 id=pseudo-elements><span class=secno>7. </span>의사 요소</h2>
   <p>Pseudo-elements create abstractions about the document tree beyond those
    specified by the document language. For instance, document languages do
    not offer mechanisms to access the first letter or first line of an
