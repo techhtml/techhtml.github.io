@@ -1779,7 +1779,13 @@ EXAMPLE[radix=octal]   { /*... other settings...*/ }</pre>
     but does not match for <code>class="pastoral blue"</code>.</span></p>
   </div>
 
-  <p class=note><strong>Note:</strong> Because CSS gives considerable power
+  <p class=note lang=ko><strong>노트:</strong>
+   CSS에 "class" 속성을 주는 게 큰 파워를 가지기 때문에,
+   작성자는 (HTML의 <code>DIV</code>나 <code>SPAN</code>같은) 기본 표현을 거의 가지지 않은
+   요소에 "class" 속성으로 스타일 정보를 주어 자신의 "문서 언어"를 설계할 수 있습니다.
+   그러나 작성자는 문서 언어의 구조화 요소 의미와 의도를 이해하기 위해 이러한 사용을 피하길 바라며,
+   문서 요소는 작성자가 정의한 클래스를 이해하지 못할 것입니다.
+  <p class=note lang=en><strong>Note:</strong> Because CSS gives considerable power
    to the "class" attribute, authors could conceivably design their own
    "document language" based on elements with almost no associated
    presentation (such as <code>DIV</code> and <code>SPAN</code> in HTML) and
@@ -1787,56 +1793,84 @@ EXAMPLE[radix=octal]   { /*... other settings...*/ }</pre>
    avoid this practice since the structural elements of a document language
    often have recognized and accepted meanings and author-defined classes may
    not.
-
-  <p class=note><strong>Note:</strong> If an element has multiple class
+  <p class=note lang=ko><strong>노트:</strong> 요소가 복수의 class 속성을 가지고 있는 경우,
+    각각의 값은 클래스를 검색하기 전에 공백문자로 결합되어있어야 합니다.
+    그러나 현 시점에서 CSS 워킹 그룹은 그런 사태를 상정한 상황을 인식하고 있지 않기 때문에,
+    이 동작은 표준에 준하는 내용은 아닙니다.
+  <p class=note lang=en><strong>Note:</strong> If an element has multiple class
    attributes, their values must be concatenated with spaces between the
    values before searching for the class. As of this time the working group
    is not aware of any manner in which this situation can be reached,
    however, so this behavior is explicitly non-normative in this
    specification.
 
-  <h3 id=id-selectors><span class=secno>6.5. </span>ID selectors</h3>
-
-  <p>Document languages may contain attributes that are declared to be of
+  <h3 id=id-selectors><span class=secno>6.5. </span>ID 셀렉터</h3>
+  <p lang=ko>문서 언어는 ID 타입으로 선언된 속성을 가질 수 있습니다.
+    ID 타입 속성이 특별한 이유는 결합된 문서에서 속성이 주어지는 요소의 타입을 묻지 않고,
+    같은 값을 가진 속성이 두개 존재할 수 없기 때문입니다.
+    
+    문서 언어가 무엇이던, ID 타입 속성은 요소를 유니크하게 만들 때 사용합니다.
+    HTML 언어에 있어 ID 타입 속성은 모든 "id"라는 이름을 가집니다.
+    XML 언어에서는 ID 타입 속성이 다른 이름을 가질 수 있지만, ID 타입 속성의 성질은 다르지 않습니다.
+  <p lang=en>Document languages may contain attributes that are declared to be of
    type ID. What makes attributes of type ID special is that no two such
    attributes can have the same value in a conformant document, regardless of
    the type of the elements that carry them; whatever the document language,
    an ID typed attribute can be used to uniquely identify its element. In
    HTML all ID attributes are named "id"; XML applications may name ID
    attributes differently, but the same restriction applies.
-
-  <p>An ID-typed attribute of a document language allows authors to assign an
+  <p lang=ko>문서 언어의 ID 타입 속성은 문서 트리 내 하나의 요소 인스턴스 식별자로 주어집니다.
+    ID 셀렉터는 "해쉬" (U+0023, <code>#</code>) 직후에 ID 타입 속성 값을 적어 표기합니다.
+    값은 CSS<a href="http://www.w3.org/TR/CSS21/syndata.html#value-def-identifier">식별자</a>여야 합니다. ID 셀렉터는 셀렉터 내 식별자에 매치하는 식별자를 가진 요소를 나타냅니다.
+  <p lang=en>An ID-typed attribute of a document language allows authors to assign an
    identifier to one element instance in the document tree. An ID selector
    contains a &quot;number sign&quot; (U+0023, <code>#</code>) immediately
    followed by the ID value, which must be an CSS <a
    href="http://www.w3.org/TR/CSS21/syndata.html#value-def-identifier">identifiers</a>.
    An ID selector represents an element instance that has an identifier that
    matches the identifier in the ID selector.
-
-  <p>Selectors does not specify how a UA knows the ID-typed attribute of an
+  <p lang=ko>
+    셀렉터 스펙은 UA가 어떻게 요소 내의 ID 타입 속성을 아는지 정의하지 않습니다.
+    UA가 문서의 DTD를 읽고, ID 타입 속성의 정보를 UA에 결합하여, 유저에게 물어보는 정도로 예상됩니다.
+  <p lang=en>Selectors does not specify how a UA knows the ID-typed attribute of an
    element. The UA may, e.g., read a document's DTD, have the information
    hard-coded or ask the user.
 
   <div class=example>
-   <p>Examples:</p>
+   <p>예제:</p>
 
-   <p>The following ID selector represents an <code>h1</code> element whose
-    ID-typed attribute has the value "chapter1":</p>
+   <p>
+    다음 ID 셀렉터는 ID 타입 속성 값으로 "chapter1"을 가지는 <code>h1</code> 요소를 나타냅니다.
+    <span lang=en>The following ID selector represents an <code>h1</code> element whose
+    ID-typed attribute has the value "chapter1":</span></p>
 
    <pre>h1#chapter1</pre>
 
-   <p>The following ID selector represents any element whose ID-typed
-    attribute has the value "chapter1":</p>
+   <p>
+    다음 ID 셀렉터는 ID 타입 속성 값으로 "chapter1"을 가지는 모든 요소를 나타냅니다. 
+    <span lang=en>The following ID selector represents any element whose ID-typed
+    attribute has the value "chapter1":</span></p>
 
    <pre>#chapter1</pre>
 
-   <p>The following selector represents any element whose ID-typed attribute
-    has the value "z98y".</p>
+   <p>
+    다음 셀렉터는 ID 타입 속성 값으로 "z98y"를 가지는 모든 요소를 나타냅니다. 
+    <span lang=en>The following selector represents any element whose ID-typed attribute
+    has the value "z98y".</span></p>
 
    <pre>*#z98y</pre>
   </div>
 
-  <p class=note><strong>Note:</strong> In XML 1.0 <a href="#XML10"
+  <p class=note lang=ko><strong>노트:</strong> XML 1.0 <a href="#XML10"
+   rel=biblioentry>[XML10]<!--{{XML10}}--></a>에서, 어떤 속성이 요소의 ID인지
+   나타내는 정보는 DTD 혹은 스키마 언어에 있다고 간주어집니다.
+   UA는 XML을 해석할 때 항상 DTD를 읽어들이는 게 아니므로, 요소의 ID가 무엇인지 모를 가능성도 있습니다.
+   (그러나 UA가 네임스페이스 고유 처리를 가지고, 그 네임스페이스에서 어떤 속성이 ID 속성인지 알릴 가능성도 있습니다)
+   그 UA가 요소의 ID를 모른다면, 스타일시트의 작성자가 알고있는, 혹은 추측 가능한 경우,
+   ID 셀렉터가 아닌 속성 셀렉터를 사용해야 합니다.
+   즉 <code>#p371</code> 대신에 <code>[name=p371]</code>를 사용합니다.
+    
+  <p class=note lang=en><strong>Note:</strong> In XML 1.0 <a href="#XML10"
    rel=biblioentry>[XML10]<!--{{XML10}}--></a>, the information about which
    attribute contains an element's IDs is contained in a DTD or a schema.
    When parsing XML, UAs do not always read the DTD, and thus may not know
@@ -1845,23 +1879,32 @@ EXAMPLE[radix=octal]   { /*... other settings...*/ }</pre>
    for that namespace). If a style sheet author knows or suspects that a UA
    may not know what the ID of an element is, he should use normal attribute
    selectors instead: <code>[name=p371]</code> instead of <code>#p371</code>.
-
-  <p>If an element has multiple ID attributes, all of them must be treated as
+  <p lang=ko>만약 요소가 여러개의 ID 속성을 가지고 있는 경우 모든 값을 그 요소의 ID로 취급하여, ID 셀렉터 처리대상으로 인식해야 합니다. 이는 xml:id, DOM3 Core, XML DTD, 네임스페이스 고유 처리가 엮일 때 발생할 가능성이 있습니다.
+  <p lang=en>If an element has multiple ID attributes, all of them must be treated as
    IDs for that element for the purposes of the ID selector. Such a situation
    could be reached using mixtures of xml:id, DOM3 Core, XML DTDs, and
    namespace-specific knowledge.
 
-  <h3 id=pseudo-classes><span class=secno>6.6. </span>Pseudo-classes</h3>
-
-  <p>The pseudo-class concept is introduced to permit selection based on
+  <h3 id=pseudo-classes><span class=secno>6.6. </span>의사 클래스</h3>
+  
+  <p lang=ko>
+   의사 클래스는 문서 트리 범위에 포함하지 않는 정보나, 심플 셀렉터로는 표현 불가능한 것을
+   선택 가능하도록 도입한 컨셉입니다.
+  <p lang=en>The pseudo-class concept is introduced to permit selection based on
    information that lies outside of the document tree or that cannot be
    expressed using the other simple selectors.
-
-  <p>A pseudo-class always consists of a &quot;colon&quot; (<code>:</code>)
+  <p lang=ko>의사 클래스는 항상 &quot;콜론&quot; (<code>:</code>)으로 시작하며,
+    그 이후에 의사 클래스 명을 입력해 표시하며, 선택적으로 괄호를 이용해 값을 가지는 것도 있습니다.
+  <p lang=en>A pseudo-class always consists of a &quot;colon&quot; (<code>:</code>)
    followed by the name of the pseudo-class and optionally by a value between
    parentheses.
-
-  <p>Pseudo-classes are allowed in all sequences of simple selectors
+  <p lang=ko>
+    의사 클래스는 셀렉터가 포함하는 모든 심플 셀렉터 시퀀스를 허용합니다. 의사 클래스는
+    의사 클래스는 타입 셀렉터나 (생략 가능한)전역 셀렉터를 읽어들인 뒤 심플 셀렉터 시퀀스 내 모든 곳에 허용합니다.
+    의사 클래스 이름은 대소문자를 구분하지 않습니다.
+    몇몇 의사 클래스는 상호 배타적이며, 같은 요소에 동시에 사용하는 건 가능합니다.
+    의사 클래스는 동적일 수 있으며, 유저와 문서간 인터렉션에 반응해서 의사 클래스가 잡히거나 사라질 수 있습니다.
+  <p lang=en>Pseudo-classes are allowed in all sequences of simple selectors
    contained in a selector. Pseudo-classes are allowed anywhere in sequences
    of simple selectors, after the leading type selector or universal selector
    (possibly omitted). Pseudo-class names are case-insensitive. Some
@@ -1870,50 +1913,65 @@ EXAMPLE[radix=octal]   { /*... other settings...*/ }</pre>
    sense that an element may acquire or lose a pseudo-class while a user
    interacts with the document.
 
-  <h4 id=dynamic-pseudos><span class=secno>6.6.1. </span>Dynamic
-   pseudo-classes</h4>
+  <h4 id=dynamic-pseudos><span class=secno>6.6.1. </span>동적 의사 클래스</h4>
 
-  <p>Dynamic pseudo-classes classify elements on characteristics other than
+  <p lang=ko>
+    동적 의사 클래스는 요소명, 속성, 내용을 제외한 문서 트리에서 추론할 수 없는 성질에서
+    요소를 분류하는 것입니다.
+  <p lang=en>Dynamic pseudo-classes classify elements on characteristics other than
    their name, attributes, or content, in principle characteristics that
    cannot be deduced from the document tree.
-
-  <p>Dynamic pseudo-classes do not appear in the document source or document
+  <p lang=ko>동적 의사 클래스는 문서 트리나 문서 소스에는 나타나지 않습니다.
+  <p lang=en>Dynamic pseudo-classes do not appear in the document source or document
    tree.
 
   <h5 id=the-link-pseudo-classes-link-and-visited><span class=secno>6.6.1.1.
-   </span>The <a name=link>link pseudo-classes: :link and :visited</a></h5>
-
-  <p>User agents commonly display unvisited links differently from previously
+   </span><a name=link>링크 의사 클래스: :link와 :visited</a></h5>
+  <p lang=ko>
+    보통 유저 에이전트는 이미 방문한 링크와 그렇지 않은 링크를 구분해서 보여줍니다.
+    셀렉터에서는 이 구분을 위한 <code>:link</code>와 <code>:visited</code> 의사 클래스를 제공합니다.
+  <p lang=en>User agents commonly display unvisited links differently from previously
    visited ones. Selectors provides the pseudo-classes <code>:link</code> and
    <code>:visited</code> to distinguish them:
 
   <ul>
-   <li>The <code>:link</code> pseudo-class applies to links that have not yet
-    been visited.
+   <li>
+     <code>:link</code> 의사 클래스는 아직 방문하지 않은 링크에 적용합니다.
+     <div lang=en>The <code>:link</code> pseudo-class applies to links that have not yet
+     been visited.</div>
 
-   <li>The <code>:visited</code> pseudo-class applies once the link has been
-    visited by the user.
+   <li>
+     <code>:visited</code> 의사 클래스는 유저가 이미 방문한 링크에 적용합니다.
+     <div lang=en>The <code>:visited</code> pseudo-class applies once the link has been
+     visited by the user.</div>
   </ul>
-
-  <p>After some amount of time, user agents may choose to return a visited
+  <p lang=ko>일정 시간이 지나면, UA는 이미 방문한 링크를 
+    (방문하지 않은 링크인) &lsquo;<code class=css>:link</code>&rsquo; 상태로 변환합니다.
+  <p lang=en>After some amount of time, user agents may choose to return a visited
    link to the (unvisited) &lsquo;<code class=css>:link</code>&rsquo; state.
 
-  <p>The two states are mutually exclusive.
+  <p lang=ko>이 두 상태는 상호 배타적입니다.
+  <p lang=en>The two states are mutually exclusive.
 
   <div class=example>
-   <p>Example:</p>
+   <p>예제:</p>
 
-   <p>The following selector represents links carrying class
-    <code>external</code> and already visited:</p>
+   <p>
+    아래 셀렉터는 <code>external</code> 클래스를 가지며 이미 방문한 링크를 나타냅니다.
+    <span lang=en>The following selector represents links carrying class
+    <code>external</code> and already visited:</span></p>
 
    <pre>a.external:visited</pre>
   </div>
-
-  <p class=note><strong>Note:</strong> It is possible for style sheet authors
+  <p class=note lang=ko><strong>노트:</strong> 
+    스타일시트 작성자가 :link, :visited 의사 클래스를 악용하여,
+    유저가 어떤 사이트에 접속했는지 유저의 허락 없이 확인할 수 있습니다.
+  <p class=note lang=en><strong>Note:</strong> It is possible for style sheet authors
    to abuse the :link and :visited pseudo-classes to determine which sites a
    user has visited without the user's consent.
-
-  <p>UAs may therefore treat all links as unvisited links, or implement other
+  <p lang=ko>따라서 UA는 모든 링크를 방문하지 않음으로 인식하거나,
+    각각의 링크를 표시할 때 유저의 프라이버시를 배려한 방법을 구현하는 등의 조치를 취할 수 있습니다.
+  <p lang=en>UAs may therefore treat all links as unvisited links, or implement other
    measures to preserve the user's privacy while rendering visited and
    unvisited links differently.
 
