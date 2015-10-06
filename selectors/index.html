@@ -2827,7 +2827,12 @@ a:first-child /* Same (assuming a is not the root element) */</pre>
    equivalent to <code>foo</code> but with a higher specificity.
 
   <h2 id=pseudo-elements><span class=secno>7. </span>의사 요소</h2>
-  <p>Pseudo-elements create abstractions about the document tree beyond those
+  <p lang=ko>의사 요소는 문서 언어에 의해 정의된 문서 트리에 추상적인 요소를 생성합니다.
+    예를 들어, 문서 언어는 요소 내용의 첫번째 문자나 첫번째 행에 접근하는 수단을 제공하지 않습니다.
+    의사 요소에 의해 본래 접근 불가능한 정보를 다루는 게 가능합니다.
+    의사 요소는 원래 문서에 존재하지 않는 내용을 참조하는 방법도 제공합니다.
+    (예: <code>::before</code>, <code>::after</code> 의사 요소는 생성된 콘텐츠에 접근할 수 있게 합니다)
+  <p lang=en>Pseudo-elements create abstractions about the document tree beyond those
    specified by the document language. For instance, document languages do
    not offer mechanisms to access the first letter or first line of an
    element's content. Pseudo-elements allow authors to refer to this
@@ -2835,11 +2840,14 @@ a:first-child /* Same (assuming a is not the root element) */</pre>
    authors a way to refer to content that does not exist in the source
    document (e.g., the <code>::before</code> and <code>::after</code>
    pseudo-elements give access to generated content).
-
-  <p>A pseudo-element is made of two colons (<code>::</code>) followed by the
+  <p lang=ko>의사 요소는 의사 요소명 앞에 두개의 콜론 (<code>::</code>)을 작성해 생성합니다.
+  <p lang=en>A pseudo-element is made of two colons (<code>::</code>) followed by the
    name of the pseudo-element.
-
-  <p>This <code>::</code> notation is introduced by the current document in
+  <p lang=ko><code>::</code> 표기법은 의사 클래스와 의사 요소를 구별하기 위해, 셀렉터 레벨 3에서 도입했습니다.
+  현재 스타일시트와 호환하기 위해, UA는 CSS1, CSS2에서 도입된 콜론 1개 표기법으로 표현하는 의사 요소(<code>:first-line</code>,
+  <code>:first-letter</code>, <code>:before</code>, <code>:after</code>)도 지원해야만 합니다.
+   이 호환방안은 레벨 3에서 도입된 새로운 클래스에는 적용되지 않습니다.
+  <p lang=en>This <code>::</code> notation is introduced by the current document in
    order to establish a discrimination between pseudo-classes and
    pseudo-elements. For compatibility with existing style sheets, user agents
    must also accept the previous one-colon notation for pseudo-elements
@@ -2847,33 +2855,35 @@ a:first-child /* Same (assuming a is not the root element) */</pre>
    <code>:first-letter</code>, <code>:before</code> and <code>:after</code>).
    This compatibility is not allowed for the new pseudo-elements introduced
    in this specification.
-
-  <p>Only one pseudo-element may appear per selector, and if present it must
+  <p lang=ko>의사 요소는 셀렉터당 1개만 사용 가능합니다.
+  셀렉터에 의사 요소가 있는 경우, 셀렉터의 <a href="#subject">대상</a>을 나타내는 심플 셀렉터 시퀀스 뒤에 나타나야만 합니다.
+  <span class=note><strong>노트:</strong> 미래 버전의 셀렉터 스펙에서 셀렉터당 의사 요소를 여러개 허용할 가능성이 있습니다</span>
+  <p lang=en>Only one pseudo-element may appear per selector, and if present it must
    appear after the sequence of simple selectors that represents the <a
    href="#subject">subjects</a> of the selector. <span
    class=note><strong>Note:</strong> A future version of this specification
    may allow multiple pseudo-elements per selector.</span>
 
-  <h3 id=first-line><span class=secno>7.1. </span>The ::first-line
-   pseudo-element</h3>
-
-  <p>The <code>::first-line</code> pseudo-element describes the contents of
+  <h3 id=first-line><span class=secno>7.1. </span>::first-line 의사 요소</h3>
+  <p lang=ko><code>::first-list</code> 의사 요소는 요소의 첫번째 줄 콘텐츠를 나타냅니다.
+  <p lang=en>The <code>::first-line</code> pseudo-element describes the contents of
    the first formatted line of an element.
 
   <div class=example>
-   <p>CSS example:</p>
+   <p>CSS 예제:</p>
 
    <pre>p::first-line { text-transform: uppercase }</pre>
-
-   <p>The above rule means "change the letters of the first line of every
-    <code>p</code> element to uppercase".</p>
-
-   <p>The selector <code>p::first-line</code> does not match any real
+   <p lang=ko>위 규칙은 "모든 <code>p</code> 요소에서, 첫번째 줄을 대문자로 표기하라"는 의미를 가집니다.
+   <p lang=en>The above rule means "change the letters of the first line of every <code>p</code> element to uppercase".</p>
+   <p lang=ko><code>p::first-line</code> 셀렉터는 실존하는 문서 요소에 매치하지 않습니다.
+   이 셀렉터는, 적합 UA가 모든 <code>p</code> 요소의 시작 부분에 넣는 의사 요소에 매치합니다.
+   <p lang=en>The selector <code>p::first-line</code> does not match any real
     document element. It does match a pseudo-element that conforming user
     agents will insert at the beginning of every <code>p</code> element.</p>
   </div>
-
-  <p>Note that the length of the first line depends on a number of factors,
+  <p lang=ko>첫번째 줄의 길이는, 페이지 폭, 폰트 사이즈 등 여러 조건에 의존합니다.
+    아래와 같은 HTML 문장을 생각해봅시다:
+  <p lang=en>Note that the length of the first line depends on a number of factors,
    including the width of the page, the font size, etc. Thus, an ordinary
    HTML paragraph such as:
 
@@ -2885,8 +2895,8 @@ by a fictional tag sequence. The other lines
 will be treated as ordinary lines in the 
 paragraph.&lt;/P&gt;
 </pre>
-
-  <p>the lines of which happen to be broken as follows:
+  <p lang=ko>이 문장이 아래와 같이 행이 나뉘어 표시되었다고 생각합시다:
+  <p lang=en>the lines of which happen to be broken as follows:
 
   <pre>
 THIS IS A SOMEWHAT LONG HTML PARAGRAPH THAT
@@ -2895,8 +2905,9 @@ line will be identified by a fictional tag
 sequence. The other lines will be treated as 
 ordinary lines in the paragraph.
 </pre>
-
-  <p>This paragraph might be "rewritten" by user agents to include the
+  <p lang=ko>이 문장은 UA에 의해, <code>::first-line</code>의 <em>가상 태그 시퀀스</em>를 포함하도록 "재작성" 될 수 있습니다.
+    이 가상 태그 시퀀스는 어떻게 속성이 상속되어야 하는지 알기 쉽게 합니다.
+  <p lang=en>This paragraph might be "rewritten" by user agents to include the
    <em>fictional tag sequence</em> for <code>::first-line</code>. This
    fictional tag sequence helps to show how properties are inherited.
 
@@ -2908,8 +2919,11 @@ by a fictional tag sequence. The other lines
 will be treated as ordinary lines in the 
 paragraph.&lt;/P&gt;
 </pre>
-
-  <p>If a pseudo-element breaks up a real element, the desired effect can
+  <p lang=ko>
+    가상 요소가 실제로 존재하는 요소에 의해 분해되는 경우 상정 가능한 결과는,
+    가상 태그 시퀀스로 인해 그 요소가 다히며, 직후에 다시 여는 형태를 생각할 수 있습니다.
+    첫번째 문장이 <code>span</code> 요소로 마크업 된 상황을 생각해봅시다:
+  <p lang=en>If a pseudo-element breaks up a real element, the desired effect can
    often be described by a fictional tag sequence that closes and then
    re-opens the element. Thus, if we mark up the previous paragraph with a
    <code>span</code> element:
@@ -2923,7 +2937,10 @@ will be treated as ordinary lines in the
 paragraph.&lt;/P&gt;
 </pre>
 
-  <p>the user agent could simulate start and end tags for <code>span</code>
+  <p lang=ko>유저 에이전트는 <code>::first-line</code>으로 인한 가상 태그 시퀀스를 넣을 때,
+  <code>span</code>의 시작 태그와 종료 태그를 아래와 같이 넣을 거라 생각할 수 있습니다.
+  <p>
+   the user agent could simulate start and end tags for <code>span</code>
    when inserting the fictional tag sequence for <code>::first-line</code>.
 
   <pre>
@@ -2937,33 +2954,44 @@ will be treated as ordinary lines in the
 paragraph.&lt;/P&gt;
 </pre>
 
-  <h4 id=first-formatted-line><span class=secno>7.1.1. </span><dfn
-   id=first-formatted-line0>First formatted line</dfn> definition in CSS</h4>
-
-  <p>In CSS, the <code>::first-line</code> pseudo-element can only have an
+  <h4 id=first-formatted-line><span class=secno>7.1.1. </span>CSS에서 정의된 <dfn id=first-formatted-line0>첫번째 형태를 가진 행</dfn></h4>
+  <p lang=ko>CSS에서, <code>::first-line</code> 의사 요소는 block box, inline-block, table-caption, table-cell 같은 블럭류 컨테이너에서만 기능합니다.
+  <p lang=en>In CSS, the <code>::first-line</code> pseudo-element can only have an
    effect when attached to a block-like container such as a block box,
    inline-block, table-caption, or table-cell.
-
-  <p>The first formatted line of an element may occur inside a block-level
+  <p lang=ko>요소의 첫번째 형태를 가진 행은, 같은 플로우 안의 자손 블 (position이나 float에 의해 통상 flow에서 벗어난 블록이 아닌 것)에 의존할 수도 있습니다.
+    예를 들어, <code>&lt;DIV&gt;&lt;P&gt;This line...&lt;/P&gt;&lt;/DIV&gt;</code>라는 마크업에서 <code>DIV</code>의 첫번째 행은,
+    <code>p</code>의 첫번째 행이 됩니다. (<code>P</code>와 <code>DIV</code> 양쪽 다 블록이라고 했을 때)
+  <p lang=en>The first formatted line of an element may occur inside a block-level
    descendant in the same flow (i.e., a block-level descendant that is not
    out-of-flow due to floating or positioning). For example, the first line
    of the <code>DIV</code> in <code>&lt;DIV>&lt;P>This
    line...&lt;/P>&lt/DIV></code> is the first line of the <code>P</code>
    (assuming that both <code>P</code> and <code>DIV</code> are block-level).
-
-  <p>The first line of a table-cell or inline-block cannot be the first
+  <p lang=ko>table-cell이나 inline-block의 첫번째 행은,
+    선조 요소의 첫번째 형태를 가진 행이 되지 않습니다.
+    즉, <code>&lt;DIV&gt;&lt;P
+   STYLE="display: inline-block">Hello&lt;BR&gt;Goodbye&lt;/P&gt;
+   etcetera&lt;/DIV&gt;</code> 마크업의 <code>DIV</code>의 형태를 가진 행은 "Hello"가 아닙니다.
+  <p lang=en>The first line of a table-cell or inline-block cannot be the first
    formatted line of an ancestor element. Thus, in <code>&lt;DIV&gt;&lt;P
    STYLE="display: inline-block">Hello&lt;BR&gt;Goodbye&lt;/P&gt;
    etcetera&lt;/DIV&gt;</code> the first formatted line of the <code>DIV
    </code> is not the line "Hello".
-
-  <p class=note><strong>Note:</strong> Note that the first line of the
+  <p class=note lang=ko><strong>노트:</strong> <code>&lt;p&gt&lt;br&gt;First...</code> 마크업에서
+    <code>p</code>의 첫번째 행에는 문자를 포함하지 않습니다(<code>br</code>은 HTML4 기본 스타일이 적용되어있는 것으로 간주어집니다).
+    따라서, "First"라는 단어는 첫번째 형태를 가진 행에 포함하지 않습니다.
+  <p class=note lang=en><strong>Note:</strong> Note that the first line of the
    <code>p</code> in this fragment: <code>&lt;p&gt&lt;br&gt;First...</code>
    doesn't contain any letters (assuming the default style for
    <code>br</code> in HTML 4). The word "First" is not on the first formatted
    line.
-
-  <p>A UA should act as if the fictional start tags of the
+  <p lang=ko>UA는 <code>::first-line</code> 의사 요소에 대해, 가상의 여는 태그가
+  그걸 둘러싼 요소 중 가장 안쪽에 있는 블록 요소 중 중첩되는 것으로 행동해야 합니다.
+  (단 CSS1과 CSS2는 이 상태에 대해 어떤 설명도 하지 않기 때문에,
+   제작자는 이 행동에 의존하지 않아도 됩니다) 예를 들어,
+   아래와 같은 가상 태그 시퀀스가 있습니다.
+  <p lang=en>A UA should act as if the fictional start tags of the
    <code>::first-line</code> pseudo-elements were nested just inside the
    innermost enclosing block-level element. (Since CSS1 and CSS2 were silent
    on this case, authors should not rely on this behavior.) For example, the
@@ -2976,7 +3004,7 @@ paragraph.&lt;/P&gt;
 &lt;/DIV>
 </pre>
 
-  <p>is
+  <p>는
 
   <pre>
 &lt;DIV>
@@ -2985,7 +3013,17 @@ paragraph.&lt;/P&gt;
 &lt;/DIV>
 </pre>
 
-  <p>The <code>::first-line</code> pseudo-element is similar to an
+  <p lang=ko><code>::first-line</code> 의사 요소는 인라인 요소와 비슷하지만, 몇가지 제약이 있습니다.
+   <code>::first-line</code> 가상 요소에는 아래 CSS 속성만 허용합니다:
+   font 속성, color 속성, background 속성, &lsquo;<code
+   class=property>word-spacing</code>&rsquo;, &lsquo;<code
+   class=property>letter-spacing</code>&rsquo;, &lsquo;<code
+   class=property>text-decoration</code>&rsquo;, &lsquo;<code
+   class=property>vertical-align</code>&rsquo;, &lsquo;<code
+   class=property>text-transform</code>&rsquo;, &lsquo;<code
+   class=property>line-height</code>&rsquo;.
+   UA에서 다른 속성을 허용할 수도 있습니다.
+  <p lang=en>The <code>::first-line</code> pseudo-element is similar to an
    inline-level element, but with certain restrictions. The following CSS
    properties apply to a <code>::first-line</code> pseudo-element: font
    properties, color property, background properties, &lsquo;<code
@@ -2997,7 +3035,10 @@ paragraph.&lt;/P&gt;
    class=property>line-height</code>&rsquo;. UAs may apply other properties
    as well.
 
-  <p>During CSS inheritance, the portion of a child element that occurs on
+  <p lang=ko>CSS 상속에 있어, 자식 요소의 일부가 첫번째 행인 경우 <code>::first-line</code> 의사 요소에 적용 가능한 속성만을 <code>::first-line</code> 의사 요소에서 상속받습니다.
+    그 외의 속성에 대해서는, <code>::first-line</code>의 부모 중 의사 요소가 아닌 것에서 상속합니다.
+    첫번째 행이 아닌 자식 요소의 일부는 그 부모에서 상속합니다.
+  <p lang=en>During CSS inheritance, the portion of a child element that occurs on
    the first line only inherits properties applicable to the
    <code>::first-line</code> pseudo-element from the
    <code>::first-line</code> pseudo-element. For all other properties
@@ -3005,16 +3046,22 @@ paragraph.&lt;/P&gt;
    element. (The portion of a child element that does not occur on the first
    line always inherits from the parent of that child.)
 
-  <h3 id=first-letter><span class=secno>7.2. </span>The ::first-letter
-   pseudo-element</h3>
+  <h3 id=first-letter><span class=secno>7.2. </span>::first-letter 의사 요소</h3>
 
-  <p>The <code>::first-letter</code> pseudo-element represents the first
+  <p lang=ko><code>::first-letter</code> 의사 요소는 요소의 첫번째 문자를 나타냅니다.
+    해당 줄에서 요소의 앞에 이미지나 인라인 테이블 등 다른 내용이 있는 경우 매치하지 않습니다.
+    <code>::first-letter</code> 의사 요소는 "initial caps"와 "drop caps" 같이
+    ㅌ자주 사용하는 타이포 그래피 효과를 얻기 위해 사용합니다.
+  <p lang=en>The <code>::first-letter</code> pseudo-element represents the first
    letter of an element, if it is not preceded by any other content (such as
    images or inline tables) on its line. The ::first-letter pseudo-element
    may be used for "initial caps" and "drop caps", which are common
    typographical effects.
 
-  <p>Punctuation (i.e, characters defined in Unicode in the "open" (Ps),
+  <p lang=ko>Unicode에서 "open" (Ps), "close" (Pe), "initial" (Pi), "final" (Pf) and "other" (Po) 클래스에 분류되는 기호가
+    행의 첫번째 문자거나 행의 첫번째 문자 직후에 나오는 경우, 그 또한 <code>::first-letter</code>에 포함하여야 합니다. <a
+   href="#UNICODE" rel=biblioentry>[UNICODE]<!--{{!UNICODE}}--></a>
+  <p lang=en>Punctuation (i.e, characters defined in Unicode in the "open" (Ps),
    "close" (Pe), "initial" (Pi). "final" (Pf) and "other" (Po) punctuation
    classes), that precedes or follows the first letter should be included. <a
    href="#UNICODE" rel=biblioentry>[UNICODE]<!--{{!UNICODE}}--></a>
@@ -3024,7 +3071,9 @@ paragraph.&lt;/P&gt;
     src=first-letter2.png></p>
   </div>
 
-  <p>The <code>::first-letter</code> also applies if the first letter is in
+  <p lang=ko><code>::first-letter</code>는 첫번쨰 글자가 숫자인 경우,
+    예를 들어 "67 million dollares is a lot of money"라는 문장에서 "6"에도 적용됩니다.
+  <p lang=en>The <code>::first-letter</code> also applies if the first letter is in
    fact a digit, e.g., the "6" in "67 million dollars is a lot of money."
 
   <p class=note><strong>Note:</strong> In some cases the
