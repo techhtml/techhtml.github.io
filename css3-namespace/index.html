@@ -2,6 +2,7 @@
   <meta content="text/html; charset=utf-8" http-equiv=Content-Type>
   <title>CSS 네임스페이스 모듈 레벨 3</title>
   <link href=default.css rel=stylesheet type=text/css>
+  <link href=trans.css rel=stylesheet type=text/css>
   <link href=http://www.w3.org/StyleSheets/TR/W3C-REC rel=stylesheet type=text/css>
 </head>
 <body class=h-entry>
@@ -317,7 +318,8 @@ href="#changes">Changes</a> section.
 <p>에 새로운 토큰이 있습니다:
 
 <pre>@{N}{A}{M}{E}{S}{P}{A}{C}{E} {return NAMESPACE_SYM;}</pre>
-<p lang=ko>
+<p lang=ko> 모든 <span class=css data-link-type=maybe title=@namespace>@namespace</span> 규칙은 모든 @charset과 @import 규칙 그리고 무시하지 않는 @규칙과 스타일 시트 안의 룰셋을 따를 필요가 있습니다.
+  CSS 구문으로 설명하자면,
 <p lang=en>	Any <span class=css data-link-type=maybe title=@namespace>@namespace</span> rules must follow all @charset and @import rules
 	and precede all other non-ignored at-rules and style rules in a style sheet.
 	For CSS syntax this adds <code>[ namespace [S|CDO|CDC]* ]*</code>
