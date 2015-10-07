@@ -319,35 +319,42 @@ href="#changes">Changes</a> section.
 
 <pre>@{N}{A}{M}{E}{S}{P}{A}{C}{E} {return NAMESPACE_SYM;}</pre>
 <p lang=ko> 모든 <span class=css data-link-type=maybe title=@namespace>@namespace</span> 규칙은 모든 @charset과 @import 규칙 그리고 무시하지 않는 @규칙과 스타일 시트 안의 룰셋을 따를 필요가 있습니다.
-  CSS 구문으로 설명하자면,
+  CSS 구문에서 이는 <code>stylesheet</code> 문법에서 <code>[ import [S|CDO|CDC]* ]*</code> 바로 뒤에 <code>[ import [S|CDO|CDC]* ]*</code>를 추가합니다.
 <p lang=en>	Any <span class=css data-link-type=maybe title=@namespace>@namespace</span> rules must follow all @charset and @import rules
 	and precede all other non-ignored at-rules and style rules in a style sheet.
 	For CSS syntax this adds <code>[ namespace [S|CDO|CDC]* ]*</code>
 	immediately after <code>[ import [S|CDO|CDC]* ]*</code> in the <code>stylesheet</code> grammar.
-
-<p>	A syntactically invalid <span class=css data-link-type=maybe title=@namespace>@namespace</span> rule
+<p lang=ko>문법상 유효하지 않은 <span class=css data-link-type=maybe title=@namespace>@namespace</span> 규칙(부적절하거나 형태를 준수하지 않은)은 
+  <a href=http://www.w3.org/TR/CSS21/conform.html#ignore>무시</a>해야 합니다. 
+  유효하지 않은 <span class=css data-link-type=maybe title=@namespace>@namespace</span> 규칙을 포함한 CSS <a href=http://www.w3.org/TR/CSS21/conform.html#style-sheet>style sheet</a>는
+  <a href=http://www.w3.org/TR/CSS21/conform.html#valid-style-sheet>유효한 스타일시트</a>가 아닙니다.
+<p lang=en>	A syntactically invalid <span class=css data-link-type=maybe title=@namespace>@namespace</span> rule
 	(whether malformed or misplaced)
 	must be <a href=http://www.w3.org/TR/CSS21/conform.html#ignore>ignored</a>.
 	A CSS <a href=http://www.w3.org/TR/CSS21/conform.html#style-sheet>style sheet</a> containing an invalid <span class=css data-link-type=maybe title=@namespace>@namespace</span> rule
 	is not a <a href=http://www.w3.org/TR/CSS21/conform.html#valid-style-sheet>valid style sheet</a>.
-
-<p>	A URI string parsed from the <code>URI</code> syntax must be treated as a literal string:
+<p lang=ko><code>URI</code> 문법으로 파싱한 URI 문자열은 리터럴 문자열로 취급해야 합니다.
+  이는 <code>STRING</code> 구문과 동일하게 처리하며, URI 고유의 정규화 처리는 일으키지 않는다는 의미입니다.
+<p lang=en>	A URI string parsed from the <code>URI</code> syntax must be treated as a literal string:
 	as with the <code>STRING</code> syntax,
 	no URI-specific normalization is applied.
+<p lang=ko>
+  모든 문자열—<wbr>유효하지 않은 URI를 나타내는 문자열과 빈 문자열을 포함한</wbr>은 
+  <span class=css data-link-type=maybe title=@namespace>@namespace</span> 선언 내 유효한 네임스페이스명이어야 합니다.
+<p lang=en>	All strings—<wbr>including the empty string and strings representing invalid URIs—<wbr>are valid namespace names in <span class=css data-link-type=maybe title=@namespace>@namespace</span> declarations.
 
-<p>	All strings—<wbr>including the empty string and strings representing invalid URIs—<wbr>are valid namespace names in <span class=css data-link-type=maybe title=@namespace>@namespace</span> declarations.
+<h3 class="heading settled heading" data-level=3.2 id=scope><span class=secno>3.2 </span><span class=content>스코프</span><a class=self-link href=#scope></a></h3>
 
-<h3 class="heading settled heading" data-level=3.2 id=scope><span class=secno>3.2 </span><span class=content>
-Scope</span><a class=self-link href=#scope></a></h3>
-
-<p>	The namespace prefix is declared only within the style sheet in which its
+<p lang=ko>네임스페이스 접두사는, <span class=css data-link-type=maybe title=@namespace>@namespace</span> 규칙이 작성되어 있는 스타일 시트에서만 선언 가능합니다.
+  즉 <span class=css data-link-type=maybe title=@namespace>@namespace</span> 규칙이 있는 스타일시트가 임포트한 스타일시트,
+  <span class=css data-link-type=maybe title=@namespace>@namespace</span> 규칙이 있는 스타일시트를 임포트한 스타일시트,
+  같은 문서에 적용하는 다른 스타일시트에서, 접두사는 선언되어있지 않는 것으로 인식합니다.
+<p lang=en>The namespace prefix is declared only within the style sheet in which its
 	<span class=css data-link-type=maybe title=@namespace>@namespace</span> rule appears. It is not declared in any style sheets
 	importing or imported by that style sheet, nor in any other style sheets
 	applying to the document.
 
-<h3 class="heading settled heading" data-level=3.3 id=prefixes><span class=secno>3.3 </span><span class=content>
-Declaring Prefixes</span><a class=self-link href=#prefixes></a></h3>
-
+<h3 class="heading settled heading" data-level=3.3 id=prefixes><span class=secno>3.3 </span><span class=content>접두사 선언</span><a class=self-link href=#prefixes></a></h3>
 <p>	A <dfn data-dfn-type=dfn data-export="" id=namespace-prefix>namespace prefix<a class=self-link href=#namespace-prefix></a></dfn>, once declared,
 	represents the namespace for which it was declared
 	and can be used to indicate the namespace of a namespace-qualified name.
