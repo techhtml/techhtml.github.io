@@ -211,218 +211,192 @@
   <!--begin-toc-->
 
   <ul class=toc>
-   <li><a href="#context"><span class=secno>1. </span>Introduction</a>
+   <li><a href="#context"><span class=secno>1. </span>소개</a>
     <ul class=toc>
-     <li><a href="#dependencies"><span class=secno>1.1.
-      </span>Dependencies</a>
+     <li><a href="#dependencies"><span class=secno>1.1.</span>의존성</a>
 
-     <li><a href="#terminology"><span class=secno>1.2. </span>Terminology</a>
+     <li><a href="#terminology"><span class=secno>1.2. </span>용어</a>
       
 
-     <li><a href="#changesFromCSS2"><span class=secno>1.3. </span>Changes
-      from CSS2</a>
+     <li><a href="#changesFromCSS2"><span class=secno>1.3. </span>CSS2와 다른 점</a>
     </ul>
 
-   <li><a href="#selectors"><span class=secno>2. </span>Selectors</a>
+   <li><a href="#selectors"><span class=secno>2. </span>셀렉터</a>
 
-   <li><a href="#casesens"><span class=secno>3. </span>Case sensitivity</a>
+   <li><a href="#casesens"><span class=secno>3. </span>대소문자 구별</a>
 
-   <li><a href="#selector-syntax"><span class=secno>4. </span>Selector
-    syntax</a>
+   <li><a href="#selector-syntax"><span class=secno>4. </span>셀렉터 문법</a>
 
-   <li><a href="#grouping"><span class=secno>5. </span>Groups of
-    selectors</a>
+   <li><a href="#grouping"><span class=secno>5. </span>셀렉터 그룹</a>
 
-   <li><a href="#simple-selectors"><span class=secno>6. </span>Simple
-    selectors</a>
+   <li><a href="#simple-selectors"><span class=secno>6. </span>심플 셀렉터</a>
     <ul class=toc>
-     <li><a href="#type-selectors"><span class=secno>6.1. </span>Type
-      selector</a>
+     <li><a href="#type-selectors"><span class=secno>6.1. </span>타입 셀렉터</a>
       <ul class=toc>
-       <li><a href="#typenmsp"><span class=secno>6.1.1. </span>Type selectors
-        and namespaces</a>
+       <li><a href="#typenmsp"><span class=secno>6.1.1. </span>타입 셀렉터와 네임스페이스</a>
       </ul>
 
      <li><a href="#universal-selector"><span class=secno>6.2.
-      </span>Universal selector </a>
+      </span>전역 셀렉터 </a>
       <ul class=toc>
-       <li><a href="#univnmsp"><span class=secno>6.2.1. </span>Universal
-        selector and namespaces</a>
+       <li><a href="#univnmsp"><span class=secno>6.2.1. </span>전역 셀렉터와 네임스페이스</a>
       </ul>
 
      <li><a href="#attribute-selectors"><span class=secno>6.3.
-      </span>Attribute selectors</a>
+      </span>속성 셀렉터</a>
       <ul class=toc>
        <li><a href="#attribute-representation"><span class=secno>6.3.1.
-        </span>Attribute presence and value selectors</a>
+        </span>속성 의존 셀렉터와 속성값 셀렉터</a>
 
        <li><a href="#attribute-substrings"><span class=secno>6.3.2.
-        </span>Substring matching attribute selectors</a>
+        </span>부분 매칭 속성 셀렉터</a>
 
-       <li><a href="#attrnmsp"><span class=secno>6.3.3. </span>Attribute
-        selectors and namespaces</a>
+       <li><a href="#attrnmsp"><span class=secno>6.3.3. </span>속성 셀렉터와 네임스페이스</a>
 
-       <li><a href="#def-values"><span class=secno>6.3.4. </span>Default
-        attribute values in DTDs</a>
+       <li><a href="#def-values"><span class=secno>6.3.4. </span>DTD 내 기본 속성값</a>
       </ul>
 
-     <li><a href="#class-html"><span class=secno>6.4. </span>Class
-      selectors</a>
+     <li><a href="#class-html"><span class=secno>6.4. </span>클래스 셀렉터</a>
 
      <li><a href="#id-selectors"><span class=secno>6.5. </span>ID
-      selectors</a>
+      셀렉터</a>
 
      <li><a href="#pseudo-classes"><span class=secno>6.6.
-      </span>Pseudo-classes</a>
+      </span>의사 클래스</a>
       <ul class=toc>
-       <li><a href="#dynamic-pseudos"><span class=secno>6.6.1. </span>Dynamic
-        pseudo-classes</a>
+       <li><a href="#dynamic-pseudos"><span class=secno>6.6.1. </span>동적 의사 클래스</a>
         <ul class=toc>
          <li><a href="#the-link-pseudo-classes-link-and-visited"><span
-          class=secno>6.6.1.1. </span>The link pseudo-classes: :link and
-          :visited</a>
+          class=secno>6.6.1.1. </span>링크 의사 클래스 :link와 :visited</a>
 
          <li><a href="#the-user-action-pseudo-classes-hover-act"><span
-          class=secno>6.6.1.2. </span>The user action pseudo-classes :hover,
-          :active, and :focus</a>
+          class=secno>6.6.1.2. </span>유저 액션 의사 클래스 :hover,
+          :active, :focus</a>
         </ul>
 
-       <li><a href="#target-pseudo"><span class=secno>6.6.2. </span>The
-        target pseudo-class :target</a>
+       <li><a href="#target-pseudo"><span class=secno>6.6.2. </span>타겟 의사 클래스 :target</a>
 
-       <li><a href="#lang-pseudo"><span class=secno>6.6.3. </span>The
-        language pseudo-class :lang</a>
+       <li><a href="#lang-pseudo"><span class=secno>6.6.3. </span>언어 의사 클래스 :lang</a>
 
-       <li><a href="#UIstates"><span class=secno>6.6.4. </span>The UI element
-        states pseudo-classes</a>
+       <li><a href="#UIstates"><span class=secno>6.6.4. </span>UI 요소 상태 의사 클래스</a>
         <ul class=toc>
-         <li><a href="#enableddisabled"><span class=secno>6.6.4.1. </span>The
-          :enabled and :disabled pseudo-classes</a>
+         <li><a href="#enableddisabled"><span class=secno>6.6.4.1. </span>:enabled및 :disabled 의사 클래스</a>
 
-         <li><a href="#checked"><span class=secno>6.6.4.2. </span>The
-          :checked pseudo-class</a>
+         <li><a href="#checked"><span class=secno>6.6.4.2. </span>
+          :checked 의사 클래스</a>
 
-         <li><a href="#indeterminate"><span class=secno>6.6.4.3. </span>The
-          :indeterminate pseudo-class</a>
+         <li><a href="#indeterminate"><span class=secno>6.6.4.3. </span>
+          :indeterminate 의사 클래스</a>
         </ul>
 
        <li><a href="#structural-pseudos"><span class=secno>6.6.5.
-        </span>Structural pseudo-classes</a>
+        </span>구조 의사 클래스</a>
         <ul class=toc>
          <li><a href="#root-pseudo"><span class=secno>6.6.5.1. </span>:root
-          pseudo-class</a>
+          의사 클래스</a>
 
          <li><a href="#nth-child-pseudo"><span class=secno>6.6.5.2.
-          </span>:nth-child() pseudo-class</a>
+          </span>:nth-child() 의사 클래스</a>
 
          <li><a href="#nth-last-child-pseudo"><span class=secno>6.6.5.3.
-          </span>:nth-last-child() pseudo-class</a>
+          </span>:nth-last-child() 의사 클래스</a>
 
          <li><a href="#nth-of-type-pseudo"><span class=secno>6.6.5.4.
-          </span>:nth-of-type() pseudo-class</a>
+          </span>:nth-of-type() 의사 클래스</a>
 
          <li><a href="#nth-last-of-type-pseudo"><span class=secno>6.6.5.5.
-          </span>:nth-last-of-type() pseudo-class</a>
+          </span>:nth-last-of-type() 의사 클래스</a>
 
          <li><a href="#first-child-pseudo"><span class=secno>6.6.5.6.
-          </span>:first-child pseudo-class</a>
+          </span>:first-child 의사 클래스</a>
 
          <li><a href="#last-child-pseudo"><span class=secno>6.6.5.7.
-          </span>:last-child pseudo-class</a>
+          </span>:last-child 의사 클래스</a>
 
          <li><a href="#first-of-type-pseudo"><span class=secno>6.6.5.8.
-          </span>:first-of-type pseudo-class</a>
+          </span>:first-of-type 의사 클래스</a>
 
          <li><a href="#last-of-type-pseudo"><span class=secno>6.6.5.9.
-          </span>:last-of-type pseudo-class</a>
+          </span>:last-of-type 의사 클래스</a>
 
          <li><a href="#only-child-pseudo"><span class=secno>6.6.5.10.
-          </span>:only-child pseudo-class</a>
+          </span>:only-child 의사 클래스</a>
 
          <li><a href="#only-of-type-pseudo"><span class=secno>6.6.5.11.
-          </span>:only-of-type pseudo-class</a>
+          </span>:only-of-type 의사 클래스</a>
 
          <li><a href="#empty-pseudo"><span class=secno>6.6.5.12.
-          </span>:empty pseudo-class</a>
+          </span>:empty 의사 클래스</a>
         </ul>
 
        <li><a href="#content-selectors"><span class=secno>6.6.6.
-        </span>Blank</a>
+        </span>공백</a>
 
-       <li><a href="#negation"><span class=secno>6.6.7. </span>The negation
-        pseudo-class</a>
+       <li><a href="#negation"><span class=secno>6.6.7. </span>부정 의사 클래스</a>
       </ul>
     </ul>
 
    <li><a href="#pseudo-elements"><span class=secno>7.
-    </span>Pseudo-elements</a>
+    </span>의사 요소</a>
     <ul class=toc>
-     <li><a href="#first-line"><span class=secno>7.1. </span>The ::first-line
-      pseudo-element</a>
+     <li><a href="#first-line"><span class=secno>7.1. </span>::first-line 의사 요소</a>
       <ul class=toc>
        <li><a href="#first-formatted-line"><span class=secno>7.1.1.
-        </span>First formatted line definition in CSS</a>
+        </span>CSS에서 정의된 첫번째 형태를 가진 행</a>
       </ul>
 
-     <li><a href="#first-letter"><span class=secno>7.2. </span>The
-      ::first-letter pseudo-element</a>
+     <li><a href="#first-letter"><span class=secno>7.2. </span>::first-letter 의사 요소</a>
       <ul class=toc>
-       <li><a href="#application-in-css"><span class=secno>7.2.1.
-        </span>Application in CSS</a>
+       <li><a href="#application-in-css"><span class=secno>7.2.1. </span>CSS에서 적용</a>
       </ul>
 
-     <li><a href="#selection"><span class=secno>7.3. </span>Blank</a>
+     <li><a href="#selection"><span class=secno>7.3. </span>공백</a>
 
-     <li><a href="#gen-content"><span class=secno>7.4. </span>The ::before
-      and ::after pseudo-elements</a>
+     <li><a href="#gen-content"><span class=secno>7.4. </span>::before
+      및 ::after 의사 요소</a>
     </ul>
 
-   <li><a href="#combinators"><span class=secno>8. </span>Combinators</a>
+   <li><a href="#combinators"><span class=secno>8. </span>콤비네이터</a>
     <ul class=toc>
      <li><a href="#descendant-combinators"><span class=secno>8.1.
-      </span>Descendant combinator</a>
+      </span>자손 콤비네이터</a>
 
-     <li><a href="#child-combinators"><span class=secno>8.2. </span>Child
-      combinators</a>
+     <li><a href="#child-combinators"><span class=secno>8.2. </span>자식 콤비네이터</a>
 
-     <li><a href="#sibling-combinators"><span class=secno>8.3. </span>Sibling
-      combinators</a>
+     <li><a href="#sibling-combinators"><span class=secno>8.3. </span>형제 콤비네이터</a>
       <ul class=toc>
        <li><a href="#adjacent-sibling-combinators"><span class=secno>8.3.1.
-        </span>Adjacent sibling combinator</a>
+        </span>인접 형제 콤비네이터</a>
 
        <li><a href="#general-sibling-combinators"><span class=secno>8.3.2.
-        </span>General sibling combinator</a>
+        </span>일반 형제 콤비네이터</a>
       </ul>
     </ul>
 
-   <li><a href="#specificity"><span class=secno>9. </span>Calculating a
-    selector's specificity</a>
+   <li><a href="#specificity"><span class=secno>9. </span>셀렉터의 상세도 계산</a>
 
-   <li><a href="#w3cselgrammar"><span class=secno>10. </span>The grammar of
-    Selectors</a>
+   <li><a href="#w3cselgrammar"><span class=secno>10. </span>셀렉터 문법</a>
     <ul class=toc>
-     <li><a href="#grammar"><span class=secno>10.1. </span>Grammar</a>
+     <li><a href="#grammar"><span class=secno>10.1. </span>문법</a>
 
      <li><a href="#lex"><span class=secno>10.2. </span>Lexical scanner</a>
     </ul>
 
-   <li><a href="#profiling"><span class=secno>11. </span>Profiles</a>
+   <li><a href="#profiling"><span class=secno>11. </span>프로필</a>
 
-   <li><a href="#Conformance"><span class=secno>12. </span>Conformance and
-    requirements</a>
+   <li><a href="#Conformance"><span class=secno>12. </span>적합성 및 요건</a>
 
    <li><a href="#Tests"><span class=secno>13. </span>Tests</a>
 
    <li><a href="#ACKS"><span class=secno>14. </span>Acknowledgements</a>
 
-   <li><a href="#references"><span class=secno>15. </span>References</a>
+   <li><a href="#references"><span class=secno>15. </span>참고 문서</a>
     <ul class=toc>
      <li><a href="#normative-references"><span class=secno>15.1.
-      </span>Normative References</a>
+      </span>표준 참고 문서</a>
 
      <li><a href="#informative-references"><span class=secno>15.2.
-      </span>Informative References</a>
+      </span>정보 참고 문서</a>
     </ul>
   </ul>
   <!--end-toc-->
@@ -2959,9 +2933,9 @@ paragraph.&lt;/P&gt;
   <p lang=en>In CSS, the <code>::first-line</code> pseudo-element can only have an
    effect when attached to a block-like container such as a block box,
    inline-block, table-caption, or table-cell.
-  <p lang=ko>요소의 첫번째 형태를 가진 행은, 같은 플로우 안의 자손 블 (position이나 float에 의해 통상 flow에서 벗어난 블록이 아닌 것)에 의존할 수도 있습니다.
+  <p lang=ko>요소의 첫번째 형태를 가진 행은, 같은 플로우 안의 자손 블 (position이나 float에 의해 통상 flow에서 벗어난 블럭이 아닌 것)에 의존할 수도 있습니다.
     예를 들어, <code>&lt;DIV&gt;&lt;P&gt;This line...&lt;/P&gt;&lt;/DIV&gt;</code>라는 마크업에서 <code>DIV</code>의 첫번째 행은,
-    <code>p</code>의 첫번째 행이 됩니다. (<code>P</code>와 <code>DIV</code> 양쪽 다 블록이라고 했을 때)
+    <code>p</code>의 첫번째 행이 됩니다. (<code>P</code>와 <code>DIV</code> 양쪽 다 블럭이라고 했을 때)
   <p lang=en>The first formatted line of an element may occur inside a block-level
    descendant in the same flow (i.e., a block-level descendant that is not
    out-of-flow due to floating or positioning). For example, the first line
@@ -2987,7 +2961,7 @@ paragraph.&lt;/P&gt;
    <code>br</code> in HTML 4). The word "First" is not on the first formatted
    line.
   <p lang=ko>UA는 <code>::first-line</code> 의사 요소에 대해, 가상의 여는 태그가
-  그걸 둘러싼 요소 중 가장 안쪽에 있는 블록 요소 중 중첩되는 것으로 행동해야 합니다.
+  그걸 둘러싼 요소 중 가장 안쪽에 있는 블럭 요소 중 중첩되는 것으로 행동해야 합니다.
   (단 CSS1과 CSS2는 이 상태에 대해 어떤 설명도 하지 않기 때문에,
    제작자는 이 행동에 의존하지 않아도 됩니다) 예를 들어,
    아래와 같은 가상 태그 시퀀스가 있습니다.
@@ -3071,12 +3045,20 @@ paragraph.&lt;/P&gt;
     src=first-letter2.png></p>
   </div>
 
-  <p lang=ko><code>::first-letter</code>는 첫번쨰 글자가 숫자인 경우,
+  <p lang=ko><code>::first-letter</code>는 첫번째 글자가 숫자인 경우,
     예를 들어 "67 million dollares is a lot of money"라는 문장에서 "6"에도 적용됩니다.
   <p lang=en>The <code>::first-letter</code> also applies if the first letter is in
    fact a digit, e.g., the "6" in "67 million dollars is a lot of money."
-
-  <p class=note><strong>Note:</strong> In some cases the
+  <p class=note lang=ko><strong>노트:</strong> 몇몇 케이스에서,
+    <code>::first-letter</code> 의사 클래스는 행 안에 약물(기호, 구두점, 괄호)이 아닌 문자를 포함해야 합니다.
+    예를 들어, 결합 문자는 그 기본 문자와 함께 보유되야 합니다.
+    또, 몇몇 언어에서는 문자 연결 처리에 특정 룰을 줄 수도 있습니다.
+    UA에 따른 <code>::first-letter</code> 정의는, 적어도 UAX29에서 정의된 규칙의
+    자소 클러스터를 포함해야하며, 가능하다면 그 이상이어도 좋습니다.
+    예를 들어 네덜란드어에서 "ij"라는 결합문자가 있을 때,
+    두 문자 모두 <code>::first-letter</code> 의사 요소로 고려되야 합니다. 
+    <a href="#UAX29" rel=biblioentry>[UAX29]<!--{{UAX29}}--></a>
+  <p class=note lang=en><strong>Note:</strong> In some cases the
    <code>::first-letter</code> pseudo-element should include more than just
    the first non-punctuation character on a line. For example, combining
    characters must be kept with their base character. Additionally, some
@@ -3089,25 +3071,35 @@ paragraph.&lt;/P&gt;
    pseudo-element. <a href="#UAX29"
    rel=biblioentry>[UAX29]<!--{{UAX29}}--></a>
 
-  <p>If the letters that would form the <code>::first-letter</code> are not
-   in the same element, such as "&lsquo;<code class=css>T" in
+  <p lang=ko><code>::first-letter</code> 의사 요소를 구성하는 문자가 같은 요소에 존재하지 않는 경우,
+    예를 들어, <code>&lt;p>'&lt;em>T...</code> 마크업에서 첫 문자가 "<code class=css>T</code>가 되는 경우
+    UA는 <code>::first-letter</code> 의사 요소를 한쪽 요소에 생성하거나, 양쪽 요소에 생성하거나, 간단히 생성하지 않는 방법을 취할 수 있습니다.
+  <p lang=en>If the letters that would form the <code>::first-letter</code> are not
+   in the same element, such as "&lsquo;<code class=css>T</code>&rsquo;" in
    <code>&lt;p>'&lt;em>T...</code>, the UA may create a
    <code>::first-letter</code> pseudo-element from one of the elements, both
    elements, or simply not create a pseudo-element.</code>
 
-  <p>Similarly, if the first letter(s) of the block are not at the start of
+  <p lang=ko>마찬가지로, 블럭 안 첫번째 문자가 첫번째 행이 아닌 경우 (예를 들어 쌍방향 텍스트의 재구성 등에 의해)
+    UA는 의사 요소를 생성할 필요가 없습니다.
+  <p lang=en>Similarly, if the first letter(s) of the block are not at the start of
    the line (for example due to bidirectional reordering), then the UA need
    not create the pseudo-element(s).
 
   <div class=example>
-   <p>Example:</p>
+   <p>예제:</p>
 
-   <p><a name=overlapping-example>The following CSS and HTML example</a>
+   <p>
+    <a name=overlapping-example>다음 CSS와 HTML예</a>는 어떻게 서로 다른 의사 요소가 관계를 이루는 지 설명합니다.
+    각 P 요소의 첫번째 문자는 &rsquo;24pt&lsquo; 폰트 사이즈에 green 색상일 것이며.
+    첫번째 줄의 나머지 문자는 &lsquo;<code class=property>blue</code>&rsquo;가 될 것이며,
+    그 외의 모든 문자는 &lsquo;<code class=property>red</code>&rsquo;로 표기될 것입니다.
+    <span lang=en><a name=overlapping-example>The following CSS and HTML example</a>
     illustrates how overlapping pseudo-elements may interact. The first
     letter of each P element will be green with a font size of &rsquo;24pt'.
     The rest of the first formatted line will be &lsquo;<code
     class=property>blue</code>&rsquo; while the rest of the paragraph will be
-    &lsquo;<code class=property>red</code>&rsquo;.</p>
+    &lsquo;<code class=property>red</code>&rsquo;.</span></p>
 
    <pre>p { color: red; font-size: 12pt }
 p::first-letter { color: green; font-size: 200% }
@@ -3115,9 +3107,13 @@ p::first-line { color: blue }
 
 &lt;P&gt;Some text that ends up on two lines&lt;/P&gt;</pre>
 
-   <p>Assuming that a line break will occur before the word "ends", the <span
+   <p>
+    "ends" 앞에 line break가 있다고 판정하면, 이 마크업에 있어 <span
     class=index-inst id=fictional-tag-sequence title="fictional tag
-    sequence">fictional tag sequence</span> for this fragment might be:</p>
+    sequence">가상 태그 시퀀스</span>는 아래와 같이 나타납니다.
+    <span lang=en>Assuming that a line break will occur before the word "ends", the <span
+    class=index-inst id=fictional-tag-sequence title="fictional tag
+    sequence">fictional tag sequence</span> for this fragment might be:</span></p>
 
    <pre>&lt;P&gt;
 &lt;P::first-line&gt;
@@ -3128,57 +3124,80 @@ S
 ends up on two lines 
 &lt;/P&gt;</pre>
 
-   <p>Note that the <code>::first-letter</code> element is inside the
+   <p>
+    <code>::first-line</code> 요소 안에 <code>::first-letter</code> 요소가 존재합니다.
+    <code>::first-line</code> 요소에 설정된 속성은 <code>::first-letter</code> 요소에 상속되지만,
+    같은 속성이 <code>::first-letter</code> 요소에 설정된 경우, 그 속성은 덮어씌워집니다.
+    <span lang=en>Note that the <code>::first-letter</code> element is inside the
     <code>::first-line</code> element. Properties set on
     <code>::first-line</code> are inherited by <code>::first-letter</code>,
     but are overridden if the same property is set on
-    <code>::first-letter</code>.</p>
+    <code>::first-letter</code>.</span></p>
   </div>
 
-  <p>The first letter must occur on the <a href="#first-formatted-line">first
+  <p lang=ko>첫번째 문자는 반드시 <a href="#first-formatted-line">첫번쨰 줄</a>에 있어야 합니다.
+	 예를 들어, HTML 마크업 <code>&lt;p&gt;&lt;br&gt;First...</code>에서, 첫번째 문자에 어떤 문자도 포함하지 않습니다.
+   따라서 <code>::first-letter</code>는 아무것도 포함하지 않습니다. (HTML4에서 <code>br</code>의 기본 스타일이 적용되어 있다고 취급합니다.)
+   따라서, 단어 "First"의 "F"에 매치하지 않습니다.
+  <p lang=en>The first letter must occur on the <a href="#first-formatted-line">first
    formatted line.</a> For example, in this HTML fragment:
-   <code>&lt;p&gt&lt;br&gt;First...</code> the first line doesn't contain any
+   <code>&lt;p&gt;&lt;br&gt;First...</code> the first line doesn't contain any
    letters and <code>::first-letter</code> doesn't match anything (assuming
    the default style for <code>br</code> in HTML 4). In particular, it does
    not match the "F" of "First."
 
-  <h4 id=application-in-css><span class=secno>7.2.1. </span>Application in
-   CSS</h4>
+  <h4 id=application-in-css><span class=secno>7.2.1. </span>CSS에서 적용</h4>
 
-  <p>In CSS, the <code>::first-letter</code> pseudo-element applies to
+  <p lang=ko>CSS에서, <code>::first-letter</code> 의사 요소는 block, list-item, table-cell, table-caption, inline-block 요소 같은
+    블럭처럼 동작하는 콘테이너에 사용할 수 있습니다.
+    <span class=note><strong>노트:</strong> 차기 셀렉터 스펙에서, 다른 디스플레이 타입에도 <code>::first-letter</code> 의사 요소를 지정 가능하게 될 수 있습니다.</span>
+  <p lang=en>In CSS, the <code>::first-letter</code> pseudo-element applies to
    block-like containers such as block, list-item, table-cell, table-caption,
    and inline-block elements. <span class=note><strong>Note:</strong> A
    future version of this specification may allow this pseudo-element to
    apply to more display types.</span>
-
-  <p>The <code>::first-letter</code> pseudo-element can be used with all such
+  <p lang=ko><code>::first-letter</code> 의사 클래스는 텍스트를 포함한 요소, 혹은 같은 flow에 속하는 자식이 텍스트를 가진 경우에 사용할 수 있습니다.
+    UA는 가상의 <code>::first-letter</code> 시작 태그가 첫번째 문자 직후에 있는 듯이 행동해야 합니다.
+    이는 텍스트가 자식에 속하는 경우에도 사용 가능합니다.
+  <p lang=en>The <code>::first-letter</code> pseudo-element can be used with all such
    elements that contain text, or that have a descendant in the same flow
    that contains text. A UA should act as if the fictional start tag of the
    ::first-letter pseudo-element is just before the first text of the
    element, even if that first text is in a descendant.
 
   <div class=example>
-   <p>Example:</p>
+   <p>예제:</p>
 
-   <p>The fictional tag sequence for this HTML fragment:
+   <p>HTML코드를 위한 가상 태그 시퀀스
+      <span lang=en>The fictional tag sequence for this HTML fragment:</span>
 
    <pre>&lt;div>
 &lt;p>The first text.</pre>
 
-   <p>is:
+   <p>는:
+     <span lang=en>is:</span>
 
    <pre>&lt;div>
 &lt;p>&lt;div::first-letter>&lt;p::first-letter>T&lt;/...>&lt;/...>he first text.</pre>
   </div>
 
-  <p>In CSS the first letter of a table-cell or inline-block cannot be the
+  <p lang=ko>CSS에서 table-cell이나 inline-block의 첫번째 문자는, 조상의 첫번째 문자가 되지 않습니다.
+    즉 <code>&lt;DIV&gt;&lt;P
+   STYLE="display: inline-block">Hello&lt;BR&gt;Goodbye&lt;/P&gt;
+   etcetera&lt;/DIV&gt;</code> 마크업에서 <code>DIV</code>의 첫번째 문자는 "H"가 아닙니다.
+   이 경우 <code>DIV</code>는 첫번째 문자를 가지지 않습니다.
+  <p lang=en>In CSS the first letter of a table-cell or inline-block cannot be the
    first letter of an ancestor element. Thus, in <code>&lt;DIV&gt;&lt;P
    STYLE="display: inline-block">Hello&lt;BR&gt;Goodbye&lt;/P&gt;
    etcetera&lt;/DIV&gt;</code> the first letter of the <code>DIV</code> is
    not the letter "H". In fact, the <code>DIV</code> doesn't have a first
    letter.
 
-  <p>If an element is a list item (&lsquo;<code class=css>display:
+  <p lang=ko>요소가 리스트 아이템 (&lsquo;<code class=css>display: list-item</code>&rsquo;)인 경우
+    <code>::first-letter</code>는 부모 박스의 마커 다음에 오는 첫번째 문자에 적용됩니다.
+    UA는 &lsquo;<code class=css>list-style-position: inside</code>&rsquo;인 리스트 아이템에 지정된 <code>::first-letter</code>를 무시해도 괜찮습니다.
+    요소에 <code>::before</code> 혹은 <code>::after</code>로 내용이 주어진 경우, <code>::first-letter</code>는 그 내용을 <em>포함한</em> 콘텐츠에서 결정합니다.
+  <p lang=en>If an element is a list item (&lsquo;<code class=css>display:
    list-item</code>&rsquo;), the <code>::first-letter</code> applies to the
    first letter in the principal box after the marker. UAs may ignore
    <code>::first-letter</code> on list items with &lsquo;<code
@@ -3188,15 +3207,31 @@ ends up on two lines
    <em>including</em> that content.
 
   <div class=example>
-   <p>Example:</p>
+   <p>예제:</p>
 
-   <p>After the rule <code>p::before {content: "Note: "}</code>, the selector
-    <code>p::first-letter</code> matches the "N" of "Note".</p>
+   <p>
+		 <code>p::before {content: "Note: "}</code> 규칙이 주어진 경우,
+     셀렉터 <code>p::first-letter</code>는 'Note"의 "N"에 매치합니다.
+     <span lang=en>After the rule <code>p::before {content: "Note: "}</code>, the selector
+    <code>p::first-letter</code> matches the "N" of "Note".</span></p>
   </div>
 
-  <p>In CSS a ::first-line pseudo-element is similar to an inline-level
+  <p lang=ko>CSS에서 <code>::first-letter</code> 의사 요소는 &lsquo;<code class=property>float</code>&rsquo;가 &lsquo;<code class=property>none</code>&rsquo;인 경우,
+  인라인 레벨 요소와 비슷하게 동작합니다. <code>::first-letter</code> 의사 요소에 적용 가능한 속성은 font 관련 속성, &lsquo;<code
+   class=property>text-decoration</code>&rsquo;, &lsquo;<code
+   class=property>text-transform</code>&rsquo;, &lsquo;<code
+   class=property>letter-spacing</code>&rsquo;, &lsquo;<code
+   class=property>word-spacing</code>&rsquo; (when appropriate), &lsquo;<code
+   class=property>line-height</code>&rsquo;, &lsquo;<code
+   class=property>float</code>&rsquo;, &lsquo;<code
+   class=property>vertical-align</code>&rsquo; (&lsquo;<code
+   class=property>float</code>&rsquo;가 &lsquo;<code
+   class=property>none</code>&rsquo;인 경우에만), margin 속성, padding 속성,
+   border 속성, color 속성, background 속성입니다.
+   UA는 line-height, width 및 height를 문자의 형태에 기초로 둘 수 있으며, 이는 보통 요소와는 다릅니다.
+  <p lang=en>In CSS a ::first-line pseudo-element is similar to an inline-level
    element if its &lsquo;<code class=property>float</code>&rsquo; property is
-   &lsquo;<code class=property>none</code>&rsquo;; otherwise, it is similar
+   &lsquo;<code class=property>none</code>&rsquo; otherwise, it is similar
    to a floated element. The following properties that apply to
    <code>::first-letter</code> pseudo-elements: font properties, &lsquo;<code
    class=property>text-decoration</code>&rsquo;, &lsquo;<code
@@ -3214,9 +3249,13 @@ ends up on two lines
    based on the shape of the letter, unlike for normal elements.
 
   <div class=example>
-   <p>Example:</p>
+   <p>예제:</p>
 
-   <p>This CSS and HTML example shows a possible rendering of an initial cap.
+   <p lang=ko>다음 CSS와 HTML은, initial cap 표시 예입니다.
+     <code>::first-letter</code> 의사 요소에서 상속된 &lsquo;<code class=property>line-height</code>&rsquo;의 값은 1.1이지만, 이 예에서는 UA가 첫번째 문자의 높이를 다르게 설계하여,
+     1번째 줄과 2번째 줄 사이에 불필요한 공백이 생기지 않도록 조정하고 있는 점에 주의하시길 바랍니다.
+     또한 첫번째 문자에 있어 가상의 여는 태그가 <code>span</code> 안에 있기 때문에, <code>span</code>에 지정된 font-weight가 bold가 아닌 normal인 점에 주의하시길 바랍니다.
+   <p lang=en>This CSS and HTML example shows a possible rendering of an initial cap.
     Note that the &lsquo;<code class=property>line-height</code>&rsquo; that
     is inherited by the <code>::first-letter</code> pseudo-element is 1.1,
     but the UA in this example has computed the height of the first letter
@@ -3243,8 +3282,10 @@ En dagelix geschrey de bange stad ontzet.
   </div>
 
   <div class=example>
-   <p>The following CSS will make a drop cap initial letter span about two
-    lines:</p>
+   <p>
+    아래 CSS는 두 줄에 걸쳐 표현하는 drop cap을 의미합니다.
+    <span lang=en>The following CSS will make a drop cap initial letter span about two
+    lines:</span></p>
 
    <pre>
 &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"&gt;
@@ -3264,15 +3305,20 @@ En dagelix geschrey de bange stad ontzet.
 &lt;/HTML&gt;
 </pre>
 
-   <p>This example might be formatted as follows:</p>
+   <p>
+     위 예제는 아래와같이 나타납니다.
+     <span lang=en>This example might be formatted as follows:</span></p>
 
    <div class=figure>
     <p><img alt="Image illustrating the combined effect of the ::first-letter
      and ::first-line pseudo-elements" src=first-letter.png></p>
    </div>
 
-   <p>The <span class=index-inst id=fictional-tag-sequence0 title="fictional
-    tag sequence">fictional tag sequence</span> is:</p>
+   <p>
+    <span class=index-inst id=fictional-tag-sequence0 title="fictional
+    tag sequence">가상 태그 시퀀스</span>는:
+    <span lang=en>The <span class=index-inst title="fictional
+    tag sequence">fictional tag sequence</span> is:</span></p>
 
    <pre>
 &lt;P&gt;
@@ -3285,40 +3331,53 @@ few words of an article in the Economist.
 &lt;/P&gt;
 </pre>
 
-   <p>Note that the <code>::first-letter</code> pseudo-element tags abut the
+   <p lang=ko><code>::first-line</code> 의사 요소는 여는 태그가 블럭 요소의 여는 태그 직후에 들어가고,
+     <code>::first-letter</code> 의사 요소 태그는 내용 (첫번째 문자)에 인접하는 점에 주의하시길 바랍니다.
+   <p lang=en>Note that the <code>::first-letter</code> pseudo-element tags abut the
     content (i.e., the initial character), while the ::first-line
     pseudo-element start tag is inserted right after the start tag of the
     block element.</p>
   </div>
 
-  <p>In order to achieve traditional drop caps formatting, user agents may
+  <p lang=ko>전통적인 drop cap 효과를 구현하기 위해, UA는 폰트 사이즈의 개산을 행해 베이스라인을 정리하는 게 가능합니다.
+    또, 정형화할 때 그리프의 아웃라인을 가미할 수 있습니다.
+  <p lang=en>In order to achieve traditional drop caps formatting, user agents may
    approximate font sizes, for example to align baselines. Also, the glyph
    outline may be taken into account when formatting.
 
-  <h3 id=selection><span class=secno>7.3. </span>Blank</h3>
+  <h3 id=selection><span class=secno>7.3. </span>공백</h3>
 
-  <p>This section intentionally left blank. (This section previously defined
+  <p lang=ko>이 섹션은 의도적으로 비어있습니다. (이 섹션에는 원래 <code>:selection</code> 의사 요소가 정의되어 있었습니다)
+  <p lang=en>This section intentionally left blank. (This section previously defined
    a <code>::selection</code> pseudo-element.)
 
-  <h3 id=gen-content><span class=secno>7.4. </span>The ::before and ::after
-   pseudo-elements</h3>
+  <h3 id=gen-content><span class=secno>7.4. </span>::before 및 ::after 의사 요소</h3>
 
-  <p>The <code>::before</code> and <code>::after</code> pseudo-elements can
+  <p lang=ko><code>::before</code>와 <code>::after</code> 의사 요소는 요소의 내용 앞이나 뒤에 있는 생성 콘텐츠(generated content)를 나타내기 위해 사용합니다.
+    이러한 의사 요소는 CSS 2.1에서 정의하고 있습니다<a href="#CSS21"
+   rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a>.
+  <p lang=en>The <code>::before</code> and <code>::after</code> pseudo-elements can
    be used to describe generated content before or after an element's
    content. They are explained in CSS 2.1 <a href="#CSS21"
    rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a>.
 
-  <p>When the <code>::first-letter</code> and <code>::first-line</code>
+  <p lang=ko><code>::before</code> 혹은 <code>::after</code>에 의해 생성된 내용을 가지는 요소에 <code>::first-letter</code>의사 요소와 <code>::first-line</code> 의사 요소가 적용 되는 경우,
+    <code>::first-letter</code>와 <code>::first-line</code>은 각각 생성된 내부를 포함한 문자 혹은 행에 적용됩니다.
+  <p lang=en>When the <code>::first-letter</code> and <code>::first-line</code>
    pseudo-elements are applied to an element having content generated using
    <code>::before</code> or <code>::after</code>, they apply to the first
    letter or line of the element including the generated content.
 
-  <h2 id=combinators><span class=secno>8. </span>Combinators</h2>
+  <h2 id=combinators><span class=secno>8. </span>콤비네이터</h2>
 
-  <h3 id=descendant-combinators><span class=secno>8.1. </span>Descendant
-   combinator</h3>
+  <h3 id=descendant-combinators><span class=secno>8.1. </span>자손 콤비네이터</h3>
 
-  <p>At times, authors may want selectors to describe an element that is the
+  <p lang=ko>문서 트리 안에서 어떤 요소의 자손 요소를 설명하는 셀렉터가 필요할 것입니다.
+  (예를 들어 <code>H1</code> 요소 안에 있는  <code>EM</code> 요소)
+  자손 콤비네이터는 이런 관계를 나타낼 때 사용합니다.
+  자손 콤비네이터는 <a href="#whitespace">공백문자</a>로 2개의 심플 셀렉터 시퀀스를 구분하여 표현합니다.
+  "<code>A B</code>" 형태의 셀렉터는 <code>A</code>요소의 자손 요소인 <code>B</code>요소를 나타냅니다.
+  <p lang=en>At times, authors may want selectors to describe an element that is the
    descendant of another element in the document tree (e.g., "an
    <code>EM</code> element that is contained within an <code>H1</code>
    element"). Descendant combinators express such a relationship. A
@@ -3328,95 +3387,125 @@ few words of an article in the Economist.
    arbitrary descendant of some ancestor element <code>A</code>.
 
   <div class=example>
-   <p>Examples:</p>
+   <p>예제:</p>
 
-   <p>For example, consider the following selector:</p>
+   <p>
+     예를 들어, 아래와 같은 형테의 셀렉터를 생각할 수 있습니다.
+     <span lang=en>For example, consider the following selector:</span></p>
 
    <pre>h1 em</pre>
 
-   <p>It represents an <code>em</code> element being the descendant of an
+   <p>
+    이는 <code>h1</code> 요소의 자손인 <code>em</code> 요소를 나타냅니다.
+    이는 유효하고 타당한 셀렉터이며, 다음 마크업 중 일부를 나타냅니다.
+    <span lang=en>It represents an <code>em</code> element being the descendant of an
     <code>h1</code> element. It is a correct and valid, but partial,
-    description of the following fragment:</p>
+    description of the following fragment:</span></p>
 
    <pre>&lt;h1&gt;This &lt;span class="myclass"&gt;headline
 is &lt;em&gt;very&lt;/em&gt; important&lt;/span&gt;&lt;/h1&gt;</pre>
 
-   <p>The following selector:</p>
+   <p>아래와 같은 셀렉터가 있습니다: <span lang=en>The following selector:</span></p>
 
    <pre>div * p</pre>
 
-   <p>represents a <code>p</code> element that is a grandchild or later
+   <p>
+    이는 <code>div</code> 요소의 손이나 증손 요소인 <code>p</code> 요소를 나타냅니다.
+    "*" 앞에 있는 공백 문자가 전역 셀렉터의 일부가 아님에 주의하시길 바랍니다.
+    이 공백문자는 콤비네이터이며, <code>div</code>가 어떤 요소의 조상이며, 어떤 요소도 또한 <code>p</code>요소의 부모임을 나타냅니다.
+    <span lang=en>represents a <code>p</code> element that is a grandchild or later
     descendant of a <code>div</code> element. Note the whitespace on either
     side of the "*" is not part of the universal selector; the whitespace is
     a combinator indicating that the <code>div</code> must be the ancestor of
     some element, and that that element must be an ancestor of the
-    <code>p</code>.</p>
+    <code>p</code></span>.</p>
 
-   <p>The following selector, which combines descendant combinators and <a
+   <p>
+    아래 셀렉터는 자손 콤비네이터와 <a href="#attribute-selectors">속성 셀렉터</a>를 조합하여, 
+    <code>div</code> 요소 안에 있는 <code>p</code> 요소의 자손 중, <code>href</code> 속성이 정의된 요소를 나타냅니다.
+    <span lang=en>The following selector, which combines descendant combinators and <a
     href="#attribute-selectors">attribute selectors</a>, represents an
     element that (1) has the <code>href</code> attribute set and (2) is
-    inside a <code>p</code> that is itself inside a <code>div</code>:</p>
+    inside a <code>p</code> that is itself inside a <code>div</code>:</span></p>
 
    <pre>div p *[href]</pre>
   </div>
 
-  <h3 id=child-combinators><span class=secno>8.2. </span>Child combinators</h3>
+  <h3 id=child-combinators><span class=secno>8.2. </span>자식 콤비네이터</h3>
 
-  <p>A <dfn id=child-combinator>child combinator</dfn> describes a childhood
+  <p lang=ko><dfn id=child-combinator>자식 콤비네이터</code>는 두 요소의 부모자식 관계를 표현합니다.
+   자식 콤비네이터는 두 심플 셀렉터 시퀀스를 &quot;~보다 큰&quot; (U+003E, <code>&gt;</code>) 기호로 구분하여 표현합니다.
+  <p lang=en>A <dfn>child combinator</dfn> describes a childhood
    relationship between two elements. A child combinator is made of the
    &quot;greater-than sign&quot; (U+003E, <code>&gt;</code>) character and
    separates two sequences of simple selectors.
 
   <div class=example>
-   <p>Examples:</p>
+   <p>예제:</p>
 
-   <p>The following selector represents a <code>p</code> element that is
-    child of <code>body</code>:</p>
+   <p>
+    아래 셀렉터는 <code>body</code>의 자식 요소인 <code>p</code> 요소를 나타냅니다.
+    <span lang=en>The following selector represents a <code>p</code> element that is
+    child of <code>body</code>:</span></p>
 
    <pre>body &gt; p</pre>
 
-   <p>The following example combines descendant combinators and child
-    combinators.</p>
+   <p>
+    아래는 자손 콤비네이터와 자식 콤비네이터를 결합한 예제입니다.
+    <span lang=en>The following example combines descendant combinators and child
+    combinators.</span></p>
 
    <pre>div ol&gt;li p</pre>
    <!-- LEAVE THOSE SPACES OUT! see below -->
-   <p>It represents a <code>p</code> element that is a descendant of an
+   <p lang=ko>
+     이 셀렉터는 div 요소의 자손인 ol 요소의 자식 요소 li의 자손 요소인 p요소를 나타냅니다.
+     "&gt;" 콤비네이터 직후에 임의로 넣을 수 있는 공백문자가 생략되어 있는 점에 주의하시길 바랍니다.
+   <p lang=en>It represents a <code>p</code> element that is a descendant of an
     <code>li</code> element; the <code>li</code> element must be the child of
     an <code>ol</code> element; the <code>ol</code> element must be a
     descendant of a <code>div</code>. Notice that the optional white space
     around the "&gt;" combinator has been left out.</p>
   </div>
 
-  <p>For information on selecting the first child of an element, please see
+  <p lang=ko>
+   어떤 요소의 자식 중 1번째 자식만 선택하고 싶은 경우, <code><a href="#structural-pseudos">:first-child</a></code> 의사 클래스 섹션을 참조하시길 바랍니다.
+  <p lang=en>For information on selecting the first child of an element, please see
    the section on the <code><a
    href="#structural-pseudos">:first-child</a></code> pseudo-class above.
 
-  <h3 id=sibling-combinators><span class=secno>8.3. </span>Sibling
-   combinators</h3>
+  <h3 id=sibling-combinators><span class=secno>8.3. </span>형제 콤비네이터</h3>
 
-  <p>There are two different sibling combinators: the adjacent sibling
+  <p lang=ko>
+    형제 콤비네이터에는 인접 형제 콤비네이터와 일반 형제 콤비네이터 두종류가 있습니다.
+    양쪽 케이스 모두 요소간 인접관계를 표현할 때 요소가 아닌 노드 (요소 사이 텍스트 등)은 무시합니다.
+  <p lang=en>There are two different sibling combinators: the adjacent sibling
    combinator and the general sibling combinator. In both cases, non-element
    nodes (e.g. text between elements) are ignored when considering adjacency
    of elements.
 
-  <h4 id=adjacent-sibling-combinators><span class=secno>8.3.1.
-   </span>Adjacent sibling combinator</h4>
+  <h4 id=adjacent-sibling-combinators><span class=secno>8.3.1. </span>인접 형제 콤비네이터</h4>
 
-  <p>The adjacent sibling combinator is made of the &quot;plus sign&quot;
+  <p lang=ko>인접 형제 콤비네이터는 두개의 심플 셀렉터 시퀀스 사이에 &quot;덧셈 기호&quot;(U+002B, <code>+</code>)를 넣어 작성합니다.
+    두 시퀀스에 의해 표현된 요소는 트리 위에서 같은 부모를 가져야 하며, 첫번째로 나타나는 요소가 두번째로 나타나는 요소의 바로 앞에 있어야 합니다.
+  <p lang=en>The adjacent sibling combinator is made of the &quot;plus sign&quot;
    (U+002B, <code>+</code>) character that separates two sequences of simple
    selectors. The elements represented by the two sequences share the same
    parent in the document tree and the element represented by the first
    sequence immediately precedes the element represented by the second one.
 
   <div class=example>
-   <p>Examples:</p>
+   <p>예제:</p>
 
-   <p>The following selector represents a <code>p</code> element immediately
-    following a <code>math</code> element:</p>
+   <p>
+    아래 셀렉터는 <code>math</code> 요소 바로 뒤에 나타나는 <code>p</code> 요소를 나타냅니다.
+    <span lang=en>The following selector represents a <code>p</code> element immediately
+    following a <code>math</code> element:</span></p>
 
    <pre>math + p</pre>
 
-   <p>The following selector is conceptually similar to the one in the
+   <p lang=ko>아래 에제는 이전 예제와 비슷해 보이지만, 속성 셀렉터가 추가되어있습니다.
+     <code>h2</code> 요소 직전에 나타나는 <code>h1</code>요소에는 <code>class="opener"</code>가 주어져 있어야 하는 제약이 있습니다.
+   <p lang=en>The following selector is conceptually similar to the one in the
     previous example, except that it adds an attribute selector &mdash; it
     adds a constraint to the <code>h1</code> element, that it must have
     <code>class="opener"</code>:</p>
@@ -3424,10 +3513,10 @@ is &lt;em&gt;very&lt;/em&gt; important&lt;/span&gt;&lt;/h1&gt;</pre>
    <pre>h1.opener + h2</pre>
   </div>
 
-  <h4 id=general-sibling-combinators><span class=secno>8.3.2. </span>General
-   sibling combinator</h4>
-
-  <p>The general sibling combinator is made of the &quot;tilde&quot; (U+007E,
+  <h4 id=general-sibling-combinators><span class=secno>8.3.2. </span>일반 형제 콤비네이터</h4>
+  <p lang=ko>일반 형제 콤비네이터는 두개의 심플 셀렉터 시퀀스 사이에 &quot;물결 기호&quot;(U+002B, <code>~</code>)를 넣어 작성합니다.
+      두 시퀀스는 문서 트리에서 같은 요소를 가져야 하며, 1번째로 나타나는 요소가 2번째로 나타나는 요소의 앞(바로 앞이 아니어도 좋습니다)에 있어야 합니다.
+  <p lang=en>The general sibling combinator is made of the &quot;tilde&quot; (U+007E,
    <code>~</code>) character that separates two sequences of simple
    selectors. The elements represented by the two sequences share the same
    parent in the document tree and the element represented by the first
@@ -3435,11 +3524,12 @@ is &lt;em&gt;very&lt;/em&gt; important&lt;/span&gt;&lt;/h1&gt;</pre>
    the second one.
 
   <div class=example>
-   <p>Example:</p>
+   <p>예제:</p>
 
    <pre>h1 ~ pre</pre>
 
-   <p>represents a <code>pre</code> element following an <code>h1</code>. It
+   <p lang=ko>이 셀렉터는 <code>h1</code>에 이어지는 <code>pre</code> 요소를 나타냅니다. 이는 유효하고 타당한 셀렉터이며, 아래와 같은 마크업의 일부를 나타냅니다.
+   <p lang=en>represents a <code>pre</code> element following an <code>h1</code>. It
     is a correct and valid, but partial, description of:</p>
 
    <pre>&lt;h1&gt;Definition of the function a&lt;/h1&gt;
@@ -3447,32 +3537,42 @@ is &lt;em&gt;very&lt;/em&gt; important&lt;/span&gt;&lt;/h1&gt;</pre>
 &lt;pre&gt;function a(x) = 12x/13.5&lt;/pre&gt;</pre>
   </div>
 
-  <h2 id=specificity><span class=secno>9. </span>Calculating a selector's
-   specificity</h2>
+  <h2 id=specificity><span class=secno>9. </span>셀렉터의 상세도 계산</h2>
 
-  <p>A selector's specificity is calculated as follows:
+  <p lang=ko>셀렉터의 상세도는 다음 순서로 계산합니다.
+  <p lang=en>A selector's specificity is calculated as follows:
 
   <ul>
-   <li>count the number of ID selectors in the selector (= a)
+   <li>
+    셀렉터 중 ID 셀렉터의 갯수를 셉니다 (= a)
+    <div lang=en>count the number of ID selectors in the selector (= a)</div>
 
-   <li>count the number of class selectors, attributes selectors, and
-    pseudo-classes in the selector (= b)
+   <li>
+    셀렉터 중 클래스 셀렉터, 속성 셀렉터, 의사 클래스의 갯수를 셉니다 (= b)
+    <div lang=en>count the number of class selectors, attributes selectors, and
+    pseudo-classes in the selector (= b)</div>
 
-   <li>count the number of type selectors and pseudo-elements in the selector
-    (= c)
+   <li>
+    셀렉터 중 타입 셀렉터와 의사 요소의 갯수를 셉니다 (= c)
+    <div lang=en>count the number of type selectors and pseudo-elements in the selector (= c)</div>
 
-   <li>ignore the universal selector
+   <li>
+    전역 셀렉터는 무시합니다.
+    <div lang=en>ignore the universal selector</div>
   </ul>
 
-  <p>Selectors inside <a href="#negation">the negation pseudo-class</a> are
+  <p lang=ko><a href="#negation">부정 의사 클래스</a> 안의 셀렉터도 다른 셀렉터와 동일하게 셉니다.
+    그러나, 부정 의사 클래스 자신은 의사 클래스로 세지 않습니다.
+  <p lang=en>Selectors inside <a href="#negation">the negation pseudo-class</a> are
    counted like any other, but the negation itself does not count as a
    pseudo-class.
 
-  <p>Concatenating the three numbers a-b-c (in a number system with a large
+  <p lang=ko>3개의 숫자를 결합한 게 셀렉터의 상세도입니다. (large base의 숫자 시스템을 기반으로 합니다)
+  <p lang=en>Concatenating the three numbers a-b-c (in a number system with a large
    base) gives the specificity.
 
   <div class=example>
-   <p>Examples:</p>
+   <p>예제:</p>
 
    <pre>*               /* a=0 b=0 c=0 -&gt; specificity =   0 */
 LI              /* a=0 b=0 c=1 -&gt; specificity =   1 */
@@ -3486,18 +3586,25 @@ LI.red.level    /* a=0 b=2 c=1 -&gt; specificity =  21 */
 </pre>
   </div>
 
-  <p class=note><strong>Note:</strong> Repeated occurrances of the same
+  <p lang=ko class=note><strong>노트:</strong>같은 심플 셀렉터의 반복도 허용하며, 반복함에 따라 상세도도 상승합니다.
+  <p lang=en class=note><strong>Note:</strong> Repeated occurrances of the same
    simple selector are allowed and do increase specificity.
 
-  <p class=note><strong>Note:</strong> the specificity of the styles
+  <p lang=ko class=note><strong>노트:</strong> HTML의 style 속성에 따른 상세도는 CSS 2.1에서 설명합니다<a href="#CSS21" rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a>.
+  <p lang=en class=note><strong>Note:</strong> the specificity of the styles
    specified in an HTML <code>style</code> attribute is described in CSS 2.1.
    <a href="#CSS21" rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a>.
 
-  <h2 id=w3cselgrammar><span class=secno>10. </span>The grammar of Selectors</h2>
+  <h2 id=w3cselgrammar><span class=secno>10. </span>셀렉터 문법</h2>
 
-  <h3 id=grammar><span class=secno>10.1. </span>Grammar</h3>
+  <h3 id=grammar><span class=secno>10.1. </span>문법</h3>
+  <p lang=ko>문법은 셀렉터의 구문 정의 하에 있습니다.
+    이는 전역 LL(1)과 지역 LL(2)가 있습니다. (하지만 구문 파싱 컨벤션을 표현하지 않기 때문에,
+    대부분의 UA는 직접 사용하지 않도록 주의를 요합니다)
+    생성 형식은 인간의 소비와 일부 Yacc(<a href="#YACC" rel=biblioentry>[YACC]<!--{{!YACC}}--></a> 참조)를 넘은 약칭 표기법을 사용합니다.
+    
 
-  <p>The grammar below defines the syntax of Selectors. It is globally LL(1)
+  <p lang=en>The grammar below defines the syntax of Selectors. It is globally LL(1)
    and can be locally LL(2) (but note that most UAs should not use it
    directly, since it doesn't express the parsing conventions). The format of
    the productions is optimized for human consumption and some shorthand
@@ -3662,13 +3769,15 @@ V         v|\\0{0,4}(58|78)(\r\n|[ \t\r\n\f])?|\\v
 
 .                return *yytext;</pre>
 
-  <h2 id=profiling><span class=secno>11. </span>Profiles</h2>
+  <h2 id=profiling><span class=secno>11. </span>프로필</h2>
 
-  <p>Each specification using Selectors must define the subset of Selectors
+  <p lang=ko>셀렉터를 이용하는 스펙은 어떤 셀렉터를 허용하며 어떤 셀렉터를 허용하지 않는지 나타내는 서브셋 정의 및 스펙에서 셀렉터의 의미를 설명해야합니다.
+  <p lang=en>Each specification using Selectors must define the subset of Selectors
    it allows and excludes, and describe the local meaning of all the
    components of that subset.
 
-  <p>Non normative examples:
+  <p lang=ko>표준에 준하지 않는 예제입니다:
+  <p lang=en>Non normative examples:
 
   <div class=profile>
    <table class=tprofile>
@@ -3814,48 +3923,66 @@ V         v|\\0{0,4}(58|78)(\r\n|[ \t\r\n\f])?|\\v
        descriptions on the right side of STTS declarations.
    </table>
 
-   <p>Selectors can be used in STTS 3 in two different manners:
+   <p lang=ko>STTS3에 있어 셀렉터에는 2개의 다른 이용법이 있습니다.
+   <p lang=en>Selectors can be used in STTS 3 in two different manners:
 
    <ol>
-    <li>a selection mechanism equivalent to CSS selection mechanism:
+    <li>
+     CSS의 선택 메카니즘과 동일한 선택 메카니즘.
+     선언이 어떤 셀렉터에 주어졌을 때, 그 셀렉터에 매치하는 요소에 선언이 적용됩니다.
+     <div lang=en>a selection mechanism equivalent to CSS selection mechanism:
      declarations attached to a given selector are applied to elements
-     matching that selector,
+     matching that selector,</div>
 
-    <li>fragment descriptions that appear on the right side of declarations.
+    <li>
+     선언 우측에 나타나는 기법
+     <div lang=en>fragment descriptions that appear on the right side of declarations.</div>
    </ol>
   </div>
 
-  <h2 id=Conformance><span class=secno>12. </span>Conformance and
-   requirements</h2>
+  <h2 id=Conformance><span class=secno>12. </span>적합성과 요건</h2>
+  <p lang=ko>이 섹션은 셀렉터 스펙의 적합성을 정의합니다.
+  <p lang=en>This section defines conformance with the present specification only.
 
-  <p>This section defines conformance with the present specification only.
-
-  <p>The inability of a user agent to implement part of this specification
+  <p lang=ko>UA가 디바이스의 제약으로 인해 이 스펙의 일부를 구현하지 못하더라도, 그를 부적합하다 간주하지 않습니다.
+    예를 들어, 인터렉티브하지 못한 UA는 동적 의사 클래스를 구현하지 못할 것입니다.
+  <p lang=en>The inability of a user agent to implement part of this specification
    due to the limitations of a particular device (e.g., non interactive user
    agents will probably not implement dynamic pseudo-classes because they
    make no sense without interactivity) does not imply non-conformance.
-
-  <p>All specifications reusing Selectors must contain a <a
+  <p lang=ko>셀렉터 스펙을 이용하는 모든 스펙은 <a href="#profiling">프로필</a>을 정의하여 허용하는 셀렉터와 제외하는 셀렉터, 스펙 상의 제약을 작성해야 합니다.
+  <p lang=en>All specifications reusing Selectors must contain a <a
    href="#profiling">Profile</a> listing the subset of Selectors it accepts
    or excludes, and describing the constraints it adds to the current
    specification.
 
-  <p>Invalidity is caused by a parsing error, e.g. an unrecognized token or a
+  <p lang=ko>파싱 에러에 따라 셀렉터는 invalid가 됩니다.
+    이해 불가능한 토큰이나 허용하지 않는 파싱 포인트가 있는 경우에 파싱에러를 일으킵니다.
+  <p lang=en>Invalidity is caused by a parsing error, e.g. an unrecognized token or a
    token which is not allowed at the current parsing point.
 
-  <p>User agents must observe the rules for handling parsing errors:
+  <p lang=ko>유저 에이전트의 구문 파싱 에러의 처리에 있어, 다음 사항에 주목해야합니다.
+  <p lang=en>User agents must observe the rules for handling parsing errors:
 
   <ul>
-   <li>a simple selector containing an <a href="#nsdecl">undeclared namespace
-    prefix</a> is invalid
+   <li>
+    <a href="#nsdecl">선언되어있지 않은 네임스페이스 접두사</a>를 가진 심플 셀렉터는 유효하지 않습니다.
+    <div lang=en>a simple selector containing an <a href="#nsdecl">undeclared namespace
+    prefix</a> is invalid</div>
 
-   <li>a selector containing an invalid simple selector, an invalid
-    combinator or an invalid token is invalid.
+   <li>
+    유효하지 않은 심플 셀렉터, 유효하지 않은 콤비네이터 및 유효하지 않은 토큰을 포함한 셀렉터는 유효하지 않습니다.
+    <div lang=en>a selector containing an invalid simple selector, an invalid
+    combinator or an invalid token is invalid.</div>
 
-   <li>a group of selectors containing an invalid selector is invalid.
+   <li>셀렉터 그룹이 유효하지 않은 셀렉터를 포함한 경우, 그 그룹은 유효하지 않습니다.
+       <div lang=en>a group of selectors containing an invalid selector is invalid.</div>
   </ul>
 
-  <p>Specifications reusing Selectors must define how to handle parsing
+  <p lang=ko>셀렉터를 이용하는 스펙은 어떻게 파싱 에러를 저리할 지 정의해야 합니다.
+    (CSS같은 경우, 해당 셀렉터에 정의된 규칙 모두를 드롭합니다)
+  <p lang=en>
+   Specifications reusing Selectors must define how to handle parsing
    errors. (In the case of CSS, the entire rule in which the selector is used
    is dropped.)
 
@@ -3880,10 +4007,9 @@ V         v|\\0{0,4}(58|78)(\r\n|[ \t\r\n\f])?|\\v
    Prowse, and the W3C Internationalization Working Group for their last call
    comments and kind words.
 
-  <h2 id=references><span class=secno>15. </span>References</h2>
+  <h2 id=references><span class=secno>15. </span>참고 문서</h2>
 
-  <h3 id=normative-references><span class=secno>15.1. </span>Normative
-   References</h3>
+  <h3 id=normative-references><span class=secno>15.1. </span>표준 참고 문서</h3>
   <!--begin-normative-->
   <!-- Sorted by label -->
 
@@ -3938,8 +4064,7 @@ http://www.unicode.org/versions/Unicode6.0.0/</a>
   </dl>
   <!--end-normative-->
 
-  <h3 id=informative-references><span class=secno>15.2. </span>Informative
-   References</h3>
+  <h3 id=informative-references><span class=secno>15.2. </span>정보 참고 문서</h3>
   <!--begin-informative-->
   <!-- Sorted by label -->
 
