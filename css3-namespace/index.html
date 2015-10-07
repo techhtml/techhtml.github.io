@@ -114,24 +114,24 @@ href="#changes">Changes</a> section.
 
 <h2 class="no-num no-toc no-ref heading settled heading" id=contents><span class=content>목차</span></h2>
 <div data-fill-with=table-of-contents><ul class=toc>
-	<li><a href=#intro><span class=secno>1</span> Introduction</a>
-	<li><a href=#conformance><span class=secno>2</span>Conformance</a>
+	<li><a href=#intro><span class=secno>1</span> 소개</a>
+	<li><a href=#conformance><span class=secno>2</span> 적합성</a>
 		<ul class=toc>
-		<li><a href=#terminology><span class=secno>2.1</span> Terminology</a></ul>
-	<li><a href=#declaration><span class=secno>3</span>Declaring namespaces: the <span class=css data-link-type=maybe title=@namespace>@namespace</span> rule</a>
+		<li><a href=#terminology><span class=secno>2.1</span> 용어</a></ul>
+	<li><a href=#declaration><span class=secno>3</span> 네임스페이스 선언: <span class=css data-link-type=maybe title=@namespace>@namespace</span> 규칙</a>
 		<ul class=toc>
-		<li><a href=#syntax><span class=secno>3.1</span> Syntax</a>
-		<li><a href=#scope><span class=secno>3.2</span> Scope</a>
-		<li><a href=#prefixes><span class=secno>3.3</span> Declaring Prefixes</a></ul>
-	<li><a href=#css-qnames><span class=secno>4</span> CSS Qualified Names</a>
-	<li><a href=#changes><span class=secno></span> Changes</a>
+		<li><a href=#syntax><span class=secno>3.1</span> 구문</a>
+		<li><a href=#scope><span class=secno>3.2</span> 스코프</a>
+		<li><a href=#prefixes><span class=secno>3.3</span> 접두사 선언</a></ul>
+	<li><a href=#css-qnames><span class=secno>4</span> CSS 수식명</a>
+	<li><a href=#changes><span class=secno></span> 변경점</a>
 	<li><a href=#acks><span class=secno></span> Acknowledgments</a>
-	<li><a href=#references><span class=secno></span> References</a>
+	<li><a href=#references><span class=secno></span> 참고 문서</a>
 		<ul class=toc>
-		<li><a href=#normative><span class=secno></span> Normative References</a>
-		<li><a href=#informative><span class=secno></span> Informative References</a></ul>
-	<li><a href=#index><span class=secno></span> Index</a>
-	<li><a href=#property-index><span class=secno></span> Property index</a></ul></div>
+		<li><a href=#normative><span class=secno></span> 표준 참고 문서</a>
+		<li><a href=#informative><span class=secno></span> 정보 참고 문서</a></ul>
+	<li><a href=#index><span class=secno></span> 인덱스</a>
+	<li><a href=#property-index><span class=secno></span> 속성 인덱스</a></ul></div>
 
 <h2 class="heading settled heading" data-level=1 id=intro><span class=secno>1 </span><span class=content> 소개</span><a class=self-link href=#intro></a></h2>
 
@@ -394,8 +394,18 @@ href="#changes">Changes</a> section.
 	Declaring a namespace prefix or default namespace more than once is nonconforming.
 
 <h2 class="heading settled heading" data-level=4 id=css-qnames><span class=secno>4 </span><span class=content>CSS 수식명</span><a class=self-link href=#css-qnames></a></h2>
-
-<p>	A <dfn data-dfn-type=dfn data-export="" id=css-qualified-name>CSS qualified name<a class=self-link href=#css-qualified-name></a></dfn> is a name explicitly located within (associated with) a namespace.
+<p>
+  <dfn data-dfn-type=dfn data-export="" id=css-qualified-name>CSS 수식명<a class=self-link href=#css-qualified-name></a></dfn>은 명시적으로 네임스페이스에 위치한 (연결된) 이름을 의미합니다.
+  수식명을 CSS 구문에서 구성하는 경우, 
+  선언된 네임스페이스 접두사는 요소나 속성명 앞에 "vertical bar"(<code>|</code>, U+007C)로 구분해 작성해야 합니다.
+  선언된 네임스페이스를 나타내는 접두사는, 로컬명 네임스페이스를 나타냅니다.
+  어떤 네임스페이스에도 속하지 않는 것에 대해서는, 수식명의 접두사를 제거할 수 있습니다. (MAY)
+  즉, 수식명에 있어 네임스페이스 이름에는 어떤 값도 존재하지 않는다는 의미입니다.
+  호스트 언어가 정의하는 내용에 따라, 네임스페이스를 묻지 않고 모든 이름을 대상으로 하도록,
+  접두사 와일드카드로 별표(<code>*</code>, U+002A)를 사용할 수 있습니다. (MAY)
+  네임스페이스에 속하지 않는 것도 대상입니다.
+  </p>
+<p lang=en>	A <dfn data-dfn-type=dfn data-export="">CSS qualified name<a class=self-link href=#css-qualified-name></a></dfn> is a name explicitly located within (associated with) a namespace.
 	To form a qualified name in CSS syntax,
 	a namespace prefix that has been declared within scope is prepended to a local name
 	(such as an element or attribute name),
@@ -410,38 +420,40 @@ href="#changes">Changes</a> section.
 	including no namespace.
 
 	<div class=example>
-		Given the namespace declarations:
+		아래와 같은 네임스페이스 선언이 있습니다:
+    <span lang=en> Given the namespace declarations </span>
 
 		<pre>  @namespace toto "http://toto.example.org";
   @namespace "http://example.com/foo";
 </pre>
-<p>		In a context where the default namespace applies
+<p>
+  기본네임스페이스를 적용한 내용에서는
+  <span lang=en>In a context where the default namespace applies</span>
 
 		<dl>
 			<dt><code>toto|A</code>
 			<dd>
-				represents the name <code>A</code>
-				in the <code>http://toto.example.org</code> namespace.
+				<code>http://toto.example.org</code> 네임스페이스 안 <code>A</code> 이름을 나타냅니다.
 
 			<dt><code>|B</code>
 			<dd>
-				represents the name <code>B</code>
-				that belongs to no namespace.
+				네임스페이스에 속하지 않은 <code>B</code> 이름을 나타냅니다.
 
 			<dt><code>*|C</code>
 			<dd>
-				represents the name <code>C</code>
-				in any namespace,
-				including no namespace.
+				네임스페이스가 없는 걸 포함한 모든 네임스페이스에 속한 <code>C</code> 이름을 나타냅니다.
 
 			<dt><code>D</code>
 			<dd>
-				represents the name <code>D</code>
-				in the <code>http://example.com/foo</code> namespace.
+        <code>http://example.com/foo</code> 네임스페이스에 속하는 <code>D</code> 이름을 나타냅니다.
 		</dl>
 	</div>
-
-<p>	The syntax for the portion of a CSS qualified name before the local name is given below,
+<p lang=ko>로컬명 앞에 있는 CSS 수식명 구문은 아래와 같습니다.
+  이 구문 정의에서는, 와일드마크 접두사를 허가하는 것(<code>wqname</code>)과
+  허가하지 않는 것(<code>qname</code>) 둘 다 정의합니다.
+  구문은 <a href=http://www.w3.org/TR/CSS21/grammar.html>Grammar appendix of CSS 2.1</a> <a data-biblio-type=normative data-link-type=biblio href=#css21 title=css21>[CSS21]</a>을 이용합니다. 이를 통해,
+  토큰 사이에는 공백 문자가 아니고, 코멘트를 암묵적으로 허용하는 점에 주의하시길 바랍니다.
+<p lang=en>The syntax for the portion of a CSS qualified name before the local name is given below,
 	both for qualified names that allow wildcard prefixes (<code>wqname</code>)
 	and for qualified names that disallow wildcard prefixes (<code>qname</code>).
 	(The syntax uses notation from the <a href=http://www.w3.org/TR/CSS21/grammar.html>Grammar appendix of CSS 2.1</a>. <a data-biblio-type=normative data-link-type=biblio href=#css21 title=css21>[CSS21]</a>
@@ -463,7 +475,11 @@ href="#changes">Changes</a> section.
     : wqname_prefix? [ ident | '*' ]
     ;
 </pre>
-<p>	CSS qualified names can be used in (for example)
+<p lang=ko>CSS 수식명은 셀렉터나 속성값 등 다른 모듈에서 정의한 부분에 사용하는게 가능합니다.
+  이러한 모듈은, 적절히 선언하지 않은 네임스페이스 접두사를 어떻게 처리해야 할 지 정의해야합니다 (MUST).
+  이러한 처리에 있어, 선언하지 않은 네임스페이스 접두사는, 파스 에러로 취급해야 합니다 (SHOULD).
+  에러에 따라 셀렉터나 선언 등을 유효하지 않은 것으로 처리하여, CSS에서는<a href=http://www.w3.org/TR/CSS21/conform.html#ignore>무시</a>합니다.
+<p lang=en>	CSS qualified names can be used in (for example)
 	selectors and property values as described in other modules.
 	Those modules must define handling of namespace prefixes that have not been properly declared.
 	Such handling should treat undeclared namespace prefixes as a parsing error
@@ -471,14 +487,15 @@ href="#changes">Changes</a> section.
 	and, in CSS, <a href=http://www.w3.org/TR/CSS21/conform.html#ignore>ignored</a>.
 
 	<div class=example>
-		For example, the Selectors module <a data-biblio-type=informative data-link-type=biblio href=#select title=select>[SELECT]</a> defines a type selector
+		<p lang=ko>예를 들어, 셀렉터 모듈<a data-biblio-type=informative data-link-type=biblio href=#select title=select>[SELECT]</a>이 네임스페이스 선언을 하지 않고, 접두사를 사용하고 있는 타입 셀렉터를 유효하지 않다고 판단합니다, CSS<a data-biblio-type=normative data-link-type=biblio href=#css21 title=css21>[CSS21]</a>에서는 유효하지 않은 셀렉터에 따른 룰셋을 무시합니다.
+    <p lang=en>
+    For example, the Selectors module <a data-biblio-type=informative data-link-type=biblio href=#select title=select>[SELECT]</a> defines a type selector
 		with an undeclared namespace prefix
 		to be an invalid selector,
 		and CSS <a data-biblio-type=normative data-link-type=biblio href=#css21 title=css21>[CSS21]</a> requires style rules with an invalid selector to be completely ignored.
 	</div>
 
-<h2 class="no-num heading settled heading" id=changes><span class=content>
-Changes</span><a class=self-link href=#changes></a></h2>
+<h2 class="no-num heading settled heading" id=changes><span class=content>변경점</span><a class=self-link href=#changes></a></h2>
 
 <p>	Changes made since the <a href=http://www.w3.org/TR/2011/REC-css3-namespace-20110929/>29 September 2011 Recommendation</a>:
 	<ul>
@@ -504,18 +521,18 @@ Acknowledgments</span><a class=self-link href=#acks></a></h2>
 	for their comments.
 
 <h2 class="no-num no-ref heading settled heading" id=references><span class=content>
-References</span><a class=self-link href=#references></a></h2>
+참고 문서</span><a class=self-link href=#references></a></h2>
 
 <h3 class="no-num no-ref heading settled heading" id=normative><span class=content>
-Normative References</span><a class=self-link href=#normative></a></h3>
+표준 참고 문서</span><a class=self-link href=#normative></a></h3>
 <div data-fill-with=normative-references><dl><dt id=css21 title=CSS21><a class=self-link href=#css21></a>[CSS21]<dd>Bert Bos; et al. <a href=http://www.w3.org/TR/2011/REC-CSS2-20110607>Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</a>. 7 June 2011. W3C Recommendation. URL: <a href=http://www.w3.org/TR/2011/REC-CSS2-20110607>http://www.w3.org/TR/2011/REC-CSS2-20110607</a><dt id=rfc2119 title=RFC2119><a class=self-link href=#rfc2119></a>[RFC2119]<dd>S. Bradner. <a href=http://www.ietf.org/rfc/rfc2119.txt>Key words for use in RFCs to Indicate Requirement Levels</a>. URL: <a href=http://www.ietf.org/rfc/rfc2119.txt>http://www.ietf.org/rfc/rfc2119.txt</a><dt id=xml-names title=XML-NAMES><a class=self-link href=#xml-names></a>[XML-NAMES]<dd>Tim Bray; et al. <a href=http://www.w3.org/TR/2009/REC-xml-names-20091208/>Namespaces in XML 1.0 (Third Edition)</a>. 8 December 2009. W3C Recommendation. URL: <a href=http://www.w3.org/TR/2009/REC-xml-names-20091208/>http://www.w3.org/TR/2009/REC-xml-names-20091208/</a></dl></div>
 
 <h3 class="no-num no-ref heading settled heading" id=informative><span class=content>
-Informative References</span><a class=self-link href=#informative></a></h3>
+정보 참고 문서</span><a class=self-link href=#informative></a></h3>
 <div data-fill-with=informative-references><dl><dt id=select title=SELECT><a class=self-link href=#select></a>[SELECT]<dd>Tantek Çelik; et al. <a href=http://www.w3.org/TR/2011/REC-css3-selectors-20110929/>Selectors Level 3</a>. 29 September 2011. W3C Recommendation. URL: <a href=http://www.w3.org/TR/2011/REC-css3-selectors-20110929/>http://www.w3.org/TR/2011/REC-css3-selectors-20110929/</a></dl></div>
 
 <h2 class="no-num no-ref heading settled heading" id=index><span class=content>
-Index</span><a class=self-link href=#index></a></h2>
+인덱스</span><a class=self-link href=#index></a></h2>
 <div data-fill-with=index><ul class=indexlist>
 <li>CSS qualified name, <a href=#css-qualified-name title="section 4">4</a>
 <li>default namespace, <a href=#default-namespace title="section 3.3">3.3</a>
@@ -526,7 +543,7 @@ Index</span><a class=self-link href=#index></a></h2>
 </ul></div>
 
 <h2 class="no-num no-ref heading settled heading" id=property-index><span class=content>
-Property index</span><a class=self-link href=#property-index></a></h2>
+속성 인덱스</span><a class=self-link href=#property-index></a></h2>
 <div data-fill-with=property-index><p>No properties defined.</div>
 
 </div>
