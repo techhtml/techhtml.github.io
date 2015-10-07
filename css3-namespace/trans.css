@@ -54,9 +54,3 @@ span.transnote {
   margin-top:0;
   margin-bottom:1em;
 }
-span:lang(en) {
-  display:block;
-}
-p:lang(ko) {
-  margin-bottom:0;
-}
