@@ -168,7 +168,7 @@ href="#changes">Changes</a> section.
 <h2 class="heading settled heading" data-level=2 id=conformance><span class=secno>2 </span><span class=content>적합성</span><a class=self-link href=#conformance></a></h2>
   <p lang=ko>문서나 구현체는 CSS 네임스페이스 하나에만 적합하는 건 불가능합니다.
     그러나 이 스펙을 표준으로 참조하는 다른 호스트 언어나 CSS를 구현한 경우, CSS 네임스페이스에 적합하였다고 언급할 수 있습니다.
-  <p lang=ko>A document or implementation cannot conform to CSS Namespaces alone,
+  <p lang=en>A document or implementation cannot conform to CSS Namespaces alone,
     but can claim conformance to CSS Namespaces if it satisfies the
     conformance requirements in this specification when implementing CSS or
     another host language that normatively references this specification.</p>
@@ -355,15 +355,26 @@ href="#changes">Changes</a> section.
 	applying to the document.
 
 <h3 class="heading settled heading" data-level=3.3 id=prefixes><span class=secno>3.3 </span><span class=content>접두사 선언</span><a class=self-link href=#prefixes></a></h3>
-<p>	A <dfn data-dfn-type=dfn data-export="" id=namespace-prefix>namespace prefix<a class=self-link href=#namespace-prefix></a></dfn>, once declared,
+<p lang=ko><dfn data-dfn-type=dfn data-export="" id=namespace-prefix>네임스페이스 접두사<a class=self-link href=#namespace-prefix></a></dfn>를 선언하면,
+선언된 네임스페이스와 네임스페이스 수식명이 속한 네임스페이스를 나타냅니다.
+네임스페이스 접두사는 <a href=http://www.w3.org/TR/CSS21/syndata.html#counter>CSS 카운터 명</a>과 동일하게 대소문자를 구별합니다.
+<p lang=en>	A <dfn data-dfn-type=dfn data-export="">namespace prefix<a class=self-link href=#namespace-prefix></a></dfn>, once declared,
 	represents the namespace for which it was declared
 	and can be used to indicate the namespace of a namespace-qualified name.
 	Namespace prefixes are,
 	<a href=http://www.w3.org/TR/CSS21/syndata.html#counter>like CSS counter names</a>,
 	case-sensitive.
-<p>	If in the namespace declaration the namespace prefix is omitted,
+<p lang=ko>네임스페이스 접두사를 생략한채로 네임스페이스를 선언한 경우, 네임스페이스는 기본 네임스페이스로 선언합니다.
+  <dfn data-dfn-type=dfn data-export="" id=default-namespace>기본 네임스페이스<a class=self-link href=#default-namespace></a></dfn>는 접두사를 가지지 않는 이름에 적용할 수 있습니다 (MAY).
+  네임스페이스 접두사를 사용하는 모듈은, 기본 네임스페이스를 적용하는 내용에 대해 정의할 필요가 있습니다 (MUST).
+  예를 들어, <a data-biblio-type=normative data-link-type=biblio href=#xml-names title=xml-names>[XML-NAMES]</a>에 따르면
+  셀렉터<a data-biblio-type=informative data-link-type=biblio href=#select title=select>[SELECT]</a>는 기본 네임스페이스를 타입 셀렉터에 적용하지만,
+  속성 셀렉터에는 적용하지 않습니다. 기본 네임스페이스에는 초기값이 존재하지 않기 때문입니다.
+  참조하지 않는 이름을 기본 네임스페이스에 적용하는 모듈은 기본 네임스페이스를 정의하지 않은 경우 참조하지 않는 이름을 어떻게 해석해야하는 지 정의해야할 필요가 있습니다.
+  
+<p lang=en>	If in the namespace declaration the namespace prefix is omitted,
 	then the namespace so declared is the default namespace.
-	The <dfn data-dfn-type=dfn data-export="" id=default-namespace>default namespace<a class=self-link href=#default-namespace></a></dfn> may apply to names that have no explicit namespace prefix:
+	The <dfn data-dfn-type=dfn data-export="">default namespace<a class=self-link href=#default-namespace></a></dfn> may apply to names that have no explicit namespace prefix:
 	modules that employ namespace prefixes must define in which contexts the default namespace applies.
 	For example, following <a data-biblio-type=normative data-link-type=biblio href=#xml-names title=xml-names>[XML-NAMES]</a>,
 	in Selectors <a data-biblio-type=informative data-link-type=biblio href=#select title=select>[SELECT]</a> the default namespace applies to type selectors—<wbr>but it does not apply to attribute selectors.
@@ -371,18 +382,18 @@ href="#changes">Changes</a> section.
 	modules that assign unqualified names to the default namespace
 	must define how those unqualified names are to be interpreted
 	when no default namespace is declared.
-
-<p class=note>	Note: Note that using default namespaces in conjunction with type selectors
+<p class=note lang=ko> 노트: 타입셀렉터와 기본 네임스페이스가 함께 쓰일 때, UA의 기본 네임스페이스 지원 여부가 셀렉터의 해석에 영향을 줍니다.
+<p class=note lang=en>	Note: Note that using default namespaces in conjunction with type selectors
 	can cause UAs that support default namespaces
 	and UAs that don’t support default namespaces
 	to interpret selectors differently.
-
-<p>	If a namespace prefix or default namespace is declared more than once
+<p lang=ko> 만약 네임스페이스 접두사나 기본 네임스페이스를 1개 이상 선언한 경우 마지막으로 선언한 것만 사용합니다 (SHALL).
+  네임스페이스 접두사 및 기본 네임스페이스 선언을 한번 이상 하는 건 옳지 않습니다.
+<p lang=en>	If a namespace prefix or default namespace is declared more than once
 	only the last declaration shall be used.
 	Declaring a namespace prefix or default namespace more than once is nonconforming.
 
-<h2 class="heading settled heading" data-level=4 id=css-qnames><span class=secno>4 </span><span class=content>
-CSS Qualified Names</span><a class=self-link href=#css-qnames></a></h2>
+<h2 class="heading settled heading" data-level=4 id=css-qnames><span class=secno>4 </span><span class=content>CSS 수식명</span><a class=self-link href=#css-qnames></a></h2>
 
 <p>	A <dfn data-dfn-type=dfn data-export="" id=css-qualified-name>CSS qualified name<a class=self-link href=#css-qualified-name></a></dfn> is a name explicitly located within (associated with) a namespace.
 	To form a qualified name in CSS syntax,
