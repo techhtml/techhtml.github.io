@@ -3,8 +3,6 @@ body {
   font-size:1em;
   line-height:1.8em;
   font-family:nanum gothic, sans-serif;
-  width:900px;
-  margin:40px auto 0;
 }
 h1 {
   text-align:center;
@@ -21,12 +19,13 @@ li a {
   color:#555;
   text-decoration:none;
   transition:2s all ease;
+  text-align:center;
 }
 li a::before {
   content:'';
   position:absolute;
-  left:20px;
-	right:900px;
+  left:50%;
+	right:50%;
   bottom:0;
   height:1px;
   background:#555;
@@ -36,5 +35,20 @@ li a:hover {
   color:#000;
 }
 li a:hover::before {
-  right:0;
+  left:20px;
+  right:20px;
+}
+
+@media (min-width:1024px) {
+  body {
+    width:900px;
+    margin:40px auto 0;
+  }
+  li a {
+    text-align:left;
+  }
+  li a::before {
+    left:20px;
+    right:100%;
+  }
 }
