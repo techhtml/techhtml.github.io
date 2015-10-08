@@ -533,7 +533,7 @@ dt#feedback {
     
     <section id="intro" class="informative" typeof="bibo:Chapter" resource="#intro" rel="bibo:Chapter">
       <!--OddPage--><h2 role="heading" id="h2_intro"><span class="secno">1. </span>소개</h2>
-      <p lang=ko><em>이 섹션은 표준에 준하는 내용을 포함하지 않습니다.</em></p>
+      <p lang=ko><em>이 섹션은 표준에 준하는 내용이 아닙니다.</em></p>
       <p lang=en><em>This section is non-normative.</em></p>
       <div>
       <p lang=ko>
@@ -560,41 +560,65 @@ dt#feedback {
 			<p lang=en>To reduce the cost of coding to multiple input types and also to help with the above described ambiguity with Mouse Events, this specifications defines a more abstract form of input, called a <a title="pointer" class="internalDFN" href="#dfn-pointer">pointer</a>. A pointer can be any point of contact on the screen made by a mouse cursor, pen, touch (including multi-touch), or other pointing input device. This model makes it easier to write sites and applications that work well no matter what hardware the user has. For scenarios when device-specific handling is desired, this specification also defines properties for inspecting the device type which produced the event. The primary goal is to provide a single set of events and interfaces that allow for easier authoring for cross-device pointer input while still allowing for device-specific handling only when necessary for an augmented experience.</p>
 			<p lang=ko> 추가적인 주된 목표는 스크립트 실행을 막지않고, 스크롤 같은 기본 터치 액션을 처리하기 위한 멀티 스레드 유저 에이전트를 가능하게 하는 것입니다.
 			<p lang=en> An additional key goal is to enable multi-threaded user agents to handle default touch actions, such as scrolling, without blocking on script execution.</p>
-	  <div class="note"><div class="note-title" aria-level="1" role="heading" id="h_note_1"><span>Note</span></div><div class="">
+	  <div class="note" lang=ko><div class="note-title" aria-level="1" role="heading" id="h_note_1"><span>노트</span></div><div class="">
+		<p>이 스펙 문서가 다양한 포인터 입력을 위한 통합 이벤트 모델을 정의하나, 키보드나 키보드 형태의 인터페이스 같은 다른 입력 형태를 이 모델에서 다루지 않습니다 (예를 들면, 유저가 포커스를 가져갈 수 있는 컨트롤이나 요소들을 통한 유저 순차적 네비게이션을 허용하는 스크린 리더나 터치스크린 디바이스에서만 동작하는 보조 도구같은 것들입니다). 유저 에이전트는 이러한 인터페이스를 지원하기 위해 포인터 이벤트를 생성할 수 있지만, 이 시나리오를 이 스펙 문서에서 다루지 않습니다.</p>
+		<p>
+    첫번째 인스턴스에서, 작성자가 <code>focus</code>, <code>blue</code>, <code>click</code> 같은 
+    하이 레벨 이벤트에 대응하는 모든 입력 형태를 위해 동일한 기능을 제공하기를 권장합니다.
+    그러나, (포인터 이벤트 같은) 로우 레벨 이벤트를 사용할 때, 작성자는 모든 입력 형태를 반드시 지원하는 것을 권장합니다.
+    키보드와 키보드 형태의 인터페이스같은 경우, 명백히 키보드 이벤트 처리를 추가해야 합니다.
+    추가적인 내용은 <a href="http://www.w3.org/TR/WCAG20/#keyboard-operation">WCAG 2.0 Guideline 2.1</a>를 참고하시길 바랍니다.
+	  </div></div>
+	  <div class="note" lang=en><div class="note-title" aria-level="1" role="heading"><span>Note</span></div><div class="">
 		<p>While this specification defines a unified event model for a variety pointer inputs, this model does not cover other forms of input such as keyboards or keyboard-like interfaces (for instance, a screenreader or similar assistive technology running on a touchscreen-only device, which allows users sequential navigation through focusable controls and elements). While user agents might choose to also generate pointer events in response to these interfaces, this scenario is not covered in this specification.</p>
 
 		<p>In the first instance, authors are encouraged to provide equivalent functionality for all forms of input by responding to high-level events such as <code>focus</code>, <code>blur</code> and <code>click</code>. However, when using low-level events (such as Pointer Events), authors are encouraged to ensure that all types of input are supported. In the case of keyboards and keyboard-like interfaces, this might require the addition of explicit keyboard event handling. See <a href="http://www.w3.org/TR/WCAG20/#keyboard-operation">WCAG 2.0 Guideline 2.1</a> for further details.</p>
 	  </div></div>
 	<figure id="fig-a-pointer-is-a-hardware-agnostic-representation-of-input-devices-that-can-target-a-specific-coordinate-or-set-of-coordinates-on-a-screen.x">
-		<img src="pointer.png" alt="Pointer input combines input from mouse, pen, touch, etc.">
-		<figcaption>Fig. <span class="figno">1</span> <span class="fig-title">A pointer is a hardware agnostic representation of input devices that can target a specific coordinate (or set of coordinates) on a screen.</span></figcaption>
+		<img src="pointer.png" alt="마우스, 펜, 터치 등 입력을 모은 포인터 입력">
+		<figcaption>Fig. <span class="figno">1</span> <span class="fig-title">포인터는 스크린 위에서 고유의 좌표(좌표의 세트)를 목표로 하는 입력 기기를 하드웨어에 상관없이 나타냅니다.</span></figcaption>
 	  </figure>
-
-	  <p>The events for handling generic pointer input look a lot like those for mouse: pointerdown, pointermove, pointerup, pointerover, pointerout, etc. This facilitates easy content migration from Mouse Events to Pointer Events.
+    <p lang=ko>포괄적인 포인터 입력을 위한 이벤트는 pointerdown, pointermove, pointerup, pointerover, pointerout 등 마우스에서 사용하던 것과 유사한 게 많습니다. 이는 마우스 이벤트에서 포인터 이벤트로 콘텐츠를 이동을 쉽고 용이하게 합니다. 포인터 이벤트는 클라이언트 좌표, 타겟 요소, 버튼 상태 등 현재 마우스 이벤트에서 사용하는 속성을 제공합니다. 여기에 더해 압력, 접촉 기하, 기울기 등 다른 입력 형태를 위한 새로운 속성도 제공합니다. 따라서 다른 형태의 인풋 타입 사이에 로직을 공유할 때 의미가 통하게, 최적의 경험을 얻을 수 있게 필요한 특정 입력 형태만을 위한 커스터마이징 등을 포인터 이벤트에서 쉽게 작성할 수 있게 합니다.
+	  <p lang=en>The events for handling generic pointer input look a lot like those for mouse: pointerdown, pointermove, pointerup, pointerover, pointerout, etc. This facilitates easy content migration from Mouse Events to Pointer Events.
 		Pointer Events provide all the usual properties present in Mouse Events (client coordinates, target element, button states, etc.) in addition to new properties for other forms of input: pressure, contact geometry, tilt, etc. So authors can easily code to Pointer Events to share logic between different input types where it makes sense, and customize for a particular type of input only where necessary to get the best experience.</p>
-	  <p>While Pointer Events are sourced from a variety of input devices, they are not defined as being generated from some other set of device-specific events. While possible and encouraged for compatibility, this spec does not require other device-specific events be supported (e.g. mouse events, touch events, etc.).  A user agent could support pointer events without supporting any other device events. For compatibility with content written to mouse-specific events, this specification does provide an optional section describing how to generate compatibility mouse events based on pointer input from devices other than a mouse.</p>
-	  <div class="note"><div class="note-title" aria-level="1" role="heading" id="h_note_2"><span>Note</span></div><div class="informative">
+    <p lang=ko>
+      포인터 디바이스가 여러 입력 디바이스를 소스로 할 때, 다른 디바이스 고유 이벤트 세트에서 생성하는 건 정의하지 않습니다.
+      가능성과 호환을 부추기기 위해, 이 스펙에서 마우스 이벤트, 터치 이벤트 같은 다른 디바이스 고유 이벤트를 지원하기를 필수로 하지 않습니다. 
+      유저 에이전트는 다른 디바이스 이벤트를 지원하지 않고 포인터 이벤트만 지원할 수 있습니다.
+      마우스 고유 이벤트로 작성한 콘텐츠의 호환성을 위해, 이 스펙 문서는 마우스 대신 다른 디바이스의 포인터 입력을 기반으로 한 호환 마우스 이벤트 생성 방법을 설명하는 섹션을 제공합니다.
+	  <p lang=en>While Pointer Events are sourced from a variety of input devices, they are not defined as being generated from some other set of device-specific events. While possible and encouraged for compatibility, this spec does not require other device-specific events be supported (e.g. mouse events, touch events, etc.).  A user agent could support pointer events without supporting any other device events. For compatibility with content written to mouse-specific events, this specification does provide an optional section describing how to generate compatibility mouse events based on pointer input from devices other than a mouse.</p>
+	  <div class="note" lang=ko><div class="note-title" aria-level="1" role="heading" id="h_note_2"><span>노트</span></div><div class="informative">
+    이 스펙 문서는 포인터 이벤트와 <a href="http://www.w3.org/TR/touch-events/">터치 이벤트</a> 양쪽 다 지원하는 유저 에이전트의 예상 행동에 대한 어드바이스를 제공하지 않습니다. 두 스펙간 관계에 대한 더 자세한 정보는, <a href="http://www.w3.org/community/touchevents/">터치 이벤트 커뮤니티 그룹</a>을 보시길 바랍니다.
+	  </div></div>
+	  <div class="note" lang=en><div class="note-title" aria-level="1" role="heading"><span>Note</span></div><div class="informative">
 	  This specification does not provide any advice on the expected behavior of user agents that support both Pointer Events and <a href="http://www.w3.org/TR/touch-events/">Touch Events</a>. For more information on the relationship between these two specifications, see the <a href="http://www.w3.org/community/touchevents/">Touch Events Community Group</a>.
 	  </div></div>
 
 	  </div>
     </section>
-<section id="conformance" typeof="bibo:Chapter" resource="#conformance" rel="bibo:Chapter"><!--OddPage--><h2 role="heading" id="h2_conformance"><span class="secno">2. </span>Conformance</h2>
-<p>
+<section id="conformance" typeof="bibo:Chapter" resource="#conformance" rel="bibo:Chapter"><!--OddPage--><h2 role="heading" id="h2_conformance"><span class="secno">2. </span>적합성</h2>
+<p lang=ko>
+  이 스펙문서 내에서 예제, 노트, 작성 가이드라인, 다이어그램 및 명시적으로 '이 섹션은 표준에 준하는 내용이 아닙니다'라 표기된 내용은 표준에 준하는 내용이 아닙니다.
+	그 외는 모두 표준에 준하는 내용입니다.
+</p>
+<p lang=en>
   As well as sections marked as non-normative, all authoring guidelines, diagrams, examples,
   and notes in this specification are non-normative. Everything else in this specification is
   normative.
 </p>
-<p id="respecRFC2119">The key words <em class="rfc2119" title="MAY">MAY</em>, <em class="rfc2119" title="MUST">MUST</em>, <em class="rfc2119" title="MUST NOT">MUST NOT</em>, <em class="rfc2119" title="OPTIONAL">OPTIONAL</em>, and <em class="rfc2119" title="SHOULD">SHOULD</em> are
+<p id="respecRFC2119"><em class="rfc2119" title="MAY">MAY</em>, <em class="rfc2119" title="MUST">MUST</em>, <em class="rfc2119" title="MUST NOT">MUST NOT</em>, <em class="rfc2119" title="OPTIONAL">OPTIONAL</em>, <em class="rfc2119" title="SHOULD">SHOULD</em> 키워드는 [<cite><a class="bibref" href="#bib-RFC2119">RFC2119</a></cite>]에서 기술하는대로 해석합니다.
+</p>
+<p lang=en>The key words <em class="rfc2119" title="MAY">MAY</em>, <em class="rfc2119" title="MUST">MUST</em>, <em class="rfc2119" title="MUST NOT">MUST NOT</em>, <em class="rfc2119" title="OPTIONAL">OPTIONAL</em>, and <em class="rfc2119" title="SHOULD">SHOULD</em> are
   to be interpreted as described in [<cite><a class="bibref" href="#bib-RFC2119">RFC2119</a></cite>].
 </p>
-
-
 </section>
 <section class="informative" id="examples">
-	<!--OddPage--><h2 role="heading" id="h2_examples"><span class="secno">3. </span>Examples</h2><p><em>This section is non-normative.</em></p>
-	<p>The following are example author code that demonstrates how the APIs in this specification might be used.</p>
-<div class="example"><div class="example-title"><span>Example 1</span>: Basic HTML5 Canvas painting application</div><pre id="example_1" class="example">&lt;style&gt;
+	<!--OddPage--><h2 role="heading" id="h2_examples"><span class="secno">3. </span>예제</h2>
+  <p lang=ko><em>이 섹션은 표준에 준하는 내용이 아닙니다.</em></p>
+  <p lang=en><em>This section is non-normative.</em></p>
+  <p lang=ko>아래 예제들은 이 스펙 문서에서 사용해야 하는 API를 어떻게 사용해야 하는지 입증하는 코드입니다.</p>
+	<p lang=en>The following are example author code that demonstrates how the APIs in this specification might be used.</p>
+<div class="example"><div class="example-title"><span>예제 1</span>: 기본 HTML5 Canvas 페인팅 예제</div><pre id="example_1" class="example">&lt;style&gt;
   /* Disable intrinsic user agent touch behaviors (such as panning or zooming) so
   that all events on the canvas element are given to the application instead. */
 
@@ -624,7 +648,7 @@ dt#feedback {
     	   context.fillRect(event.clientX, event.clientY, 5, 5);
     }
 &lt;/script&gt;</pre></div>
-<div class="example"><div class="example-title"><span>Example 2</span>: Detecting the type of input from a user</div><pre id="example_2" class="example">window.addEventListener("pointerdown", detectInputType, false);
+<div class="example"><div class="example-title"><span>예제 2</span>: 유저 입력 형태 감지하기</div><pre id="example_2" class="example">window.addEventListener("pointerdown", detectInputType, false);
 
 function detectInputType(event) {
     switch(event.pointerType) {
@@ -642,7 +666,7 @@ function detectInputType(event) {
             or UA-specific custom type */
     }
 }</pre></div>
-<div class="example"><div class="example-title"><span>Example 3</span>: Resizing an element to match the contact geometry</div><pre id="example_3" class="example">&lt;div style="position:absolute; top:0px; left:0px; width:100px;height:100px;"&gt;&lt;/div&gt;
+<div class="example"><div class="example-title"><span>예제 3</span>: 접촉 기하에 매치해 요소 리사이징</div><pre id="example_3" class="example">&lt;div style="position:absolute; top:0px; left:0px; width:100px;height:100px;"&gt;&lt;/div&gt;
 &lt;script&gt;
 window.addEventListener("pointerdown", checkPointerSize, false);
 
@@ -651,7 +675,7 @@ function checkPointerSize(event) {
     event.target.style.height = event.height + "px";
 }
 &lt;/script&gt;</pre></div>
-<div class="example"><div class="example-title"><span>Example 4</span>: Firing an untrusted pointer event from script</div><pre id="example_4" class="example">var event = new PointerEvent("pointerover",
+<div class="example"><div class="example-title"><span>예제 4</span>: 스크립트에서	신뢰할 수 없는 포인터 이벤트 발생하기</div><pre id="example_4" class="example">var event = new PointerEvent("pointerover",
    {bubbles: true,
     cancelable: true,
     pointerId: 42,
@@ -662,7 +686,9 @@ function checkPointerSize(event) {
 eventTarget.dispatchEvent(event); </pre></div>
 </section>
 	<section class="informative" id="glossary">
-		<!--OddPage--><h2 role="heading" id="h2_glossary"><span class="secno">4. </span>Glossary</h2><p><em>This section is non-normative.</em></p>
+		<!--OddPage--><h2 role="heading" id="h2_glossary"><span class="secno">4. </span>용어 사전</h2>
+    <p lang=ko><em>이 섹션은 표준에 준하는 내용이 아닙니다.</em></p>
+    <p lang=en><em>This section is non-normative.</em></p>
 		<dl>
 			<dt><dfn id="dfn-active-buttons-state">active buttons state</dfn></dt>
 				<dd>The condition when a pointer has a non-zero value for the <code>buttons</code> property. For mouse, this is when the device has at least one button depressed. For touch, this is when there is physical contact with the digitizer. For pen, this is when the pen has physical contact with the digitizer.</dd>
