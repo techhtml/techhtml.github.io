@@ -690,37 +690,63 @@ eventTarget.dispatchEvent(event); </pre></div>
     <p lang=ko><em>이 섹션은 표준에 준하는 내용이 아닙니다.</em></p>
     <p lang=en><em>This section is non-normative.</em></p>
 		<dl>
-			<dt><dfn id="dfn-active-buttons-state">active buttons state</dfn></dt>
-				<dd>The condition when a pointer has a non-zero value for the <code>buttons</code> property. For mouse, this is when the device has at least one button depressed. For touch, this is when there is physical contact with the digitizer. For pen, this is when the pen has physical contact with the digitizer.</dd>
-			<dt><dfn id="dfn-active-pointer">active pointer</dfn></dt>
-				<dd>Any touch contact, pen stylus, mouse cursor, or other pointer that can produce events.  If it is possible for a given pointer (identified by a unique <code>pointerId</code>) to produce additional events within the document, then that pointer is still considered active. Examples:
+			<dt><dfn id="dfn-active-buttons-state">버튼 활성 상태</dfn></dt>
+				<dd>
+        포인터 <code>buttons</code> 속성 값이 0이 아닌 상태를 나타냅니다.
+        마우스에서 적어도 한개 이상의 버튼을 눌렀을 때를 나타냅니다.
+        터치에서 디지타이저에 물리적으로 접촉했을 때를 나타냅니다.
+        펜에서 디지타이저에 펜이 물리적으로 접촉했을 때를 나타냅니다.
+        <div lang=en>The condition when a pointer has a non-zero value for the <code>buttons</code> property. For mouse, this is when the device has at least one button depressed. For touch, this is when there is physical contact with the digitizer. For pen, this is when the pen has physical contact with the digitizer.</div></dd>
+			<dt><dfn id="dfn-active-pointer">활성 포인터</dfn></dt>
+				<dd>
+        모든 터치 접촉, 스타일러스 펜, 마우스 커서 및 다른 포인터에 이벤트를 줄 수 있습니다.
+        만약 포인터를 주는게 가능하다면(유니크한 <code>pointerId</code>로 식별하는) 문서를 포함한 추가 이벤트를 부여할 수 있으며, 
+        포인터는 활성 상태를 유지할 것입니다. 예를 들면:
+        <div lang=en>Any touch contact, pen stylus, mouse cursor, or other pointer that can produce events.  If it is possible for a given pointer (identified by a unique <code>pointerId</code>) to produce additional events within the document, then that pointer is still considered active. Examples:</div>
 					<ul>
-						<li>A mouse connected to the device is always active.</li>
-						<li>A touch contact on the screen is considered active.</li>
-						<li>If a touch contact or pen stylus is lifted beyond the range of the digitizer, then it is no longer considered active.</li>
+						<li>디바이스에 연결된 마우스는 항상 활성상태입니다. <div lang=en>A mouse connected to the device is always active.</div></li>
+						<li>스크린에 닿은 터치는 활성상태로 고려해야 합니다. <div lang=en>A touch contact on the screen is considered active.</div></li>
+						<li>만약 터치 접촉이나 스타일러스 펜이 디지타이저 범위 위를 벗어난 경우, 더 이상 활성 상태로 고려하지 않아야 합니다. <div lang=en>If a touch contact or pen stylus is lifted beyond the range of the digitizer, then it is no longer considered active.</div></li>
 					</ul>
-					<div class="note"><div class="note-title" aria-level="1" role="heading" id="h_note_3"><span>Note</span></div><div class="">On some platforms, the set of active pointers includes all pointer input to the device, including any that are not targeted at the user agent (e.g. those targeted at other applications).</div></div>
+					<div class="note"><div class="note-title" aria-level="1" role="heading" id="h_note_3"><span>노트</span></div><div class="">
+          몇몇 플랫폼에서 활성 포인터의 세트는 유저에이전트 타겟이 아닌 것을 포함한 모든 디바이스 입력을 포함합니다. (즉 다른 어플리케이션 타겟입니다)</div></div>
+					<div class="note"><div class="note-title" aria-level="1" role="heading"><span>Note</span></div><div class="">On some platforms, the set of active pointers includes all pointer input to the device, including any that are not targeted at the user agent (e.g. those targeted at other applications).</div></div>
 				</dd>
-			<dt><dfn id="dfn-canceled-event">canceled event</dfn></dt>
-				<dd>An event whose default action was prevented by means of <code>preventDefault()</code>, returning <code>false</code> in an event handler, or other means as defined by [<cite><a class="bibref" href="#bib-DOM-LEVEL-3-EVENTS">DOM-LEVEL-3-EVENTS</a></cite>] and [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>].</dd>
-			<dt><dfn id="dfn-contact-geometry">contact geometry</dfn></dt>
-				<dd>The bounding box of an input (most commonly, touch) on a digitizer. This typically refers to devices with coarser pointer input resolution than a single pixel. Some devices do not report this data at all.</dd>
-			<dt><dfn id="dfn-digitizer">digitizer</dfn></dt>
-				<dd>A type of input sensing device in which a surface can detect input which is in contact and/or in close proximity. Most commonly, this is the surface that senses input from the touch contact or a pen stylus.</dd>
-			<dt><dfn id="dfn-hit-test">hit test</dfn></dt>
-				<dd>The process by which a user agent determines a target element for a pointer event. Typically, this is determined by considering the pointer's location and also the visual layout of elements in a document on screen media.</dd>
-			<dt><dfn id="dfn-pointer">pointer</dfn></dt>
-				<dd>A hardware agnostic representation of input devices that can target a specific coordinate (or set of coordinates) on a screen, such as a mouse, pen, or touch contact.</dd>
-			<dt><dfn id="dfn-user-agent">user agent</dfn></dt>
-				<dd>A program, such as a browser or content authoring tool, normally running on a client machine, which acts on a user's behalf in retrieving, interpreting, executing, presenting, or creating content.</dd>
-			<dt><dfn id="dfn-queue-a-task">queue a task</dfn></dt>
-				<dd>Adding the task to events task queue of the relevant event loop, as defined in [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>].</dd>
+			<dt><dfn id="dfn-canceled-event">취소 이벤트</dfn></dt>
+				<dd>
+          기본 액션을 <code>preventDefault()</code>으로 막았거나, 이벤트 핸들러에 <code>false</code>를 반환하거나,
+					[<cite><a class="bibref" href="#bib-DOM-LEVEL-3-EVENTS">DOM-LEVEL-3-EVENTS</a></cite>]와 [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>]에서 정의하는 다른 이벤트를 나타냅니다.
+          <div lang=en>An event whose default action was prevented by means of <code>preventDefault()</code>, returning <code>false</code> in an event handler, or other means as defined by [<cite><a class="bibref" href="#bib-DOM-LEVEL-3-EVENTS">DOM-LEVEL-3-EVENTS</a></cite>] and [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>].</div></dd>
+			<dt><dfn id="dfn-contact-geometry">접촉 기하</dfn></dt>
+				<dd>
+          디지타이저에서 (보통 터치) 인풋 바운딩 박스를 의미합니다. 이는 보통 하나의 픽셀보다 조잡한 포인터 입력 해상도와 디바이스를 의미합니다. 몇몇 디바이스는 이 데이터를 모두 보고하지 않을 수 있습니다.
+<div lang=en>The bounding box of an input (most commonly, touch) on a digitizer. This typically refers to devices with coarser pointer input resolution than a single pixel. Some devices do not report this data at all.</div></dd>
+			<dt><dfn id="dfn-digitizer">디지타이저</dfn></dt>
+				<dd>
+         근접하거나 접촉한 입력을 감지할 수 있는 표면을 가지는 감지 장치 입력 형태. 일반적으로, 스타일러스 펜이나 터치 접촉을 통해 감지하는 표면을 나타냅니다.
+         <div lang=en>A type of input sensing device in which a surface can detect input which is in contact and/or in close proximity. Most commonly, this is the surface that senses input from the touch contact or a pen stylus.</div></dd>
+			<dt><dfn id="dfn-hit-test">히트 테스트</dfn></dt>
+				<dd>사용자 에이전트의 포인터 이벤트 대상 요소를 정의하는 프로세스.
+          일반적으로 포인터 위치 같은 스크린 미디어에서 보여지는 문서 내 요소의 비주얼 레이아웃에에 따라 결정합니다.
+<div lang=en>The process by which a user agent determines a target element for a pointer event. Typically, this is determined by considering the pointer's location and also the visual layout of elements in a document on screen media.</div></dd>
+			<dt><dfn id="dfn-pointer">포인터</dfn></dt>
+				<dd>
+        하드웨어와 상관없이 스크린 상에서 마우스, 펜, 터치 접촉 같은 조유 좌표 (좌표의 세트)에 타겟 가능한 입력 기기를 나타냅니다.
+        <div lang=en>A hardware agnostic representation of input devices that can target a specific coordinate (or set of coordinates) on a screen, such as a mouse, pen, or touch contact.</div></dd>
+			<dt><dfn id="dfn-user-agent">유저 에이전트</dfn></dt>
+				<dd>
+        보통 클라이언트 머신에서 돌아가는 유저를 대신해 검색, 해석, 실행, 표현, 콘텐츠 생성을 행하는 브라우저나 콘텐츠 저작도구 같은 프로그램.
+        <div lang=en>A program, such as a browser or content authoring tool, normally running on a client machine, which acts on a user's behalf in retrieving, interpreting, executing, presenting, or creating content.</div></dd>
+			<dt><dfn id="dfn-queue-a-task">태스크 대기 행렬</dfn></dt>
+				<dd>
+					 [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>]에서 정의한,적절한 이벤트 루프의 태스크 대기 행렬에 이벤트 태스트를 더한 것
+           <div lang=en>Adding the task to events task queue of the relevant event loop, as defined in [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>].</div></dd>
 		</dl>
 	</section>
    <section id="pointer-events-and-interfaces">
-     <!--OddPage--><h2 role="heading" id="h2_pointer-events-and-interfaces"><span class="secno">5. </span>Pointer Events and Interfaces</h2>
+     <!--OddPage--><h2 role="heading" id="h2_pointer-events-and-interfaces"><span class="secno">5. </span>포인터 이벤트와 인터페이스</h2>
      <section id="pointerevent-interface">
-       <h3 role="heading" id="h3_pointerevent-interface"><span class="secno">5.1 </span><code>PointerEvent</code> Interface</h3>
+       <h3 role="heading" id="h3_pointerevent-interface"><span class="secno">5.1 </span><code>PointerEvent</code> 인터페이스</h3>
        <div>
 			<pre class="idl"><span class="idlInterface" id="idl-def-PointerEvent"><span class="idlDictionary" id="idl-def-PointerEventInit">dictionary <span class="idlDictionaryID">PointerEventInit</span> : <span class="idlSuperclass">MouseEventInit</span> {
 <span class="idlMember">    <span class="idlMemberType">long</span>      <span class="idlMemberName"><a href="#widl-PointerEventInit-pointerId">pointerId</a></span> = <span class="idlMemberValue">0</span>;</span>
@@ -741,7 +767,8 @@ interface <span class="idlInterfaceID">PointerEvent</span> : <span class="idlSup
 <span class="idlAttribute">    readonly    attribute <span class="idlAttrType">long</span>      <span class="idlAttrName"><a href="#widl-PointerEvent-tiltY">tiltY</a></span>;</span>
 <span class="idlAttribute">    readonly    attribute <span class="idlAttrType">DOMString</span> <span class="idlAttrName"><a href="#widl-PointerEvent-pointerType">pointerType</a></span>;</span>
 <span class="idlAttribute">    readonly    attribute <span class="idlAttrType">boolean</span>   <span class="idlAttrName"><a href="#widl-PointerEvent-isPrimary">isPrimary</a></span>;</span>
-};</span></pre><section><h4 id="attributes-1" role="heading">Attributes</h4><dl class="attributes"><dt id="widl-PointerEvent-pointerId"><code>pointerId</code> of type <span class="idlAttrType">long</span>, readonly   </dt><dd>
+};</span></pre><section><h4 id="attributes-1" role="heading">Attributes</h4><dl class="attributes">
+           <dt id="widl-PointerEvent-pointerId"><code>pointerId</code> of type <span class="idlAttrType">long</span>, readonly   </dt><dd>
 					<p>A unique identifier for the pointer causing the event. This identifier <em class="rfc2119" title="MUST">MUST</em> be unique from all other <a title="active pointer" class="internalDFN" href="#dfn-active-pointer">active pointers</a> at the time. A user agent <em class="rfc2119" title="MAY">MAY</em> recycle previously retired values for <code>pointerId</code> from previous active pointers, if necessary.</p>
 
 					<div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_4"><span>Note</span></div><section class="">The <code>pointerId</code> selection algorithm is implementation specific. Therefore authors cannot assume values convey any particular meaning other than an identifier for the pointer that is unique from all other active pointers. As an example, values are not guaranteed to be monotonically increasing.</section></div>
