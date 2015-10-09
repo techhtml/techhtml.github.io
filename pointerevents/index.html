@@ -791,28 +791,49 @@ interface <span class="idlInterfaceID">PointerEvent</span> : <span class="idlSup
 					포인터의 포인터 타입이 <a title="primary pointer" class="internalDFN" href="#dfn-primary-pointer">기본 포인터</a>인 경우를 나타냅니다.
 				</dd></dl></section>
 			<section><h4 id="dictionary-pointereventinit-members" role="heading"><a class="idlType" href="#idl-def-PointerEventInit"><code>PointerEventInit</code></a> 멤버 사전</h4><dl class="dictionary-members"><dt id="widl-PointerEventInit-pointerId"><code>pointerId</code> <span class="idlMemberType">long</span> 타입, 기본값 <code>0</code></dt><dd><code>PointerEvent</code>객체의 <code>pointerId</code> 속성을 초기화합니다.</dd><dt id="widl-PointerEventInit-width"><code>width</code> <span class="idlMemberType">double</span> 타입, 기본값 <code>0</code></dt><dd><code>PointerEvent</code> 객체의 <code>width</code> 속성을 초기화합니다.</dd><dt id="widl-PointerEventInit-height"><code>height</code> 타입 <span class="idlMemberType">double</span>, 기본값 <code>0</code></dt><dd><code>PointerEvent</code> 객체의 <code>height</code> 속성을 초기화합니다.</dd><dt id="widl-PointerEventInit-pressure"><code>pressure</code> <span class="idlMemberType">float</span> 타입, 기본값 <code>0</code></dt><dd><code>PointerEvent</code> 객체의 <code>pressure</code> 속성을 초기화합니다.</dd><dt id="widl-PointerEventInit-tiltX"><code>tiltX</code> 타입 <span class="idlMemberType">long</span>, 기본값 <code>0</code></dt><dd><code>PointerEvent</code> 객체의 <code>tiltX</code> 속성을 초기화합니다.</dd><dt id="widl-PointerEventInit-tiltY"><code>tiltY</code> 타입 <span class="idlMemberType">long</span>, 기본값 <code>0</code></dt><dd><code>PointerEvent</code> 객체의 <code>tiltY</code> 속성을 초기화합니다.</dd><dt id="widl-PointerEventInit-pointerType"><code>pointerType</code> 타입 <span class="idlMemberType">DOMString</span>, 기본값 <code>""</code></dt><dd><code>PointerEvent</code> 객체의 <code>pointerType</code> 속성을 초기화합니다.</dd><dt id="widl-PointerEventInit-isPrimary"><code>isPrimary</code> 타입 <span class="idlMemberType">boolean</span>, 기본값 <code>false</code></dt><dd><code>PointerEvent</code> 객체의 <code>isPrimary</code> 속성을 초기화합니다.</dd></dl></section>
-			<div> The <code>PointerEventInit</code> dictionary is used by the <code>PointerEvent</code> interface's constructor to provide a mechanism by which to construct untrusted (synthetic) pointer events. It inherits from the <code>MouseEventInit</code> dictionary defined in [<cite><a class="bibref" href="#bib-DOM-LEVEL-3-EVENTS">DOM-LEVEL-3-EVENTS</a></cite>]. The steps for constructing an event are defined in [<cite><a class="bibref" href="#bib-DOM4">DOM4</a></cite>]. See the <a href="#examples" class="internalDFN" title="examples">examples</a> for sample code demonstrating how to fire an untrusted pointer event.</div>
-			<div class="note"><div class="note-title" aria-level="2" role="heading" id="h_note_6"><span>Note</span></div><div class="">The <code>PointerEvent</code> interface inherits from <code>MouseEvent</code>, defined in [<cite><a class="bibref" href="#bib-DOM-LEVEL-3-EVENTS">DOM-LEVEL-3-EVENTS</a></cite>] and extended by [<cite><a class="bibref" href="#bib-CSSOM-VIEW">CSSOM-VIEW</a></cite>].</div></div>
+			<div><code>PointerEventInit</code> 사전은 신뢰할 수 없는 (인위적인) 포인터 이벤트를 구축하는 메커니즘을 제공하기 위한 <code>PointerEvent</code> 인터페이스의 컨스트럭터로 사용합니다. 
+        [<cite><a class="bibref" href="#bib-DOM-LEVEL-3-EVENTS">DOM-LEVEL-3-EVENTS</a></cite>]에서 정의한 <code>MouseEventInit</code> 사전을 상속합니다.
+        이벤트 구축 단계는 [<cite><a class="bibref" href="#bib-DOM4">DOM4</a></cite>]에서 정의합니다.
+        신뢰할 수 없는 포인터 이벤트가 어떻게 발생하는 지에 대한 기본 데모 샘플 코드는 <a href="#examples" class="internalDFN" title="examples">예제</a>를 보시길 바랍니다.
+      </div>
+			<div class="note"><div class="note-title" aria-level="2" role="heading" id="h_note_6"><span>노트</span></div><div class=""><code>PointerEvent</code> 인터페이스는 [<cite><a class="bibref" href="#bib-DOM-LEVEL-3-EVENTS">DOM-LEVEL-3-EVENTS</a></cite>]에서 정의하고 [<cite><a class="bibref" href="#bib-CSSOM-VIEW">CSSOM-VIEW</a></cite>]에서 확장한 <code>MouseEvent</code>를 상속한 것입니다.</div></div>
 	    </div>
 	    <section id="button-states">
-			<h4 role="heading" id="h4_button-states"><span class="secno">5.1.1 </span>Button States</h4>
+			<h4 role="heading" id="h4_button-states"><span class="secno">5.1.1 </span>버튼 상태</h4>
 			<section id="chorded-button-interactions">
-				<h5 role="heading" id="h5_chorded-button-interactions"><span class="secno">5.1.1.1 </span><dfn title="chorded buttons" id="dfn-chorded-buttons">Chorded Button Interactions</dfn></h5>
-				<div><p>Some pointer devices, such as mouse or pen, support multiple buttons. In the [<cite><a class="bibref" href="#bib-DOM-LEVEL-3-EVENTS">DOM-LEVEL-3-EVENTS</a></cite>] Mouse Event model, each button press produces a <code>mousedown</code> and <code>mouseup</code> event.  To better abstract this hardware difference and simplify cross-device input authoring, Pointer Events do not fire overlapping <code>pointerdown</code> and <code>pointerup</code> events for <a title="chorded buttons" class="internalDFN" href="#dfn-chorded-buttons">chorded button presses</a> (depressing an additional button while another button on the pointer device is already depressed).</p>
-<p>Instead, chorded button presses can be detected by inspecting changes to the <code>button</code> and <code>buttons</code> properties. The <code>button</code> and <code>buttons</code> properties are inherited from the [<cite><a class="bibref" href="#bib-DOM-LEVEL-3-EVENTS">DOM-LEVEL-3-EVENTS</a></cite>] <code>MouseEvent</code> interface. In order to facilitate differentiating button state transitions in any pointer event (and not just <code>pointerdown</code> and <code>pointerup</code>), the <code>button</code> property takes on a new value when no mouse buttons are depressed:</p>
+				<h5 role="heading" id="h5_chorded-button-interactions"><span class="secno">5.1.1.1 </span><dfn title="chorded buttons" id="dfn-chorded-buttons">코드를 포함한 버튼 인터렉션</dfn></h5>
+				<div><p>
+          마우스나 펜 같은 몇몇 포인터 디바이스는 여러개의 버튼을 지원합니다.
+          [<cite><a class="bibref" href="#bib-DOM-LEVEL-3-EVENTS">DOM-LEVEL-3-EVENTS</a></cite>] 마우스 이벤트 모델에서,
+          각 버튼을 누르면 <code>mousedown</code>과 <code>mouseup</code> 이벤트를 제공합니다.
+          이런 하드웨어 차이 및 크로스-디바이스 인풋 작성의 더 나은 추상화를 위해 
+          포인터 이벤트는 <a title="chorded buttons" class="internalDFN" href="#dfn-chorded-buttons">코드를 포함한 버튼 인터렉션</a>을 위한 이벤트를 
+          <code>pointerdown</code>과 <code>pointerup</code>를 오버래핑하여 발생시키지 않습니다. (포인터 디바이스에서 누르지 않은 추가 버튼은 이미 누르지 않은 상태입니다)
+        </p>
+
+        <p>
+        대신, 코드를 포함한 버튼을 누른 것을 <code>button</code>과 <code>buttons</code> 속성의 변화를 검사하여 감지할 수 있습니다.
+        <code>button</code>과 <code>buttons</code>속성은 [<cite><a class="bibref" href="#bib-DOM-LEVEL-3-EVENTS">DOM-LEVEL-3-EVENTS</a></cite>] <code>MouseEvent</code> 인터페이스에서 상속한 것입니다.
+        (<code>pointerdown</code>과 <code>pointerup</code>뿐 아닌) 모든 포인터 이벤트에서 버튼 상태 전이 구별을 가능하게 하기 위하여,
+         마우스 버튼을 누르지 않았을 때 <code>button</code> 속성에 새로운 값을 가지도록 합니다.
+        </p>
 				<table class="simple">
 					<thead><tr><th>Device Button State</th><th><code>button</code></th><th><code>buttons</code></th></tr></thead>
 					<tbody>
-						<tr><td><b>Mouse move with no buttons pressed</b></td><td>-1</td><td>0</td></tr>
-						<tr><td>Left Mouse,<br>Touch Contact,<br>Pen contact (with no modifier buttons pressed)</td><td>0</td><td>1</td></tr>
-						<tr><td>Middle Mouse</td><td>1</td><td>4</td></tr>
-						<tr><td>Right Mouse,<br>Pen contact with barrel button pressed</td><td>2</td><td>2</td></tr>
-						<tr><td>X1 (back) Mouse</td><td>3</td><td>8</td></tr>
-						<tr><td>X2 (forward) Mouse</td><td>4</td><td>16</td></tr>
-						<tr><td>Pen contact with eraser button pressed</td><td>5</td><td>32</td></tr>
+						<tr><td><b>버튼을 누르지 않은 채 마우스 이동</b></td><td>-1</td><td>0</td></tr>
+						<tr><td>왼쪽 마우스 <br>터치 접촉<br>펜 접촉 (버튼 클릭 수식어를 가지지 않는)</td><td>0</td><td>1</td></tr>
+						<tr><td>중간 마우스</td><td>1</td><td>4</td></tr>
+						<tr><td>오른쪽 마우스<br> 배럴 버튼과 함께 눌러진 펜 접촉</td><td>2</td><td>2</td></tr>
+						<tr><td>X1 (뒤) 마우스</td><td>3</td><td>8</td></tr>
+						<tr><td>X2 (앞) 마우스</td><td>4</td><td>16</td></tr>
+						<tr><td>지우개 버튼과 함께 눌러진 펜 접촉</td><td>5</td><td>32</td></tr>
 					</tbody>
 				</table>
-				<div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_7"><span>Note</span></div><section class="">These values only apply when firing pointer events. This specification does not alter the values of <code>button</code> or <code>buttons</code> used when firing mouse events. See [<cite><a class="bibref" href="#bib-DOM-LEVEL-3-EVENTS">DOM-LEVEL-3-EVENTS</a></cite>] for the values when firing mouse events.</section></div>
+				<div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_7"><span>노트</span></div><section class="">
+          이 값은 포인터 이벤트가 발생했을 때만 사용 가능합니다.
+          이 스펙 문서에서 마우스 이벤트가 발생했을 때 사용 할 수 있는 <code>button</code>이나 <code>buttons</code> 값을 다루지 않습니다.
+          마우스 이벤트가 발생했을 때 사용 가능한 값은 [<cite><a class="bibref" href="#bib-DOM-LEVEL-3-EVENTS">DOM-LEVEL-3-EVENTS</a></cite>]를 참고하시길 바랍니다.
+        </section></div>
 				</div>
 			</section>
 		</section>
