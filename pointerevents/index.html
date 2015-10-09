@@ -744,20 +744,27 @@ interface <span class="idlInterfaceID">PointerEvent</span> : <span class="idlSup
          이 값은 포인터가 주어진 각 이벤트별로 업데이트 할 수 있습니다. [<em class="rfc2119" title="MAY">MAY</em>]
          접촉 기하를 가지고 있지만 실제 기하를 하드웨어가 보고하지 않은 경우 디바이스의 기본 값을 <a title="user agent" class="internalDFN" href="#dfn-user-agent">유저 에이전트</a>가 그 포인터 타입의 대략적인 평균 형태로 제공해야만합니다. [<em class="rfc2119" title="SHOULD">SHOULD</em>] 다른 경우라면 이 값은 반드시 0입니다. [<em class="rfc2119" title="MUST">MUST</em>]
 				</dd><dt id="widl-PointerEvent-pressure"><code>pressure</code> <span class="idlAttrType">float</span> 타입, 읽기 전용</dt><dd>
-					The normalized pressure of the pointer input in the range of [0,1], where 0 and 1 represent the minimum and maximum pressure the hardware is capable of detecting, respectively.  For hardware that does not support pressure, including but not limited to mouse, the value <em class="rfc2119" title="MUST">MUST</em> be 0.5 when in the <a title="active buttons" class="internalDFN" href="#dfn-active-buttons-state">active buttons state</a> and 0 otherwise.
-				</dd><dt id="widl-PointerEvent-tiltX"><code>tiltX</code> of type <span class="idlAttrType">long</span>, readonly   </dt><dd>
-					<p>The plane angle (in degrees, in the range of [-90,90]) between the Y-Z plane and the plane containing both the transducer (e.g. pen stylus) axis and the Y axis. A positive <code>tiltX</code> is to the right. <code>tiltX</code> can be used along with <code>tiltY</code> to represent the tilt away from the normal of a transducer with the digitizer. For devices that do not report tilt, the value <em class="rfc2119" title="MUST">MUST</em> be 0.</p>
+				 포인터 입력의 정상적인 압력은 [0,1] 범위로 나타내며, 0과 1은 각각 하드웨어가 감지 가능한 각각의 최소, 최대 압력을 나타냅니다.
+         하드웨어가 압력을 지원하지 않은 경우, 마우스에 한정하지 않고 값은 <a title="active buttons" class="internalDFN" href="#dfn-active-buttons-state">버튼 활성화 상태</a>라면 0.5, 그 외의 경우는 0이어야 합니다. [<em class="rfc2119" title="MUST">MUST</em>]
+				</dd><dt id="widl-PointerEvent-tiltX"><code>tiltX</code> <span class="idlAttrType">long</span> 타입, 읽기 전용</dt><dd>
+					<p>
+            Y-Z 평면 사이 (각도 상, [-90,90] 범위 내) 평면각과 (스타일러스 펜 같은) 변환기 축과 Y 축을 둘 다 포함하는 평면.
+            양수 <code>tiltX</code>는 오른쪽. <code>tiltX</code>는 <code>tiltY</code>와 함께 디지타이저에서 변환기의 표준에서 멀리 기울어진 걸 나타낼 수 있습니다.
+            만약 디바이스가 tilt를 보고하지 않을 경우, 값은 반드시 0입니다. [<em class="rfc2119" title="MUST">MUST</em>]
+          </p>
 					<figure id="fig-positive-tiltx.x">
 						<img src="tiltX_600px.png" alt="tiltX explanation diagram">
-						<figcaption>Fig. <span class="figno">2</span> <span class="fig-title">Positive <code>tiltX</code>.</span></figcaption>
+						<figcaption>Fig. <span class="figno">2</span> <span class="fig-title">양수 <code>tiltX</code>.</span></figcaption>
 					</figure>
-				</dd><dt id="widl-PointerEvent-tiltY"><code>tiltY</code> of type <span class="idlAttrType">long</span>, readonly   </dt><dd>
-					The plane angle (in degrees, in the range of [-90,90]) between the X-Z plane and the plane containing both the transducer (e.g. pen stylus) axis and the X axis. A positive <code>tiltY</code> is towards the user. <code>tiltY</code> can be used along with <code>tiltX</code> to represent the tilt away from the normal of a transducer with the digitizer. For devices that do not report tilt, the value <em class="rfc2119" title="MUST">MUST</em> be 0.
+				</dd><dt id="widl-PointerEvent-tiltY"><code>tiltY</code> <span class="idlAttrType">long</span> 타입, 읽기 전용</dt><dd>
+          X-Z 평면 사이 (각도 상, [-90,90] 범위 내) 평면각과 (스타일러스 펜 같은) 변환기 축과 X 축을 둘 다 포함하는 평면.
+					양수 <code>tiltY</code>는 유저 쪽에 있습니다. <code>tiltY</code>는 <code>tiltX</code>와 함께 디지타이저에서 변환기의 표준에서 멀리 기울어진 걸 나타낼 수 있습니다.
+         만약 디바이스가 tilt를 보고하지 않을 경우, 값은 반드시 0입니다. [<em class="rfc2119" title="MUST">MUST</em>]
 					<figure id="fig-negative-tilty.x">
 						<img src="tiltY_600px.png" alt="tiltY explanation diagram">
-						<figcaption>Fig. <span class="figno">3</span> <span class="fig-title">Negative <code>tiltY</code>.</span></figcaption>
+						<figcaption>Fig. <span class="figno">3</span> <span class="fig-title">음수 <code>tiltY</code>.</span></figcaption>
 					</figure>
-				</dd><dt id="widl-PointerEvent-pointerType"><code>pointerType</code> of type <span class="idlAttrType">DOMString</span>, readonly   </dt><dd>
+				</dd><dt id="widl-PointerEvent-pointerType"><code>pointerType</code> <span class="idlAttrType">DOMString</span> 타입, 읽기 전용</dt><dd>
 					<p>Indicates the device type that caused the event (mouse, pen, touch, etc.). If a user agent is to <a href="#firing-events-using-the-pointerevent-interface">fire a pointer event</a> for a mouse, pen stylus, or touch input device, then the value of <code>pointerType</code> <em class="rfc2119" title="MUST">MUST</em> be according to the following table:</p>
 					<table class="simple">
 						<thead>
