@@ -1,5 +1,10 @@
 @charset "UTF-8";
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300);
 
+body {
+  font-family: 'Lato', 'Noto Sans KR', sans-serif; 
+}
 .headernotes {
   margin: 0;
   margin-bottom: 2em;
@@ -57,3 +62,4 @@ span.transnote {
 p:lang(ko) {
   margin-bottom:0;
 }
+

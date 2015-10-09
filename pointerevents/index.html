@@ -523,7 +523,6 @@ dt#feedback {
     <section id="intro" class="informative" typeof="bibo:Chapter" resource="#intro" rel="bibo:Chapter">
       <!--OddPage--><h2 role="heading" id="h2_intro"><span class="secno">1. </span>소개</h2>
       <p lang=ko><em>이 섹션은 표준에 준하는 내용이 아닙니다.</em></p>
-      <p lang=en><em>This section is non-normative.</em></p>
       <div>
       <p lang=ko>
         오늘날 많은 [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>] 콘텐츠는 마우스 입력으로 사용하며, 마우스 입력을 위해 디자인하기도 합니다.
@@ -653,7 +652,6 @@ eventTarget.dispatchEvent(event); </pre></div>
 	<section class="informative" id="glossary">
 		<!--OddPage--><h2 role="heading" id="h2_glossary"><span class="secno">4. </span>용어 사전</h2>
     <p lang=ko><em>이 섹션은 표준에 준하는 내용이 아닙니다.</em></p>
-    <p lang=en><em>This section is non-normative.</em></p>
 		<dl>
 			<dt><dfn id="dfn-active-buttons-state">버튼 활성 상태</dfn></dt>
 				<dd>
@@ -765,7 +763,11 @@ interface <span class="idlInterfaceID">PointerEvent</span> : <span class="idlSup
 						<figcaption>Fig. <span class="figno">3</span> <span class="fig-title">음수 <code>tiltY</code>.</span></figcaption>
 					</figure>
 				</dd><dt id="widl-PointerEvent-pointerType"><code>pointerType</code> <span class="idlAttrType">DOMString</span> 타입, 읽기 전용</dt><dd>
-					<p>Indicates the device type that caused the event (mouse, pen, touch, etc.). If a user agent is to <a href="#firing-events-using-the-pointerevent-interface">fire a pointer event</a> for a mouse, pen stylus, or touch input device, then the value of <code>pointerType</code> <em class="rfc2119" title="MUST">MUST</em> be according to the following table:</p>
+					<p>
+            이벤트가 발생하는 디바이스 형태를 감지합니다 (마우스, 펜, 터치 등).
+            만약 유저에이전트가 마우스, 스타일러스 펜, 터치 입력 디바이스나 다른 디바이스로 <a href="#firing-events-using-the-pointerevent-interface">포인터 이벤트를 발생</a>시킨 경우,
+            <code>pointerType</code>은 반드시 아래 표를 따릅니다. [<em class="rfc2119" title="MUST">MUST</em>]
+          </p>
 					<table class="simple">
 						<thead>
 							<tr><th>Pointer Device Type</th><th><code>pointerType</code> Value</th></tr>
@@ -776,14 +778,19 @@ interface <span class="idlInterfaceID">PointerEvent</span> : <span class="idlSup
 							<tr><td>Touch Contact</td><td><code>touch</code></td></tr>
 						</tbody>
 					</table>
-					<p>If the device type cannot be detected by the user agent, then the value <em class="rfc2119" title="MUST">MUST</em> be an empty string. If a user agent supports pointer device types other than those listed above, the value of <code>pointerType</code> <em class="rfc2119" title="SHOULD">SHOULD</em> be vendor prefixed to avoid conflicting names for different types of devices. Future specifications <em class="rfc2119" title="MAY">MAY</em> provide additional normative values for other device types.</p>
-					<div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_5"><span>Note</span></div><section class="">
-                    See <a href="#example_2" class="internalDFN" title="examples">Example 2</a> for a basic demonstration of how the <code>pointerType</code> can be used. Also note that developers should include some form of default handling to cover user agents that may have implemented their own custom <code>pointerType</code> values and for situations where <code>pointerType</code> is simply an empty string.
-                    </section></div>
-				</dd><dt id="widl-PointerEvent-isPrimary"><code>isPrimary</code> of type <span class="idlAttrType">boolean</span>, readonly   </dt><dd>
-					Indicates if the pointer represents the <a title="primary pointer" class="internalDFN" href="#dfn-primary-pointer">primary pointer</a> of this pointer type.
+					<p>
+            만약 유저 에이전트에서 디바이스 형태를 감지하지 못한다면, 값은 반드시 빈 문자열이어야 합니다. [<em class="rfc2119" title="MUST">MUST</em>]
+            만약 유저 에이전트가 위 목록에 존재하는 게 아닌 다른 포인터 디바이스 타입을 지원한다면, 그 <code>pointerType</code> 값은,
+            다른 디바이스 타입 이름과 충돌을 피하기 위해 벤더 프리픽스를 붙여야 합니다. [<em class="rfc2119" title="SHOULD">SHOULD</em>]
+          </p>
+					<div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_5"><span>노트</span></div><section class="">
+          어떻게 <code>pointerType</code>을 사용할 수 있는지에 대한 기본 데모는 <a href="#example_2" class="internalDFN" title="examples">예제 2</a>를 보시길 바랍니다.
+          개발자들은 구현체가 커스텀 <code>pointerType</code> 값을 가지거나 <code>pointerType</code>에 빈 문자열을 넣을 가능성이 있는 유저 에이전트를 커버하기 위한 기본 처리를 포함하는 게 좋습니다.
+          </section></div>
+				</dd><dt id="widl-PointerEvent-isPrimary"><code>isPrimary</code> <span class="idlAttrType">boolean</span> 타입, 읽기 전용</dt><dd>
+					포인터의 포인터 타입이 <a title="primary pointer" class="internalDFN" href="#dfn-primary-pointer">기본 포인터</a>인 경우를 나타냅니다.
 				</dd></dl></section>
-			<section><h4 id="dictionary-pointereventinit-members" role="heading">Dictionary <a class="idlType" href="#idl-def-PointerEventInit"><code>PointerEventInit</code></a> Members</h4><dl class="dictionary-members"><dt id="widl-PointerEventInit-pointerId"><code>pointerId</code> of type <span class="idlMemberType">long</span>, defaulting to <code>0</code></dt><dd>Initializes the <code>pointerId</code> property of the <code>PointerEvent</code> object.</dd><dt id="widl-PointerEventInit-width"><code>width</code> of type <span class="idlMemberType">double</span>, defaulting to <code>0</code></dt><dd>Initializes the <code>width</code> property of the <code>PointerEvent</code> object.</dd><dt id="widl-PointerEventInit-height"><code>height</code> of type <span class="idlMemberType">double</span>, defaulting to <code>0</code></dt><dd>Initializes the <code>height</code> property of the <code>PointerEvent</code> object.</dd><dt id="widl-PointerEventInit-pressure"><code>pressure</code> of type <span class="idlMemberType">float</span>, defaulting to <code>0</code></dt><dd>Initializes the <code>pressure</code> property of the <code>PointerEvent</code> object.</dd><dt id="widl-PointerEventInit-tiltX"><code>tiltX</code> of type <span class="idlMemberType">long</span>, defaulting to <code>0</code></dt><dd>Initializes the <code>tiltX</code> property of the <code>PointerEvent</code> object.</dd><dt id="widl-PointerEventInit-tiltY"><code>tiltY</code> of type <span class="idlMemberType">long</span>, defaulting to <code>0</code></dt><dd>Initializes the <code>tiltY</code> property of the <code>PointerEvent</code> object.</dd><dt id="widl-PointerEventInit-pointerType"><code>pointerType</code> of type <span class="idlMemberType">DOMString</span>, defaulting to <code>""</code></dt><dd>Initializes the <code>pointerType</code> property of the <code>PointerEvent</code> object.</dd><dt id="widl-PointerEventInit-isPrimary"><code>isPrimary</code> of type <span class="idlMemberType">boolean</span>, defaulting to <code>false</code></dt><dd>Initializes the <code>isPrimary</code> property of the <code>PointerEvent</code> object.</dd></dl></section>
+			<section><h4 id="dictionary-pointereventinit-members" role="heading"><a class="idlType" href="#idl-def-PointerEventInit"><code>PointerEventInit</code></a> 멤버 사전</h4><dl class="dictionary-members"><dt id="widl-PointerEventInit-pointerId"><code>pointerId</code> <span class="idlMemberType">long</span> 타입, 기본값 <code>0</code></dt><dd><code>PointerEvent</code>객체의 <code>pointerId</code> 속성을 초기화합니다.</dd><dt id="widl-PointerEventInit-width"><code>width</code> <span class="idlMemberType">double</span> 타입, 기본값 <code>0</code></dt><dd><code>PointerEvent</code> 객체의 <code>width</code> 속성을 초기화합니다.</dd><dt id="widl-PointerEventInit-height"><code>height</code> 타입 <span class="idlMemberType">double</span>, 기본값 <code>0</code></dt><dd><code>PointerEvent</code> 객체의 <code>height</code> 속성을 초기화합니다.</dd><dt id="widl-PointerEventInit-pressure"><code>pressure</code> <span class="idlMemberType">float</span> 타입, 기본값 <code>0</code></dt><dd><code>PointerEvent</code> 객체의 <code>pressure</code> 속성을 초기화합니다.</dd><dt id="widl-PointerEventInit-tiltX"><code>tiltX</code> 타입 <span class="idlMemberType">long</span>, 기본값 <code>0</code></dt><dd><code>PointerEvent</code> 객체의 <code>tiltX</code> 속성을 초기화합니다.</dd><dt id="widl-PointerEventInit-tiltY"><code>tiltY</code> 타입 <span class="idlMemberType">long</span>, 기본값 <code>0</code></dt><dd><code>PointerEvent</code> 객체의 <code>tiltY</code> 속성을 초기화합니다.</dd><dt id="widl-PointerEventInit-pointerType"><code>pointerType</code> 타입 <span class="idlMemberType">DOMString</span>, 기본값 <code>""</code></dt><dd><code>PointerEvent</code> 객체의 <code>pointerType</code> 속성을 초기화합니다.</dd><dt id="widl-PointerEventInit-isPrimary"><code>isPrimary</code> 타입 <span class="idlMemberType">boolean</span>, 기본값 <code>false</code></dt><dd><code>PointerEvent</code> 객체의 <code>isPrimary</code> 속성을 초기화합니다.</dd></dl></section>
 			<div> The <code>PointerEventInit</code> dictionary is used by the <code>PointerEvent</code> interface's constructor to provide a mechanism by which to construct untrusted (synthetic) pointer events. It inherits from the <code>MouseEventInit</code> dictionary defined in [<cite><a class="bibref" href="#bib-DOM-LEVEL-3-EVENTS">DOM-LEVEL-3-EVENTS</a></cite>]. The steps for constructing an event are defined in [<cite><a class="bibref" href="#bib-DOM4">DOM4</a></cite>]. See the <a href="#examples" class="internalDFN" title="examples">examples</a> for sample code demonstrating how to fire an untrusted pointer event.</div>
 			<div class="note"><div class="note-title" aria-level="2" role="heading" id="h_note_6"><span>Note</span></div><div class="">The <code>PointerEvent</code> interface inherits from <code>MouseEvent</code>, defined in [<cite><a class="bibref" href="#bib-DOM-LEVEL-3-EVENTS">DOM-LEVEL-3-EVENTS</a></cite>] and extended by [<cite><a class="bibref" href="#bib-CSSOM-VIEW">CSSOM-VIEW</a></cite>].</div></div>
 	    </div>
