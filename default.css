@@ -2,10 +2,14 @@
 body {
   font-size:1em;
   line-height:1.8em;
-  font-family:nanum gothic, sans-serif;
-}
-h1 {
+  font-family:nanum barun gothic, sans-serif;
   text-align:center;
+  color:#333;
+}
+h2 {
+  display:inline-block;
+  border-bottom:3px solid #333;
+  margin:0.5em 20px;
 }
 ul, li {
   margin:0;
@@ -43,6 +47,7 @@ li a:hover::before {
   body {
     width:900px;
     margin:40px auto 0;
+    text-align:left
   }
   li a {
     text-align:left;
