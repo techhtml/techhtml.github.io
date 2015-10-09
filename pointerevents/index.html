@@ -489,13 +489,11 @@ dt#feedback {
   <hr>
 </div>
     <section id="abstract" class="introductory" property="dcterms:abstract" datatype="" typeof="bibo:Chapter" resource="#abstract" rel="bibo:Chapter"><h2 role="heading" id="h2_abstract">개요</h2>
-   <p lang=ko>
+   <p>
      이 문서는 마우스, 펜, 터치스크린 등을 포함한 하드웨어에 상관없이 포인터 입력을 핸들링하기 위한 이벤트와 관련 인터페이스를 정의합니다.
      이미 존재하는 마우스 기반 콘텐츠와 호환성을 유지하기 위해, 이 스펙문서는 다른 포인터 디바이스를 위한 마우스 이벤트 실행[<cite><a class="bibref" href="#bib-DOM-LEVEL-3-EVENTS">DOM-LEVEL-3-EVENTS</a></cite>]도 소개하고 있습니다. 
    </p>
-   <p lang=en>
-      This document defines events and related interfaces for handling hardware agnostic pointer input from devices including a mouse, pen, touchscreen, etc.. For compatibility with existing mouse based content, this specification also describes a mapping to fire [<cite><a class="bibref" href="#bib-DOM-LEVEL-3-EVENTS">DOM-LEVEL-3-EVENTS</a></cite>] Mouse Events for other pointer device types.
-    </p></section>
+   </section>
       <section rel="bibo:chapter" resource="#sotd" typeof="bibo:Chapter" id="sotd" class="introductory">
         <h2 id="h2_sotd" role="heading" aria-level="1">이 문서의 상태</h2>
         <p lang=ko><em>
@@ -504,29 +502,20 @@ dt#feedback {
         이 문서 및 <abbr title="World Wide Web Consortium">W3C</abbr>에서 공개한 다른 문서의 최신 버전은
 				<a href="http://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at http://www.w3.org/TR/에서 확인 가능합니다.
         </em></p> 
-        <p lang=en><em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this technical report can be found in the <a href="http://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at http://www.w3.org/TR/.</em></p>
         <p lang=ko id="stability-disclaimer">이 문서를 권고안으로 발행함으로써 <abbr title="World Wide Web Consortium">W3C</abbr>는 포인터 이벤트 권고안이
           권고안 프로세스로 인해 DOM 레벨 3 이벤트 스펙 문서나 DOM4 스펙 문서가 변경하더라도 영향을 받지 않을 거라 기대합니다.
-        <p lang=en>By publishing this Recommendation, <abbr title="World Wide Web Consortium">W3C</abbr> 
-       expects that the functionality specified in this Pointer Events Recommendation will not be affected by changes to DOM Level 3 Events or DOM4 as those specifications proceed to Recommendation.</p>
         <p lang=ko><a href="http://www.w3.org/2012/pointerevents/">포인터 이벤트 워킹 그룹</a>은 <a href="http://w3c.github.io/test-results/pointerevents/all.html">포인터 이벤트 test suite 및 구현 보고서</a>로 구현성과 상호 운용성을 입증합니다.
-        <p lang=en>The <a href="http://www.w3.org/2012/pointerevents/">Pointer Events Working Group</a> has demonstrated implementability and interoperability with the <a href="http://w3c.github.io/test-results/pointerevents/all.html">Pointer Events test suite and implementation report</a>. Feedback on the specification, test suite, or implementation report may be sent to <a href="mailto:public-pointer-events@w3.org">public-pointer-events@w3.org</a> (<a href="http://lists.w3.org/Archives/Public/public-pointer-events/">archives</a>).</p>
         <p lang=ko>이 문서는 W3C 멤버, 소프트웨어 개발자, 다른 W3C 그룹과 관심 단체가 리뷰하였으며 디렉터의 승인을 받아 W3C 권고안으로 등록하였습니다.
           이 문서는 안정적인 문서로 다른 문서에서 참고 자료로 사용하거나 인용할 수 있습니다.
           스펙 문서를 권고안으로 제정하여 W3C가 하는 역할은 스펙 문서에 관심을 모으고 다방면으로 퍼뜨리는 일입니다.
           이를 통해 웹의 기능과 상호 운용성 향상을 기대할 수 있습니다.
-        <p lang=en>This document has been reviewed by W3C Members, by software developers, and by other W3C groups and interested parties, and is endorsed by the Director as a W3C Recommendation. It is a stable document and may be used as reference material or cited from another document. W3C's role in making the Recommendation is to draw attention to the specification and to promote its widespread deployment. This enhances the functionality and interoperability of the Web.</p>
-
        <p lang="ko">이 문서는 <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/">2004년 2월 6일 W3C 특허 정책</a>을 따르는 그룹에서 작성하였습니다.
        W3C는 그룹의 성과물에 관련하여 <a href="http://www.w3.org/2004/01/pp-impl/40318/status" rel="disclosure">모든 공개 특허 공개 리스트</a>를 관리합니다.
        여기에는 특허 공개에 대한 지시사항도 포함합니다.
        특허에 대해서 충분한 지식이 있는 사람이, 
        스펙 문서의 <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential Claim(s)</a>에 인정된다고 파악되는 경우, 
        <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">W3C 특허 정책 제 6장</a>에 의거하여 정보를 공개해야 할 필요가 있습니다.</p>
-       <p lang=en>This document was produced by a group operating under the <a id="sotd_patent" about="" rel="w3p:patentRules" href="http://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004 <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>. <abbr title="World Wide Web Consortium">W3C</abbr> maintains a <a href="http://www.w3.org/2004/01/pp-impl/59096/status" rel="disclosure">public list of any patent disclosures</a> made in connection with the deliverables of the group; that page also includes instructions for disclosing a patent. An individual who has actual knowledge of a patent which the individual believes contains <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential Claim(s)</a> must disclose the information in accordance with <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.</p>
-
         <p lang=ko>이 문서는 <a id="w3c_process_revision" href="http://www.w3.org/2005/10/Process-20051014/">2005년 10월 14일 <abbr title="World Wide Web Consortium">W3C</abbr> 프로세스 문서</a>를 통해 관리하고 있습니다.</p>
-        <p>This document is governed by the  <a id="w3c_process_revision" href="http://www.w3.org/2005/10/Process-20051014/">14 October 2005 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.</p>
       </section>
     
     <section id="toc"><h2 class="introductory" role="heading" id="h2_toc">Table of Contents</h2><ul class="toc" role="directory" id="respecContents"><li class="tocline"><a href="#intro" class="tocxref"><span class="secno">1. </span>Introduction</a></li><li class="tocline"><a href="#conformance" class="tocxref"><span class="secno">2. </span>Conformance</a></li><li class="tocline"><a href="#examples" class="tocxref"><span class="secno">3. </span>Examples</a></li><li class="tocline"><a href="#glossary" class="tocxref"><span class="secno">4. </span>Glossary</a></li><li class="tocline"><a href="#pointer-events-and-interfaces" class="tocxref"><span class="secno">5. </span>Pointer Events and Interfaces</a><ul class="toc"><li class="tocline"><a href="#pointerevent-interface" class="tocxref"><span class="secno">5.1 </span><code>PointerEvent</code> Interface</a><ul class="toc"><li class="tocline"><a href="#button-states" class="tocxref"><span class="secno">5.1.1 </span>Button States</a><ul class="toc"><li class="tocline"><a href="#chorded-button-interactions" class="tocxref"><span class="secno">5.1.1.1 </span><span title="chorded buttons">Chorded Button Interactions</span></a></li></ul></li><li class="tocline"><a href="#the-primary-pointer" class="tocxref"><span class="secno">5.1.2 </span><span title="primary pointer">The Primary Pointer</span></a></li></ul></li><li class="tocline"><a href="#pointer-event-types" class="tocxref"><span class="secno">5.2 </span>Pointer Event Types</a><ul class="toc"><li class="tocline"><a href="#firing-events-using-the-pointerevent-interface" class="tocxref"><span class="secno">5.2.1 </span>Firing events using the <code>PointerEvent</code> interface</a></li><li class="tocline"><a href="#list-of-pointer-events" class="tocxref"><span class="secno">5.2.2 </span>List of Pointer Events</a></li><li class="tocline"><a href="#the-pointerover-event" class="tocxref"><span class="secno">5.2.3 </span><span title="pointerover">The <code>pointerover</code> event</span></a></li><li class="tocline"><a href="#the-pointerenter-event" class="tocxref"><span class="secno">5.2.4 </span><span title="pointerenter">The <code>pointerenter</code> event</span></a></li><li class="tocline"><a href="#the-pointerdown-event" class="tocxref"><span class="secno">5.2.5 </span><span title="pointerdown">The <code>pointerdown</code> event</span></a></li><li class="tocline"><a href="#the-pointermove-event" class="tocxref"><span class="secno">5.2.6 </span><span title="pointermove">The <code>pointermove</code> event</span></a></li><li class="tocline"><a href="#the-pointerup-event" class="tocxref"><span class="secno">5.2.7 </span><span title="pointerup">The <code>pointerup</code> event</span></a></li><li class="tocline"><a href="#the-pointercancel-event" class="tocxref"><span class="secno">5.2.8 </span><span title="pointercancel">The <code>pointercancel</code> event</span></a></li><li class="tocline"><a href="#the-pointerout-event" class="tocxref"><span class="secno">5.2.9 </span><span title="pointerout">The <code>pointerout</code> event</span></a></li><li class="tocline"><a href="#the-pointerleave-event" class="tocxref"><span class="secno">5.2.10 </span><span title="pointerleave">The <code>pointerleave</code> event</span></a></li><li class="tocline"><a href="#the-gotpointercapture-event" class="tocxref"><span class="secno">5.2.11 </span><span title="gotpointercapture">The <code>gotpointercapture</code> event</span></a></li><li class="tocline"><a href="#the-lostpointercapture-event" class="tocxref"><span class="secno">5.2.12 </span><span title="lostpointercapture">The <code>lostpointercapture</code> event</span></a></li></ul></li></ul></li><li class="tocline"><a href="#extensions-to-the-element-interface" class="tocxref"><span class="secno">6. </span>Extensions to the <code>Element</code> interface</a></li><li class="tocline"><a href="#extensions-to-the-globaleventhandlers-interface" class="tocxref"><span class="secno">7. </span>Extensions to the <code>GlobalEventHandlers</code> interface</a><ul class="toc"><li class="tocline"><a href="#attributes" class="tocxref"><span class="secno">7.1 </span>Attributes</a></li></ul></li><li class="tocline"><a href="#extensions-to-the-navigator-interface" class="tocxref"><span class="secno">8. </span>Extensions to the <code>Navigator</code> interface</a></li><li class="tocline"><a href="#declaring-candidate-regions-for-default-touch-behaviors" class="tocxref"><span class="secno">9. </span>Declaring candidate regions for default touch behaviors</a><ul class="toc"><li class="tocline"><a href="#the-touch-action-css-property" class="tocxref"><span class="secno">9.1 </span>The <code>touch-action</code> CSS property</a></li></ul></li><li class="tocline"><a href="#pointer-capture" class="tocxref"><span class="secno">10. </span><span title="Pointer Capture">Pointer Capture</span></a><ul class="toc"><li class="tocline"><a href="#setting-pointer-capture" class="tocxref"><span class="secno">10.1 </span>Setting Pointer Capture</a></li><li class="tocline"><a href="#releasing-pointer-capture" class="tocxref"><span class="secno">10.2 </span>Releasing Pointer Capture</a></li><li class="tocline"><a href="#implicit-pointer-capture" class="tocxref"><span class="secno">10.3 </span>Implicit Pointer Capture</a><ul class="toc"><li class="tocline"><a href="#implicit-release-of-pointer-capture" class="tocxref"><span class="secno">10.3.1 </span>Implicit Release of Pointer Capture</a></li></ul></li></ul></li><li class="tocline"><a href="#compatibility-mapping-with-mouse-events" class="tocxref"><span class="secno">11. </span><span title="compatibility mouse events">Compatibility Mapping with Mouse Events</span></a><ul class="toc"><li class="tocline"><a href="#mapping-for-devices-that-support-hover" class="tocxref"><span class="secno">11.1 </span>Mapping for devices that support hover</a></li><li class="tocline"><a href="#mapping-for-devices-that-do-not-support-hover" class="tocxref"><span class="secno">11.2 </span>Mapping for devices that do not support hover</a></li></ul></li><li class="tocline"><a href="#acknowledgments" class="tocxref"><span class="secno">A. </span>Acknowledgments</a></li><li class="tocline"><a href="#revision-history" class="tocxref"><span class="secno">B. </span>Revision History</a></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">C. </span>References</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">C.1 </span>Normative references</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">C.2 </span>Informative references</a></li></ul></li></ul></section>
@@ -548,18 +537,16 @@ dt#feedback {
         대부분의 <a title="user agent" class="internalDFN" href="#dfn-user-agent">유저 에이전트</a>가 모든 입력 타입에 마우스 이벤트를 발생시켰습니다.
         이는 실제로 마우스 디바이스에서 발생한 이벤트인지, 다른 디바이스에서 입력한 내용을 호환성을 위해 마우스 이벤트로 변경하여 생성한 것인지
         판단을 모호하게 만듭니다.
-        
-      <p lang=en>Today, most [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>] content is used with and/or designed for mouse input.  Those that handle input in a custom manner typically code to [<cite><a class="bibref" href="#bib-DOM-LEVEL-3-EVENTS">DOM-LEVEL-3-EVENTS</a></cite>] Mouse Events. Newer computing devices today, however, incorporate other forms of input, including touchscreens, pen input, etc. Event types have been proposed for handling each of these forms of input individually. However, that approach often incurs unnecessary duplication of logic and event handling overhead when adding support for a new input type. This often creates a compatibility problem when content is written with only one device type in mind. Additionally, for compatibility with existing mouse-based content, most <a title="user agent" class="internalDFN" href="#dfn-user-agent">user agents</a> fire Mouse Events for all input types. This makes it ambiguous whether a Mouse Event represents an actual mouse device or is being produced from another input type for compatibility, which makes it hard to code to both device types simultaneously.</p>
+      </p>
       <p lang=ko>여러개의 입력 타입으로 인한 코딩 코스트를 없애면서 위에서 설명한 마우스 이벤트의 모호성에 도움을 주기 위해, 
         이 스펙 문서는 <a title="pointer" class="internalDFN" href="#dfn-pointer">포인터</a>라 부르는 더 추상적인 입력 형태를 정의합니다.
         포인터는 마우스 커서, 펜, (멀티 터치를 포함한) 터치 및 다른 포인팅 입력 디바이스가 생성한 스크린과 맞닿는 모든 포인트에 사용이 가능합니다.
         이 모델은 유저가 어떤 하드웨어를 사용하는 지와 상관 없이 사이트와 어플리케이션을 잘 동작하도록 쉽게 작성할 수 있게 합니다.
         장치 고유의 처리를 요구하는 시나리오를 위해, 이 스펙문서에서는 이벤트가 발생하는 디바이스 타입을 검사하기 위한 속성을 정의합니다.
         주 목적은 단지 경험 증가를 위해 필요한 디바이스별 고유 처리를 여전히 허용하면서 디바이스에 구애받지 않는 입력을 쉽게 작성할 수 있게 하는
-        이벤트와 인터페이스의 단일 세트를 제공하는 것입니다. 
-			<p lang=en>To reduce the cost of coding to multiple input types and also to help with the above described ambiguity with Mouse Events, this specifications defines a more abstract form of input, called a <a title="pointer" class="internalDFN" href="#dfn-pointer">pointer</a>. A pointer can be any point of contact on the screen made by a mouse cursor, pen, touch (including multi-touch), or other pointing input device. This model makes it easier to write sites and applications that work well no matter what hardware the user has. For scenarios when device-specific handling is desired, this specification also defines properties for inspecting the device type which produced the event. The primary goal is to provide a single set of events and interfaces that allow for easier authoring for cross-device pointer input while still allowing for device-specific handling only when necessary for an augmented experience.</p>
+        이벤트와 인터페이스의 단일 세트를 제공하는 것입니다.
+      </p>
 			<p lang=ko> 추가적인 주된 목표는 스크립트 실행을 막지않고, 스크롤 같은 기본 터치 액션을 처리하기 위한 멀티 스레드 유저 에이전트를 가능하게 하는 것입니다.
-			<p lang=en> An additional key goal is to enable multi-threaded user agents to handle default touch actions, such as scrolling, without blocking on script execution.</p>
 	  <div class="note" lang=ko><div class="note-title" aria-level="1" role="heading" id="h_note_1"><span>노트</span></div><div class="">
 		<p>이 스펙 문서가 다양한 포인터 입력을 위한 통합 이벤트 모델을 정의하나, 키보드나 키보드 형태의 인터페이스 같은 다른 입력 형태를 이 모델에서 다루지 않습니다 (예를 들면, 유저가 포커스를 가져갈 수 있는 컨트롤이나 요소들을 통한 유저 순차적 네비게이션을 허용하는 스크린 리더나 터치스크린 디바이스에서만 동작하는 보조 도구같은 것들입니다). 유저 에이전트는 이러한 인터페이스를 지원하기 위해 포인터 이벤트를 생성할 수 있지만, 이 시나리오를 이 스펙 문서에서 다루지 않습니다.</p>
 		<p>
@@ -567,33 +554,21 @@ dt#feedback {
     하이 레벨 이벤트에 대응하는 모든 입력 형태를 위해 동일한 기능을 제공하기를 권장합니다.
     그러나, (포인터 이벤트 같은) 로우 레벨 이벤트를 사용할 때, 작성자는 모든 입력 형태를 반드시 지원하는 것을 권장합니다.
     키보드와 키보드 형태의 인터페이스같은 경우, 명백히 키보드 이벤트 처리를 추가해야 합니다.
-    추가적인 내용은 <a href="http://www.w3.org/TR/WCAG20/#keyboard-operation">WCAG 2.0 Guideline 2.1</a>를 참고하시길 바랍니다.
-	  </div></div>
-	  <div class="note" lang=en><div class="note-title" aria-level="1" role="heading"><span>Note</span></div><div class="">
-		<p>While this specification defines a unified event model for a variety pointer inputs, this model does not cover other forms of input such as keyboards or keyboard-like interfaces (for instance, a screenreader or similar assistive technology running on a touchscreen-only device, which allows users sequential navigation through focusable controls and elements). While user agents might choose to also generate pointer events in response to these interfaces, this scenario is not covered in this specification.</p>
-
-		<p>In the first instance, authors are encouraged to provide equivalent functionality for all forms of input by responding to high-level events such as <code>focus</code>, <code>blur</code> and <code>click</code>. However, when using low-level events (such as Pointer Events), authors are encouraged to ensure that all types of input are supported. In the case of keyboards and keyboard-like interfaces, this might require the addition of explicit keyboard event handling. See <a href="http://www.w3.org/TR/WCAG20/#keyboard-operation">WCAG 2.0 Guideline 2.1</a> for further details.</p>
+    추가적인 내용은 <a href="http://www.w3.org/TR/WCAG20/#keyboard-operation">WCAG 2.0 Guideline 2.1</a>를 참고하시길 바랍니다.</p>
 	  </div></div>
 	<figure id="fig-a-pointer-is-a-hardware-agnostic-representation-of-input-devices-that-can-target-a-specific-coordinate-or-set-of-coordinates-on-a-screen.x">
 		<img src="pointer.png" alt="마우스, 펜, 터치 등 입력을 모은 포인터 입력">
 		<figcaption>Fig. <span class="figno">1</span> <span class="fig-title">포인터는 스크린 위에서 고유의 좌표(좌표의 세트)를 목표로 하는 입력 기기를 하드웨어에 상관없이 나타냅니다.</span></figcaption>
 	  </figure>
-    <p lang=ko>포괄적인 포인터 입력을 위한 이벤트는 pointerdown, pointermove, pointerup, pointerover, pointerout 등 마우스에서 사용하던 것과 유사한 게 많습니다. 이는 마우스 이벤트에서 포인터 이벤트로 콘텐츠를 이동을 쉽고 용이하게 합니다. 포인터 이벤트는 클라이언트 좌표, 타겟 요소, 버튼 상태 등 현재 마우스 이벤트에서 사용하는 속성을 제공합니다. 여기에 더해 압력, 접촉 기하, 기울기 등 다른 입력 형태를 위한 새로운 속성도 제공합니다. 따라서 다른 형태의 인풋 타입 사이에 로직을 공유할 때 의미가 통하게, 최적의 경험을 얻을 수 있게 필요한 특정 입력 형태만을 위한 커스터마이징 등을 포인터 이벤트에서 쉽게 작성할 수 있게 합니다.
-	  <p lang=en>The events for handling generic pointer input look a lot like those for mouse: pointerdown, pointermove, pointerup, pointerover, pointerout, etc. This facilitates easy content migration from Mouse Events to Pointer Events.
-		Pointer Events provide all the usual properties present in Mouse Events (client coordinates, target element, button states, etc.) in addition to new properties for other forms of input: pressure, contact geometry, tilt, etc. So authors can easily code to Pointer Events to share logic between different input types where it makes sense, and customize for a particular type of input only where necessary to get the best experience.</p>
+        <p lang=ko>포괄적인 포인터 입력을 위한 이벤트는 pointerdown, pointermove, pointerup, pointerover, pointerout 등 마우스에서 사용하던 것과 유사한 게 많습니다. 이는 마우스 이벤트에서 포인터 이벤트로 콘텐츠를 이동을 쉽고 용이하게 합니다. 포인터 이벤트는 클라이언트 좌표, 타겟 요소, 버튼 상태 등 현재 마우스 이벤트에서 사용하는 속성을 제공합니다. 여기에 더해 압력, 접촉 기하, 기울기 등 다른 입력 형태를 위한 새로운 속성도 제공합니다. 따라서 다른 형태의 인풋 타입 사이에 로직을 공유할 때 의미가 통하게, 최적의 경험을 얻을 수 있게 필요한 특정 입력 형태만을 위한 커스터마이징 등을 포인터 이벤트에서 쉽게 작성할 수 있게 합니다.</p>
     <p lang=ko>
       포인터 디바이스가 여러 입력 디바이스를 소스로 할 때, 다른 디바이스 고유 이벤트 세트에서 생성하는 건 정의하지 않습니다.
       가능성과 호환을 부추기기 위해, 이 스펙에서 마우스 이벤트, 터치 이벤트 같은 다른 디바이스 고유 이벤트를 지원하기를 필수로 하지 않습니다. 
       유저 에이전트는 다른 디바이스 이벤트를 지원하지 않고 포인터 이벤트만 지원할 수 있습니다.
       마우스 고유 이벤트로 작성한 콘텐츠의 호환성을 위해, 이 스펙 문서는 마우스 대신 다른 디바이스의 포인터 입력을 기반으로 한 호환 마우스 이벤트 생성 방법을 설명하는 섹션을 제공합니다.
-	  <p lang=en>While Pointer Events are sourced from a variety of input devices, they are not defined as being generated from some other set of device-specific events. While possible and encouraged for compatibility, this spec does not require other device-specific events be supported (e.g. mouse events, touch events, etc.).  A user agent could support pointer events without supporting any other device events. For compatibility with content written to mouse-specific events, this specification does provide an optional section describing how to generate compatibility mouse events based on pointer input from devices other than a mouse.</p>
 	  <div class="note" lang=ko><div class="note-title" aria-level="1" role="heading" id="h_note_2"><span>노트</span></div><div class="informative">
     이 스펙 문서는 포인터 이벤트와 <a href="http://www.w3.org/TR/touch-events/">터치 이벤트</a> 양쪽 다 지원하는 유저 에이전트의 예상 행동에 대한 어드바이스를 제공하지 않습니다. 두 스펙간 관계에 대한 더 자세한 정보는, <a href="http://www.w3.org/community/touchevents/">터치 이벤트 커뮤니티 그룹</a>을 보시길 바랍니다.
 	  </div></div>
-	  <div class="note" lang=en><div class="note-title" aria-level="1" role="heading"><span>Note</span></div><div class="informative">
-	  This specification does not provide any advice on the expected behavior of user agents that support both Pointer Events and <a href="http://www.w3.org/TR/touch-events/">Touch Events</a>. For more information on the relationship between these two specifications, see the <a href="http://www.w3.org/community/touchevents/">Touch Events Community Group</a>.
-	  </div></div>
-
 	  </div>
     </section>
 <section id="conformance" typeof="bibo:Chapter" resource="#conformance" rel="bibo:Chapter"><!--OddPage--><h2 role="heading" id="h2_conformance"><span class="secno">2. </span>적합성</h2>
@@ -601,23 +576,13 @@ dt#feedback {
   이 스펙문서 내에서 예제, 노트, 작성 가이드라인, 다이어그램 및 명시적으로 '이 섹션은 표준에 준하는 내용이 아닙니다'라 표기된 내용은 표준에 준하는 내용이 아닙니다.
 	그 외는 모두 표준에 준하는 내용입니다.
 </p>
-<p lang=en>
-  As well as sections marked as non-normative, all authoring guidelines, diagrams, examples,
-  and notes in this specification are non-normative. Everything else in this specification is
-  normative.
-</p>
 <p id="respecRFC2119"><em class="rfc2119" title="MAY">MAY</em>, <em class="rfc2119" title="MUST">MUST</em>, <em class="rfc2119" title="MUST NOT">MUST NOT</em>, <em class="rfc2119" title="OPTIONAL">OPTIONAL</em>, <em class="rfc2119" title="SHOULD">SHOULD</em> 키워드는 [<cite><a class="bibref" href="#bib-RFC2119">RFC2119</a></cite>]에서 기술하는대로 해석합니다.
-</p>
-<p lang=en>The key words <em class="rfc2119" title="MAY">MAY</em>, <em class="rfc2119" title="MUST">MUST</em>, <em class="rfc2119" title="MUST NOT">MUST NOT</em>, <em class="rfc2119" title="OPTIONAL">OPTIONAL</em>, and <em class="rfc2119" title="SHOULD">SHOULD</em> are
-  to be interpreted as described in [<cite><a class="bibref" href="#bib-RFC2119">RFC2119</a></cite>].
 </p>
 </section>
 <section class="informative" id="examples">
 	<!--OddPage--><h2 role="heading" id="h2_examples"><span class="secno">3. </span>예제</h2>
   <p lang=ko><em>이 섹션은 표준에 준하는 내용이 아닙니다.</em></p>
-  <p lang=en><em>This section is non-normative.</em></p>
   <p lang=ko>아래 예제들은 이 스펙 문서에서 사용해야 하는 API를 어떻게 사용해야 하는지 입증하는 코드입니다.</p>
-	<p lang=en>The following are example author code that demonstrates how the APIs in this specification might be used.</p>
 <div class="example"><div class="example-title"><span>예제 1</span>: 기본 HTML5 Canvas 페인팅 예제</div><pre id="example_1" class="example">&lt;style&gt;
   /* Disable intrinsic user agent touch behaviors (such as panning or zooming) so
   that all events on the canvas element are given to the application instead. */
@@ -696,51 +661,44 @@ eventTarget.dispatchEvent(event); </pre></div>
         마우스에서 적어도 한개 이상의 버튼을 눌렀을 때를 나타냅니다.
         터치에서 디지타이저에 물리적으로 접촉했을 때를 나타냅니다.
         펜에서 디지타이저에 펜이 물리적으로 접촉했을 때를 나타냅니다.
-        <div lang=en>The condition when a pointer has a non-zero value for the <code>buttons</code> property. For mouse, this is when the device has at least one button depressed. For touch, this is when there is physical contact with the digitizer. For pen, this is when the pen has physical contact with the digitizer.</div></dd>
 			<dt><dfn id="dfn-active-pointer">활성 포인터</dfn></dt>
 				<dd>
         모든 터치 접촉, 스타일러스 펜, 마우스 커서 및 다른 포인터에 이벤트를 줄 수 있습니다.
         만약 포인터를 주는게 가능하다면(유니크한 <code>pointerId</code>로 식별하는) 문서를 포함한 추가 이벤트를 부여할 수 있으며, 
         포인터는 활성 상태를 유지할 것입니다. 예를 들면:
-        <div lang=en>Any touch contact, pen stylus, mouse cursor, or other pointer that can produce events.  If it is possible for a given pointer (identified by a unique <code>pointerId</code>) to produce additional events within the document, then that pointer is still considered active. Examples:</div>
 					<ul>
-						<li>디바이스에 연결된 마우스는 항상 활성상태입니다. <div lang=en>A mouse connected to the device is always active.</div></li>
-						<li>스크린에 닿은 터치는 활성상태로 고려해야 합니다. <div lang=en>A touch contact on the screen is considered active.</div></li>
-						<li>만약 터치 접촉이나 스타일러스 펜이 디지타이저 범위 위를 벗어난 경우, 더 이상 활성 상태로 고려하지 않아야 합니다. <div lang=en>If a touch contact or pen stylus is lifted beyond the range of the digitizer, then it is no longer considered active.</div></li>
+						<li>디바이스에 연결된 마우스는 항상 활성상태입니다.</li>
+						<li>스크린에 닿은 터치는 활성상태로 고려해야 합니다.</li>
+						<li>만약 터치 접촉이나 스타일러스 펜이 디지타이저 범위 위를 벗어난 경우, 더 이상 활성 상태로 고려하지 않아야 합니다.</li>
 					</ul>
 					<div class="note"><div class="note-title" aria-level="1" role="heading" id="h_note_3"><span>노트</span></div><div class="">
           몇몇 플랫폼에서 활성 포인터의 세트는 유저에이전트 타겟이 아닌 것을 포함한 모든 디바이스 입력을 포함합니다. (즉 다른 어플리케이션 타겟입니다)</div></div>
-					<div class="note"><div class="note-title" aria-level="1" role="heading"><span>Note</span></div><div class="">On some platforms, the set of active pointers includes all pointer input to the device, including any that are not targeted at the user agent (e.g. those targeted at other applications).</div></div>
 				</dd>
 			<dt><dfn id="dfn-canceled-event">취소 이벤트</dfn></dt>
 				<dd>
           기본 액션을 <code>preventDefault()</code>으로 막았거나, 이벤트 핸들러에 <code>false</code>를 반환하거나,
-					[<cite><a class="bibref" href="#bib-DOM-LEVEL-3-EVENTS">DOM-LEVEL-3-EVENTS</a></cite>]와 [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>]에서 정의하는 다른 이벤트를 나타냅니다.
-          <div lang=en>An event whose default action was prevented by means of <code>preventDefault()</code>, returning <code>false</code> in an event handler, or other means as defined by [<cite><a class="bibref" href="#bib-DOM-LEVEL-3-EVENTS">DOM-LEVEL-3-EVENTS</a></cite>] and [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>].</div></dd>
+          [<cite><a class="bibref" href="#bib-DOM-LEVEL-3-EVENTS">DOM-LEVEL-3-EVENTS</a></cite>]와 [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>]에서 정의하는 다른 이벤트를 나타냅니다.</dd>
 			<dt><dfn id="dfn-contact-geometry">접촉 기하</dfn></dt>
 				<dd>
-          디지타이저에서 (보통 터치) 인풋 바운딩 박스를 의미합니다. 이는 보통 하나의 픽셀보다 조잡한 포인터 입력 해상도와 디바이스를 의미합니다. 몇몇 디바이스는 이 데이터를 모두 보고하지 않을 수 있습니다.
-<div lang=en>The bounding box of an input (most commonly, touch) on a digitizer. This typically refers to devices with coarser pointer input resolution than a single pixel. Some devices do not report this data at all.</div></dd>
+          디지타이저에서 (보통 터치) 인풋 바운딩 박스를 의미합니다. 이는 보통 하나의 픽셀보다 조잡한 포인터 입력 해상도와 디바이스를 의미합니다. 몇몇 디바이스는 이 데이터를 모두 보고하지 않을 수 있습니다.</dd>
 			<dt><dfn id="dfn-digitizer">디지타이저</dfn></dt>
 				<dd>
          근접하거나 접촉한 입력을 감지할 수 있는 표면을 가지는 감지 장치 입력 형태. 일반적으로, 스타일러스 펜이나 터치 접촉을 통해 감지하는 표면을 나타냅니다.
-         <div lang=en>A type of input sensing device in which a surface can detect input which is in contact and/or in close proximity. Most commonly, this is the surface that senses input from the touch contact or a pen stylus.</div></dd>
+        </dd>
 			<dt><dfn id="dfn-hit-test">히트 테스트</dfn></dt>
 				<dd>사용자 에이전트의 포인터 이벤트 대상 요소를 정의하는 프로세스.
-          일반적으로 포인터 위치 같은 스크린 미디어에서 보여지는 문서 내 요소의 비주얼 레이아웃에에 따라 결정합니다.
-<div lang=en>The process by which a user agent determines a target element for a pointer event. Typically, this is determined by considering the pointer's location and also the visual layout of elements in a document on screen media.</div></dd>
+          일반적으로 포인터 위치 같은 스크린 미디어에서 보여지는 문서 내 요소의 비주얼 레이아웃에에 따라 결정합니다.</dd>
 			<dt><dfn id="dfn-pointer">포인터</dfn></dt>
 				<dd>
         하드웨어와 상관없이 스크린 상에서 마우스, 펜, 터치 접촉 같은 조유 좌표 (좌표의 세트)에 타겟 가능한 입력 기기를 나타냅니다.
-        <div lang=en>A hardware agnostic representation of input devices that can target a specific coordinate (or set of coordinates) on a screen, such as a mouse, pen, or touch contact.</div></dd>
+        </dd>
 			<dt><dfn id="dfn-user-agent">유저 에이전트</dfn></dt>
 				<dd>
         보통 클라이언트 머신에서 돌아가는 유저를 대신해 검색, 해석, 실행, 표현, 콘텐츠 생성을 행하는 브라우저나 콘텐츠 저작도구 같은 프로그램.
-        <div lang=en>A program, such as a browser or content authoring tool, normally running on a client machine, which acts on a user's behalf in retrieving, interpreting, executing, presenting, or creating content.</div></dd>
+        </dd>
 			<dt><dfn id="dfn-queue-a-task">태스크 대기 행렬</dfn></dt>
 				<dd>
-					 [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>]에서 정의한,적절한 이벤트 루프의 태스크 대기 행렬에 이벤트 태스트를 더한 것
-           <div lang=en>Adding the task to events task queue of the relevant event loop, as defined in [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>].</div></dd>
+					 [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>]에서 정의한,적절한 이벤트 루프의 태스크 대기 행렬에 이벤트 태스트를 더한 것</dd>
 		</dl>
 	</section>
    <section id="pointer-events-and-interfaces">
@@ -767,16 +725,25 @@ interface <span class="idlInterfaceID">PointerEvent</span> : <span class="idlSup
 <span class="idlAttribute">    readonly    attribute <span class="idlAttrType">long</span>      <span class="idlAttrName"><a href="#widl-PointerEvent-tiltY">tiltY</a></span>;</span>
 <span class="idlAttribute">    readonly    attribute <span class="idlAttrType">DOMString</span> <span class="idlAttrName"><a href="#widl-PointerEvent-pointerType">pointerType</a></span>;</span>
 <span class="idlAttribute">    readonly    attribute <span class="idlAttrType">boolean</span>   <span class="idlAttrName"><a href="#widl-PointerEvent-isPrimary">isPrimary</a></span>;</span>
-};</span></pre><section><h4 id="attributes-1" role="heading">Attributes</h4><dl class="attributes">
-           <dt id="widl-PointerEvent-pointerId"><code>pointerId</code> of type <span class="idlAttrType">long</span>, readonly   </dt><dd>
-					<p>A unique identifier for the pointer causing the event. This identifier <em class="rfc2119" title="MUST">MUST</em> be unique from all other <a title="active pointer" class="internalDFN" href="#dfn-active-pointer">active pointers</a> at the time. A user agent <em class="rfc2119" title="MAY">MAY</em> recycle previously retired values for <code>pointerId</code> from previous active pointers, if necessary.</p>
-
-					<div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_4"><span>Note</span></div><section class="">The <code>pointerId</code> selection algorithm is implementation specific. Therefore authors cannot assume values convey any particular meaning other than an identifier for the pointer that is unique from all other active pointers. As an example, values are not guaranteed to be monotonically increasing.</section></div>
-				</dd><dt id="widl-PointerEvent-width"><code>width</code> of type <span class="idlAttrType">double</span>, readonly   </dt><dd>
-					The width (magnitude on the X axis), in CSS pixels (see [<cite><a class="bibref" href="#bib-CSS21">CSS21</a></cite>]), of the <a title="contact geometry" class="internalDFN" href="#dfn-contact-geometry">contact geometry</a> of the pointer.  This value <em class="rfc2119" title="MAY">MAY</em> be updated on each event for a given pointer. For devices which have a contact geometry but the actual geometry is not reported by the hardware, a default value <em class="rfc2119" title="SHOULD">SHOULD</em> be provided by the <a title="user agent" class="internalDFN" href="#dfn-user-agent">user agent</a> to approximate the geometry typical of that pointer type. Otherwise, the value <em class="rfc2119" title="MUST">MUST</em> be 0.
-				</dd><dt id="widl-PointerEvent-height"><code>height</code> of type <span class="idlAttrType">double</span>, readonly   </dt><dd>
-					The height (magnitude on the Y axis), in CSS pixels (see [<cite><a class="bibref" href="#bib-CSS21">CSS21</a></cite>]), of the <a title="contact geometry" class="internalDFN" href="#dfn-contact-geometry">contact geometry</a> of the pointer.  This value <em class="rfc2119" title="MAY">MAY</em> be updated on each event for a given pointer. For devices which have a contact geometry but the actual geometry is not reported by the hardware, a default value <em class="rfc2119" title="SHOULD">SHOULD</em> be provided by the <a title="user agent" class="internalDFN" href="#dfn-user-agent">user agent</a> to approximate the geometry typical of that pointer type. Otherwise, the value <em class="rfc2119" title="MUST">MUST</em> be 0.
-				</dd><dt id="widl-PointerEvent-pressure"><code>pressure</code> of type <span class="idlAttrType">float</span>, readonly   </dt><dd>
+};</span></pre><section><h4 id="attributes-1" role="heading">속성</h4><dl class="attributes">
+          <dt id="widl-PointerEvent-pointerId"><code>pointerId</code> <span class="idlAttrType">long</span> 타입, 읽기 전용</dt><dd>
+					<p lang=ko>이벤트를 일으키는 포인터를 위한 고유 식별자. 이 식별자는 <em class="rfc2119" title="MUST">반드시</em> 
+             서로 다른 <a title="active pointer" class="internalDFN" href="#dfn-active-pointer">활성 포인터</a>에서 고유값을 가져야합니다. [<em class="rfc2119" title="MUST">MUST</em>]
+             필요한 경우 유저에이전트는 이전 활성 포인터에서 사용했지만 지금은 사용하지 않는 <code>pointerId</code> 값을 재활용 할 수도 있습니다. [<em class="rfc2119" title="MAY">MAY</em>]</p>
+					<div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_4">노트</div><section class="">
+         <code>pointerId</code> 선택 알고리즘은 구현체 고유의 알고리즘입니다.
+         따라서 작성자는 값이 다른 모든 활성 포인터에 대한 식별자 외 특정 의미를 전달할 수 없습니다.
+         예를 들어, 값이 단조롭게 증가하는 걸 보장하지 않습니다.</section></div>
+				</dd><dt id="widl-PointerEvent-width"><code>width</code> <span class="idlAttrType">double</span> 타입, 읽기 전용</dt><dd>
+					
+         포인터의 <a title="contact geometry" class="internalDFN" href="#dfn-contact-geometry">접촉 기하</a>인 CSS 픽셀 ([<cite><a class="bibref" href="#bib-CSS21">CSS21</a></cite>]) width (X축 상 크기)
+         이 값은 포인터가 주어진 각 이벤트별로 업데이트 할 수 있습니다. [<em class="rfc2119" title="MAY">MAY</em>]
+         접촉 기하를 가지고 있지만 실제 기하를 하드웨어가 보고하지 않은 경우 디바이스의 기본 값을 <a title="user agent" class="internalDFN" href="#dfn-user-agent">유저 에이전트</a>가 그 포인터 타입의 대략적인 평균 형태로 제공해야만합니다. [<em class="rfc2119" title="SHOULD">SHOULD</em>] 다른 경우라면 이 값은 반드시 0입니다. [<em class="rfc2119" title="MUST">MUST</em>]
+				</dd><dt id="widl-PointerEvent-height"><code>height</code> <span class="idlAttrType">double</span> 타입, 읽기 전용</dt><dd>
+				 포인터의 <a title="contact geometry" class="internalDFN" href="#dfn-contact-geometry">접촉 기하</a>인 CSS 픽셀 ([<cite><a class="bibref" href="#bib-CSS21">CSS21</a></cite>]) height (Y축 상 크기)
+         이 값은 포인터가 주어진 각 이벤트별로 업데이트 할 수 있습니다. [<em class="rfc2119" title="MAY">MAY</em>]
+         접촉 기하를 가지고 있지만 실제 기하를 하드웨어가 보고하지 않은 경우 디바이스의 기본 값을 <a title="user agent" class="internalDFN" href="#dfn-user-agent">유저 에이전트</a>가 그 포인터 타입의 대략적인 평균 형태로 제공해야만합니다. [<em class="rfc2119" title="SHOULD">SHOULD</em>] 다른 경우라면 이 값은 반드시 0입니다. [<em class="rfc2119" title="MUST">MUST</em>]
+				</dd><dt id="widl-PointerEvent-pressure"><code>pressure</code> <span class="idlAttrType">float</span> 타입, 읽기 전용</dt><dd>
 					The normalized pressure of the pointer input in the range of [0,1], where 0 and 1 represent the minimum and maximum pressure the hardware is capable of detecting, respectively.  For hardware that does not support pressure, including but not limited to mouse, the value <em class="rfc2119" title="MUST">MUST</em> be 0.5 when in the <a title="active buttons" class="internalDFN" href="#dfn-active-buttons-state">active buttons state</a> and 0 otherwise.
 				</dd><dt id="widl-PointerEvent-tiltX"><code>tiltX</code> of type <span class="idlAttrType">long</span>, readonly   </dt><dd>
 					<p>The plane angle (in degrees, in the range of [-90,90]) between the Y-Z plane and the plane containing both the transducer (e.g. pen stylus) axis and the Y axis. A positive <code>tiltX</code> is to the right. <code>tiltX</code> can be used along with <code>tiltY</code> to represent the tilt away from the normal of a transducer with the digitizer. For devices that do not report tilt, the value <em class="rfc2119" title="MUST">MUST</em> be 0.</p>
