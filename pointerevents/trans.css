@@ -3,6 +3,8 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300);
 
 body {
+  font-size: 18px;
+  line-height: 2em;
   font-family: 'Lato', 'Noto Sans KR', sans-serif; 
 }
 .headernotes {

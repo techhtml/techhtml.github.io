@@ -2,7 +2,6 @@
 <html lang="ko" dir="ltr" typeof="bibo:Document w3p:REC" about="" property="dcterms:language" content="ko">
 <head>
   <title>포인터 이벤트</title>
-	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <style>
       .issue {background: #fcc !important;}
@@ -838,36 +837,72 @@ interface <span class="idlInterfaceID">PointerEvent</span> : <span class="idlSup
 			</section>
 		</section>
 		<section id="the-primary-pointer">
-			<h4 role="heading" id="h4_the-primary-pointer"><span class="secno">5.1.2 </span><dfn title="primary pointer" id="dfn-primary-pointer">The Primary Pointer</dfn></h4>
-			<div><p>In a multi-pointer (e.g. multi-touch) scenario, the <a href="#widl-PointerEvent-isPrimary"><code>isPrimary</code></a> property is used to identify a master pointer amongst the set of active pointers for each pointer type.  Only a primary pointer will produce <a title="compatibility mouse events" class="internalDFN" href="#dfn-compatibility-mouse-events">compatibility mouse events</a>. Authors who desire single-pointer interaction can achieve this by ignoring non-primary pointers (however, see the note below on <a href="#multiple-primary-pointers">multiple primary pointers</a>).
+			<h4 role="heading" id="h4_the-primary-pointer"><span class="secno">5.1.2 </span><dfn title="primary pointer" id="dfn-primary-pointer">기본 포인터</dfn></h4>
+			<div><p>
+        (멀티 터치 같은) 멀티 포인터 시나리오에서, 
+        <a href="#widl-PointerEvent-isPrimary"><code>isPrimary</code></a> 속성은
+        각 포인터 타입의 활성 포인터 세트 중 마스터 포인터를 식별할 때 사용합니다.
+        기본 포인터만이 <a title="compatibility mouse events" class="internalDFN" href="#dfn-compatibility-mouse-events">호환 마우스 이벤트</a>를 만듭니다.
+        싱글 포인터 동작을 원하는 작성자는 기본이 아닌 포인터를 거부하여 이룰 수 있습니다.
+        (그러나, <a href="#multiple-primary-pointers">여러개의 기본 포인터</a>는 아래 주의를 보세요)
 			</p><section>
-				<h5 id="determining-the-primary-pointer" role="heading">Determining the primary pointer</h5>
-				<div>When firing a pointer event, a pointer is considered primary if:
+				<h5 id="determining-the-primary-pointer" role="heading">기본 포인터 결정</h5>
+				<div>포인터 이벤트가 발생할 때, 만약 포인터가 다음 내용에 일치한다면 기본으로 고려해야 합니다.
 					<ul>
-						<li>The pointer represents a mouse device.</li>
-						<li>The pointer represents a primary touch input.</li>
-						<li>The pointer represents a primary pen input.</li>
+						<li>포인터가 마우스 디바이스를 나타냅니다.</li>
+						<li>포인터가 기본 터치 입력을 나타냅니다.</li>
+						<li>포인터가 기본 펜 입력을 나타냅니다.</li>
 					</ul>
 				</div>
 				<dl>
-					<dt>primary touch input</dt><dd>A pointer representing touch input is considered the <i>primary touch input</i> if its <code>pointerdown</code> event was dispatched when no other active pointers representing touch input existed.</dd>
-					<dt>primary pen input</dt><dd>A pointer representing pen input is considered the <i>primary pen input</i> if its <code>pointerdown</code> event was dispatched when no other active pointers representing pen input existed.</dd>
+					<dt>기본 터치 입력</dt><dd>
+          터치 입력을 보여주는 포인터에서,
+          만약 그 <code>pointerdown</code> 이벤트를
+          존재하는 터치 입력을 나타내는 다른 활성화 포인터가 존재하지 않을 때 보냈다면
+          <i>기본 터치 입력</i>으로 고려해야 합니다.
+          </dd>
+					<dt>기본 펜 입력</dt><dd>
+          펜 입력을 보여주는 포인터에서,
+          만약 그 <code>pointerdown</code> 이벤트를 
+          존재하는 펜 입력을 나타내는 다른 활성화 포인터가 존재하지 않을 때 보냈다면
+          <i>기본 펜 입력</i>으로 고려해야 합니다.
+          </dd>
 				</dl>
-				<div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_8"><span>Note</span></div><div class="" id="multiple-primary-pointers">When two or more pointer device types are being used concurrently, multiple pointers (one for each <code>pointerType</code>) are considered primary. For example, a touch contact and a mouse cursor moved simultaneously will produce pointers that are both considered primary.</div></div>
-				<div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_9"><span>Note</span></div><div class="">In the case where there are multiple <a href="#the-primary-pointer">primary pointers</a>,
-these pointers will all produce <a href="#compatibility-mapping-with-mouse-events">compatibility mouse events</a>.</div></div>
-				<div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_10"><span>Note</span></div><div class="">On some platforms, the primary pointer is determined using all active pointers on the device, including those not targeted at the user agent (e.g. in another application). This means it is possible for the user agent to fire pointer events in which no pointer is marked as a primary pointer.  For example, if the first touch interaction is targeted outside the user agent and a secondary (multi-touch) touch interaction is targeted inside the user agent, then the user agent may fire pointer events for the second contact with a value of <code>false</code> for <code>isPrimary</code>.</div></div>
+				<div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_8"><span>포인터</span></div><div class="" id="multiple-primary-pointers">
+          현재 두개 이상의 포인터 디바이스 타입을 사용하고 있을 때, 멀티플 포인터(각 <code>pointerType</code> 중 하나)를 기본으로 고려해야 합니다.
+          예를 들어, 터치 접촉과 마우스 커서가 움직이고 있는 상황을 시뮬레이팅하면,
+          양쪽 모두를 기본으로 고려한 포인터를 만들 것입니다.
+          </div></div>
+				<div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_9"><span>노트</span></div><div class="">
+          여러개의 <a href="#the-primary-pointer">기본 포인터가</a> 존재하는 상황에서,
+          이 포인터는 모두 <a href="#compatibility-mapping-with-mouse-events">호환 마우스 이벤트</a>를 생성할 것입니다.
+          </div></div>
+				<div class="note"><div class="note-title" aria-level="4" role="heading" id="h_note_10"><span>노트</span></div><div class="">
+          몇몇 플랫폼에서,
+          유저에이전트 타겟이 아닌 것을 포함한 (즉 다른 어플리케이션)
+          디바이스 내 모든 활성 포인터를 기본 포인터로 지정합니다.
+          이 뜻은 유저에이전트가 포인터 없이 이벤트를 발생할 수 있으며 그를 기본 포인터로 할 수 있다는 뜻입니다.
+          예를 들어, 첫번째 터치 인터렉션이 대상 유저에이전트 밖에서 발생했고,
+          두번째 (멀티 터치) 터치 인터렉션이 대상 유저에이전트 안에서 발생했을 때,
+          유저 에이전트가 
+          두번째 접촉 시 이벤트의 <code>isPrimary</code> 값을 <code>false</code>로 발생시킬 수 있습니다.
+        </div></div>
 
 			</section>
 		</div></section>
      </section>
 	 <section id="pointer-event-types">
-		<h3 role="heading" id="h3_pointer-event-types"><span class="secno">5.2 </span>Pointer Event Types</h3>
+		<h3 role="heading" id="h3_pointer-event-types"><span class="secno">5.2 </span>포인터 이벤트 타입</h3>
 		<section id="firing-events-using-the-pointerevent-interface">
-			<h4 role="heading" id="h4_firing-events-using-the-pointerevent-interface"><span class="secno">5.2.1 </span>Firing events using the <code>PointerEvent</code> interface</h4>
-			To <dfn id="dfn-fire-a-pointer-event-name-e">fire a pointer event name e</dfn> means to <dfn id="dfn-fire-an-event-named-e">fire an event named e</dfn> as defined in [<cite><a class="bibref" href="#bib-DOM4">DOM4</a></cite>] with an event using the <a href="#idl-def-PointerEvent" class="idlType"><code>PointerEvent</code></a> interface whose attributes are set as defined in <a href="#pointerevent-interface"><code>PointerEvent</code> Interface</a>.<p></p>
-
-			<p>Initialize the <code>bubbles</code> attribute for the event to <code>true</code> if the event name is
+			<h4 role="heading" id="h4_firing-events-using-the-pointerevent-interface"><span class="secno">5.2.1 </span><code>PointerEvent</code> 인터페이스를 사용한 이벤트 발생</h4>
+			<dfn id="dfn-fire-a-pointer-event-name-e">포인터 이벤트 e 발생</dfn>이 의미하는 바는
+      [<cite><a class="bibref" href="#bib-DOM4">DOM4</a></cite>]에서 정의한
+      <dfn id="dfn-fire-an-event-named-e">이벤트 e 발생</dfn>을
+      <a href="#pointerevent-interface"><code>PointerEvent</code> 인터페이스</a>에서 정의하는 세트와 동일한 속성을 가진
+      <a href="#idl-def-PointerEvent" class="idlType"><code>PointerEvent</code></a> 인터페이스와 함께 사용한 것을 의미합니다.
+      <p></p>
+			<p>
+        아래 이벤트에서 <code>bubbles</code> 속성값은 <code>true</code>로 초기화합니다 :
 				</p><ul>
 					<li><code>pointerdown</code></li>
 					<li><code>pointerup</code></li>
@@ -879,7 +914,8 @@ these pointers will all produce <a href="#compatibility-mapping-with-mouse-event
 					<li><code>lostpointercapture</code></li>
 				</ul>
 			<p></p>
-			<p>Initialize the <code>cancelable</code> attribute for the event to <code>true</code> if the event name is
+			<p>
+        아래 이벤트에서 <code>cancelable</code> 속성값은 <code>true</code>로 초기화합니다 :
 				</p><ul>
 					<li><code>pointerdown</code></li>
 					<li><code>pointerup</code></li>
@@ -889,15 +925,16 @@ these pointers will all produce <a href="#compatibility-mapping-with-mouse-event
 				</ul>
 			<p></p>
 
-			<p>The target object at which the event is fired is determined as follows:
+			<p>이벤트가 발생한 타겟 객체는 아래와 순서대로 결정합니다.
 			</p><ul>
-				<li>If the <a href="#dfn-pointer-capture-target-override" class="internalDFN">pointer capture target override</a> has been set for the pointer,
+				<li><a href="#dfn-pointer-capture-target-override" class="internalDFN">pointer capture target override</a>를 포인터에서 정의하는 경우,
 					<ul>
-						<li>Set the <code>relatedTarget</code> attribute of the event to <code>null</code>.</li>
-						<li>Fire the event to the <a href="#dfn-pointer-capture-target-override" class="internalDFN">pointer capture target override</a> object.</li>
+						<li>이벤트의 <code>relatedTarget</code> 속성을 <code>null</code>로 지정합니다..</li>
+						<li><a href="#dfn-pointer-capture-target-override" class="internalDFN">pointer capture target override</a> 객체의 이벤트를 발생합니다.</li>
 					</ul>
 				</li>
-				<li>Otherwise, fire the event to the object returned by normal hit test mechanisms (out of scope for this specification).</li>
+				<li>
+          그 외 경우에는, 이벤트 발생 객체는 일반 히트 테스트 메커니즘을 따라 반환합니다. (이 스펙 문서 범위에 속하지 않습니다)</li>
 			</ul>
             <h4 id="process-pending-pointer-capture">Process Pending Pointer Capture</h4>
             <p>Whenever a user agent is to fire a Pointer Event that is not <code>gotpointercapture</code> or <code>lostpointercapture</code>, it must first run these steps:</p>
