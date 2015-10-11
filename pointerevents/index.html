@@ -936,26 +936,38 @@ interface <span class="idlInterfaceID">PointerEvent</span> : <span class="idlSup
 				<li>
           그 외 경우에는, 이벤트 발생 객체는 일반 히트 테스트 메커니즘을 따라 반환합니다. (이 스펙 문서 범위에 속하지 않습니다)</li>
 			</ul>
-            <h4 id="process-pending-pointer-capture">Process Pending Pointer Capture</h4>
-            <p>Whenever a user agent is to fire a Pointer Event that is not <code>gotpointercapture</code> or <code>lostpointercapture</code>, it must first run these steps:</p>
+            <h4 id="process-pending-pointer-capture">포인터 캡쳐 미결 프로세스</h4>
+            <p>
+              유저에이전트에서 <code>gotpointercapture</code>나 <code>lostpointercapture</code>가 아닌 포인터 이벤트가 발생했을 때, 반드시 아래 스텝대로 먼저 동작해야합니다:
+            </p>
             <ol>
-                <li>If the <a href="#dfn-pointer-capture-target-override" class="internalDFN">pointer capture target override</a> for this pointer is set and is not equal to the <a href="#dfn-pending-pointer-capture-target-override" class="internalDFN">pending pointer capture target override</a>, then fire a pointer event named <code>lostpointercapture</code> at the <a href="#dfn-pointer-capture-target-override" class="internalDFN">pointer capture target override</a> node.</li>
-                <li>If the <a href="#dfn-pending-pointer-capture-target-override" class="internalDFN">pending pointer capture target override</a> for this pointer is set and is not equal to the <a href="#dfn-pointer-capture-target-override" class="internalDFN">pointer capture target override</a>, then fire a pointer event named <code>gotpointercapture</code> at the <a href="#dfn-pending-pointer-capture-target-override" class="internalDFN">pending pointer capture target override</a>.
+                <li>
+                  만약 이 포인터에서 <a href="#dfn-pointer-capture-target-override" class="internalDFN">pointer capture target override</a>로 세트되어있고 
+                  <a href="#dfn-pending-pointer-capture-target-override" class="internalDFN">pending pointer capture target override</a>와 같지 않은 경우,
+                  <code>lostpointercapture</code> 이벤트는 <a href="#dfn-pointer-capture-target-override" class="internalDFN">pointer capture target override</a> 노드에서 발생합니다.
+                </li>
+                <li>
+                  만약 이 포인터에서 <a href="#dfn-pending-pointer-capture-target-override" class="internalDFN">pending pointer capture target override</a>로 세트되어있고 
+                  <a href="#dfn-pending-pointer-capture-target-override" class="internalDFN">pending pointer capture target override</a>와 같지 않은 경우,
+                  <code>gotpointercapture</code> 이벤트는 <a href="#dfn-pending-pointer-capture-target-override" class="internalDFN">pending pointer capture target override</a> 노드에서 발생합니다.
                     <ul>
-                        <li>Further, if the <a href="#dfn-pointer-capture-target-override" class="internalDFN">pointer capture target override</a> is not set and, the <a href="#dfn-pending-pointer-capture-target-override" class="internalDFN">pending pointer capture target override</a> is not equal to the hit test node for the pointer event which invoked this process, and the hit test node has received <code>pointerover</code> and <code>pointerenter</code> events, then fire a pointer event named <code>pointerout</code> and a pointer event named <code>pointerleave</code> at the hit test node.</li>
+                        <li>
+                          더 나아가, <a href="#dfn-pointer-capture-target-override" class="internalDFN">pointer capture target override</a>가 세트되어있지 않고, <a href="#dfn-pending-pointer-capture-target-override" class="internalDFN">pending pointer capture target override</a> 이 프로세스가 적용된 포인터 이벤트를 위한 히트테스트 노드와 같지 않고, 히트 테스트 노드가 <code>pointerover</code>와 <code>pointerenter</code> 이벤트를 받는 경우, <code>pointerout</code> 이벤트와 <code>pointerleave</code> 이벤트가 히스 테스트 노드에서 발생합니다.</li>
                     </ul>
                 </li>
-                <li>Set the <dfn id="dfn-pointer-capture-target-override">pointer capture target override</dfn> to the <a href="#dfn-pending-pointer-capture-target-override" class="internalDFN">pending pointer capture target override</a>, if set. Otherwise, clear the <a href="#dfn-pointer-capture-target-override" class="internalDFN">pointer capture target override</a>.</li>
+                <li>
+                  세트한 경우, <a href="#dfn-pending-pointer-capture-target-override" class="internalDFN">pending pointer capture target override</a>로
+									<dfn id="dfn-pointer-capture-target-override">pointer capture target override</dfn>를 세트합니다.
+                </li>
             </ol>
-
-
 		</section>
 		<section class="informative" id="list-of-pointer-events">
-			<h4 role="heading" id="h4_list-of-pointer-events"><span class="secno">5.2.2 </span>List of Pointer Events</h4><p><em>This section is non-normative.</em></p>
-			<p>The following table provides a summary of the event types defined in this specification.</p>
+			<h4 role="heading" id="h4_list-of-pointer-events"><span class="secno">5.2.2 </span>포인터 이벤트 목록</h4>
+      <p><em>이 섹션은 표준에 준하는 내용이 아닙니다.</em></p>
+			<p>아래 표는 이 스펙문서에서 정의하는 이벤트 타입의 요약을 제공합니다.</p>
 			<table class="parameters">
 				<thead><tr>
-					<th>Event Type</th><th>Sync/Async</th><th>Bubbles</th><th>Cancelable</th><th>Default Action</th></tr>
+					<th>이벤트 타입</th><th>Sync/Async</th><th>Bubbles</th><th>Cancelable</th><th>기본 동작</th></tr>
 				</thead>
 				<tbody>
 					<tr>
@@ -963,78 +975,82 @@ interface <span class="idlInterfaceID">PointerEvent</span> : <span class="idlSup
 						<td>Sync</td>
 						<td>Yes</td>
 						<td>Yes</td>
-						<td>Varies:  when the pointer is primary, all default actions of <code>mouseover</code></td>
+            <td>다름: 포인터가 기본일 때, <code>mouseover</code>의 모든 기본 동작</td>
 					</tr>
 					<tr>
 						<td><code>pointerenter</code></td>
 						<td>Sync</td>
 						<td>No</td>
 						<td>No</td>
-						<td>Varies:  when the pointer is primary, all default actions of <code>mouseenter</code></td>
+            <td>다름: 포인터가 기본일 때, <code>mouseenter</code>의 모든 기본 동작</td>
 					</tr>
 					<tr>
 						<td><code>pointerdown</code></td>
 						<td>Sync</td>
 						<td>Yes</td>
 						<td>Yes</td>
-						<td>Varies: when the pointer is primary, all default actions of the <code>mousedown</code> event
-							<br>Canceling this event also sets the <i>PREVENT MOUSE EVENT</i> flag for this <code>pointerType</code>, which prevents subsequent firing of certain <a title="compatibility mouse events" class="internalDFN" href="#dfn-compatibility-mouse-events">compatibility mouse events</a>.</td>
+            <td>다름: 포인터가 기본일 때, <code>mousedown</code> 이벤트의 모든 기본 동작
+                <br>이 <code>pointerType</code>에서 <i>PREVENT MOUSE EVENT</i> 플래그가 세트되어 있으면 이 이벤트는 취소되며,
+                특정 <a title="compatibility mouse events" class="internalDFN" href="#dfn-compatibility-mouse-events">호환 마우스 이벤트</a>
+                발생 서브시퀀스를 막습니다.
+            </td>
 					</tr>
 					<tr>
 						<td><code>pointermove</code></td>
 						<td>Sync</td>
 						<td>Yes</td>
 						<td>Yes</td>
-						<td>Varies:  when the pointer is primary, all default actions of <code>mousemove</code></td>
+            <td>다름: 포인터가 기본일 때, <code>mousemove</code>의 모든 기본 동작</td>
 					</tr>
 					<tr>
 						<td><code>pointerup</code></td>
 						<td>Sync</td>
 						<td>Yes</td>
 						<td>Yes</td>
-						<td>Varies:  when the pointer is primary, all default actions of <code>mouseup</code></td>
+            <td>다름: 포인터가 기본일 때, <code>mouseup</code>의 모든 기본 동작</td>
 					</tr>
 					<tr>
 						<td><code>pointercancel</code></td>
 						<td>Sync</td>
 						<td>Yes</td>
 						<td>No</td>
-						<td>None</td>
+						<td>없음</td>
 					</tr>
 					<tr>
 						<td><code>pointerout</code></td>
 						<td>Sync</td>
 						<td>Yes</td>
 						<td>Yes</td>
-						<td>Varies:  when the pointer is primary, all default actions of <code>mouseout</code></td>
+            <td>다름: 포인터가 기본일 때, <code>mouseout</code>의 모든 기본 동작</td>
 					</tr>
 					<tr>
 						<td><code>pointerleave</code></td>
 						<td>Sync</td>
 						<td>No</td>
 						<td>No</td>
-						<td>Varies:  when the pointer is primary, all default actions of <code>mouseleave</code></td>
+            <td>다름: 포인터가 기본일 때, <code>mouseleave</code>의 모든 기본 동작</td>
 					</tr>
 					<tr>
 						<td><code>gotpointercapture</code></td>
 						<td>Sync/Async</td>
 						<td>Yes</td>
 						<td>No</td>
-						<td>None</td>
+						<td>없음</td>
 					</tr>
 					<tr>
 						<td><code>lostpointercapture</code></td>
 						<td>Sync/Async</td>
 						<td>Yes</td>
 						<td>No</td>
-						<td>None</td>
+						<td>없음</td>
 					</tr>
 				</tbody>
 			</table>
-		<p>In the case of the <a href="#the-primary-pointer">primary pointer</a>, these events (with the exception of <code>gotpointercapture</code>, and <code>lostpointercapture</code>) may also fire compatibility mouse events.</p>
+		<p><a href="#the-primary-pointer">primary pointer</a>이 발생할 시 (<code>gotpointercapture</code>와 <code>lostpointercapture</code>를 제외하고),
+    그 이벤트 또한 호환 마우스 이벤트로 발생합니다.</p>
 		</section>
 		<section id="the-pointerover-event">
-			<h4 role="heading" id="h4_the-pointerover-event"><span class="secno">5.2.3 </span><dfn title="pointerover" id="dfn-pointerover">The <code>pointerover</code> event</dfn></h4>
+			<h4 role="heading" id="h4_the-pointerover-event"><span class="secno">5.2.3 </span><dfn title="pointerover" id="dfn-pointerover"><code>pointerover</code> 이벤트</dfn></h4>
 			<div>A user agent <em class="rfc2119" title="MUST">MUST</em> <a href="#firing-events-using-the-pointerevent-interface">fire a pointer event</a> named <code>pointerover</code> when a pointing device is moved into the hit test boundaries of an element. A user agent <em class="rfc2119" title="MUST">MUST</em> also fire this event prior to firing a <code>pointerdown</code> event for <a href="#mapping-for-devices-that-do-not-support-hover">devices that do not support hover</a> (see <code><a href="#the-pointerdown-event">pointerdown</a></code>).</div>
 		</section>
 		<section id="the-pointerenter-event">
