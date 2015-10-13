@@ -2,7 +2,8 @@
 <html lang="ko" dir="ltr" typeof="bibo:Document w3p:REC" about="" property="dcterms:language" content="ko">
 <head>
   <title>포인터 이벤트</title>
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta charset="UTF-8">
   <style>
       .issue {background: #fcc !important;}
       pre.idl::before, pre.example::before { font-family: sans-serif !important; }
@@ -1051,27 +1052,37 @@ interface <span class="idlInterfaceID">PointerEvent</span> : <span class="idlSup
 		</section>
 		<section id="the-pointerover-event">
 			<h4 role="heading" id="h4_the-pointerover-event"><span class="secno">5.2.3 </span><dfn title="pointerover" id="dfn-pointerover"><code>pointerover</code> 이벤트</dfn></h4>
-			<div>A user agent <em class="rfc2119" title="MUST">MUST</em> <a href="#firing-events-using-the-pointerevent-interface">fire a pointer event</a> named <code>pointerover</code> when a pointing device is moved into the hit test boundaries of an element. A user agent <em class="rfc2119" title="MUST">MUST</em> also fire this event prior to firing a <code>pointerdown</code> event for <a href="#mapping-for-devices-that-do-not-support-hover">devices that do not support hover</a> (see <code><a href="#the-pointerdown-event">pointerdown</a></code>).</div>
+			<div>
+                          유저 에이전트는  <em class="rfc2119" title="MUST">반드시</em> 포인팅 디바이스가 요소의 히트 테스트 범위 내에서 움직일 경우 <code>pointerover</code> <a href="#firing-events-using-the-pointerevent-interface">포인터 이벤트를 발생</a>시켜야 합니다. [<em class="rfc2119" title="MUST">MUST</em>] 유저에이전트는 <a href="#mapping-for-devices-that-do-not-support-hover">hover를 지원하지 않는 디바이스</a>에서 <em class="rfc2119" title="MUST">반드시</em> <code>pointerdown</code> 이벤트를 이 이벤트 대신 발생시켜야 합니다. (<code><a href="#the-pointerdown-event">pointerdown</a></code> 참고) [<em class="rfc2119" title="MUST">MUST</em>]</div>
 		</section>
 		<section id="the-pointerenter-event">
-			<h4 role="heading" id="h4_the-pointerenter-event"><span class="secno">5.2.4 </span><dfn title="pointerenter" id="dfn-pointerenter">The <code>pointerenter</code> event</dfn></h4>
-			<div>A user agent <em class="rfc2119" title="MUST">MUST</em> <a href="#firing-events-using-the-pointerevent-interface">fire a pointer event</a> named <code>pointerenter</code> when a pointing device is moved into the hit test boundaries of an element or one of its descendants, including as a result of a <code>pointerdown</code> event from a device that <a href="#mapping-for-devices-that-do-not-support-hover">does not support hover</a> (see <code><a href="#the-pointerdown-event">pointerdown</a></code>). This event type is similar to <code>pointerover</code>, but differs in that it does not bubble.</div>
-			<div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_11"><span>Note</span></div><div class="">There are similarities between this event type, the <code>mouseenter</code> event described in [<cite><a class="bibref" href="#bib-DOM-LEVEL-3-EVENTS">DOM-LEVEL-3-EVENTS</a></cite>], and the CSS <code>:hover</code> pseudo-class described in [<cite><a class="bibref" href="#bib-CSS21">CSS21</a></cite>]. See also the <code>pointerleave</code> event.</div></div>
+			<h4 role="heading" id="h4_the-pointerenter-event"><span class="secno">5.2.4 </span><dfn title="pointerenter" id="dfn-pointerenter"><code>pointerenter</code> 이벤트</dfn></h4>
+                        <div>
+                          유저 에이전트는 <em class="rfc2119" title="MUST">반드시</em>  <a href="#mapping-for-devices-that-do-not-support-hover">hover를 지원하지 않는 디바이스</a>에서 발생한 <code>pointerdown</code> 결과값을 포함한 포인팅 디바이스가 요소나 그 자손의 히트 테스트 범위 내에서 움직일 경우 <code>pointerenter</code> <a href="#firing-events-using-the-pointerevent-interface">포인터 이벤트를 발생</a>시켜야 합니다. (<code><a href="#the-pointerdown-event">pointerdown</a></code> 참고) [<em class="rfc2119" title="MUST">MUST</em>] 이 이벤트 타입은 <code>pointerover</code>와 비슷하나, 버블이 발생하지 않는 차이가 있습니다.</div>
+			<div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_11"><span>노트</span></div><div class="">
+                        이 이벤트 타입은 [<cite><a class="bibref" href="#bib-DOM-LEVEL-3-EVENTS">DOM-LEVEL-3-EVENTS</a></cite>]에서 설명하는 <code>mouseenter</code> 이벤트 및
+                        [<cite><a class="bibref" href="#bib-CSS21">CSS21</a></cite>]에서 설명하는 CSS <code>:hover</code> 의사 클래스와 유사성을 가집니다.
+                        <code>pointerleave</code> 이벤트도 확인하시길 바랍니다.
+                        </div></div>
 		</section>
 		<section id="the-pointerdown-event">
-			<h4 role="heading" id="h4_the-pointerdown-event"><span class="secno">5.2.5 </span><dfn title="pointerdown" id="dfn-pointerdown">The <code>pointerdown</code> event</dfn></h4>
-			<div><p>A user agent <em class="rfc2119" title="MUST">MUST</em> <a href="#firing-events-using-the-pointerevent-interface">fire a pointer event</a> named <code>pointerdown</code> when a pointer enters the <a title="active buttons state" class="internalDFN" href="#dfn-active-buttons-state">active buttons state</a>. For mouse, this is when the device transitions from no buttons depressed to at least one button depressed. For touch, this is when physical contact is made with the <a title="digitizer" class="internalDFN" href="#dfn-digitizer">digitizer</a>. For pen, this is when the stylus makes physical contact with the digitizer.</p>
-            <div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_12"><span>Note</span></div><div class="">For mouse (or other multi-button pointer devices), this means <code>pointerdown</code> and <code>pointerup</code> are not fired for all of the same circumstances as <code>mousedown</code> and <code>mouseup</code>. See <a href="#chorded-button-interactions" class="internalDFN">chorded buttons</a> for more information.</div></div>
-			<p>For input <a href="#mapping-for-devices-that-do-not-support-hover">devices that do not support hover</a>, a user agent <em class="rfc2119" title="MUST">MUST</em> also <a href="#firing-events-using-the-pointerevent-interface">fire a pointer event</a> named <code>pointerover</code> followed by a pointer event named <code>pointerenter</code> prior to dispatching the <code>pointerdown</code> event.</p>
-			<div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_13"><span>Note</span></div><div class="">Authors can prevent the firing of certain <a title="compatibility mouse events" class="internalDFN" href="#dfn-compatibility-mouse-events">compatibility mouse events</a> by canceling the <code>pointerdown</code> event (if the <code>isPrimary</code> property is <code>true</code>). This sets the PREVENT MOUSE EVENT FLAG on the pointer. Note, however, that this does not prevent the <code>mouseover</code>, <code>mouseenter</code>, <code>mouseout</code>, or <code>mouseleave</code> events from firing.</div></div>
+			<h4 role="heading" id="h4_the-pointerdown-event"><span class="secno">5.2.5 </span><dfn title="pointerdown" id="dfn-pointerdown"><code>pointerdown</code> 이벤트</dfn></h4>
+			<div>
+                          <p>유저 에이전트는 <em class="rfc2119" title="MUST">반드시</em> 포인터 이벤트가 <a title="active buttons state" class="internalDFN" href="#dfn-active-buttons-state">활성 버튼 상태</a>일 때 <code>pointerdown</code> <a href="#firing-events-using-the-pointerevent-interface">포인터 이벤트를 발생</a>시켜야 합니다. [<em class="rfc2119" title="MUST">MUST</em>] 마우스에서, 버튼이 눌리지 않은 상태에서 하나 이상의 버튼이 눌려진 사이를 나타냅니다. 터치에서, <a title="digitizer" class="internalDFN" href="#dfn-digitizer">디지타이저</a>에 물리적으로 접촉했을 때를 나타냅니다. 펜에서, 디지타이저에 스타일러스 펜이 물리적으로 접촉했을 때를 나타냅니다.</p>
+            <div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_12"><span>노트</span></div><div class="">
+마우스(혹은 다른 여러개의 버튼을 가진 포인터 디바이스)에서, 이는 <code>pointerdown</code>과 <code>pointerup</code>이 <code>mousedown</code>과 <code>mouseup</code> 이벤트와 동일한 상황으로 발생하지 않음을 의미합니다. 더 자세한 정보는 <a href="#chorded-button-interactions" class="internalDFN">코드를 포함한 버튼</a>에서 확인 가능합니다.</div></div>
+                        <p><a href="#mapping-for-devices-that-do-not-support-hover">hover를 지원하지 않는 디바이스</a> 입력에서, 유저 에이전트는 <em class="rfc2119" title="MUST">반드시</em> <code>pointerdown</code> 이벤트의 처리 이후 <code>pointerenter</code> 이벤트에 잇달아 <code>pointerover</code> <a href="#firing-events-using-the-pointerevent-interface">포인터 이벤트를 발생</a>시켜야 합니다. [<em class="rfc2119" title="MUST">MUST</em>]</p>
+			<div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_13"><span>노트</span></div><div class="">
+                          만약 <code>isPrimary</code> 속성값이 <code>true</code>인 경우 작성자는 특정 <code>pointerdown</code> 이벤트 무효로 인한 <a title="compatibility mouse events" class="internalDFN" href="#dfn-compatibility-mouse-events">호환 마우스 이벤트</a> 의 발생을 막을 수 있습니다. 이는 포인터에 PREVENT MOUSE EVENT FLAG를 세웁니다. 그러나, 이는 <code>mouseover</code>, <code>mouseenter</code>, <code>mouseout</code>, <code>mouseleave</code>로 발생한 이벤트는 막을 수 없습니다.
+                        </div></div>
 			</div>
 		</section>
 		<section id="the-pointermove-event">
-			<h4 role="heading" id="h4_the-pointermove-event"><span class="secno">5.2.6 </span><dfn title="pointermove" id="dfn-pointermove">The <code>pointermove</code> event</dfn></h4>
-			<div>A user agent <em class="rfc2119" title="MUST">MUST</em> <a href="#firing-events-using-the-pointerevent-interface">fire a pointer event</a> named <code>pointermove</code> when a pointer changes coordinates. Additionally, when a pointer changes button state, pressure, tilt, or contact geometry (e.g. <code>width</code> and <code>height</code>) and the circumstances produce no other pointer events defined in this specification then a user agent <em class="rfc2119" title="MUST">MUST</em> <a href="#firing-events-using-the-pointerevent-interface">fire a pointer event</a> named <code>pointermove</code>.</div>
+			<h4 role="heading" id="h4_the-pointermove-event"><span class="secno">5.2.6 </span><dfn title="pointermove" id="dfn-pointermove"><code>pointermove</code> 이벤트</dfn></h4>
+			<div>유저 에이전트는 <em class="rfc2119" title="MUST">반드시</em> 포인터의 좌표가 바뀌었을 때 <code>pointermove</code> <a href="#firing-events-using-the-pointerevent-interface">포인터 이벤트를 발생</a>시켜야 합니다. 여기에 더해, 버튼상태, 압력, 기울기, 접촉 기하 (즉 <code>width</code>와 <code>height</code>) 등 포인터가 변경되었을 때 및 상황이 이 스펙문서에서 정의하는 포인터 이벤트를 제공하지 않을 경우 유저 에이전트는 <em class="rfc2119" title="MUST">반드시</em> <code>pointermove</code> <a href="#firing-events-using-the-pointerevent-interface">포인터 이벤트를 발생</a>시켜야 합니다.</div>
 		</section>
 		<section id="the-pointerup-event">
-			<h4 role="heading" id="h4_the-pointerup-event"><span class="secno">5.2.7 </span><dfn title="pointerup" id="dfn-pointerup">The <code>pointerup</code> event</dfn></h4>
+			<h4 role="heading" id="h4_the-pointerup-event"><span class="secno">5.2.7 </span><dfn title="pointerup" id="dfn-pointerup"><code>pointerup</code> 이벤트</dfn></h4>
 			<div>A user agent <em class="rfc2119" title="MUST">MUST</em> <a href="#firing-events-using-the-pointerevent-interface">fire a pointer event</a> named <code>pointerup</code> when a pointer leaves the <a title="active buttons state" class="internalDFN" href="#dfn-active-buttons-state">active buttons</a> state. For mouse, this is when the device transitions from at least one button depressed to no buttons depressed. For touch, this is when physical contact is removed from the <a title="digitizer" class="internalDFN" href="#dfn-digitizer">digitizer</a>. For pen, this is when the pen is removed from physical contact with the digitizer.
 			<p>For input <a href="#mapping-for-devices-that-do-not-support-hover">devices that do not support hover</a>, a user agent <em class="rfc2119" title="MUST">MUST</em> also <a href="#firing-events-using-the-pointerevent-interface">fire a pointer event</a> named <code>pointerout</code> followed by a pointer event named <code>pointerleave</code> after dispatching the <code>pointerup</code> event.</p>
 			</div>
