@@ -1083,14 +1083,16 @@ interface <span class="idlInterfaceID">PointerEvent</span> : <span class="idlSup
 		</section>
 		<section id="the-pointerup-event">
 			<h4 role="heading" id="h4_the-pointerup-event"><span class="secno">5.2.7 </span><dfn title="pointerup" id="dfn-pointerup"><code>pointerup</code> 이벤트</dfn></h4>
-			<div>A user agent <em class="rfc2119" title="MUST">MUST</em> <a href="#firing-events-using-the-pointerevent-interface">fire a pointer event</a> named <code>pointerup</code> when a pointer leaves the <a title="active buttons state" class="internalDFN" href="#dfn-active-buttons-state">active buttons</a> state. For mouse, this is when the device transitions from at least one button depressed to no buttons depressed. For touch, this is when physical contact is removed from the <a title="digitizer" class="internalDFN" href="#dfn-digitizer">digitizer</a>. For pen, this is when the pen is removed from physical contact with the digitizer.
-			<p>For input <a href="#mapping-for-devices-that-do-not-support-hover">devices that do not support hover</a>, a user agent <em class="rfc2119" title="MUST">MUST</em> also <a href="#firing-events-using-the-pointerevent-interface">fire a pointer event</a> named <code>pointerout</code> followed by a pointer event named <code>pointerleave</code> after dispatching the <code>pointerup</code> event.</p>
+			<div>
+                          유저 에이전트는 <em class="rfc2119" title="MUST">반드시</em> 포인터가 <a title="active buttons state" class="internalDFN" href="#dfn-active-buttons-state">활성 버튼 상태</a>를 벗어날 때 <code>pointerup</code> <a href="#firing-events-using-the-pointerevent-interface">포인터 이벤트를 발생</a>시켜야 합니다. [<em class="rfc2119" title="MUST">MUST</em>] 마우스에서, 하나 이상의 버튼이 눌린 상태에서 버튼이 눌리지 않은 사이를 나타냅니다. 터치에서, <a title="digitizer" class="internalDFN" href="#dfn-digitizer">디지타이저</a>에 물리적 접촉이 사라졌을 때를 나타냅니다. 펜에서, 디지타이저에 스타일러스 펜이 떼어졌을 때를 의미합니다.
+                        <p><a href="#mapping-for-devices-that-do-not-support-hover">hover를 지원하지 않는 디바이스</a> 입력에서, 유저 에이전트는 <em class="rfc2119" title="MUST">반드시</em> <code>pointerup</code> 이벤트의 처리 이후 <code>pointerleave</code> 이벤트에 잇달아 <code>pointerout</code> <a href="#firing-events-using-the-pointerevent-interface">포인터 이벤트를 발생</a>시켜야 합니다. [<em class="rfc2119" title="MUST">MUST</em>]</p>
 			</div>
-			<div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_14"><span>Note</span></div><div class="">For mouse (or other multi-button pointer devices), this means <code>pointerdown</code> and <code>pointerup</code> are not fired for all of the same circumstances as <code>mousedown</code> and <code>mouseup</code>. See <a href="#chorded-button-interactions" class="internalDFN">chorded buttons</a> for more information.</div></div>
+			<div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_14"><span>노트</span></div><div class="">
+마우스(혹은 다른 여러개의 버튼을 가진 포인터 디바이스)에서, 이는 <code>pointerdown</code>과 <code>pointerup</code>이 <code>mousedown</code>과 <code>mouseup</code> 이벤트와 동일한 상황으로 발생하지 않음을 의미합니다. 더 자세한 정보는 <a href="#chorded-button-interactions" class="internalDFN">코드를 포함한 버튼</a>에서 확인 가능합니다.</div></div>
 		</section>
 		<section id="the-pointercancel-event">
-			<h4 role="heading" id="h4_the-pointercancel-event"><span class="secno">5.2.8 </span><dfn title="pointercancel" id="dfn-pointercancel">The <code>pointercancel</code> event</dfn></h4>
-			<div>A user agent <em class="rfc2119" title="MUST">MUST</em> <a href="#firing-events-using-the-pointerevent-interface">fire a pointer event</a> named <code>pointercancel</code> in the following circumstances:
+			<h4 role="heading" id="h4_the-pointercancel-event"><span class="secno">5.2.8 </span><dfn title="pointercancel" id="dfn-pointercancel"><code>pointercancel</code> 이벤트</dfn></h4>
+			<div>유저 에이전트는 <em class="rfc2119" title="MUST">반드시</em> 아래 상황에서 <code>pointercancel</code>  <a href="#firing-events-using-the-pointerevent-interface">포인터 이벤트를 발생</a>시켜야 합니다.
 				<ul>
 					<li>The user agent has determined that a pointer is unlikely to continue to produce events (for example, because of a hardware event).</li>
 					<li>After having fired the <code>pointerdown</code> event, if the pointer is subsequently used to manipulate the page viewport (e.g. panning or zooming).</li>
