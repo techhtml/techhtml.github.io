@@ -50,7 +50,11 @@ span.transnote {
 }
 
 :lang(en) {
+	display:none;
 	font-size:0.7em;
   margin-top:0;
   margin-bottom:1em;
+}
+p:lang(ko) {
+  margin-bottom:0;
 }
