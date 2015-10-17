@@ -1,6 +1,4 @@
 @charset "UTF-8";
-
-
 .headernotes {
   margin: 0;
   margin-bottom: 2em;
@@ -54,6 +52,7 @@ span.transnote {
   padding:0 13px;
 }
 [lang=en] {
+	display:none;
   font-size:0.7em;
   margin:0;
   line-height:1.2em;
@@ -62,10 +61,4 @@ span.transnote {
 [lang=en]:before {
   content:"영문: ";
   color:#333;
-}
-.view-on [lang=en] {
-  display:block; 
-}
-.view-off [lang=en] {
-  display:none;
 }
