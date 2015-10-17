@@ -1,0 +1,282 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" dir="ltr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>'view-mode' 미디어 특성</title>
+		<link href="http://www.w3.org/StyleSheets/TR/W3C-REC" rel="stylesheet" type="text/css" charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="trans.css" />
+	</head>
+	<body style="display: inherit; ">
+  <div class="headernotes">
+    <p>이 문서는 <a href="http://www.w3.org/TR/view-mode/">The 'view-mode' Media Feature (W3C Recommendation 19 June 2012)</a>의 한국어 번역본입니다.<br />
+    이 문서에 오역 및 오타를 포함할 수 있습니다. 가능하면 원문도 확인하시길 바랍니다.</p>
+    <dl class="meta">
+      <dt>공개일</dt>
+      <dd>2015-10-17</dd>
+      <dt>번역자:</dt>
+      <dd>조은 &lt;<a href="mailto:apes0123@gmail.com">apes0123@gmail.com</a>&gt;</dd>
+    </dl>
+  </div>
+	<div class="head"><p><a href="http://www.w3.org/"><img width="72" height="48" src="http://www.w3.org/Icons/w3c_home" alt="W3C" /></a></p><h1 class="title" id="title">'view-mode' 미디어 특성</h1>
+  <h2 id="w3c-recommendation-01-july-2012">2012년 6월 19일 <acronym title="World Wide Web Consortium">W3C</acronym> 권고안 </h2><dl><dt>이 버전:</dt>
+  <dd><a href="http://www.w3.org/TR/2012/REC-view-mode-20120619/">http://www.w3.org/TR/2012/REC-view-mode-20120619/</a></dd><dt>최신 발행 버전:</dt><dd><a href="http://www.w3.org/TR/view-mode/">http://www.w3.org/TR/view-mode/</a></dd><dt>최신 Editor 문서:</dt><dd><a href="http://dev.w3.org/2006/waf/widgets-vmmf/">http://dev.w3.org/2006/waf/widgets-vmmf/</a></dd><dt>이전 버전:</dt><dd><a href="http://www.w3.org/TR/2011/PR-view-mode-20110811/">http://www.w3.org/TR/2011/PR-view-mode-20110811/</a></dd><dt>Editors:</dt><dd><a href="http://berjon.com/">Robin Berjon</a>, Robineko</dd>
+<dd><a href="http://marcosc.com">Marcos Cáceres</a>, <a href="http://datadriven.com.au/">Data.Driven</a></dd>
+</dl>
+	<p>
+	이 스펙 문서의 영문 버전만 제공합니다.
+	표준에 준하지 않는 <a href="http://www.w3.org/Consortium/Transition/">번역본</a>을 제공할 수도 있습니다.
+	이 문서의 표준에 준하는 내용 변경이 있을 수 있기 때문에 <a href="http://dev.w3.org/2006/waf/widgets-vmmf/errata.html"><strong>errata</strong></a>를 보시길 바랍니다.
+	</p>
+<p class="copyright"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2012 <a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>), All Rights Reserved. <acronym title="World Wide Web Consortium">W3C</acronym> <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.</p><hr /></div>
+    <div id="abstract" class="introductory section"><h2>요약</h2><p>
+		이 스펙문서는 여러가지 비주얼 표시 모드에 대응하는 미디어 특성을 정의하고 있습니다.
+		이는 웹 어플리케이션에 적용 가능하며, <cite>CSS 미디어 쿼리</cite> [<cite><a class="bibref" rel="biblioentry" href="#bib-MEDIAQ">MEDIAQ</a></cite>]를 이용해,
+		어플리케이션의 모드에 대응하여 다른 스타일을 적용할 수 있습니다.
+		</p></div><div id="sotd" class="introductory section"><h2>이 문서의 상태</h2>
+	<p><em>
+    이 섹션은 이 문서를 공개했을 때 상태에 대해 설명합니다.
+    다른 문서가 이 문서를 덮어쓸 가능성이 있으니 주의하시길 바랍니다.
+    이 문서 및 W3C에서 공개한 다른 문서의 최신 버전은 
+    <a href="http://www.w3.org/TR/">W3C technical reports index</a> at http://www.w3.org/TR/에서
+    확인 가능합니다.
+		</em></p>
+  <p>이 문서는 W3C 멤버, 소프트웨어 개발자, 그리고 다른 W3C 그룹 및 관계자들이 평가를 진행하여, 디렉터에 의해 W3C 권고안으로 발표했습니다. 
+    이 문서는 안정적이며, 참고자료로 사용하거나 다른 문서에서 인용해도 좋습니다. 
+    스펙 문서의 권고를 통해 W3C가 하는 역할은 스펙 문서에 관심을 모으고 다방면으로 퍼뜨리는 일입니다. 
+    이를 통해 웹의 기능과 상호운용성 향상을 기대할 수 있습니다.</p>
+	<p>이 스펙문서는 <a href="http://www.w3.org/2008/webapps/">웹 어플리케이션 워킹 그룹</a>에 의해 권고안으로 발행하였습니다.
+		만약 이 문서에 대한 코멘트를 남기고 싶은 경우, <a href="mailto:public-webapps@w3.org">public-webapps@w3.org</a> (<a href="mailto:public-webapps-request@w3.org?subject=subscribe">subscribe</a>, <a href="http://lists.w3.org/Archives/Public/public-webapps/">archives</a>)로 메일을 보내시길 바랍니다. 어떤 피드백이든 환영합니다.</p>
+	<p><a href="http://dev.w3.org/2006/waf/widgets-vmmf/imp-report/">구현 레포트</a>도 제공합니다.</p>
+  <p>이 문서는 <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/">2004년 2월 6일 W3C 특허 정책</a>을 따르는 그룹에서 작성하였습니다.
+    W3C는 그룹의 성과물에 관련하여 <a href="http://www.w3.org/2004/01/pp-impl/40318/status" rel="disclosure">모든 공개 특허 공개 리스트</a>를 관리합니다.
+    여기에는 특허 공개에 대한 지시사항도 포함합니다.
+    특허에 대해서 충분한 지식이 있는 사람이, 스펙 문서의 <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential Claim(s)</a>에 인정된다고 파악되는 경우, <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">W3C 특허 정책 제 6장</a>에 의거하여 정보를 공개해야 할 필요가 있습니다.</p>
+	<p id="changes">이 문서는 후보 권고안과 동일합니다.</p>
+      </div><div id="toc" class="section"><h2 class="introductory">목차</h2><ul class="toc"><li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>소개</a><ul class="toc"><li class="tocline"><a href="#design-goals-and-requirements" class="tocxref"><span class="secno">1.1 </span>설계 목표와 요구사항</a></li></ul></li><li class="tocline"><a href="#conformance" class="tocxref"><span class="secno">2. </span>적합성</a></li><li class="tocline"><a href="#security-considerations" class="tocxref"><span class="secno">3. </span>보안 고려사항</a></li><li class="tocline"><a href="#definitions" class="tocxref"><span class="secno">4. </span>정의</a></li><li class="tocline"><a href="#the--view-mode--media-feature" class="tocxref"><span class="secno">5. </span><code>'view-mode'</code> 미디어 특성</a><ul class="toc"><li class="tocline"><a href="#view-modes" class="tocxref"><span class="secno">5.1 </span>View modes</a></li><li class="tocline"><a href="#examples" class="tocxref"><span class="secno">5.2 </span>Examples</a></li></ul></li><li class="tocline"><a href="#acknowledgements" class="tocxref"><span class="secno">6. </span>감사의 말</a></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">A. </span>참고 문서</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">A.1 </span>표준 참고 문서</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">A.2 </span>정보 참고 문서</a></li></ul></li></ul></div>
+    <div class="informative section" id="introduction">
+<!-- OddPage -->
+<h2><span class="secno">1. </span>소개</h2><p><em>이 섹션은 표준에 준하는 내용이 아닙니다.</em></p>
+      <p>
+				<a title="Web application" href="#dfn-web-application" class="internalDFN">웹 어플리케이션</a>은,
+				위젯이건 브라우저 내용이건 대부분의 플랫폼 위의 여러 visual mode에서 실행 가능합니다.
+				이는 스크린 전체를 점유하기도 하나, 특정 도킹 영역 내에서 최소화될 수도 있습니다.
+				오퍼레이팅 시스템에 매치하는 크롬(chrome)이 있다면,
+				더 <a href="#dfn-immersive" class="internalDFN">실감</a>나는 경험을 제공하기 위한
+			  독자적인 기능을 제공할 수 있습니다.
+      </p>
+      <p>
+			  유저는 보통 이런 방식 중 최소한 여러 측면을 제어할 수 있으며,
+				따라서 작성자는 자신의 어플리케이션에 다른 스타일을 부여하는 것이 중요합니다.
+				이를 이루기 위해, 이 스펙문서에서는 특정 미디어 쿼리[<cite><a class="bibref" rel="biblioentry" href="#bib-MEDIAQ">MEDIAQ</a></cite>]에 매치하는지에 따라 의존하여 
+				다른 CSS 스타일 룰을 주기위한 <a href="#dfn-media-feature" class="internalDFN">미디어 특성</a>을 정의합니다.
+      </p>
+      <div class="informative section" id="design-goals-and-requirements">
+        <h3><span class="secno">1.1 </span>설계 목표와 요구사항</h3><p><em>이 섹션은 표준에 준하는 내용이 아닙니다.</em></p>
+        <p>
+					이 스펙 문서의 설계 목표와 요구 사항은 <cite>Requirements for Standardizing Widgets</cite> [<cite><a class="bibref" rel="biblioentry" href="#bib-WIDGETS-REQS">WIDGETS-REQS</a></cite>]에서 작성하고 있습니다.
+        </p>
+        <p>
+          이 문서는 
+          &quot;<a href="http://www.w3.org/TR/2009/WD-widgets-reqs-20090430/#user-experience">User Experience</a>&quot;에서 한개의 요구 사항을 취하고 있습니다:
+        </p>
+        <ol>
+          <li><a href="http://www.w3.org/TR/2009/WD-widgets-reqs-20090430/#display-modes">Display Modes</a></li>
+        </ol>
+      </div>
+</div>
+
+    <div id="conformance" class="section">
+<!-- OddPage -->
+<h2><span class="secno">2. </span>적합성</h2><p>
+이 스펙문서에서 표준에 준하지 않는 내용이 아닙니다라 표기된 섹션, 작성 가이드라인, 다이어그램, 예제 및 노트는 표준에 준하는 내용이 아닙니다.
+그 외의 모든 건 표준에 준하는 내용입니다.</p>
+<p>이 스펙문서 내 키워드 <em class="rfc2119" title="must">must</em>, <em class="rfc2119" title="must not">must not</em>, <em class="rfc2119" title="required">required</em>, <em class="rfc2119" title="should">should</em>, <em class="rfc2119" title="should not">should not</em>, <em class="rfc2119" title="recommended">recommended</em>, <em class="rfc2119" title="may">may</em>, <em class="rfc2119" title="optional">optional</em>는 [<cite><a class="bibref" rel="biblioentry" href="#bib-RFC2119">RFC2119</a></cite>]에서 기술하는 대로 해석합니다.</p>
+
+      <p>
+				이 스펙문서는 하나의 제품에 적용할 수 있는 적합 요건을 정의합니다:
+			  위를 포함한 <a>view modes</a>를 구현하는 <dfn id="product-ua" title="유저 에이전트">유저 에이전트</dfn>
+      </p>
+    </div>
+
+    <div id="security-considerations" class="section">
+      
+<!-- OddPage -->
+<h2><span class="secno">3. </span>보안 고려사항</h2>
+      <p>
+				유저를 속여 원하지 않는 액션을 취하거나 제공할 의사가 없는 데이터를 획득할 수 있도록
+				어플리케이션을 설계할 수 있습니다.
+				아래에 유저를 속일 가능성이 있는 상황 예제를 작성해두었으나,
+				이 상황에만 한정하면 안됩니다.
+      </p>
+     	<ul>
+     	  <li>
+					유저가 볼 수 없는 어플리케이션(풀 스크린 투명 위젯이나 작은 웹 페이지)에서
+					유저에게 알리지 않고 서비스를 실행시키거나 다른 어플리케이션에서 스스로 레이어화한 뒤 제일 위에 두어,
+				  (PIN 코드 입력같은) 다른 어플리케이션의 인터렉션을 방해하기 위해 사용할 수 있습니다.
+     	  </li>
+     	  <li>
+					크롬을 가지지 않은 어플리케이션은 스크린 상에서 기존에 존재하는 다른 객체에 의해 위장될 수 있습니다.
+					(예를 들면, 신뢰할 수 있는 사이트임을 표시하는 lock과 key 로고)
+     	  </li>
+     	</ul>
+     	<p>
+				구현자는 이런 문제를 고려하여
+				사용자의 노출 리스크를 최소한으로 하기 위해,
+				<a href="#dfn-web-application" class="internalDFN">웹 어플리케이션</a>의 실행범위에 제한을 주는 걸 권장합니다.
+      </p>
+    </div>    
+
+    <div id="definitions" class="section">
+			<!-- OddPage -->
+			<h2><span class="secno">4. </span>정의</h2>
+      <dl>
+        <dt><dfn id="dfn-view-mode">View mode</dfn></dt>
+        <dd>
+					<a href="#dfn-view-mode" class="internalDFN">view mode</a>는 플랫폼에서 사용하는 메타포와 기능을 대응하는 유저에게,
+					<a href="#dfn-web-application" class="internalDFN">웹 어플리케이션</a>을 표시하는 방법입니다.
+					이 스펙문서에서는 <a href="#product-ua" class="internalDFN">유저 에이전트</a>에서, 유사한 플랫폼 고유의 상황에 매치하는 걸
+					기대하여 몇몇 view mode를 정의하고 있습니다.
+        </dd>
+        <dt><dfn id="dfn-chrome">크롬</dfn></dt>
+        <dd>
+					<a href="#dfn-chrome" class="internalDFN">크롬</a>은 콘텐츠에 의존하지 않는 <a href="#product-ua" class="internalDFN">유저 에이전트</a>의 비주얼 파트를 구성합니다. (예를 들면, 윈도우 데코레이션, 툴 바, 타이틀 바, 메뉴)
+        </dd>
+        <dt><dfn id="dfn-immersive">실감</dfn></dt>
+        <dd>
+					플랫폼의 크롬과 위젯을 사용하는 게 아닌 사용자 인터페이스의 제어 및 컴포넌트를 
+					특정 스타일 어플리케이션에 맞게 작성한 경우 이를 실감이라고 부릅니다.
+        </dd>
+        <dt><dfn id="dfn-media-feature">미디어 특성</dfn></dt>
+        <dd>
+          용어 <a href="http://www.w3.org/TR/css3-mediaqueries/#media1">미디어 특성</a>은 
+          [<cite><a class="bibref" rel="biblioentry" href="#bib-MEDIAQ">MEDIAQ</a></cite>]에서 정의합니다.
+        </dd>
+        <dt><dfn id="dfn-screen-area">스크린 영역</dfn></dt>
+        <dd>
+					(예를 들면, 메뉴, 시간, 상단 상태 표시바, 하단 실행 중인 어플리케이션 목록 바)
+					보통 시스템 자체가 가지고 있는 고유 영역을 제외한 어플리케이션에서 사용 가능한 스크린 영역.
+        </dd>
+        <dt><dfn id="dfn-web-application">웹 어플리케이션</dfn></dt>
+        <dd>
+					웹 어플리케이션은 웹 테크놀로지를 이용해 구축하여 발표한 어플리케이션으로,
+					<a>위젯</a>으로써 브라우저 내에서 동작하거나, 같은 목적을 위해 설계된 다른 타입의 컨테이너 내에서 동작합니다.
+        </dd>
+        <dt><dfn id="dfn-widgets">위젯</dfn></dt>
+        <dd>
+					용어 <a href="http://www.w3.org/TR/widgets/#widget">위젯</a>은
+					[<cite><a class="bibref" rel="biblioentry" href="#bib-WIDGETS">WIDGETS</a></cite>]에서 정의합니다.
+        </dd>
+        <dt><dfn id="dfn-viewport">Viewport</dfn></dt>
+        <dd>
+					용어 <a href="http://www.w3.org/TR/CSS21/visuren.html#viewport">viewport</a>는
+					[<cite><a class="bibref" rel="biblioentry" href="#bib-CSS21">CSS21</a></cite>]에서 정의합니다.
+        </dd>
+      </dl>
+    </div>
+
+    <div id="the--view-mode--media-feature" class="section">
+      
+<!-- OddPage -->
+<h2><span class="secno">5. </span><code>'view-mode'</code> 미디어 특성</h2>
+      <p>
+				<dfn id="dfn-view-mode-1">view-mode</dfn> 미디어 특성은 플랫폼 위에서 어플리케이션으로써 동작하는
+				<a href="#dfn-web-application" class="internalDFN">웹 어플리케이션</a>을 표시하는 모드를 나타냅니다. 
+      </p>
+      <dl>
+        <dt>값:</dt>
+        <dd>
+          <a href="#dfn-windowed" class="internalDFN">windowed</a> | <a href="#dfn-floating" class="internalDFN">floating</a> | <a href="#dfn-fullscreen" class="internalDFN">fullscreen</a> | <a href="#dfn-maximized" class="internalDFN">maximized</a> | <a href="#dfn-minimized" class="internalDFN">minimized</a>
+        </dd>
+        <dt>적용 가능:</dt>
+        <dd>
+          비주얼 미디어 타입
+        </dd>
+        <dt>min/max 접두사 사용가능:</dt>
+        <dd>
+          No
+        </dd>
+      </dl>
+      <p id="ta-vmmf">
+				<a class="product-ua" href="#product-ua">유저 에이전트</a>는 
+				<a href="#dfn-view-mode-1" class="internalDFN">view-mode</a> 미디어 특성이 작성자에게 유용한 방법으로 일반적인 상황을 표현할 수 있도록,
+				이 스펙 문서에서 정의하고 있는 view mode 목록에 맞추어서 <a href="#dfn-web-application" class="internalDFN">웹 어플리케이션</a>을 실행할 수 있는
+				다양한 플랫폼의 컨벤션에 대응하도록 노력해야합니다. [<em class="rfc2119" title="should">should</em>]
+				각 <a href="#dfn-view-mode" class="internalDFN">view mode</a>는 다른 모드와 독자적으로 정의하고 있습니다.
+      </p>
+      <div id="view-modes" class="section">
+        <h3><span class="secno">5.1 </span>View modes</h3>
+        <p>
+          <a href="#dfn-view-mode-1" class="internalDFN">view-mode</a> 미디어 특성은 아래에 나열한 값을 허용합니다.
+        </p>
+        <dl>
+          <dt><dfn id="dfn-windowed">windowed</dfn></dt>
+          <dd>
+						윈도우 형식으로 실행하는 <a href="#dfn-web-application" class="internalDFN">웹 어플리케이션</a>을 설명합니다.
+						이는 즉 <a href="#dfn-chrome" class="internalDFN">크롬</a>이 존재하며, 
+						<a href="#dfn-screen-area" class="internalDFN">스크린 영역</a> 전체를 차지하지 않는 걸 말합니다.
+          </dd>
+          <dt><dfn id="dfn-floating">floating</dfn></dt>
+          <dd>
+					  더 <a href="#dfn-immersive" class="internalDFN">실감</a>나는 인터페이스에서 제공하는 <a href="#dfn-web-application" class="internalDFN">웹 어플리케이션</a>을 설명합니다.
+						윈도우 형식으로 실행하지만 <a href="#dfn-chrome" class="internalDFN">크롬</a>을 가지지 않으며,
+						뷰포트에서 페인트 되지 않은 부분을 통해서 다른 시스템 아이템(다른 어플리케이션, 디스플레이 배경)이 보이도록 뷰포트의 기본 배경이 투명으로 되어있습니다.
+          </dd>
+          <dt><dfn id="dfn-fullscreen">fullscreen</dfn></dt>
+          <dd>
+						디스플레이 전체를 차지하는 <a href="#dfn-web-application" class="internalDFN">웹 어플리케이션</a>을 설명합니다.
+						<a href="#dfn-screen-area" class="internalDFN">스크린 영역</a>에는 일반적으로 포함하지 않는 부분도 포함하며 (예를 들면 풀스크린 비디오),
+						<a href="#dfn-chrome" class="internalDFN">크롬</a>을 가지지 않습니다.
+          </dd>
+          <dt><dfn id="dfn-maximized">maximized</dfn></dt>
+          <dd>
+						<a href="#dfn-screen-area" class="internalDFN">스크린 영역</a> 전체를 차지하는 <a href="#dfn-web-application" class="internalDFN">웹 어플리케이션</a>을 설명합니다.
+						다만 <a href="#dfn-chrome" class="internalDFN">크롬</a>을 가집니다.
+          </dd>
+          <dt><dfn id="dfn-minimized">minimized</dfn></dt>
+          <dd>
+						도킹 혹은 최소화에 상관 없이, 동적인 그래피컬 표시가 사용 가능한 <a href="#dfn-web-application" class="internalDFN">웹 어플리케이션</a> (즉, 웹 어플리케이션 전체가 hidden이 아니거나 아이콘이 여전히 보이지 않는 경우 콘텐츠를 제어 가능한 것)을 설명합니다.
+						예를 들면, 표시되어있는 어플리케이션의 콘텐츠의 썸네일에 해당할 수 있습니다.
+          </dd>
+        </dl>
+      </div>
+
+      <div id="examples" class="section">
+        <h3><span class="secno">5.2 </span>Examples</h3>
+        <p>
+          간단한 CSS 예제입니다:
+        </p>
+        <pre class="example sh_css sh_sourceCode">@media handheld and <span class="sh_symbol">(</span>view<span class="sh_symbol">-</span>mode<span class="sh_symbol">:</span> floating<span class="sh_symbol">)</span> and <span class="sh_symbol">(</span>orientation<span class="sh_symbol">:</span> landscape<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+  <span class="sh_comment">// ...</span>
+<span class="sh_cbracket">}</span>
+@media tv and <span class="sh_symbol">(</span>view<span class="sh_symbol">-</span>mode<span class="sh_symbol">:</span> windowed<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+  <span class="sh_comment">// ...</span>
+<span class="sh_cbracket">}</span>
+@media handheld and <span class="sh_symbol">(</span>view<span class="sh_symbol">-</span>mode<span class="sh_symbol">:</span> fullscreen<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+  <span class="sh_comment">// ...</span>
+<span class="sh_cbracket">}</span></pre>
+      </div>
+    </div>
+
+    <div class="informative section" id="acknowledgements">
+      
+<!-- OddPage -->
+<h2><span class="secno">6. </span>감사의 말</h2><p><em>이 섹션은 표준에 준하는 내용이 아닙니다.</em></p>
+      <p>
+    Daniel Herzog, Arve Bersvendsen, Arthur Barstow, Jochen Cichon, Sebastian Markbåge, Cameron McCormack, 
+    David Rogers, Richard Tibbett, Scott Wilson, Boris Zbarsky, Kenneth Christiansen, Daniel Glazman, 
+    Tab Atkins Jr, Josh Soref, Marcin Hanclik, the CSS WG.
+  </p>
+    </div>
+  
+
+<div id="references" class="appendix section">
+<!-- OddPage -->
+<h2><span class="secno">A. </span>참고 문서</h2><div id="normative-references" class="section"><h3><span class="secno">A.1 </span>표준 참고 문서</h3><dl class="bibliography"><dt id="bib-MEDIAQ">[MEDIAQ]</dt>
+<dd><a href="http://www.w3.org/TR/css3-mediaqueries/"><cite>Media Queries.</cite></a> W3C. </dd>
+<dt id="bib-RFC2119">[RFC2119]</dt>
+<dd><a href="http://www.ietf.org/rfc/rfc2119.txt"><cite>Key words for use in RFCs to Indicate Requirement Levels.</cite></a> IETF. </dd></dl></div><div id="informative-references" class="section"><h3><span class="secno">A.2 </span>정보 참고 문서</h3><dl class="bibliography"><dt id="bib-CSS21">[CSS21]</dt>
+<dd><a href="http://www.w3.org/TR/CSS21/"><cite>Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification.</cite></a>. W3C.</dd><dt id="bib-WIDGETS">[WIDGETS]</dt>
+<dd><a href="http://www.w3.org/TR/widgets/"><cite>Widget Packaging and XML Configuration</cite></a>. W3C. </dd>
+<dt id="bib-WIDGETS-REQS">[WIDGETS-REQS]</dt>
+<dd><a href="http://www.w3.org/TR/widgets-reqs/"><cite>Requirements For Standardizing Widgets.</cite></a>. W3C WG Note. </dd></dl></div></div></body></html>
