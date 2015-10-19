@@ -9,8 +9,9 @@ body {
   color:#333;
 }
 h2 {
-  display:inline-block;
-  margin:0.5em 20px;
+	border-bottom:1px solid #efefef;
+  margin:0.5em 0;
+	padding-bottom:0.5em;
 	font-size:2em;
 	font-weight:300
 }
@@ -22,27 +23,14 @@ ul, li {
 li a {
   display:block;
   position:relative;
-  padding:10px 20px;
   color:#555;
+	padding:7px 0;
   text-decoration:none;
   text-align:center;
 	font-weight:200
 }
-li a::before {
-  content:'';
-  position:absolute;
-  left:50%;
-	right:50%;
-  bottom:0;
-  height:1px;
-  background:#555;
-}
 li a:hover {
-  color:#000;
-}
-li a:hover::before {
-  left:20px;
-  right:20px;
+	color: rgb(199, 39, 200);
 }
 
 @media (min-width:1024px) {
