@@ -1,18 +1,18 @@
 @charset "UTF-8";
-@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300);
 
 body {
   font-size: 18px;
   line-height: 2em;
-  font-family: 'Lato', 'Noto Sans KR', sans-serif; 
+  font-family: 'Lato', 'APPLE SD Gothic neo', 'nanum gothic', sans-serif; 
   text-align:center;
   color:#333;
 }
 h2 {
   display:inline-block;
-  border-bottom:3px solid #333;
   margin:0.5em 20px;
+	font-size:2em;
+	font-weight:300
 }
 ul, li {
   margin:0;
@@ -25,8 +25,8 @@ li a {
   padding:10px 20px;
   color:#555;
   text-decoration:none;
-  transition:2s all ease;
   text-align:center;
+	font-weight:200
 }
 li a::before {
   content:'';
@@ -36,7 +36,6 @@ li a::before {
   bottom:0;
   height:1px;
   background:#555;
-  transition:2s all ease;
 }
 li a:hover {
   color:#000;
