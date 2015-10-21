@@ -1129,42 +1129,57 @@ interface <span class="idlInterfaceID">PointerEvent</span> : <span class="idlSup
 			<h4 role="heading" id="h4_the-pointerleave-event"><span class="secno">5.2.10 </span><dfn title="pointerleave" id="dfn-pointerleave"><code>pointerleave</code> 이벤트</dfn></h4>
 			<div>유저 에이전트는 <em class="rfc2119" title="MUST">반드시</em> 요소나 그 모든 자손의 히트 테스트 범위를 벗어난 경우 <a href="#mapping-for-devices-that-do-not-support-hover">hover를 지원하지 않는</a> 기기에서 발생한 <code>pointerup</code> 및 <code>pointercancel</code> 이벤트의 결과를 포함하여 <code>pointerleave</code> <a href="#firing-events-using-the-pointerevent-interface">포인터 이벤트를 발생</a>시켜야 합니다 [<em class="rfc2119" title="MUST">MUST</em>] (<code><a href="#the-pointerup-event">pointerup</a></code> 및 <code><a href="#the-pointercancel-event">pointercancel</a></code>도 보시길 바랍니다).
 				유저 에이전트는 <em class="rfc2119" title="MUST">반드시</em> 스타일러스 펜이 디지타이저에서 인식할 수 있는 hover 범위를 벗어난 경우 <code>pointerleave</code><a href="#firing-events-using-the-pointerevent-interface">포인터 이벤트를 발생</a>시켜야 합니다. 이 이벤트 타입은 <code>pointerout</code>과 비슷하지만, 버블이 일어나지 않으며, <em class="rfc2119" title="MUST">반드시</em> 포인팅 디바이스가 요소 및 요소의 모든 자손의 범위를 벗어났을 때 발생하지 않는다는 차이가 있습니다.</div>
-			<div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_16"><span>노트</span></div><div class="">There are similarities between this event type, the <code>mouseleave</code> event described in [<cite><a class="bibref" href="#bib-DOM-LEVEL-3-EVENTS">DOM-LEVEL-3-EVENTS</a></cite>], and the CSS <code>:hover</code> pseudo-class described in [<cite><a class="bibref" href="#bib-CSS21">CSS21</a></cite>]. See also the <code>pointerenter</code> event.</div></div>
+			<div class="note"><div class="note-title" aria-level="3" role="heading" id="h_note_16"><span>노트</span></div><div class="">
+이 이벤트 타입과 비슷한 것들로, [<cite><a class="bibref" href="#bib-DOM-LEVEL-3-EVENTS">DOM-LEVEL-3-EVENTS</a></cite>]에서 설명하는 <code>mouseleave</code> 이벤트와, [<cite><a class="bibref" href="#bib-CSS21">CSS21</a></cite>]에서 소개하는 CSS <code>:hover</code> 의사 클래스가 있습니다. <code>pointerenter</code> 이벤트도 확인해보세요.</div></div>
 		</section>
 		<section id="the-gotpointercapture-event">
-			<h4 role="heading" id="h4_the-gotpointercapture-event"><span class="secno">5.2.11 </span><dfn title="gotpointercapture" id="dfn-gotpointercapture">The <code>gotpointercapture</code> event</dfn></h4>
-			<div>A user agent <em class="rfc2119" title="MUST">MUST</em> <a href="#firing-events-using-the-pointerevent-interface">fire a pointer event</a> named <code>gotpointercapture</code> when an element receives pointer capture. This event is fired at the element that is receiving pointer capture. Subsequent events for that pointer will be fired at this element. See the <a href="#setting-pointer-capture">Setting Pointer Capture</a> and <a href="#process-pending-pointer-capture">Process Pending Pointer Capture</a> sections.</div>
+			<h4 role="heading" id="h4_the-gotpointercapture-event"><span class="secno">5.2.11 </span><dfn title="gotpointercapture" id="dfn-gotpointercapture"><code>gotpointercapture</code> 이벤트</dfn></h4>
+			<div>
+				요소가 포인터 캡쳐를 수신할 때, 유저에이전트는 <em class="rfc2119" title="MUST">반드시</em> <code>gotpointercapture</code> <a href="#firing-events-using-the-pointerevent-interface">포인터 이벤트를 발생</a>시켜야 합니다 [<em class="rfc2119" title="MUST">MUST</em>] 이 이벤트는 포인터 캡쳐를 받은 요소에서 발생합니다.
+				해당 포인트에 대한 후속 이벤트가 요소에서 발생합니다. 
+				<a href="#setting-pointer-capture">Setting Pointer Capture</a> 및 <a href="#process-pending-pointer-capture">Process Pending Pointer Capture</a> 섹션을 보시길 바랍니다.
+			</div>
 		</section>
 		<section id="the-lostpointercapture-event">
 			<h4 role="heading" id="h4_the-lostpointercapture-event"><span class="secno">5.2.12 </span><dfn title="lostpointercapture" id="dfn-lostpointercapture">The <code>lostpointercapture</code> event</dfn></h4>
-			<div>A user agent <em class="rfc2119" title="MUST">MUST</em> <a href="#firing-events-using-the-pointerevent-interface">fire a pointer</a> event named <code>lostpointercapture</code> after pointer capture is released for a pointer. This event <em class="rfc2119" title="MUST">MUST</em> be fired prior to any subsequent events for the pointer after capture was released. This event is fired at the element from which pointer capture was removed. Subsequent events for the pointer follow normal hit testing mechanisms (out of scope for this specification) for determining the event target. See the <a href="#releasing-pointer-capture">Releasing Pointer Capture</a>, <a href="#implicit-release-of-pointer-capture">Implicit Release of Pointer Capture</a>, and <a href="#process-pending-pointer-capture">Process Pending Pointer Capture</a> sections.</div>
+			<div>
+포인터를 위한 포인터 캡쳐 릴리즈 이후 유저 에이전트는 <em class="rfc2119" title="MUST">반드시</em> <code>lostpointercapture</code> <a href="#firing-events-using-the-pointerevent-interface">포인터 이벤트를 발생</a>시켜야 합니다 [<em class="rfc2119" title="MUST">MUST</em>] 이 이벤트는 <em class="rfc2119" title="MUST">반드시</em> 캡쳐가 릴리즈된 이후 포인터 후속 이벤트보다 먼저 발생해야만 합니다. 이 이벤트는 포인터 캡쳐가 제거된 요소에서 발생합니다. 포인터를 위한 후속 이벤트는 이벤트 타겟을 결정하는 히트 테스팅 메커니즘을 따릅니다. (이 스펙문서의 범위에 포함되지 않습니다) <a href="#releasing-pointer-capture">Releasing Pointer Capture</a>, <a href="#implicit-release-of-pointer-capture">Implicit Release of Pointer Capture</a>, <a href="#process-pending-pointer-capture">Process Pending Pointer Capture</a> 섹션을 참고하시길 바랍니다.</div>
 		</section>
    </section>
 </section>
 <section id="extensions-to-the-element-interface">
-	<!--OddPage--><h2 role="heading" id="h2_extensions-to-the-element-interface"><span class="secno">6. </span>Extensions to the <code>Element</code> interface</h2>
-	<p>The following section describes extensions to the existing <code>Element</code> interface, defined in [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>], to facilitate the setting and releasing of pointer capture.</p>
+	<!--OddPage--><h2 role="heading" id="h2_extensions-to-the-element-interface"><span class="secno">6. </span><code>Element</code> 인터페이스 확장</h2>
+	<p>아래 섹션에서는 이미 존재하는 [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>]에서 정의하는 <code>Element</code> 인터페이스에서 포인터 캡쳐의 해제 및 설정을 용이하게 하는 확장을 설명합니다.</p>
 	<div>
 		<pre class="idl"><span class="idlInterface" id="idl-def-Element">partial interface <span class="idlInterfaceID">Element</span> {
 <span class="idlAttribute">                attribute <span class="idlAttrType">EventHandler</span> <span class="idlAttrName"><a href="#widl-Element-ongotpointercapture">ongotpointercapture</a></span>;</span>
 <span class="idlAttribute">                attribute <span class="idlAttrType">EventHandler</span> <span class="idlAttrName"><a href="#widl-Element-onlostpointercapture">onlostpointercapture</a></span>;</span>
 <span class="idlMethod">    <span class="idlMethType">void</span> <span class="idlMethName"><a href="#widl-Element-setPointerCapture-void-long-pointerId">setPointerCapture</a></span> (<span class="idlParam"><span class="idlParamType">long</span> <span class="idlParamName">pointerId</span></span>);</span>
 <span class="idlMethod">    <span class="idlMethType">void</span> <span class="idlMethName"><a href="#widl-Element-releasePointerCapture-void-long-pointerId">releasePointerCapture</a></span> (<span class="idlParam"><span class="idlParamType">long</span> <span class="idlParamName">pointerId</span></span>);</span>
-};</span></pre><section><h3 id="attributes-2" role="heading">Attributes</h3><dl class="attributes"><dt id="widl-Element-ongotpointercapture"><code>ongotpointercapture</code> of type <span class="idlAttrType">EventHandler</span>,            </dt><dd>
-				The event handler IDL attribute (see [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>]) for the <code>gotpointercapture</code> event type.
-			</dd><dt id="widl-Element-onlostpointercapture"><code>onlostpointercapture</code> of type <span class="idlAttrType">EventHandler</span>,            </dt><dd>
-				The event handler IDL attribute (see [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>]) for the <code>lostpointercapture</code> event type.
+};</span></pre><section><h3 id="attributes-2" role="heading">속성</h3><dl class="attributes"><dt id="widl-Element-ongotpointercapture"><code>ongotpointercapture</code> 타입 <span class="idlAttrType">EventHandler</span>,            </dt><dd>
+			<code>gotpointercapture</code> 이벤트 타입을 위한 이벤트 핸들러 IDL 속성 ([<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>]) 
+			</dd><dt id="widl-Element-onlostpointercapture"><code>onlostpointercapture</code> 타입 <span class="idlAttrType">EventHandler</span>,            </dt><dd>
+			<code>lostpointercapture</code> 이벤트 타입을 위한 이벤트 핸들러 IDL 속성 ([<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>]).
 			</dd></dl></section><section><h3 id="methods" role="heading">Methods</h3><dl class="methods"><dt id="widl-Element-setPointerCapture-void-long-pointerId"><code>setPointerCapture</code></dt><dd>
-				<p><a href="#setting-pointer-capture">Sets pointer capture</a> for the pointer identified by the argument <code>pointerId</code> to the element on which this method is invoked. Subsequent events for the pointer <em class="rfc2119" title="MUST">MUST</em> always be targeted at this element until capture is released. The pointer <em class="rfc2119" title="MUST">MUST</em> be in its active buttons state for this method to be effective, otherwise it fails silently. Throws a <code>DOMException</code> with the name <code>InvalidPointerId</code> when the provided method's argument does not match any of the <a title="active pointer" class="internalDFN" href="#dfn-active-pointer">active pointers</a>.</p>
-				<div class="note"><div class="note-title" aria-level="2" role="heading" id="h_note_17"><span>Note</span></div><div class="">See <a href="#dfn-pointer-capture" title="pointer capture" class="internalDFN">Pointer Capture</a>.</div></div>
+				<p>
+이 메서드는 호출한 요소에 인수 <code>pointerId</code>로 식별하는 포인터를 위한 <a href="#setting-pointer-capture">포인터 캡쳐를 설정</a>합니다.
+캡쳐가 해제될 때까지 포인터 후속 이벤트는 항상 이 요소를 대상으로 해야합니다. [<em class="rfc2119" title="MUST">MUST</em>]
+포인터는 반드시 이 메서드를 효율적으로 다루기 위해 활성 버튼 상태에 있어야 합니다, 그 외의 경우에는 자동으로 실패상태입니다. [<em class="rfc2119" title="MUST">MUST</em>]
+메서드의 인수가 어떤 <a title="active pointer" class="internalDFN" href="#dfn-active-pointer">활성 포인터</a>와도 매치하지 않는 경우
+<code>InvalidPointerId</code> 이름을 가진 <code>DOMException</code>을 던질 수 있습니다.</p>
+				<div class="note"><div class="note-title" aria-level="2" role="heading" id="h_note_17"><span>노트</span></div><div class=""><a href="#dfn-pointer-capture" title="pointer capture" class="internalDFN">Pointer Capture</a>를 확인하시길 바랍니다.</div></div>
 			<table class="parameters"><tbody><tr><th>Parameter</th><th>Type</th><th>Nullable</th><th>Optional</th><th>Description</th></tr><tr><td class="prmName">pointerId</td><td class="prmType"><code>long</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptFalse"><span role="img" aria-label="False">✘</span></td><td class="prmDesc"></td></tr></tbody></table><div><em>Return type: </em><code>void</code></div></dd><dt id="widl-Element-releasePointerCapture-void-long-pointerId"><code>releasePointerCapture</code></dt><dd>
-				<p><a href="#releasing-pointer-capture">Releases pointer capture</a> for the pointer identified by the argument <code>pointerId</code> from the element on which this method is invoked. Subsequent events for the pointer follow normal hit testing mechanisms (out of scope for this specification) for determining the event target. Throws a <code>DOMException</code> with the name <code>InvalidPointerId</code> when the provided the method's argument does not match any of the <a title="active pointer" class="internalDFN" href="#dfn-active-pointer">active pointers</a>.</p>
-				<div class="note"><div class="note-title" aria-level="2" role="heading" id="h_note_18"><span>Note</span></div><div class="">See <a href="#dfn-pointer-capture" title="pointer capture" class="internalDFN">Pointer Capture</a>.</div></div>
+				<p>
+이 메서드는 호출한 요소에 인수 <code>pointerId</code>로 식별하는 포인터를 위한 <a href="#releasing-pointer-capture">포인터 캡쳐를 해제</a>합니다.
+포인터 후속 이벤트는 이벤트 타겟을 결정하기 위해 히트 테스팅 메커니즘을 따라야 합니다. (이 스펙 문서의 범위에 포함하지 않습니다.)
+메서드의 인수가 어떤 <a title="active pointer" class="internalDFN" href="#dfn-active-pointer">활성 포인터</a>와도 매치하지 않는 경우
+<code>InvalidPointerId</code> 이름을 가진 <code>DOMException</code>을 던질 수 있습니다.</p>
+				<div class="note"><div class="note-title" aria-level="2" role="heading" id="h_note_18"><span>노트</span></div><div class=""><a href="#dfn-pointer-capture" title="pointer capture" class="internalDFN">Pointer Capture</a>를 확인하시길 바랍니다.</div></div>
 			<table class="parameters"><tbody><tr><th>Parameter</th><th>Type</th><th>Nullable</th><th>Optional</th><th>Description</th></tr><tr><td class="prmName">pointerId</td><td class="prmType"><code>long</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptFalse"><span role="img" aria-label="False">✘</span></td><td class="prmDesc"></td></tr></tbody></table><div><em>Return type: </em><code>void</code></div></dd></dl></section>
 </div></section>
 <section id="extensions-to-the-globaleventhandlers-interface">
-	<!--OddPage--><h2 role="heading" id="h2_extensions-to-the-globaleventhandlers-interface"><span class="secno">7. </span>Extensions to the <code>GlobalEventHandlers</code> interface</h2>
-	<p>The following section describes extensions to the existing <code>GlobalEventHandlers</code> interface, defined in [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>], to facilitate the event handler registration.</p>
+	<!--OddPage--><h2 role="heading" id="h2_extensions-to-the-globaleventhandlers-interface"><span class="secno">7. </span><code>GlobalEventHandlers</code> 인터페이스 확장</h2>
+	<p>아래 섹션에서는 이미 존재하는 [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>]에서 정의하는 <code>GlobalEventHandlers</code> 인터페이스에서 이벤트 핸들러 등록을 용이하게 하는 확장을 설명합니다.</p>
 		<pre class="idl"><span class="idlInterface" id="idl-def-GlobalEventHandlers">partial interface <span class="idlInterfaceID">GlobalEventHandlers</span> {
 <span class="idlAttribute">                attribute <span class="idlAttrType">EventHandler</span> <span class="idlAttrName"><a href="#widl-GlobalEventHandlers-onpointerdown">onpointerdown</a></span>;</span>
 <span class="idlAttribute">                attribute <span class="idlAttrType">EventHandler</span> <span class="idlAttrName"><a href="#widl-GlobalEventHandlers-onpointermove">onpointermove</a></span>;</span>
@@ -1174,45 +1189,61 @@ interface <span class="idlInterfaceID">PointerEvent</span> : <span class="idlSup
 <span class="idlAttribute">                attribute <span class="idlAttrType">EventHandler</span> <span class="idlAttrName"><a href="#widl-GlobalEventHandlers-onpointerout">onpointerout</a></span>;</span>
 <span class="idlAttribute">                attribute <span class="idlAttrType">EventHandler</span> <span class="idlAttrName"><a href="#widl-GlobalEventHandlers-onpointerenter">onpointerenter</a></span>;</span>
 <span class="idlAttribute">                attribute <span class="idlAttrType">EventHandler</span> <span class="idlAttrName"><a href="#widl-GlobalEventHandlers-onpointerleave">onpointerleave</a></span>;</span>
-};</span></pre><section id="attributes"><h3 role="heading" id="h3_attributes"><span class="secno">7.1 </span>Attributes</h3><dl class="attributes"><dt id="widl-GlobalEventHandlers-onpointerdown"><code>onpointerdown</code> of type <span class="idlAttrType">EventHandler</span>,            </dt><dd>
-				The event handler IDL attribute (see [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>]) for the <code>pointerdown</code> event type.
-			</dd><dt id="widl-GlobalEventHandlers-onpointermove"><code>onpointermove</code> of type <span class="idlAttrType">EventHandler</span>,            </dt><dd>
-				The event handler IDL attribute (see [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>]) for the <code>pointermove</code> event type.
-			</dd><dt id="widl-GlobalEventHandlers-onpointerup"><code>onpointerup</code> of type <span class="idlAttrType">EventHandler</span>,            </dt><dd>
-				The event handler IDL attribute (see [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>]) for the <code>pointerup</code> event type.
-			</dd><dt id="widl-GlobalEventHandlers-onpointercancel"><code>onpointercancel</code> of type <span class="idlAttrType">EventHandler</span>,            </dt><dd>
-				The event handler IDL attribute (see [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>]) for the <code>pointercancel</code> event type.
-			</dd><dt id="widl-GlobalEventHandlers-onpointerover"><code>onpointerover</code> of type <span class="idlAttrType">EventHandler</span>,            </dt><dd>
-				The event handler IDL attribute (see [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>]) for the <code>pointerover</code> event type.
-			</dd><dt id="widl-GlobalEventHandlers-onpointerout"><code>onpointerout</code> of type <span class="idlAttrType">EventHandler</span>,            </dt><dd>
-				The event handler IDL attribute (see [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>]) for the <code>pointerout</code> event type.
-			</dd><dt id="widl-GlobalEventHandlers-onpointerenter"><code>onpointerenter</code> of type <span class="idlAttrType">EventHandler</span>,            </dt><dd>
-				The event handler IDL attribute (see [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>]) for the <code>pointerenter</code> event type.
-			</dd><dt id="widl-GlobalEventHandlers-onpointerleave"><code>onpointerleave</code> of type <span class="idlAttrType">EventHandler</span>,            </dt><dd>
-				The event handler IDL attribute (see [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>]) for the <code>pointerleave</code> event type.
+};</span></pre><section id="attributes"><h3 role="heading" id="h3_attributes"><span class="secno">7.1 </span>Attributes</h3><dl class="attributes"><dt id="widl-GlobalEventHandlers-onpointerdown"><code>onpointerdown</code> 타입 <span class="idlAttrType">EventHandler</span>,            </dt><dd>
+			<code>pointerdown</code> 이벤트 타입을 위한 이벤트 핸들러 IDL 속성 ([<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>])
+			</dd><dt id="widl-GlobalEventHandlers-onpointermove"><code>onpointermove</code> 타입 <span class="idlAttrType">EventHandler</span>,            </dt><dd>
+				<code>pointermove</code> 이벤트 타입을 위한 이벤트 핸들러 IDL 속성 ([<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>])
+			</dd><dt id="widl-GlobalEventHandlers-onpointerup"><code>onpointerup</code> 타입 <span class="idlAttrType">EventHandler</span>,            </dt><dd>
+				<code>pointerup</code> 이벤트 타입을 위한 이벤트 핸들러 IDL 속성 ([<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>])
+			</dd><dt id="widl-GlobalEventHandlers-onpointercancel"><code>onpointercancel</code> 타입 <span class="idlAttrType">EventHandler</span>,            </dt><dd>
+				 <code>pointercancel</code> 이벤트 타입을 위한 이벤트 핸들러 IDL 속성 ([<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>])
+			</dd><dt id="widl-GlobalEventHandlers-onpointerover"><code>onpointerover</code> 타입 <span class="idlAttrType">EventHandler</span>,            </dt><dd>
+				 <code>pointerover</code> 이벤트 타입을 위한 이벤트 핸들러 IDL 속성 ([<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>])
+			</dd><dt id="widl-GlobalEventHandlers-onpointerout"><code>onpointerout</code> 타입 <span class="idlAttrType">EventHandler</span>,            </dt><dd>
+				 <code>pointerout</code> 이벤트 타입을 위한 이벤트 핸들러 IDL 속성 ([<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>])
+			</dd><dt id="widl-GlobalEventHandlers-onpointerenter"><code>onpointerenter</code> 타입 <span class="idlAttrType">EventHandler</span>,            </dt><dd>
+				 <code>pointerenter</code> 이벤트 타입을 위한 이벤트 핸들러 IDL 속성 ([<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>])
+			</dd><dt id="widl-GlobalEventHandlers-onpointerleave"><code>onpointerleave</code> 타입 <span class="idlAttrType">EventHandler</span>,            </dt><dd>
+				 <code>pointerleave</code> 이벤트 타입을 위한 이벤트 핸들러 IDL 속성 ([<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>])
 			</dd></dl></section>
 
 </section>
 
 <section id="extensions-to-the-navigator-interface">
-	<!--OddPage--><h2 role="heading" id="h2_extensions-to-the-navigator-interface"><span class="secno">8. </span>Extensions to the <code>Navigator</code> interface</h2>
+	<!--OddPage--><h2 role="heading" id="h2_extensions-to-the-navigator-interface"><span class="secno">8. </span><code>Navigator</code> 인터페이스 확장</h2>
 	<div>
-	<p>The <code>Navigator</code> interface is defined in [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>]. This specification extends the <code>Navigator</code> interface to provide device and feature detection support.</p>
+	<p>
+<code>Navigator</code> 인터페이스는 [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>]에서 정의하고 있습니다. 이 스펙문서에서는 <code>Navigator</code> 인터페이스에서 디바이스를 제공하고 특징 감지 지원을 하기 위해 확장합니다.</p>
 		<pre class="idl"><span class="idlInterface" id="idl-def-Navigator">partial interface <span class="idlInterfaceID">Navigator</span> {
 <span class="idlAttribute">    readonly    attribute <span class="idlAttrType">long</span> <span class="idlAttrName"><a href="#widl-Navigator-maxTouchPoints">maxTouchPoints</a></span>;</span>
-};</span></pre><section><h3 id="attributes-3" role="heading">Attributes</h3><dl class="attributes"><dt id="widl-Navigator-maxTouchPoints"><code>maxTouchPoints</code> of type <span class="idlAttrType">long</span>, readonly   </dt><dd><p>The maximum number of simultaneous touch contacts supported by the device. In the case of devices with multiple digitizers (e.g. multiple touchscreens), the value <em class="rfc2119" title="MUST">MUST</em> be the maximum of the set of maximum supported contacts by each individual digitizer.</p>
-			<p>For example, suppose a device has 3 touchscreens, which support 2, 5, and 10 simultaneous touch contacts, respectively. The value of <code>maxTouchPoints</code> should be <code>10</code>.</p>
-			</dd></dl></section>
-    <div class="note"><div class="note-title" aria-level="1" role="heading" id="h_note_19"><span>Note</span></div><div class="">While a <code>maxTouchPoints</code> value of greater than 0 indicates the user's device is capable of supporting touch input, it does not necessarily mean the user <i>will</i> use touch input. Authors should be careful to also consider other input modalities that could be present on the system, such as mouse, pen, screen readers, etc.</div></div>
-		<div class="note"><div class="note-title" aria-level="1" role="heading" id="h_note_20"><span>Note</span></div><div class=""><code>maxTouchPoints</code> is often used to ensure that the interaction model of the content can be recognized by the current hardware. UI affordances can be provided to users with less capable hardware. On platforms where the precise number of touch points is not known, the minimum number guaranteed to be recognized is provided. Therefore, it is possible for the number of recognized touch points to exceed the value of <code>maxTouchPoints</code>.</div></div>
+};</span></pre><section><h3 id="attributes-3" role="heading">Attributes</h3><dl class="attributes"><dt id="widl-Navigator-maxTouchPoints"><code>maxTouchPoints</code> 타입 <span class="idlAttrType">long</span>, 읽기 전용</dt><dd>
+<p>
+디바이스에 의해 지원하는 터치 접촉 시뮬레이션의 최대 숫자입니다. 여러개의 디지타이저 (예를 들면 여러개의 터치스크린)을 가진 디바이스를 예로 들면,
+이 값은 반드시 각 개별 디지타이저에서 지원하는 접촉의 최대값으로 설정해야할 것입니다. [<em class="rfc2119" title="MUST">MUST</em>]
+</p>
+<p>
+예를 들어, 3개의 터치스크린을 가진 디바이스를 지원하고, 2, 5, 10 터치 접촉을 지원한다고 가정해봅시다.
+<code>maxTouchPoints</code> 값은 반드시 <code>10</code>이어야만 합니다.
+</p>
+</dd></dl></section>
+<div class="note"><div class="note-title" aria-level="1" role="heading" id="h_note_19"><span>노트</span></div><div class="">
+	0보다 큰 <code>maxTouchPoints</code> 값은 사용자의 디바이스가 터치 입력을 지원한다고 나타내지만,
+	반드시 사용자가 터치입력을 사용하는 것을 의미하지는 않습니다.
+	작성자는 마우스, 펜, 스크린 리더 등 시스템에 존재할 수 있는 다른 입력양식을 고려하고 주의해야 합니다.
+</div></div>
+		<div class="note"><div class="note-title" aria-level="1" role="heading" id="h_note_20"><span>노트</span></div><div class="">
+<code>maxTouchPoints</code>은 종종 하드웨어가 인식할 수 있도록 콘텐츠의 인터렉션 모델을 보장하기 위해 사용합니다.
+UI 어포던스는 적은 하드웨어 능력을 유저에게 제공할 수 있습니다.
+터치 포인트의 정확한 갯수를 플랫폼에서 알 수 없을 때, 최소 개수를 제공하여 인식을 보장합니다.
+인식되는 터치 포인트의 갯수가 <code>maxTouchPoints</code>를 초과하는 것도 가능합니다.</div></div>
 	</div>
 </section>
 <section id="declaring-candidate-regions-for-default-touch-behaviors">
-	<!--OddPage--><h2 role="heading" id="h2_declaring-candidate-regions-for-default-touch-behaviors"><span class="secno">9. </span>Declaring candidate regions for default touch behaviors</h2>
-	<p>For touch input, the default action of any and all pointer events <em class="rfc2119" title="MUST NOT">MUST NOT</em> be a manipulation of the viewport (e.g. panning or zooming).</p>
-	<div class="note"><div class="note-title" aria-level="1" role="heading" id="h_note_21"><span>Note</span></div><div class="">Touch manipulations are intentionally not a default action of pointer events. Removing this dependency on the cancellation of events facilitates performance optimizations by the user agent.</div></div>
+	<!--OddPage--><h2 role="heading" id="h2_declaring-candidate-regions-for-default-touch-behaviors"><span class="secno">9. </span>디폴트 터치 동작을 위한 후보 영역 선언</h2>
+	<p>터치 인풋에서, 모든 기본 액션과 포인트 이벤트는 뷰포트의 조작이 아니어야 합니다. (예. 패닝이나 주밍) [<em class="rfc2119" title="MUST NOT">MUST NOT</em>]</p>
+	<div class="note"><div class="note-title" aria-level="1" role="heading" id="h_note_21"><span>노트</span></div><div class="">터치 조작은 포인터 이벤트의 디폴트 액션이 의도적으로 아니어야 합니다. 이벤트 취소 의존성을 제거함으로써 유저 에이전트 성능 최적화를 용이하게 합니다.</div></div>
 	<section id="the-touch-action-css-property">
-		<h3 role="heading" id="h3_the-touch-action-css-property"><span class="secno">9.1 </span>The <code>touch-action</code> CSS property</h3>
+		<h3 role="heading" id="h3_the-touch-action-css-property"><span class="secno">9.1 </span>CSS <code>touch-action</code> 속성</h3>
 		<table class="simple">
 			<tbody><tr><th>Name:</th><td><code>touch-action</code></td></tr>
 			<tr><th>Value:</th><td><code>auto</code> | <code>none</code> | [ <code>pan-x</code> || <code>pan-y</code> ] | <code>manipulation</code></td></tr>
@@ -1224,9 +1255,10 @@ interface <span class="idlInterfaceID">PointerEvent</span> : <span class="idlSup
 			<tr><th>Computed value:</th><td>Same as specified value.</td></tr>
 		</tbody></table>
 		<div>
-			<p>The <code>touch-action</code> CSS property determines whether touch input <em class="rfc2119" title="MAY">MAY</em>  trigger default behavior supplied by user agent.  This includes, but is not limited to, behaviors such as panning or zooming.</p>
+			<p>CSS <code>touch-action</code> 속성은 유저 에이전트에서 제공하는 터치 인풋의 기본 동작 트리거를 결정합니다. [<em class="rfc2119" title="MAY">MAY</em>]
+			이는 패닝 혹은 주밍과 같은 동작에 제한되지 않습니다.</p>
 
-			<p>Values have the following meanings:</p>
+			<p>값은 아래 의미를 가집니다.</p>
 			<dl>
 				<dt>auto</dt><dd>The user agent <em class="rfc2119" title="MAY">MAY</em> determine any permitted touch behaviors, such as panning and zooming manipulations of the viewport, for touches that begin on the element.</dd>
 				<dt>none</dt><dd>Touches that begin on the element <em class="rfc2119" title="MUST NOT">MUST NOT</em> trigger default touch behaviors.</dd>
