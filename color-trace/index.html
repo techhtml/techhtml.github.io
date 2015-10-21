@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<title>Hello world</title>
+		<link rel="stylesheet" href="color.css">
+	</head>
+	<body>
+		<main>
+			<h1>COLOR trace</h1>
+			<div class="color-preview"></div>
+			<input id="name" type="text" placeholder="이름을 입력해주세요">
+			<input id="sub" type="button" value="확인하기">
+			<p></p>
+		</main>
+		<script src="md5.js"></script>
+		<script>
+			var input = document.querySelector("#name"),
+					btn = document.querySelector("#sub"),
+					colorBox = document.querySelector(".color-preview"),
+					intro = document.querySelector("p");
+			var createColor = function(ev) {
+				var color = MD5(input.value),
+				    colorString = color[0] + color[10] + color[13] + color[21] + color[28] + color[3];
+				colorBox.style.background = "#" + colorString;
+				intro.innerHTML = "당신의 컬러는 <span style='color:#" + colorString + "'>#" + colorString + "</span>입니다";
+			}
+			input.addEventListener("keydown", function(ev) {
+				if(ev.keyCode === 13) {
+					createColor();
+				}
+			})
+			btn.addEventListener("click", createColor, false);
+		</script>
+	</body>
+</html>
