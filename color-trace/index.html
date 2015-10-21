@@ -4,6 +4,8 @@
 		<meta charset="UTF-8">
 		<title>Hello world</title>
 		<link rel="stylesheet" href="color.css">
+		<meta name="og:title" content="당신의 색깔을 찾아보세요">
+		<meta name="og:description" content="" id="meta_desc">
 	</head>
 	<body>
 		<main>
@@ -18,12 +20,14 @@
 			var input = document.querySelector("#name"),
 					btn = document.querySelector("#sub"),
 					colorBox = document.querySelector(".color-preview"),
-					intro = document.querySelector("p");
+					intro = document.querySelector("p"),
+					meta_desc = document.querySelector("#meta_desc");
 			var createColor = function(ev) {
 				var color = MD5(input.value),
 				    colorString = color[0] + color[10] + color[13] + color[21] + color[28] + color[3];
 				colorBox.style.background = "#" + colorString;
-				intro.innerHTML = "당신의 컬러는 <span style='color:#" + colorString + "'>#" + colorString + "</span>입니다";
+				intro.innerHTML = input.value + "님의 컬러는 <span style='color:#" + colorString + "'>#" + colorString + "</span>입니다";
+				meta_desc.setAttribute("content", input.value + "님의 컬러는 #" + colorString + "입니다");
 			}
 			input.addEventListener("keydown", function(ev) {
 				if(ev.keyCode === 13) {
