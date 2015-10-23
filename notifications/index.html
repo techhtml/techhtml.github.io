@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <meta charset="utf-8">
-<title>웹 알림</title>
+<title>웹 알림 (Web Notifications)</title>
 <style>
  pre.idl { border:solid thin; background:#eee; color:#000; padding:0.5em 1em }
  pre.idl :link, pre.idl :visited { color:inherit; background:transparent }
@@ -42,7 +42,7 @@
 <p><a href="http://www.w3.org/"><img alt="W3C" height="48" src="https://www.w3.org/Icons/w3c_home" width="72"></a></p>
 <!--end-logo-->
 
-<h1>웹 알림</h1>
+<h1>웹 알림 (Web Notifications)</h1>
 <h2 class="no-num no-toc" id="w3c-recommendation-22-october-2015">2015년 10월 22일 W3C 권고안</h2>
 
 <dl>
@@ -88,7 +88,7 @@
 
 <p>
 웹 알림은 엔드 유저 알림을 위한 API를 제공합니다.
-알림은 이메일과 같이, 유저 웹페이지 콘텍스트 밖에 발생시키는 걸 허용합니다.
+알림은 이메일 같은, 유저 웹페이지 콘텍스트 밖에 발생시키는 걸 허용합니다.
 </p>
 
 <h2 class="no-num no-toc" id="sotd">이 문서의 상태</h2>
@@ -219,109 +219,86 @@ API는 표시 옵션에 대하여 유연하게 디자인하고 있습니다.
 <a href="#refsWEBIDL">[WEBIDL]</a>
 <a href="#refsURL">[URL]</a>
 
-
-
 <h2 id="model"><span class="secno">4 </span>모델</h2>
 
-<p>A <dfn id="concept-notification" title="concept-notification">notification</dfn> allows alerting the
-user outside the context of a web page that something happened, such as the
-delivery of email.
+<p>
 
-<p>Each <a href="#concept-notification" title="concept-notification">notification</a> has a
+<dfn id="concept-notification" title="concept-notification">알림</dfn>은 무언가 일어나는 웹페이지 콘텍스트 외부에 이메일 전송같은 경고를 허용합니다. 
+
+<p>각 <a href="#concept-notification" title="concept-notification">알림</a>은
 <dfn id="title">title</dfn>, <dfn id="direction">direction</dfn>,
-<dfn id="language">language</dfn>, and an <dfn id="origin">origin</dfn>.
+<dfn id="language">language</dfn>, <dfn id="origin">origin</dfn>을 가집니다.
 
-<p>Each <a href="#concept-notification" title="concept-notification">notification</a> <em>can</em>
-have an associated <dfn id="body">body</dfn>, <dfn id="tag">tag</dfn>, <dfn id="icon-url">icon URL</dfn>, and
-<dfn id="icon-image">icon image</dfn>.
+<p>각 <a href="#concept-notification" title="concept-notification">알림</a>은
+<dfn id="body">body</dfn>, <dfn id="tag">tag</dfn>, <dfn id="icon-url">icon URL</dfn>, 
+<dfn id="icon-image">icon image</dfn> 관련 정보를 <em>가질 수 있습니다.</em>
 
-<p class="note">Developers are encouraged to not convey information
-through an icon, sound, or vibration pattern that is not otherwise
-accessible to the end user.
-See <a href="http://www.w3.org/WAI/intro/wcag">WCAG</a> for more.
-
+<p class="note">
+엔드 유저가 접근 불가능한 아이콘, 소리, 진동을 통한 정보 전달을 권장하지 않습니다.
+<a href="http://www.w3.org/WAI/intro/wcag">WCAG</a>에서 더 자세한 내용을 확인할 수 있습니다.
 <h3 id="direction-0"><span class="secno">4.1 </span>Direction</h3>
 
-<p>This section is written in terms equivalent to those used in the
-Rendering section of HTML. <a href="#refsHTML5">[HTML5]</a>
+<p>
+이 섹션은 HTML의 렌더링 섹션에서 사용하는 용어를 동일한 의미로 사용하고 있습니다. <a href="#refsHTML5">[HTML5]</a>
 
 <!-- keep this in sync with
      http://www.whatwg.org/specs/web-apps/current-work/#text-rendered-in-native-user-interfaces -->
 
-<p>User agents are expected to honor the Unicode semantics of the text of a
-<a href="#concept-notification" title="concept-notification">notification</a>'s <a href="#title">title</a>
-and <a href="#body">body</a>. Each is expected to be treated as an independent set
-of one or more bidirectional algorithm paragraphs when displayed, as defined
-by the bidirectional algorithm's rules P1, P2, and P3, including, for
-instance, supporting the paragraph-breaking behavior of
-U+000A LINE FEED (LF) characters. For each paragraph of the
-<a href="#title">title</a> and <a href="#body">body</a>, the
-<a href="#concept-notification" title="concept-notification">notification</a>'s
-<a href="#direction">direction</a> provides the higher-level override of rules P2 and P3
-if it has a value other than "<code title="">auto</code>".
-<a href="#refsBIDI">[BIDI]</a>
+<p>
+유저 에이전트는 <a href="#concept-notification" title="concept-notification">알림</a>의 <a href="#title">title</a>과 <a href="#body">body</a>의
+텍스트 유니코드 시맨틱을 존중하리라 기대하고 있습니다.
+보여질 때 각 문자열 독립 세트가 쌍방향 알고리즘 규칙의 P1, P2, P3을 포함하여 정의되며, U+000A 라인 피드 (LF) 문자의 줄바꿈 행동을 지원하는 하나 혹은 그 이상의 쌍방향 알고리즘으로 취급될 거라 예상하고 있습니다.
+<a href="#title">title</a>, <a href="#body">body</a>의 각 문장,
+<a href="#concept-notification" title="concept-notification">알림</a>의 <a href="#direction">direction</a>은
+P2와 P3가 "<code title="">auto</code>" 외의 값을 갖는 경우 상위 레벨로 룰을 뒤짚어 쓰는 걸 제공합니다. <a href="#refsBIDI">[BIDI]</a>
 
 
-<h3 id="language-0"><span class="secno">4.2 </span>Language</h3>
+<h3 id="language-0"><span class="secno">4.2 </span>언어</h3>
 
 <!-- keep this in sync with
      http://www.whatwg.org/specs/web-apps/current-work/#attr-lang -->
 
-<p>The <a href="#concept-notification" title="concept-notification">notification</a>'s
-<a href="#language">language</a> specifies the primary language for the
-<a href="#concept-notification" title="concept-notification">notification</a>'s <a href="#title">title</a>
-and <a href="#body">body</a>. Its value is a valid BCP 47 language tag, or the
-empty string. The empty string indicates that the primary language is
-unknown. <a href="#refsLANG">[LANG]</a>
+<p><a href="#concept-notification" title="concept-notification">알림</a>의
+<a href="#language">언어</a>는 <a href="#concept-notification" title="concept-notification">알림</a>의 
+<a href="#title">title</a>과 <a href="#body">body</a>를 위한 기본 언어를 정의합니다.
+값은 올바른 BCP 47 언어 태그거나 빈 문자열이어야 합니다.
+빈 문자열은 기본 언어 unknown으로 표시됩니다. <a href="#refsLANG">[LANG]</a>
 
 
-<h3 id="permission"><span class="secno">4.3 </span>Permission</h3>
+<h3 id="permission"><span class="secno">4.3 </span>권한</h3>
 
-<p><a href="#concept-notification" title="concept-notification">Notifications</a> can only be
-displayed if the user (or user agent on behalf of the user) has granted
-<dfn id="permission-0">permission</dfn>. The <a href="#permission-0">permission</a> to display
-<a href="#concept-notification" title="concept-notification">notifications</a> for a given
-<a class="external" href="https://www.w3.org/TR/html/browsers.html#origin">origin</a> can be one of three strings:
+<p>
+<a href="#concept-notification" title="concept-notification">알림</a>은 유저 (혹은 유저에이전트)에서 <dfn id="permission-0">권한</dfn>을
+인정했을 때만 화면에 보일 수 있습니다. <a href="#concept-notification" title="concept-notification">알림</a> 표시 <a href="#permission-0">권한</a>을 위한 <a class="external" href="https://www.w3.org/TR/html/browsers.html#origin">origin</a> 값에 아래 세 문자열 중 하나를 넣을 수 있습니다.
 
 <dl>
  <dt>"<code title="">default</code>"
- <dd><p>This is equivalent to "<code title="">denied</code>", but the user has
- made no explicit choice thus far.
-
+ <dd><p>이 값은 "<code title="">denied</code>"와 동일하지만, 아직까지 사용자가 명시적으로 선택하지 않은 상태입니다.
  <dt>"<code title="">denied</code>"
- <dd><p>This means the user does not want
- <a href="#concept-notification" title="concept-notification">notifications</a>.
-
+ <dd><p>이 값은 유저가 <a href="#concept-notification" title="concept-notification">알림</a>을 원하지 않는 상태입니다.
  <dt>"<code title="">granted</code>"
- <dd><p>This means <a href="#concept-notification" title="concept-notification">notifications</a> can
- be displayed.
+ <dd><p>이 값은 <a href="#concept-notification" title="concept-notification">알림</a>이 화면상에 나타날 수 있는 상태입니다.
 </dl>
 
-<p class="note">There is no equivalent to "<code title="">default</code>"
-meaning "<code title="">granted</code>". In that case
-"<code title="">granted</code>" is simply returned as there would be no reason
-for the application to ask for <a href="#permission-0">permission</a>.
+<p class="note">"<code title="">default</code>"와 "<code title="">granted</code>"의 의미가 같지 않습니다. 
+이 경우, "<code title="">granted</code>"는 어플리케이션에서 <a href="#permission-0">권한</a>을 물어보고 값을 반환받은 상태입니다.
 
+<h3 id="notification-lists"><span class="secno">4.4 </span>알림 목록</h3>
 
-<h3 id="notification-lists"><span class="secno">4.4 </span>Notification lists</h3>
+<p>유저에이전트는 반드시 <dfn id="list-of-pending-notifications">펜딩 알림 목록</dfn>과 <dfn id="list-of-active-notifications">액티브 알림 목록</dfn>을 유지해야합니다.
 
-<p>The user agent must keep a <dfn id="list-of-pending-notifications">list of pending notifications</dfn> and
-a <dfn id="list-of-active-notifications">list of active notifications</dfn>.
+<h3 id="showing-a-notification"><span class="secno">4.5 </span>알림 나타내기</h3>
 
-<h3 id="showing-a-notification"><span class="secno">4.5 </span>Showing a notification</h3>
-
-<p>The <dfn id="show-steps">show steps</dfn> for a given <var title="">notification</var> are:
+<p><var title="">알림</var>을 <dfn id="show-steps">나타내는 순서</dfn>는 다음과 같습니다:
 
 <ol>
- <li><p>If <a href="#permission-0">permission</a> for <var title="">notification</var>'s
- <a href="#origin">origin</a> is not "<code title="">granted</code>", cancel any ongoing
- <a class="external" href="https://www.w3.org/TR/html/infrastructure.html#fetch">fetch</a> for
- <var title="">notification</var>'s <a href="#icon-url">icon URL</a>,
- <a class="external" href="https://www.w3.org/TR/html/webappapis.html#queue-a-task">queue a task</a> to
- <a class="external" href="https://www.w3.org/TR/dom/#concept-event-fire" title="concept-event-fire">fire an event</a>
- named <code title="">error</code> on <var title="">notification</var>, and
- terminate these steps.
-
+ <li><p><var title="">알림</var>의 <a href="#permission-0">권한</a>을 위한
+ <a href="#origin">origin</a>이 "<code title="">granted</code>"가 아니며, 
+ 모든 진행 중 <var title="">알림</var>의 <a href="#icon-url">icon URL</a> <a class="external" href="https://www.w3.org/TR/html/infrastructure.html#fetch">fetch</a>를 취소하고,
+ <var title="">notification</var>에서 <code title="">error</code> 
+ <a class="external" href="https://www.w3.org/TR/dom/#concept-event-fire" title="concept-event-fire">이벤트 발생</a>을
+ <a class="external" href="https://www.w3.org/TR/html/webappapis.html#queue-a-task">태스크에 축적</a>을 진행하고,
+ 이 단계를 없앱니다.
  <li><p>If there is a <a href="#concept-notification" title="concept-notification">notification</a>
  in the <a href="#list-of-pending-notifications">list of pending notifications</a> or the
  <a href="#list-of-active-notifications">list of active notifications</a> whose <a href="#tag">tag</a> equals
