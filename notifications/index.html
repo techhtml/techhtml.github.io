@@ -299,150 +299,122 @@ P2와 P3가 "<code title="">auto</code>" 외의 값을 갖는 경우 상위 레�
  <a class="external" href="https://www.w3.org/TR/dom/#concept-event-fire" title="concept-event-fire">이벤트 발생</a>을
  <a class="external" href="https://www.w3.org/TR/html/webappapis.html#queue-a-task">태스크에 축적</a>을 진행하고,
  이 단계를 없앱니다.
- <li><p>If there is a <a href="#concept-notification" title="concept-notification">notification</a>
- in the <a href="#list-of-pending-notifications">list of pending notifications</a> or the
- <a href="#list-of-active-notifications">list of active notifications</a> whose <a href="#tag">tag</a> equals
- <var title="">notification</var>'s <a href="#tag">tag</a> and whose
- <a href="#origin">origin</a> equals <var title="">notification</var>'s
- <a href="#origin">origin</a>, run the <a href="#replace-steps">replace steps</a> for that
- <a href="#concept-notification" title="concept-notification">notification</a> and
- <var title="">notification</var>, and then terminate these steps.
 
- <li><p>If the device allows notifications to be displayed immediately
- without limitations on the number of concurrent notifications, run
- the <a href="#display-steps">display steps</a> and terminate these steps.
+ <li><p>
 
- <li><p>If the device has limitations on the number of concurrent
- notifications, either immediately call to a notification platform which
- natively supports queueing, or append <var title="">notification</var> to the
- <a href="#list-of-pending-notifications">list of pending notifications</a>.
+<a href="#list-of-pending-notifications">펜딩 알림 목록</a>및 <a href="#list-of-active-notifications">액티브 알림 목록</a> 안에 <a href="#concept-notification" title="concept-notification">알림</a>이 있다면,
+ <a href="#tag">tag</a>가 <var title="">notification</var>의 <a href="#tag">tag</a>와 동일하고 <a href="#origin">origin</a>이 
+ <a href="#concept-notification" title="concept-notification">notification</a>의 <a href="#origin">origin</a>과 동일합니다.
+ 그 <a href="#concept-notification" title="concept-notification">알림</a>과 <var title="">notification</var>를 위한 <a href="#replace-steps">replace steps</a>를 실행하고, 이 단계를 없앱니다.
+ <li><p>
+ 만약 디바이스가 현재 알림 갯수 제한 없이 즉시 알림을 보여주는 걸 허용한다면,
+	<a href="#display-steps">display steps</a>을 작동하고 이 단계를 없앱니다.
+
+ <li><p>
+ 만약 디바이스에 현재 알림 갯수 제한이 있다면, 즉시 기본으로 지원하는 대기열 알람 플랫폼에 콜하거나
+<a href="#list-of-pending-notifications">펜딩 알림 목록</a>에 <var title="">notification</var>을 넣습니다.
 </ol>
 
-<h3 id="activating-a-notification"><span class="secno">4.6 </span>Activating a notification</h3>
+<h3 id="activating-a-notification"><span class="secno">4.6 </span>알림 활성화</h3>
 
-<p>When a <a href="#concept-notification" title="concept-notification">notification</a>
-<var title="">notification</var> is activated by the user, assuming the underlying
-notification platform supports activation, the user agent must, for each
-<code><a href="#notification">Notification</a></code> object <a href="#tags-example">representing <var title="">notification</var></a>,
-<a class="external" href="https://www.w3.org/TR/html/webappapis.html#queue-a-task">queue a task</a> to
-<a class="external" href="https://www.w3.org/TR/dom/#concept-event-fire" title="concept-event-fire">fire an event</a>
-named <code title="">click</code> on the <code><a href="#notification">Notification</a></code> object.
+<p><a href="#concept-notification" title="concept-notification">알림</a> <var title="">notification</var>이 유저에 의해 활성화되었을 때,
+알림 플랫폼 지원 활성화 아래에 있으며, 유저 에이전트는 반드시 각 <code><a href="#notification">Notification</a></code> 객체가 <a href="#tags-example"><var title="">notification</var>를 나타내야 하며</a>, <code><a href="#notification">Notification</a></code> 객체에서 <code title="">click</code> <a class="external" href="https://www.w3.org/TR/dom/#concept-event-fire" title="concept-event-fire">이벤트 발생</a>을 <a class="external" href="https://www.w3.org/TR/html/webappapis.html#queue-a-task">태스크 큐</a>에 쌓아야 합니다.
 
-<p class="note">Throughout the web platform "activate" is intentionally misnamed as "click".
+<p class="note">웹 플랫폼 전반에 걸쳐 "active"가 "click"으로 잘못 이름지어졌습니다.
 
-<p class="note">User agents are strongly encouraged to make
-<code class="external" title="dom-window-focus"><a href="https://www.w3.org/TR/html/editing.html#dom-window-focus">window.focus()</a></code> work from within
-the event listener for the event named <code title="">click</code> as a means of focusing the
-browsing context related to the notification.
+<p class="note">
+유저에이전트는 알림 관련 브라우징 컨텍스트에 집충하는 의미로 <code title="">click</code> 이벤트 리스너에서
+<code class="external" title="dom-window-focus"><a href="https://www.w3.org/TR/html/editing.html#dom-window-focus">window.focus()</a></code>를 같이 작동시키는 게 좋습니다.
 
-<h3 id="closing-a-notification"><span class="secno">4.7 </span>Closing a notification</h3>
+<h3 id="closing-a-notification"><span class="secno">4.7 </span>알림 닫기</h3>
 
-<p>When a <a href="#concept-notification" title="concept-notification">notification</a> is closed,
-either by the underlying notification platform or by the user, the
-<a href="#close-steps">close steps</a> for it must be run.
+<p><a href="#concept-notification" title="concept-notification">알림</a>을 닫을 때,
+유저나 알림 플랫폼 아래에 있을 때, <a href="#close-steps">닫기 스텝</a>이 반드시 동작해야합니다. 
 
-<p>The <dfn id="close-steps">close steps</dfn> for a given <var title="">notification</var> are:
+<p><var title="">notification</var>에서 제공하는 <dfn id="close-steps">닫기 스텝</dfn>은 다음과같습니다:
 
 <ol>
- <li><p>If <var title="">notification</var> is neither in the
- <a href="#list-of-pending-notifications">list of pending notifications</a> nor in the
- <a href="#list-of-active-notifications">list of active notifications</a>, terminate these steps.
+ <li><p>만약 <var title="">notification</var>이
+ <a href="#list-of-pending-notifications">펜딩 알림 목록</a>이나 <a href="#list-of-active-notifications">액티브 알림 목록</a>에 있는 경우 이 단계를 종료합니다.
 
- <li><p><a class="external" href="https://www.w3.org/TR/html/webappapis.html#queue-a-task">Queue a task</a> to remove
- <var title="">notification</var> from either the
- <a href="#list-of-pending-notifications">list of pending notifications</a> or the
- <a href="#list-of-active-notifications">list of active notifications</a>, and
- <a class="external" href="https://www.w3.org/TR/dom/#concept-event-fire" title="concept-event-fire">fire an event</a>
- named <code title="">close</code> on <var title="">notification</var>.
+ <li><p>
+ <a href="#list-of-pending-notifications">펜딩 알림 목록</a>이나
+ <a href="#list-of-active-notifications">액티브 알림 목록</a>에서 <var title="">notification</var>을 
+<a class="external" href="https://www.w3.org/TR/html/webappapis.html#queue-a-task">Queue a task</a>에서 제거하고,
+<var title="">notification</var>에서 <code title="">close</code> <a class="external" href="https://www.w3.org/TR/dom/#concept-event-fire" title="concept-event-fire">이벤트를 발생</a>시킵니다.
 </ol>
 
-<h3 id="pending-notifications"><span class="secno">4.8 </span>Pending notifications</h3>
+<h3 id="pending-notifications"><span class="secno">4.8 </span>펜딩 알림</h3>
 
-<p>Whenever the <a href="#list-of-pending-notifications">list of pending notifications</a> is not empty, the
-user agent must wait and monitor changes in the available notification space
-on the device.
+<p><a href="#list-of-pending-notifications">펜딩 알림 목록</a>이 비어있지 않을 때, 
+유저 에이전트는 반드시 디바이스상 알림 가능 공간의 변화를 모니터링하고 기다려야합니다.
 
-<p>When the available display space changes on the device such that a new
-notification can be displayed, for example due to a previous notification
-being dismissed, the user agent should run the <a href="#display-steps">display steps</a>
-for the first <a href="#concept-notification" title="concept-notification">notification</a> in the
-<a href="#list-of-pending-notifications">list of pending notifications</a> and then remove it from the
-<a href="#list-of-pending-notifications">list of pending notifications</a>.
+<p>
+새로운 알림을 보여줄 수 있는
+디바이스상 사용가능 디스플레이 공간이 변할 때,
+이전 알림은 사라지고, 유저에이전트는 <a href="#list-of-pending-notifications">펜딩 알림 목록</a> 안
+첫번째 <a href="#concept-notification" title="concept-notification">알림</a>에 
+<a href="#display-steps">디스플레이 스텝</a>을 실행해야 하고,
+그를 <a href="#list-of-pending-notifications">펜딩 알림 목록</a>에서 제거해야 합니다.
 
-<h3 id="displaying-notifications"><span class="secno">4.9 </span>Displaying notifications</h3>
+<h3 id="displaying-notifications"><span class="secno">4.9 </span>알람 보이기</h3>
 
-<p>The <dfn id="display-steps">display steps</dfn> for a given <var title="">notification</var>
-are:
+<p>
+<var title="">notification</var>에서 제공하는 <dfn id="display-steps">디스플레이 스텝</dfn>은 다음과 같습니다:
 
 <ol>
  <li>
-  <p>If the notification platform supports icons,
-  <var title="">notification</var>'s <a href="#icon-url">icon URL</a> is set and has not
-  yet been <a class="external" href="https://www.w3.org/TR/html/infrastructure.html#fetch" title="fetch">fetched</a>,
-  <a class="external" href="https://www.w3.org/TR/html/infrastructure.html#fetch">fetch</a> it and wait for the resource to
-  be fully downloaded.
+  <p>알림 플랫폼이 아이콘을 지원하거나,
+	<var title="">notification</var>의 <a href="#icon-url">icon URL</a>이 세트되어있으나,
+아직 <a class="external" href="https://www.w3.org/TR/html/infrastructure.html#fetch" title="fetch">fetched</a>되지 않은 경우
+이를 <a class="external" href="https://www.w3.org/TR/html/infrastructure.html#fetch">fetch</a>받고, 리소스 전체를 다운로드 받습니다.
 
-  <p>Once <a class="external" href="https://www.w3.org/TR/html/infrastructure.html#fetch" title="fetch">fetching</a> has
-  finished and if the image format is supported, set
-  <var title="">notification</var>'s <a href="#icon-image">icon image</a> to the decoded resource.
+	<p>한 번 <a class="external" href="https://www.w3.org/TR/html/infrastructure.html#fetch" title="fetch">fetching</a>이 끝나고
+	이미지 포맷을 지원한다면
+  <var title="">notification</var>의 <a href="#icon-image">icon image</a>를 디코드한 리소스로 설정합니다.
 
  <li>
-  <p><a class="external" href="https://www.w3.org/TR/html/webappapis.html#queue-a-task">Queue a task</a> to run these substeps:
+  <p>아래 단계대로 <a class="external" href="https://www.w3.org/TR/html/webappapis.html#queue-a-task">Queue a task</a>를 실행합니다.:
 
   <ol>
-   <li><p>Display <var title="">notification</var> on the device (e.g. by
-   making the appropriate notification platform API call).
-
-   <li><p>If displaying fails (e.g. the notification platform returns an
-   error),
-   <a class="external" href="https://www.w3.org/TR/dom/#concept-event-fire" title="concept-event-fire">fire an event</a>
-   named <code title="">error</code> on <var title="">notification</var> and
-   terminate these steps.
-
-   <li><p>Append <var title="">notification</var> to the
-   <a href="#list-of-active-notifications">list of active notifications</a>.
-
-   <li><p><a class="external" href="https://www.w3.org/TR/dom/#concept-event-fire" title="concept-event-fire">Fire an event</a>
-   named <code title="">show</code> on <var title="">notification</var>.
+	 <li><p>디바이스 상에 <var title="">notification</var>을 표시합니다.
+		(예를 들면, 적절한 알림 플랫폼 API 호출을 따라 생성합니다)
+	 <li><p>
+	만약 표시를 실패하면, (예를 들어, 알림 플랫폼이 error를 리턴한 경우),
+	<var title="">notification</var>에서 <code title="">error</code> <a class="external" href="https://www.w3.org/TR/dom/#concept-event-fire" title="concept-event-fire">이벤트를 발생</a>시키고 이 스텝을 제거합니다.
+	 <li><p>
+   <a href="#list-of-active-notifications">액티브 알림 목록</a>에 <var title="">notification</var>을 넣습니다.
+   <li><p><var title="">notification</var>에서 <code title="">show</code> <a class="external" href="https://www.w3.org/TR/dom/#concept-event-fire" title="concept-event-fire">이벤트를 발생</a>시킵니다..
   </ol>
 </ol>
 
 
-<h3 id="replacing-a-notification"><span class="secno">4.10 </span>Replacing a notification</h3>
+<h3 id="replacing-a-notification"><span class="secno">4.10 </span>알림 변경</h3>
 
-<p>The <dfn id="replace-steps">replace steps</dfn> for replacing an <var title="">old</var>
-<a href="#concept-notification" title="concept-notification">notification</a> with a
-<var title="">new</var> one are:
+<p>
+<var title="">old</var> <a href="#concept-notification" title="concept-notification">알림</a>을
+<var title="">new</var> 알림으로 
+바꾸는 <dfn id="replace-steps">변경 스텝</dfn>은 아래와 같습니다:
 
 <ol>
  <li>
-  <p>If the notification platform supports icons,
-  <var title="">new</var>'s <a href="#icon-url">icon URL</a> is set and has not
-  yet been <a class="external" href="https://www.w3.org/TR/html/infrastructure.html#fetch" title="fetch">fetched</a>,
-  <a class="external" href="https://www.w3.org/TR/html/infrastructure.html#fetch">fetch</a> it and wait for the resource to
-  be fully downloaded.
+  <p>만약 알림 플랫폼이 아이콘을 지원하면,
+	<var title="">new</var> 알림의 <a href="#icon-url">icon URL</a>이 설정되어있으나,
+	아직 <a class="external" href="https://www.w3.org/TR/html/infrastructure.html#fetch" title="fetch">fetched</a>되지 않은 경우,
+  이를 <a class="external" href="https://www.w3.org/TR/html/infrastructure.html#fetch">fetch</a>받고, 리소스 전체를 다운로드 받습니다.
 
-  <p>Once <a class="external" href="https://www.w3.org/TR/html/infrastructure.html#fetch" title="fetch">fetching</a> has
-  finished and the image format is supported, set
-  <var title="">new</var>'s <a href="#icon-image">icon image</a> to the decoded resource.
+	<p>한 번 <a class="external" href="https://www.w3.org/TR/html/infrastructure.html#fetch" title="fetch">fetching</a>이 끝나고
+	이미지 포맷을 지원한다면
+  <var title="">new</var> 알림의 <a href="#icon-image">icon image</a>를 디코드한 리소스로 설정합니다.
 
- <li><p>If <var title="">old</var> is in the
- <a href="#list-of-pending-notifications">list of pending notifications</a>,
- <a class="external" href="https://www.w3.org/TR/html/webappapis.html#queue-a-task">queue a task</a> to replace
- <var title="">old</var> with <var title="">new</var>, in the same position, in
- the <a href="#list-of-pending-notifications">list of pending notifications</a>, and
- <a class="external" href="https://www.w3.org/TR/dom/#concept-event-fire" title="concept-event-fire">fire an event</a>
- named <code title="">close</code> on <var title="">old</var>.
-
+ <li><p>If <var title="">old</var> 알림은
+ <a href="#list-of-pending-notifications">펜딩 알림 목록</a>에 넣고,
+ <var title="">old</var> 알림과 함께 <var title="">new</var> 알림을 변환하는 작업을 <a class="external" href="https://www.w3.org/TR/html/webappapis.html#queue-a-task">queue a task</a>에 넣고, 같은 포지션상에서,
+<a href="#list-of-pending-notifications">펜딩 알림 목록</a> 안에서 <var title="">old</var> 알림에서는 <code title="">close</code> <a class="external" href="https://www.w3.org/TR/dom/#concept-event-fire" title="concept-event-fire">이벤트를 발생</a>시킵니다.
  <li>
-  <p>Otherwise,
-  <a class="external" href="https://www.w3.org/TR/html/webappapis.html#queue-a-task">queue a task</a> to replace
-  <var title="">old</var> with <var title="">new</var>, in the same position, in
-  the <a href="#list-of-active-notifications">list of active notifications</a>,
-  <a class="external" href="https://www.w3.org/TR/dom/#concept-event-fire" title="concept-event-fire">fire an event</a>
-  named <code title="">close</code> on <var title="">old</var>, and
-  <a class="external" href="https://www.w3.org/TR/dom/#concept-event-fire" title="concept-event-fire">fire an event</a>
-  named <code title="">show</code> on <var title="">new</var>.
+  <p>그 외 경우
+ <var title="">old</var> 알림과 함께 <var title="">new</var> 알림을 변환하는 작업을 <a class="external" href="https://www.w3.org/TR/html/webappapis.html#queue-a-task">queue a task</a>에 넣고, 같은 포지션상에서, <a href="#list-of-active-notifications">액티브 알림 목록</a> 안에서,
+	<var title="">old</var> 알림에서는 <code title="">close</code> <a class="external" href="https://www.w3.org/TR/dom/#concept-event-fire" title="concept-event-fire">이벤트를 발생</a>시키고, <var title="">new</var> 알림에서는 <code title="">show</code> <a class="external" href="https://www.w3.org/TR/dom/#concept-event-fire" title="concept-event-fire">이벤트를 발생</a>시킵니다. 
 
   <p>If the notification platform does not support replacement this
   requirement may be addressed by running the <a href="#close-steps">close steps</a> for
@@ -765,6 +737,3 @@ for being awesome.
 Special thanks to Anne van Kesteren for his continuing work on the
 WHATWG's <a href="http://notifications.spec.whatwg.org/">Notifications
 API Standard</a>.
-
-  
-
