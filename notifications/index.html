@@ -137,31 +137,31 @@ W3C는 그룹의 성과물에 관련하여 <a href="http://www.w3.org/2004/01/pp
 
 <!--begin-toc-->
 <ul class="toc">
- <li><a href="#introduction"><span class="secno">1 </span>Introduction</a></li>
- <li><a href="#conformance"><span class="secno">2 </span>Conformance</a>
+ <li><a href="#introduction"><span class="secno">1 </span>소개</a></li>
+ <li><a href="#conformance"><span class="secno">2 </span>적합 요구사항</a>
   <ul class="toc">
-   <li><a href="#security"><span class="secno">2.1 </span>Security</a></ul></li>
- <li><a href="#terminology"><span class="secno">3 </span>Terminology</a></li>
- <li><a href="#model"><span class="secno">4 </span>Model</a>
+   <li><a href="#security"><span class="secno">2.1 </span>보안</a></ul></li>
+ <li><a href="#terminology"><span class="secno">3 </span>용어</a></li>
+ <li><a href="#model"><span class="secno">4 </span>모델</a>
   <ul class="toc">
    <li><a href="#direction-0"><span class="secno">4.1 </span>Direction</a></li>
-   <li><a href="#language-0"><span class="secno">4.2 </span>Language</a></li>
-   <li><a href="#permission"><span class="secno">4.3 </span>Permission</a></li>
-   <li><a href="#notification-lists"><span class="secno">4.4 </span>Notification lists</a></li>
-   <li><a href="#showing-a-notification"><span class="secno">4.5 </span>Showing a notification</a></li>
-   <li><a href="#activating-a-notification"><span class="secno">4.6 </span>Activating a notification</a></li>
-   <li><a href="#closing-a-notification"><span class="secno">4.7 </span>Closing a notification</a></li>
-   <li><a href="#pending-notifications"><span class="secno">4.8 </span>Pending notifications</a></li>
-   <li><a href="#displaying-notifications"><span class="secno">4.9 </span>Displaying notifications</a></li>
-   <li><a href="#replacing-a-notification"><span class="secno">4.10 </span>Replacing a notification</a></ul></li>
+   <li><a href="#language-0"><span class="secno">4.2 </span>언어</a></li>
+   <li><a href="#permission"><span class="secno">4.3 </span>권한</a></li>
+   <li><a href="#notification-lists"><span class="secno">4.4 </span>알림 목록</a></li>
+   <li><a href="#showing-a-notification"><span class="secno">4.5 </span>알림 나타내기</a></li>
+   <li><a href="#activating-a-notification"><span class="secno">4.6 </span>알림 활성화</a></li>
+   <li><a href="#closing-a-notification"><span class="secno">4.7 </span>알림 닫기</a></li>
+   <li><a href="#pending-notifications"><span class="secno">4.8 </span>펜딩 알림</a></li>
+   <li><a href="#displaying-notifications"><span class="secno">4.9 </span>알림 보이기</a></li>
+   <li><a href="#replacing-a-notification"><span class="secno">4.10 </span>알림 변경</a></ul></li>
  <li><a href="#api"><span class="secno">5 </span>API</a></li>
- <li><a href="#examples"><span class="secno">6 </span>Examples</a>
+ <li><a href="#examples"><span class="secno">6 </span>예제</a>
   <ul class="toc">
-   <li><a href="#using-events"><span class="secno">6.1 </span>Using events</a></li>
-   <li><a href="#tags-example"><span class="secno">6.2 </span>Using the <code title="">tag</code> member for multiple instances</a></li>
-   <li><a href="#using-the-tag-member-for-a-single-instance"><span class="secno">6.3 </span>Using the <code title="">tag</code> member for a single instance</a></ul></li>
- <li><a class="no-num" href="#references">References</a></li>
- <li><a class="no-num" href="#acknowledgments">Acknowledgments</a></ul>
+   <li><a href="#using-events"><span class="secno">6.1 </span>이벤트 사용하기</a></li>
+   <li><a href="#tags-example"><span class="secno">6.2 </span>여러 인스턴스를 위한 <code title="">tag</code> 멤버 사용하기</a></li>
+   <li><a href="#using-the-tag-member-for-a-single-instance"><span class="secno">6.3 </span>단일 인스턴스를 위한 <code title="">tag</code> 멤버 사용하기</a></ul></li>
+ <li><a class="no-num" href="#references">참고 문서</a></li>
+ <li><a class="no-num" href="#acknowledgments">감사의 말</a></ul>
 <!--end-toc-->
 
 
@@ -311,7 +311,7 @@ P2와 P3가 "<code title="">auto</code>" 외의 값을 갖는 경우 상위 레�
 	<a href="#display-steps">display steps</a>을 작동하고 이 단계를 없앱니다.
 
  <li><p>
- 만약 디바이스에 현재 알림 갯수 제한이 있다면, 즉시 기본으로 지원하는 대기열 알람 플랫폼에 콜하거나
+ 만약 디바이스에 현재 알림 갯수 제한이 있다면, 즉시 기본으로 지원하는 대기열 알림 플랫폼에 콜하거나
 <a href="#list-of-pending-notifications">펜딩 알림 목록</a>에 <var title="">notification</var>을 넣습니다.
 </ol>
 
@@ -357,7 +357,7 @@ P2와 P3가 "<code title="">auto</code>" 외의 값을 갖는 경우 상위 레�
 <a href="#display-steps">디스플레이 스텝</a>을 실행해야 하고,
 그를 <a href="#list-of-pending-notifications">펜딩 알림 목록</a>에서 제거해야 합니다.
 
-<h3 id="displaying-notifications"><span class="secno">4.9 </span>알람 보이기</h3>
+<h3 id="displaying-notifications"><span class="secno">4.9 </span>알림 보이기</h3>
 
 <p>
 <var title="">notification</var>에서 제공하는 <dfn id="display-steps">디스플레이 스텝</dfn>은 다음과 같습니다:
@@ -416,22 +416,22 @@ P2와 P3가 "<code title="">auto</code>" 외의 값을 갖는 경우 상위 레�
  <var title="">old</var> 알림과 함께 <var title="">new</var> 알림을 변환하는 작업을 <a class="external" href="https://www.w3.org/TR/html/webappapis.html#queue-a-task">queue a task</a>에 넣고, 같은 포지션상에서, <a href="#list-of-active-notifications">액티브 알림 목록</a> 안에서,
 	<var title="">old</var> 알림에서는 <code title="">close</code> <a class="external" href="https://www.w3.org/TR/dom/#concept-event-fire" title="concept-event-fire">이벤트를 발생</a>시키고, <var title="">new</var> 알림에서는 <code title="">show</code> <a class="external" href="https://www.w3.org/TR/dom/#concept-event-fire" title="concept-event-fire">이벤트를 발생</a>시킵니다. 
 
-  <p>If the notification platform does not support replacement this
-  requirement may be addressed by running the <a href="#close-steps">close steps</a> for
-  <var title="">old</var> and then running the <a href="#display-steps">display steps</a> for
-  <var title="">new</var>.
+	<p>
+	만약 알림 플랫폼이 변경을 지원하지 않는다면,
+	이 요구사항은 <var title="">old</var> 알림에서 <a href="#close-steps">close steps</a>을 실행시킨 뒤,
+	<var title="">new</var> 알림에서 <a href="#display-steps">display steps</a>를 싱행시킵니다.
 
-  <p class="note">Notification platforms are strongly encouraged to support
-  native replacement. It is much nicer.
+	<p class="note">
+	알림 플랫폼은 기본 변경을 지원하기를 강하게 권장합니다. 이 동작이 훨씬 좋습니다.
 </ol>
 
 
 
 <h2 id="api"><span class="secno">5 </span>API</h2>
 
-<p>A <a href="#concept-notification" title="concept-notification">notification</a> is represented by
-a <code><a href="#notification">Notification</a></code> object and can be created by its
-<a href="#dom-notification" title="dom-Notification">constructor</a>.
+<p><a href="#concept-notification" title="concept-notification">알림</a>은 
+<code><a href="#notification">Notification</a></code> 객체로 표현하며
+그 <a href="#dom-notification" title="dom-Notification">constructor</a>로 제작 가능합니다.
 
 <pre class="idl">[<a href="#dom-notification" title="dom-Notification">Constructor</a>(DOMString <var title="">title</var>, optional <a href="#notificationoptions">NotificationOptions</a> <var title="">options</var>)]
 interface <dfn id="notification">Notification</dfn> : <a class="external" href="https://www.w3.org/TR/dom/#eventtarget">EventTarget</a> {
@@ -475,89 +475,81 @@ enum <dfn id="notificationdirection">NotificationDirection</dfn> {
   "rtl"
 };</pre>
 
-<p>The
+<p>
 <dfn id="dom-notification" title="dom-Notification"><code>Notification(<var title="">title</var>, <var title="">options</var>)</code></dfn>
-constructor must run these steps:
+constructor는 아래 스텝대로 동작해야만 합니다.
 
 <ol>
- <li><p>Let <var title="">notification</var> be a new
- <a href="#concept-notification" title="concept-notification">notification</a> represented by a
- <code><a href="#notification">Notification</a></code> object.
+ <li><p>
+ <code><a href="#notification">Notification</a></code> 객체에 의해 보여질 
+ 새 <a href="#concept-notification" title="concept-notification">알림</a>을 <var title="">notification</var>에 지정합니다.
 
- <li><p>Set <var title="">notification</var>'s <a href="#title">title</a> to
- <var title="">title</var>.
+ <li><p><var title="">notification</var>의 <a href="#title">title</a>을 <var title="">title</var>로 지정합니다.
 
- <li><p>Set <var title="">notification</var>'s <a href="#direction">direction</a> to
- <var title="">options</var>'s <code title="">dir</code>.
+ <li><p><var title="">notification</var>의 <a href="#direction">direction</a>을
+ <var title="">options</var>의 <code title="">dir</code>로 지정합니다.
 
- <li><p>If <var title="">options</var>'s <code title="">lang</code> is a valid
- BCP 47 language tag, or the empty string, set
- <var title="">notification</var>'s <a href="#language">language</a> to
- <var title="">options</var>'s <code title="">lang</code>. Otherwise, set it
- to the empty string. <a href="#refsLANG">[LANG]</a>
+ <li><p><var title="">options</var>의 <code title="">lang</code>이 올바른 BCP 47 언어 태그거나 빈 문자열이라면,
+ <var title="">notification</var>의 <a href="#language">language</a>를
+ <var title="">options</var>의 <code title="">lang</code>으로 지정합니다. 
+ 그 외의 경우는 빈 문자열로 지정합니다. <a href="#refsLANG">[LANG]</a>
 
- <li><p>Set <var title="">notifications</var>'s <a href="#origin">origin</a> to the
- current <a class="external" href="https://www.w3.org/TR/html/browsers.html#origin">origin</a>.
+ <li><p><var title="">notifications</var>의 <a href="#origin">origin</a>을 현재
+ <a class="external" href="https://www.w3.org/TR/html/browsers.html#origin">origin</a>으로 지정합니다.
 
- <li><p>If <var title="">options</var>'s <code title="">body</code> is present,
- set <var title="">notification</var>'s <a href="#body">body</a> to
- <code title="">body</code>.
+ <li><p><var title="">options</var>의 <code title="">body</code>가 현재 있는 경우,
+ <var title="">notification</var>의 <a href="#body">body</a>를 <code title="">body</code>로 지정합니다.
 
- <li><p>If <var title="">options</var>'s <code title="">tag</code> is present, set
- <var title="">notification</var>'s <a href="#tag">tag</a> to <code title="">tag</code>.
+ <li><p><var title="">options</var>의 <code title="">tag</code>가 현재 있는 경우,
+ <var title="">notification</var>의 <a href="#tag">tag</a>를 <code title="">tag</code>로 지정합니다.
 
- <li><p>If <var title="">options</var>'s <code title="">icon</code> is present,
- <a class="external" href="https://www.w3.org/TR/url/#concept-url-parser" title="concept-url-parser">parse</a>
- <code title="">icon</code> using the <a class="external" href="https://www.w3.org/TR/html/webappapis.html#api-base-url">API base URL</a>
- specified by the <a class="external" href="https://www.w3.org/TR/html/webappapis.html#entry-settings-object">entry settings object</a>, and if that
- does not return failure, set <var title="">notification</var>'s <a href="#icon-url">icon URL</a> to the
- return value.
+ <li><p><var title="">options</var>의 <code title="">icon</code>이 현재 있는 경우
+ <a class="external" href="https://www.w3.org/TR/html/webappapis.html#entry-settings-object">entry settings object</a>에서 정의하는
+ <a class="external" href="https://www.w3.org/TR/html/webappapis.html#api-base-url">API base URL</a>를 사용하는 
+ <code title="">icon</code>을 <a class="external" href="https://www.w3.org/TR/url/#concept-url-parser" title="concept-url-parser">parse</a>하고,
+ 만약 장애를 반환하지 않으면,
+ <var title="">notification</var>의 <a href="#icon-url">icon URL</a>을 반환 값으로 지정합니다.
 
- <li><p>Return <var title="">notification</var>, but continue running these
- steps asynchronously.
+ <li><p><var title="">notification</var>을 반환하고, 아래 스텝을 비동기식으로 계속해서 실행합니다.
 
- <li><p>If <a href="#icon-url">icon URL</a> is set and the notification platform
- supports icons, the user agent may start <a class="external" href="https://www.w3.org/TR/html/infrastructure.html#fetch" title="fetch">fetching</a>
- the <var title="">notification</var>'s <a href="#icon-url">icon URL</a> at this
- point.
+ <li><p>만약 <a href="#icon-url">icon URL</a>이 지정되어있고 알림 플랫폼이 아이콘을 지원한다면,
+	유저 에이전트는 이 시점에 <var title="">notification</var>의 <a href="#icon-url">icon URL</a> <a class="external" href="https://www.w3.org/TR/html/infrastructure.html#fetch" title="fetch">fetching</a>을 시작할 수도 있습니다.
 
- <li><p>Run the <a href="#show-steps">show steps</a> for <var title="">notification</var>.
+ <li><p><var title="">notification</var>의 <a href="#show-steps">표시 스텝</a>을 실행합니다.
 </ol>
 
-<p>The static
+<p>정적
 <dfn id="dom-notification-permission" title="dom-Notification-permission"><code>permission</code></dfn>
-attribute must return <a href="#permission-0">permission</a>.
+속성은 반드시 <a href="#permission-0">permission</a>을 반환해야 합니다.
 
-<p>The static
+<p>정적
 <dfn id="dom-notification-requestpermission" title="dom-Notification-requestPermission"><code>requestPermission(<var title="">callback</var>)</code></dfn>
-method must run these steps:
+메서드는 반드시 아래 스텝대로 동작해야합니다.
 
 <ol>
- <li><p>Return, but continue running these steps asynchronously.
+ <li><p>반환하되, 아래 스텝을 비동기식으로 실행합니다.
 
- <li><p>Let <var title="">permission</var> be <a href="#permission-0">permission</a>.
+ <li><p><var title="">permission</var>을 <a href="#permission-0">permission</a>으로 지정합니다.
 
- <li><p>If <var title="">permission</var> is "<code title="">default</code>",
- ask the user whether showing notifications for the current
- <a class="external" href="https://www.w3.org/TR/html/browsers.html#origin">origin</a> is acceptable. If it is, set
- <var title="">permission</var> to "<code title="">granted</code>", or
- "<code title="">denied</code>" otherwise.
+ <li><p><var title="">permission</var>이 "<code title="">default</code>"라면,
+ 현재 <a class="external" href="https://www.w3.org/TR/html/browsers.html#origin">origin</a>에서 알림을 보여주는 걸 허용할지 유저에게 확인합니다.
+ 이 경우 <var title="">permission</var>은 "<code title="">granted</code>"로 지정되거나, 그 외의 경우 "<code title="">denied</code>"로 지정됩니다.
 
- <li><p><a class="external" href="https://www.w3.org/TR/html/webappapis.html#queue-a-task">Queue a task</a> to set
- <a href="#permission-0">permission</a> to <var title="">permission</var> and invoke
- <var title="">callback</var> with <var title="">permission</var> as single
- argument if <var title="">callback</var> is given.
+ <li><p> 
+ <a href="#permission-0">permission</a>을 <var title="">permission</var>으로 설정하는
+ <a class="external" href="https://www.w3.org/TR/html/webappapis.html#queue-a-task">태스크 대기행렬</a>에 두고,
+ <var title="">callback</var>이 주어진 경우 단일 인수로 <var title="">permission</var>을 가진 <var title="">callback</var>을 호출합니다.
 </ol>
 
-<p class="warning">In designing the platform notifications are the one
-instance thus far where asking the user upfront makes sense. Specifications
-for other APIs should not use this pattern and instead employ one of the
-<a href="http://robert.ocallahan.org/2011/06/permissions-for-web-applications_30.html">many more suitable alternatives</a>.
+<p class="warning">
+플랫폼 알림 설계 상 하나의 인스턴스를 유저에게 허용할지 물어봅니다.
+다른 API 스펙에서는 이러한 패턴을 사용하지 않아야하며, 그 대신에 
+<a href="http://robert.ocallahan.org/2011/06/permissions-for-web-applications_30.html">다른 적합 대안책</a> 중 하나를 채택하는 게 좋습니다.
 
-<p>The following are the <a class="external" href="https://www.w3.org/TR/html/webappapis.html#event-handlers">event handlers</a>
-(and their corresponding
-<a class="external" href="https://www.w3.org/TR/html/webappapis.html#event-handler-event-type" title="event handler event type">event handler event types</a>)
-that must be supported as attributes by the <code><a href="#notification">Notification</a></code> object.
+<p>
+
+아래 내용은 <code><a href="#notification">Notification</a></code> 객체에서 반드시 지원해야하는 속성을 가진 <a class="external" href="https://www.w3.org/TR/html/webappapis.html#event-handlers">event handlers</a>에 관한 내용입니다.
+(그리고 이는 <a class="external" href="https://www.w3.org/TR/html/webappapis.html#event-handler-event-type" title="event handler event type">event handler event types</a>와 상응합니다)
 
 <table>
  <thead>
@@ -579,113 +571,105 @@ that must be supported as attributes by the <code><a href="#notification">Notifi
    <td><code title="event-close">close</code>
 </table>
 
-<p>The <dfn id="dom-notification-close" title="dom-Notification-close"><code>close()</code></dfn> method
-must run the <a href="#close-steps">close steps</a> for the
-<a href="#concept-notification" title="concept-notification">notification</a>.
+<p><dfn id="dom-notification-close" title="dom-Notification-close"><code>close()</code></dfn> 메서드는 
+<a href="#concept-notification" title="concept-notification">알림</a>의 <a href="#close-steps">close steps</a>을 실행해야합니다.
 
-<p>The <dfn id="dom-notification-title" title="dom-Notification-title"><code>title</code></dfn> attribute must return the
-<a href="#concept-notification" title="concept-notification">notification</a>'s <a href="#title">title</a>.
+<p><dfn id="dom-notification-title" title="dom-Notification-title"><code>title</code></dfn> 속성은 반드시 
+<a href="#concept-notification" title="concept-notification">알림</a>의 <a href="#title">title</a>을 반환해야합니다.
 
-<p>The <dfn id="dom-notification-dir" title="dom-Notification-dir"><code>dir</code></dfn> attribute must return the
-<a href="#concept-notification" title="concept-notification">notification</a>'s <a href="#direction">direction</a>.
+<p><dfn id="dom-notification-dir" title="dom-Notification-dir"><code>dir</code></dfn> 속성은 반드시
+<a href="#concept-notification" title="concept-notification">알림</a>의 <a href="#direction">direction</a>을 반환해야합니다.
 
-<p>The <dfn id="dom-notification-lang" title="dom-Notification-lang"><code>lang</code></dfn> attribute must return the
-<a href="#concept-notification" title="concept-notification">notification</a>'s <a href="#language">language</a>.
+<p><dfn id="dom-notification-lang" title="dom-Notification-lang"><code>lang</code></dfn> 속성은 반드시
+<a href="#concept-notification" title="concept-notification">알림</a>의 <a href="#language">language</a>를 반환해야합니다.
 
-<p>The <dfn id="dom-notification-body" title="dom-Notification-body"><code>body</code></dfn> attribute must return the
-<a href="#concept-notification" title="concept-notification">notification</a>'s <a href="#body">body</a> and the empty
-string otherwise.
+<p><dfn id="dom-notification-body" title="dom-Notification-body"><code>body</code></dfn> 속성은 반드시
+<a href="#concept-notification" title="concept-notification">알림</a>의 <a href="#body">body</a>를 반환하고 그 외의 경우 빈 문자열을 반환해야합니다.
 
-<p>The <dfn id="dom-notification-tag" title="dom-Notification-tag"><code>tag</code></dfn> attribute must return the
-<a href="#concept-notification" title="concept-notification">notification</a>'s <a href="#tag">tag</a> or the empty
-string if it has no tag.
+<p><dfn id="dom-notification-tag" title="dom-Notification-tag"><code>tag</code></dfn> 속성은 반드시
+<a href="#concept-notification" title="concept-notification">알림</a>의 <a href="#tag">tag</a>를 반환하거나 태그를 가지지 않은 경우 빈 문자열을 반환해야합니다.
 
-<p>The <dfn id="dom-notification-icon" title="dom-Notification-icon"><code>icon</code></dfn> attribute must return the
-<a href="#concept-notification" title="concept-notification">notification</a>'s <a href="#icon-url">icon URL</a>,
-<a class="external" href="https://www.w3.org/TR/url/#concept-url-serializer" title="concept-url-serializer">serialized</a>, and the
-empty string otherwise.
+<p><dfn id="dom-notification-icon" title="dom-Notification-icon"><code>icon</code></dfn> 속성은 반드시
+<a href="#concept-notification" title="concept-notification">알림</a>의 <a href="#icon-url">icon URL</a>,
+<a class="external" href="https://www.w3.org/TR/url/#concept-url-serializer" title="concept-url-serializer">serialized</a>, 그 외의 경우 빈 문자열을 반환해야합니다.
 
 
+<h2 id="examples"><span class="secno">6 </span>예제</h2>
 
-<h2 id="examples"><span class="secno">6 </span>Examples</h2>
+<h3 id="using-events"><span class="secno">6.1 </span>이벤트 사용하기</h3>
 
-<h3 id="using-events"><span class="secno">6.1 </span>Using events</h3>
+<p><code><a href="#notification">Notification</a></code> 객체는 라이프 사이클동안 
+개발자들에게 원하는 동작을 생성할 때 사용할 수 있는 이벤트를 감지할 수 있습니다.
 
-<p><code><a href="#notification">Notification</a></code> objects dispatch events during their lifecycle,
-which developers can use to generate desired behaviors.
+<p><code title="event-show">show</code> 이벤트는 
+<a href="#concept-notification" title="concept-notification">알림</a>이 유저에게 보였을 때 감지됩니다.
+&mdash; 
+이는 알림이 제한된 일부 디스플레이 공간과 큐같은 경우 알림 생성 이후 약간 시간이 지난 후 시점일 수 있습니다.
 
-<p>The <code title="event-show">show</code> event dispatches when the
-<a href="#concept-notification" title="concept-notification">notification</a> is shown to the user
-&mdash; this may be at some time after the notification is created in the
-case of limited display space and a queue.
-
-<p>In the following example, this event is used to guarantee that regardless
-of when the notification is shown, it is displayed for only 15 seconds.
+<p>아래 예제에서 이벤트는 알림이 보여질 지에 상관없이, 알림이 15초간 보여질 것을 보장하기 위해 사용합니다.
 
 <pre class="example">var notification = new Notification("New Email Received", { icon: "mail.png" })
 notification.onshow = function() { setTimeout(notification.close, 15000) }</pre>
 
-<p>The <code title="event-close">close</code> event dispatches when the
-notification is dismissed by the user. Developers may use this event to
-perform actions when notifications are acknowledged.
+<p>유저에 의해 사라지는 경우 알림은 <code title="event-close">close</code> 이벤트를 감지합니다.
+개발자들은 알림이 승인될 때 이 이벤트를 성능 액션을 위해 사용할 수 있습니다.
 
-<p>In the following example, when a meeting reminder notification is
-acknowledged, the application suppresses other forms of reminders.
+<p>아래 예제에서, 미팅 리마인더 알림이 승인되었을 때,
+어플리케이션은 리마인더의 다른 폼을 숨길것입니다.
 
 <pre class="example">var notification = new Notification("Meeting about to begin", { icon: "calendar.gif", body: "Room 101" })
 notification.onclose = function(event) { cancelReminders(event) }</pre>
 
 
-<h3 id="tags-example"><span class="secno">6.2 </span>Using the <code title="">tag</code> member for multiple instances</h3>
+<h3 id="tags-example"><span class="secno">6.2 </span>여러 인스턴스를 위한 <code title="">tag</code> 멤버 사용하기</h3>
+<p>유저가 여러 브라우저 탭에서 메일 어플리케이션을 실행할 때와 같이,
+웹 어플리케이션은 흔히 여러개의 인스턴스를 동시에 작동합니다.
+<p>데스크탑에서 리소스를 공유할 때부터,
+알림 API는 이런 인스턴스들을 <code title="">tag</code> 멤버를 사용해 쉽게 결합하는 방법을 제공합니다.
 
-<p>Web applications frequently operate concurrently in multiple instances, such as when a
-	user opens a mail application in multiple browser tabs.  Since the desktop is a shared
-	resource, the notifications API provides a way for these instances to easily coordinate, by
-	using the <code title="">tag</code> member.
-
-<p>Notifications which represent the same conceptual event can be tagged in the same way,
-	and when both are shown, the user will only receive one notification.
-      </p>
+<p>
+동일한 개념을 나타내는 알림 이벤트는 동일한 방식으로 태그할 수 있으며,
+양쪽 다 나타낼 때, 유저는 하나의 알림만 받을 것입니다.
+</p>
 
 <pre class="example" title="">Instance 1                                   | Instance 2
                                              |
-// Instance notices there is new mail.       |
+// 인스턴스에서 새로운 메일을 나타냅니다.    |
 new Notification("New mail from John Doe",   |
                  { tag: 'message1' });       |
                                              |
-                                             |  // Slightly later, this instance notices
-                                             |  // there is new mail.
+                                             |  // 약간 지나, 이 인스턴스는 새로운 메일이
+                                             |  // 있음을 알릴 것입니다.
                                              |  new Notification("New mail from John Doe",
                                              |                   { tag: 'message1' });</pre>
 
 <p>
-	The result of this situation, if the user agent follows the algorithms here, is a <strong>single</strong> notification "New mail from John Doe".
+이 상태의 결과로, 유저 에이전트가 이 알고리즘을 따른다면, <strong>하나의</strong> 알림 "New mail from John Doe"이 노출될 것입니다.
 
-<h3 id="using-the-tag-member-for-a-single-instance"><span class="secno">6.3 </span>Using the <code title="">tag</code> member for a single instance</h3>
+<h3 id="using-the-tag-member-for-a-single-instance"><span class="secno">6.3 </span>단일 인스턴스를 위한 <code title="">tag</code> 멤버 사용하기</h3>
 
-<p>The <code title="">tag</code> member can also be used by a single instance of an application to keep its
-	notifications as current as possible as state changes.
+<p><code title="">tag</code> 멤버는 어플리케이션의 단일 인스턴스에서도 상태 변화에 알림을 가능한한 현재상태를 유지하기 위해 사용할 수 있습니다.
 
-<p>For example, if Alice is using a chat application with Bob, and Bob sends multiple
-	messages while Alice is idle, the application may prefer that Alice not see a
-	desktop notification for each message.
+<p>
+예를 들어, 철수가 영희와 함께 채팅 어플리케이션을 사용하고 있을 때,
+철수가 영희에게 여러개의 메시지를 전송한 경우,
+어플리케이션에서 영희에게 각 메시지별 데스크탑 알림을 노출하고 싶어하지 않을 것입니다.
 
-<pre class="example">// Bob says "Hi"
-new Notification("Bob: Hi", { tag: 'chat_Bob' });
+<pre class="example">// 철수가 "안녕"이라고 말합니다.
+new Notification("철수: 안녕", { tag: 'chat_Cheolsu' });
 
-// Bob says "Are you free this afternoon?"
-new Notification("Bob: Hi / Are you free this afternoon?", { tag: 'chat_Bob' });</pre>
+// 철수가 "영희야 오늘밤 여유롭니?"라고 말합니다.
+new Notification("철수: 안녕 / 오늘 밤 여유롭니?", { tag: 'chat_Cheolsu' });</pre>
 
-<p>The result of this situation is a <em>single</em> notification; the second one
-	replaces the first having the same tag.  In a platform that queues notifications
-	(first-in-first-out), using the tag allows the notification to also maintain its
-	position in the queue.  Platforms where the newest notifications are shown first,
-	a similar result could be achieved using the
-	<code title="dom-Notification-close"><a href="#dom-notification-close">close()</a></code> method.
+<p>
+	이 상황의 결과는 <em>단일</em> 알림을 노출할 것입니다.
+  두번째 알림은 첫번째 알림이 같은 태그를 가지고 있기 때문에 변경될것입니다.
+  알림 큐(first-in-first-out) 플랫폼에서, 태그는 알림이 대기행렬 안 포지션을 유지하는 것도 허용합니다.	
+	새로운 알림이 첫번째로 보여질 때 플랫폼은, 
+	<code title="dom-Notification-close"><a href="#dom-notification-close">close()</a></code> 메서드를 
+	사용하여 아카이브 하는 것과 비슷한 결과를 보여줍니다.
 
-
-
-<h2 class="no-num" id="references">References</h2>
+<h2 class="no-num" id="references">참고문서</h2>
 
 <div id="anolis-references"><dl><dt id="refsBIDI">[BIDI]
 <dd><cite><a href="http://www.unicode.org/reports/tr9/">Unicode Bidirectional Algorithm</a></cite>, Mark Davis. Unicode Consortium.
@@ -712,7 +696,7 @@ new Notification("Bob: Hi / Are you free this afternoon?", { tag: 'chat_Bob' });
 
 
 
-<h2 class="no-num" id="acknowledgments">Acknowledgments</h2>
+<h2 class="no-num" id="acknowledgments">감사의 말</h2>
 
 <p>Thanks to
 Aharon (Vladimir) Lanin,
