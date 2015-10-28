@@ -1,49 +1,13 @@
 @charset "UTF-8";
-@import url(https://fonts.googleapis.com/css?family=Lato:400,300);
 
 body {
-  font-size: 18px;
-  line-height: 2em;
-  font-family: 'Lato', 'APPLE SD Gothic neo', 'nanum gothic', sans-serif; 
-  text-align:center;
-  color:#333;
+	font-size:1em;
+	line-height:180%;
+	font-family: 'Slabo 27px', serif;
 }
-h2 {
-	border-bottom:1px solid #efefef;
-  margin:0.5em 0;
-	padding-bottom:0.5em;
-	font-size:2em;
-	font-weight:300
+li span {
+	font-size:0.8em;
 }
-ul, li {
-  margin:0;
-  padding:0;
-  list-style:none;
-}
-li a {
-  display:block;
-  position:relative;
-  color:#555;
-	padding:7px 0;
-  text-decoration:none;
-  text-align:center;
-	font-weight:200
-}
-li a:hover {
-	color: rgb(199, 39, 200);
-}
-
-@media (min-width:1024px) {
-  body {
-    width:900px;
-    margin:40px auto 0;
-    text-align:left
-  }
-  li a {
-    text-align:left;
-  }
-  li a::before {
-    left:20px;
-    right:100%;
-  }
+li span::before {
+	content:"Translated ";
 }
