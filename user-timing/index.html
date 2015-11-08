@@ -133,23 +133,23 @@
     <h2 class="no-num no-toc" id="table-of-contents">목차</h2>
     <ol class="toc">
       <li><a href="#introduction"><span class="secno">1
-      </span>Introduction</a></li>
+      </span>소개</a></li>
       <li><a href="#conformance-requirements"><span class="secno">2
-        </span>Conformance requirements</a></li>
-      <li><a href="#terminology"><span class="secno">3 </span>Terminology</a></li>
-      <li><a href="#user-timing-0"><span class="secno">4 </span>User Timing</a>
+        </span>적합 요구사항</a></li>
+      <li><a href="#terminology"><span class="secno">3 </span>용어</a></li>
+      <li><a href="#user-timing-0"><span class="secno">4 </span>유저 타이밍</a>
         <ol class="toc">
-          <li><a href="#introduction-1"><span class="secno">4.1</span> Introduction</a></li>
-          <li><a href="#extensions-performance-interface"><span class="secno">4.2</span> Extensions to the <code>Performance</code> Interface</a></li>
-          <li><a href="#performancemark"><span class="secno">4.3</span> The <code>PerformanceMark</code> Interface</a></li>
-          <li><a href="#performancemeasure"><span class="secno">4.4</span> The <code>PerformanceMeasure</code> Interface</a></li>
-          <li><a href="#vendor-prefixes"><span class="secno">4.5</span> Vendor Prefixes</a></li>
+          <li><a href="#introduction-1"><span class="secno">4.1</span> 소개</a></li>
+          <li><a href="#extensions-performance-interface"><span class="secno">4.2</span> <code>Performance</code> 인터페이스 확장</a></li>
+          <li><a href="#performancemark"><span class="secno">4.3</span> <code>PerformanceMark</code> 인터페이스</a></li>
+          <li><a href="#performancemeasure"><span class="secno">4.4</span> <code>PerformanceMeasure</code> 인터페이스</a></li>
+          <li><a href="#vendor-prefixes"><span class="secno">4.5</span> 벤더 접두사</a></li>
         </ol>
       </li>
-      <li><a href="#monotonic-clock"><span class="secno">5 </span>Monotonic Clock</a></li>
-	  <li><a href="#privacy-security"><span class="secno">6 </span>Privacy and Security</a></li>
-      <li><a class="no-num" href="#acknowledgements">Acknowledgements</a></li>
-      <li><a class="no-num" href="#references">References</a></li>
+      <li><a href="#monotonic-clock"><span class="secno">5 </span>단순증가 시간</a></li>
+	  <li><a href="#privacy-security"><span class="secno">6 </span>프라이버시 및 보안</a></li>
+      <li><a class="no-num" href="#acknowledgements">감사의 말</a></li>
+      <li><a class="no-num" href="#references">참고 문서</a></li>
     </ol>
 
     <h2 id="introduction"><span class="secno">1 </span>소개</h2>
@@ -342,79 +342,78 @@
 			이 메서드는 두 마크 사이의 <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a>에 이름을 부여하여 기록합니다. ("measure")</p>
     <p>이 메서드의 동작은 인수에 의존하여 정의되어있습니다.</p>
     <ul>
-        <li>If neither the <em>startMark</em> nor the <em>endMark </em>argument is specified,
-            <code>measure()</code> will store the duration as a <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a> from 
-            <a href="http://www.w3.org/TR/navigation-timing/#dom-performancetiming-navigationstart">navigationStart</a>
-            to the current time.</li>
-        <li>If the <em>startMark</em> argument is specified, but the <em>endMark </em>argument is not specified,
-            <code>measure()</code> will store the duration as a <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a>
-             from the most recent occurrence of the start mark to the current time.</li>
-        <li>If both the <em>startMark</em> and <em>endMark </em>arguments are specified, <code>measure()</code> will store the duration as a <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a>
-             from the most recent occurrence of the start mark to the most recent occurrence of the end mark.</li>
+				<li><em>startMark</em> 인수와 <em>endMark</em> 인수가 지정되어있지 않은 경우 <code>measure()</code>는 <a href="http://www.w3.org/TR/navigation-timing/#dom-performancetiming-navigationstart">navigationStart</a>에서 현재 시간까지의  <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a>를 기록합니다.</li>
+				<li><em>startMark</em> 인수는 정의되어있으나 <em>endMark</em> 인수는 정의되어있지 않은 경우,
+						<code>measure()</code>는 가장 가까운 시작 마크에서 현재 시간까지의 <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a>를 기록합니다.</li>
+				<li><em>startMark</em> 인수와 <em>endMark</em>인수가 둘 다 정의되어있다면 <code>measure()</code>는 가장 가까운 시작 마크에서 가장 가까운 종료 마크까지의 <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a>를 기록합니다.</li>
     </ul>
-    <p>The <em>startMark</em> and <em>endMark</em> arguments may be the name of one of the attributes in the
-       <code><a href="http://www.w3.org/TR/navigation-timing/#performancetiming">PerformanceTiming</a></code> interface <a href="#NavigationTiming">[Navigation Timing]</a>. 
-       In this case, the value of that attribute is used as the <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a> time value.</p>
+    <p><em>startMark</em> 인수와 <em>endMark</em> 인수는 <code><a href="http://www.w3.org/TR/navigation-timing/#performancetiming">PerformanceTiming</a></code> 인터페이스의 속성명 중 하나와 같은 이름일 수 있습니다. <a href="#NavigationTiming">[Navigation Timing]</a>. 
+       이 경우, 그 속성값은  <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a> 시간 값을 사용합니다.</p>
     <div class="parameters">
-        <p><b>Parameters</b></p>
-        <p>in <code>name</code> type of <a href="http://www.w3.org/TR/WebIDL/#idl-DOMString"><code>DOMString</code></a></p>
+        <p><b>인수</b></p>
+        <p><a href="http://www.w3.org/TR/WebIDL/#idl-DOMString"><code>DOMString</code></a> 타입 <code>name</code></p>
         <div class="parameterDefinition">
-            <p>The name associated with the measure.</p>
-            <p>Measure names may be re-used within the same document.
-            Each call to the <code>measure()</code> method stores a new duration
-            under the specified measure name.</p>
-            <p>Measure names live independently from mark names.</p>
+            <p>이 measure에 붙여진 이름</p>
+            <p>Measure 이름은 같은 문서에서 재사용될 수 있습니다.
+            각 <code>measure()</code> 메서드 호출은 정의한 measure 이름 하에 새로운 소요 시간을 기록합니다.</p>
+            <p>Measure 이름은 mark 이름과 별도입니다.</p>
         </div>
 
-        <p>in <code>startMark</code> type of <a href="http://www.w3.org/TR/WebIDL/#idl-DOMString"><code>DOMString</code></a></p>
+        <p><a href="http://www.w3.org/TR/WebIDL/#idl-DOMString"><code>DOMString</code></a> 타입 <code>startMark</code></p>
         <div class="parameterDefinition">
-            <p>[optional] The name of the start mark.</p>
-            <p>If specified, the most recent <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a> time value of the start mark is used.</p>
-            <p>If not specified, <a href="http://www.w3.org/TR/navigation-timing/#dom-performancetiming-navigationstart">navigationStart</a> is used.</p>
-            <p>May be the name of one of the attributes in the
-               <code><a href="http://www.w3.org/TR/navigation-timing/#performancetiming">PerformanceTiming</a></code> interface <a href="#NavigationTiming">[Navigation Timing]</a>.
-               In this case, the value of that attribute is used as the start <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a> time value.</p>
+            <p>[옵션] start mark의 이름.</p>
+            <p>정의되어 있다면, 가장 최근에 쓰여진 start mark <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a> 시간 값을 사용합니다.</p>
+            <p>정의되어 있지 않다면, <a href="http://www.w3.org/TR/navigation-timing/#dom-performancetiming-navigationstart">navigationStart</a>를 사용합니다.</p>
+            <p>
+							 <code><a href="http://www.w3.org/TR/navigation-timing/#performancetiming">PerformanceTiming</a></code> 인터페이스 속성 중 하나로 이름이 정의되어있는 경우,
+               그 속성 값은 시작 <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a> 시간 값으로 사용됩니다.
+               <a href="#NavigationTiming">[Navigation Timing]</a>.
+						</p>
         </div>
 
-        <p>in <code>endMark</code> type of <a href="http://www.w3.org/TR/WebIDL/#idl-DOMString"><code>DOMString</code></a></p>
+				<p><a href="http://www.w3.org/TR/WebIDL/#idl-DOMString"><code>DOMString</code></a> 타입 <code>endMark</code></p>
         <div class="parameterDefinition">
-            <p>[optional] The name of the end mark.</p>
-            <p>If specified, the most recent <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a> time value of the end mark is used.</p>
-            <p>If not specified, the current time as a <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a> is used.</p>
-            <p>May be the name of one of the attributes in the
-               <code><a href="http://www.w3.org/TR/navigation-timing/#performancetiming">PerformanceTiming</a></code> interface <a href="#NavigationTiming">[Navigation Timing]</a>.
-               In this case, the value of that attribute is used as the end <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a> time value.</p>
+            <p>[옵션] end mark의 이름</p>
+						<p>정의되어 있다면, 가장 최근에 쓰여진 end mark <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a> 시간 값을 사용합니다.</p>
+            <p>정의되어있지 않다면, <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a>을 현재 시간으로써 사용합니다.</p>
+            <p>
+							 <code><a href="http://www.w3.org/TR/navigation-timing/#performancetiming">PerformanceTiming</a></code> 인터페이스 속성 중 하나로 이름이 정의되어있는 경우,
+               그 속성 값은 시작 <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a> 시간 값으로 사용됩니다.
+               <a href="#NavigationTiming">[Navigation Timing]</a>.
+						</p>
         </div>
 
-        <p><b>No Return Value</b></p>
+        <p><b>리턴값 없음</b></p>
 
-        <p><b>Exceptions</b></p>
-        <p>Throws a <code>SYNTAX_ERR</code> exception if the start mark or end mark does not exist.</p>
-		<p>Throws an <code>INVALID_ACCESS_ERR</code> exception if either <code>startMark</code> or <code>endMark</code> argument, or both, have the same name as a
-		   <code><a href="http://www.w3.org/TR/navigation-timing/#performancetiming">PerformanceTiming</a></code> attribute with a time value of 0.</p>
+        <p><b>예외</b></p>
+				<p>만약 start mark와 end mark가 존재하지 않는다면 <code>SYNTAX_ERR</code> 예외를 던집니다.</p>
+				<p>만약 <code>startMark</code>와 <code>endMark</code> 인수 중 하나, 혹은 모두가 
+				 <code><a href="http://www.w3.org/TR/navigation-timing/#performancetiming">PerformanceTiming</a></code> 속성과 같은 이름을 가지고 시간 값이 0인 경우
+				 <code>INVALID_ACCESS_ERR</code> 예외를 던집니다.
+				</p>
     </div>
   </div>
 
   <div class="methods">
-    <h4 id="dom-performance-clearmeasures"><code>clearMeasures</code> method</h4>
-    <p>If the <em>measureName</em> argument is not specified, this method removes all measures and their associated <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a> durations.</p>
-    <p>If the <em>measureName</em> argument is specified, this method removes all <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a> durations for the given measure name.</p>
-    <p>If the <em>measureName</em> argument is specified but the specified <em>measureName</em> does not exist, this method will do nothing.</p>
+    <h4 id="dom-performance-clearmeasures"><code>clearMeasures</code> 메서드</h4>
+    <p>만약 <em>measureName</em> 인수가 정의되어있지 않다면, 이 메서드는 측정과 그게 적용되어있는 <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a> 기간을 삭제합니다.</p>
+		<p>만약 <em>measureName</em> 인수가 정의되어있다면, 이 메서드는 주어진 <em>measureName</em>을 가진 모든 <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a> 기간을 삭제합니다.</p>
+    <p>만약 <em>measureName</em> 인수가 정의되어있지만, 정의되어있는 <em>measureName</em>이 존재하지 않는 경우, 이 메서드는 아무 행동도 하지 않습니다.</p>
     <div class="parameters">
-        <p><b>Parameters</b></p>
-        <p>in <code>measureName</code> type of <a href="http://www.w3.org/TR/WebIDL/#idl-DOMString"><code>DOMString</code></a></p>
+        <p><b>인수</b></p>
+        <p><a href="http://www.w3.org/TR/WebIDL/#idl-DOMString"><code>DOMString</code></a> 타입 <code>measureName</code></p>
         <div class="parameterDefinition">
-            <p>[optional] The name of the measure whose <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a> durations should be cleared.  
-			If not specified, all measures will be cleared.</p>
+            <p>[옵션] 클리어되어야하는 <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a> 기간을 가진 측정 이름  
+						만약 이 인수가 정의되어있지 않다면, 모든 측정을 클리어합니다.</p>
         </div>
 
-        <p><b>No Return Value</b></p>
+        <p><b>리턴값 없음</b></p>
 
-        <p><b>No Exceptions</b></p>
+        <p><b>예외 없음</b></p>
     </div>
   </div>
 
-    <h3 id="performancemark"><span class="secno">4.3</span> The <code>PerformanceMark</code> Interface</h3>
+    <h3 id="performancemark"><span class="secno">4.3</span> <code>PerformanceMark</code> 인터페이스</h3>
 
     <pre class="idl">
   interface PerformanceMark : <a href="http://www.w3.org/TR/performance-timeline/#performanceentry">PerformanceEntry</a> {
@@ -422,25 +421,19 @@
     </pre>
 
     <p>
-    	The <a href="#performancemark">PerformanceMark</a> interface also 
-		exposes marks created via the <code><a href="#dom-performance-mark">mark()</a></code> 
-		method to the 
-    	<a href="http://www.w3.org/TR/performance-timeline/#sec-performance-timeline">Performance Timeline</a> <a href="#PerformanceTimeline">[Performance Timeline]</a>. The <a href="#performancemark">PerformanceMark</a> 
-		interface extends the following attributes of the <a href="http://www.w3.org/TR/performance-timeline/#performanceentry">PerformanceEntry</a>
-		interface:
+			<a href="#performancemark">PerformanceMark</a> 인터페이스는 <code><a href="#dom-performance-mark">mark()</a></code> 메서드에 의해 작성된 mark도 <a href="http://www.w3.org/TR/performance-timeline/#sec-performance-timeline">성능 타임라인</a>에서 공개합니다. <a href="#PerformanceTimeline">[Performance Timeline]</a>
+     <a href="#performancemark">PerformanceMark</a> 인터페이스는 <a href="http://www.w3.org/TR/performance-timeline/#performanceentry">PerformanceEntry</a> 인터페이스의 아래 속성을 확장합니다.
     </p>
     
     <div class="parameters">
-        <p>The <code>name</code> attribute will return the mark's name.</p>
-        <p>The <code>entryType</code> attribute will return the <a href='http://www.w3.org/TR/WebIDL/#idl-DOMString'><code>DOMString</code></a> <code>mark</code>.</p>
-        <p>The <code>startTime</code> attribute will return a <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a>
-		with the mark's time value <a href='#HighResolutionTime'>[High Resolution Time]</a>.
+        <p>mark의 이름을 리턴하는 <code>name</code> 속성</p>
+        <p><a href='http://www.w3.org/TR/WebIDL/#idl-DOMString'><code>DOMString</code></a> <code>mark</code>를 리턴하는 <code>entryType</code> 속성</p>
+        <p>mark의 시간값과 함께 <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a>를 반환하는 <code>startTime</code> 속성<a href='#HighResolutionTime'>[High Resolution Time]</a>.
     	</p>
-        <p>The <code>duration</code> attribute will return a <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a>
-		of value 0.</p>
+        <p>값 0의 <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a>를 반환하는 <code>duration</code> 속성</p>
     </div>
 
-    <h3 id="performancemeasure"><span class="secno">4.4</span> The <code>PerformanceMeasure</code> Interface</h3>
+    <h3 id="performancemeasure"><span class="secno">4.4</span> <code>PerformanceMeasure</code> 인터페이스</h3>
 
     <pre class="idl">
   interface PerformanceMeasure : <a href="http://www.w3.org/TR/performance-timeline/#performanceentry">PerformanceEntry</a> {
@@ -448,53 +441,50 @@
     </pre>
     
 	<p>
-    	The <a href="#performancemeasure">PerformanceMeasure</a> interface also 
-		exposes measures created via the <code><a href="#dom-performance-measure">measure()</a></code> 
-		method to the <a href="http://www.w3.org/TR/performance-timeline/#sec-performance-timeline">Performance Timeline</a> <a href="#PerformanceTimeline">[Performance Timeline]</a>. The <a href="#performancemeasure">PerformanceMeasure</a> interface extends the following attributes of the <a href="http://www.w3.org/TR/performance-timeline/#performanceentry">PerformanceEntry</a> interface:
-    </p>
-	
+		<a href="#performancemeasure">PerformanceMeasure</a> 인터페이스는 <code><a href="#dom-performance-measure">measure()</a></code> 메서드에 의해 작성된 measure도 <a href="http://www.w3.org/TR/performance-timeline/#sec-performance-timeline">Performance Timeline</a>에서 공개합니다.<a href="#PerformanceTimeline">[Performance Timeline]</a>. 
+		<a href="#performancemeasure">PerformanceMeasure</a> 인터페이스는 <a href="http://www.w3.org/TR/performance-timeline/#performanceentry">PerformanceEntry</a> 인터페이스의 아래 속성을 확장합니다.
+	</p>
     <div class="parameters">
-        <p>The <code>name</code> attribute will return the measure's name.</p>
-        <p>The <code>entryType</code> attribute will return the <a href='http://www.w3.org/TR/WebIDL/#idl-DOMString'><code>DOMString</code></a> <code>measure</code>.</p>
-        <p>The <code>startTime</code> attribute will return a <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a>
-		with the measure's start mark <a href='#HighResolutionTime'>[High Resolution Time]</a>.</p>
-        <p>The <code>duration</code> attribute will return a <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a>
-		with the duration of the measure. </p>
+        <p>mark의 이름을 리턴하는 <code>name</code> 속성</p>
+        <p><a href='http://www.w3.org/TR/WebIDL/#idl-DOMString'><code>DOMString</code></a> <code>mark</code>를 리턴하는 <code>entryType</code> 속성</p>
+        <p>measure의 start mark와 함께 <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a>를 반환하는 <code>startTime</code> 속성<a href='#HighResolutionTime'>[High Resolution Time]</a>.
+    	</p>
+        <p>measure의 duration과 함께 <a href="http://www.w3.org/TR/hr-time/#domhighrestimestamp"><code>DOMHighResTimeStamp</code></a>를 반환하는 <code>duration</code> 속성</p>
     </div>
+	
+    <h3 id="vendor-prefixes">4.5 벤더 접두사</h3>
 
-    <h3 id="vendor-prefixes">4.5 Vendor Prefixes</h3>
+		<p>
+			벤더별 독점 유저 에이전트 확장은 권장하지 않습니다.
+			만약 실험적인 목적으로 확장이 필요한 경우, 벤더는 반드시 아래 확장 메커니즘을 이용해야 합니다.</p>
 
-    <p>Vendor-specific proprietary user agent extensions are discouraged. 
-    If such extensions are needed, e.g. for experimental purposes, vendors must use the following extension mechanisms:</p>
-
-    <p>If the extension to be added is a <a href="#ut-standard-mark-names">Standard Mark Name</a>, the Standard Mark Name must:</p>
+    <p>만약 <a href="#ut-standard-mark-names">Standard Mark Name</a>으로 확장을 추가하는 경우, Standard Mark Name은 반드시,</p>
     <ul>
-        <li>Follow this naming convention: [VENDORPREFIX]_[STANDARD_MARK_NAME], where [VENDORPREFIX] is a name that identifies the vendor and [STANDARD_MARK_NAME] is the name given to the Standard Mark.</li>
+        <li>다음 네이밍 컨벤션을 따릅니다: [VENDORPREFIX]_[STANDARD_MARK_NAME],  [VENDORPREFIX]는 벤더 식별자이며, [STANDARD_MARK_NAME] 은 Standard Mark 이름을 줍니다.</li>
     </ul>
 
 
-    <h2 id="monotonic-clock"><span class="secno">5 </span>Monotonic Clock</h2>
-    <p>The time values stored within the interface <span class='rfc2119'>must</span> monotonically increase to ensure they are not 
-    affected by adjustments to the system clock. The difference between any two chronologically 
-    recorded time values <span class='rfc2119'>must</span> never be negative. The user agent <span class='rfc2119'>must</span> record the system clock at the beginning 
-    of the navigation and define subsequent time values in terms of a monotonic clock measuring time elapsed 
-    from the beginning of the navigation.
-    </p>
+    <h2 id="monotonic-clock"><span class="secno">5 </span>단순증가 시간</h2>
+		<p>인터페이스 내에 기록되는 시간값은, 시스템 시간의 조정에 영향을 받지 않도록, 단순증가해야만 합니다.
+			 시간순서대로 기록된 어떤 두 시간값의 차이도 음수여서는 안됩니다.
+			 유저에이전트는 네비게이션 시작시간의 시스템 시간을 기록하여, 후속 시간값을 단순증가 시간에 의해 측정되는 네비게이션 시작부터 경과시간으로 정의해야합니다.</p>
 	
-	<h2 id="privacy-security"><span class="secno">6 </span>Privacy and Security</h2>
+	<h2 id="privacy-security"><span class="secno">6 </span>프라이버시 및 보안</h2>
 
-	<p>This section is non-normative.</p>
+	<p>이 섹션은 표준에 준하지 않습니다.</p>
+	<p>
+		이 스펙문서에서 정의하는 인터페이스는 페이지 상 특정 JavaScript 동작에 있어 sensitive가 될 수 있는 타이밍 정보를 공개합니다.
+		그러나, <a href="http://www.w3.org/TR/performance-timeline/#sec-performance-timeline">성능 타임라인</a>에서 정의하는 다른 인터페이스와 달리,
+		이 스펙문서에서 정의하는 인터페이스 스크립트를 통한 타이밍 공유에 제약은 없습니다.
+		이는 웹 플랫폼이 스크립트의 origin에 상관 없이 페이지에 포함되어있는 
+		모든 스크립트가 같은 페이지에 포함되어있는 다른 스크립트와 동일한 권한을 가진것으로 설계되어있기 때문입니다.
+	</p>
 
-	<p>The interfaces defined in this specification	expose potentially sensitive timing information on specific JavaScript activity of a page. 
-	However, unlike other interfaces defined in the <a href="http://www.w3.org/TR/performance-timeline/#sec-performance-timeline">Performance Timeline</a>,
-	the interfaces defined in this specification do not have any restrictions on sharing timing information through script. This is because the web platform has been designed with the invariant that 
-	any script included on a page has the same access as any other script included on that page regardless of the origin of the script. </p>
-
-    <h2 class="no-num" id="acknowledgements">Acknowledgements</h2>
+    <h2 class="no-num" id="acknowledgements">감사의 말</h2>
 
     <p>Thanks to Karen Anderson, Tony Gentilcore, Nic Jansma, James Simonsen, Steve Souders, Sigbjorn Vik, and Jason Weber for their useful comments that led to changes to this specification and their contributions to this work.</p>
 
-<h2 class="no-num" id="references">References</h2>
+<h2 class="no-num" id="references">참고 문서</h2>
 
 <dl>
 <dt><a id='rfc2119'>[IETF RFC 2119]</a></dt>
