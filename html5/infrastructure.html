@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-
 <html lang="ko">
 <head>
   <meta charset="utf-8">
-
   <title>공통 인프라 - HTML5</title>
   <script src="link-fixup.js"></script>
   <link href='bower_components/NanumBarunGothic/nanumbarungothic.css' rel='stylesheet' type='text/css'>
@@ -966,271 +964,97 @@
 
   <h4 id="dates-and-times"><span class="secno">2.4.5</span> 날짜 및 시간</h4>
 
-  <p>下記のアルゴリズムにおいて、<dfn id="number-of-days-in-month-month-of-year-year">年<var data-anolis-xref="">year</var>の月<var data-anolis-xref="">month</var>の日数</dfn>は：<var data-anolis-xref="">month</var>が1、3、5、7、8、10、12ならば<em>31</em>である。<var data-anolis-xref="">month</var>が4、6、9、11ならば<em>30</em>である。<var data-anolis-xref="">month</var>が2かつ<var data-anolis-xref="">year</var>が400で割り切れる数、または<var data-anolis-xref="">year</var>が4で割り切れるが100で割り切れないならば<em>29</em>であり、そうでなければ<em>28</em>である。これは、グレゴリオ暦の閏年を考慮に入れている。<a href="references.html#refsGREGORIAN">[GREGORIAN]</a></p>
+  <p>아래 알고리즘에서 <dfn id="number-of-days-in-month-month-of-year-year">년<var data-anolis-xref="">year</var>의 월<var data-anolis-xref="">month</var>의 일수</dfn>는 : <var data-anolis-xref="">month</var>가 1、3、5、7、8、10、12이라면 <em>31</em>입니다. <var data-anolis-xref="">month</var>가 4、6、9、11이라면 <em>30</em>입니다.<var data-anolis-xref="">month</var>가 2이며<var data-anolis-xref="">year</var>가 400으로 나뉘는 경우, 혹은 <var data-anolis-xref="">year</var>가 4로 놔뉘지만 100으로 나뉘지 않는 경우라면 <em>29</em>이며, 그렇지 않다면 <em>28</em>입니다. 이는 그레고리우스력의 윤년을 고려한 것입니다.<a href="references.html#refsGREGORIAN">[GREGORIAN]</a></p>
 
-  <p><a href="#ascii-digits">ASCII数字</a>がこの節で定義される日付および時刻の構文で使用される場合、これらは10進数で表現される。</p>
+  <p><a href="#ascii-digits">ASCII 숫자</a>가 이 절에서 정의하는 일자 및 시각 문자에서 사용하는 경우 이는 10진수로 표현됩니다.</p>
 
-  <p>この仕様が<dfn id="proleptic-gregorian-calendar">先発グレゴリオ暦</dfn>を参照する場合、これは、1年に遡って挿入された現代のグレゴリオ暦を意味する。<dfn id="proleptic-gregorian-date">先発グレゴリオ日付</dfn>として明示的に参照される<a href="#proleptic-gregorian-calendar">先発グレゴリオ暦</a>での日付は、たとえ暦が問題の時刻（または場所）で使用されていないとしても、その暦を使用して説明される。<a href="references.html#refsGREGORIAN">[GREGORIAN]</a></p>
+  <p>이 스펙이 <dfn id="proleptic-gregorian-calendar">proleptic 그레고리우스력 달력</dfn>을 참조하는 경우, 이는 1년을 거슬러 삽입된 현대 그레고리우스력을 의미합니다. <dfn id="proleptic-gregorian-date">proleptic 그레고리오 날짜</dfn>로써 명시적으로 참조되는 <a href="#proleptic-gregorian-calendar">proleptic 그레고리우스 달력</a>에서 날짜는, 달력이 문제의 시간(또는 장소)에서 사용되지 않는다 하더라도 그 달력을 이용해서 설명합니다. <a href="references.html#refsGREGORIAN">[GREGORIAN]</a></p>
 
-  <p class="note">この仕様においてワイヤ形式としてのグレゴリオ暦の使用は、決定に関わる人々の文化的なバイアスに起因する恣意的な選択肢である。フォームの<a href="forms.html#input-author-notes">日付、時刻、数値の形式</a>および <span class="impl">(for authors), <a href="forms.html#input-impl-notes">implemention notes regarding localization of form controls</a>,</span> <code><a href="text-level-semantics.html#the-time-element">time</a></code>要素の議論の節も参照のこと。</p>
+  <p class="note">이 스펙에 있어 와이어 형식의 그레고리우스력 사용은 결정에 관련된 사람달의 문화적인 편견에 의한 자의적인 선택입니다. 폼의 <a href="forms.html#input-author-notes">날짜, 시간, 숫자 형식 </a>및 <code><a href="text-level-semantics.html#the-time-element">time</a></code>요소의 논의 절을 참고하시길 바랍니다.</p>
 
-  <h5 id="months"><span class="secno">2.4.5.1</span> 月</h5>
+  <h5 id="months"><span class="secno">2.4.5.1</span> 월</h5>
 
-  <p><dfn data-anolis-xref="concept-month" id="concept-month">月</dfn>は、タイムゾーン情報および年と月を超えた日付を持たない、特定の<a href="#proleptic-gregorian-date">先発グレゴリオ暦</a>から成る。<a href="references.html#refsGREGORIAN">[GREGORIAN]</a></p>
+  <p><dfn data-anolis-xref="concept-month" id="concept-month">월</dfn>은 타임존 정보 및 연, 월을 넘긴 날짜를 갖지 않는 특정 <a href="#proleptic-gregorian-date">proleptic 그레고리우스 날짜</a>를 갖춥니다.<a href="references.html#refsGREGORIAN">[GREGORIAN]</a></p>
 
-  <p>与えられた順で以下のコンポーネントからなる場合、文字列は、年<var data-anolis-xref="">year</var>および月<var data-anolis-xref="">month</var>で表される<dfn id="valid-month-string">妥当な月文字列</dfn>である：</p>
+  <p>주어진 순서를 따라 다음 구성요소로 이루어진 경우 문자열은 연<var data-anolis-xref="">year</var>및 월<var data-anolis-xref="">month</var>로 표시되는 <dfn id="valid-month-string">유효한 월 문자열</dfn>입니다:</p>
 
   <ol>
-    <li>4<a href="#ascii-digits">桁</a>以上で表される<var data-anolis-xref="">year</var>。ここで<var data-anolis-xref="">year</var>&nbsp;&gt;&nbsp;0である。
+    <li>4<a href="#ascii-digits">자리</a> 이상으로 표현된<var data-anolis-xref="">year</var>. 여기서 <var data-anolis-xref="">year</var>&nbsp;&gt;&nbsp;0입니다.
     </li>
 
-    <li>"-"（U+002D）文字</li>
+    <li>"-"（U+002D）문자</li>
 
-    <li>1&nbsp;≤&nbsp;<var data-anolis-xref="">month</var>&nbsp;≤&nbsp;12の範囲で、月<var data-anolis-xref="">month</var>を表す2つの<a href="#ascii-digits">ASCII数字</a>
+    <li>1&nbsp;≤&nbsp;<var data-anolis-xref="">month</var>&nbsp;≤&nbsp;12 범위 내에서, 월<var data-anolis-xref="">month</var>을 나타내는 두개의 <a href="#ascii-digits">ASCII 숫자</a>
     </li>
   </ol>
 
-  <div class="impl">
-    <p>The rules to <dfn id="parse-a-month-string">parse a month string</dfn> are as follows. This will return either a year and month, or nothing. If at any point the algorithm says that it "fails", this means that it is aborted at that point and returns nothing.</p>
+  <h5 id="dates"><span class="secno">2.4.5.2</span> 날짜</h5>
 
-    <ol>
-      <li>
-        <p>Let <var data-anolis-xref="">input</var> be the string being parsed.</p>
-      </li>
+  <p><dfn data-anolis-xref="concept-date" id="concept-date">날짜</dfn>는 연월일로 시작하는 타임존 정보를 가지지 않는 특정한 <a href="#proleptic-gregorian-date">proleptic 그레고리우스력 날짜</a>로부터 시작합니다.<a href="references.html#refsGREGORIAN">[GREGORIAN]</a></p>
 
-      <li>
-        <p>Let <var data-anolis-xref="">position</var> be a pointer into <var data-anolis-xref="">input</var>, initially pointing at the start of the string.</p>
-      </li>
-
-      <li>
-        <p><a href="#parse-a-month-component">Parse a month component</a> to obtain <var data-anolis-xref="">year</var> and <var data-anolis-xref="">month</var>. If this returns nothing, then fail.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">position</var> is <em>not</em> beyond the end of <var data-anolis-xref="">input</var>, then fail.</p>
-      </li>
-
-      <li>
-        <p>Return <var data-anolis-xref="">year</var> and <var data-anolis-xref="">month</var>.</p>
-      </li>
-    </ol>
-
-    <p>The rules to <dfn id="parse-a-month-component">parse a month component</dfn>, given an <var data-anolis-xref="">input</var> string and a <var data-anolis-xref="">position</var>, are as follows. This will return either a year and a month, or nothing. If at any point the algorithm says that it "fails", this means that it is aborted at that point and returns nothing.</p>
-
-    <ol>
-      <li>
-        <p><a href="#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are <a href="#ascii-digits">ASCII digits</a>. If the collected sequence is not at least four characters long, then fail. Otherwise, interpret the resulting sequence as a base-ten integer. Let that number be the <var data-anolis-xref="">year</var>.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">year</var> is not a number greater than zero, then fail.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">position</var> is beyond the end of <var data-anolis-xref="">input</var> or if the character at <var data-anolis-xref="">position</var> is not a U+002D HYPHEN-MINUS character, then fail. Otherwise, move <var data-anolis-xref="">position</var> forwards one character.</p>
-      </li>
-
-      <li>
-        <p><a href="#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are <a href="#ascii-digits">ASCII digits</a>. If the collected sequence is not exactly two characters long, then fail. Otherwise, interpret the resulting sequence as a base-ten integer. Let that number be the <var data-anolis-xref="">month</var>.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">month</var> is not a number in the range 1&nbsp;≤&nbsp;<var data-anolis-xref="">month</var>&nbsp;≤&nbsp;12, then fail.</p>
-      </li>
-
-      <li>
-        <p>Return <var data-anolis-xref="">year</var> and <var data-anolis-xref="">month</var>.</p>
-      </li>
-    </ol>
-  </div>
-
-  <h5 id="dates"><span class="secno">2.4.5.2</span> 日付</h5>
-
-  <p><dfn data-anolis-xref="concept-date" id="concept-date">日付</dfn>は、年月日からなりタイムゾーン情報を持たない、特定の<a href="#proleptic-gregorian-date">先発グレゴリオ暦</a>からなる。<a href="references.html#refsGREGORIAN">[GREGORIAN]</a></p>
-
-  <p>与えられた順で以下のコンポーネントからなる場合、文字列は年<var data-anolis-xref="">year</var>、月<var data-anolis-xref="">month</var>、日<var data-anolis-xref="">day</var>で表される<dfn id="valid-date-string">妥当な日付文字列</dfn>である：</p>
+  <p>주어진 순서를 따라 다음 구성요소로 이루어진 경우 문자열은 연<var data-anolis-xref="">year</var>, 월<var data-anolis-xref="">month</var>, 일<var data-anolis-xref="">day</var>で로 표시되는 <dfn id="valid-date-string">유효한 날짜 문자열</dfn>입니다:</p>
 
   <ol>
     <li>
-      <var data-anolis-xref="">year</var>および<var data-anolis-xref="">month</var>で表される、<a href="#valid-month-string">妥当な月文字列</a>
+      <var data-anolis-xref="">year</var> 및 <var data-anolis-xref="">month</var>로 표현하는, <a href="#valid-month-string">유효한 월 문자열</a>
     </li>
 
-    <li>"-"（U+002D）文字</li>
+    <li>"-"（U+002D）문자</li>
 
-    <li>1&nbsp;≤&nbsp;<var data-anolis-xref="">day</var>&nbsp;≤&nbsp;<var data-anolis-xref="">maxday</var>の範囲での<var data-anolis-xref="">day</var>で表される2つの<a href="#ascii-digits">ASCII数字</a>。ここで<var data-anolis-xref="">maxday</var>は<a data-anolis-xref="number of days in month month of year year" href="#number-of-days-in-month-month-of-year-year">年<var data-anolis-xref="">year</var>および月<var data-anolis-xref="">month</var>での日の数</a>である。
-    </li>
-  </ol>
-
-  <div class="impl">
-    <p>The rules to <dfn id="parse-a-date-string">parse a date string</dfn> are as follows. This will return either a date, or nothing. If at any point the algorithm says that it "fails", this means that it is aborted at that point and returns nothing.</p>
-
-    <ol>
-      <li>
-        <p>Let <var data-anolis-xref="">input</var> be the string being parsed.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">position</var> be a pointer into <var data-anolis-xref="">input</var>, initially pointing at the start of the string.</p>
-      </li>
-
-      <li>
-        <p><a href="#parse-a-date-component">Parse a date component</a> to obtain <var data-anolis-xref="">year</var>, <var data-anolis-xref="">month</var>, and <var data-anolis-xref="">day</var>. If this returns nothing, then fail.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">position</var> is <em>not</em> beyond the end of <var data-anolis-xref="">input</var>, then fail.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">date</var> be the date with year <var data-anolis-xref="">year</var>, month <var data-anolis-xref="">month</var>, and day <var data-anolis-xref="">day</var>.</p>
-      </li>
-
-      <li>
-        <p>Return <var data-anolis-xref="">date</var>.</p>
-      </li>
-    </ol>
-
-    <p>The rules to <dfn id="parse-a-date-component">parse a date component</dfn>, given an <var data-anolis-xref="">input</var> string and a <var data-anolis-xref="">position</var>, are as follows. This will return either a year, a month, and a day, or nothing. If at any point the algorithm says that it "fails", this means that it is aborted at that point and returns nothing.</p>
-
-    <ol>
-      <li>
-        <p><a href="#parse-a-month-component">Parse a month component</a> to obtain <var data-anolis-xref="">year</var> and <var data-anolis-xref="">month</var>. If this returns nothing, then fail.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">maxday</var> be the <a href="#number-of-days-in-month-month-of-year-year">number of days in month <var data-anolis-xref="">month</var> of year <var data-anolis-xref="">year</var></a>.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">position</var> is beyond the end of <var data-anolis-xref="">input</var> or if the character at <var data-anolis-xref="">position</var> is not a U+002D HYPHEN-MINUS character, then fail. Otherwise, move <var data-anolis-xref="">position</var> forwards one character.</p>
-      </li>
-
-      <li>
-        <p><a href="#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are <a href="#ascii-digits">ASCII digits</a>. If the collected sequence is not exactly two characters long, then fail. Otherwise, interpret the resulting sequence as a base-ten integer. Let that number be the <var data-anolis-xref="">day</var>.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">day</var> is not a number in the range 1&nbsp;≤&nbsp;<var data-anolis-xref="">day</var>&nbsp;≤&nbsp;<var data-anolis-xref="">maxday</var>, then fail.</p>
-      </li>
-
-      <li>
-        <p>Return <var data-anolis-xref="">year</var>, <var data-anolis-xref="">month</var>, and <var data-anolis-xref="">day</var>.</p>
-      </li>
-    </ol>
-  </div>
-
-  <h5 id="yearless-dates"><span class="secno">2.4.5.3</span> 年なし日付</h5>
-
-  <p><dfn data-anolis-xref="concept-yearless-date" id="concept-yearless-date">年なし日付</dfn>はグレコリオ月とその月の日からなるが、年を伴わない。<a href="references.html#refsGREGORIAN">[GREGORIAN]</a></p>
-
-  <p>与えられた順で以下のコンポーネントからなる場合、文字列は月<var data-anolis-xref="">month</var>および日<var data-anolis-xref="">day</var>で表される<dfn id="valid-yearless-date-string">妥当な年なし日付文字列</dfn>である：</p>
-
-  <ol>
-    <li>任意で、2つの"-"（U+002D）文字</li>
-
-    <li>1&nbsp;≤&nbsp;<var data-anolis-xref="">month</var>&nbsp;≤&nbsp;12の範囲で、月<var data-anolis-xref="">month</var>を表す2つの<a href="#ascii-digits">ASCII数字</a>
-    </li>
-
-    <li>"-"（U+002D）文字</li>
-
-    <li>1&nbsp;≤&nbsp;<var data-anolis-xref="">day</var>&nbsp;≤&nbsp;<var data-anolis-xref="">maxday</var>の範囲での<var data-anolis-xref="">day</var>で表される2つの<a href="#ascii-digits">ASCII数字</a>。ここで<var data-anolis-xref="">maxday</var>は月<var data-anolis-xref="">month</var>かつ任意の閏年（たとえば4または2000）における<a data-anolis-xref="number of days in month month of year year" href="#number-of-days-in-month-month-of-year-year">日数</a>である。
+    <li>1&nbsp;≤&nbsp;<var data-anolis-xref="">day</var>&nbsp;≤&nbsp;<var data-anolis-xref="">maxday</var> 범위 내의 <var data-anolis-xref="">day</var>를 나타내는 두개의 <a href="#ascii-digits">ASCII 숫자</a>. 여기서 <var data-anolis-xref="">maxday</var>는 <a data-anolis-xref="number of days in month month of year year" href="#number-of-days-in-month-month-of-year-year">년<var data-anolis-xref="">year</var>및 월<var data-anolis-xref="">month</var>에서 일의 숫자</a>입니다.
     </li>
   </ol>
 
-  <p class="note">言い換えると、2月を意味する<var data-anolis-xref="">month</var>が"<code data-anolis-xref="">02</code>"である場合、あたかもその年は閏年かのように、日は29であってもよい。</p>
+  <h5 id="yearless-dates"><span class="secno">2.4.5.3</span> 연 없는 날짜</h5>
 
-  <div class="impl">
-    <p>The rules to <dfn id="parse-a-yearless-date-string">parse a yearless date string</dfn> are as follows. This will return either a month and a day, or nothing. If at any point the algorithm says that it "fails", this means that it is aborted at that point and returns nothing.</p>
+  <p><dfn data-anolis-xref="concept-yearless-date" id="concept-yearless-date">연 없는 날짜</dfn>는 그레고리우스 월과 그 월의 날로 이루어지지만, 연을 포함하지 않습니다.<a href="references.html#refsGREGORIAN">[GREGORIAN]</a></p>
 
-    <ol>
-      <li>
-        <p>Let <var data-anolis-xref="">input</var> be the string being parsed.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">position</var> be a pointer into <var data-anolis-xref="">input</var>, initially pointing at the start of the string.</p>
-      </li>
-
-      <li>
-        <p><a href="#parse-a-yearless-date-component">Parse a yearless date component</a> to obtain <var data-anolis-xref="">month</var> and <var data-anolis-xref="">day</var>. If this returns nothing, then fail.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">position</var> is <em>not</em> beyond the end of <var data-anolis-xref="">input</var>, then fail.</p>
-      </li>
-
-      <li>
-        <p>Return <var data-anolis-xref="">month</var> and <var data-anolis-xref="">day</var>.</p>
-      </li>
-    </ol>
-
-    <p>The rules to <dfn id="parse-a-yearless-date-component">parse a yearless date component</dfn>, given an <var data-anolis-xref="">input</var> string and a <var data-anolis-xref="">position</var>, are as follows. This will return either a month and a day, or nothing. If at any point the algorithm says that it "fails", this means that it is aborted at that point and returns nothing.</p>
-
-    <ol>
-      <li>
-        <p><a href="#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are "-" (U+002D) characters. If the collected sequence is not exactly zero or two characters long, then fail.</p>
-      </li>
-
-      <li>
-        <p><a href="#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are <a href="#ascii-digits">ASCII digits</a>. If the collected sequence is not exactly two characters long, then fail. Otherwise, interpret the resulting sequence as a base-ten integer. Let that number be the <var data-anolis-xref="">month</var>.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">month</var> is not a number in the range 1&nbsp;≤&nbsp;<var data-anolis-xref="">month</var>&nbsp;≤&nbsp;12, then fail.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">maxday</var> be the <a data-anolis-xref="number of days in month month of year year" href="#number-of-days-in-month-month-of-year-year">number of days</a> in month <var data-anolis-xref="">month</var> of any arbitrary leap year (e.g. 4 or 2000).</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">position</var> is beyond the end of <var data-anolis-xref="">input</var> or if the character at <var data-anolis-xref="">position</var> is not a U+002D HYPHEN-MINUS character, then fail. Otherwise, move <var data-anolis-xref="">position</var> forwards one character.</p>
-      </li>
-
-      <li>
-        <p><a href="#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are <a href="#ascii-digits">ASCII digits</a>. If the collected sequence is not exactly two characters long, then fail. Otherwise, interpret the resulting sequence as a base-ten integer. Let that number be the <var data-anolis-xref="">day</var>.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">day</var> is not a number in the range 1&nbsp;≤&nbsp;<var data-anolis-xref="">day</var>&nbsp;≤&nbsp;<var data-anolis-xref="">maxday</var>, then fail.</p>
-      </li>
-
-      <li>
-        <p>Return <var data-anolis-xref="">month</var> and <var data-anolis-xref="">day</var>.</p>
-      </li>
-    </ol>
-  </div>
-
-  <h5 id="times"><span class="secno">2.4.5.4</span> 時刻</h5>
-
-  <p><dfn data-anolis-xref="concept-time" id="concept-time">時刻</dfn>は、時、分、秒、秒以下からなりタイムゾーン情報を持たない、特定の時刻からなる。</p>
-
-  <p>与えられた順で以下のコンポーネントからなる場合、文字列は、時<var data-anolis-xref="">hour</var>、分<var data-anolis-xref="">minute</var>、秒<var data-anolis-xref="">second</var>で表される<dfn id="valid-time-string">妥当な時刻文字列</dfn>である：</p>
+  <p>주어진 순서를 따라 다음 구성요소로 이루어진 경우 문자열은 월<var data-anolis-xref="">month</var> 및 일<var data-anolis-xref="">day</var>로 표현하는 <dfn id="valid-yearless-date-string">유효한 월 없는 날짜</dfn>입니다:</p>
 
   <ol>
-    <li>0&nbsp;≤&nbsp;<var data-anolis-xref="">hour</var>&nbsp;≤&nbsp;23の範囲で、<var data-anolis-xref="">hour</var>を表す2つの<a href="#ascii-digits">ASCII数字</a>
+    <li>임의의 두 "-"（U+002D）문자</li>
+
+    <li>1&nbsp;≤&nbsp;<var data-anolis-xref="">month</var>&nbsp;≤&nbsp;12 범위 내에서 월<var data-anolis-xref="">month</var>을 나타내는 두개의 <a href="#ascii-digits">ASCII 숫자</a>
     </li>
 
-    <li>":"（U+003A）文字</li>
+    <li>"-"（U+002D）문자</li>
 
-    <li>0&nbsp;≤&nbsp;<var data-anolis-xref="">minute</var>&nbsp;≤&nbsp;59の範囲で<var data-anolis-xref="">minute</var>を表す2つの<a href="#ascii-digits">ASCII数字</a>
+    <li>1&nbsp;≤&nbsp;<var data-anolis-xref="">day</var>&nbsp;≤&nbsp;<var data-anolis-xref="">maxday</var> 범위 내의 <var data-anolis-xref="">day</var>를 나타내는 두개의 <a href="#ascii-digits">ASCII 숫자</a>. 여기에서 <var data-anolis-xref="">maxday</var>는 월<var data-anolis-xref="">month</var> 임의의 윤년 (예를 들어 4 혹은 2000)에 의한 <a data-anolis-xref="number of days in month month of year year" href="#number-of-days-in-month-month-of-year-year">일수</a>입니다.
+    </li>
+  </ol>
+
+  <p class="note">즉 2월을 의미하는 <var data-anolis-xref="">month</var>가 "<code data-anolis-xref="">02</code>"인 경우, 그 해를 윤년인 것 처럼 일이 29여도 괜찮습니다.</p>
+
+  <h5 id="times"><span class="secno">2.4.5.4</span> 시간</h5>
+
+  <p><dfn data-anolis-xref="concept-time" id="concept-time">시간</dfn>은 시, 분, 초, 초 이하로 이루어지는 타임존 정보를 가지지 않는 특정 시간을 의미합니다.</p>
+
+  <p>주어진 순서를 따라 다음 구성요소로 이루어진 경우 문자열은 시<var data-anolis-xref="">hour</var>, 분<var data-anolis-xref="">minute</var>, 초<var data-anolis-xref="">second</var>로 표현하는 <dfn id="valid-time-string">유효한 시간 문자열</dfn>입니다:</p>
+
+  <ol>
+    <li>0&nbsp;≤&nbsp;<var data-anolis-xref="">hour</var>&nbsp;≤&nbsp;23 범위 내에서 <var data-anolis-xref="">hour</var>을 나타내는 두개의 <a href="#ascii-digits">ASCII 숫자</a>
     </li>
 
-    <li>任意で（<var data-anolis-xref="">second</var>が非ゼロの場合必要）：
+    <li>":"（U+003A）문자</li>
+
+    <li>0&nbsp;≤&nbsp;<var data-anolis-xref="">minute</var>&nbsp;≤&nbsp;59 범위 내에서 <var data-anolis-xref="">minute</var>를 나타내는 두개의 <a href="#ascii-digits">ASCII 숫자</a>
+    </li>
+
+    <li>임의의（<var data-anolis-xref="">second</var>가 0이 아닐경우 필수）：
 
       <ol>
-        <li>":"（U+003A）文字</li>
+        <li>":"（U+003A）문자</li>
 
-        <li>0&nbsp;≤&nbsp;<var data-anolis-xref="">s</var>&nbsp;≤&nbsp;59の範囲で、<var data-anolis-xref="">second</var>整数部を表す2つの<a href="#ascii-digits">ASCII数字</a>
+        <li>0&nbsp;≤&nbsp;<var data-anolis-xref="">s</var>&nbsp;≤&nbsp;59 범위 내에서 <var data-anolis-xref="">second</var> 정수를 표현하는 두개의 <a href="#ascii-digits">ASCII 숫자</a>
         </li>
 
-        <li>任意で（<var data-anolis-xref="">second</var>が整数でない場合必要）：
+        <li>임의의 （<var data-anolis-xref="">second</var>가 정수가 아닌 경우 필수）：
 
           <ol>
-            <li>U+002E FULL STOP文字（.）</li>
+            <li>U+002E FULL STOP 문자（.）</li>
 
             <li>
-              <var data-anolis-xref="">second</var>分数部で表される、1、2、また3<a href="#ascii-digits">桁</a>
+              <var data-anolis-xref="">second</var> 분수를 나타내는, 1, 2, 3<a href="#ascii-digits">항</a>
             </li>
           </ol>
         </li>
@@ -1238,303 +1062,67 @@
     </li>
   </ol>
 
-  <p class="note"><var data-anolis-xref="">second</var>コンポーネントは60または61にはなり得ない。閏秒を表すことはできない。</p>
+  <p class="note"><var data-anolis-xref="">second</var> 컴포넌트는 60 혹은 61이 될 수 없습니다. 윤초를 나타내는 것 또한 불가합니다.</p>
 
-  <div class="impl">
-    <p>The rules to <dfn id="parse-a-time-string">parse a time string</dfn> are as follows. This will return either a time, or nothing. If at any point the algorithm says that it "fails", this means that it is aborted at that point and returns nothing.</p>
+  <h5 id="floating-dates-and-times"><span class="secno">2.4.5.5</span> 부동 날짜 및 시간</h5>
 
-    <ol>
-      <li>
-        <p>Let <var data-anolis-xref="">input</var> be the string being parsed.</p>
-      </li>
+  <p><dfn data-anolis-xref="concept-datetime-floating" id="concept-datetime-floating">부동 날짜 및 시간</dfn>은 년, 월, 일, 시, 분, 초, 초 이하로 이루어지는 특정 <a href="#proleptic-gregorian-date">그레고리우스 력</a>으로 이루어지지만 타임존 정보를 가지지 않습니다.<a href="references.html#refsGREGORIAN">[GREGORIAN]</a></p>
 
-      <li>
-        <p>Let <var data-anolis-xref="">position</var> be a pointer into <var data-anolis-xref="">input</var>, initially pointing at the start of the string.</p>
-      </li>
-
-      <li>
-        <p><a href="#parse-a-time-component">Parse a time component</a> to obtain <var data-anolis-xref="">hour</var>, <var data-anolis-xref="">minute</var>, and <var data-anolis-xref="">second</var>. If this returns nothing, then fail.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">position</var> is <em>not</em> beyond the end of <var data-anolis-xref="">input</var>, then fail.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">time</var> be the time with hour <var data-anolis-xref="">hour</var>, minute <var data-anolis-xref="">minute</var>, and second <var data-anolis-xref="">second</var>.</p>
-      </li>
-
-      <li>
-        <p>Return <var data-anolis-xref="">time</var>.</p>
-      </li>
-    </ol>
-
-    <p>The rules to <dfn id="parse-a-time-component">parse a time component</dfn>, given an <var data-anolis-xref="">input</var> string and a <var data-anolis-xref="">position</var>, are as follows. This will return either an hour, a minute, and a second, or nothing. If at any point the algorithm says that it "fails", this means that it is aborted at that point and returns nothing.</p>
-
-    <ol>
-      <li>
-        <p><a href="#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are <a href="#ascii-digits">ASCII digits</a>. If the collected sequence is not exactly two characters long, then fail. Otherwise, interpret the resulting sequence as a base-ten integer. Let that number be the <var data-anolis-xref="">hour</var>.</p>
-      </li>
-
-      <li>If <var data-anolis-xref="">hour</var> is not a number in the range 0&nbsp;≤&nbsp;<var data-anolis-xref="">hour</var>&nbsp;≤&nbsp;23, then fail.</li>
-
-      <li>
-        <p>If <var data-anolis-xref="">position</var> is beyond the end of <var data-anolis-xref="">input</var> or if the character at <var data-anolis-xref="">position</var> is not a U+003A COLON character, then fail. Otherwise, move <var data-anolis-xref="">position</var> forwards one character.</p>
-      </li>
-
-      <li>
-        <p><a href="#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are <a href="#ascii-digits">ASCII digits</a>. If the collected sequence is not exactly two characters long, then fail. Otherwise, interpret the resulting sequence as a base-ten integer. Let that number be the <var data-anolis-xref="">minute</var>.</p>
-      </li>
-
-      <li>If <var data-anolis-xref="">minute</var> is not a number in the range 0&nbsp;≤&nbsp;<var data-anolis-xref="">minute</var>&nbsp;≤&nbsp;59, then fail.</li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">second</var> be a string with the value "0".</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">position</var> is not beyond the end of <var data-anolis-xref="">input</var> and the character at <var data-anolis-xref="">position</var> is a U+003A COLON, then run these substeps:</p>
-
-        <ol>
-          <li>
-            <p>Advance <var data-anolis-xref="">position</var> to the next character in <var data-anolis-xref="">input</var>.</p>
-          </li>
-
-          <li>
-            <p>If <var data-anolis-xref="">position</var> is beyond the end of <var data-anolis-xref="">input</var>, or at the last character in <var data-anolis-xref="">input</var>, or if the next <em>two</em> characters in <var data-anolis-xref="">input</var> starting at <var data-anolis-xref="">position</var> are not both <a href="#ascii-digits">ASCII digits</a>, then fail.</p>
-          </li>
-
-          <li>
-            <p><a href="#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are either <a href="#ascii-digits">ASCII digits</a> or U+002E FULL STOP characters. If the collected sequence is three characters long, or if it is longer than three characters long and the third character is not a U+002E FULL STOP character, or if it has more than one U+002E FULL STOP character, then fail. Otherwise, let the collected string be <var data-anolis-xref="">second</var> instead of its previous value.</p>
-          </li>
-        </ol>
-      </li>
-
-      <li>
-        <p>Interpret <var data-anolis-xref="">second</var> as a base-ten number (possibly with a fractional part). Let <var data-anolis-xref="">second</var> be that number instead of the string version.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">second</var> is not a number in the range 0&nbsp;≤&nbsp;<var data-anolis-xref="">second</var>&nbsp;&lt;&nbsp;60, then fail.</p>
-      </li>
-
-      <li>
-        <p>Return <var data-anolis-xref="">hour</var>, <var data-anolis-xref="">minute</var>, and <var data-anolis-xref="">second</var>.</p>
-      </li>
-    </ol>
-  </div><!--START FORK rename local->floating-->
-
-  <h5 id="floating-dates-and-times"><span class="secno">2.4.5.5</span> 浮動日付および時刻</h5>
-
-  <p><dfn data-anolis-xref="concept-datetime-floating" id="concept-datetime-floating">浮動日付および時刻</dfn>は、年、月、日、時、分、秒、秒以下からなる特定の<a href="#proleptic-gregorian-date">先発グレコリオ暦</a>からなるが、タイムゾーン情報を持たない。<a href="references.html#refsGREGORIAN">[GREGORIAN]</a></p>
-
-  <p>与えられた順で以下のコンポーネントからなる場合、文字列は<dfn id="valid-floating-date-and-time-string">妥当な浮動日付および時刻文字列</dfn>である：</p>
+  <p>주어진 순서에 따라 아래와 같은 구성요소를 가지는 경우, 문자열은 <dfn id="valid-floating-date-and-time-string">유효한 부동 날짜 및 시간</dfn>입니다 : </p>
 
   <ol>
-    <li>日付を表す<a href="#valid-date-string">妥当な日付文字列</a>
+    <li>날짜를 나타내는 <a href="#valid-date-string">유효한 날짜 문자열</a>
     </li>
 
-    <li>"T"（U+0054）文字またはU+0020 SPACE文字</li>
+    <li>"T"（U+0054）문자 혹은 U+0020 SPACE 문자</li>
 
-    <li>時刻を表す<a href="#valid-time-string">妥当な時刻文字列</a>
+    <li>시간을 나타내는 <a href="#valid-time-string">유효한 시간 문자열</a>
     </li>
   </ol>
 
-  <p>与えられた順で以下のコンポーネントからなる場合、文字列は<dfn id="valid-normalized-floating-date-and-time-string">妥当な規格化浮動日付および時刻文字列</dfn>である：</p>
+  <p>주어진 순서에 따라 아래와 같은 구성요소를 가지는 경우, 문자열은 <dfn id="valid-normalized-floating-date-and-time-string">유효한 규격화 부동 날짜 및 시간 문자열</dfn>입니다 :</p>
 
   <ol>
-    <li>日付を表す<a href="#valid-date-string">妥当な日付文字列</a>
+    <li>날짜를 나타내는 <a href="#valid-date-string">유효한 날짜 문자열</a>
     </li>
 
-    <li>"T"（U+0054）文字</li>
+    <li>"T"（U+0054）문자</li>
 
-    <li>時刻を表す<a href="#valid-time-string">妥当な時間文字列</a>は、与えられた時刻に対して可能な限り最短の文字列として表現される（たとえば、与えられた時刻がゼロ秒分を過ぎている場合、完全に秒のコンポーネントを省略する）
+    <li>시간을 나타내는 <a href="#valid-time-string">유효한 시간 문자열</a>은 주어진 시간에 대해 가능한 최소의 문자열로 표현해야 합니다. (예를 들어, 주어진 시간이 0초인 경우, 완전히 초 컴포넌트를 제거합니다)
     </li>
   </ol>
 
-  <div class="impl">
-    <p>The rules to <dfn id="parse-a-floating-date-and-time-string">parse a floating date and time string</dfn> are as follows. This will return either a date and time, or nothing. If at any point the algorithm says that it "fails", this means that it is aborted at that point and returns nothing.</p>
+  <h5 id="time-zones"><span class="secno">2.4.5.6</span> 타임존</h5>
 
-    <ol>
-      <li>
-        <p>Let <var data-anolis-xref="">input</var> be the string being parsed.</p>
-      </li>
+  <p><dfn data-anolis-xref="concept-timezone" id="concept-timezone">타임존 오프셋</dfn>은 부호 있는 시간과 분 숫자로 구성됩니다.</p>
 
-      <li>
-        <p>Let <var data-anolis-xref="">position</var> be a pointer into <var data-anolis-xref="">input</var>, initially pointing at the start of the string.</p>
-      </li>
-
-      <li>
-        <p><a href="#parse-a-date-component">Parse a date component</a> to obtain <var data-anolis-xref="">year</var>, <var data-anolis-xref="">month</var>, and <var data-anolis-xref="">day</var>. If this returns nothing, then fail.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">position</var> is beyond the end of <var data-anolis-xref="">input</var> or if the character at <var data-anolis-xref="">position</var> is neither a U+0054 LATIN CAPITAL LETTER T character (T) nor a U+0020 SPACE character, then fail. Otherwise, move <var data-anolis-xref="">position</var> forwards one character.</p>
-      </li>
-
-      <li>
-        <p><a href="#parse-a-time-component">Parse a time component</a> to obtain <var data-anolis-xref="">hour</var>, <var data-anolis-xref="">minute</var>, and <var data-anolis-xref="">second</var>. If this returns nothing, then fail.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">position</var> is <em>not</em> beyond the end of <var data-anolis-xref="">input</var>, then fail.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">date</var> be the date with year <var data-anolis-xref="">year</var>, month <var data-anolis-xref="">month</var>, and day <var data-anolis-xref="">day</var>.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">time</var> be the time with hour <var data-anolis-xref="">hour</var>, minute <var data-anolis-xref="">minute</var>, and second <var data-anolis-xref="">second</var>.</p>
-      </li>
-
-      <li>
-        <p>Return <var data-anolis-xref="">date</var> and <var data-anolis-xref="">time</var>.</p>
-      </li>
-    </ol>
-  </div>
-
-  <h5 id="time-zones"><span class="secno">2.4.5.6</span> タイムゾーン</h5>
-
-  <p><dfn data-anolis-xref="concept-timezone" id="concept-timezone">タイムゾーンオフセット</dfn>は符号付きの時と分の数字からなる。</p>
-
-  <p>次のいずれかからなる場合、文字列は、タイムゾーンオフセットを表す<dfn id="valid-time-zone-offset-string">妥当なタイムゾーンオフセット文字列</dfn>である：</p>
+  <p>다음 중 하나를 나타내는 경우 문자열은 타임존 오프셋을 나타내는 <dfn id="valid-time-zone-offset-string">유효한 타임존 오프셋 문자열</dfn>입니다 : </p>
 
   <ul>
     <li>
-      <p>タイムゾーンがUTCの場合のみ許される、"Z"（U+005A）文字</p>
+      <p>타임존이 UTC인 경우 "Z"（U+005A）문자</p>
     </li>
 
     <li>
-      <p>または、与えられた順で以下のコンポーネント：</p>
+      <p>또는 주어진 순서에서 아래 구성 요소:</p>
 
       <ol>
-        <li>タイムゾーンオフセットがゼロでない場合、タイムゾーンオフセットの符号を表す、"+"（U+002B）文字または"-"（U+002D）文字のいずれか</li><!-- the -00:00 offset is disallowed because RFC3339 gives it a special semantic -->
+        <li>타임존 오프셋이 0이 아닌 경우 타임존 오프셋의 기호를 나타내야 하며, "+"（U+002B）문자 혹은 "-"（U+002D）문자 중 하나</li><!-- the -00:00 offset is disallowed because RFC3339 gives it a special semantic -->
 
-        <li>0&nbsp;≤&nbsp;<var data-anolis-xref="">hour</var>&nbsp;≤&nbsp;23の範囲で、タイムゾーンオフセットの時コンポーネント<var data-anolis-xref="">hour</var>を表す2つの<a href="#ascii-digits">ASCII数字</a>
+        <li>0&nbsp;≤&nbsp;<var data-anolis-xref="">hour</var>&nbsp;≤&nbsp; 23 이내에서 타임존 오프셋의 시 구성 요소 <var data-anolis-xref="">hour</var>을 나타내는 두개의 <a href="#ascii-digits">ASCII 숫자</a>
         </li>
 
-        <li>任意で、":"（U+003A）文字</li>
+        <li>임의의 ":"（U+003A）문자</li>
 
-        <li>0&nbsp;≤&nbsp;<var data-anolis-xref="">minute</var>&nbsp;≤&nbsp;59の範囲で、タイムゾーンオフセットの分コンポーネント<var data-anolis-xref="">minute</var>を表す2つの<a href="#ascii-digits">ASCII数字</a>
+        <li>0&nbsp;≤&nbsp;<var data-anolis-xref="">minute</var>&nbsp;≤&nbsp;59 이내에서 타임존 오프셋의 분 구성 요소 <var data-anolis-xref="">minute</var>를 나타내는 두개의 <a href="#ascii-digits">ASCII 숫자</a>
         </li>
       </ol>
     </li>
   </ul>
 
-  <p class="note">この形式は、-23:59から+23:59までのタイムゾーンオフセットを許可する。しかし、特に、実際のタイムゾーンオフセットの範囲は-12:00から+14:00までであり、実際のタイムゾーンオフセットの分コンポーネントは常に00、30または45のいずれかである。とはいえ、永遠に保持される保証はない。タイムゾーンは国によって思いのままに変更され、標準に従わない。</p><!--FORK-->
+  <p class="note">이 형식은 -23:59부터 +23:59까지의 타임존 오프셋을 허가합니다. 그러나 실제 타임존 오프셋 범위는 -12:00부터 +14:00까지며, 실제로 타임존 오프셋의 분 컴포넌트는 항상 00、30 혹은 45 중 하나입니다. 그러나 영원히 유지된다는 보장이 없으며, 타임존은 국가에 따라 마음대로 변경되어 표준을 따르지 않습니다.</p><!--FORK-->
 
-  <p class="note">正式なタイムゾーンの形成以前に遡る歴史的な時代でのタイムゾーンのオフセットを使用についての詳細は、下記の<a data-anolis-xref="concept-datetime" href="#concept-datetime">グローバル日付および時刻</a>の節にある使用上の注意と例を参照のこと。</p>
-
-  <div class="impl">
-    <p>The rules to <dfn id="parse-a-time-zone-offset-string">parse a time-zone offset string</dfn> are as follows. This will return either a time-zone offset, or nothing. If at any point the algorithm says that it "fails", this means that it is aborted at that point and returns nothing.</p>
-
-    <ol>
-      <li>
-        <p>Let <var data-anolis-xref="">input</var> be the string being parsed.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">position</var> be a pointer into <var data-anolis-xref="">input</var>, initially pointing at the start of the string.</p>
-      </li>
-
-      <li>
-        <p><a href="#parse-a-time-zone-offset-component">Parse a time-zone offset component</a> to obtain <var data-anolis-xref="">timezone<sub data-anolis-xref="">hours</sub></var> and <var data-anolis-xref="">timezone<sub data-anolis-xref="">minutes</sub></var>. If this returns nothing, then fail.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">position</var> is <em>not</em> beyond the end of <var data-anolis-xref="">input</var>, then fail.</p>
-      </li>
-
-      <li>
-        <p>Return the time-zone offset that is <var data-anolis-xref="">timezone<sub data-anolis-xref="">hours</sub></var> hours and <var data-anolis-xref="">timezone<sub data-anolis-xref="">minutes</sub></var> minutes from UTC.</p>
-      </li>
-    </ol>
-
-    <p>The rules to <dfn id="parse-a-time-zone-offset-component">parse a time-zone offset component</dfn>, given an <var data-anolis-xref="">input</var> string and a <var data-anolis-xref="">position</var>, are as follows. This will return either time-zone hours and time-zone minutes, or nothing. If at any point the algorithm says that it "fails", this means that it is aborted at that point and returns nothing.</p>
-
-    <ol>
-      <li>
-        <p>If the character at <var data-anolis-xref="">position</var> is a U+005A LATIN CAPITAL LETTER Z character (Z), then:</p>
-
-        <ol>
-          <li>
-            <p>Let <var data-anolis-xref="">timezone<sub data-anolis-xref="">hours</sub></var> be 0.</p>
-          </li>
-
-          <li>
-            <p>Let <var data-anolis-xref="">timezone<sub data-anolis-xref="">minutes</sub></var> be 0.</p>
-          </li>
-
-          <li>
-            <p>Advance <var data-anolis-xref="">position</var> to the next character in <var data-anolis-xref="">input</var>.</p>
-          </li>
-        </ol>
-
-        <p>Otherwise, if the character at <var data-anolis-xref="">position</var> is either a "+" (U+002B) or a "-" (U+002D), then:</p>
-
-        <ol>
-          <li>
-            <p>If the character at <var data-anolis-xref="">position</var> is a "+" (U+002B), let <var data-anolis-xref="">sign</var> be "positive". Otherwise, it's a "-" (U+002D); let <var data-anolis-xref="">sign</var> be "negative".</p>
-          </li>
-
-          <li>
-            <p>Advance <var data-anolis-xref="">position</var> to the next character in <var data-anolis-xref="">input</var>.</p>
-          </li>
-
-          <li>
-            <p><a href="#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are <a href="#ascii-digits">ASCII digits</a>. Let <var data-anolis-xref="">s</var> be the collected sequence.</p>
-          </li>
-
-          <li>
-            <p>If <var data-anolis-xref="">s</var> is exactly two characters long, then run these substeps:</p>
-
-            <ol>
-              <li>
-                <p>Interpret <var data-anolis-xref="">s</var> as a base-ten integer. Let that number be the <var data-anolis-xref="">timezone<sub data-anolis-xref="">hours</sub></var>.</p>
-              </li>
-
-              <li>
-                <p>If <var data-anolis-xref="">position</var> is beyond the end of <var data-anolis-xref="">input</var> or if the character at <var data-anolis-xref="">position</var> is not a U+003A COLON character, then fail. Otherwise, move <var data-anolis-xref="">position</var> forwards one character.</p>
-              </li>
-
-              <li>
-                <p><a href="#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are <a href="#ascii-digits">ASCII digits</a>. If the collected sequence is not exactly two characters long, then fail. Otherwise, interpret the resulting sequence as a base-ten integer. Let that number be the <var data-anolis-xref="">timezone<sub data-anolis-xref="">minutes</sub></var>.</p>
-              </li>
-            </ol>
-
-            <p>If <var data-anolis-xref="">s</var> is exactly four characters long, then run these substeps:</p>
-
-            <ol>
-              <li>
-                <p>Interpret the first two characters of <var data-anolis-xref="">s</var> as a base-ten integer. Let that number be the <var data-anolis-xref="">timezone<sub data-anolis-xref="">hours</sub></var>.</p>
-              </li>
-
-              <li>
-                <p>Interpret the last two characters of <var data-anolis-xref="">s</var> as a base-ten integer. Let that number be the <var data-anolis-xref="">timezone<sub data-anolis-xref="">minutes</sub></var>.</p>
-              </li>
-            </ol>
-
-            <p>Otherwise, fail.</p>
-          </li>
-
-          <li>If <var data-anolis-xref="">timezone<sub data-anolis-xref="">hours</sub></var> is not a number in the range 0&nbsp;≤&nbsp;<var data-anolis-xref="">timezone<sub data-anolis-xref="">hours</sub></var>&nbsp;≤&nbsp;23, then fail.</li>
-
-          <li>If <var data-anolis-xref="">sign</var> is "negative", then negate <var data-anolis-xref="">timezone<sub data-anolis-xref="">hours</sub></var>.</li>
-
-          <li>If <var data-anolis-xref="">timezone<sub data-anolis-xref="">minutes</sub></var> is not a number in the range 0&nbsp;≤&nbsp;<var data-anolis-xref="">timezone<sub data-anolis-xref="">minutes</sub></var>&nbsp;≤&nbsp;59, then fail.</li>
-
-          <li>If <var data-anolis-xref="">sign</var> is "negative", then negate <var data-anolis-xref="">timezone<sub data-anolis-xref="">minutes</sub></var>.</li>
-        </ol>
-
-        <p>Otherwise, fail.</p>
-      </li>
-
-      <li>
-        <p>Return <var data-anolis-xref="">timezone<sub data-anolis-xref="">hours</sub></var> and <var data-anolis-xref="">timezone<sub data-anolis-xref="">minutes</sub></var>.</p>
-      </li>
-    </ol>
-  </div>
+  <p class="note">공식적인 타임존 형식 이전에 작성된 역사적 시대 타임존 오프셋을 사용하는 데에 대한 자세한 내용은  아래 <a data-anolis-xref="concept-datetime" href="#concept-datetime">글로벌 날짜 및 시간</a> 절에 있는 사용상의 주의와 예시를 참고하시길 바랍니다.</p>
 
   <h5 id="global-dates-and-times"><span class="secno">2.4.5.7</span> グローバル日付および時刻</h5>
 
@@ -1613,56 +1201,6 @@
     <li>"Z"（U+005A）文字</li>
   </ol>
 
-  <div class="impl">
-    <p>The rules to <dfn id="parse-a-global-date-and-time-string">parse a global date and time string</dfn> are as follows. This will return either a time in UTC, with associated time-zone offset information for round-tripping or display purposes, or nothing. If at any point the algorithm says that it "fails", this means that it is aborted at that point and returns nothing.</p>
-
-    <ol>
-      <li>
-        <p>Let <var data-anolis-xref="">input</var> be the string being parsed.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">position</var> be a pointer into <var data-anolis-xref="">input</var>, initially pointing at the start of the string.</p>
-      </li>
-
-      <li>
-        <p><a href="#parse-a-date-component">Parse a date component</a> to obtain <var data-anolis-xref="">year</var>, <var data-anolis-xref="">month</var>, and <var data-anolis-xref="">day</var>. If this returns nothing, then fail.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">position</var> is beyond the end of <var data-anolis-xref="">input</var> or if the character at <var data-anolis-xref="">position</var> is neither a U+0054 LATIN CAPITAL LETTER T character (T) nor a U+0020 SPACE character, then fail. Otherwise, move <var data-anolis-xref="">position</var> forwards one character.</p>
-      </li>
-
-      <li>
-        <p><a href="#parse-a-time-component">Parse a time component</a> to obtain <var data-anolis-xref="">hour</var>, <var data-anolis-xref="">minute</var>, and <var data-anolis-xref="">second</var>. If this returns nothing, then fail.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">position</var> is beyond the end of <var data-anolis-xref="">input</var>, then fail.</p>
-      </li>
-
-      <li>
-        <p><a href="#parse-a-time-zone-offset-component">Parse a time-zone offset component</a> to obtain <var data-anolis-xref="">timezone<sub data-anolis-xref="">hours</sub></var> and <var data-anolis-xref="">timezone<sub data-anolis-xref="">minutes</sub></var>. If this returns nothing, then fail.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">position</var> is <em>not</em> beyond the end of <var data-anolis-xref="">input</var>, then fail.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">time</var> be the moment in time at year <var data-anolis-xref="">year</var>, month <var data-anolis-xref="">month</var>, day <var data-anolis-xref="">day</var>, hours <var data-anolis-xref="">hour</var>, minute <var data-anolis-xref="">minute</var>, second <var data-anolis-xref="">second</var>, subtracting <var data-anolis-xref="">timezone<sub data-anolis-xref="">hours</sub></var> hours and <var data-anolis-xref="">timezone<sub data-anolis-xref="">minutes</sub></var> minutes. That moment in time is a moment in the UTC time zone.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">timezone</var> be <var data-anolis-xref="">timezone<sub data-anolis-xref="">hours</sub></var> hours and <var data-anolis-xref="">timezone<sub data-anolis-xref="">minutes</sub></var> minutes from UTC.</p>
-      </li>
-
-      <li>
-        <p>Return <var data-anolis-xref="">time</var> and <var data-anolis-xref="">timezone</var>.</p>
-      </li>
-    </ol>
-  </div>
-
   <h5 id="weeks"><span class="secno">2.4.5.8</span> 週</h5>
 
   <p><dfn data-anolis-xref="concept-week" id="concept-week">週</dfn>は、週番号年と週番号からなる。週番号は、月曜日から始まる7日間を示す。以下の定義に従って、このカレンダーシステムにおける週番号年は52または53の7日間を持つ。グレゴリオ暦の日付で1969年12月29日（1969-12-29）月曜日で始まる7日間は、1970週番号年で週番号1として定義される。連続した週は連番が付けられる。週番号年で1週目の前の週は、前の週番号年の最終週である。逆もまた同様である。<a href="references.html#refsGREGORIAN">[GREGORIAN]</a></p>
@@ -1688,56 +1226,6 @@
     <li>1&nbsp;≤&nbsp;<var data-anolis-xref="">week</var>&nbsp;≤&nbsp;<var data-anolis-xref="">maxweek</var>の範囲で、週<var data-anolis-xref="">week</var>を表す2つの<a href="#ascii-digits">ASCII数字</a>。ここで <var data-anolis-xref="">maxweek</var>は週番号年<var data-anolis-xref="">year</var>の<a href="#week-number-of-the-last-day">最終日の週番号</a>である。
     </li>
   </ol>
-
-  <div class="impl">
-    <p>The rules to <dfn id="parse-a-week-string">parse a week string</dfn> are as follows. This will return either a week-year number and week number, or nothing. If at any point the algorithm says that it "fails", this means that it is aborted at that point and returns nothing.</p>
-
-    <ol>
-      <li>
-        <p>Let <var data-anolis-xref="">input</var> be the string being parsed.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">position</var> be a pointer into <var data-anolis-xref="">input</var>, initially pointing at the start of the string.</p>
-      </li>
-
-      <li>
-        <p><a href="#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are <a href="#ascii-digits">ASCII digits</a>. If the collected sequence is not at least four characters long, then fail. Otherwise, interpret the resulting sequence as a base-ten integer. Let that number be the <var data-anolis-xref="">year</var>.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">year</var> is not a number greater than zero, then fail.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">position</var> is beyond the end of <var data-anolis-xref="">input</var> or if the character at <var data-anolis-xref="">position</var> is not a U+002D HYPHEN-MINUS character, then fail. Otherwise, move <var data-anolis-xref="">position</var> forwards one character.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">position</var> is beyond the end of <var data-anolis-xref="">input</var> or if the character at <var data-anolis-xref="">position</var> is not a "W" (U+0057) character, then fail. Otherwise, move <var data-anolis-xref="">position</var> forwards one character.</p>
-      </li>
-
-      <li>
-        <p><a href="#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are <a href="#ascii-digits">ASCII digits</a>. If the collected sequence is not exactly two characters long, then fail. Otherwise, interpret the resulting sequence as a base-ten integer. Let that number be the <var data-anolis-xref="">week</var>.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">maxweek</var> be the <a href="#week-number-of-the-last-day">week number of the last day</a> of year <var data-anolis-xref="">year</var>.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">week</var> is not a number in the range 1&nbsp;≤&nbsp;<var data-anolis-xref="">week</var>&nbsp;≤&nbsp;<var data-anolis-xref="">maxweek</var>, then fail.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">position</var> is <em>not</em> beyond the end of <var data-anolis-xref="">input</var>, then fail.</p>
-      </li>
-
-      <li>
-        <p>Return the week-year number <var data-anolis-xref="">year</var> and the week number <var data-anolis-xref="">week</var>.</p>
-      </li>
-    </ol>
-  </div>
 
   <h5 id="durations"><span class="secno">2.4.5.9</span> 継続時間</h5><!-- if you add support for year and month durations, then search for MONTHS throughout the spec
   (not just this section) for things that have to change -->
@@ -1884,218 +1372,6 @@
     </li>
   </ul>
 
-  <div class="impl">
-    <p>The rules to <dfn id="parse-a-duration-string">parse a duration string</dfn> are as follows. This will return either a <a data-anolis-xref="concept-duration" href="#concept-duration">duration</a> or nothing. If at any point the algorithm says that it "fails", this means that it is aborted at that point and returns nothing.</p>
-
-    <ol>
-      <!--MONTHS: this algorithm actually already parses months adequately, though it would need
-   tweaking if we introduced a "mo" unit for the non-ISO variant. See other "MONTHS" annotations
-   below. -->
-
-      <li>
-        <p>Let <var data-anolis-xref="">input</var> be the string being parsed.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">position</var> be a pointer into <var data-anolis-xref="">input</var>, initially pointing at the start of the string.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">months</var>, <var data-anolis-xref="">seconds</var>, and <var data-anolis-xref="">component count</var> all be zero.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">M-disambiguator</var> be <i>minutes</i>.</p><!--MONTHS: this note would change-->
-
-        <p class="note">This flag's other value is <i>months</i>. It is used to disambiguate the "M" unit in ISO8601 durations, which use the same unit for months and minutes. Months are not allowed, but are parsed for future compatibility and to avoid misinterpreting ISO8601 durations that would be valid in other contexts.</p>
-      </li>
-
-      <li>
-        <p><a href="#skip-whitespace">Skip whitespace</a>.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">position</var> is past the end of <var data-anolis-xref="">input</var>, then fail.</p>
-      </li>
-
-      <li>
-        <p>If the character in <var data-anolis-xref="">input</var> pointed to by <var data-anolis-xref="">position</var> is a U+0050 LATIN CAPITAL LETTER P character, then advance <var data-anolis-xref="">position</var> to the next character, set <var data-anolis-xref="">M-disambiguator</var> to <i>months</i>, and <a href="#skip-whitespace">skip whitespace</a>.</p>
-      </li>
-
-      <li>
-        <p>Run the following substeps in a loop, until a step requiring the loop to be broken or the entire algorithm to fail is reached:</p>
-
-        <ol>
-          <li>
-            <p>Let <var data-anolis-xref="">units</var> be undefined. It will be assigned one of the following values: <i>years</i>, <i>months</i>, <i>weeks</i>, <i>days</i>, <i>hours</i>, <i>minutes</i>, and <i>seconds</i>.</p>
-          </li>
-
-          <li>
-            <p>Let <var data-anolis-xref="">next character</var> be undefined. It is used to process characters from the <var data-anolis-xref="">input</var>.</p>
-          </li>
-
-          <li>
-            <p>If <var data-anolis-xref="">position</var> is past the end of <var data-anolis-xref="">input</var>, then break the loop.</p>
-          </li>
-
-          <li>
-            <p>If the character in <var data-anolis-xref="">input</var> pointed to by <var data-anolis-xref="">position</var> is a U+0054 LATIN CAPITAL LETTER T character, then advance <var data-anolis-xref="">position</var> to the next character, set <var data-anolis-xref="">M-disambiguator</var> to <i>minutes</i>, <a href="#skip-whitespace">skip whitespace</a>, and return to the top of the loop.</p>
-          </li>
-
-          <li>
-            <p>Set <var data-anolis-xref="">next character</var> to the character in <var data-anolis-xref="">input</var> pointed to by <var data-anolis-xref="">position</var>.</p>
-          </li>
-
-          <li>
-            <p>If <var data-anolis-xref="">next character</var> is a "." (U+002E) character, then let <var data-anolis-xref="">N</var> equal zero. (Do not advance <var data-anolis-xref="">position</var>. That is taken care of below.)</p>
-
-            <p>Otherwise, if <var data-anolis-xref="">next character</var> is an <a data-anolis-xref="ASCII digits" href="#ascii-digits">ASCII digit</a>, then <a href="#collect-a-sequence-of-characters">collect a sequence of characters</a> that are <a href="#ascii-digits">ASCII digits</a>, interpret the resulting sequence as a base-ten integer, and let <var data-anolis-xref="">N</var> be that number.</p>
-
-            <p>Otherwise <var data-anolis-xref="">next character</var> is not part of a number; fail.</p>
-          </li>
-
-          <li>
-            <p>If <var data-anolis-xref="">position</var> is past the end of <var data-anolis-xref="">input</var>, then fail.</p>
-          </li>
-
-          <li>
-            <p>Set <var data-anolis-xref="">next character</var> to the character in <var data-anolis-xref="">input</var> pointed to by <var data-anolis-xref="">position</var>, and this time advance <var data-anolis-xref="">position</var> to the next character. (If <var data-anolis-xref="">next character</var> was a U+002E FULL STOP character (.) before, it will still be that character this time.)</p>
-          </li>
-
-          <li>
-            <p>If <var data-anolis-xref="">next character</var> is a "." (U+002E) character, then run these substeps:</p>
-
-            <ol>
-              <li>
-                <p><a href="#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are <a href="#ascii-digits">ASCII digits</a>. Let <var data-anolis-xref="">s</var> be the resulting sequence.</p>
-              </li>
-
-              <li>
-                <p>If <var data-anolis-xref="">s</var> is the empty string, then fail.</p>
-              </li>
-
-              <li>
-                <p>Let <var data-anolis-xref="">length</var> be the number of characters in <var data-anolis-xref="">s</var>.</p>
-              </li>
-
-              <li>
-                <p>Let <var data-anolis-xref="">fraction</var> be the result of interpreting <var data-anolis-xref="">s</var> as a base-ten integer, and then dividing that number by <span data-anolis-xref="">10<sup data-anolis-xref=""><var data-anolis-xref="">length</var></sup></span>.</p>
-              </li>
-
-              <li>
-                <p>Increment <var data-anolis-xref="">N</var> by <var data-anolis-xref="">fraction</var>.</p>
-              </li>
-
-              <li>
-                <p><a href="#skip-whitespace">Skip whitespace</a>.</p>
-              </li>
-
-              <li>
-                <p>If <var data-anolis-xref="">position</var> is past the end of <var data-anolis-xref="">input</var>, then fail.</p>
-              </li>
-
-              <li>
-                <p>Set <var data-anolis-xref="">next character</var> to the character in <var data-anolis-xref="">input</var> pointed to by <var data-anolis-xref="">position</var>, and advance <var data-anolis-xref="">position</var> to the next character.</p>
-              </li>
-
-              <li>
-                <p>If <var data-anolis-xref="">next character</var> is neither a U+0053 LATIN CAPITAL LETTER S character nor a U+0073 LATIN SMALL LETTER S character, then fail.</p>
-              </li>
-
-              <li>
-                <p>Set <var data-anolis-xref="">units</var> to <i>seconds</i>.</p>
-              </li>
-            </ol>
-
-            <p>Otherwise, run these substeps:</p>
-
-            <ol>
-              <li>
-                <p>If <var data-anolis-xref="">next character</var> is a <a href="#space-character">space character</a>, then <a href="#skip-whitespace">skip whitespace</a>, set <var data-anolis-xref="">next character</var> to the character in <var data-anolis-xref="">input</var> pointed to by <var data-anolis-xref="">position</var>, and advance <var data-anolis-xref="">position</var> to the next character.</p>
-              </li>
-
-              <li>
-                <!--MONTHS: this would probably be where we would add more
-        logic to support a new unit like 'mo' -->
-
-                <p>If <var data-anolis-xref="">next character</var> is a U+0059 LATIN CAPITAL LETTER Y character, or a U+0079 LATIN SMALL LETTER Y character, set <var data-anolis-xref="">units</var> to <i>years</i> and set <var data-anolis-xref="">M-disambiguator</var> to <i>months</i>.</p>
-
-                <p>If <var data-anolis-xref="">next character</var> is a U+004D LATIN CAPITAL LETTER M character or a U+006D LATIN SMALL LETTER M character, and <var data-anolis-xref="">M-disambiguator</var> is <i>months</i>, then set <var data-anolis-xref="">units</var> to <i>months</i>.</p>
-
-                <p>If <var data-anolis-xref="">next character</var> is a U+0057 LATIN CAPITAL LETTER W character or a U+0077 LATIN SMALL LETTER W character, set <var data-anolis-xref="">units</var> to <i>weeks</i> and set <var data-anolis-xref="">M-disambiguator</var> to <i>minutes</i>.</p>
-
-                <p>If <var data-anolis-xref="">next character</var> is a U+0044 LATIN CAPITAL LETTER D character or a U+0064 LATIN SMALL LETTER D character, set <var data-anolis-xref="">units</var> to <i>days</i> and set <var data-anolis-xref="">M-disambiguator</var> to <i>minutes</i>.</p>
-
-                <p>If <var data-anolis-xref="">next character</var> is a U+0048 LATIN CAPITAL LETTER H character or a U+0068 LATIN SMALL LETTER H character, set <var data-anolis-xref="">units</var> to <i>hours</i> and set <var data-anolis-xref="">M-disambiguator</var> to <i>minutes</i>.</p>
-
-                <p>If <var data-anolis-xref="">next character</var> is a U+004D LATIN CAPITAL LETTER M character or a U+006D LATIN SMALL LETTER M character, and <var data-anolis-xref="">M-disambiguator</var> is <i>minutes</i>, then set <var data-anolis-xref="">units</var> to <i>minutes</i>.</p>
-
-                <p>If <var data-anolis-xref="">next character</var> is a U+0053 LATIN CAPITAL LETTER S character or a U+0073 LATIN SMALL LETTER S character, set <var data-anolis-xref="">units</var> to <i>seconds</i> and set <var data-anolis-xref="">M-disambiguator</var> to <i>minutes</i>.</p>
-
-                <p>Otherwise if <var data-anolis-xref="">next character</var> is none of the above characters, then fail.</p>
-              </li>
-            </ol>
-          </li>
-
-          <li>
-            <p>Increment <var data-anolis-xref="">component count</var>.</p>
-          </li>
-
-          <li>
-            <p>Let <var data-anolis-xref="">multiplier</var> be 1.</p>
-          </li>
-
-          <li>
-            <p>If <var data-anolis-xref="">units</var> is <i>years</i>, multiply <var data-anolis-xref="">multiplier</var> by 12 and set <var data-anolis-xref="">units</var> to <i>months</i>.</p>
-          </li>
-
-          <li>
-            <p>If <var data-anolis-xref="">units</var> is <i>months</i>, add the product of <var data-anolis-xref="">N</var> and <var data-anolis-xref="">multiplier</var> to <var data-anolis-xref="">months</var>.</p>
-
-            <p>Otherwise, run these substeps:</p>
-
-            <ol>
-              <li>
-                <p>If <var data-anolis-xref="">units</var> is <i>weeks</i>, multiply <var data-anolis-xref="">multiplier</var> by 7 and set <var data-anolis-xref="">units</var> to <i>days</i>.</p>
-              </li>
-
-              <li>
-                <p>If <var data-anolis-xref="">units</var> is <i>days</i>, multiply <var data-anolis-xref="">multiplier</var> by 24 and set <var data-anolis-xref="">units</var> to <i>hours</i>.</p>
-              </li>
-
-              <li>
-                <p>If <var data-anolis-xref="">units</var> is <i>hours</i>, multiply <var data-anolis-xref="">multiplier</var> by 60 and set <var data-anolis-xref="">units</var> to <i>minutes</i>.</p>
-              </li>
-
-              <li>
-                <p>If <var data-anolis-xref="">units</var> is <i>minutes</i>, multiply <var data-anolis-xref="">multiplier</var> by 60 and set <var data-anolis-xref="">units</var> to <i>seconds</i>.</p>
-              </li>
-
-              <li>
-                <p>Forcibly, <var data-anolis-xref="">units</var> is now <i>seconds</i>. Add the product of <var data-anolis-xref="">N</var> and <var data-anolis-xref="">multiplier</var> to <var data-anolis-xref="">seconds</var>.</p>
-              </li>
-            </ol>
-          </li>
-
-          <li>
-            <p><a href="#skip-whitespace">Skip whitespace</a>.</p>
-          </li>
-        </ol>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">component count</var> is zero, fail.</p>
-      </li><!--MONTHS: if we add month support this is where you'd return them-->
-
-      <li>
-        <p>If <var data-anolis-xref="">months</var> is not zero, fail.</p>
-      </li>
-
-      <li>
-        <p>Return the <a data-anolis-xref="concept-duration" href="#concept-duration">duration</a> consisting of <var data-anolis-xref="">seconds</var> seconds.</p>
-      </li>
-    </ol>
-  </div>
 
   <h5 id="vaguer-moments-in-time"><span class="secno">2.4.5.10</span> 時刻における曖昧な瞬間</h5>
 
@@ -2111,66 +1387,6 @@
     </li>
   </ul>
 
-  <div class="impl">
-    <hr>
-
-    <p>The rules to <dfn id="parse-a-date-or-time-string">parse a date or time string</dfn> are as follows. The algorithm will return either a <a data-anolis-xref="concept-date" href="#concept-date">date</a>, a <a data-anolis-xref="concept-time" href="#concept-time">time</a>, a <a data-anolis-xref="concept-datetime" href="#concept-datetime">global date and time</a>, or nothing. If at any point the algorithm says that it "fails", this means that it is aborted at that point and returns nothing.</p>
-
-    <ol>
-      <li>
-        <p>Let <var data-anolis-xref="">input</var> be the string being parsed.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">position</var> be a pointer into <var data-anolis-xref="">input</var>, initially pointing at the start of the string.</p>
-      </li>
-
-      <li>
-        <p>Set <var data-anolis-xref="">start position</var> to the same position as <var data-anolis-xref="">position</var>.</p>
-      </li>
-
-      <li>
-        <p>Set the <var data-anolis-xref="">date present</var> and <var data-anolis-xref="">time present</var> flags to true.</p>
-      </li>
-
-      <li>
-        <p><a href="#parse-a-date-component">Parse a date component</a> to obtain <var data-anolis-xref="">year</var>, <var data-anolis-xref="">month</var>, and <var data-anolis-xref="">day</var>. If this fails, then set the <var data-anolis-xref="">date present</var> flag to false.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">date present</var> is true, and <var data-anolis-xref="">position</var> is not beyond the end of <var data-anolis-xref="">input</var>, and the character at <var data-anolis-xref="">position</var> is either a "T" (U+0054) character or a U+0020 SPACE character, then advance <var data-anolis-xref="">position</var> to the next character in <var data-anolis-xref="">input</var>.</p>
-
-        <p>Otherwise, if <var data-anolis-xref="">date present</var> is true, and either <var data-anolis-xref="">position</var> is beyond the end of <var data-anolis-xref="">input</var> or the character at <var data-anolis-xref="">position</var> is neither a "T" (U+0054) character nor a U+0020 SPACE character, then set <var data-anolis-xref="">time present</var> to false.</p>
-
-        <p>Otherwise, if <var data-anolis-xref="">date present</var> is false, set <var data-anolis-xref="">position</var> back to the same position as <var data-anolis-xref="">start position</var>.</p>
-      </li>
-
-      <li>
-        <p>If the <var data-anolis-xref="">time present</var> flag is true, then <a href="#parse-a-time-component">parse a time component</a> to obtain <var data-anolis-xref="">hour</var>, <var data-anolis-xref="">minute</var>, and <var data-anolis-xref="">second</var>. If this returns nothing, then fail.</p>
-      </li>
-
-      <li>
-        <p>If the <var data-anolis-xref="">date present</var> and <var data-anolis-xref="">time present</var> flags are both true, but <var data-anolis-xref="">position</var> is beyond the end of <var data-anolis-xref="">input</var>, then fail.</p>
-      </li>
-
-      <li>
-        <p>If the <var data-anolis-xref="">date present</var> and <var data-anolis-xref="">time present</var> flags are both true, <a href="#parse-a-time-zone-offset-component">parse a time-zone offset component</a> to obtain <var data-anolis-xref="">timezone<sub data-anolis-xref="">hours</sub></var> and <var data-anolis-xref="">timezone<sub data-anolis-xref="">minutes</sub></var>. If this returns nothing, then fail.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">position</var> is <em>not</em> beyond the end of <var data-anolis-xref="">input</var>, then fail.</p>
-      </li>
-
-      <li>
-        <p>If the <var data-anolis-xref="">date present</var> flag is true and the <var data-anolis-xref="">time present</var> flag is false, then let <var data-anolis-xref="">date</var> be the date with year <var data-anolis-xref="">year</var>, month <var data-anolis-xref="">month</var>, and day <var data-anolis-xref="">day</var>, and return <var data-anolis-xref="">date</var>.</p>
-
-        <p>Otherwise, if the <var data-anolis-xref="">time present</var> flag is true and the <var data-anolis-xref="">date present</var> flag is false, then let <var data-anolis-xref="">time</var> be the time with hour <var data-anolis-xref="">hour</var>, minute <var data-anolis-xref="">minute</var>, and second <var data-anolis-xref="">second</var>, and return <var data-anolis-xref="">time</var>.</p>
-
-        <p>Otherwise, let <var data-anolis-xref="">time</var> be the moment in time at year <var data-anolis-xref="">year</var>, month <var data-anolis-xref="">month</var>, day <var data-anolis-xref="">day</var>, hours <var data-anolis-xref="">hour</var>, minute <var data-anolis-xref="">minute</var>, second <var data-anolis-xref="">second</var>, subtracting <var data-anolis-xref="">timezone<sub data-anolis-xref="">hours</sub></var> hours and <var data-anolis-xref="">timezone<sub data-anolis-xref="">minutes</sub></var> minutes, that moment in time being a moment in the UTC time zone; let <var data-anolis-xref="">timezone</var> be <var data-anolis-xref="">timezone<sub data-anolis-xref="">hours</sub></var> hours and <var data-anolis-xref="">timezone<sub data-anolis-xref="">minutes</sub></var> minutes from UTC; and return <var data-anolis-xref="">time</var> and <var data-anolis-xref="">timezone</var>.</p>
-      </li>
-    </ol>
-  </div>
-
   <h4 id="colors"><span class="secno">2.4.6</span> 色</h4>
 
   <p><dfn id="simple-color">単純色</dfn>は、sRGB色空間の中で各色のコンポーネント赤、緑、青を表す、0から255までの範囲の8ビット数字3つからなる。<a href="references.html#refsSRGB">[SRGB]</a></p>
@@ -2179,173 +1395,6 @@
 
   <p><a href="#valid-simple-color">妥当な単純色</a>でかつU+0041 LATIN CAPITAL LETTER AからU+0046 LATIN CAPITAL LETTER Fまでの範囲の文字を一切使用しない場合、文字列は<dfn id="valid-lowercase-simple-color">妥当な小文字の単純色</dfn>である。</p>
 
-  <div class="impl">
-    <p>The <dfn id="rules-for-parsing-simple-color-values">rules for parsing simple color values</dfn> are as given in the following algorithm. When invoked, the steps must be followed in the order given, aborting at the first step that returns a value. This algorithm will return either a <a href="#simple-color">simple color</a> or an error.</p>
-
-    <ol>
-      <li>
-        <p>Let <var data-anolis-xref="">input</var> be the string being parsed.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">input</var> is not exactly seven characters long, then return an error.</p>
-      </li>
-
-      <li>
-        <p>If the first character in <var data-anolis-xref="">input</var> is not a U+0023 NUMBER SIGN character (#), then return an error.</p>
-      </li>
-
-      <li>
-        <p>If the last six characters of <var data-anolis-xref="">input</var> are not all <a href="#ascii-hex-digits">ASCII hex digits</a>, then return an error.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">result</var> be a <a href="#simple-color">simple color</a>.</p>
-      </li>
-
-      <li>
-        <p>Interpret the second and third characters as a hexadecimal number and let the result be the red component of <var data-anolis-xref="">result</var>.</p>
-      </li>
-
-      <li>
-        <p>Interpret the fourth and fifth characters as a hexadecimal number and let the result be the green component of <var data-anolis-xref="">result</var>.</p>
-      </li>
-
-      <li>
-        <p>Interpret the sixth and seventh characters as a hexadecimal number and let the result be the blue component of <var data-anolis-xref="">result</var>.</p>
-      </li>
-
-      <li>
-        <p>Return <var data-anolis-xref="">result</var>.</p>
-      </li>
-    </ol>
-
-    <p>The <dfn id="rules-for-serializing-simple-color-values">rules for serializing simple color values</dfn> given a <a href="#simple-color">simple color</a> are as given in the following algorithm:</p>
-
-    <ol>
-      <li>
-        <p>Let <var data-anolis-xref="">result</var> be a string consisting of a single "#" (U+0023) character.</p>
-      </li>
-
-      <li>
-        <p>Convert the red, green, and blue components in turn to two-digit hexadecimal numbers using <a href="#lowercase-ascii-hex-digits">lowercase ASCII hex digits</a>, zero-padding if necessary, and append these numbers to <var data-anolis-xref="">result</var>, in the order red, green, blue.</p>
-      </li>
-
-      <li>
-        <p>Return <var data-anolis-xref="">result</var>, which will be a <a href="#valid-lowercase-simple-color">valid lowercase simple color</a>.</p>
-      </li>
-    </ol>
-    <hr>
-
-    <p>Some obsolete legacy attributes parse colors in a more complicated manner, using the <dfn id="rules-for-parsing-a-legacy-color-value">rules for parsing a legacy color value</dfn>, which are given in the following algorithm. When invoked, the steps must be followed in the order given, aborting at the first step that returns a value. This algorithm will return either a <a href="#simple-color">simple color</a> or an error.</p>
-
-    <ol>
-      <li>
-        <p>Let <var data-anolis-xref="">input</var> be the string being parsed.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">input</var> is the empty string, then return an error.</p>
-      </li>
-
-      <li>
-        <p><a href="#strip-leading-and-trailing-whitespace">Strip leading and trailing whitespace</a> from <var data-anolis-xref="">input</var>.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">input</var> is an <a href="#ascii-case-insensitive">ASCII case-insensitive</a> match for the string "<code data-anolis-xref="">transparent</code>", then return an error.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">input</var> is an <a href="#ascii-case-insensitive">ASCII case-insensitive</a> match for one of the keywords listed in the <a href="http://www.w3.org/TR/css3-color/#svg-color">SVG color keywords</a> <!-- or <a href="http://www.w3.org/TR/css3-color/#css2-system">CSS2 System
-    Colors</a> --> section<!--s--> of the CSS3 Color specification, then return the <a href="#simple-color">simple color</a> corresponding to that keyword. <a href="references.html#refsCSSCOLOR">[CSSCOLOR]</a></p>
-
-        <p class="note"><a href="http://www.w3.org/TR/css3-color/#css2-system">CSS2 System Colors</a> are not recognised.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">input</var> is four characters long, and the first character in <var data-anolis-xref="">input</var> is a "#" (U+0023) character, and the last three characters of <var data-anolis-xref="">input</var> are all <a href="#ascii-hex-digits">ASCII hex digits</a>, then run these substeps:</p>
-
-        <ol>
-          <li>
-            <p>Let <var data-anolis-xref="">result</var> be a <a href="#simple-color">simple color</a>.</p>
-          </li>
-
-          <li>
-            <p>Interpret the second character of <var data-anolis-xref="">input</var> as a hexadecimal digit; let the red component of <var data-anolis-xref="">result</var> be the resulting number multiplied by 17.</p>
-          </li>
-
-          <li>
-            <p>Interpret the third character of <var data-anolis-xref="">input</var> as a hexadecimal digit; let the green component of <var data-anolis-xref="">result</var> be the resulting number multiplied by 17.</p>
-          </li>
-
-          <li>
-            <p>Interpret the fourth character of <var data-anolis-xref="">input</var> as a hexadecimal digit; let the blue component of <var data-anolis-xref="">result</var> be the resulting number multiplied by 17.</p>
-          </li>
-
-          <li>
-            <p>Return <var data-anolis-xref="">result</var>.</p>
-          </li>
-        </ol>
-      </li>
-
-      <li>
-        <p>Replace any characters in <var data-anolis-xref="">input</var> that have a Unicode code point greater than U+FFFF (i.e. any characters that are not in the basic multilingual plane) with the two-character string "<code data-anolis-xref="">00</code>".</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">input</var> is longer than 128 characters, truncate <var data-anolis-xref="">input</var>, leaving only the first 128 characters.</p>
-      </li>
-
-      <li>
-        <p>If the first character in <var data-anolis-xref="">input</var> is a "#" (U+0023) character, remove it.</p>
-      </li>
-
-      <li>
-        <p>Replace any character in <var data-anolis-xref="">input</var> that is not an <a data-anolis-xref="ASCII hex digits" href="#ascii-hex-digits">ASCII hex digit</a> with the character "0" (U+0030).</p>
-      </li>
-
-      <li>
-        <p>While <var data-anolis-xref="">input</var>'s length is zero or not a multiple of three, append a "0" (U+0030) character to <var data-anolis-xref="">input</var>.</p>
-      </li>
-
-      <li>
-        <p>Split <var data-anolis-xref="">input</var> into three strings of equal length, to obtain three components. Let <var data-anolis-xref="">length</var> be the length of those components (one third the length of <var data-anolis-xref="">input</var>).</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">length</var> is greater than 8, then remove the leading <span data-anolis-xref=""><var data-anolis-xref="">length</var>-8</span> characters in each component, and let <var data-anolis-xref="">length</var> be 8.</p>
-      </li>
-
-      <li>
-        <p>While <var data-anolis-xref="">length</var> is greater than two and the first character in each component is a "0" (U+0030) character, remove that character and reduce <var data-anolis-xref="">length</var> by one.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">length</var> is <em>still</em> greater than two, truncate each component, leaving only the first two characters in each.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">result</var> be a <a href="#simple-color">simple color</a>.</p>
-      </li>
-
-      <li>
-        <p>Interpret the first component as a hexadecimal number; let the red component of <var data-anolis-xref="">result</var> be the resulting number.</p>
-      </li>
-
-      <li>
-        <p>Interpret the second component as a hexadecimal number; let the green component of <var data-anolis-xref="">result</var> be the resulting number.</p>
-      </li>
-
-      <li>
-        <p>Interpret the third component as a hexadecimal number; let the blue component of <var data-anolis-xref="">result</var> be the resulting number.</p>
-      </li>
-
-      <li>
-        <p>Return <var data-anolis-xref="">result</var>.</p>
-      </li>
-    </ol>
-  </div>
   <hr>
   <!--2DCANVAS-->
 
@@ -2363,50 +1412,6 @@
 
   <p class="note"><a href="#set-of-space-separated-tokens">空白区切りトークンの組</a>のトークンがどのように比較されるか（たとえば、大文字小文字を区別するかどうか）は、セットごとに定義される。</p>
 
-  <div class="impl">
-    <p>When a user agent has to <dfn id="split-a-string-on-spaces">split a string on spaces</dfn>, it must use the following algorithm:</p>
-
-    <ol>
-      <li>
-        <p>Let <var data-anolis-xref="">input</var> be the string being parsed.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">position</var> be a pointer into <var data-anolis-xref="">input</var>, initially pointing at the start of the string.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">tokens</var> be an ordered list of tokens, initially empty.</p>
-      </li>
-
-      <li>
-        <p><a href="#skip-whitespace">Skip whitespace</a></p>
-      </li>
-
-      <li>
-        <p>While <var data-anolis-xref="">position</var> is not past the end of <var data-anolis-xref="">input</var>:</p>
-
-        <ol>
-          <li>
-            <p><a href="#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are not <a data-anolis-xref="space character" href="#space-character">space characters</a>.</p>
-          </li>
-
-          <li>
-            <p>Append the string collected in the previous step to <var data-anolis-xref="">tokens</var>.</p>
-          </li>
-
-          <li>
-            <p><a href="#skip-whitespace">Skip whitespace</a></p>
-          </li>
-        </ol>
-      </li>
-
-      <li>
-        <p>Return <var data-anolis-xref="">tokens</var>.</p>
-      </li>
-    </ol>
-  </div>
-
   <h4 id="comma-separated-tokens"><span class="secno">2.4.8</span> コンマ区切りトークン</h4>
 
   <p><dfn id="set-of-comma-separated-tokens">コンマ区切りトークンの組</dfn>は、それぞれ単一の","（U+002C）文字で区切られる0個以上のトークンを含む文字列である。ここでトークンは0個以上の任意の文字列からなり、先頭も末尾も<a data-anolis-xref="space character" href="#space-character">空白文字</a>でなく、","（U+002C）文字を含まず、任意で<a data-anolis-xref="space character" href="#space-character">空白文字</a>に囲まれるものである。</p>
@@ -2415,81 +1420,12 @@
 
   <p><a data-anolis-xref="set of comma-separated tokens" href="#set-of-comma-separated-tokens">コンマ区切りトークンの組</a>は時に妥当なトークンを構成するさらなる制約を持つ。そのような制限が定義される場合、トークンはすべてその制限に収まるようにしなければならない。その他の値は不適合である。そのような制限が指定されない場合、すべての値は適合である。</p>
 
-  <div class="impl">
-    <p>When a user agent has to <dfn id="split-a-string-on-commas">split a string on commas</dfn>, it must use the following algorithm:</p>
-
-    <ol>
-      <li>
-        <p>Let <var data-anolis-xref="">input</var> be the string being parsed.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">position</var> be a pointer into <var data-anolis-xref="">input</var>, initially pointing at the start of the string.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">tokens</var> be an ordered list of tokens, initially empty.</p>
-      </li>
-
-      <li>
-        <p><i>Token</i>: If <var data-anolis-xref="">position</var> is past the end of <var data-anolis-xref="">input</var>, jump to the last step.</p>
-      </li>
-
-      <li>
-        <p><a href="#collect-a-sequence-of-characters">Collect a sequence of characters</a> that are not "," (U+002C) characters. Let <var data-anolis-xref="">s</var> be the resulting sequence (which might be the empty string).</p>
-      </li>
-
-      <li>
-        <p><a href="#strip-leading-and-trailing-whitespace">Strip leading and trailing whitespace</a> from <var data-anolis-xref="">s</var>.</p>
-      </li>
-
-      <li>
-        <p>Append <var data-anolis-xref="">s</var> to <var data-anolis-xref="">tokens</var>.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">position</var> is not past the end of <var data-anolis-xref="">input</var>, then the character at <var data-anolis-xref="">position</var> is a "," (U+002C) character; advance <var data-anolis-xref="">position</var> past that character.</p>
-      </li>
-
-      <li>
-        <p>Jump back to the step labeled <i>token</i>.</p>
-      </li>
-
-      <li>
-        <p>Return <var data-anolis-xref="">tokens</var>.</p>
-      </li>
-    </ol>
-  </div>
-
+  
   <h4 id="syntax-references"><span class="secno">2.4.9</span> 参照</h4>
 
   <p>タイプ<var data-anolis-xref="">type</var>要素に対して<dfn id="valid-hash-name-reference">妥当なハッシュ名参照</dfn>は、"#"（U+0023）文字の後に文書でタイプ<var data-anolis-xref="">type</var>をもつ要素の<code data-anolis-xref="">name</code>属性値に正確に一致する文字列からなる文字列である。</p>
 
-  <div class="impl">
-    <p>The <dfn id="rules-for-parsing-a-hash-name-reference">rules for parsing a hash-name reference</dfn> to an element of type <var data-anolis-xref="">type</var> are as follows:</p>
-
-    <ol>
-      <li>
-        <p>If the string being parsed does not contain a U+0023 NUMBER SIGN character, or if the first such character in the string is the last character in the string, then return null and abort these steps.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">s</var> be the string from the character immediately after the first U+0023 NUMBER SIGN character in the string being parsed up to the end of that string.</p>
-      </li>
-
-      <li>
-        <p>Return the first element of type <var data-anolis-xref="">type</var> that has an <code data-anolis-xref="attr-id"><a href="dom.html#the-id-attribute">id</a></code> attribute whose value is a <a href="#case-sensitive">case-sensitive</a> match for <var data-anolis-xref="">s</var> or a <code data-anolis-xref="">name</code> attribute whose value is a <a href="#compatibility-caseless">compatibility caseless</a> match for <var data-anolis-xref="">s</var>.</p>
-      </li><!--
-   IE is also doing case-insensitive id="" matching.
-   Tests:
-   http://software.hixie.ch/utilities/js/live-dom-viewer/?%3C!DOCTYPE%20html%3E%0A%3Cmap%20name%3D%22T%26eacute%3B%26%23x01F1%3B%26%23x2075%3B%22%3E%3Carea%20href%3D%22%2F%22%20shape%3Drect%20coords%3D0%2C0%2C200%2C200%3E%3C%2Fmap%3E%0A%3Cimg%20usemap%3D%22%23t%26Eacute%3BDZ5%22%20src%3Dimage%3E
-   ...except that doesn't explain why this fails:
-   http://software.hixie.ch/utilities/js/live-dom-viewer/?%3C!DOCTYPE%20html%3E%0A%3Cmap%20name%3D%22T%26eacute%3B%26%23x01F1%3B%26%23x2075%3B%26%23xFB01%3B%22%3E%3Carea%20href%3D%22%2F%22%20shape%3Drect%20coords%3D0%2C0%2C200%2C200%3E%3C%2Fmap%3E%0A%3Cimg%20usemap%3D%22%23t%26Eacute%3BDZ5F%26%23x0131%3B%26%23x0307%3B%22%20src%3Dimage%3E
-   maybe they just don't know about combining dot above?
-   -->
-    </ol>
-  </div>
-
+  
   <h4 id="mq"><span class="secno">2.4.10</span> メディアクエリ</h4>
 
   <p>メディアクエリ仕様の<code data-anolis-xref="">media_query_list</code>生成物に一致する場合、文字列は<dfn id="valid-media-query">妥当なメディアクエリ</dfn>である。<a href="references.html#refsMQ">[MQ]</a></p>
@@ -2544,378 +1480,6 @@
     </li>
   </ol>
 
-  <div class="impl">
-    <h4 id="resolving-urls"><span class="secno">2.5.2</span> Resolving URLs</h4>
-
-    <p>Resolving a URL is the process of taking a <a href="#relative-url">relative URL</a> and obtaining the <a href="#absolute-url">absolute URL</a> that it implies.</p>
-
-    <p>To <dfn id="resolve-a-url">resolve a URL</dfn> to an <a href="#absolute-url">absolute URL</a> relative to either another <a href="#absolute-url">absolute URL</a> or an element, the user agent must use the following steps. Resolving a URL can result in an error, in which case the URL is not resolvable.</p>
-
-    <ol>
-      <li>
-        <p>Let <var data-anolis-xref="">url</var> be the <span>URL</span> being resolved.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">encoding</var> be determined as follows:</p>
-
-        <dl class="switch">
-          <dt>If the URL had a character encoding defined when the URL was created or defined or when this algorithm was invoked</dt>
-
-          <dd>The URL character encoding is as defined.</dd>
-
-          <dt>If the URL came from a script (e.g. as an argument to a method)</dt><!--CLEANUP-->
-
-          <dd>
-            The URL character encoding is the <a href="webappapis.html#api-url-character-encoding">API URL character encoding</a> specified by the script's <a href="webappapis.html#settings-object">settings object</a>.
-          </dd>
-
-          <dt>If the URL came from a DOM node (e.g. from an element)</dt>
-
-          <dd>
-            The node has a <code><a href="dom.html#document">Document</a></code>, and the URL character encoding is the <a href="#document's-character-encoding">document's character encoding</a>.
-          </dd>
-        </dl>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">encoding</var> is <a href="#a-utf-16-encoding">a UTF-16 encoding</a>, then change the value of <var data-anolis-xref="">encoding</var> to UTF-8.</p>
-      </li>
-
-      <li>
-        <p>If the algorithm was invoked with an <a href="#absolute-url">absolute URL</a> to use as the base URL, let <var data-anolis-xref="">base</var> be that <a href="#absolute-url">absolute URL</a>.</p>
-
-        <p>Otherwise, let <var data-anolis-xref="">base</var> be <a href="#the-element's-base-url">the element's base URL</a>.</p>
-      </li>
-
-      <li>
-        <p>Apply the <a href="#url-parser-0">URL parser</a> to <var data-anolis-xref="">url</var>, with <var data-anolis-xref="">base</var> as the base URL, with <var data-anolis-xref="">encoding</var> as the encoding.</p>
-      </li>
-
-      <li>
-        <p>If this returns failure, then abort these steps with an error.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">parsed URL</var> be the result of the <a href="#url-parser-0">URL parser</a>.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">serialized URL</var> be the result of apply the <a data-anolis-xref="concept-url-serializer" href="#concept-url-serializer">URL serializer</a> to <var data-anolis-xref="">parsed URL</var>.</p>
-      </li>
-
-      <li>
-        <p>Return <var data-anolis-xref="">serialized URL</var> as the <dfn id="resulting-absolute-url">resulting absolute URL</dfn> and <var data-anolis-xref="">parsed URL</var> as the <dfn id="resulting-parsed-url">resulting parsed URL</dfn>.</p>
-      </li>
-    </ol>
-
-    <p>Given an element, <dfn id="the-element's-base-url">the element's base URL</dfn> is the <i>base URI of the element</i>, as defined by the XML Base specification, with <i>the base URI of the document entity</i> being defined as the <a href="#document-base-url">document base URL</a> of the <code><a href="dom.html#document">Document</a></code> that owns the element. <a href="references.html#refsXMLBASE">[XMLBASE]</a></p>
-
-    <p>For the purposes of the XML Base specification, user agents must act as if all <code><a href="dom.html#document">Document</a></code> objects represented XML documents.</p>
-
-    <p class="note">It is possible for <code data-anolis-xref="attr-xml-base"><a href="dom.html#the-xml:base-attribute-(xml-only)">xml:base</a></code> attributes to be present even in HTML fragments, as such attributes can be added dynamically using script. (Such scripts would not be conforming, however, as <code data-anolis-xref="attr-xml-base"><a href="dom.html#the-xml:base-attribute-(xml-only)">xml:base</a></code> attributes are not allowed in <a href="#html-documents">HTML documents</a>.)</p>
-  </div>
-
-  <div class="impl">
-    <h4 id="dynamic-changes-to-base-urls"><span class="secno">2.5.3</span> Dynamic changes to base URLs</h4>
-
-    <p>When an <code data-anolis-xref="attr-xml-base"><a href="dom.html#the-xml:base-attribute-(xml-only)">xml:base</a></code> attribute is set, changed, or removed, the attribute's element, and all descendant elements, are <a href="#affected-by-a-base-url-change">affected by a base URL change</a>.</p>
-
-    <p>When a document's <a href="#document-base-url">document base URL</a> changes, all elements in that document are <a href="#affected-by-a-base-url-change">affected by a base URL change</a>.</p>
-
-    <p>The following are <a href="#base-url-change-steps">base URL change steps</a>, which run when an element is <a href="#affected-by-a-base-url-change">affected by a base URL change</a> (as defined by the DOM specification):</p>
-
-    <dl class="switch">
-      <dt>
-        If the element creates a <a href="links.html#hyperlink">hyperlink</a>
-      </dt>
-
-      <dd>
-        <p>If the <a href="#absolute-url">absolute URL</a> identified by the hyperlink is being shown to the user, or if any data derived from that URL is affecting the display, then the <code data-anolis-xref="attr-hyperlink-href"><a href="links.html#attr-hyperlink-href">href</a></code> attribute should be <a data-anolis-xref="resolve a url" href="#resolve-a-url">re-resolved</a> relative to the element and the UI updated appropriately.</p>
-
-        <p class="example">For example, the CSS <code data-anolis-xref="selector-link"><a href="disabled-elements.html#selector-link">:link</a></code>/<code data-anolis-xref="selector-visited"><a href="disabled-elements.html#selector-visited">:visited</a></code> pseudo-classes might have been affected.</p><!--PING-->
-      </dd>
-
-      <dt>If the element is a <code><a href="text-level-semantics.html#the-q-element">q</a></code>, <code><a href="grouping-content.html#the-blockquote-element">blockquote</a></code>, <code><a href="edits.html#the-ins-element">ins</a></code>, or <code><a href="edits.html#the-del-element">del</a></code> element with a <code data-anolis-xref="">cite</code> attribute</dt>
-
-      <dd>
-        <p>If the <a href="#absolute-url">absolute URL</a> identified by the <code data-anolis-xref="">cite</code> attribute is being shown to the user, or if any data derived from that URL is affecting the display, then the <span>URL</span> should be <a data-anolis-xref="resolve a url" href="#resolve-a-url">re-resolved</a> relative to the element and the UI updated appropriately.</p>
-      </dd>
-
-      <dt>Otherwise</dt>
-
-      <dd>
-        <p>The element is not directly affected.</p>
-
-        <p class="example">For instance, changing the base URL doesn't affect the image displayed by <code><a href="embedded-content-0.html#the-img-element">img</a></code> elements, although subsequent accesses of the <code data-anolis-xref="dom-img-src"><a href="embedded-content-0.html#dom-img-src">src</a></code> IDL attribute from script will return a new <a href="#absolute-url">absolute URL</a> that might no longer correspond to the image being shown.</p>
-      </dd>
-    </dl>
-  </div>
-
-  <div class="impl">
-    <h3 id="fetching-resources"><span class="secno">2.6</span> Fetching resources</h3>
-
-    <h4 id="terminology-1"><span class="secno">2.6.1</span> Terminology</h4>
-
-    <p id="concept-http-equivalent">User agents can implement a variety of transfer protocols, but this specification mostly defines behavior in terms of HTTP. <a href="references.html#refsHTTP">[HTTP]</a></p>
-
-    <p>The <dfn data-anolis-xref="concept-http-equivalent-get" id="concept-http-equivalent-get">HTTP GET method</dfn> is equivalent to the default retrieval action of the protocol. For example, RETR in FTP. Such actions are idempotent and safe, in HTTP terms.</p>
-
-    <p>The <dfn data-anolis-xref="concept-http-equivalent-codes" id="concept-http-equivalent-codes">HTTP response codes</dfn> are equivalent to statuses in other protocols that have the same basic meanings. For example, a "file not found" error is equivalent to a 404 code, a server error is equivalent to a 5xx code, and so on.</p>
-
-    <p>The <dfn data-anolis-xref="concept-http-equivalent-headers" id="concept-http-equivalent-headers">HTTP headers</dfn> are equivalent to fields in other protocols that have the same basic meaning. For example, the HTTP authentication headers are equivalent to the authentication aspects of the FTP protocol.</p>
-
-    <p>A <dfn id="referrer-source">referrer source</dfn> is either a <code><a href="dom.html#document">Document</a></code> or a <span>URL</span>.</p>
-
-    <h4 id="processing-model"><span class="secno">2.6.2</span> Processing model</h4>
-
-    <p>When a user agent is to <dfn id="fetch">fetch</dfn><!--FETCH--> a resource or <span>URL</span>, optionally <strong>from</strong> an origin <i data-anolis-xref="">origin</i>, optionally <strong>using</strong> a specific <a href="#referrer-source">referrer source</a> as an <i>override referrer source</i>, and optionally with any of a <i>synchronous flag</i>, a <i>manual redirect flag</i>, a <i>force same-origin flag</i>, and a <i>block cookies flag</i>, the following steps must be run. (When a <em>URL</em> is to be fetched, the URL identifies a resource to be obtained.)</p><!-- if invoked with the synchronous flag, make sure to release the storage mutex first -->
-    <!-- synchronous flag is only to be used in algorithms that are themselves asynchronous! Only
-  sync-XHR is allowed to make the mistake of screwing that up. :-P -->
-    <!-- the force same-origin flag is for use in places where we'll be moving to CORS one day; when
-  used, the algorithm must be invoked with a URL (not something else, like a POST request) whose
-  origin is the same as the /origin/, which must also be present, and the algorithm must not be
-  invoked with the manual redirect flag. -->
-    <!-- "block cookies" is currently only used by XHR -->
-
-    <ol>
-      <li>
-        <p>If there is a specific <i>override referrer source</i>, and it is a <span>URL</span>, then let <var data-anolis-xref="">referrer</var> be the <i>override referrer source</i>, and jump to the step labeled <i>clean referrer</i>.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">document</var> be the appropriate <code><a href="dom.html#document">Document</a></code> as given by the following list:</p>
-
-        <dl class="switch">
-          <dt>If there is a specific <i>override referrer source</i></dt>
-
-          <dd>The <i>override referrer source</i>.</dd>
-
-          <dt>
-            When <a data-anolis-xref="navigate" href="browsers.html#navigate">navigating</a>
-          </dt>
-
-          <dd>
-            The <a href="browsers.html#active-document">active document</a> of the <a href="browsers.html#source-browsing-context">source browsing context</a>.
-          </dd>
-
-          <dt>When fetching resources for an element</dt>
-
-          <dd>The element's <code><a href="dom.html#document">Document</a></code>.</dd>
-        </dl>
-      </li>
-
-      <li>
-        <p>While <var data-anolis-xref="">document</var> is <a href="embedded-content-0.html#an-iframe-srcdoc-document">an <code>iframe</code> <code data-anolis-xref="attr-iframe-srcdoc">srcdoc</code> document</a>, let <var data-anolis-xref="">document</var> be <var data-anolis-xref="">document</var>'s <a href="browsers.html#browsing-context">browsing context</a>'s <a href="browsers.html#browsing-context-container">browsing context container</a>'s <code><a href="dom.html#document">Document</a></code> instead.</p>
-      </li>
-
-      <li>
-        <p>If the <a href="browsers.html#origin-0">origin</a> of <var data-anolis-xref="">Document</var> is not a scheme/host/port tuple, then set <var data-anolis-xref="">referrer</var> to the empty string and jump to the step labeled <i>clean referrer</i>.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">referrer</var> be <a href="dom.html#the-document's-address">the document's address</a> of <var data-anolis-xref="">document</var>.</p>
-      </li>
-
-      <li>
-        <p><i>Clean referrer</i>: Apply the <a href="#url-parser-0">URL parser</a> to <var data-anolis-xref="">referrer</var> and let <var data-anolis-xref="">parsed referrer</var> be the <a href="#resulting-parsed-url">resulting parsed URL</a>.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">referrer</var> be the result of applying the <a data-anolis-xref="concept-url-serializer" href="#concept-url-serializer">URL serializer</a> to <var data-anolis-xref="">parsed referrer</var>, with the <i>exclude fragment flag</i> set.</p><!-- RFC2616 says "The URI MUST NOT include a fragment." (section 14.36) -->
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">referrer</var> is not the empty string, is not a <a data-anolis-xref="data protocol" href="#data-protocol"><code data-anolis-xref="">data:</code> URL</a>, and is not the <span>URL</span> "<code><a href="#about:blank">about:blank</a></code>", then generate the <i>address of the resource from which Request-URIs are obtained</i> as required by HTTP for the <code data-anolis-xref="http-referer">Referer</code> (sic) header from <var data-anolis-xref="">referrer</var>. <a href="references.html#refsHTTP">[HTTP]</a></p>
-
-        <p>Otherwise, the <code data-anolis-xref="http-referer">Referer</code> (sic) header must be omitted, regardless of its value.</p>
-      </li>
-
-      <li>
-        <p>If the algorithm was not invoked with the <i>synchronous flag</i>, perform the remaining steps asynchronously.</p>
-      </li>
-
-      <li>
-        <p>If the <code><a href="dom.html#document">Document</a></code> with which any <a data-anolis-xref="concept-task" href="webappapis.html#concept-task">tasks</a> <a data-anolis-xref="queue a task" href="webappapis.html#queue-a-task">queued</a> by this algorithm would be associated doesn't have an associated <a href="browsers.html#browsing-context">browsing context</a>, then abort these steps.</p>
-      </li><!--(redundant with 'at a time convenient...' below)
-   <li><p>Optionally, wait until the <code>Document</code> with which any <span
-   data-x="concept-task">tasks</span> <span data-x="queue a task">queued</span> by this algorithm
-   would be associated is <span data-x="active document">active</span>.</p></li>
--->
-
-      <li>
-        <p>This is the <i>main step</i>.</p>
-
-        <p>If the resource is to be obtained from an <a href="browsers.html#application-cache">application cache</a>, then use the data from that <a href="browsers.html#application-cache">application cache</a>, as if it had been obtained in the manner appropriate given its <span>URL</span>.</p>
-
-        <p>If the resource is identified by an <a href="#absolute-url">absolute URL</a>, and the resource is to be obtained using an idempotent action (such as an HTTP GET <a data-anolis-xref="concept-http-equivalent-get" href="#concept-http-equivalent-get">or equivalent</a>), and it is already being downloaded for other reasons (e.g. another invocation of this algorithm), and this request would be identical to the previous one (e.g. same <code data-anolis-xref="http-accept">Accept</code> and <code data-anolis-xref="http-origin">Origin</code> headers), and the user agent is configured such that it is to reuse the data from the existing download instead of initiating a new one, then use the results of the existing download instead of starting a new one.</p>
-
-        <p>Otherwise, if the resource is identified by an <a href="#absolute-url">absolute URL</a> with a scheme that does not define a mechanism to obtain the resource (e.g. it is a <code data-anolis-xref="">mailto:</code> URL) or that the user agent does not support, then act as if the resource was an HTTP 204 No Content response with no other metadata.</p>
-
-        <p>Otherwise, if the resource is identified by the <span>URL</span> <dfn id="about:blank"><code>about:blank</code></dfn>, then the resource is immediately available and consists of the empty string, with no metadata.</p><!--CLEANUP-->
-
-        <p>Otherwise, at a time convenient to the user and the user agent, download (or otherwise obtain) the resource, applying the semantics of the relevant specifications (e.g. performing an HTTP GET or POST operation, or reading the file from disk, or expanding <a data-anolis-xref="data protocol" href="#data-protocol"><code data-anolis-xref="">data:</code> URLs</a>, etc).</p>
-
-        <p>For the purposes of the <code data-anolis-xref="http-referer">Referer</code> (sic) header, use the <i>address of the resource from which Request-URIs are obtained</i> generated in the earlier step.</p>
-
-        <p>For the purposes of the <code data-anolis-xref="http-origin">Origin</code> header, if the <a data-anolis-xref="fetch" href="#fetch">fetching algorithm</a> was explicitly initiated from an <i data-anolis-xref="">origin</i>, then <i data-anolis-xref="">the origin that initiated the HTTP request</i> is <i data-anolis-xref="">origin</i>. Otherwise, this is <i data-anolis-xref="">a request from a "privacy-sensitive" context</i>. <a href="references.html#refsORIGIN">[ORIGIN]</a></p>
-      </li>
-
-      <li>
-        <p>If the algorithm was not invoked with the <i>block cookies flag</i>, and there are cookies to be set, then the user agent must run the following substeps:</p>
-
-        <ol>
-          <li>
-            <p>Wait until ownership of the <a href="webappapis.html#storage-mutex">storage mutex</a> can be taken by this instance of the <a data-anolis-xref="fetch" href="#fetch">fetching</a> algorithm.</p>
-          </li>
-
-          <li>
-            <p>Take ownership of the <a href="webappapis.html#storage-mutex">storage mutex</a>.</p>
-          </li>
-
-          <li>
-            <p>Update the cookies. <a href="references.html#refsCOOKIES">[COOKIES]</a> <a class="fingerprint" data-anolis-xref="fingerprinting vector" href="introduction.html#fingerprinting-vector"><img alt="(This is a fingerprinting vector.)" height="21" src="images/fingerprint.png" width="15"></a></p>
-          </li>
-
-          <li>
-            <p>Release the <a href="webappapis.html#storage-mutex">storage mutex</a> so that it is once again free.</p>
-          </li>
-        </ol>
-      </li>
-
-      <li>
-        <p>If the fetched resource is an HTTP redirect <a data-anolis-xref="concept-http-equivalent-codes" href="#concept-http-equivalent-codes">or equivalent</a>, then:</p>
-
-        <dl class="switch">
-          <dt>
-            If the <i>force same-origin flag</i> is set and the <span>URL</span> of the target of the redirect does not have the <a href="browsers.html#same-origin">same origin</a> as the <span>URL</span> for which the <a href="#fetch">fetch</a> algorithm was invoked
-          </dt>
-
-          <dd>
-            <p>Abort these steps and return failure from this algorithm, as if the remote host could not be contacted.</p>
-          </dd>
-
-          <dt>If the <i>manual redirect flag</i> is set</dt>
-
-          <dd>
-            <p>Continue, using the fetched resource (the redirect) as the result of the algorithm. If the calling algorithm subsequently requires the user agent to <dfn id="transparently-follow-the-redirect">transparently follow the redirect</dfn>, then the user agent must resume this algorithm from the <i>main step</i>, but using the target of the redirect as the resource to fetch, rather than the original resource.</p>
-          </dd>
-
-          <dt>Otherwise</dt>
-
-          <dd>
-            <p>First, apply any relevant requirements for redirects (such as showing any appropriate prompts). Then, redo <i>main step</i>, but using the target of the redirect as the resource to fetch, rather than the original resource. For HTTP requests, the new request must include the same headers as the original request, except for headers for which other requirements are specified (such as the <code data-anolis-xref="http-host">Host</code> header). <a href="references.html#refsHTTP">[HTTP]</a></p>
-
-            <p class="note">The HTTP specification requires that 301, 302, and 307 redirects, when applied to methods other than the safe methods, not be followed without user confirmation. That would be an appropriate prompt for the purposes of the requirement in the paragraph above. <a href="references.html#refsHTTP">[HTTP]</a></p>
-          </dd>
-        </dl>
-      </li>
-
-      <li>
-        <p>If the algorithm was not invoked with the <i>synchronous flag</i>: When the resource is available, or if there is an error of some description, <a href="webappapis.html#queue-a-task">queue a task</a> that uses the resource as appropriate. If the resource can be processed incrementally, as, for instance, with a progressively interlaced JPEG or an HTML file, additional tasks may be queued to process the data as it is downloaded. The <a href="webappapis.html#task-source">task source</a> for these <a data-anolis-xref="concept-task" href="webappapis.html#concept-task">tasks</a> is the <a href="webappapis.html#networking-task-source">networking task source</a>.</p>
-
-        <p>Otherwise, return the resource or error information to the calling algorithm.</p>
-      </li>
-    </ol>
-
-    <p>If the user agent can determine the actual length of the resource being <a data-anolis-xref="fetch" href="#fetch">fetched</a> for an instance of this algorithm, and if that length is finite, then that length is the file's <dfn data-anolis-xref="concept-fetch-total" id="concept-fetch-total">size</dfn>. Otherwise, the subject of the algorithm (that is, the resource being fetched) has no known <a data-anolis-xref="concept-fetch-total" href="#concept-fetch-total">size</a>. (For example, the HTTP <code data-anolis-xref="http-content-length">Content-Length</code> header might provide this information.)</p>
-
-    <p>The user agent must also keep track of the <dfn data-anolis-xref="concept-fetch-loaded" id="concept-fetch-loaded">number of bytes downloaded</dfn> for each instance of this algorithm. This number must exclude any out-of-band metadata, such as HTTP headers.</p>
-
-    <p class="note">The <a href="browsers.html#application-cache">application cache</a> processing model introduces some <a href="browsers.html#changesToNetworkingModel">changes to the networking model</a> to handle the returning of cached resources.</p>
-
-    <p class="note">The <a data-anolis-xref="navigate" href="browsers.html#navigate">navigation</a> processing model handles redirects itself, overriding the redirection handling that would be done by the fetching algorithm.</p>
-
-    <p class="note">Whether the <a href="#content-type-sniffing">type sniffing rules</a> apply to the fetched resource depends on the algorithm that invokes the rules — they are not always applicable.</p><!--ADD-TOPIC:Security-->
-
-    <h4 id="encrypted-http-and-related-security-concerns"><span class="secno">2.6.3</span> Encrypted HTTP and related security concerns</h4>
-
-    <p>Anything in this specification that refers to HTTP also applies to HTTP-over-TLS, as represented by <span data-anolis-xref="url">URLs</span> representing the <code data-anolis-xref="">https</code> scheme. <a href="references.html#refsHTTP">[HTTP]</a></p>
-
-    <p class="warning">User agents should report certificate errors to the user and must either refuse to download resources sent with erroneous certificates or must act as if such resources were in fact served with no encryption.</p>
-
-    <p>User agents should warn the user that there is a potential problem whenever the user visits a page that the user has previously visited, if the page uses less secure encryption on the second visit.</p>
-
-    <p>Not doing so can result in users not noticing man-in-the-middle attacks.</p>
-
-    <div class="example">
-      <p>If a user connects to a server with a self-signed certificate, the user agent could allow the connection but just act as if there had been no encryption. If the user agent instead allowed the user to override the problem and then displayed the page as if it was fully and safely encrypted, the user could be easily tricked into accepting man-in-the-middle connections.</p>
-
-      <p>If a user connects to a server with full encryption, but the page then refers to an external resource that has an expired certificate, then the user agent will act as if the resource was unavailable, possibly also reporting the problem to the user. If the user agent instead allowed the resource to be used, then an attacker could just look for "secure" sites that used resources from a different host and only apply man-in-the-middle attacks to that host, for example taking over scripts in the page.</p>
-
-      <p>If a user bookmarks a site that uses a CA-signed certificate, and then later revisits that site directly but the site has started using a self-signed certificate, the user agent could warn the user that a man-in-the-middle attack is likely underway, instead of simply acting as if the page was not encrypted.</p>
-    </div><!--REMOVE-TOPIC:Security-->
-
-    <h4 id="content-type-sniffing"><span class="secno">2.6.4</span> Determining the type of a resource</h4>
-
-    <p>The <dfn data-anolis-xref="Content-Type" id="content-type">Content-Type metadata</dfn> of a resource must be obtained and interpreted in a manner consistent with the requirements of the MIME Sniffing specification. <a href="references.html#refsMIMESNIFF">[MIMESNIFF]</a></p>
-
-    <p>The <dfn data-anolis-xref="Content-Type sniffing" id="content-type-sniffing-0">sniffed type of a resource</dfn> must be found in a manner consistent with the requirements given in the MIME Sniffing specification for finding the <i>sniffed media type</i> of the relevant sequence of octets. <a href="references.html#refsMIMESNIFF">[MIMESNIFF]</a></p>
-
-    <p>The <dfn data-anolis-xref="Content-Type sniffing: image" id="content-type-sniffing:-image">rules for sniffing images specifically</dfn> and the <dfn data-anolis-xref="Content-Type sniffing: text or binary" id="content-type-sniffing:-text-or-binary">rules for distinguishing if a resource is text or binary</dfn> are also defined in the MIME Sniffing specification. Both sets of rules return a <a href="#mime-type">MIME type</a> as their result. <a href="references.html#refsMIMESNIFF">[MIMESNIFF]</a></p>
-
-    <p class="warning">It is imperative that the rules in the MIME Sniffing specification be followed exactly. When a user agent uses different heuristics for content type detection than the server expects, security problems can occur. For more details, see the MIME Sniffing specification. <a href="references.html#refsMIMESNIFF">[MIMESNIFF]</a></p>
-
-    <h4 id="extracting-character-encodings-from-meta-elements"><span class="secno">2.6.5</span> Extracting character encodings from <code><a href="document-metadata.html#the-meta-element">meta</a></code> elements</h4>
-
-    <p>The <dfn id="algorithm-for-extracting-a-character-encoding-from-a-meta-element">algorithm for extracting a character encoding from a <code>meta</code> element</dfn>, given a string <var data-anolis-xref="">s</var>, is as follows. It either returns a character encoding or nothing.</p>
-
-    <ol>
-      <!-- http://www.hixie.ch/tests/adhoc/html/parsing/encoding/all.html -->
-
-      <li>
-        <p>Let <var data-anolis-xref="">position</var> be a pointer into <var data-anolis-xref="">s</var>, initially pointing at the start of the string.</p>
-      </li>
-
-      <li>
-        <p><i>Loop</i>: Find the first seven characters in <var data-anolis-xref="">s</var> after <var data-anolis-xref="">position</var> that are an <a href="#ascii-case-insensitive">ASCII case-insensitive</a> match for the word "<code data-anolis-xref="">charset</code>". If no such match is found, return nothing and abort these steps.</p>
-      </li>
-
-      <li>
-        <p>Skip any <a data-anolis-xref="space character" href="#space-character">space characters</a> that immediately follow the word "<code data-anolis-xref="">charset</code>" (there might not be any).</p>
-      </li>
-
-      <li>
-        <p>If the next character is not a "=" (U+003D), then move <var data-anolis-xref="">position</var> to point just before that next character, and jump back to the step labeled <i>loop</i>.</p>
-      </li>
-
-      <li>
-        <p>Skip any <a data-anolis-xref="space character" href="#space-character">space characters</a> that immediately follow the equals sign (there might not be any).</p>
-      </li>
-
-      <li>
-        <p>Process the next character as follows:</p>
-
-        <dl class="switch">
-          <dt>If it is a """ (U+0022) character and there is a later """ (U+0022) character in <var data-anolis-xref="">s</var></dt>
-
-          <dt>If it is a "'" (U+0027) character and there is a later "'" (U+0027) character in <var data-anolis-xref="">s</var></dt>
-
-          <dd>
-            Return the result of <a href="#getting-an-encoding">getting an encoding</a> from the substring that is between this character and the next earliest occurrence of this character.
-          </dd>
-
-          <dt>If it is an unmatched """ (U+0022) character</dt>
-
-          <dt>If it is an unmatched "'" (U+0027) character</dt>
-
-          <dt>If there is no next character</dt>
-
-          <dd>Return nothing.</dd>
-
-          <dt>Otherwise</dt>
-
-          <dd>
-            Return the result of <a href="#getting-an-encoding">getting an encoding</a> from the substring that consists of this character up to but not including the first <a href="#space-character">space character</a> or ";" (U+003B) character, or the end of <var data-anolis-xref="">s</var>, whichever comes first.
-          </dd>
-        </dl>
-      </li>
-    </ol>
-
-    <p class="note">This algorithm is distinct from those in the HTTP specification (for example, HTTP doesn't allow the use of single quotes and requires supporting a backslash-escape mechanism that is not supported by this algorithm<!-- not to mention not having any rules for error-handling,
-  which is of course why we're having to define it ourselves -->). While the algorithm is used in contexts that, historically, were related to HTTP, the syntax as supported by implementations diverged some time ago. <a href="references.html#refsHTTP">[HTTP]</a></p>
-  </div>
-
   <h4 id="cors-settings-attributes"><span class="secno">2.6.6</span> CORS設定属性</h4>
 
   <p><dfn id="cors-settings-attribute">CORS設定属性</dfn>は、<a href="#enumerated-attribute">列挙属性</a>である。次の表は、キーワードと属性の状態を示す。1列目のキーワードは、キーワードと同じ行で2列目のセル内の状態に対応づける。</p>
@@ -2952,136 +1516,6 @@
 
   <p>空文字列も妥当なキーワードであり、<a data-anolis-xref="attr-crossorigin-anonymous" href="#attr-crossorigin-anonymous">匿名</a>状態に対応づける。属性の<i>妥当でない値のデフォルト</i>は、<a data-anolis-xref="attr-crossorigin-anonymous" href="#attr-crossorigin-anonymous">匿名</a>状態である。<a data-anolis-xref="reflect" href="#reflect">反射</a>のために、<a data-anolis-xref="attr-crossorigin-anonymous" href="#attr-crossorigin-anonymous">匿名</a>状態の正規ケースは<code data-anolis-xref="attr-crossorigin-anonymous-keyword"><a href="#attr-crossorigin-anonymous-keyword">anonymous</a></code>キーワードである。属性が省略された場合に用いられる、<i>欠落した値のデフォルト</i>は、<dfn data-anolis-xref="attr-crossorigin-none" id="attr-crossorigin-none">No CORS</dfn>状態である。</p>
 
-  <div class="impl">
-    <h4 id="cors-enabled-fetch"><span class="secno">2.6.7</span> CORS-enabled fetch</h4>
-
-    <p>When the user agent is required to perform a <dfn id="potentially-cors-enabled-fetch">potentially CORS-enabled fetch</dfn> of an <a href="#absolute-url">absolute URL</a> <var data-anolis-xref="">URL</var> with a mode <var data-anolis-xref="">mode</var> that is either "<a data-anolis-xref="attr-crossorigin-none" href="#attr-crossorigin-none">No CORS</a>", "<a data-anolis-xref="attr-crossorigin-anonymous" href="#attr-crossorigin-anonymous">Anonymous</a>", or "<a data-anolis-xref="attr-crossorigin-use-credentials" href="#attr-crossorigin-use-credentials">Use Credentials</a>", optionally using a <a href="#referrer-source">referrer source</a> <var data-anolis-xref="">referrer source</var>, with an <a href="browsers.html#origin-0">origin</a> <var data-anolis-xref="">origin</var>, and with a default origin behaviour <var data-anolis-xref="">default</var> which is either "<i>taint</i>" or "<i>fail</i>", it must run the first applicable set of steps from the following list. The default origin behaviour is only used if <var data-anolis-xref="">mode</var> is "<a data-anolis-xref="attr-crossorigin-none" href="#attr-crossorigin-none">No CORS</a>". This algorithm wraps the <a href="#fetch">fetch</a> algorithm above, and labels the obtained resource as either <dfn id="cors-same-origin">CORS-same-origin</dfn> or <dfn id="cors-cross-origin">CORS-cross-origin</dfn>, or blocks the resource entirely.</p>
-
-    <dl class="switch">
-      <dt>
-        If the <var data-anolis-xref="">URL</var> has the <a href="browsers.html#same-origin">same origin</a> as <var data-anolis-xref="">origin</var>
-      </dt>
-
-      <dt>
-        If the <var data-anolis-xref="">URL</var> is a <a data-anolis-xref="data protocol" href="#data-protocol"><code data-anolis-xref="">data:</code> URL</a>
-      </dt>
-
-      <dt>If the <var data-anolis-xref="">URL</var> is <code><a href="#about:blank">about:blank</a></code></dt>
-
-      <dd>
-        <p>Run these substeps:</p>
-
-        <ol>
-          <li>
-            <p><a href="#fetch">Fetch</a><!--FETCH--> <var data-anolis-xref="">URL</var>, using <var data-anolis-xref="">referrer source</var> if one was specified, with the <i>manual redirect flag</i> set.</p>
-          </li><!--
-     http-origin privacy sensitive -->
-
-          <li>
-            <p><i>Loop</i>: Wait for the <a href="#fetch">fetch</a> algorithm to know if the result is a redirect or not.</p>
-          </li>
-
-          <li>
-            <p>Follow the first appropriate steps from the following list:</p>
-
-            <dl class="switch">
-              <dt>
-                If the result of the <a href="#fetch">fetch</a> is a redirect, and the <a href="browsers.html#origin-0">origin</a> of the target URL of the redirect is not the <a href="browsers.html#same-origin">same origin</a> as <var data-anolis-xref="">origin</var>
-              </dt>
-
-              <dd>
-                <p>Set <var data-anolis-xref="">URL</var> to the target URL of the redirect and return to the top of the <a href="#potentially-cors-enabled-fetch">potentially CORS-enabled fetch</a> algorithm (this time, one of the other branches below might be taken, based on the value of <var data-anolis-xref="">mode</var><!-- but if
-        it's a data: URL, we'll stay here -->).</p>
-              </dd>
-
-              <dt>
-                If the result of the <a href="#fetch">fetch</a> is a redirect
-              </dt>
-
-              <dd>
-                <p class="note">The <a href="browsers.html#origin-0">origin</a> of the target URL of the redirect is the <a href="browsers.html#same-origin">same origin</a> as <var data-anolis-xref="">origin</var>.</p>
-
-                <p><a href="#transparently-follow-the-redirect">Transparently follow the redirect</a> and jump to the step labeled <i>loop</i> above.</p>
-              </dd>
-
-              <dt>Otherwise</dt>
-
-              <dd>
-                <p class="note">The resource is available, it is not a redirect, and its <a href="browsers.html#origin-0">origin</a> is the <a href="browsers.html#same-origin">same origin</a> as <var data-anolis-xref="">origin</var>.</p>
-
-                <p>The <a data-anolis-xref="concept-task" href="webappapis.html#concept-task">tasks</a> from the <a href="#fetch">fetch</a> algorithm are <a data-anolis-xref="queue a task" href="webappapis.html#queue-a-task">queued</a> normally, and for the purposes of the calling algorithm, the obtained resource is <a href="#cors-same-origin">CORS-same-origin</a>.</p>
-              </dd>
-            </dl>
-          </li>
-        </ol>
-      </dd>
-
-      <dt>
-        If <var data-anolis-xref="">mode</var> is "<a data-anolis-xref="attr-crossorigin-none" href="#attr-crossorigin-none">No CORS</a>" and <var data-anolis-xref="">default</var> is <i>taint</i>
-      </dt>
-
-      <dd>
-        <p class="note">The <var data-anolis-xref="">URL</var> does not have the <a href="browsers.html#same-origin">same origin</a> as <var data-anolis-xref="">origin</var>.</p>
-
-        <p><a href="#fetch">Fetch</a><!--FETCH--> <var data-anolis-xref="">URL</var>, using <var data-anolis-xref="">referrer source</var> if one was specified.</p><!-- http-origin privacy sensitive -->
-
-        <p>The <a data-anolis-xref="concept-task" href="webappapis.html#concept-task">tasks</a> from the <a href="#fetch">fetch</a> algorithm are <a data-anolis-xref="queue a task" href="webappapis.html#queue-a-task">queued</a> normally, but for the purposes of the calling algorithm, the obtained resource is <a href="#cors-cross-origin">CORS-cross-origin</a>. The user agent may report a cross-origin resource access failure to the user (e.g. in a debugging console).</p>
-      </dd>
-
-      <dt>
-        If <var data-anolis-xref="">mode</var> is "<a data-anolis-xref="attr-crossorigin-none" href="#attr-crossorigin-none">No CORS</a>"
-      </dt>
-
-      <dd>
-        <p class="note">The <var data-anolis-xref="">URL</var> does not have the <a href="browsers.html#same-origin">same origin</a> as <var data-anolis-xref="">origin</var>, and <var data-anolis-xref="">default</var> is <i>fail</i>.</p>
-
-        <p>Discard any data fetched as part of this algorithm, and prevent any <a data-anolis-xref="concept-task" href="webappapis.html#concept-task">tasks</a> from such invocations of the <a href="#fetch">fetch</a> algorithm from being <a data-anolis-xref="queue a task" href="webappapis.html#queue-a-task">queued</a>. For the purposes of the calling algorithm, the user agent must act as if there was a fatal network error and no resource was obtained. The user agent may report a cross-origin resource access failure to the user (e.g. in a debugging console).</p>
-      </dd>
-
-      <dt>
-        If <var data-anolis-xref="">mode</var> is "<a data-anolis-xref="attr-crossorigin-anonymous" href="#attr-crossorigin-anonymous">Anonymous</a>" or "<a data-anolis-xref="attr-crossorigin-use-credentials" href="#attr-crossorigin-use-credentials">Use Credentials</a>"
-      </dt>
-
-      <dd>
-        <p class="note">The <var data-anolis-xref="">URL</var> does not have the <a href="browsers.html#same-origin">same origin</a> as <var data-anolis-xref="">origin</var>.</p>
-
-        <p>Run these steps:</p>
-
-        <ol>
-          <li>
-            <p>Perform a <a href="#cross-origin-request">cross-origin request</a><!--FETCH--> with the <i>request URL</i> set to <var data-anolis-xref="">URL</var>, with the CORS <i data-anolis-xref="">referrer source</i> set to <var data-anolis-xref="">referrer source</var> if one was specified, the <i>source origin</i> set to <var data-anolis-xref="">origin</var>, and with the <i><a href="#omit-credentials-flag">omit credentials flag</a></i> set if <var data-anolis-xref="">mode</var> is "<a data-anolis-xref="attr-crossorigin-anonymous" href="#attr-crossorigin-anonymous">Anonymous</a>" and not set otherwise. <a href="references.html#refsCORS">[CORS]</a></p>
-          </li>
-
-          <li>
-            <p>Wait for the CORS <a href="#cross-origin-request-status">cross-origin request status</a> to have a value.</p>
-          </li>
-
-          <li>
-            <p>Jump to the appropriate step from the following list:</p>
-
-            <dl class="switch">
-              <dt>
-                If the CORS <a href="#cross-origin-request-status">cross-origin request status</a> is not <i>success</i>
-              </dt>
-
-              <dd>
-                <p>Discard all fetched data and prevent any <a data-anolis-xref="concept-task" href="webappapis.html#concept-task">tasks</a> from the <a href="#fetch">fetch</a> algorithm from being <a data-anolis-xref="queue a task" href="webappapis.html#queue-a-task">queued</a>. For the purposes of the calling algorithm, the user agent must act as if there was a fatal network error and no resource was obtained. If a CORS <a href="#resource-sharing-check">resource sharing check</a> failed, the user agent may report a cross-origin resource access failure to the user (e.g. in a debugging console).</p>
-              </dd>
-
-              <dt>
-                If the CORS <a href="#cross-origin-request-status">cross-origin request status</a> is <i>success</i>
-              </dt>
-
-              <dd>
-                <p>The <a data-anolis-xref="concept-task" href="webappapis.html#concept-task">tasks</a> from the <a href="#fetch">fetch</a> algorithm are <a data-anolis-xref="queue a task" href="webappapis.html#queue-a-task">queued</a> normally, and for the purposes of the calling algorithm, the obtained resource is <a href="#cors-same-origin">CORS-same-origin</a>.</p>
-              </dd>
-            </dl>
-          </li>
-        </ol>
-      </dd>
-    </dl>
-  </div>
-
   <h3 id="common-dom-interfaces"><span class="secno">2.7</span> 共通DOMインターフェース</h3>
 
   <h4 id="reflecting-content-attributes-in-idl-attributes"><span class="secno">2.7.1</span> IDL属性におけるコンテンツ属性の反映</h4>
@@ -3090,54 +1524,6 @@
   <p class="note">A list of <span>reflecting IDL attributes</span> and
   their corresponding content attributes is given in the index.</p>
 -->
-
-  <div class="impl">
-    <p>In general, on getting, if the content attribute is not present, the IDL attribute must act as if the content attribute's value is the empty string; and on setting, if the content attribute is not present, it must first be added.</p>
-
-    <p>If a reflecting IDL attribute is a <code>DOMString</code> attribute whose content attribute is defined to contain a <span>URL</span>, then on getting, the IDL attribute must <a data-anolis-xref="resolve a url" href="#resolve-a-url">resolve</a> the value of the content attribute relative to the element and return the resulting <a href="#absolute-url">absolute URL</a> if that was successful, or the empty string otherwise; and on setting, must set the content attribute to the specified literal value. If the content attribute is absent, the IDL attribute must return the default value, if the content attribute has one, or else the empty string.</p>
-
-    <p>If a reflecting IDL attribute is a <code>DOMString</code> attribute whose content attribute is defined to contain one or more <span data-anolis-xref="URL">URLs</span>, then on getting, the IDL attribute must <a data-anolis-xref="split a string on spaces" href="#split-a-string-on-spaces">split the content attribute on spaces</a> and return the concatenation of <a data-anolis-xref="resolve a URL" href="#resolve-a-url">resolving</a> each token URL to an <a href="#absolute-url">absolute URL</a> relative to the element, with a single U+0020 SPACE character between each URL, ignoring any tokens that did not resolve successfully. If the content attribute is absent, the IDL attribute must return the default value, if the content attribute has one, or else the empty string. On setting, the IDL attribute must set the content attribute to the specified literal value.</p>
-
-    <p>If a reflecting IDL attribute is a <code>DOMString</code> attribute whose content attribute is an <a href="#enumerated-attribute">enumerated attribute</a>, and the IDL attribute is <dfn id="limited-to-only-known-values">limited to only known values</dfn>, then, on getting, the IDL attribute must return the conforming value associated with the state the attribute is in (in its canonical case), if any, or the empty string if the attribute is in a state that has no associated keyword value or if the attribute is not in a defined state (e.g. the attribute is missing and there is no <i>missing value default</i>); and on setting, the content attribute must be set to the specified new value.</p>
-
-    <p>If a reflecting IDL attribute is a <code>DOMString</code> attribute but doesn't fall into any of the above categories, then the getting and setting must be done in a transparent, case-preserving manner.</p>
-
-    <p>If a reflecting IDL attribute is a <code data-anolis-xref="">boolean</code> attribute, then on getting the IDL attribute must return true if the content attribute is set, and false if it is absent. On setting, the content attribute must be removed if the IDL attribute is set to false, and must be set to the empty string if the IDL attribute is set to true. (This corresponds to the rules for <a data-anolis-xref="boolean attribute" href="#boolean-attribute">boolean content attributes</a>.)</p>
-
-    <p>If a reflecting IDL attribute has a signed integer type (<code>long</code>) then, on getting, the content attribute must be parsed according to the <a data-anolis-xref="rules for parsing integers" href="#rules-for-parsing-integers">rules for parsing signed integers</a>, and if that is successful, and the value is in the range of the IDL attribute's type, the resulting value must be returned. If, on the other hand, it fails or returns an out of range value, or if the attribute is absent, then the default value must be returned instead, or 0 if there is no default value. On setting, the given value must be converted to the shortest possible string representing the number as a <a href="#valid-integer">valid integer</a> and then that string must be used as the new content attribute value.</p>
-
-    <p>If a reflecting IDL attribute has a signed integer type (<code>long</code>) that is <dfn id="limited-to-only-non-negative-numbers">limited to only non-negative numbers</dfn> then, on getting, the content attribute must be parsed according to the <a href="#rules-for-parsing-non-negative-integers">rules for parsing non-negative integers</a>, and if that is successful, and the value is in the range of the IDL attribute's type, the resulting value must be returned. If, on the other hand, it fails or returns an out of range value, or if the attribute is absent, the default value must be returned instead, or −1 if there is no default value. On setting, if the value is negative, the user agent must throw an <code><a href="#indexsizeerror">IndexSizeError</a></code> exception. Otherwise, the given value must be converted to the shortest possible string representing the number as a <a href="#valid-non-negative-integer">valid non-negative integer</a> and then that string must be used as the new content attribute value.</p>
-
-    <p>If a reflecting IDL attribute has an <em>unsigned</em> integer type (<code>unsigned long</code>) then, on getting, the content attribute must be parsed according to the <a href="#rules-for-parsing-non-negative-integers">rules for parsing non-negative integers</a>, and if that is successful, and the value is in the range 0 to 2147483647 inclusive, the resulting value must be returned. If, on the other hand, it fails or returns an out of range value, or if the attribute is absent, the default value must be returned instead, or 0 if there is no default value. On setting, first, if the new value is in the range 0 to 2147483647, then let <var data-anolis-xref="">n</var> be the new value, otherwise let <var data-anolis-xref="">n</var> be the default value, or 0 if there is no default value; then, <var data-anolis-xref="">n</var> must be converted to the shortest possible string representing the number as a <a href="#valid-non-negative-integer">valid non-negative integer</a> and that string must be used as the new content attribute value.</p><!-- see http://www.w3.org/Bugs/Public/show_bug.cgi?id=10352
-  https://bugzilla.mozilla.org/show_bug.cgi?id=586118 and
-  https://www.w3.org/Bugs/Public/show_bug.cgi?id=17705 for why the
-  range is clamped to 2147483647 rather the normal unsigned long
-  maximum value of 4294967295 -->
-
-    <p>If a reflecting IDL attribute has an unsigned integer type (<code>unsigned long</code>) that is <dfn id="limited-to-only-non-negative-numbers-greater-than-zero">limited to only non-negative numbers greater than zero</dfn>, then the behavior is similar to the previous case, but zero is not allowed. On getting, the content attribute must first be parsed according to the <a href="#rules-for-parsing-non-negative-integers">rules for parsing non-negative integers</a>, and if that is successful, and the value is in the range 1 to 2147483647 inclusive, the resulting value must be returned. If, on the other hand, it fails or returns an out of range value, or if the attribute is absent, the default value must be returned instead, or 1 if there is no default value. On setting, if the value is zero, the user agent must throw an <code><a href="#indexsizeerror">IndexSizeError</a></code> exception. Otherwise, first, if the new value is in the range 1 to 2147483647, then let <var data-anolis-xref="">n</var> be the new value, otherwise let <var data-anolis-xref="">n</var> be the default value, or 1 if there is no default value; then, <var data-anolis-xref="">n</var> must be converted to the shortest possible string representing the number as a <a href="#valid-non-negative-integer">valid non-negative integer</a> and that string must be used as the new content attribute value.</p><!-- see previous paragraph for note about the weird range -->
-
-    <p>If a reflecting IDL attribute has a floating-point number type (<code>double</code> or <code>unrestricted double</code>), then, on getting, the content attribute must be parsed according to the <a href="#rules-for-parsing-floating-point-number-values">rules for parsing floating-point number values</a>, and if that is successful, the resulting value must be returned. If, on the other hand, it fails, or if the attribute is absent, the default value must be returned instead, or 0.0 if there is no default value. On setting, the given value must be converted to the <a href="#best-representation-of-the-number-as-a-floating-point-number">best representation of the number as a floating-point number</a> and then that string must be used as the new content attribute value.</p>
-
-    <p>If a reflecting IDL attribute has a floating-point number type (<code>double</code> or <code>unrestricted double</code>) that is <dfn id="limited-to-numbers-greater-than-zero">limited to numbers greater than zero</dfn>, then the behavior is similar to the previous case, but zero and negative values are not allowed. On getting, the content attribute must be parsed according to the <a href="#rules-for-parsing-floating-point-number-values">rules for parsing floating-point number values</a>, and if that is successful and the value is greater than 0.0, the resulting value must be returned. If, on the other hand, it fails or returns an out of range value, or if the attribute is absent, the default value must be returned instead, or 0.0 if there is no default value. On setting, if the value is less than or equal to zero, then the value must be ignored. Otherwise, the given value must be converted to the <a href="#best-representation-of-the-number-as-a-floating-point-number">best representation of the number as a floating-point number</a> and then that string must be used as the new content attribute value.</p>
-
-    <p class="note">The values Infinity and Not-a-Number (NaN) values throw an exception on setting, as defined in the Web IDL specification. <a href="references.html#refsWEBIDL">[WEBIDL]</a></p>
-
-    <p>If a reflecting IDL attribute has the type <code><a href="#domtokenlist">DOMTokenList</a></code> or <code><a href="#domsettabletokenlist">DOMSettableTokenList</a></code>, then on getting it must return a <code><a href="#domtokenlist">DOMTokenList</a></code> or <code><a href="#domsettabletokenlist">DOMSettableTokenList</a></code> object (as appropriate) whose associated element is the element in question and whose associated attribute's local name is the name of the attribute in question. The same <code><a href="#domtokenlist">DOMTokenList</a></code> or <code><a href="#domsettabletokenlist">DOMSettableTokenList</a></code> object must be returned every time for each attribute.</p>
-
-    <p>If a reflecting IDL attribute has the type <code><a href="dom.html#htmlelement">HTMLElement</a></code>, or an interface that descends from <code><a href="dom.html#htmlelement">HTMLElement</a></code>, then, on getting, it must run the following algorithm (stopping at the first point where a value is returned):</p>
-
-    <ol>
-      <li>If the corresponding content attribute is absent, then the IDL attribute must return null.</li>
-
-      <li>Let <var data-anolis-xref="">candidate</var> be the element that the <code data-anolis-xref="dom-Document-getElementById"><a href="#dom-document-getelementbyid">document.getElementById()</a></code> method would find when called on the content attribute's document if it were passed as its argument the current value of the corresponding content attribute.</li>
-
-      <li>If <var data-anolis-xref="">candidate</var> is null, or if it is not type-compatible with the IDL attribute, then the IDL attribute must return null.</li>
-
-      <li>Otherwise, it must return <var data-anolis-xref="">candidate</var>.</li>
-    </ol>
-
-    <p>On setting, if the given element has an <code data-anolis-xref="attr-id"><a href="dom.html#the-id-attribute">id</a></code> attribute, and has the same <a href="#home-subtree">home subtree</a> as the element of the attribute being set, and the given element is the first element in that <a href="#home-subtree">home subtree</a> whose <a data-anolis-xref="concept-ID" href="#concept-id">ID</a> is the value of that <code data-anolis-xref="attr-id"><a href="dom.html#the-id-attribute">id</a></code> attribute, then the content attribute must be set to the value of that <code data-anolis-xref="attr-id"><a href="dom.html#the-id-attribute">id</a></code> attribute. Otherwise, the content attribute must be set to the empty string.</p>
-  </div><!--TOPIC:DOM APIs-->
 
   <h4 id="collections"><span class="secno">2.7.2</span> コレクション</h4>
 
@@ -3198,41 +1584,6 @@ interface <dfn id="htmlallcollection-0">HTMLAllCollection</dfn> : <a href="#html
     </dd>
   </dl>
 
-  <div class="impl">
-    <p>The object's <a href="#supported-property-indices">supported property indices</a> are as defined for <code><a href="#htmlcollection">HTMLCollection</a></code> objects.</p>
-
-    <p>The <a href="#supported-property-names">supported property names</a> consist of the non-empty values of all the <code data-anolis-xref="attr-id"><a href="dom.html#the-id-attribute">id</a></code> attributes of all the elements <a href="#represented-by-the-collection">represented by the collection</a>, and the non-empty values of all the <code data-anolis-xref="">name</code> attributes of all the <code><a href="text-level-semantics.html#the-a-element">a</a></code>, <code><a href="obsolete.html#the-applet-element">applet</a></code>, <code><a href="embedded-content-0.html#the-area-element">area</a></code>, <code><a href="embedded-content-0.html#the-embed-element">embed</a></code>, <code><a href="forms.html#the-form-element">form</a></code>, <code><a href="obsolete.html#frame">frame</a></code>, <code><a href="obsolete.html#frameset">frameset</a></code>, <code><a href="embedded-content-0.html#the-iframe-element">iframe</a></code>, <code><a href="embedded-content-0.html#the-img-element">img</a></code>, and <code><a href="embedded-content-0.html#the-object-element">object</a></code> elements <a href="#represented-by-the-collection">represented by the collection</a>, in <a href="#tree-order">tree order</a>, ignoring later duplicates, with the <code data-anolis-xref="attr-id"><a href="dom.html#the-id-attribute">id</a></code> of an element preceding its <code data-anolis-xref="">name</code> if it contributes both, they differ from each other, and neither is the duplicate of an earlier entry.</p>
-
-    <p>The <dfn data-anolis-xref="dom-HTMLAllCollection-item-string" id="dom-htmlallcollection-item-string"><code>item(<var data-anolis-xref="">name</var>)</code></dfn> and <dfn data-anolis-xref="dom-HTMLAllCollection-namedItem" id="dom-htmlallcollection-nameditem"><code>namedItem(<var data-anolis-xref="">name</var>)</code></dfn> methods must act according to the following algorithm:</p>
-
-    <ol>
-      <li>If <var data-anolis-xref="">name</var> is the empty string, return null and stop the algorithm.</li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">collection</var> be an <code><a href="#htmlcollection">HTMLCollection</a></code> object rooted at the same node as the <code><a href="#htmlallcollection-0">HTMLAllCollection</a></code> object on which the method was invoked, whose filter matches only elements that already match the filter of the <code><a href="#htmlallcollection-0">HTMLAllCollection</a></code> object on which the method was invoked and that are either:</p>
-
-        <ul>
-          <li><code><a href="text-level-semantics.html#the-a-element">a</a></code>, <code><a href="obsolete.html#the-applet-element">applet</a></code>, <code><a href="embedded-content-0.html#the-area-element">area</a></code>, <code><a href="embedded-content-0.html#the-embed-element">embed</a></code>, <code><a href="forms.html#the-form-element">form</a></code>, <code><a href="obsolete.html#frame">frame</a></code>, <code><a href="obsolete.html#frameset">frameset</a></code>, <code><a href="embedded-content-0.html#the-iframe-element">iframe</a></code>, <code><a href="embedded-content-0.html#the-img-element">img</a></code>, or <code><a href="embedded-content-0.html#the-object-element">object</a></code> elements with a <code data-anolis-xref="">name</code> attribute equal to <var data-anolis-xref="">name</var>, or,</li>
-
-          <li>elements with an <a data-anolis-xref="concept-id" href="#concept-id">ID</a> equal to <var data-anolis-xref="">name</var>.
-          </li>
-        </ul>
-      </li>
-
-      <li>If, at the time the method is called, there is exactly one node in <var data-anolis-xref="">collection</var>, then return that node and stop the algorithm.</li>
-
-      <li>Otherwise, if, at the time the method is called, <var data-anolis-xref="">collection</var> is empty, return null and stop the algorithm.</li>
-
-      <li>Otherwise, return <var data-anolis-xref="">collection</var>.</li>
-    </ol>
-
-    <p>The <dfn data-anolis-xref="dom-HTMLAllCollection-tags" id="dom-htmlallcollection-tags"><code>tags(<var data-anolis-xref="">tagName</var>)</code></dfn> method must return an <code><a href="#htmlallcollection-0">HTMLAllCollection</a></code> rooted at the same node as the <code><a href="#htmlallcollection-0">HTMLAllCollection</a></code> object on which the method was invoked, whose filter matches only <a href="#html-elements">HTML elements</a> whose local name is the <var data-anolis-xref="">tagName</var> argument and that already match the filter of the <code><a href="#htmlallcollection-0">HTMLAllCollection</a></code> object on which the method was invoked. In <a href="#html-documents">HTML documents</a>, the argument must first be <a href="#converted-to-ascii-lowercase">converted to ASCII lowercase</a>.</p><!--if legacycaller is removed:
-  <p>In addition to the above, <code>HTMLAllCollection</code> objects, in JavaScript, must be
-  callable. Calling such an object must implicitly invoke the index getter with the same
-  arguments.</p>
--->
-  </div>
-
   <h5 id="htmlformcontrolscollection"><span class="secno">2.7.2.2</span> HTMLFormControlsCollection</h5>
 
   <p><code><a href="#htmlformcontrolscollection-0">HTMLFormControlsCollection</a></code>インターフェースは、<code><a href="forms.html#the-form-element">form</a></code>と<code><a href="forms.html#the-fieldset-element">fieldset</a></code>要素で<a data-anolis-xref="category-listed" href="forms.html#category-listed">記載要素</a>の<a href="#collections-0">コレクション</a>に使用される。</p>
@@ -3284,60 +1635,6 @@ interface <dfn id="radionodelist">RadioNodeList</dfn> : <a href="#nodelist">Node
       <p>設定される場合、オブジェクトによって表される与えられた値を持つ最初のラジオボタンをチェックする。</p>
     </dd>
   </dl>
-
-  <div class="impl">
-    <p>The object's <a href="#supported-property-indices">supported property indices</a> are as defined for <code><a href="#htmlcollection">HTMLCollection</a></code> objects.</p>
-
-    <p>The <a href="#supported-property-names">supported property names</a> consist of the non-empty values of all the <code data-anolis-xref="attr-id"><a href="dom.html#the-id-attribute">id</a></code> and <code data-anolis-xref="attr-fe-name"><a href="forms.html#attr-fe-name">name</a></code> attributes of all the elements <a href="#represented-by-the-collection">represented by the collection</a>, in <a href="#tree-order">tree order</a>, ignoring later duplicates, with the <code data-anolis-xref="attr-id"><a href="dom.html#the-id-attribute">id</a></code> of an element preceding its <code data-anolis-xref="attr-fe-name"><a href="forms.html#attr-fe-name">name</a></code> if it contributes both, they differ from each other, and neither is the duplicate of an earlier entry.</p>
-
-    <p>The <dfn data-anolis-xref="dom-HTMLFormControlsCollection-namedItem" id="dom-htmlformcontrolscollection-nameditem"><code>namedItem(<var data-anolis-xref="">name</var>)</code></dfn> method must act according to the following algorithm:</p>
-
-    <ol>
-      <li>If <var data-anolis-xref="">name</var> is the empty string, return null and stop the algorithm.</li>
-
-      <li>If, at the time the method is called, there is exactly one node in the collection that has either an <code data-anolis-xref="attr-id"><a href="dom.html#the-id-attribute">id</a></code> attribute or a <code data-anolis-xref="attr-fe-name"><a href="forms.html#attr-fe-name">name</a></code> attribute equal to <var data-anolis-xref="">name</var>, then return that node and stop the algorithm.</li>
-
-      <li>Otherwise, if there are no nodes in the collection that have either an <code data-anolis-xref="attr-id"><a href="dom.html#the-id-attribute">id</a></code> attribute or a <code data-anolis-xref="attr-fe-name"><a href="forms.html#attr-fe-name">name</a></code> attribute equal to <var data-anolis-xref="">name</var>, then return null and stop the algorithm.</li>
-
-      <li>Otherwise, create a new <code><a href="#radionodelist">RadioNodeList</a></code> object representing a <a href="#live">live</a> view of the <code><a href="#htmlformcontrolscollection-0">HTMLFormControlsCollection</a></code> object, further filtered so that the only nodes in the <code><a href="#radionodelist">RadioNodeList</a></code> object are those that have either an <code data-anolis-xref="attr-id"><a href="dom.html#the-id-attribute">id</a></code> attribute or a <code data-anolis-xref="attr-fe-name"><a href="forms.html#attr-fe-name">name</a></code> attribute equal to <var data-anolis-xref="">name</var>. The nodes in the <code><a href="#radionodelist">RadioNodeList</a></code> object must be sorted in <a href="#tree-order">tree order</a>.
-      </li>
-
-      <li>Return that <code><a href="#radionodelist">RadioNodeList</a></code> object.</li>
-    </ol>
-    <hr>
-
-    <p>Members of the <code><a href="#radionodelist">RadioNodeList</a></code> interface inherited from the <code><a href="#nodelist">NodeList</a></code> interface must behave as they would on a <code><a href="#nodelist">NodeList</a></code> object.</p>
-
-    <p>The <dfn data-anolis-xref="dom-RadioNodeList-value" id="dom-radionodelist-value"><code>value</code></dfn> IDL attribute on the <code><a href="#radionodelist">RadioNodeList</a></code> object, on getting, must return the value returned by running the following steps:</p>
-
-    <ol>
-      <li>
-        <p>Let <var data-anolis-xref="">element</var> be the first element in <a href="#tree-order">tree order</a> represented by the <code><a href="#radionodelist">RadioNodeList</a></code> object that is an <code><a href="forms.html#the-input-element">input</a></code> element whose <code data-anolis-xref="attr-input-type"><a href="forms.html#attr-input-type">type</a></code> attribute is in the <a data-anolis-xref="attr-input-type-radio" href="forms.html#radio-button-state-(type=radio)">Radio Button</a> state and whose <a data-anolis-xref="concept-fe-checked" href="forms.html#concept-fe-checked">checkedness</a> is true. Otherwise, let it be null.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">element</var> is null, or if it is an element with no <code data-anolis-xref="attr-input-value"><a href="forms.html#attr-input-value">value</a></code> attribute, return the empty string.</p>
-      </li>
-
-      <li>
-        <p>Otherwise, return the value of <var data-anolis-xref="">element</var>'s <code data-anolis-xref="attr-input-value"><a href="forms.html#attr-input-value">value</a></code> attribute.</p>
-      </li>
-    </ol>
-
-    <p>On setting, the <code data-anolis-xref="dom-RadioNodeList-value"><a href="#dom-radionodelist-value">value</a></code> IDL attribute must run the following steps:</p>
-
-    <ol>
-      <li>
-        <p>Let <var data-anolis-xref="">element</var> be the first element in <a href="#tree-order">tree order</a> represented by the <code><a href="#radionodelist">RadioNodeList</a></code> object that is an <code><a href="forms.html#the-input-element">input</a></code> element whose <code data-anolis-xref="attr-input-type"><a href="forms.html#attr-input-type">type</a></code> attribute is in the <a data-anolis-xref="attr-input-type-radio" href="forms.html#radio-button-state-(type=radio)">Radio Button</a> state and whose <code data-anolis-xref="attr-input-value"><a href="forms.html#attr-input-value">value</a></code> content attribute is present and equal to the new value, if any. Otherwise, let it be null.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">element</var> is not null, then set its <a data-anolis-xref="concept-fe-checked" href="forms.html#concept-fe-checked">checkedness</a> to true.</p>
-      </li>
-    </ol><!--
-http://software.hixie.ch/utilities/js/live-dom-viewer/?%3C%21DOCTYPE%20html%3E...%0A%3Cform%20name%3D%22a%22%3E%3Cinput%20id%3D%22x%22%20name%3D%22y%22%3E%3Cinput%20name%3D%22x%22%20id%3D%22y%22%3E%3C/form%3E%0A%3Cscript%3E%0A%20%20var%20x%3B%0A%20%20w%28x%20%3D%20document.forms%5B%27a%27%5D%5B%27x%27%5D%29%3B%0A%20%20w%28x.length%29%3B%0A%20%20x%5B0%5D.parentNode.removeChild%28x%5B0%5D%29%3B%0A%20%20w%28x.length%29%3B%0A%20%20w%28x%20%3D%3D%20document.forms%5B%27a%27%5D%5B%27x%27%5D%29%3B%0A%3C/script%3E%0A
--->
-  </div>
 
   <h5 id="htmloptionscollection"><span class="secno">2.7.2.3</span> HTMLOptionsCollection</h5>
 
@@ -3408,121 +1705,9 @@ interface <dfn id="htmloptionscollection-0">HTMLOptionsCollection</dfn> : <a hre
     </dd>
   </dl>
 
-  <div class="impl">
-    <p>The object's <a href="#supported-property-indices">supported property indices</a> are as defined for <code><a href="#htmlcollection">HTMLCollection</a></code> objects.</p>
-
-    <p>On getting, the <dfn data-anolis-xref="dom-HTMLOptionsCollection-length" id="dom-htmloptionscollection-length"><code>length</code></dfn> attribute must return the number of nodes <a href="#represented-by-the-collection">represented by the collection</a>.</p>
-
-    <p>On setting, the behavior depends on whether the new value is equal to, greater than, or less than the number of nodes <a href="#represented-by-the-collection">represented by the collection</a> at that time. If the number is the same, then setting the attribute must do nothing. If the new value is greater, then <var data-anolis-xref="">n</var> new <code><a href="forms.html#the-option-element">option</a></code> elements with no attributes and no child nodes must be appended to the <code><a href="forms.html#the-select-element">select</a></code> element on which the <code><a href="#htmloptionscollection-0">HTMLOptionsCollection</a></code> is rooted, where <var data-anolis-xref="">n</var> is the difference between the two numbers (new value minus old value). Mutation events must be fired as if a <code><a href="#documentfragment">DocumentFragment</a></code> containing the new <code><a href="forms.html#the-option-element">option</a></code> elements had been inserted. If the new value is lower, then the last <var data-anolis-xref="">n</var> nodes in the collection must be removed from their parent nodes, where <var data-anolis-xref="">n</var> is the difference between the two numbers (old value minus new value).</p>
-
-    <p class="note">Setting <code data-anolis-xref="dom-HTMLOptionsCollection-length"><a href="#dom-htmloptionscollection-length">length</a></code> never removes or adds any <code><a href="forms.html#the-optgroup-element">optgroup</a></code> elements, and never adds new children to existing <code><a href="forms.html#the-optgroup-element">optgroup</a></code> elements (though it can remove children from them).</p>
-
-    <p>The <a href="#supported-property-names">supported property names</a> consist of the non-empty values of all the <code data-anolis-xref="attr-id"><a href="dom.html#the-id-attribute">id</a></code> and <code data-anolis-xref="attr-option-name"><a href="obsolete.html#attr-option-name">name</a></code> attributes of all the elements <a href="#represented-by-the-collection">represented by the collection</a>, in <a href="#tree-order">tree order</a>, ignoring later duplicates, with the <code data-anolis-xref="attr-id"><a href="dom.html#the-id-attribute">id</a></code> of an element preceding its <code data-anolis-xref="attr-option-name"><a href="obsolete.html#attr-option-name">name</a></code> if it contributes both, they differ from each other, and neither is the duplicate of an earlier entry.</p>
-
-    <p>The <dfn data-anolis-xref="dom-HTMLOptionsCollection-namedItem" id="dom-htmloptionscollection-nameditem">legacy caller</dfn> of the <code><a href="#htmloptionscollection-0">HTMLOptionsCollection</a></code> interface must act like the <code data-anolis-xref="dom-HTMLCollection-namedItem">namedItem()</code> method on the ancestor <code><a href="#htmlcollection">HTMLCollection</a></code> interface.</p>
-
-    <p>When the user agent is to <dfn data-anolis-xref="dom-HTMLOptionsCollection-setter" id="dom-htmloptionscollection-setter">set the value of a new indexed property or set the value of an existing indexed property</dfn> for a given property index <var data-anolis-xref="">index</var> to a new value <var data-anolis-xref="">value</var>, it must run the following algorithm:</p>
-
-    <ol>
-      <li>
-        <p>If <var data-anolis-xref="">value</var> is null, invoke the steps for the <code data-anolis-xref="dom-HTMLOptionsCollection-remove"><a href="#dom-htmloptionscollection-remove">remove</a></code> method with <var data-anolis-xref="">index</var> as the argument, and abort these steps.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">length</var> be the number of nodes <a href="#represented-by-the-collection">represented by the collection</a>.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">n</var> be <var data-anolis-xref="">index</var> minus <var data-anolis-xref="">length</var>.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">n</var> is greater than zero, then <a data-anolis-xref="concept-node-append" href="#concept-node-append">append</a> a <code><a href="#documentfragment">DocumentFragment</a></code> consisting of <span data-anolis-xref=""><var data-anolis-xref="">n</var>-1</span> new <code><a href="forms.html#the-option-element">option</a></code> elements with no attributes and no child nodes to the <code><a href="forms.html#the-select-element">select</a></code> element on which the <code><a href="#htmloptionscollection-0">HTMLOptionsCollection</a></code> is rooted.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">n</var> is greater than or equal to zero, <a data-anolis-xref="concept-node-append" href="#concept-node-append">append</a> <var data-anolis-xref="">value</var> to the <code><a href="forms.html#the-select-element">select</a></code> element. Otherwise, <a data-anolis-xref="concept-node-replace" href="#concept-node-replace">replace</a> the <var data-anolis-xref="">index</var>th element in the collection by <var data-anolis-xref="">value</var>.</p>
-      </li>
-    </ol>
-
-    <p>The <dfn data-anolis-xref="dom-HTMLOptionsCollection-add" id="dom-htmloptionscollection-add"><code>add(<var data-anolis-xref="">element</var>, <var data-anolis-xref="">before</var>)</code></dfn> method must act according to the following algorithm:</p>
-
-    <ol>
-      <li>
-        <p>If <var data-anolis-xref="">element</var> is an ancestor of the <code><a href="forms.html#the-select-element">select</a></code> element on which the <code><a href="#htmloptionscollection-0">HTMLOptionsCollection</a></code> is rooted, then throw a <code><a href="#hierarchyrequesterror">HierarchyRequestError</a></code> exception and abort these steps.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">before</var> is an element, but that element isn't a descendant of the <code><a href="forms.html#the-select-element">select</a></code> element on which the <code><a href="#htmloptionscollection-0">HTMLOptionsCollection</a></code> is rooted, then throw a <code><a href="#notfounderror">NotFoundError</a></code> exception and abort these steps.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">element</var> and <var data-anolis-xref="">before</var> are the same element, then return and abort these steps.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">before</var> is a node, then let <var data-anolis-xref="">reference</var> be that node. Otherwise, if <var data-anolis-xref="">before</var> is an integer, and there is a <var data-anolis-xref="">before</var>th node in the collection, let <var data-anolis-xref="">reference</var> be that node. Otherwise, let <var data-anolis-xref="">reference</var> be null.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">reference</var> is not null, let <var data-anolis-xref="">parent</var> be the parent node of <var data-anolis-xref="">reference</var>. Otherwise, let <var data-anolis-xref="">parent</var> be the <code><a href="forms.html#the-select-element">select</a></code> element on which the <code><a href="#htmloptionscollection-0">HTMLOptionsCollection</a></code> is rooted.</p>
-      </li>
-
-      <li>
-        <p>Act as if the DOM <code data-anolis-xref="dom-Node-insertBefore"><a href="#dom-node-insertbefore">insertBefore()</a></code> method was invoked on the <var data-anolis-xref="">parent</var> node, with <var data-anolis-xref="">element</var> as the first argument and <var data-anolis-xref="">reference</var> as the second argument.</p>
-      </li>
-    </ol>
-
-    <p>The <dfn data-anolis-xref="dom-HTMLOptionsCollection-remove" id="dom-htmloptionscollection-remove"><code>remove(<var data-anolis-xref="">index</var>)</code></dfn> method must act according to the following algorithm:</p>
-
-    <ol>
-      <li>
-        <p>If the number of nodes <a href="#represented-by-the-collection">represented by the collection</a> is zero, abort these steps.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">index</var> is not a number greater than or equal to 0 and less than the number of nodes <a href="#represented-by-the-collection">represented by the collection</a>, abort these steps.</p>
-      </li><!-- note that Web IDL converts 'a', NaN, -0.5, 0.5, and null to 0, and numbers in general
-   truncate. so what we're checking against here in a way has very little to do with what's going on
-   in the JS -->
-
-      <li>
-        <p>Let <var data-anolis-xref="">element</var> be the <var data-anolis-xref="">index</var>th element in the collection.</p>
-      </li>
-
-      <li>
-        <p>Remove <var data-anolis-xref="">element</var> from its parent node.</p>
-      </li>
-    </ol>
-
-    <p>The <dfn data-anolis-xref="dom-HTMLOptionsCollection-selectedIndex" id="dom-htmloptionscollection-selectedindex"><code>selectedIndex</code></dfn> IDL attribute must act like the identically named attribute on the <code><a href="forms.html#the-select-element">select</a></code> element on which the <code><a href="#htmloptionscollection-0">HTMLOptionsCollection</a></code> is rooted</p><!-- see also http://ln.hixie.ch/?start=1161042744&count=1 -->
-  </div><!--MD--><!--TOPIC:DOM APIs-->
-
   <h4 id="domstringmap"><span class="secno">2.7.3</span> DOMStringMap</h4>
 
   <p><code><a href="#domstringmap-0">DOMStringMap</a></code>インターフェースは、名前と値のペアの組を表す。これは、プロパティーのアクセスのためにスクリプト言語のネイティヴメカニズムを使用して、ペアの組を公開する。</p>
-
-  <div class="impl">
-    <p>When a <code><a href="#domstringmap-0">DOMStringMap</a></code> object is instantiated, it is associated with three algorithms, one for getting the list of name-value pairs, one for setting names to certain values, and one for deleting names.</p>
-    <pre class="idl">
-[OverrideBuiltins]
-interface <dfn id="domstringmap-0">DOMStringMap</dfn> {
-  <a data-anolis-xref="dom-DOMStringMap-namedItem" href="#dom-domstringmap-nameditem">getter</a> DOMString (DOMString name);
-  <a data-anolis-xref="dom-DOMStringMap-setItem" href="#dom-domstringmap-setitem">setter</a> <a data-anolis-xref="dom-DOMStringMap-addItem" href="#dom-domstringmap-additem">creator</a> void (DOMString name, DOMString value);
-  <a data-anolis-xref="dom-DOMStringMap-removeItem" href="#dom-domstringmap-removeitem">deleter</a> void (DOMString name);
-};
-</pre>
-
-    <p>The <a href="#supported-property-names">supported property names</a> on a <code><a href="#domstringmap-0">DOMStringMap</a></code> object at any instant are the names of each pair returned from the algorithm for getting the list of name-value pairs at that instant, in the order returned.</p>
-
-    <p>To <dfn data-anolis-xref="dom-DOMStringMap-namedItem" id="dom-domstringmap-nameditem">determine the value of a named property</dfn> <var data-anolis-xref="">name</var> in a <code><a href="#domstringmap-0">DOMStringMap</a></code>, the user agent must return the value component of the name-value pair whose name component is <var data-anolis-xref="">name</var> in the list returned by the algorithm for getting the list of name-value pairs.</p>
-
-    <p>To set the value of a <dfn data-anolis-xref="dom-DOMStringMap-addItem" id="dom-domstringmap-additem">new</dfn> or <dfn data-anolis-xref="dom-DOMStringMap-setItem" id="dom-domstringmap-setitem">existing</dfn> named property <var data-anolis-xref="">name</var> to value <var data-anolis-xref="">value</var>, the algorithm for setting names to certain values must be run, passing <var data-anolis-xref="">name</var> as the name and the result of converting <var data-anolis-xref="">value</var> to a <code>DOMString</code> as the value.</p>
-
-    <p>To <dfn data-anolis-xref="dom-DOMStringMap-removeItem" id="dom-domstringmap-removeitem">delete an existing named property</dfn> <var data-anolis-xref="">name</var>, the algorithm for deleting names must be run, passing <var data-anolis-xref="">name</var> as the name.</p>
-
-    <p class="note">The <code><a href="#domstringmap-0">DOMStringMap</a></code> interface definition here is only intended for JavaScript environments. Other language bindings will need to define how <code><a href="#domstringmap-0">DOMStringMap</a></code> is to be implemented for those languages.</p>
-  </div>
 
   <div class="example">
     <p>要素の<code data-anolis-xref="dom-dataset"><a href="dom.html#dom-dataset">dataset</a></code>属性は、要素の<code data-anolis-xref="attr-data-*"><a href="dom.html#attr-data-*">data-*</a></code>属性を公開する。</p>
@@ -3567,320 +1752,12 @@ function splashDamage(node, x, y, damage) {
     <li><code><a href="#messageport">MessagePort</a></code></li>
   </ul>
 
-  <div class="impl">
-    <p>The following IDL block formalizes this:</p>
-    <pre class="idl">
-[NoInterfaceObject]
-interface <dfn id="transferable">Transferable</dfn> { };
-<a href="#arraybuffer">ArrayBuffer</a> implements <a href="#transferable">Transferable</a>;
-<a href="#messageport">MessagePort</a> implements <a href="#transferable">Transferable</a>;
-</pre>
-
-    <p>To <dfn id="transfer-a-transferable-object">transfer a <code>Transferable</code> object</dfn> to a new owner, the user agent must run the steps defined for the type of object in question. The steps will return a new object of the same type, and will permanently <dfn data-anolis-xref="concept-Transferable-neutered" id="concept-transferable-neutered">neuter</dfn> the original object. (This is an irreversible and non-idempotent operation; once an object has been transferred, it cannot be transferred, or indeed used, again.)</p>
-
-    <p id="transferArrayBuffer">To <a data-anolis-xref="transfer a Transferable object" href="#transfer-a-transferable-object">transfer</a> an <code><a href="#arraybuffer">ArrayBuffer</a></code> object <var data-anolis-xref="">old</var> to a new owner <var data-anolis-xref="">owner</var>, a user agent must create a new <code><a href="#arraybuffer">ArrayBuffer</a></code> object pointing at the same underlying data as <var data-anolis-xref="">old</var>, thus obtaining <var data-anolis-xref="">new</var>, must <a data-anolis-xref="concept-Transferable-neutered" href="#concept-transferable-neutered">neuter</a> the <var data-anolis-xref="">old</var> object, and must finally return <var data-anolis-xref="">new</var>. <a href="references.html#refsTYPEDARRAY">[TYPEDARRAY]</a></p>
-
-    <p class="note">Rules for how to <a href="references.html#refsWEBMSG">transfer a <code>MessagePort</code> object</a> are given in the relevant sections of this specification.</p>
-  </div>
-
-  <div class="impl">
-    <h4 id="safe-passing-of-structured-data"><span class="secno">2.7.5</span> Safe passing of structured data</h4>
-
-    <p>When a user agent is required to obtain a <dfn id="structured-clone">structured clone</dfn> of a value, optionally with a <i>transfer map</i>, it must run the following algorithm, which either returns a separate value, or throws an exception. If a <i>transfer map</i> is provided, it consists of an association list of <code><a href="#transferable">Transferable</a></code> objects to placeholder objects.</p>
-
-    <ol>
-      <li>
-        <p>Let <var data-anolis-xref="">input</var> be the value being cloned.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">transfer map</var> be the <i>transfer map</i> passed to the algorithm, if any, or the empty list otherwise.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">memory</var> be an association list of pairs of objects, initially empty. This is used to handle duplicate references. In each pair of objects, one is called the <em><a href="embedded-content-0.html#the-source-element">source</a></em> object and the other the <em>destination</em> object.</p>
-      </li>
-
-      <li>
-        <p>For each mapping in <var data-anolis-xref="">transfer map</var>, add a mapping from the <code><a href="#transferable">Transferable</a></code> object (the source object) to the placeholder object (the destination object) to <var data-anolis-xref="">memory</var>.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">output</var> be the value resulting from calling the <a href="#internal-structured-cloning-algorithm">internal structured cloning algorithm</a> with <var data-anolis-xref="">input</var> as the "<var data-anolis-xref="">input</var>" argument, and <var data-anolis-xref="">memory</var> as the "<var data-anolis-xref="">memory</var>" argument.</p>
-      </li>
-
-      <li>
-        <p>Return <var data-anolis-xref="">output</var>.</p>
-      </li>
-    </ol>
-
-    <p>The <dfn id="internal-structured-cloning-algorithm">internal structured cloning algorithm</dfn> is always called with two arguments, <var data-anolis-xref="">input</var> and <var data-anolis-xref="">memory</var>, and its behavior is as follows:</p>
-
-    <ol>
-      <li>
-        <p>If <var data-anolis-xref="">input</var> is the source object of a pair of objects in <var data-anolis-xref="">memory</var>, then return the destination object in that pair of objects and abort these steps.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">input</var> is a primitive value, then return that value and abort these steps.</p>
-      </li>
-
-      <li>
-        <p>Let <var data-anolis-xref="">deep clone</var> be <i>none</i>.</p>
-      </li>
-
-      <li>
-        <p>The <var data-anolis-xref="">input</var> value is an object. Jump to the appropriate step below:</p>
-
-        <dl class="switch">
-          <dt>If <var data-anolis-xref="">input</var> is a <code>Boolean</code> object</dt>
-
-          <dd>
-            <p>Let <var data-anolis-xref="">output</var> be a newly constructed Boolean object with the same value as <var data-anolis-xref="">input</var>.</p>
-          </dd>
-
-          <dt>If <var data-anolis-xref="">input</var> is a <code>Number</code> object</dt>
-
-          <dd>
-            <p>Let <var data-anolis-xref="">output</var> be a newly constructed Number object with the same value as <var data-anolis-xref="">input</var>.</p>
-          </dd>
-
-          <dt>If <var data-anolis-xref="">input</var> is a <code>String</code> object</dt>
-
-          <dd>
-            <p>Let <var data-anolis-xref="">output</var> be a newly constructed String object with the same value as <var data-anolis-xref="">input</var>.</p>
-          </dd>
-
-          <dt>If <var data-anolis-xref="">input</var> is a <code>Date</code> object</dt>
-
-          <dd>
-            <p>Let <var data-anolis-xref="">output</var> be a newly constructed <code>Date</code> object with the same value as <var data-anolis-xref="">input</var>.</p>
-          </dd>
-
-          <dt>If <var data-anolis-xref="">input</var> is a <code>RegExp</code> object</dt>
-
-          <dd>
-            <p>Let <var data-anolis-xref="">output</var> be a newly constructed <code>RegExp</code> object with the same pattern and flags as <var data-anolis-xref="">input</var>.</p>
-
-            <p class="note">The value of the <code data-anolis-xref="">lastIndex</code> property is not copied.</p>
-          </dd>
-
-          <dt>If <var data-anolis-xref="">input</var> is a <code><a href="#blob">Blob</a></code> object</dt>
-
-          <dd>
-            <p></p>
-
-            <p>If <var data-anolis-xref="">input</var> has been disabled through the <code data-anolis-xref="dom-Blob-close"><a href="#dom-blob-close">close()</a></code> method, throw a <code><a href="#datacloneerror">DataCloneError</a></code> exception and abort the overall <a href="#structured-clone">structured clone</a> algorithm. Otherwise, let <var data-anolis-xref="">output</var> be a newly constructed object of the same class as <var data-anolis-xref="">input</var>, corresponding to the same underlying data.</p>
-          </dd>
-
-          <dt>If <var data-anolis-xref="">input</var> is a <code><a href="#filelist">FileList</a></code> object</dt>
-
-          <dd>
-            <p>Let <var data-anolis-xref="">output</var> be a newly constructed <code><a href="#filelist">FileList</a></code> object containing a list of newly constructed <code><a href="#file">File</a></code> objects corresponding to the same underlying data as those in <var data-anolis-xref="">input</var>, maintaining their relative order.</p>
-          </dd>
-
-          <dt>If <var data-anolis-xref="">input</var> is an <code>ImageData</code> object</dt>
-
-          <dd>
-            <p>Let <var data-anolis-xref="">output</var> be a newly constructed <code>ImageData</code> object whose <code data-anolis-xref="dom-imagedata-width">width</code>, <code data-anolis-xref="dom-imagedata-height">height</code>, and <code data-anolis-xref="dom-imagedata-resolution">resolution</code> attributes have values equal to the corresponding attributes on <var data-anolis-xref="">input</var>, and whose <code data-anolis-xref="dom-imagedata-data">data</code> attribute has the value obtained from invoking the <a href="#internal-structured-cloning-algorithm">internal structured cloning algorithm</a> recursively with the value of the <code data-anolis-xref="dom-imagedata-data">data</code> attribute on <var data-anolis-xref="">input</var> as the new "<var data-anolis-xref="">input</var>" argument and <var data-anolis-xref="">memory</var> as the new "<var data-anolis-xref="">memory</var>" argument.</p>
-          </dd>
-
-          <dt>If <var data-anolis-xref="">input</var> is an <code><a href="#arraybuffer">ArrayBuffer</a></code> object</dt><!--CLEANUP-->
-
-          <dd>
-            <p>If <var data-anolis-xref="">input</var> has been <a data-anolis-xref="concept-Transferable-neutered" href="#concept-transferable-neutered">neutered</a>, throw a <code><a href="#datacloneerror">DataCloneError</a></code> exception and abort the overall <a href="#structured-clone">structured clone</a> algorithm. Otherwise, let <var data-anolis-xref="">output</var> be a newly constructed <code><a href="#arraybuffer">ArrayBuffer</a></code> object whose contents are a copy of <var data-anolis-xref="">input</var>'s contents, with the same length.</p>
-          </dd>
-
-          <dt>If <var data-anolis-xref="">input</var> is an <code><a href="#arraybufferview">ArrayBufferView</a></code> object</dt>
-
-          <dd>
-            <!--CLEANUP-->
-
-            <p>Let <var data-anolis-xref="">output</var> be a newly constructed object of the same class as <var data-anolis-xref="">input</var>, with each IDL attribute defined for that class being set to the value obtained from invoking the <a href="#internal-structured-cloning-algorithm">internal structured cloning algorithm</a> recursively with the value of the attribute on <var data-anolis-xref="">input</var> as the new "<var data-anolis-xref="">input</var>" argument and <var data-anolis-xref="">memory</var> as the new "<var data-anolis-xref="">memory</var>" argument.</p>
-
-            <p class="note">Only IDL attributes defined on the class (including the <code><a href="#arraybufferview">ArrayBufferView</a></code> attributes) are cloned. Properties added by a script, for example, are not cloned.</p>
-          </dd>
-
-          <dt>If <var data-anolis-xref="">input</var> is an <code>Array</code> object</dt>
-
-          <dd>
-            <!--CLEANUP-->
-
-            <p>Let <var data-anolis-xref="">output</var> be a newly constructed empty <code>Array</code> object whose <code data-anolis-xref="">length</code> is equal to the <code data-anolis-xref="">length</code> of <var data-anolis-xref="">input</var>, and set <var data-anolis-xref="">deep clone</var> to <i>own</i>.</p>
-
-            <p class="note">This means that the length of sparse arrays is preserved.</p>
-          </dd>
-
-          <dt>If <var data-anolis-xref="">input</var> is an <code data-anolis-xref="">Object</code> object</dt><!--CLEANUP-->
-
-          <dd>
-            <p>Let <var data-anolis-xref="">output</var> be a newly constructed empty <code data-anolis-xref="">Object</code> object, and set <var data-anolis-xref="">deep clone</var> to <i>own</i>.</p>
-          </dd>
-
-          <dt>If <var data-anolis-xref="">input</var> is a <code><a href="embedded-content-0.html#the-map-element">Map</a></code> object</dt>
-
-          <dd>
-            <p>Let <var data-anolis-xref="">output</var> be a newly constructed empty <code data-anolis-xref="">Map</code> object, and set <var data-anolis-xref="">deep clone</var> to <i><a href="embedded-content-0.html#the-map-element">map</a></i>.</p>
-          </dd>
-
-          <dt>If <var data-anolis-xref="">input</var> is a <code>Set</code> object</dt>
-
-          <dd>
-            <p>Let <var data-anolis-xref="">output</var> be a newly constructed empty <code data-anolis-xref="">Set</code> object, and set <var data-anolis-xref="">deep clone</var> to <i>set</i>.</p>
-          </dd>
-
-          <dt>If <var data-anolis-xref="">input</var> is an object that another specification defines how to clone</dt>
-
-          <dd>
-            <p>Let <var data-anolis-xref="">output</var> be a clone of the object as defined by the other specification.</p>
-          </dd><!--CLEANUP-->
-
-          <dt>If <var data-anolis-xref="">input</var> is another native object type (e.g. <code>Error</code>, <code>Function</code>)</dt>
-
-          <dt>If <var data-anolis-xref="">input</var> is a host object (e.g. a DOM node)</dt>
-
-          <dd>
-            <p>Throw a <code><a href="#datacloneerror">DataCloneError</a></code> exception and abort the overall <a href="#structured-clone">structured clone</a> algorithm.</p>
-          </dd>
-        </dl>
-
-        <p>For the purposes of the algorithm above, an object is a particular type of object <var data-anolis-xref="">class</var> if its [[Class]] internal property is equal to <var data-anolis-xref="">class</var>.</p><!--CLEANUP-->
-
-        <p class="example">For example, "<var data-anolis-xref="">input</var> is an <code data-anolis-xref="">Object</code> object" if <var data-anolis-xref="">input</var>'s [[Class]] internal property is equal to the string "<code data-anolis-xref="">Object</code>".</p>
-      </li>
-
-      <li>
-        <p>Add a mapping from <var data-anolis-xref="">input</var> (the source object) to <var data-anolis-xref="">output</var> (the destination object) to <var data-anolis-xref="">memory</var>.</p>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">deep clone</var> is set to <i><a href="embedded-content-0.html#the-map-element">map</a></i>, then run these substeps. These substeps use the terminology and typographic conventions used in the JavaScript specification's definition of Maps. <a href="references.html#refsECMA262">[ECMA262]</a></p>
-
-        <ol>
-          <li>
-            <p>Let <var data-anolis-xref="">source</var> be the List that is the value of <var data-anolis-xref="">input</var>'s [[MapData]] internal slot, if any. If there is no such slot, then instead throw a <code><a href="#datacloneerror">DataCloneError</a></code> exception and abort the overall <a href="#structured-clone">structured clone</a> algorithm. <a href="references.html#refsECMA262">[ECMA262]</a></p>
-          </li>
-
-          <li>
-            <p>Let <var data-anolis-xref="">target</var> be the List that is the value of <var data-anolis-xref="">output</var>'s [[MapData]] internal slot.</p>
-          </li>
-
-          <li>
-            <p>For each Record {[[key]], [[value]]} <var data-anolis-xref="">entry</var> that is an element of <var data-anolis-xref="">source</var>, run the following substeps:</p>
-
-            <ol>
-              <li>
-                <p>Let <var data-anolis-xref="">key</var> have the value obtained from invoking the <a href="#internal-structured-cloning-algorithm">internal structured cloning algorithm</a> recursively with <var data-anolis-xref="">entry</var>.[[key]] as the new "<var data-anolis-xref="">input</var>" argument and <var data-anolis-xref="">memory</var> as the new "<var data-anolis-xref="">memory</var>" argument.</p>
-              </li>
-
-              <li>
-                <p>Let <var data-anolis-xref="">value</var> have the value obtained from invoking the <a href="#internal-structured-cloning-algorithm">internal structured cloning algorithm</a> recursively with <var data-anolis-xref="">entry</var>.[[value]] as the new "<var data-anolis-xref="">input</var>" argument and <var data-anolis-xref="">memory</var> as the new "<var data-anolis-xref="">memory</var>" argument.</p>
-              </li>
-
-              <li>
-                <p>Let <var data-anolis-xref="">new entry</var> be the Record {[[key]]: <var data-anolis-xref="">key</var>, [[value]]: <var data-anolis-xref="">value</var>}.</p>
-              </li>
-
-              <li>
-                <p>Append <var data-anolis-xref="">new entry</var> as the last element of <var data-anolis-xref="">target</var>.</p>
-              </li>
-            </ol>
-          </li>
-
-          <li>
-            <p>Set <var data-anolis-xref="">deep clone</var> to <i>own</i>.</p>
-          </li>
-        </ol>
-      </li>
-
-      <li>
-        <p>If <var data-anolis-xref="">deep clone</var> is set to <i>set</i>, then run these substeps. These substeps use the terminology and typographic conventions used in the JavaScript specification's definition of Sets. <a href="references.html#refsECMA262">[ECMA262]</a></p>
-
-        <ol>
-          <li>
-            <p>Let <var data-anolis-xref="">source</var> be the List that is the value of <var data-anolis-xref="">input</var>'s [[SetData]] internal slot, if any. If there is no such slot, then instead throw a <code><a href="#datacloneerror">DataCloneError</a></code> exception and abort the overall <a href="#structured-clone">structured clone</a> algorithm. <a href="references.html#refsECMA262">[ECMA262]</a></p>
-          </li>
-
-          <li>
-            <p>Let <var data-anolis-xref="">target</var> be the List that is the value of <var data-anolis-xref="">output</var>'s [[SetData]] internal slot.</p>
-          </li>
-
-          <li>
-            <p>For each <var data-anolis-xref="">entry</var> that is an element of <var data-anolis-xref="">source</var> that is not <i>empty</i>, run the following substeps:</p>
-
-            <ol>
-              <li>
-                <p>Let <var data-anolis-xref="">new entry</var> have the value obtained from invoking the <a href="#internal-structured-cloning-algorithm">internal structured cloning algorithm</a> recursively with <var data-anolis-xref="">entry</var> as the new "<var data-anolis-xref="">input</var>" argument and <var data-anolis-xref="">memory</var> as the new "<var data-anolis-xref="">memory</var>" argument.</p>
-              </li>
-
-              <li>
-                <p>Append <var data-anolis-xref="">new entry</var> as the last element of <var data-anolis-xref="">target</var>.</p>
-              </li>
-            </ol>
-          </li>
-
-          <li>
-            <p>Set <var data-anolis-xref="">deep clone</var> to <i>own</i>.</p>
-          </li>
-        </ol>
-      </li>
-
-      <li>
-        <!--CLEANUP-->
-
-        <p>If <var data-anolis-xref="">deep clone</var> is set to <i>own</i>, then, for each enumerable own property in <var data-anolis-xref="">input</var>, run the following steps:</p>
-
-        <ol>
-          <li>
-            <p>Let <var data-anolis-xref="">name</var> be the name of the property.</p>
-          </li><!--CLEANUP-->
-
-          <li>
-            <p>Let <var data-anolis-xref="">source value</var> be the result of calling the [[Get]] internal method of <var data-anolis-xref="">input</var> with the argument <var data-anolis-xref="">name</var>. If the [[Get]] internal method of a property involved executing script, and that script threw an uncaught exception, then abort the overall <a href="#structured-clone">structured clone</a> algorithm, with that exception being passed through to the caller.</p>
-          </li>
-
-          <li>
-            <p>Let <var data-anolis-xref="">cloned value</var> be the result of invoking the <a href="#internal-structured-cloning-algorithm">internal structured cloning algorithm</a> recursively with <var data-anolis-xref="">source value</var> as the "<var data-anolis-xref="">input</var>" argument and <var data-anolis-xref="">memory</var> as the "<var data-anolis-xref="">memory</var>" argument. If this results in an exception, then abort the overall <a href="#structured-clone">structured clone</a> algorithm, with that exception being passed through to the caller.</p>
-          </li>
-
-          <li>
-            <p>Add a new property to <var data-anolis-xref="">output</var> having the name <var data-anolis-xref="">name</var>, and having the value <var data-anolis-xref="">cloned value</var>.</p>
-          </li>
-        </ol>
-
-        <p>The order of the properties in the <var data-anolis-xref="">input</var> and <var data-anolis-xref="">output</var> objects must be the same, and any properties whose [[Get]] internal method involves running script must be processed in that same order.</p>
-
-        <p class="note">This does not walk the prototype chain.</p>
-
-        <p class="note">Property descriptors, setters, getters, and analogous features are not copied in this process. For example, the property in the input could be marked as read-only, but in the output it would just have the default state (typically read-write, though that could depend on the scripting environment).</p>
-
-        <p class="note">Properties of Array objects are not treated any differently than those of other Objects. In particular, this means that non-index properties of arrays are copied as well.</p>
-      </li>
-
-      <li>
-        <p>Return <var data-anolis-xref="">output</var>.</p>
-      </li>
-    </ol>
-
-    <p class="note">This algorithm preserves cycles and preserves the identity of duplicate objects in graphs.</p>
-  </div>
-
   <h4 id="callbacks"><span class="secno">2.7.6</span> コールバック</h4>
 
   <p>次のコールバック関数型は、<code><a href="#file">File</a></code>オブジェクトと対話するさまざまなAPIで使用される：</p>
   <pre class="idl">
 callback <dfn id="filecallback">FileCallback</dfn> = void (<a href="#file">File</a> file);
 </pre>
-
-  <div class="impl">
-    <h4 id="garbage-collection"><span class="secno">2.7.7</span> Garbage collection</h4>
-
-    <p>There is an <dfn id="implied-strong-reference">implied strong reference</dfn> from any IDL attribute that returns a pre-existing object to that object.</p>
-
-    <div class="example">
-      <p>For example, the <code>document.location</code> attribute means that there is a strong reference from a <code><a href="dom.html#document">Document</a></code> object to its <code><a href="browsers.html#location">Location</a></code> object. Similarly, there is always a strong reference from a <code><a href="dom.html#document">Document</a></code> to any descendant nodes, and from any node to its owner <code><a href="dom.html#document">Document</a></code>.</p>
-    </div>
-  </div><!--TOPIC:HTML Syntax and Parsing-->
 
   <h3 id="namespaces"><span class="secno">2.8</span> 名前空間</h3>
 
