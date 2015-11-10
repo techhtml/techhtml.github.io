@@ -434,7 +434,20 @@ dt#feedback {
 <link rel="stylesheet" href="trans.css">
 <!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]-->
 </head>
-  <body class="h-entry" role="document" id="respecDocument"><div class="head" role="contentinfo" id="respecHeader">
+	<body class="h-entry" role="document" id="respecDocument">
+<div class="headernotes">
+	<p>
+		이 문서는 <a href="http://www.w3.org/TR/pointerevents/">Pointer Events(W3C Recommendation 24 February 2015)</a>의 한국어 번역본입니다. <br>
+		이 문서에 오역 및 오타를 포함할 수 있습니다. 가능하면 원문도 확인하시길 바랍니다.
+	</p>
+	<dl class="meta">
+		<dt>공개일</dt>
+		<dd>2015-11-10</dd>
+		<dt>번역자:</dt>
+		<dd>조은 &lt;<a href="mailto:apes0123@gmail.com">apes0123@gmail.com</a>&gt;</dd>
+	</dl>
+</div>
+<div class="head" role="contentinfo" id="respecHeader">
   <p>
 		<a href="http://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/Icons/w3c_home" alt="W3C"></a>
   </p>
@@ -518,7 +531,7 @@ dt#feedback {
         <p lang=ko>이 문서는 <a id="w3c_process_revision" href="http://www.w3.org/2005/10/Process-20051014/">2005년 10월 14일 <abbr title="World Wide Web Consortium">W3C</abbr> 프로세스 문서</a>를 통해 관리하고 있습니다.</p>
       </section>
     
-    <section id="toc"><h2 class="introductory" role="heading" id="h2_toc">Table of Contents</h2><ul class="toc" role="directory" id="respecContents"><li class="tocline"><a href="#intro" class="tocxref"><span class="secno">1. </span>Introduction</a></li><li class="tocline"><a href="#conformance" class="tocxref"><span class="secno">2. </span>Conformance</a></li><li class="tocline"><a href="#examples" class="tocxref"><span class="secno">3. </span>Examples</a></li><li class="tocline"><a href="#glossary" class="tocxref"><span class="secno">4. </span>Glossary</a></li><li class="tocline"><a href="#pointer-events-and-interfaces" class="tocxref"><span class="secno">5. </span>Pointer Events and Interfaces</a><ul class="toc"><li class="tocline"><a href="#pointerevent-interface" class="tocxref"><span class="secno">5.1 </span><code>PointerEvent</code> Interface</a><ul class="toc"><li class="tocline"><a href="#button-states" class="tocxref"><span class="secno">5.1.1 </span>Button States</a><ul class="toc"><li class="tocline"><a href="#chorded-button-interactions" class="tocxref"><span class="secno">5.1.1.1 </span><span title="chorded buttons">Chorded Button Interactions</span></a></li></ul></li><li class="tocline"><a href="#the-primary-pointer" class="tocxref"><span class="secno">5.1.2 </span><span title="primary pointer">The Primary Pointer</span></a></li></ul></li><li class="tocline"><a href="#pointer-event-types" class="tocxref"><span class="secno">5.2 </span>Pointer Event Types</a><ul class="toc"><li class="tocline"><a href="#firing-events-using-the-pointerevent-interface" class="tocxref"><span class="secno">5.2.1 </span>Firing events using the <code>PointerEvent</code> interface</a></li><li class="tocline"><a href="#list-of-pointer-events" class="tocxref"><span class="secno">5.2.2 </span>List of Pointer Events</a></li><li class="tocline"><a href="#the-pointerover-event" class="tocxref"><span class="secno">5.2.3 </span><span title="pointerover">The <code>pointerover</code> event</span></a></li><li class="tocline"><a href="#the-pointerenter-event" class="tocxref"><span class="secno">5.2.4 </span><span title="pointerenter">The <code>pointerenter</code> event</span></a></li><li class="tocline"><a href="#the-pointerdown-event" class="tocxref"><span class="secno">5.2.5 </span><span title="pointerdown">The <code>pointerdown</code> event</span></a></li><li class="tocline"><a href="#the-pointermove-event" class="tocxref"><span class="secno">5.2.6 </span><span title="pointermove">The <code>pointermove</code> event</span></a></li><li class="tocline"><a href="#the-pointerup-event" class="tocxref"><span class="secno">5.2.7 </span><span title="pointerup">The <code>pointerup</code> event</span></a></li><li class="tocline"><a href="#the-pointercancel-event" class="tocxref"><span class="secno">5.2.8 </span><span title="pointercancel">The <code>pointercancel</code> event</span></a></li><li class="tocline"><a href="#the-pointerout-event" class="tocxref"><span class="secno">5.2.9 </span><span title="pointerout">The <code>pointerout</code> event</span></a></li><li class="tocline"><a href="#the-pointerleave-event" class="tocxref"><span class="secno">5.2.10 </span><span title="pointerleave">The <code>pointerleave</code> event</span></a></li><li class="tocline"><a href="#the-gotpointercapture-event" class="tocxref"><span class="secno">5.2.11 </span><span title="gotpointercapture">The <code>gotpointercapture</code> event</span></a></li><li class="tocline"><a href="#the-lostpointercapture-event" class="tocxref"><span class="secno">5.2.12 </span><span title="lostpointercapture">The <code>lostpointercapture</code> event</span></a></li></ul></li></ul></li><li class="tocline"><a href="#extensions-to-the-element-interface" class="tocxref"><span class="secno">6. </span>Extensions to the <code>Element</code> interface</a></li><li class="tocline"><a href="#extensions-to-the-globaleventhandlers-interface" class="tocxref"><span class="secno">7. </span>Extensions to the <code>GlobalEventHandlers</code> interface</a><ul class="toc"><li class="tocline"><a href="#attributes" class="tocxref"><span class="secno">7.1 </span>Attributes</a></li></ul></li><li class="tocline"><a href="#extensions-to-the-navigator-interface" class="tocxref"><span class="secno">8. </span>Extensions to the <code>Navigator</code> interface</a></li><li class="tocline"><a href="#declaring-candidate-regions-for-default-touch-behaviors" class="tocxref"><span class="secno">9. </span>Declaring candidate regions for default touch behaviors</a><ul class="toc"><li class="tocline"><a href="#the-touch-action-css-property" class="tocxref"><span class="secno">9.1 </span>The <code>touch-action</code> CSS property</a></li></ul></li><li class="tocline"><a href="#pointer-capture" class="tocxref"><span class="secno">10. </span><span title="Pointer Capture">Pointer Capture</span></a><ul class="toc"><li class="tocline"><a href="#setting-pointer-capture" class="tocxref"><span class="secno">10.1 </span>Setting Pointer Capture</a></li><li class="tocline"><a href="#releasing-pointer-capture" class="tocxref"><span class="secno">10.2 </span>Releasing Pointer Capture</a></li><li class="tocline"><a href="#implicit-pointer-capture" class="tocxref"><span class="secno">10.3 </span>Implicit Pointer Capture</a><ul class="toc"><li class="tocline"><a href="#implicit-release-of-pointer-capture" class="tocxref"><span class="secno">10.3.1 </span>Implicit Release of Pointer Capture</a></li></ul></li></ul></li><li class="tocline"><a href="#compatibility-mapping-with-mouse-events" class="tocxref"><span class="secno">11. </span><span title="compatibility mouse events">Compatibility Mapping with Mouse Events</span></a><ul class="toc"><li class="tocline"><a href="#mapping-for-devices-that-support-hover" class="tocxref"><span class="secno">11.1 </span>Mapping for devices that support hover</a></li><li class="tocline"><a href="#mapping-for-devices-that-do-not-support-hover" class="tocxref"><span class="secno">11.2 </span>Mapping for devices that do not support hover</a></li></ul></li><li class="tocline"><a href="#acknowledgments" class="tocxref"><span class="secno">A. </span>Acknowledgments</a></li><li class="tocline"><a href="#revision-history" class="tocxref"><span class="secno">B. </span>Revision History</a></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">C. </span>References</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">C.1 </span>Normative references</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">C.2 </span>Informative references</a></li></ul></li></ul></section>
+    <section id="toc"><h2 class="introductory" role="heading" id="h2_toc">목차</h2><ul class="toc" role="directory" id="respecContents"><li class="tocline"><a href="#intro" class="tocxref"><span class="secno">1. </span>소개</a></li><li class="tocline"><a href="#conformance" class="tocxref"><span class="secno">2. </span>적합 요구사항</a></li><li class="tocline"><a href="#examples" class="tocxref"><span class="secno">3. </span>예제</a></li><li class="tocline"><a href="#glossary" class="tocxref"><span class="secno">4. </span>용어 사전</a></li><li class="tocline"><a href="#pointer-events-and-interfaces" class="tocxref"><span class="secno">5. </span>포인터 이벤트와 인터페이스</a><ul class="toc"><li class="tocline"><a href="#pointerevent-interface" class="tocxref"><span class="secno">5.1 </span><code>PointerEvent</code> 인터페이스</a><ul class="toc"><li class="tocline"><a href="#button-states" class="tocxref"><span class="secno">5.1.1 </span>버튼 상태</a><ul class="toc"><li class="tocline"><a href="#chorded-button-interactions" class="tocxref"><span class="secno">5.1.1.1 </span><span title="chorded buttons">코드를 포함한 버튼 인터렉션</span></a></li></ul></li><li class="tocline"><a href="#the-primary-pointer" class="tocxref"><span class="secno">5.1.2 </span><span title="primary pointer">기본 포인터</span></a></li></ul></li><li class="tocline"><a href="#pointer-event-types" class="tocxref"><span class="secno">5.2 </span>포인터 이벤트 타입</a><ul class="toc"><li class="tocline"><a href="#firing-events-using-the-pointerevent-interface" class="tocxref"><span class="secno">5.2.1 </span><code>PointerEvent</code> 인터페이스를 사용한 이벤트 발생</a></li><li class="tocline"><a href="#list-of-pointer-events" class="tocxref"><span class="secno">5.2.2 </span>포인터 이벤트 목록</a></li><li class="tocline"><a href="#the-pointerover-event" class="tocxref"><span class="secno">5.2.3 </span><span title="pointerover"><code>pointerover</code> 이벤트</span></a></li><li class="tocline"><a href="#the-pointerenter-event" class="tocxref"><span class="secno">5.2.4 </span><span title="pointerenter"><code>pointerenter</code> 이벤트</span></a></li><li class="tocline"><a href="#the-pointerdown-event" class="tocxref"><span class="secno">5.2.5 </span><span title="pointerdown"><code>pointerdown</code> 이벤트</span></a></li><li class="tocline"><a href="#the-pointermove-event" class="tocxref"><span class="secno">5.2.6 </span><span title="pointermove"><code>pointermove</code> 이벤트</span></a></li><li class="tocline"><a href="#the-pointerup-event" class="tocxref"><span class="secno">5.2.7 </span><span title="pointerup"><code>pointerup</code> 이벤트</span></a></li><li class="tocline"><a href="#the-pointercancel-event" class="tocxref"><span class="secno">5.2.8 </span><span title="pointercancel"><code>pointercancel</code> 이벤트</span></a></li><li class="tocline"><a href="#the-pointerout-event" class="tocxref"><span class="secno">5.2.9 </span><span title="pointerout"><code>pointerout</code> 이벤트</span></a></li><li class="tocline"><a href="#the-pointerleave-event" class="tocxref"><span class="secno">5.2.10 </span><span title="pointerleave"><code>pointerleave</code> 이벤트</span></a></li><li class="tocline"><a href="#the-gotpointercapture-event" class="tocxref"><span class="secno">5.2.11 </span><span title="gotpointercapture"><code>gotpointercapture</code> 이벤트</span></a></li><li class="tocline"><a href="#the-lostpointercapture-event" class="tocxref"><span class="secno">5.2.12 </span><span title="lostpointercapture"><code>lostpointercapture</code> 이벤트</span></a></li></ul></li></ul></li><li class="tocline"><a href="#extensions-to-the-element-interface" class="tocxref"><span class="secno">6. </span><code>Element</code> 인터페이스 확장</a></li><li class="tocline"><a href="#extensions-to-the-globaleventhandlers-interface" class="tocxref"><span class="secno">7. </span><code>GlobalEventHandlers</code> 인터페이스 확장</a><ul class="toc"><li class="tocline"><a href="#attributes" class="tocxref"><span class="secno">7.1 </span>Attributes</a></li></ul></li><li class="tocline"><a href="#extensions-to-the-navigator-interface" class="tocxref"><span class="secno">8. </span><code>Navigator</code> 인터페이스 확장</a></li><li class="tocline"><a href="#declaring-candidate-regions-for-default-touch-behaviors" class="tocxref"><span class="secno">9. </span>디폴트 터치 동작을 위한 후보 영역 선언</a><ul class="toc"><li class="tocline"><a href="#the-touch-action-css-property" class="tocxref"><span class="secno">9.1 </span><code>touch-action</code> CSS 속성</a></li></ul></li><li class="tocline"><a href="#pointer-capture" class="tocxref"><span class="secno">10. </span><span title="Pointer Capture">포인터 캡쳐</span></a><ul class="toc"><li class="tocline"><a href="#setting-pointer-capture" class="tocxref"><span class="secno">10.1 </span>포인터 캡쳐 설정</a></li><li class="tocline"><a href="#releasing-pointer-capture" class="tocxref"><span class="secno">10.2 </span>포인터 캡쳐 릴리징</a></li><li class="tocline"><a href="#implicit-pointer-capture" class="tocxref"><span class="secno">10.3 </span>함축적 포인터 캡쳐</a><ul class="toc"><li class="tocline"><a href="#implicit-release-of-pointer-capture" class="tocxref"><span class="secno">10.3.1 </span>포인터 캡쳐의 함축적 릴리즈</a></li></ul></li></ul></li><li class="tocline"><a href="#compatibility-mapping-with-mouse-events" class="tocxref"><span class="secno">11. </span><span title="compatibility mouse events">마우스 이벤트와 매핑 호환</span></a><ul class="toc"><li class="tocline"><a href="#mapping-for-devices-that-support-hover" class="tocxref"><span class="secno">11.1 </span>hover 지원 디바이스 매핑</a></li><li class="tocline"><a href="#mapping-for-devices-that-do-not-support-hover" class="tocxref"><span class="secno">11.2 </span>hover를 지원하지 않는 디바이스 매핑</a></li></ul></li><li class="tocline"><a href="#acknowledgments" class="tocxref"><span class="secno">A. </span>감사의 말</a></li><li class="tocline"><a href="#revision-history" class="tocxref"><span class="secno">B. </span>리비젼 히스토리</a></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">C. </span>참고 문서</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">C.1 </span>표준 참고 문서</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">C.2 </span>정보 참고 문서</a></li></ul></li></ul></section>
     
     <section id="intro" class="informative" typeof="bibo:Chapter" resource="#intro" rel="bibo:Chapter">
       <!--OddPage--><h2 role="heading" id="h2_intro"><span class="secno">1. </span>소개</h2>
@@ -1354,98 +1367,112 @@ UI 어포던스는 적은 하드웨어 능력을 유저에게 제공할 수 있�
 		포인터 캡쳐는 <code>element.releasePointerCapture(pointerId)</code> 메서드를 호출한 요소에 명시적으로 릴리즈됩니다.
 		이 메서드를 호출했을 때, 유저 에이전트는  <em class="rfc2119" title="MUST">반드시</em> 아래 스텝을 동작시켜야합니다. [<em class="rfc2119" title="MUST">MUST</em>]
 		<ol>
-			<li>If the <code>pointerId</code> provided as the method's argument does not match any of the <a title="active pointer" class="internalDFN" href="#dfn-active-pointer">active pointers</a> and these steps are not being invoked as a result of the <a href="#implicit-release-of-pointer-capture">implicit release of pointer capture</a>, then throw a <code>DOMException</code> with the name <code>InvalidPointerId</code>.</li>
-			<li>If pointer capture is not currently set for the specified pointer, then terminate these steps.</li>
-			<li>If the <a href="#dfn-pointer-capture-target-override" class="internalDFN">pointer capture target override</a> for the specified <code>pointerId</code> is not the <code>Element</code> on which this method was invoked, then terminate these steps.</li>
-			<li>For the specified <code>pointerId</code>, clear the <a href="#dfn-pending-pointer-capture-target-override" class="internalDFN">pending pointer capture target override</a>, if set.</li>
+			<li>
+				메서드의 인수인 <code>pointerId</code>가 <a title="active pointer" class="internalDFN" href="#dfn-active-pointer">활성 포인터</a> 중 어느 것과도 매치하지 않으며,
+				이 스텝이 <a href="#implicit-release-of-pointer-capture">포인터 캡쳐의 함축적 릴리즈</a>의 결과로 호출되지 않았다면,
+			 <code>InvalidPointerId</code>와 함께 <code>DOMException</code>을 던집니다.
+			</li>
+			<li>만약 포인터 켑쳐가 현재 정의된 포인터를 위해 설정된 게 아니라면, 이 스텝을 제거합니다.</li>
+			<li>만약 정의된 <code>pointerId</code>의 <a href="#dfn-pointer-capture-target-override" class="internalDFN">포인터 캡쳐 타겟 오버라이드</a>가 이 메서드에 의해 호출된 <code>Element</code>가 아닌 경우, 이 스텝을 제거합니다.</li>
+			<li>정의되어있는 <code>pointerId</code>를 들어, 만약 정의되어있다면 <a href="#dfn-pending-pointer-capture-target-override" class="internalDFN">포인터 캡쳐 타겟 오버라이드 펜딩</a>을 클리어합니다</li>
 		</ol>
 	</section>
   <section id="implicit-pointer-capture">
-        <h3 role="heading" id="h3_implicit-pointer-capture"><span class="secno">10.3 </span>Implicit Pointer Capture</h3>
-        <div class="note"><div class="note-title" aria-level="2" role="heading" id="h_note_26"><span>Note</span></div><div class="">Some user agents implement their own implicit pointer capture behavior - for instance, for touch interactions, a user agent could automatically capture the pointer as part of an interaction on a form control (such as a button) to improve user interaction (allowing some finger movement to stray outside of the form control itself during the interaction). As part of this behavior, user agents typically fire <code>gotpointercapture</code> and <code>lostpointercapture</code> events, even though no explicit pointer capture functions (<code>setPointerCapture</code> and <code>releasePointerCapture</code>) were called.</div></div>
+        <h3 role="heading" id="h3_implicit-pointer-capture"><span class="secno">10.3 </span>함축적 포인터 캡쳐</h3>
+				<div class="note"><div class="note-title" aria-level="2" role="heading" id="h_note_26"><span>Note</span></div><div class="">
+					몇몇 유저 에이전트는 그들만의 함축적 포인터 캡쳐 동작을 구현합니다 - 예를 들어, 터치 인터렉션에서, 유저 에이전트는 버튼 같은 폼 컨트롤에서 발생하는 인터렉션의 일부를 유저 인터렉션을 향상시키기 위해 자동으로 캡쳐할 수 있습니다. (인터렉션이 발생하는 동안 폼 컨트롤의 외부에서 손가락을 움직이는 걸 허용할 수 있습니다) 이 동작의 일부로, 유저 에이전트는 호출된 함축적 포인터 캡쳐 함수(<code>setPointerCapture</code>와 <code>releasePointerCapture</code>)가 없다고 하더라도 물리적으로 <code>gotpointercapture</code>와 <code>lostpointercapture</code> 이벤트를 발생시킬 수 있습니다.</div></div>
         <section id="implicit-release-of-pointer-capture">
-        <h4 role="heading" id="h4_implicit-release-of-pointer-capture"><span class="secno">10.3.1 </span>Implicit Release of Pointer Capture</h4>
-        <p>Immediately after firing the <code>pointerup</code> or <code>pointercancel</code> events, a user agent <em class="rfc2119" title="MUST">MUST</em> run the steps as if the <code>releasePointerCapture()</code> method has been called with an argument equal to the <code>pointerId</code> property of the <code>pointerup</code> or <code>pointercancel</code> event just dispatched.</p>
-        <p>When the <a href="#dfn-pointer-capture-target-override" class="internalDFN">pointer capture target override</a> is removed from its <code>ownerDocument</code>'s tree, clear the <a href="#dfn-pending-pointer-capture-target-override" class="internalDFN">pending pointer capture target override</a> and <a href="#dfn-pointer-capture-target-override" class="internalDFN">pointer capture target override</a> nodes and fire a PointerEvent named <code>lostpointercapture</code> at the document.</p>
+        <h4 role="heading" id="h4_implicit-release-of-pointer-capture"><span class="secno">10.3.1 </span>포인터 캡쳐의 함축적 릴리즈</h4>
+				<p>
+					<code>pointerup</code>이나 <code>pointercancel</code> 발생 이후 즉시, 유저 에이전트는 <em class="rfc2119" title="MUST">반드시</em> <code>releasePointerCapture()</code> 메서드가 <code>pointerup</code>이나 <code>pointercancel</code> 이벤트의 <code>pointerId</code> 속성과 같은 인수를 가지고 호출한 듯 실행시켜 해치워야 합니다.</p>
+				<p><a href="#dfn-pointer-capture-target-override" class="internalDFN">pointer capture target override</a>가 <code>ownerDocument</code> 트리에서 없어질 때, <a href="#dfn-pending-pointer-capture-target-override" class="internalDFN">펜딩 포인터 캡쳐 타겟 오버라이드</a>와 <a href="#dfn-pointer-capture-target-override" class="internalDFN">포인터 캡쳐 타겟 오버라이드</a> 노드를 클리어하고, 문서에서 <code>lostpointercapture</code> 포인터 이벤트를 실행해야 합니다.</p>
         </section>
     </section>
 </section>
 <section id="compatibility-mapping-with-mouse-events">
-		<!--OddPage--><h2 role="heading" id="h2_compatibility-mapping-with-mouse-events"><span class="secno">11. </span><dfn title="compatibility mouse events" id="dfn-compatibility-mouse-events">Compatibility Mapping with Mouse Events</dfn></h2>
-		<div><p>The vast majority of web content existing today codes only to Mouse Events. The following describes an algorithm for how a user agent <em class="rfc2119" title="MAY">MAY</em> map generic pointer input to mouse events for compatibility with this content. </p>
-        <p>Unless otherwise noted, the target of any mapped mouse event <em class="rfc2119" title="SHOULD">SHOULD</em> be the same target as the respective pointer event unless the target is no longer participating in its <code>ownerDocument</code>'s tree. In this case, the mouse event should be fired at the original target's nearest ancestor node (at the time it was removed from the tree) that still participates in its <code>ownerDocument</code>'s tree, meaning that a new event path (based on the new target node) is built for the mouse event.</p>
-		<p>Authors can prevent the production of certain compatibility mouse events by canceling the <code>pointerdown</code> event. </p>
-		<div class="note"><div class="note-title" aria-level="1" role="heading" id="h_note_27"><span>Note</span></div><section class="">Mouse events can only be prevented when the pointer is down.  Hovering pointers (e.g. a mouse with no buttons pressed) cannot have their mouse events prevented. And, the <code>mouseover</code>, <code>mouseout</code>, <code>mouseenter</code>, and <code>mouseleave</code> events are never prevented (even if the pointer is down).</section></div>
-		<p>The compatibility mapping with mouse events are an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> feature of this specification. User agents are encouraged to support the feature for best compatibility with existing legacy content. User agents that do not support compatibility mouse events are still encouraged to support the <code>click</code> and <code>contextmenu</code> events (see the note below).</p>
-		<div class="note"><div class="note-title" aria-level="1" role="heading" id="h_note_28"><span>Note</span></div><section class="">
-			<p>The <code>click</code> event, defined in [<cite><a class="bibref" href="#bib-DOM-LEVEL-3-EVENTS">DOM-LEVEL-3-EVENTS</a></cite>], and the <code>contextmenu</code> event, defined in [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>], are not considered <a title="compatibility mouse events" class="internalDFN" href="#dfn-compatibility-mouse-events">compatibility mouse events</a> as they are typically tied to user interface activation and are fired from other input devices, like keyboards.</p>
-			<p>In user agents that support firing <code>click</code> and/or <code>contextmenu</code>, calling <code>preventDefault</code> during a pointer event typically does not have an effect on whether <code>click</code> and/or <code>contextmenu</code> are fired or not.  Because they are not compatibility mouse events, user agents typically fire <code>click</code> and <code>contextmenu</code> for all pointing devices, including pointers that are not primary pointers.</p>
-			<p>The relative ordering of these high-level events (<code>click</code>, <code>contextmenu</code>, <code>focus</code>, <code>blur</code>, etc.) with pointer events is undefined and varies between user agents. For example, in some user agents <code>contextmenu</code> will often follow a <code>pointerup</code>, in others it'll often precede a <code>pointerup</code> or <code>pointercancel</code>, and in some situations it may be fired without any corresponding pointer event (such as a keyboard shortcut).</p>
+		<!--OddPage--><h2 role="heading" id="h2_compatibility-mapping-with-mouse-events"><span class="secno">11. </span><dfn title="compatibility mouse events" id="dfn-compatibility-mouse-events">마우스 이벤트와 매핑 호환</dfn></h2>
+		<div><p>
+				오늘날 어마어마한 양의 주요 웹 콘텐츠가 마우스 이벤트만을 위해 코드를 구성합니다.
+				아래서 설명하는 내용은 유저 에이전트가 <em class="rfc2119" title="MAY">아마도</em> 이러한 콘텐츠에서 마우스 이벤트와 포인터 인풋을 매핑하여 호환시키는 방법에 대한 알고리즘을 설명합니다.
+			</p>
+			<p>
+				특별히 언급되어있지 않다면, 모든 매핑된 마우스 이벤트 타겟은 <code>ownerDocument</code> 트리에 더이상 참가하지 않는 타겟이 아닌 한 포인터 이벤트의 타겟과 동일합니다. [<em class="rfc2119" title="SHOULD">SHOULD</em>] 이 케이스에서, 마우스 이벤트는 마우스 이벤트를 위해 생성된 새로운 이벤트 패스(새로운 타겟 노드)를 뜻하며 여전히 <code>ownerDocument</code> 트리에 참가하고 있는 오리지널 타겟의 가까운 조상 노드 (그렇게 할 때 트리로부터 제거된)에서 발생해야 합니다.</p>
+		<p>작성자는 <code>pointerdown</code> 이벤트를 취소함으로써 특정 호환 마우스 이벤트의 생성을 방지할 수 있습니다.</p>
+		<div class="note"><div class="note-title" aria-level="1" role="heading" id="h_note_27"><span>노트</span></div><section class=""> 마우스 이벤트는 포인터가 눌렸을 때만 방지할 수 있습니다. 포인터 호버링 (마우스를 들고 버튼을 누르지 않은 상태)는 마우스 이벤트를 방지할 수 없습니다. 그리고, <code>mouseover</code>, <code>mouseout</code>, <code>mouseenter</code>, <code>mouseleave</code> 이벤트는 절대 방지되지 않습니다. (포인터가 눌린 상태더라도)</section></div>
+		<p>이 스펙문서에서 마우스 이벤트와 매핑 호환은 <em class="rfc2119" title="OPTIONAL">선택사항인</em> 특성입니다. 유저 에이전트는 존재하는 레거시 콘텐츠와 더 좋은 호환성을 보이기 위해 이 특성을 지원하기를 권장합니다. 마우스 이벤트와 매핑 호환을 지원하지 않는 유저에이전트더라도 <code>click</code>과 <code>contextmenu</code> 이벤트는 여전히 지원하기를 권장합니다. (이어지는 노트 참고).</p>
+		<div class="note"><div class="note-title" aria-level="1" role="heading" id="h_note_28"><span>노트</span></div><section class="">
+				<p> [<cite><a class="bibref" href="#bib-DOM-LEVEL-3-EVENTS">DOM-LEVEL-3-EVENTS</a></cite>]에서 정의하는 <code>click</code> 이벤트와 [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>]에서 정의하는 <code>contextmenu</code> 이벤트는 유저 인터페이스 활성화에 물리적으로 묶여있으며 키보드 같은 다른 인풋 기기에서 활성화될 수 있기 때문에 <a title="compatibility mouse events" class="internalDFN" href="#dfn-compatibility-mouse-events">호환 마우스 이벤트</a>로 고려하지 않아도 됩니다.</p>
+				<p><code>click</code>과/이나 <code>contextmenu</code> 발생을 지원하는 유저 에이전트에서, <code>click</code>과/이나 <code>contextmenu</code>가 발생했는지 안했는지에 따라 영향을 받지 않기 위해 물리적으로 포인터 이벤트가 발생하는 동안 <code>preventDefault</code>를 호출해야 합니다. 왜냐하면 이 이벤트들은 마우스 이벤트와 호환하지 않으며, 유저 에이전트는 물리적으로 기본 포인터가 아닌 포인터를 포함한 모든 포인팅 디바이스에서 <code>click</code>과 <code>contextmenu</code>를 호출하기 때문입니다.</p>
+				<p>포인터 이벤트와 함께 동작하는 고 레벨 이벤트의 상대 명령 (<code>click</code>, <code>contextmenu</code>, <code>focus</code>, <code>blur</code>, etc.)은 정의되어있지 않으며 유저 에이전트에 따라 다릅니다. 예를 들어 몇몇 유저 에이전트는 <code>contextmenu</code>를 <code>pointerup</code>에 따라서 동작시키고, 다른 유저 에이전트는 <code>pointerup</code>이나 <code>pointercancel</code>에 앞서 동작시키기도 하며, 몇 시뮬레이션에서는 포인터 이벤트가 발생하지 않았을 때 (키보드 숏컷 같은 것들) 발생시키기도 했습니다</p>
 		</section></div>
 		</div>
 		<section id="mapping-for-devices-that-support-hover">
-			<h3 role="heading" id="h3_mapping-for-devices-that-support-hover"><span class="secno">11.1 </span>Mapping for devices that support hover</h3>
-			<div>Whenever a user agent is to dispatch a pointer event for a device that supports hover, it <em class="rfc2119" title="MAY">MAY</em> run the following steps:
+			<h3 role="heading" id="h3_mapping-for-devices-that-support-hover"><span class="secno">11.1 </span>hover 지원 디바이스 매핑</h3>
+			<div>hover를 지원하는 기기를 위한 포인터 이벤트를 보내는 유저 에이전트는 매번, 다음 스텝대로 동작할 수도 있습니다. [<em class="rfc2119" title="MAY">MAY</em>]
 				<ol>
-					<li>If the <code>isPrimary</code> property for the pointer event to be dispatched is <code>false</code> then dispatch the pointer event and terminate these steps.</li>
-					<li>Dispatch the pointer event.</li>
-					<li>If the pointer event dispatched was <code>pointerdown</code> and the event was <a title="canceled event" class="internalDFN" href="#dfn-canceled-event">canceled</a>, then set the <i>PREVENT MOUSE EVENT</i> flag for this <code>pointerType</code>.</li>
-					<li>If the pointer event dispatched was:
+					<li>포인터 이벤트의 <code>isPrimary</code> 속성이 <code>false</code>를 나타내는 경우 포인터 이벤트를 처리하고 이 스텝을 제거합니다.</li>
+					<li>포인터 이벤트를 처리합니다.</li>
+					<li>만약 포인터 이벤트가 <code>pointerdown</code>을 나타내고 이벤트가 <a title="canceled event" class="internalDFN" href="#dfn-canceled-event">취소</a>되었다면, 이 <code>pointerType</code>을 위한 <i>PREVENT MOUSE EVENT</i> 플래그를 설정합니다.</li>
+					<li>만약 포인터 이벤트의 처리가: 
 						<ul>
-							<li><code>pointerover</code>, then fire a <code>mouseover</code> event.</li>
-							<li><code>pointerout</code>, then fire a <code>mouseout</code> event.</li>
-							<li><code>pointerenter</code>, then fire a <code>mouseenter</code> event.</li>
-							<li><code>pointerleave</code>, then fire a <code>mouseleave</code> event.</li>
-						</ul>
-                    </li>
-					<li>If the <i>PREVENT MOUSE EVENT</i> flag is <b>not</b> set for this <code>pointerType</code> and the pointer event dispatched was:
-						<ul>
-							<li><code>pointerdown</code>, then fire a <code>mousedown</code> event.</li>
-							<li><code>pointermove</code>, then fire a <code>mousemove</code> event.</li>
-							<li><code>pointerup</code>, then fire a <code>mouseup</code> event.</li>
-							<li><code>pointercancel</code>, then fire a <code>mouseup</code> event <b>at the <code>window</code>.</b></li>
+							<li><code>pointerover</code>라면, <code>mouseover</code> 이벤트를 발생시킵니다.</li>
+							<li><code>pointerout</code>이라면, <code>mouseout</code> 이벤트를 발생시킵니다.</li>
+							<li><code>pointerenter</code>라면, <code>mouseenter</code> 이벤트를 발생시킵니다.</li>
+							<li><code>pointerleave</code>라면, <code>mouseleave</code> 이벤트를 발생시킵니다.</li>
 						</ul>
 					</li>
-					<li>If the pointer event dispatched was <code>pointerup</code> or <code>pointercancel</code>, clear the <i>PREVENT MOUSE EVENT</i> flag for this <code>pointerType</code>.</li>
+					<li>만약 이 <code>pointerType</code>을 위한 <i>PREVENT MOUSE EVENT</i> 플래그가 설정되지 <b>않았고</b> 포인터 이벤트의 처리가:
+						<ul>
+							<li><code>pointerdown</code>이라면, <code>mousedown</code> 이벤트를 발생시킵니다.</li>
+							<li><code>pointermove</code>라면, <code>mousemove</code> 이벤트를 발생시킵니다.</li>
+							<li><code>pointerup</code>이라면, <code>mouseup</code> 이벤트를 발생시킵니다.</li>
+							<li><code>pointercancel</code>이라면, <b><code>window</code>에서</b> <code>mouseup</code> 이벤트를 발생시킵니다.</li>
+						</ul>
+					</li>
+					<li>만약 포인터 이벤트가<code>pointerup</code>이나 <code>pointercancel</code>로 처리된다면, 이 <code>pointerType</code>을 위한 <i>PREVENT MOUSE EVENT</i> 플래그를 클리어합니다.</li>
 				</ol>
 			</div>
 		</section>
 		<section id="mapping-for-devices-that-do-not-support-hover">
-			<h3 role="heading" id="h3_mapping-for-devices-that-do-not-support-hover"><span class="secno">11.2 </span>Mapping for devices that do not support hover</h3>
-			<div>Some devices, such as most touchscreens, do not support hovering a coordinate (or set of coordinates) while not in the active state. Much existing content coded to mouse events assumes that a mouse is producing the events and thus certain qualities are generally true:
+			<h3 role="heading" id="h3_mapping-for-devices-that-do-not-support-hover"><span class="secno">11.2 </span>hover를 지원하지 않는 디바이스 매핑</h3>
+			<div>
+				대부분의 터치 스크린과 같은 몇몇 디바이스에서는 활성화 상태가 아닐 때 좌표의 호버링을 지원하지 않습니다.
+				현재 존재하는 콘텐츠의 대부분은 마우스 이벤트를 가정하여 코딩되어있으며, 마우스는 이벤트를 생산하고 특정 퀄리티는 일반적으로 true입니다:
 			<ul>
-				<li>The input can hover independently of activation (e.g. moving a mouse cursor without any buttons pressed).</li>
-				<li>The input will likely produce the <code>mousemove</code> event on an element before clicking it.</li>
+				<li>인풋은 호버로 독립적으로 활성화할 수 있습니다. (즉, 버튼을 누르지 않고 마우스를 움직이기만 하더라도)</li>
+				<li>인풋은 클릭하기 전에 요소에서 <code>mousemove</code> 이벤트 같은 걸 제공할 수 있습니다.</li>
 			</ul>
-			<div class="note"><div class="note-title" aria-level="2" role="heading" id="h_note_29"><span>Note</span></div><section class="">Hover is sometimes used to toggle the visibility of UI elements in content designed for mouse (e.g. "hover menus"). This content is often incompatible with <a href="#mapping-for-devices-that-do-not-support-hover">devices that do not support hover</a>. This specification does not define a mapping or behavior for compatibility with this scenario. It will be considered in a future version of the specification.
+			<div class="note"><div class="note-title" aria-level="2" role="heading" id="h_note_29"><span>노트</span></div><section class="">Hover는 때때로 마우스를 위해 디자인된 콘텐츠의 UI 요소의 가시성 토글을 위해 사용하기도 합니다. (예를 들면 hover menu) 이러한 콘텐츠는 <a href="#mapping-for-devices-that-do-not-support-hover">hover를 지원하지 않는 디바이스</a>에서 호환하지 않을 수 있습니다. 이 스펙 문서는 이러한 시나리오의 호환성을 위한 동작 및 매핑을 정의하지 않습니다. 그는 미래 버전의 스펙 문서에서 고려할 사항입니다.
 			</section></div>
-			This requires that user agents provide a different mapping for these types of input devices. Whenever a user agent is to dispatch a pointer event for a device that <a href="#mapping-for-devices-that-do-not-support-hover">does not support hover</a>, it <em class="rfc2119" title="MAY">MAY</em> run the following steps:
+			이는 유저 에이전트의 입력 기기의 타입에 따라 상이한 매핑을 제공할 것을 요구합니다.
+			유저 에이전트는 <a href="#mapping-for-devices-that-do-not-support-hover">hover 를 지원하지 않는</a> 기기를 위해 포인터 이벤트의 처리를 매번 아래와 같은 스텝으로 동작할 수 있습니다. 
+			[<em class="rfc2119" title="MAY">MAY</em>]
 				<ol>
-					<li>If the <code>isPrimary</code> property for the pointer event to be dispatched is <code>false</code> then dispatch the pointer event and terminate these steps.</li>
-					<li>If the pointer event to be dispatched is <code>pointerover</code> and the <code>pointerdown</code> event has not yet been dispatched for this pointer, then fire a <code>mousemove</code> event (for compatibility with legacy mouse-specific code).</li>
-					<li>Dispatch the pointer event.</li>
-					<li>If the pointer event dispatched was <code>pointerdown</code> and the event was <a title="canceled event" class="internalDFN" href="#dfn-canceled-event">canceled</a>, then set the <i>PREVENT MOUSE EVENT</i> flag for this <code>pointerType</code>.</li>
-					<li>If the pointer event dispatched was:
+					<li>포인터 이벤트의 <code>isPrimary</code> 속성이 <code>false</code>를 나타내는 경우 포인터 이벤트를 처리하고 이 스텝을 제거합니다.</li>
+					<li>만약 포인터 이벤트가 아직 포인터에 의해 처리되지 않은 <code>pointerover</code>나 <code>pointerdown</code> 이벤트로 처리하는 경우,  <code>mousemove</code> 이벤트를 발생시킵니다. (레거시 마우스 정의 코드와 호환을 위해)</li>
+					<li>포인터 이벤트를 처리합니다.</li>
+					<li>만약 포인터 이벤트가 <code>pointerdown</code>을 나타내고 이벤트가 <a title="canceled event" class="internalDFN" href="#dfn-canceled-event">취소</a>되었다면, 이 <code>pointerType</code>을 위한 <i>PREVENT MOUSE EVENT</i> 플래그를 설정합니다.</li>
+					<li>만약 포인터 이벤트의 처리가: 
 						<ul>
-							<li><code>pointerover</code>, then fire a <code>mouseover</code> event.</li>
-							<li><code>pointerout</code>, then fire a <code>mouseout</code> event.</li>
-							<li><code>pointerenter</code>, then fire a <code>mouseenter</code> event.</li>
-							<li><code>pointerleave</code>, then fire a <code>mouseleave</code> event.</li>
+							<li><code>pointerover</code>라면, <code>mouseover</code> 이벤트를 발생시킵니다.</li>
+							<li><code>pointerout</code>이라면, <code>mouseout</code> 이벤트를 발생시킵니다.</li>
+							<li><code>pointerenter</code>라면, <code>mouseenter</code> 이벤트를 발생시킵니다.</li>
+							<li><code>pointerleave</code>라면, <code>mouseleave</code> 이벤트를 발생시킵니다.</li>
 						</ul>
 					</li>
-					<li>If the <i>PREVENT MOUSE EVENT</i> flag is <b>not</b> set for this <code>pointerType</code> and the pointer event dispatched was:
+					<li>만약 이 <code>pointerType</code>을 위한 <i>PREVENT MOUSE EVENT</i> 플래그가 설정되지 <b>않았고</b> 포인터 이벤트의 처리가:
 						<ul>
-							<li><code>pointerdown</code>, then fire a <code>mousedown</code> event.</li>
-							<li><code>pointermove</code>, then fire a <code>mousemove</code> event.</li>
-							<li><code>pointerup</code>, then fire a <code>mouseup</code> event.</li>
-							<li><code>pointercancel</code>, then fire a <code>mouseup</code> event at the <code>window</code>.</li>
+							<li><code>pointerdown</code>이라면, <code>mousedown</code> 이벤트를 발생시킵니다.</li>
+							<li><code>pointermove</code>라면, <code>mousemove</code> 이벤트를 발생시킵니다.</li>
+							<li><code>pointerup</code>이라면, <code>mouseup</code> 이벤트를 발생시킵니다.</li>
+							<li><code>pointercancel</code>이라면, <b><code>window</code>에서</b> <code>mouseup</code> 이벤트를 발생시킵니다.</li>
 						</ul>
 					</li>
-					<li>If the pointer event dispatched was <code>pointerup</code> or <code>pointercancel</code>, clear the <i>PREVENT MOUSE EVENT</i> flag for this <code>pointerType</code>.</li>
+					<li>만약 포인터 이벤트가<code>pointerup</code>이나 <code>pointercancel</code>로 처리된다면, 이 <code>pointerType</code>을 위한 <i>PREVENT MOUSE EVENT</i> 플래그를 클리어합니다.</li>
 				</ol>
 			</div>
-			<div class="note"><div class="note-title" aria-level="2" role="heading" id="h_note_30"><span>Note</span></div><section class="">
-			<p>The activation of an element (<code>click</code>) with a primary pointer that <a href="#mapping-for-devices-that-do-not-support-hover">does not support hover</a> (e.g. single finger on a touchscreen) would typically produce the following event sequence:</p>
+			<div class="note"><div class="note-title" aria-level="2" role="heading" id="h_note_30"><span>노트</span></div><section class="">
+			<p>(터치스크린 상 하나의 손가락 같이) <a href="#mapping-for-devices-that-do-not-support-hover">hover를 지원하지 않는</a> 기본 포인터와 함께 요소의 활성화 (<code>click</code>)는 물리적으로 아래 이벤트 시퀀스를 생산해야 합니다.</p>
 			<ol data-class="note-list">
 				<li><code>mousemove</code></li>
 				<li><code>pointerover</code></li>
@@ -1454,7 +1481,7 @@ UI 어포던스는 적은 하드웨어 능력을 유저에게 제공할 수 있�
 				<li><code>mouseenter</code></li>
 				<li><code>pointerdown</code></li>
 				<li><code>mousedown</code></li>
-				<li>Zero or more <code>pointermove</code> and <code>mousemove</code> events, depending on movement of the pointer</li>
+				<li>포인터의 움직임에 의존하는 0개 혹은 그 이상의 <code>pointermove</code>와 <code>mousemove</code> 이벤트</li>
 				<li><code>pointerup</code></li>
 				<li><code>mouseup</code></li>
 				<li><code>click</code></li>
@@ -1462,7 +1489,7 @@ UI 어포던스는 적은 하드웨어 능력을 유저에게 제공할 수 있�
 				<li><code>mouseout</code></li>
 				<li><code>mouseleave</code></li>
 			</ol>
-			<p>If, however, the <code>pointerdown</code> event is canceled during this interaction then the sequence of events would be:
+			<p>그러나 만약에 <code>pointerdown</code> 이벤트가 이런 인터렉션 중에 캔슬된다면 이벤트의 시퀀스는, 
 			</p><ol data-class="note-list">
 				<li><code>mousemove</code></li>
 				<li><code>pointerover</code></li>
@@ -1470,7 +1497,7 @@ UI 어포던스는 적은 하드웨어 능력을 유저에게 제공할 수 있�
 				<li><code>pointerenter</code></li>
 				<li><code>mouseenter</code></li>
 				<li><code>pointerdown</code></li>
-				<li>Zero or more <code>pointermove</code> events, depending on movement of the pointer</li>
+				<li>포인터의 움직임에 의존하는 0개 혹은 그 이상의 <code>pointermove</code>와 <code>mousemove</code> 이벤트</li>
 				<li><code>pointerup</code></li>
 				<li><code>click</code></li>
 				<li><code>pointerout</code></li>
@@ -1481,7 +1508,7 @@ UI 어포던스는 적은 하드웨어 능력을 유저에게 제공할 수 있�
 		</section>
 	</section>
     <section class="appendix" id="acknowledgments">
-      <!--OddPage--><h2 role="heading" id="h2_acknowledgments"><span class="secno">A. </span>Acknowledgments</h2>
+      <!--OddPage--><h2 role="heading" id="h2_acknowledgments"><span class="secno">A. </span>감사의 말</h2>
       <p>
         Many thanks to lots of people for their proposals and recommendations, some of which
         are incorporated into this document. The group's Chair acknowledges contributions from the following
@@ -1502,7 +1529,7 @@ UI 어포던스는 적은 하드웨어 능력을 유저에게 제공할 수 있�
       </p>
     </section>
 	<section class="appendix informative" id="revision-history">
-		<!--OddPage--><h2 role="heading" id="h2_revision-history"><span class="secno">B. </span>Revision History</h2><p><em>This section is non-normative.</em></p>
+		<!--OddPage--><h2 role="heading" id="h2_revision-history"><span class="secno">B. </span>리비젼 히스토리</h2><p><em>이 섹션은 표준에 준하지 않습니다.</em></p>
 		<p>The following is an informative summary of substantial and major editorial changes between publications of this specification. A complete revision history of the Editor's Drafts of this specification can be found <a href="https://dvcs.w3.org/hg/pointerevents/log/0b155c9163fb/pointerEvents.html">here</a>.</p>
     <h2 id="changes-since-the-13-november-2014-last-call-draft">Changes Since the 13 November 2014 Last Call Draft</h2>
     <ul>
@@ -1550,10 +1577,10 @@ UI 어포던스는 적은 하드웨어 능력을 유저에게 제공할 수 있�
 	<!-- appendix -->
 
 
-<section id="references" class="appendix" typeof="bibo:Chapter" resource="#references" rel="bibo:Chapter"><!--OddPage--><h2 role="heading" id="h2_references"><span class="secno">C. </span>References</h2><section id="normative-references" typeof="bibo:Chapter" resource="#normative-references" rel="bibo:Chapter"><h3 role="heading" id="h3_normative-references"><span class="secno">C.1 </span>Normative references</h3><dl class="bibliography" about=""><dt id="bib-DOM-LEVEL-3-EVENTS">[DOM-LEVEL-3-EVENTS]</dt><dd rel="dcterms:requires">Gary Kacmarcik; Travis Leithead; Jacob Rossi; Doug Schepers; Björn Höhrmann; Philippe Le Hégaret; Tom Pixley. <a href="http://www.w3.org/TR/DOM-Level-3-Events/"><cite>Document Object Model (DOM) Level 3 Events Specification</cite></a>. 25 September 2014. W3C Working Draft. URL: <a href="http://www.w3.org/TR/DOM-Level-3-Events/">http://www.w3.org/TR/DOM-Level-3-Events/</a>
+<section id="references" class="appendix" typeof="bibo:Chapter" resource="#references" rel="bibo:Chapter"><!--OddPage--><h2 role="heading" id="h2_references"><span class="secno">C. </span>참고 문서</h2><section id="normative-references" typeof="bibo:Chapter" resource="#normative-references" rel="bibo:Chapter"><h3 role="heading" id="h3_normative-references"><span class="secno">C.1 </span>표준 참고 문서</h3><dl class="bibliography" about=""><dt id="bib-DOM-LEVEL-3-EVENTS">[DOM-LEVEL-3-EVENTS]</dt><dd rel="dcterms:requires">Gary Kacmarcik; Travis Leithead; Jacob Rossi; Doug Schepers; Björn Höhrmann; Philippe Le Hégaret; Tom Pixley. <a href="http://www.w3.org/TR/DOM-Level-3-Events/"><cite>Document Object Model (DOM) Level 3 Events Specification</cite></a>. 25 September 2014. W3C Working Draft. URL: <a href="http://www.w3.org/TR/DOM-Level-3-Events/">http://www.w3.org/TR/DOM-Level-3-Events/</a>
 </dd><dt id="bib-DOM4">[DOM4]</dt><dd rel="dcterms:requires">Anne van Kesteren; Aryeh Gregor; Ms2ger; Alex Russell; Robin Berjon. <a href="http://www.w3.org/TR/dom/"><cite>W3C DOM4</cite></a>. Last Call Working Draft. URL: <a href="http://www.w3.org/TR/dom/">http://www.w3.org/TR/dom/</a>
 </dd><dt id="bib-HTML5">[HTML5]</dt><dd rel="dcterms:requires">Ian Hickson; Robin Berjon; Steve Faulkner; Travis Leithead; Erika Doyle Navara; Edward O'Connor; Silvia Pfeiffer. <a href="http://www.w3.org/TR/html5/"><cite>HTML5</cite></a>. 28 October 2014. W3C Recommendation. URL: <a href="http://www.w3.org/TR/html5/">http://www.w3.org/TR/html5/</a>
 </dd><dt id="bib-RFC2119">[RFC2119]</dt><dd rel="dcterms:requires">S. Bradner. <a href="https://tools.ietf.org/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a>
-</dd></dl></section><section id="informative-references" typeof="bibo:Chapter" resource="#informative-references" rel="bibo:Chapter"><h3 role="heading" id="h3_informative-references"><span class="secno">C.2 </span>Informative references</h3><dl class="bibliography" about=""><dt id="bib-CSS21">[CSS21]</dt><dd rel="dcterms:references">Bert Bos; Tantek Çelik; Ian Hickson; Håkon Wium Lie et al. <a href="http://www.w3.org/TR/CSS2"><cite>Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</cite></a>. 7 June 2011. W3C Recommendation. URL: <a href="http://www.w3.org/TR/CSS2">http://www.w3.org/TR/CSS2</a>
+</dd></dl></section><section id="informative-references" typeof="bibo:Chapter" resource="#informative-references" rel="bibo:Chapter"><h3 role="heading" id="h3_informative-references"><span class="secno">C.2 </span>정보 참고문서</h3><dl class="bibliography" about=""><dt id="bib-CSS21">[CSS21]</dt><dd rel="dcterms:references">Bert Bos; Tantek Çelik; Ian Hickson; Håkon Wium Lie et al. <a href="http://www.w3.org/TR/CSS2"><cite>Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</cite></a>. 7 June 2011. W3C Recommendation. URL: <a href="http://www.w3.org/TR/CSS2">http://www.w3.org/TR/CSS2</a>
 </dd><dt id="bib-CSSOM-VIEW">[CSSOM-VIEW]</dt><dd rel="dcterms:references">Simon Pieters; Glenn Adams. <a href="http://www.w3.org/TR/cssom-view/"><cite>CSSOM View Module</cite></a>. 17 December 2013. W3C Working Draft. URL: <a href="http://www.w3.org/TR/cssom-view/">http://www.w3.org/TR/cssom-view/</a>
 </dd></dl></section></section></body></html>
