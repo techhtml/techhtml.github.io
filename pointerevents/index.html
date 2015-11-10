@@ -1322,29 +1322,37 @@ UI 어포던스는 적은 하드웨어 능력을 유저에게 제공할 수 있�
 <!--OddPage--><h2 role="heading" id="h2_pointer-capture"><span class="secno">10. </span><dfn title="Pointer Capture" id="dfn-pointer-capture">포인터 캡쳐</dfn></h2>
 	<div class="informative">
 	<p>
-	Pointer capture allows the events for a particular pointer (including any compatibility mouse events) to be retargeted to a particular element other than the normal hit test result of the pointer's location. This is useful in scenarios like a custom slider control (e.g. similar to the [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>] <code>&lt;input type="range"&gt;</code> control). Pointer capture can be set on the slider thumb element, allowing the user to slide the control back and forth even if the pointer slides off of the thumb.</p>
+		포인터 캡쳐를 위한 특정 포인터 이벤트(호환 마우스 이벤트를 포함)가 포인트의 위치 히트 테스트 결과 외 특정 요소를 다시 목표로 삼을 수 있습니다.
+		이는 커스텀 슬라이더 컨트롤 같은 시나리오에서 유용합니다. ([<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>] <code>&lt;input type="range"&gt;</code>과 유사한)
+		포인터 캡쳐는 슬라이더 thumb 요소를 설정하고, 포인터가 thumb를 벗어나더라도 슬라이드 앞뒤로 유저가 컨트롤 할 수 있도록 허용합니다.
 	<figure id="fig-example-of-a-custom-slider-control-that-chooses-a-value-by-sliding-the-thumb-element-back-and-forth.-after-pointerdown-on-the-thumb-pointer-capture-can-be-used-to-allow-the-user-to-slide-the-thumb-even-if-the-pointer-drifts-off-of-it.x">
 		<img src="slider.png" alt="Custom Volume Slider">
-		<figcaption>Fig. <span class="figno">4</span> <span class="fig-title">Example of a custom slider control that chooses a value by sliding the thumb element back and forth. After <code>pointerdown</code> on the thumb, pointer capture can be used to allow the user to slide the thumb even if the pointer drifts off of it.</span></figcaption>
+		<figcaption>Fig. <span class="figno">4</span> <span class="fig-title">
+				thumb 요소를 앞뒤로 슬라이드하여 값을 정하는 커스텀 슬라이더 컨트롤 예제입니다.
+				thumb에서 <code>pointerDown</code> 이벤트가 발생한 뒤, 포인터 캡쳐는 유저가 thumb를 벗어난다고 하더라도 슬라이드를 할 수 있도록 하게합니다.
+				</span></figcaption>
 	</figure>
 	</div>
 
 	<section id="setting-pointer-capture">
-		<h3 role="heading" id="h3_setting-pointer-capture"><span class="secno">10.1 </span>Setting Pointer Capture</h3>
-		Pointer capture is set on an element by calling the <code>element.setPointerCapture(pointerId)</code> method. When this method is invoked, a user agent <em class="rfc2119" title="MUST">MUST</em> run the following steps:
+		<h3 role="heading" id="h3_setting-pointer-capture"><span class="secno">10.1 </span>포인터 캡쳐 설정</h3>
+		포인터 캡쳐는 <code>element.setPointerCapture(pointerId)</code> 메서드를 호출해 요소에 설정합니다.
+		이 메서드를 호출했을 때, 유저에이전트는 <em class="rfc2119" title="MUST">반드시</em> 아래 스텝을 따라야 합니다. [<em class="rfc2119" title="MUST">MUST</em>]
 		<ol>
-			<li>If the <code>pointerId</code> provided as the method's argument does not match any of the <a title="active pointer" class="internalDFN" href="#dfn-active-pointer">active pointers</a>, then throw a <code>DOMException</code> with the name <code>InvalidPointerId</code>.</li>
-            <li>If the <code>Element</code> on which this method is invoked does not participate in its <code>ownerDocument</code>'s tree, throw an exception with the name <code>InvalidStateError</code>.</li>
-			<li>If the pointer is not in the <a title="active buttons state" class="internalDFN" href="#dfn-active-buttons-state">active buttons</a> state, then terminate these steps.</li>
-			<li>For the specified <code>pointerId</code>, set the <dfn id="dfn-pending-pointer-capture-target-override">pending pointer capture target override</dfn> to the <code>Element</code> on which this method was invoked.</li>
+			<li>메서드의 인수인 <code>pointerId</code>가 <a title="active pointer" class="internalDFN" href="#dfn-active-pointer">활성 포인터</a> 중 어느 것과도 매치하지 않는다면, <code>InvalidPointerId</code>와 함께 <code>DOMException</code>을 던집니다.</li>
+			<li>이 메서드의 대상인 <code>Element</code>가 <code>ownerDocument</code>의 트리에 포함되어있지 않다면, <code>InvalidStateError</code>를 던집니다.</li>
+			<li>만약 포인터가 <a title="active buttons state" class="internalDFN" href="#dfn-active-buttons-state">활성 버튼</a> 상태가 아니라면, 이 스텝을 제거합니다.</li>
+			<li>정의되어있는 <code>pointerId</code>로, 이 메서드가 호출되는 <code>Element</code>에 <dfn id="dfn-pending-pointer-capture-target-override">포인터 캡쳐 타겟 오버라이드 펜딩</dfn>을 설정합니다. </li>
 		</ol>
-		<div class="note"><div class="note-title" aria-level="2" role="heading" id="h_note_25"><span>Note</span></div><div class="">When pointer capture is set, <code>pointerover</code>, <code>pointerout</code>, <code>pointerenter</code>, and <code>pointerleave</code> events are only generated when crossing the boundary of the element that has capture as other elements can no longer be targeted by the pointer. This has the effect of suppressing these events on all other elements.</div></div>
+		<div class="note"><div class="note-title" aria-level="2" role="heading" id="h_note_25"><span>노트</span></div><div class="">포인터 캡쳐가 설정될 때, <code>pointerover</code>, <code>pointerout</code>, <code>pointerenter</code>, <code>pointerleave</code> 이벤트는 더 이상 포인터에 의한 타겟이 아닌 다른 요소로써 캡쳐된 요소의 바운더리를 가로지를 때 생성됩니다. 
+		이는 모든 다른 요소들에 이런 이벤트를 억제하는 효과를 가집니다.</div></div>
 
 	</section>
 
 	<section id="releasing-pointer-capture">
-		<h3 role="heading" id="h3_releasing-pointer-capture"><span class="secno">10.2 </span>Releasing Pointer Capture</h3>
-		Pointer capture is released on an element explicitly by calling the <code>element.releasePointerCapture(pointerId)</code> method. When this method is called, a user agent <em class="rfc2119" title="MUST">MUST</em> run the following steps:
+		<h3 role="heading" id="h3_releasing-pointer-capture"><span class="secno">10.2 </span>포인터 캡쳐 릴리징</h3>
+		포인터 캡쳐는 <code>element.releasePointerCapture(pointerId)</code> 메서드를 호출한 요소에 명시적으로 릴리즈됩니다.
+		이 메서드를 호출했을 때, 유저 에이전트는  <em class="rfc2119" title="MUST">반드시</em> 아래 스텝을 동작시켜야합니다. [<em class="rfc2119" title="MUST">MUST</em>]
 		<ol>
 			<li>If the <code>pointerId</code> provided as the method's argument does not match any of the <a title="active pointer" class="internalDFN" href="#dfn-active-pointer">active pointers</a> and these steps are not being invoked as a result of the <a href="#implicit-release-of-pointer-capture">implicit release of pointer capture</a>, then throw a <code>DOMException</code> with the name <code>InvalidPointerId</code>.</li>
 			<li>If pointer capture is not currently set for the specified pointer, then terminate these steps.</li>
