@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" prefix='bibo: http://purl.org/ontology/bibo/' typeof="bibo:Document">
+<head>
+    <title>Role 속성 1.0</title>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+		<link rel="stylesheet" href="trans.css">
+
+    <!--
+          === NOTA BENE ===
+          For the three scripts below, if your spec resides on dev.w3 you can check them
+          out in the same tree and use relative links so that they'll work offline,
+         -->
+
+
+
+    <!--    <script src='/ReSpec.js/js/respec.js' class='remove'></script> -->
+
+
+    <style>/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+    /* --- INLINES --- */
+    em.rfc2119 {
+        text-transform:     lowercase;
+        font-variant:       small-caps;
+        font-style:         normal;
+        color:              #900;
+    }
+
+    h1 acronym, h2 acronym, h3 acronym, h4 acronym, h5 acronym, h6 acronym, a acronym,
+    h1 abbr, h2 abbr, h3 abbr, h4 abbr, h5 abbr, h6 abbr, a abbr {
+        border: none;
+    }
+
+    dfn {
+        font-weight:    bold;
+    }
+
+    a.internalDFN {
+        color:  inherit;
+        border-bottom:  1px solid #99c;
+        text-decoration:    none;
+    }
+
+    a.externalDFN {
+        color:  inherit;
+        border-bottom:  1px dotted #ccc;
+        text-decoration:    none;
+    }
+
+    a.bibref {
+        text-decoration:    none;
+    }
+
+    cite .bibref {
+        font-style: normal;
+    }
+
+    code {
+        color:  #ff4500;
+    }
+
+
+    /* --- --- */
+    ol.algorithm { counter-reset:numsection; list-style-type: none; }
+    ol.algorithm li { margin: 0.5em 0; }
+    ol.algorithm li:before { font-weight: bold; counter-increment: numsection; content: counters(numsection, ".") ") "; }
+
+    /* --- TOC --- */
+    .toc a, .tof a {
+        text-decoration:    none;
+    }
+
+    a .secno, a .figno {
+        color:  #000;
+    }
+
+    ul.tof, ol.tof {
+        list-style: none outside none;
+    }
+
+    .caption {
+        margin-top: 0.5em;
+        font-style:   italic;
+    }
+
+    /* --- TABLE --- */
+    table.simple {
+        border-spacing: 0;
+        border-collapse:    collapse;
+        border-bottom:  3px solid #005a9c;
+    }
+
+    .simple th {
+        background: #005a9c;
+        color:  #fff;
+        padding:    3px 5px;
+        text-align: left;
+    }
+
+    .simple th[scope="row"] {
+        background: inherit;
+        color:  inherit;
+        border-top: 1px solid #ddd;
+    }
+
+    .simple td {
+        padding:    3px 10px;
+        border-top: 1px solid #ddd;
+    }
+
+    .simple tr:nth-child(even) {
+        background: #f0f6ff;
+    }
+
+    /* --- DL --- */
+    .section dd > p:first-child {
+        margin-top: 0;
+    }
+
+    .section dd > p:last-child {
+        margin-bottom: 0;
+    }
+
+    .section dd {
+        margin-bottom:  1em;
+    }
+
+    .section dl.attrs dd, .section dl.eldef dd {
+        margin-bottom:  0;
+    }
+    </style><style>/* --- EXAMPLES --- */
+div.example-title {
+    min-width: 7.5em;
+    color: #b9ab2d;
+}
+div.example-title span {
+    text-transform: uppercase;
+}
+aside.example, div.example, div.illegal-example {
+    padding: 0.5em;
+    margin: 1em 0;
+    position: relative;
+    clear: both;
+}
+div.illegal-example { color: red }
+div.illegal-example p { color: black }
+aside.example, div.example {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+    border-color: #e0cb52;
+    background: #fcfaee;
+}
+
+aside.example div.example {
+    border-left-width: .1em;
+    border-color: #999;
+    background: #fff;
+}
+aside.example div.example div.example-title {
+    color: #999;
+}
+</style><style>/* --- ISSUES/NOTES --- */
+div.issue-title, div.note-title {
+    padding-right:  1em;
+    min-width: 7.5em;
+    color: #b9ab2d;
+}
+div.issue-title { color: #e05252; }
+div.note-title { color: #52e052; }
+div.issue-title span, div.note-title span {
+    text-transform: uppercase;
+}
+div.note, div.issue {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.note > p:first-child, .issue > p:first-child { margin-top: 0 }
+.issue, .note {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+}
+div.issue, div.note {
+    padding: 0.5em;
+    margin: 1em 0;
+    position: relative;
+    clear: both;
+}
+span.note, span.issue { padding: .1em .5em .15em; }
+
+.issue {
+    border-color: #e05252;
+    background: #fbe9e9;
+}
+.note {
+    border-color: #52e052;
+    background: #e9fbe9;
+}
+</style><link rel="stylesheet" href="http://www.w3.org/StyleSheets/TR/W3C-REC" />
+<!--[if lt IE 9]><script src='http://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]-->
+</head>
+<body>
+<div class="headernotes">
+	<p>
+		이 문서는 <a href="http://www.w3.org/TR/role-attribute/">Role Attribute 1.0 - An attribute to support the role classification of elements (W3C Recommendation 28 March 2013)</a>의 한국어 번역본입니다. <br>
+		이 문서에 오역 및 오타를 포함할 수 있습니다. 가능하면 원문도 확인하시길 바랍니다.
+	</p>
+	<dl class="meta">
+		<dt>공개일</dt>
+		<dd>2015-12-03</dd>
+		<dt>번역자:</dt>
+		<dd>조은 &lt;<a href="mailto:apes0123@gmail.com">apes0123@gmail.com</a>&gt;</dd>
+	</dl>
+</div>
+<div class="head">
+    <p>
+        <a href="http://www.w3.org/"><img width="72" height="48" alt="W3C" src="http://www.w3.org/Icons/w3c_home" /></a>
+    </p>
+    <h1 id="title" class="title">Role 속성 1.0</h1>
+    <h2 id="subtitle">요소의 역할(Role) 분류를 지원하는 속성</h2>
+    <h2 id="w3c-recommendation-28-march-2013">2013년 3월 28일 <abbr title="World Wide Web Consortium">W3C</abbr> 권고안</h2>
+    <dl>
+        <dt>이 버전:</dt>
+        <dd><a href="http://www.w3.org/TR/2013/REC-role-attribute-20130328/">http://www.w3.org/TR/2013/REC-role-attribute-20130328/</a></dd>
+        <dt>최신 발행 버전:</dt>
+        <dd><a href="http://www.w3.org/TR/role-attribute/">http://www.w3.org/TR/role-attribute/</a></dd>
+        <dt>최신 에디터 문서:</dt>
+        <dd><a href="http://www.w3.org/WAI/PF/role-attribute/">http://www.w3.org/WAI/PF/role-attribute/</a></dd>
+        <dt>이전 버전:</dt>
+        <dd><a href="http://www.w3.org/TR/2012/PR-role-attribute-20121213/">http://www.w3.org/TR/2012/PR-role-attribute-20121213/</a></dd>
+        <dt>Editor:</dt>
+        <dd inlist="" rel="bibo:editor"><span typeof="foaf:Person"><a href="http://blog.halindrome.com" content="Shane McCarron" property="foaf:name" rel="foaf:homepage">Shane McCarron</a>, <a href="http://www.aptest.com" rel="foaf:workplaceHomepage">Applied Testing and Technology, Inc.</a>, <span class="ed_mailto"><a href="mailto:shane@aptest.com" rel="foaf:mbox">shane@aptest.com</a></span></span>
+        </dd>
+        <dt>Authors:</dt>
+        <dd rel="dcterms:contributor"><span typeof="foaf:Person"><a href="mailto:ben@adida.net" content="Ben Adida" property="foaf:name" rel="foaf:homepage">Ben Adida</a>, <a href="http://creativecommons.org" rel="foaf:workplaceHomepage">Creative Commons</a></span>
+        </dd>
+        <dd rel="dcterms:contributor"><span typeof="foaf:Person"><a href="mailto:mark.birbeck@webBackplane.com" content="Mark Birbeck" property="foaf:name" rel="foaf:homepage">Mark Birbeck</a>, <a href="http://webBackplane.com" rel="foaf:workplaceHomepage">webBackplane</a></span>
+        </dd>
+        <dd rel="dcterms:contributor"><span typeof="foaf:Person"><a href="http://homepages.cwi.nl/~steven/" content="Steven Pemberton" property="foaf:name" rel="foaf:homepage">Steven Pemberton</a>, <a href="http://www.w3.org/" rel="foaf:workplaceHomepage">CWI/<abbr title="World Wide Web Consortium">W3C</abbr>®</a></span>
+        </dd>
+        <dd rel="dcterms:contributor"><span typeof="foaf:Person"><a href="mailto:raman@google.com" content="T. V. Raman" property="foaf:name" rel="foaf:homepage">T. V. Raman</a>, <a href="http://www.google.com" rel="foaf:workplaceHomepage">Google, Inc.</a></span>
+        </dd>
+        <dd rel="dcterms:contributor"><span typeof="foaf:Person"><a href="mailto:schwer@us.ibm.com" content="Richard Schwerdtfeger" property="foaf:name" rel="foaf:homepage">Richard Schwerdtfeger</a>, <a href="http://www.ibm.com" rel="foaf:workplaceHomepage">IBM Corporation</a></span>
+        </dd>
+    </dl>
+		<p>이 문서의 <a href="http://www.w3.org/WAI/PF/role-attribute/errata"><strong>errata</strong></a>를 확인하시길 바랍니다. 표준에 따른 변경을 포함하고 있을 수 있습니다.</p>
+    <p><a href="http://www.w3.org/2003/03/Translations/byTechnology?technology=role-attribute"><strong>번역본</strong></a>도 제공합니다.</p>
+    <p>
+        이 문서의 표준버전은 영문 버전으로만 제공합니다.
+        표준이 아닌 <a href="http://www.w3.org/Consortium/Translation/">번역본</a>이 있을 수 있습니다.
+    </p>
+    <p class="copyright">
+        <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> ©
+        2006-2013
+
+        <a href="http://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup>
+        (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
+        <a href="http://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>,
+        <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.
+        <abbr title="World Wide Web Consortium">W3C</abbr> <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
+        <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and
+        <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.
+    </p>
+
+
+    <hr />
+</div>
+
+<section id="abstract" class="introductory" property="dcterms:abstract" datatype="" typeof="bibo:Chapter" resource="#abstract" rel="bibo:chapter"><h2>요약</h2>
+		<p>
+			이 스펙문서에서는 작성자가 요소의 목적에 대해 기계가 추출가능한 시멘틱 정보를 마크업 언어에 명시할 수 있도록 하는 Role 속성을 정의합니다. 
+			접근성, 디바이스 적응, 서버 사이드 프로세싱 및 복잡한 데이터 설명 관련 사용 케이스도 있습니다.
+			이 속성은 어떤 마크업 언어에도 사용할 수 있습니다.
+			특히, 스키마 구현체는 XHTML 모듈화[<cite><a class="bibref" href="#bib-XHTML-MODULARIZATION11-2e">XHTML-MODULARIZATION11-2e</a></cite>]를 기반으로 한 언어로 쉽게 제공합니다. 
+    </p>
+		<p>
+			role 속성은 만약 언어가 독자적인 role 속성을 정의하지 않은 경우, 
+			XML 베이스 언어의 role로 정의된 리치 인터넷 어플리케이션 접근성 (WAI-ARIA)를 지원해야할 필요가 있습니다. [<cite><a class="bibref" href="#bib-WAI-ARIA">WAI-ARIA</a></cite>]
+			이게 프로토콜 및 포맷 워킹그룹에 의해 Role 속성이 발행된 근거라 할지라도, 속성은 더 많은 범용 사용 케이스를 가져야할 필요가 있습니다.
+		</p>
+</section>
+<section class="introductory" id="sotd" typeof="bibo:Chapter" resource="#sotd" rel="bibo:chapter"><h2>이 문서의 상태</h2>
+    <p>
+    <em>이 섹션은 이 문서가 발행되었을 때 상태에 대해 기술합니다. 다른 문서가 이 문서를 대체할 수 있습니다.
+        현재 <abbr title="World Wide Web Consortium">W3C</abbr>에서 발행한 기술 리포트의 최신 버전은 <a href="http://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> 기술 인덱스 </a> at http://www.w3.org/TR/에서 확인할 수 있습니다.</em>
+    </p>
+    <p>이 문서는 <a href="http://www.w3.org/WAI/">Web Accessibility Initiative</a>의 <a href="http://www.w3.org/WAI/PF/">Protocols &amp; Formats Working Group</a>에서 발행한 Role 속성 <a href="http://www.w3.org/2004/02/Process-20040205/tr.html#RecsW3C">W3C 권고안</a>입니다. 이 문서는 W3C 멤버들, 소프트웨어 개발자, 다른 W3C 그룹 및 관심 파티에 의해 리뷰되고 디렉터가 승인하여 W3C 권고안이 된 문서입니다. 이 문서는 안정적인 문서이며 다른 문서에서 참조하거나 참고 재료로 사용하여도 됩니다. 권고안을 제정함으로써 W3C가 하는 역할은 스펙 문서에 주목을 끌고 개발을 널리 퍼뜨리는 것입니다. 이로 인해 웹의 상호운용성을 향상시킬 수 있습니다.</p>
+    <p>
+        이 문서를 마침으로써, Role 속성의 이 버전은 더 이상 변경이 없을 것입니다.
+        프로토콜 및 포맷 워킹그룹은 Role 속성과 관련한 추가 개선은 이 스펙 문서의 미래 버전 대신
+        <a href="http://www.w3.org/TR/wai-aria/">Accessible Rich Internet Applications (WAI-ARIA)</a>의 미래 문서에서 추가될 거라 기대하고 있습니다.
+        워킹그룹은 Role 속성 권고안에 대한 코멘트에 답변할 계획을 가지고 있지는 않으나, errata 입력이나 기타 미래의 일을 고려하고 있습니다.
+        <a href="http://www.w3.org/WAI/PF/comments/instructions">instructions for commenting</a>에 코멘트를 전송하거나 (권장), <a href="mailto:public-pfwg-comments@w3.org">public-pfwg-comments@w3.org</a> (<a href="http://lists.w3.org/Archives/Public/public-pfwg-comments/">comment archive</a>)로 이메일을 보낼 수도 있습니다. <a href="http://www.w3.org/WAI/PF/role-attribute/change-history">Role 속성 1.0의 변경 히스토리</a>도 제공합니다.
+	</p>
+	<p>
+        이 문서는 <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/">2004년 2월 6일 W3C 특허 정책</a>을 따르는 그룹에서 작성하였습니다.
+        W3C는 그룹의 성과물에 관련하여 <a href="http://www.w3.org/2004/01/pp-impl/40318/status" rel="disclosure">모든 공개 특허 공개 리스트</a>를 관리합니다.
+        여기에는 특허 공개에 대한 지시사항도 포함합니다.
+        특허에 대해서 충분한 지식이 있는 사람이, 스펙 문서의 <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential Claim(s)</a>에 인정된다고 파악되는 경우, <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">W3C 특허 정책 제 6장</a>에 의거하여 정보를 공개해야 할 필요가 있습니다.
+	</p>
+</section>
+<section id="toc"><h2 class="introductory">목차</h2><ul class="toc"><li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>소개</a></li><li class="tocline"><a href="#conformance" class="tocxref"><span class="secno">2. </span>적합성</a><ul class="toc"><li class="tocline"><a href="#document-conformance" class="tocxref"><span class="secno">2.1 </span>문서 적합성</a></li><li class="tocline"><a href="#host-language-conformance" class="tocxref"><span class="secno">2.2 </span>호스트 언어 적합성</a></li></ul></li><li class="tocline"><a href="#s_role_module_attributes" class="tocxref"><span class="secno">3. </span>Role 속성</a><ul class="toc"><li class="tocline"><a href="#extending-the-collection-of-roles" class="tocxref"><span class="secno">3.1 </span>역할 콜렉션 확장</a></li></ul></li><li class="tocline"><a href="#using-role-in-conjunction-with-rdfa" class="tocxref"><span class="secno">4. </span>RDFa와 함께 Role 사용하기</a></li><li class="tocline"><a href="#xhtml-role-attribute-module" class="tocxref"><span class="secno">A. </span>XHTML Role 속성 모듈</a><ul class="toc"><li class="tocline"><a href="#dtd-implementation" class="tocxref"><span class="secno">A.1 </span>DTD 구현체</a><ul class="toc"><li class="tocline"><a href="#qualified-names-module" class="tocxref"><span class="secno">A.1.1 </span>주소 네임 모듈</a></li></ul></li><li class="tocline"><a href="#a_Schema_definition" class="tocxref"><span class="secno">A.2 </span>스키마 구현체</a><ul class="toc"><li class="tocline"><a href="#attributes-module" class="tocxref"><span class="secno">A.2.1 </span>속성 모듈</a></li></ul></li></ul></li><li class="tocline"><a href="#acknowledgements" class="tocxref"><span class="secno">B. </span>감사의 말</a><ul class="toc"><li class="tocline"><a href="#ack_group" class="tocxref"><span class="secno">B.1 </span>Participants in the PFWG at the time of publication</a></li><li class="tocline"><a href="#ack_others" class="tocxref"><span class="secno">B.2 </span>Other previously active PFWG participants and contributors</a></li><li class="tocline"><a href="#ack_funders" class="tocxref"><span class="secno">B.3 </span>Enabling funders</a></li></ul></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">C. </span>참고 문서</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">C.1 </span>표준 참고 문서</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">C.2 </span>정보 참고 문서</a></li></ul></li></ul></section>
+<section class="informative" typeof="bibo:Chapter" resource="#s_intro" rel="bibo:chapter" id="introduction">
+    <!--OddPage-->
+		<h2 id="s_intro"><span class="secno">1. </span>소개</h2>
+		<p><em>이 섹션은 표준에 준하지 않습니다.</em></p>
+		<p>
+			이 문서는 문서의 접근성 및 시멘틱 마크업을 향상시키는 데 도움을 주고자 할 때 사용하도록 설계된 속성을 정의합니다.
+			이는 접근성 커뮤니티와 다른 그룹들이 함께 개발하여 문서 콘텐츠의 의미를 쉽게 설명하도록 제작하였습니다.</p>
+		<p>
+			Role 속성 사용 케이스를 사용할 때 (독점적이지는 않지만) 중요한 건 [<cite><a class="bibref" href="#bib-WAI-ARIA">WAI-ARIA</a></cite>]를 지원하는 것입니다.
+			Role 속성을 위한 중요한 사용 케이스를 지원합니다 [<cite><a class="bibref" href="#bib-WAI-ARIA">WAI-ARIA</a></cite>].
+
+			Role 속성은 <a href="http://www.w3.org/TR/wai-aria/host_languages#host_general_role">Role Attribute in WAI-ARIA, Section 7.1</a>의 요구사항을 따르며,
+			이는 WAI-ARIA role을 사용하는 속성을 포함하는 [<cite><a class="bibref" href="#bib-XML10">XML10</a></cite>] 언어를 사용 가능하게 합니다.
+			이 문서가 발행되었을 때, WAI-ARIA를 사용하는 걸로 알려진 XML 베이스 언어는 없었으나, 이 속성은 (SVG 등에서) 미래에 지원할 계획이며 매우 중요합니다.
+			반면에, [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>]에서 WAI-ARIA 지원은 &quot;role&quot; 속성을 포함합니다.
+			[<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>]과 함께 저 속성을 사용할 때 이 스펙 문서 내 role 속성의 정의와 일치하며,
+			속성의 값과 함께 '용어'의 사용이 제한되어 사용할 수 있습니다.
+</section>
+
+<section id="conformance" typeof="bibo:Chapter" resource="#conformance" rel="bibo:chapter">
+    <!--OddPage-->
+    <h2><span class="secno">2. </span>적합성</h2>
+    <p>
+				이 스펙문서 내에서 표준에 준하지 않습니다라고 표기된 섹션을 포함한, 모든 작성 가이드라인, 다이어그램, 예제 및 노트는 표준에 준하지 않는 내용입니다.
+				그 외 모든 건 표준에 준하는 내용입니다.
+    </p>
+    <p>
+        이 스펙문서에서 사용하는 키워드 <em class="rfc2119" title="MUST">MUST</em>, <em class="rfc2119" title="MUST NOT">MUST NOT</em>, <em class="rfc2119" title="REQUIRED">REQUIRED</em>, <em class="rfc2119" title="SHOULD">SHOULD</em>, <em class="rfc2119" title="SHOULD NOT">SHOULD NOT</em>, <em class="rfc2119" title="RECOMMENDED">RECOMMENDED</em>, <em class="rfc2119" title="MAY">MAY</em>,
+        <em class="rfc2119" title="OPTIONAL">OPTIONAL</em>은 [<cite><a class="bibref" href="#bib-RFC2119">RFC2119</a></cite>]에 기술되어있는대로 해석합니다.
+    </p>
+    <section typeof="bibo:Chapter" resource="#docconf" rel="bibo:chapter" id="document-conformance">
+        <h3 id="docconf"><span class="secno">2.1 </span>문서 적합성</h3>
+
+				<p>
+						Role 속성은 단독으로 문서 타입을 나타내지는 않습니다.
+						Role 속성은 SVG, HTML, XHTML 같은 다른 호스트 언어에 융화될 의도를 가지고 있습니다.
+						Role 속성 문서 적합성은 그 호스트 언어 내에서 필수라 소개한 설비와 이 스펙 문서 내 필수라 소개한 설비만 필수 요구사항인 문서입니다.
+						이러한 문서는 아래 모든 조건을 충족해야합니다.
+        </p>
+        <ol>
+            <li>
+								<p>이 문서는 호스트 언어 구현체에서 표현하는 제약조건을 반드시 준수해야합니다. [<em class="rfc2119" title="MUST">MUST</em>]</p>
+            </li>
+            <li>
+								<p>
+										만약 호스트 언어<em>가</em> XML [<cite><a class="bibref" href="#bib-XML10-4e">XML10-4e</a></cite>] 마크업 언어고 
+										XHTML 네임스페이스<code>http://www.w3.org/1999/xhtml</code>)에 속한다면, 추가 요구사항은 없습니다.
+										만약 호스트 언어가 XML 마크업 언어고 XHTML 네임스페이스에 <em>속하지 않으며</em>,
+										호스트 언어가 'no namespace' 내 이 속성을 포함하지 않을 때,
+										문서는 반드시 Role 속성 모듈 네임스페이스를 위한 XML 네임스페이스 선언을 포함해야합니다. [<em class="rfc2119" title="MUST">MUST</em>] 
+										[<cite><a class="bibref" href="#bib-XML-NAMES11">XML-NAMES11</a></cite>]
+
+										Role 속성 모듈을 위한 네임스페이스는 <code>http://www.w3.org/1999/xhtml</code>에 정의되어있습니다.
+										루트 요소의 시작 태그 예제는 아래와 같이 보입니다:</p>
+                <div class="example"><div class="example-title"><span>예제 1</span></div><pre class="example">
+&lt;mylang xmlns="http://www.example.com/dtd/mylang"
+        xmlns:xh="http://www.w3.org/1999/xhtml" xml:lang="en" &gt;
+</pre></div>
+            </li>
+        </ol>
+    </section>
+    <section typeof="bibo:Chapter" resource="#hostconf" rel="bibo:chapter" id="host-language-conformance">
+        <h3 id="hostconf"><span class="secno">2.2 </span>호스트 언어 적합성</h3>
+				<p>
+						Role 속성이 호스트 언어에 포함될 때, 이 스펙문서 내 설비 요구사항 전체를 반드시 호스트 언어에 포함해야합니다. [<em class="rfc2119" title="MUST">MUST</em>]
+						또한, 이 스펙문서에서 정의한 속성은 반드시 호스트 언어의 콘텐츠 모델 내에 포함해야합니다. [<em class="rfc2119" title="MUST">MUST</em>]
+        </p>
+    </section>
+</section>
+
+
+<section id="s_role_module_attributes" typeof="bibo:Chapter" resource="#s_role_module_attributes" rel="bibo:chapter">
+		<!--OddPage--> <h2><span class="secno">3. </span>Role 속성</h2> 
+
+<p id="A_role">
+	이 스펙문서는 <code>role</code>속성을 정의합니다.
+	<code>role</code>속성은 그 값에 한개 혹은 그 이상의 공백문자로 구분된 <code>TERMorCURIEorAbsIRIs</code>를 취하며, 값은 [<cite><a class="bibref" href="#bib-RDFA-CORE">RDFA-CORE</a></cite>]에서 정의합니다.
+	값의 각 컴포넌트는 RDF를 사용해 정의한 어휘 용어에 일치하는 IRI에 매핑합니다. [<em class="rfc2119" title="SHOULD">SHOULD</em>]
+</p> 
+<div class="note">
+    <div class="note-title"><span>노트</span></div>
+		<p class="">
+			TERM 사용을 허용하는 <span class="aref">@role</span>, CURIE ([<cite><a class="bibref" href="#bib-RDFA-CORE">RDFA-CORE</a></cite>]에서 정의), 전체 IRI를 위해 데이터타입을 사용합니다.
+			TERM은 어휘에서 가져오는 아이템입니다. <span class="aref">@role</span>을 사용하는 기본 어휘는 [<cite><a class="bibref" href="#bib-XHTML-VOCAB">XHTML-VOCAB</a></cite>]에서 정의합니다.
+			호스트 언어가 다른 기본 어휘를 정의할 수도 있습니다. [<em class="rfc2119" title="MAY">MAY</em>]
+		</p>
+</div> <div class="note">
+    <div class="note-title"><span>노트</span></div>
+		<p class="">
+			기본 어휘에서 정의한 어휘 용어는 이 문서에 포함하지 않습니다.
+			그것들은 유지를 쉽게하기 위해 [<cite><a class="bibref" href="#bib-XHTML-VOCAB">XHTML-VOCAB</a></cite>]에서 정의합니다.
+			용어는 [<cite><a class="bibref" href="#bib-WAI-ARIA">WAI-ARIA</a></cite>]에서 도출되며, XHTML2 워킹그룹에서 이 문서에서 그 일을 수행하고 있습니다.
+		</p>
+</div> 
+<p>
+속성은 문서의 맥락에서 현재 요소의 역할(들)에 대해 설명합니다.
+이 속성을 예로 들면, 어플리케이션과 보조 기술에서 요소의 목적을 결정하기 위해 사용할 수 있습니다.
+이는 기기에 독자적인 방법으로 유저가 요소에서 특정 액션을 취해 해당 액션에 대한 결정 정보를 생성하거나 셀렉트 액션 활성화 등을 사용할 수 있게 합니다. 
+또한 도메인에서 정의한 방법으로 문서의 주석 부분을 위한 메커니즘을 사용할 수 있습니다. (예를 들면, 법률 용어 분류학)
+심지어 role 속성을 요소에 시멘틱을 추가하기 위해 사용할 수 있더라도, <code>div role=&quot;paragraph&quot;</code> 같이 의미상 중립 요소에서 시멘틱을 씌우는 것보다, 
+작성자는 <code>p</code> 같은 요소 고유의 시멘틱과 함께 사용해야 합니다. [<em class="rfc2119" title="SHOULD">SHOULD</em>]</p> 
+
+
+<p>아래 예제는 role 속성을 적절히 사용한 좋은 예제입니다:</p> <div class="example"><div class="example-title"><span>예제 2</span></div><pre class="example">&lt;div role="main">
+  &lt;h1&gt;This is the main content of the page&lt;/h1&gt;
+  &lt;p&gt;Here is some content that is the primary purpose of this web page.&lt;/p&gt;
+&lt;/div&gt;</pre></div> 
+<section id="extending-the-collection-of-roles">
+    <h3><span class="secno">3.1 </span>역할 콜렉션 확장</h3>
+		<p>
+			role 값을 추가해서 정의할 수 있습니다.
+			어휘 작성자는 반드시 그 어휘에서 사용할 몇몇 추가 role 값을 정의해야 합니다. [<em class="rfc2119" title="MUST">MUST</em>]
+			그 어휘와 관련한 URI는 어휘 내 역할의 정의를 발견하는 인간 및 기계를 허용하는 리소스로 해결해야합니다. [<em class="rfc2119" title="SHOULD">SHOULD</em>]
+		</p>
+    <div class="note">
+			<div class="note-title"><span>노트</span></div>
+			<p class="">
+			리소스의 좋은 예제는 [<cite><a class="bibref" href="#bib-XHTML-VOCAB">XHTML-VOCAB</a></cite>]의 기본 어휘 문서입니다.
+			이 문서는 RDF 기본 컨텍스트의 머신-발견을 위한 [<cite><a class="bibref" href="#bib-RDFA-CORE">RDFA-CORE</a></cite>] 섹션 9의 요구사항에 호환하는 포맷을 사용합니다.
+			</p>
+    </div>
+</section> </section>
+
+<section id="using-role-in-conjunction-with-rdfa">
+    <!--OddPage-->
+    <h2><span class="secno">4. </span>RDFa와 함께 Role 사용하기</h2>
+		<p>
+				만약 호스트 언어가 <span class="aref">@role</span> 속성을 포함하며,
+				RDFa 프로세서가 호스트 언어의 역할에 따라 호스트 언어로 작성된 문서를 프로세싱할 때 role 속성을 위한 세 벌을 추가로 생성할 수도 있습니다. [<em class="rfc2119" title="MAY">MAY</em>]
+
+				만약 세 벌을 추가로 생성하는 경우, 이는 반드시 아래 규칙대로 생성되야합니다: [<em class="rfc2119" title="MUST">MUST</em>]</p>
+
+    <ul>
+				<li>
+					<span class="aref">@id</span>가 현재라면, 문서의 'base'에 연결하는 <em>주제(subject)</em>를 제공하고,
+					프래그먼트 구분자 '#', <span class="aref">@id</span>의 값으로 사용합니다.
+					그 외의 경우 <em>주제</em>는 유일하게 새로 생성한 <code>bnode</code>입니다.
+				</li>
+				<li><em>서술어(predicate)</em>는 <code>http://www.w3.org/1999/xhtml/vocab</code>에서 정의하는 어휘 내 <code>role</code> 용어입니다.</li>
+				<li><span class="aref">@role</span>의 각 값은 <em>객체</em>이며, 위에서 정의된 주제(subject)와 서술어(predicate)와 함께 RDF 세 벌을 형성합니다.
+						RDFa 프로세서는 반드시 <span class="aref">@role</span> 속성의 값(들)을 위한 <code>http://www.w3.org/1999/xhtml/vocab#</code>의 어휘 범위 내에서 동작해야 합니다.
+			      [<em class="rfc2119" title="MUST">MUST</em>]</li>
+    </ul>
+		<div class="note"><div class="note-title"><span>노트</span></div>
+				<p class=""><span class="aref">@role</span> 값이 <code>TERMorCURIEorAbsIRIs</code> 데이터타입을 사용해 정의되는 걸 기억하시길 바랍니다. 
+				RDFa 프로세서는 [<cite><a class="bibref" href="#bib-RDFA-CORE">RDFA-CORE</a></cite>]에서 정의한 그 데이터 타입 역할을 사용하는 값을 해석해야 합니다.
+				</p></div>
+
+</section>
+<section class="appendix" id="xhtml-role-attribute-module">
+
+    <!--OddPage-->
+    <h2><span class="secno">A. </span>XHTML Role 속성 모듈</h2>
+    <section typeof="bibo:Chapter" resource="#a_DTD_definition" rel="bibo:chapter" id="dtd-implementation">
+        <h3 id="a_DTD_definition"><span class="secno">A.1 </span>DTD 구현체</h3>
+				<p>XHTML Role 속성의 DTD 구현체는 [<cite><a class="bibref" href="#bib-XHTML-MODULARIZATION11-2e">XHTML-MODULARIZATION11-2e</a></cite>]에서 정의하는 요구사항을 포함해야합니다.
+					 그 결과로써, DTD 구현체는 주소 네임 모듈 선언을 제공해야합니다.
+				</p>
+        <section typeof="bibo:Chapter" resource="#a_module_qname" rel="bibo:chapter" id="qualified-names-module">
+            <h4 id="a_module_qname"><span class="secno">A.1.1 </span>주소 네임 모듈</h4>
+
+						<p>이 모듈이 파라미터 엔티티 <code>%xhtml-role-attrs.qname;</code>으로 정의되었음을 노트하시길 바랍니다. 
+							 이 엔티티는 그 네임스페이스 내 요소에서 role 속성 사용을 허용하는 어떤 호스트 언어 내 요소의 속성 리스트에서 사용할 의도를 가지고 있습니다.
+							 만약 호스트 언어가 네임스페이스 안에서 허용하지 않는다면, 호스트 언어 드라이버는 파라미터 엔티티 <code>%XHTML-ROLE.prefixed;</code>를 <code>INCLUDE</code>에 세팅해야하며,
+							 <code>%XHTML-ROLE.prefix;</code>를 XHTML Role 속성 모듈 속성을 위한 접두사 값으로 지정해야합니다.
+            </p>
+
+            <div><pre class="dtd">
+&lt;!-- ....................................................................... --&gt;
+&lt;!-- XHTML Role Qname Module  ............................................ --&gt;
+&lt;!-- file: xhtml-role-qname-1.mod
+
+     This is XHTML Role - the Role Attribute Module for XHTML.
+
+     Copyright 2006 W3C (MIT, ERCIM, Keio), All Rights Reserved.
+
+     This DTD module is identified by the PUBLIC and SYSTEM identifiers:
+
+       PUBLIC "-//W3C//ENTITIES XHTML Role Attribute Qnames 1.0//EN"
+       SYSTEM "http://www.w3.org/MarkUp/DTD/xhtml-role-qname-1.mod"
+
+     Revisions:
+     (none)
+     ....................................................................... --&gt;
+
+&lt;!-- XHTML Role Attribute Qname (Qualified Name) Module
+
+     This module is contained in two parts, labeled Section 'A' and 'B':
+
+       Section A declares parameter entities to support namespace-
+       qualified names, namespace declarations, and name prefixing
+       for XHTML Role and extensions.
+
+       Section B declares parameter entities used to provide
+       namespace-qualified names for the XHTML role attribute:
+
+         %role.qname;   the xmlns-qualified name for @role
+         ...
+
+     XHTML Role extensions would create a module similar to this one.
+--&gt;
+
+&lt;!-- Section A: XHTML Role Attribute XML Namespace Framework ::::::::::::::: --&gt;
+
+&lt;!-- 1. Declare a %XHTML-ROLE.prefixed; conditional section keyword, used
+        to activate namespace prefixing. The default value should
+        inherit '%NS.prefixed;' from the DTD driver, so that unless
+        overridden, the default behavior follows the overall DTD
+        prefixing scheme.
+--&gt;
+&lt;!ENTITY <span class="entity">% NS.prefixed</span> "IGNORE" &gt;
+&lt;!ENTITY <span class="entity">% XHTML-ROLE.prefixed</span> "%NS.prefixed;" &gt;
+
+&lt;!-- 2. Declare a parameter entity (eg., %XHTML-ROLE.xmlns;) containing
+        the URI reference used to identify the XHTML Role Attribute namespace
+--&gt;
+&lt;!ENTITY <span class="entity">% XHTML-ROLE.xmlns</span>  "http://www.w3.org/1999/xhtml" &gt;
+
+&lt;!-- 3. Declare parameter entities (eg., %XML.prefix;) containing
+        the default namespace prefix string(s) to use when prefixing
+        is enabled. This may be overridden in the DTD driver or the
+        internal subset of an document instance. If no default prefix
+        is desired, this may be declared as an empty string.
+
+     NOTE: As specified in [XMLNAMES], the namespace prefix serves
+     as a proxy for the URI reference, and is not in itself significant.
+--&gt;
+&lt;!ENTITY <span class="entity">% XHTML-ROLE.prefix</span>  "" &gt;
+
+&lt;!-- 4. Declare parameter entities (eg., %XHTML-ROLE.pfx;) containing the
+        colonized prefix(es) (eg., '%XHTML-ROLE.prefix;:') used when
+        prefixing is active, an empty string when it is not.
+--&gt;
+&lt;![%XHTML-ROLE.prefixed;[
+&lt;!ENTITY <span class="entity">% XHTML-ROLE.pfx</span>  "%XHTML-ROLE.prefix;:" &gt;
+]]&gt;
+&lt;!ENTITY <span class="entity">% XHTML-ROLE.pfx</span>  "" &gt;
+
+&lt;!-- declare qualified name extensions here ............ --&gt;
+&lt;!ENTITY <span class="entity">% xhtml-role-qname-extra.mod</span> "" &gt;
+%xhtml-role-qname-extra.mod;
+
+&lt;!-- 5. The parameter entity %XHTML-ROLE.xmlns.extra.attrib; may be
+        redeclared to contain any non-XHTML Role Attribute namespace
+        declaration attributes for namespaces embedded in XML. The default
+        is an empty string.  XLink should be included here if used
+        in the DTD.
+--&gt;
+&lt;!ENTITY <span class="entity">% XHTML-ROLE.xmlns.extra.attrib</span> "" &gt;
+
+
+&lt;!-- Section B: XML Qualified Names ::::::::::::::::::::::::::::: --&gt;
+
+&lt;!-- 6. This section declares parameter entities used to provide
+        namespace-qualified names for the XHTML role attribute.
+--&gt;
+
+&lt;!ENTITY <span class="entity">% xhtml-role.role.qname</span>  "%XHTML-ROLE.pfx;role" &gt;
+
+
+&lt;!-- The following defines a PE for use in the attribute sets of elements in
+     other namespaces that want to incorporate the XHTML role attribute. Note
+     that in this case the XHTML-ROLE.pfx should be defined. --&gt;
+
+&lt;!ENTITY <span class="entity">% xhtml-role.attrs.qname</span>
+   "%XHTML-ROLE.pfx;role             CDATA        #IMPLIED"
+    &gt;
+
+&lt;!-- end of xhtml-role-qname-1.mod --&gt;
+	</pre></div>
+        </section>
+    </section>
+
+    <section id="a_Schema_definition" typeof="bibo:Chapter" resource="#a_Schema_definition" rel="bibo:chapter">
+        <h3><span class="secno">A.2 </span>스키마 구현체</h3>
+
+				<p>
+					XTHML Role 속성 모듈의 스키마 구현체는 [<cite><a class="bibref" href="#bib-XHTML-MODULARIZATION11-2e">XHTML-MODULARIZATION11-2e</a></cite>]에서 정의하는 요구사항을 포함해야합니다.
+					여기 예제 구현체를 포함합니다.
+				</p>
+
+        <section typeof="bibo:Chapter" resource="#a_schema_attribs" rel="bibo:chapter" id="attributes-module">
+            <h4 id="a_schema_attribs"><span class="secno">A.2.1 </span>속성 모듈</h4>
+
+            <div><pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ elementFormDefault="qualified"
+ xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+&gt;
+    &lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/"
+               schemaLocation="xhtml-datatypes-1.xsd" /&gt;
+
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+      This is the XML Schema attribute module for XHTML Role
+      $Id: Overview.html,v 1.7 2013-03-28 15:13:26 cooper Exp $
+    &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="xhtml-copyright-1.xsd"/&gt;
+        &lt;xs:documentation source="http://www.w3.org/TR/role-attribute#A_role"/&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:attribute name="role" type="xh11d:TERMorURIorCURIEs"/&gt;
+&lt;/xs:schema&gt;
+</pre></div>
+
+        </section>
+
+    </section>
+</section>
+
+<section class="appendix" id="acknowledgements">
+
+    <!--OddPage-->
+    <h2><span class="secno">B. </span>감사의 말</h2>
+    <p>이 문서의 개발에 아래 사람들의 공헌이 있었습니다.</p>
+    <section id="ack_group" typeof="bibo:Chapter" resource="#ack_group" rel="bibo:chapter">
+        <h3><span class="secno">B.1 </span>Participants in the PFWG at the time of publication</h3>
+        <ol>
+            <li>David Bolter (Mozilla) </li>
+            <li>Sally Cain (Royal National Institute of Blind People (RNIB))</li>
+            <li>Alex Qiang Chen (University of Manchester)</li>
+            <li>Charles Chen (Google, Inc.)</li>
+            <li>Michael Cooper (<abbr title="World Wide Web Consortium"><abbr title="World Wide Web Consortium">W3C</abbr></abbr>/<abbr title="Massachusetts Institute of Technology"><abbr title="Massachusetts Institute of Technology">MIT</abbr></abbr>)</li>
+            <li>James Craig (Apple, Inc.) </li>
+            <li>Steve Faulkner (Invited Expert, The Paciello Group) </li>
+            <li>Geoff Freed (Invited Expert, NCAM)</li>
+            <li>Kentarou Fukuda (IBM)</li>
+            <li>Georgios Grigoriadis (SAP AG)</li>
+            <li>Jon Gunderson (Invited Expert, UIUC)</li>
+            <li>Markus Gylling (DAISY Consortium)</li>
+            <li>Sean Hayes (Microsoft Corporation)</li>
+            <li>Kenny Johar (Microsoft Corporation) </li>
+            <li>Shilpi Kapoor (BarrierBreak Technologies)</li>
+            <li>Matthew King (IBM Corporation)</li>
+            <li>Diego La Monica (International Webmasters Association / HTML Writers Guild (IWA-HWG))</li>
+            <li>Rajesh Lal (Nokia Corporation)</li>
+            <li>Gez Lemon (International Webmasters Association / HTML Writers Guild (IWA-HWG))</li>
+            <li>Anders Markussen (Opera Software)</li>
+            <li>Shane McCarron (Invited Expert, ApTest)</li>
+            <li>Charles McCathieNevile (Opera Software)</li>
+            <li>Mary Jo Mueller (IBM Corporation)</li>
+            <li>James Nurthen (Oracle Corporation) </li>
+            <li>Joshue O Connor (Invited Expert, NCBI Centre for Inclusive Technology) </li>
+            <li>Sarah Pulis (Media Access Australia)</li>
+            <li>T.V. Raman (Google, Inc.)</li>
+            <li>Janina Sajka (Invited Expert, The Linux Foundation)</li>
+            <li>Joseph Scheuhammer (Invited Expert, Inclusive Design Research Centre, OCAD University) </li>
+            <li>Stefan Schnabel (SAP AG) </li>
+            <li>Richard Schwerdtfeger (IBM Corporation)</li>
+            <li>Lisa Seeman (Invited Expert) </li>
+            <li>Cynthia Shelly (Microsoft Corporation) </li>
+            <li>Andi Snow-Weaver (IBM Corporation)</li>
+            <li>Gregg Vanderheiden (Invited Expert, Trace Research and Development Center)</li>
+            <li>Léonie Watson (Nomensa)</li>
+            <li>Gottfried Zimmermann (Invited Expert, Access Technologies Group)</li>
+        </ol>
+    </section>
+    <section id="ack_others" typeof="bibo:Chapter" resource="#ack_others" rel="bibo:chapter">
+        <h3><span class="secno">B.2 </span>Other previously active PFWG participants and contributors</h3>
+        <p> Jim Allan (TSB), Simon Bates, Chris Blouch (AOL), Judy Brewer (<abbr title="World Wide Web Consortium">W3C</abbr>/<abbr title="Massachusetts Institute of Technology">MIT</abbr>), Ben Caldwell (Trace), Charles Chen (Google, Inc.), Christian Cohrs, Dimitar Denev (Frauenhofer Gesellschaft), Donald Evans (AOL), Kentarou Fukuda (IBM Corporation), Becky Gibson (IBM), Alfred S. Gilman, Andres Gonzalez (Adobe Systems Inc.), Georgios Grigoriadis (SAP AG), Jeff Grimes (Oracle), Barbara Hartel, John Hrvatin (Microsoft Corporation), Masahiko Kaneko (Microsoft Corporation), Earl Johnson (Sun), Jael Kurz, Diego La Monica (International Webmasters Association / HTML Writers Guild (IWA-HWG)), Aaron Leventhal (IBM Corporation), Alex Li (SAP), Thomas Logan (HiSoftware), William Loughborough, Linda Mao (Microsoft), Anders Markussen (Opera Software), Matthew May (Adobe Systems Inc.), Artur Ortega (Yahoo!, Inc.), Lisa Pappas (Society for Technical Communication (STC)), Dave Pawson (RNIB), Stephen Pemberton (CWI), David Poehlman, Simon Pieters (Opera Software), T.V. Raman (Google, Inc.), Gregory Rosmaita, Tony Ross (Microsoft Corporation), Martin Schaus (SAP AG), Marc Silbey (Microsoft Corporation), Henri Sivonen (Mozilla), Henny Swan (Opera Software), Vitaly Sourikov, Mike Squillace (IBM), Ryan Williams (Oracle), Tom Wlodkowski.</p>
+    </section>
+    <section id="ack_funders" typeof="bibo:Chapter" resource="#ack_funders" rel="bibo:chapter">
+        <h3><span class="secno">B.3 </span>Enabling funders</h3>
+        <p>This publication has been funded in part with Federal funds from the U.S. Department of Education, National Institute on Disability and Rehabilitation Research (NIDRR) under contract number ED-OSE-10-C-0067. The content of this publication does not necessarily reflect the views or policies of the U.S. Department of Education, nor does mention of trade names, commercial products, or organizations imply endorsement by the U.S. Government.</p>
+    </section>
+</section>
+
+
+<section id="references" class="appendix" typeof="bibo:Chapter" resource="#references" rel="bibo:chapter">
+    <!--OddPage-->
+    <h2><span class="secno">C. </span>참고 문서</h2><section id="normative-references" typeof="bibo:Chapter" resource="#normative-references" rel="bibo:chapter"><h3><span class="secno">C.1 </span>표준 참고 문서</h3><dl class="bibliography" about=""><dt id="bib-RDFA-CORE">[RDFA-CORE]</dt><dd rel="dcterms:requires">Shane McCarron et al. <a href="http://www.w3.org/TR/2012/REC-rdfa-core-20120607/"><cite>RDFa Core 1.1: Syntax and processing rules for embedding RDF through attributes</cite></a>. 7 June 2012. W3C Recommendation. URL: <a href="http://www.w3.org/TR/2012/REC-rdfa-core-20120607/">http://www.w3.org/TR/2012/REC-rdfa-core-20120607/</a>
+</dd><dt id="bib-RFC2119">[RFC2119]</dt><dd rel="dcterms:requires">S. Bradner. <a href="http://www.ietf.org/rfc/rfc2119.txt"><cite>Key words for use in RFCs to Indicate Requirement Levels.</cite></a> March 1997. Internet RFC 2119.  URL: <a href="http://www.ietf.org/rfc/rfc2119.txt">http://www.ietf.org/rfc/rfc2119.txt</a>
+</dd><dt id="bib-XHTML-MODULARIZATION11-2e">[XHTML-MODULARIZATION11-2e]</dt><dd rel="dcterms:requires">Shane McCarron. <a href="http://www.w3.org/TR/2010/REC-xhtml-modularization-20100729"><cite>XHTML™ Modularization 1.1 Second Edition</cite></a>. 29 July 2010. W3C Recommendation. URL: <a href="http://www.w3.org/TR/2010/REC-xhtml-modularization-20100729">http://www.w3.org/TR/2010/REC-xhtml-modularization-20100729</a>
+</dd><dt id="bib-XHTML-VOCAB">[XHTML-VOCAB]</dt><dd rel="dcterms:requires">XHTML 2 Working Group. <a href="http://www.w3.org/1999/xhtml/vocab"><cite>XHTML Vocabulary</cite></a>. URL: <a href="http://www.w3.org/1999/xhtml/vocab">http://www.w3.org/1999/xhtml/vocab</a>
+</dd><dt id="bib-XML10">[XML10]</dt><dd rel="dcterms:requires">C. M. Sperberg-McQueen et al. <a href="http://www.w3.org/TR/2008/REC-xml-20081126/"><cite>Extensible Markup Language (XML) 1.0 (Fifth Edition)</cite></a>. 26 November 2008. W3C Recommendation. URL: <a href="http://www.w3.org/TR/2008/REC-xml-20081126/">http://www.w3.org/TR/2008/REC-xml-20081126/</a>
+</dd><dt id="bib-XML10-4e">[XML10-4e]</dt><dd rel="dcterms:requires">C. M. Sperberg-McQueen et al. <a href="http://www.w3.org/TR/2006/REC-xml-20060816/"><cite>Extensible Markup Language (XML) 1.0 (Fourth Edition)</cite></a>. 16 August 2006. W3C Recommendation. URL: <a href="http://www.w3.org/TR/2006/REC-xml-20060816/">http://www.w3.org/TR/2006/REC-xml-20060816/</a>
+</dd></dl></section><section id="informative-references" typeof="bibo:Chapter" resource="#informative-references" rel="bibo:chapter"><h3><span class="secno">C.2 </span>정보 참고 문서</h3><dl class="bibliography" about=""><dt id="bib-HTML5">[HTML5]</dt><dd rel="dcterms:references">Robin Berjon et al. <a href="http://www.w3.org/TR/html5/"><cite>HTML5</cite></a>. 17 December 2012. W3C Candidate Recommendation. URL: <a href="http://www.w3.org/TR/html5/">http://www.w3.org/TR/html5/</a>
+</dd><dt id="bib-WAI-ARIA">[WAI-ARIA]</dt><dd rel="dcterms:references">James Craig; Michael Cooper et al. <a href="http://www.w3.org/TR/2009/WD-wai-aria-20090224"><cite>Accessible Rich Internet Applications (WAI-ARIA) 1.0</cite></a>. 24 February 2009. W3C Working Draft. URL: <a href="http://www.w3.org/TR/2009/WD-wai-aria-20090224">http://www.w3.org/TR/2009/WD-wai-aria-20090224</a>
+</dd><dt id="bib-XML-NAMES11">[XML-NAMES11]</dt><dd rel="dcterms:references">Andrew Layman et al. <a href="http://www.w3.org/TR/2006/REC-xml-names11-20060816"><cite>Namespaces in XML 1.1 (Second Edition)</cite></a>. 16 August 2006. W3C Recommendation. URL: <a href="http://www.w3.org/TR/2006/REC-xml-names11-20060816">http://www.w3.org/TR/2006/REC-xml-names11-20060816</a>
+</dd></dl></section></section></body></html>
