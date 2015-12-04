@@ -4,6 +4,7 @@
 	<meta property="dc:language" content="en" lang="">
 	<title>진동 API (Vibration API)</title>
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<link rel="stylesheet" href="trans.css">
 	<style>
 /*****************************************************************
  * ReSpec 3 CSS
@@ -446,7 +447,20 @@ table.exceptions table {
     width:  100%;
 }
 </style><link href="https://www.w3.org/StyleSheets/TR/W3C-REC" rel="stylesheet"><!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]--></head>
-  <body id="respecDocument" role="document" class="h-entry"><div id="respecHeader" role="contentinfo" class="head">
+	<body id="respecDocument" role="document" class="h-entry">
+<div class="headernotes">
+	<p>
+		이 문서는 <a href="http://www.w3.org/TR/vibration/">Vibration API (W3C Recommendation 10 February 2015)</a>의 한국어 번역본입니다. <br>
+		이 문서에 오역 및 오타를 포함할 수 있습니다. 가능하면 원문도 확인하시길 바랍니다.
+	</p>
+	<dl class="meta">
+		<dt>공개일</dt>
+		<dd>2015-12-04</dd>
+		<dt>번역자:</dt>
+		<dd>조은 &lt;<a href="mailto:apes0123@gmail.com">apes0123@gmail.com</a>&gt;</dd>
+	</dl>
+</div>
+<div id="respecHeader" role="contentinfo" class="head">
   <p><a href="http://www.w3.org/"><img src="https://www.w3.org/Icons/w3c_home" alt="W3C" width="72" height="48"></a></p>
   <h1 class="title p-name" id="title" property="dcterms:title">진동 API (Vibration API)</h1>
   <h2 id="w3c-recommendation-10-february-2015"><time property="dcterms:issued" class="dt-published" datetime="2015-02-10">2015년 2월 10일</time> <abbr title="World Wide Web Consortium">W3C</abbr> 권고안</h2>
@@ -536,7 +550,7 @@ table.exceptions table {
 			<p>
 				이 문서는 <a id="w3c_process_revision" href="http://www.w3.org/2005/10/Process-20051014/">2005년 10월 14일 <abbr title="World Wide Web Consortium">W3C</abbr> 프로세스 문서</a>에 의해 관리됩니다.
 			</p>
-</section><section id="toc"><h2 resource="#h-toc" id="h-toc" class="introductory"><span property="xhv:role" resource="xhv:heading">Table of Contents</span></h2><ul id="respecContents" role="directory" class="toc"><li class="tocline"><a class="tocxref" href="#introduction"><span class="secno">1. </span>Introduction</a></li><li class="tocline"><a class="tocxref" href="#conformance"><span class="secno">2. </span>Conformance</a></li><li class="tocline"><a class="tocxref" href="#terminology"><span class="secno">3. </span>Terminology</a></li><li class="tocline"><a class="tocxref" href="#vibration-interface"><span class="secno">4. </span>Vibration Interface</a></li><li class="tocline"><a class="tocxref" href="#examples"><span class="secno">5. </span>Examples</a></li><li class="tocline"><a class="tocxref" href="#acknowledgements"><span class="secno">A. </span>Acknowledgements</a></li><li class="tocline"><a class="tocxref" href="#references"><span class="secno">B. </span>References</a><ul class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><span class="secno">B.1 </span>Normative references</a></li><li class="tocline"><a class="tocxref" href="#informative-references"><span class="secno">B.2 </span>Informative references</a></li></ul></li></ul></section>
+</section><section id="toc"><h2 resource="#h-toc" id="h-toc" class="introductory"><span property="xhv:role" resource="xhv:heading">목차</span></h2><ul id="respecContents" role="directory" class="toc"><li class="tocline"><a class="tocxref" href="#introduction"><span class="secno">1. </span>소개</a></li><li class="tocline"><a class="tocxref" href="#conformance"><span class="secno">2. </span>적합 요구사항</a></li><li class="tocline"><a class="tocxref" href="#terminology"><span class="secno">3. </span>용어</a></li><li class="tocline"><a class="tocxref" href="#vibration-interface"><span class="secno">4. </span>진동 인터페이스</a></li><li class="tocline"><a class="tocxref" href="#examples"><span class="secno">5. </span>예제</a></li><li class="tocline"><a class="tocxref" href="#acknowledgements"><span class="secno">A. </span>감사의 말</a></li><li class="tocline"><a class="tocxref" href="#references"><span class="secno">B. </span>참고 문서</a><ul class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><span class="secno">B.1 </span>표준 참고 문서</a></li><li class="tocline"><a class="tocxref" href="#informative-references"><span class="secno">B.2 </span>정보 참고 문서</a></li></ul></li></ul></section>
     <section property="bibo:hasPart" resource="#introduction" typeof="bibo:Chapter" id="introduction" class="informative">
       <!--OddPage--><h2 resource="#h-introduction" id="h-introduction"><span property="xhv:role" resource="xhv:heading"><span class="secno">1. </span>소개</span></h2><p><em>이 섹션은 표준에 준하지 않습니다.</em></p>
       <p>
@@ -594,8 +608,8 @@ table.exceptions table {
           <a href="https://dvcs.w3.org/hg/webperf/raw-file/tip/specs/PageVisibility/Overview.html#dom-document-hidden">
           hidden</a></code> 속성[<cite><a href="#bib-PAGE-VISIBILITY" class="bibref">PAGE-VISIBILITY</a></cite>]이 true라면, false를 반환하고 아래의 스텝을 제거합니다.
           <div class="note"><div id="h-note1" role="heading" aria-level="3" class="note-title"><span>노트</span></div><div class="">
-						오퍼레이팅 시스템의 기능에 밀접하게 접근하는 신뢰 가능한 (혹은 면제된) 어플리케이션은
-						어플리케이션이 전혀 보이지 않는 상태에서 디바이스에 진동을 주거나, 이전 스텝을 무시할 수 있습니다.
+          오퍼레이팅 시스템의 기능에 밀접하게 접근하는 신뢰 가능한 (혹은 면제된) 어플리케이션은
+          어플리케이션이 전혀 보이지 않는 상태에서 디바이스에 진동을 주거나, 이전 스텝을 무시할 수 있습니다.
           </div></div>
         </li>
         <li>
@@ -603,146 +617,116 @@ table.exceptions table {
         </li>
       </ol>
       <p>
-        To <dfn id="dfn-validate-and-normalize">validate and normalize</dfn> a vibration pattern given
-        <var>pattern</var>, run these steps:
+        <var>pattern</var>이 주어진 진동 패턴의 <dfn id="dfn-validate-and-normalize">밸리데이션 및 정상화</dfn>는
+        아래 단계로 동작시킵니다.
       </p>
       <ol>
         <li>
-          If <var>pattern</var> is a list, proceed to the next step.
-          Otherwise run the following substeps:
+          만약 <var>pattern</var>이 리스트라면 다음 단계로 넘어갑니다. 그 외의 경우 아래 서브스텝을 실행합니다.
           <ol>
             <li>
-              Let <var>list</var> be an initially empty list, and add
-              <var>pattern</var> to <var>list</var>.
+                <var>list</var>를 빈 목록으로 초기화한뒤, <var>list</var>에 <var>pattern</var>을 넣습니다
             </li>
             <li>
-              Set <var>pattern</var> to <var>list</var>.
+                <var>pattern</var>을 <var>list</var>로 설정합니다.
             </li>
           </ol>
         </li>
         <li>
-          Let <var>max length</var> be an implementation-dependent maximum
-          length of <var>pattern</var>.
-          <div class="note"><div id="h-note2" role="heading" aria-level="3" class="note-title"><span>Note</span></div><div class="">
-            If the length of a pattern is greater than max length an
-            implementation of this API could consider breaking the request
-            effectively into multiple shorter requests internally to achieve
-            the same effect, rather than ignoring what follows the max length.
-            There are cases, however, where it is appropriate to ignore the
-            pattern exceeding the max length. An example is if the length is so
-            long that it would effectively create a denial of service attack on
-            the user. A web application might also make multiple requests if it
-            is known to the application that the length is too long for some
-            implementations and a possible gap in between patterns is
-            acceptable.
+          <var>max length</var>를 구현체에 의존한 <var>pattern</var>의 최대값으로 지정합니다.
+          <div class="note"><div id="h-note2" role="heading" aria-level="3" class="note-title"><span>노트</span></div><div class="">
+						만약 패턴의 길이가 이 API 구현체 최대 길이보다 크다면,
+						최대 길이를 넘어 무시하기보다는, 같은 효과를 내부적으로 달성하기 위해 여러 짧은 요청으로 효율적으로 요청을 나누는 걸 고려해야합니다.
+						여러 케이스가 있을 수 있으며, 최대 길이를 초과한 패턴을 거부하는 게 적절할 수도 있습니다.
+						예제는 만약 길이가 너무 길어 유저에게 효과적으로 서비스 어택 거부를 생성할 수도 있는 예제입니다.
+						웹 어플리케이션은 패턴 사이의 허용할 수 있는 갭이나 몇몇 구현체에서 길이가 너무 긴 경우 여러개의 요청으로 나누는 걸 허용할 수 있습니다.
           </div></div>
         </li>
         <li>
-          If the length of <var>pattern</var> is greater than
-          <var>max length</var>, truncate <var>pattern</var>, leaving only
-          the first <var>max length</var> entries.
-          <div class="note"><div id="h-note3" role="heading" aria-level="3" class="note-title"><span>Note</span></div><div class="" id="remove-last-entry">
-            If the length of the <var>pattern</var> is even and not zero then
-            the last entry in the pattern will have no effect so an
-            implementation can remove it from the <var>pattern</var> at this point.
+					만약 <var>pattern</var>의 길이가 <var>max length</var>보다 길다면,
+					<var>pattern</var>을 절단하고, 첫번째 <var>max length</var> 엔트리만 남겨둡니다.
+          <div class="note"><div id="h-note3" role="heading" aria-level="3" class="note-title"><span>노트</span></div><div class="" id="remove-last-entry">
+						<var>pattern</var>의 길이가 짝수이며 0이 아니라면 패턴 내 마지막 엔트리는 효력이 없으며 구현체가 이 포인트에서 <var>pattern</var>에서 지울 수 있습니다.
           </div></div>
         </li>
         <li>
-          Let <var>max duration</var> be an implementation-dependent maximum
-          duration for a single vibration entry in a <var>pattern</var>.
+					<var>pattern</var> 내 단일 진동 엔트리를 위해 구현체 의존 최대 길이를 <var>max-duration</var>에 지정합니다.
         </li>
         <li>
-          For each entry in <var>pattern</var> whose value is greater than
-          <var>max duration</var>, set the entry's value to
-          <var>max duration</var>.
+					<var>max duration</var>보다 큰 <var>pattern</var> 내 각 엔트리 값을 위해,
+					엔트리 값을 <var>max duration</var>으로 설정합니다.
         </li>
         <li>
-          Return <var>pattern</var>.
+          <var>pattern</var>을 반환합니다.
         </li>
       </ol>
       <p>
-        To <dfn id="dfn-perform-vibration">perform vibration</dfn> using <var>pattern</var>, run these
-        steps:
+        <var>pattern</var>을 사용하는 <dfn id="dfn-perform-vibration">perform vibration</dfn>은, 아래 스텝을 밟습니다:
       </p>
       <ol>
         <li>
-          An implementation <em title="MAY" class="rfc2119">MAY</em> return false and terminate these steps.
-          <div class="note"><div id="h-note4" role="heading" aria-level="3" class="note-title"><span>Note</span></div><div class="">
-            For example, an implementation might abort the
-            algorithm because the user has set a preference indicating that
-            pages at a given origin should never be able to vibrate the device,
-            or an implementation might cap the total amount of time a page may
-            cause the device to vibrate and reject requests in excess of this
-            limit.
+					구현체는 false를 반환하고 이 스텝을 끝낼 수도 있습니다.	[<em title="MAY" class="rfc2119">MAY</em>]
+          <div class="note"><div id="h-note4" role="heading" aria-level="3" class="note-title"><span>노트</span></div><div class="">
+						예를 들어, 구현체에서 유저가 기기상 진동을 허용하지 않은 origin에서 페이지를 나타내는 경우 취소할 수 있으며,
+						구현체에서 제한을 지난 요청을 거부하고 디바이스에서 진동 페이지 시간 총량이 마무리 지어질 수도 있습니다.
           </div></div>
         </li>
         <li>
-          If another instance of the <a class="internalDFN" href="#dfn-perform-vibration">perform vibration</a> algorithm is
-          already running, run the following substeps:
+					<a class="internalDFN" href="#dfn-perform-vibration">perform vibration</a> 알고리즘의 다른 인스턴스가 이미 동작하고 있는 경우, 아래 서브스텝을 작동합니다.
           <ol>
             <li>
-              Abort that other instance of the <a class="internalDFN" href="#dfn-perform-vibration">perform vibration</a>
-              algorithm, if any.
+							존재한다면, <a class="internalDFN" href="#dfn-perform-vibration">perform vibration</a> 알고리즘의 다른 인스턴스를 취소합니다.
             </li>
             <li>
-              If <var>pattern</var> is an empty list, contains a single entry
-              with a value of 0, or if the device is unable to vibrate, then
-              return true and terminate these steps.
+							만약 <var>pattern</var>이 빈 목록이라면, 0 값 싱글 엔트리를 포함하거나,
+							디바이스가 진동을 사용할 수 있다면, true를 반환하고 이 스텝을 제거합니다.
             </li>
           </ol>
         </li><li>
-          Return true, and then continue running these steps asynchronously.
+          true를 반환하고, 이 스텝을 비동기적으로 계속해서 동작합니다.
         </li>
         <li>
-          For each <var>time</var> in <var>pattern</var>, run the following
-          substeps:
+					<var>pattern</var> 내 각 <var>time</var>은, 아래 서브스텝대로 동작합니다.
           <ol>
             <li>
-              If the index of <var>time</var> is even (the first entry has
-              index 0), vibrate the device for <var>time</var> milliseconds.
+							만약 <var>time</var>의 인덱스가 짝수라면 (첫번째 엔트리 인덱스는 0입니다), <var>time</var> 밀리세컨드동안 기기를 진동시킵니다.
             </li>
             <li>
-              Otherwise wait for <var>time</var> milliseconds.
+							그 외의 경우 <var>time</var> 밀리세컨드동안 기다립니다.
             </li>
           </ol>
         </li>
       </ol>
       <p>
-        When the
-        <code><a href="https://dvcs.w3.org/hg/webperf/raw-file/tip/specs/PageVisibility/Overview.html#sec-visibilitychange-event">
-        visibilitychange</a></code> event [<cite><a href="#bib-PAGE-VISIBILITY" class="bibref">PAGE-VISIBILITY</a></cite>] is dispatched at
-        the <code>Document</code> in a <a class="internalDFN" href="#dfn-browsing-context">browsing context</a>, the
-        <a class="product-ua" href="#ua">user agent</a> <em title="MUST" class="rfc2119">MUST</em> abort the
-        already running <a class="internalDFN" href="#dfn-processing-vibration-patterns">processing vibration patterns</a> algorithm, if any.
+				<a class="internalDFN" href="#dfn-browsing-context">browsing context</a> 내 <code>Document</code>에서 <code><a href="https://dvcs.w3.org/hg/webperf/raw-file/tip/specs/PageVisibility/Overview.html#sec-visibilitychange-event">visibilitychange</a></code> 이벤트 [<cite><a href="#bib-PAGE-VISIBILITY" class="bibref">PAGE-VISIBILITY</a></cite>]가 포착되었을 때, <a class="product-ua" href="#ua">유저 에이전트</a>는 반드시 이미 동작하고 있는 <a class="internalDFN" href="#dfn-processing-vibration-patterns">진동 패턴 처리</a>를 취소해야합니다. [<em title="MUST" class="rfc2119">MUST</em>]
       </p>
     </section>
 
     <section property="bibo:hasPart" resource="#examples" typeof="bibo:Chapter" id="examples" class="informative">
-      <!--OddPage--><h2 resource="#h-examples" id="h-examples"><span property="xhv:role" resource="xhv:heading"><span class="secno">5. </span>Examples</span></h2><p><em>This section is non-normative.</em></p>
+      <!--OddPage--><h2 resource="#h-examples" id="h-examples"><span property="xhv:role" resource="xhv:heading"><span class="secno">5. </span>예제</span></h2><p><em>이 섹션은 표준에 준하지 않습니다</em></p>
       <p>
-        In the following example the device will vibrate for 1000 milliseconds (ms):
-      </p><div class="example"><div class="example-title"><span>Example 1</span></div><pre style="" class="example highlight prettyprint prettyprinted"><span class="com">// vibrate for 1000 ms</span><span class="pln">
+				다음 예제에서 디바이스는 1000 밀리세컨드 (ms)동안 진동합니다:
+      </p><div class="example"><div class="example-title"><span>예제 1</span></div><pre style="" class="example highlight prettyprint prettyprinted"><span class="com">// vibrate for 1000 ms</span><span class="pln">
 navigator</span><span class="pun">.</span><span class="pln">vibrate</span><span class="pun">(</span><span class="lit">1000</span><span class="pun">);</span><span class="pln">
 
 </span><span class="com">// or alternatively</span><span class="pln">
 navigator</span><span class="pun">.</span><span class="pln">vibrate</span><span class="pun">([</span><span class="lit">1000</span><span class="pun">]);</span></pre></div>
       <p>
-        In the following example the pattern will cause the device to vibrate
-        for 50 ms, be still for 100 ms, and then vibrate for 150 ms:
+				아래 예제에서 기기 패턴 진동은 50ms, 100ms, 150ms에서 진동하게 됩니다.
       </p>
-      <div class="example"><div class="example-title"><span>Example 2</span></div><pre style="" class="example highlight prettyprint prettyprinted"><span class="pln">navigator</span><span class="pun">.</span><span class="pln">vibrate</span><span class="pun">([</span><span class="lit">50</span><span class="pun">,</span><span class="pln"> </span><span class="lit">100</span><span class="pun">,</span><span class="pln"> </span><span class="lit">150</span><span class="pun">]);</span></pre></div>
+      <div class="example"><div class="example-title"><span>예제 2</span></div><pre style="" class="example highlight prettyprint prettyprinted"><span class="pln">navigator</span><span class="pun">.</span><span class="pln">vibrate</span><span class="pun">([</span><span class="lit">50</span><span class="pun">,</span><span class="pln"> </span><span class="lit">100</span><span class="pun">,</span><span class="pln"> </span><span class="lit">150</span><span class="pun">]);</span></pre></div>
       <p>
         </p><p>
-          The following example cancels any existing vibrations:
+					아래 예제에서는 기존에 존재하는 진동을 취소시킵니다
         </p>
-        <div class="example"><div class="example-title"><span>Example 3</span></div><pre style="" class="example highlight prettyprint prettyprinted"><span class="com">// cancel any existing vibrations</span><span class="pln">
+        <div class="example"><div class="example-title"><span>예제 3</span></div><pre style="" class="example highlight prettyprint prettyprinted"><span class="com">// cancel any existing vibrations</span><span class="pln">
 navigator</span><span class="pun">.</span><span class="pln">vibrate</span><span class="pun">(</span><span class="lit">0</span><span class="pun">);</span><span class="pln">
 
 </span><span class="com">// or alternatively</span><span class="pln">
 navigator</span><span class="pun">.</span><span class="pln">vibrate</span><span class="pun">([]);</span></pre></div>
     </section>
     <section property="bibo:hasPart" resource="#acknowledgements" typeof="bibo:Chapter" id="acknowledgements" class="appendix">
-      <!--OddPage--><h2 resource="#h-acknowledgements" id="h-acknowledgements"><span property="xhv:role" resource="xhv:heading"><span class="secno">A. </span>Acknowledgements</span></h2>
+      <!--OddPage--><h2 resource="#h-acknowledgements" id="h-acknowledgements"><span property="xhv:role" resource="xhv:heading"><span class="secno">A. </span>감사의 말</span></h2>
       <p>
         The group is deeply indebted to Justin Lebar, Mounir Lamouri, Jonas
         Sicking, and the Mozilla WebAPI team for their contributions, and for
@@ -753,10 +737,10 @@ navigator</span><span class="pun">.</span><span class="pln">vibrate</span><span 
     </section>
   
 
-<section property="bibo:hasPart" resource="#references" typeof="bibo:Chapter" id="references" class="appendix"><!--OddPage--><h2 resource="#h-references" id="h-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">B. </span>References</span></h2><section property="bibo:hasPart" resource="#normative-references" typeof="bibo:Chapter" id="normative-references"><h3 resource="#h-normative-references" id="h-normative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">B.1 </span>Normative references</span></h3><dl resource="" class="bibliography"><dt id="bib-HTML5">[HTML5]</dt><dd>Ian Hickson; Robin Berjon; Steve Faulkner; Travis Leithead; Erika Doyle Navara; Edward O'Connor; Silvia Pfeiffer. <a property="dc:requires" href="http://www.w3.org/TR/html5/"><cite>HTML5</cite></a>. 28 October 2014. W3C Recommendation. URL: <a property="dc:requires" href="http://www.w3.org/TR/html5/">http://www.w3.org/TR/html5/</a>
+<section property="bibo:hasPart" resource="#references" typeof="bibo:Chapter" id="references" class="appendix"><!--OddPage--><h2 resource="#h-references" id="h-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">B. </span>참고 문서</span></h2><section property="bibo:hasPart" resource="#normative-references" typeof="bibo:Chapter" id="normative-references"><h3 resource="#h-normative-references" id="h-normative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">B.1 </span>표준 참고문서</span></h3><dl resource="" class="bibliography"><dt id="bib-HTML5">[HTML5]</dt><dd>Ian Hickson; Robin Berjon; Steve Faulkner; Travis Leithead; Erika Doyle Navara; Edward O'Connor; Silvia Pfeiffer. <a property="dc:requires" href="http://www.w3.org/TR/html5/"><cite>HTML5</cite></a>. 28 October 2014. W3C Recommendation. URL: <a property="dc:requires" href="http://www.w3.org/TR/html5/">http://www.w3.org/TR/html5/</a>
 </dd><dt id="bib-PAGE-VISIBILITY">[PAGE-VISIBILITY]</dt><dd>Jatinder Mann; Arvind Jain. <a property="dc:requires" href="http://www.w3.org/TR/page-visibility/"><cite>Page Visibility (Second Edition)</cite></a>. 29 October 2013. W3C Recommendation. URL: <a property="dc:requires" href="http://www.w3.org/TR/page-visibility/">http://www.w3.org/TR/page-visibility/</a>
 </dd><dt id="bib-RFC2119">[RFC2119]</dt><dd>S. Bradner. <a property="dc:requires" href="https://tools.ietf.org/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a property="dc:requires" href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a>
 </dd><dt id="bib-WEBIDL">[WEBIDL]</dt><dd>Cameron McCormack. <a property="dc:requires" href="http://www.w3.org/TR/WebIDL/"><cite>Web IDL</cite></a>. 19 April 2012. W3C Candidate Recommendation. URL: <a property="dc:requires" href="http://www.w3.org/TR/WebIDL/">http://www.w3.org/TR/WebIDL/</a>
-</dd></dl></section><section property="bibo:hasPart" resource="#informative-references" typeof="bibo:Chapter" id="informative-references"><h3 resource="#h-informative-references" id="h-informative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">B.2 </span>Informative references</span></h3><dl resource="" class="bibliography"><dt id="bib-NOTIFICATIONS">[NOTIFICATIONS]</dt><dd>Anne van Kesteren. <a property="dc:references" href="https://notifications.spec.whatwg.org/"><cite>Notifications API</cite></a>. Living Standard. URL: <a property="dc:references" href="https://notifications.spec.whatwg.org/">https://notifications.spec.whatwg.org/</a>
+</dd></dl></section><section property="bibo:hasPart" resource="#informative-references" typeof="bibo:Chapter" id="informative-references"><h3 resource="#h-informative-references" id="h-informative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">B.2 </span>정보 참고문서</span></h3><dl resource="" class="bibliography"><dt id="bib-NOTIFICATIONS">[NOTIFICATIONS]</dt><dd>Anne van Kesteren. <a property="dc:references" href="https://notifications.spec.whatwg.org/"><cite>Notifications API</cite></a>. Living Standard. URL: <a property="dc:references" href="https://notifications.spec.whatwg.org/">https://notifications.spec.whatwg.org/</a>
 </dd></dl></section></section></body></html>
 
