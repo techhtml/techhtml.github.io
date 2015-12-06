@@ -181,8 +181,8 @@ DOM4에서는 <a href='http://www.w3.org/TR/uievents/#legacy-mutationevent-event
  <li><a class="no-num" href="#goals">목적</a></li>
  <li><a href="#conformance"><span class="secno">1 </span>적합 요구사항</a>
   <ol>
-   <li><a href="#dependencies"><span class="secno">1.1 </span>Dependencies</a></li>
-   <li><a href="#extensibility"><span class="secno">1.2 </span>Extensibility</a></ol></li>
+   <li><a href="#dependencies"><span class="secno">1.1 </span>의존성</a></li>
+   <li><a href="#extensibility"><span class="secno">1.2 </span>확장성</a></ol></li>
  <li><a href="#terminology"><span class="secno">2 </span>Terminology</a>
   <ol>
    <li><a href="#trees"><span class="secno">2.1 </span>Trees</a></li>
@@ -293,41 +293,27 @@ DOM4에서는 <a href='http://www.w3.org/TR/uievents/#legacy-mutationevent-event
     가독성을 위해, 이 스펙문서에서 이 키워드들을 모두 대문자로 표기하지는 않습니다.</p>
 <p>알고리즘 중 명령적 표현에 따른 요건(예를 들면: "선두 공백문자열 제거", "false를 반환하여 이 절차를 완료" 등)
     은 알고리즘을 도입할 때 사용할 수 있는 키워드("must", "should", "may", etc)의 의미로 해석합니다.</p>
-<p>알고리즘 또는 특정 스텝으로 기록하는 적합성 요구사항은 최종 결과가 같은 값인 경우,
-    어떤 방식으로 구현해도 상관 없습니다.
+<p>알고리즘 또는 특정 스텝으로 기록하는 적합성 요구사항은 최종 결과가 같은 값인 경우, 어떤 방식으로 구현해도 상관 없습니다.
     (특히, 이 스펙 문서에서 정의하는 알고리즘은 쫓기 쉽도록 기술되어 있어, 성능을 고려하지 않습니다)</p>
 <p id="hardwareLimitations">유저 에이전트는 구현체에 자유로운 입력에 서비스 어택의 부정 방해, 메모리의 아웃 러닝 반복 방어, 혹은 플랫폼 종속적인 제한 차선책을 위해 정의한 리미트를 부과할 수도 있습니다.
-<p>When a method or an attribute is said to call another method or attribute, the user agent must invoke its internal API for that attribute or method so that e.g. the author can't change the behavior by overriding attributes or methods with custom properties or functions in JavaScript.
+<p>
+메서드나 속성이 다른 메서나를 호출하거나 속성을 불러올 때, 유저 에이전트는 속성이나 메서드를 위한 내부 API를 내세워야만 합니다.
+예를 들면, 작성자가 자바스크립트 내에서 커스텀 속성이나 함수와 함께 속성이나 메서드를 오버라이딩하는 동작이 변하지 않게 할 수 있습니다.
+<p>다른 일정한게 없다면, 문자열의 비교는 <a href="#case-sensitive">대소문자를 구분해</a> 비교합니다.
 
-<p>Unless otherwise stated, string comparisons are done in a <a href="#case-sensitive">case-sensitive</a> manner.
+<h3 id="dependencies"><span class="secno">1.1 </span>의존성</h3>
+<p>이 스펙문서 내 IDL 프래그먼트는 웹 IDL 스펙문서에서 소개하는 IDL 프래그먼트 부합을 위한 요구사항에 의해 핵석되어야합니다. <a href="#biblio-WEBIDL">[WEBIDL]</a>
+<p>이 스펙문서에서 사용하는 용어 중 일부는
+<cite>Encoding</cite>, <cite>Selectors</cite>, <cite>Web IDL</cite>, <cite>XML</cite>, <cite>Namespaces in XML</cite>에서 정의합니다.
+<a href="#biblio-ENCODING">[ENCODING]</a> <a href="#biblio-SELECTORS">[SELECTORS]</a> <a href="#biblio-WEBIDL">[WEBIDL]</a> <a href="#biblio-XML">[XML]</a> <a href="#biblio-XMLNS">[XMLNS]</a>
+<h3 id="extensibility"><span class="secno">1.2 </span>확장성</h3>
+<p>이 스펙 문서에 관련한 벤더 고유의 확장은 권장하지 않습니다.
+유저 베이스의 프래그먼트와 상호운용성을 제거하며 유저가 문제 콘텐츠에 접근하기 위해 특정한 유저에이전트를 사용해야하기 위해,
+이런 확장은 사용하지 않는게 바름직합니다.
+<p>확장이 필요할 때, DOM 표준에 따라 갱신이 되거나,
+새로운 표준을 적용하여 <dfn data-dfn-type="dfn" data-export="" data-lt="other applicable specifications" id="other-applicable-specifications">적절한 스펙문서<a class="self-link" href="#other-applicable-specifications"></a></dfn>에서 제공하는 확장 훅에 표준이 기록될 수도 있습니다.</p>
 
-<h3 id="dependencies"><span class="secno">1.1 </span>Dependencies</h3>
-
-<p>The IDL fragments in this specification must be interpreted as
-required for conforming IDL fragments, as described in the Web IDL
-specification. <a href="#biblio-WEBIDL">[WEBIDL]</a>
-
-<p>Some of the terms used in this specification are defined in
-<cite>Encoding</cite>, <cite>Selectors</cite>, <cite>Web IDL</cite>, <cite>XML</cite>, and
-<cite>Namespaces in XML</cite>.
-<a href="#biblio-ENCODING">[ENCODING]</a>
-<a href="#biblio-SELECTORS">[SELECTORS]</a>
-<a href="#biblio-WEBIDL">[WEBIDL]</a>
-<a href="#biblio-XML">[XML]</a>
-<a href="#biblio-XMLNS">[XMLNS]</a>
-
-<h3 id="extensibility"><span class="secno">1.2 </span>Extensibility</h3>
-
-<p>Vendor-specific proprietary extensions to this specification are
-strongly discouraged. Authors must not use such extensions, as
-doing so reduces interoperability and fragments the user base,
-allowing only users of specific user agents to access the content in
-question.
-
-<p>When extensions are needed, the DOM Standard can be updated accordingly, or a new standard
-can be written that hooks into the provided extensibility hooks for <dfn data-dfn-type="dfn" data-export="" data-lt="other applicable specifications" id="other-applicable-specifications">applicable specifications<a class="self-link" href="#other-applicable-specifications"></a></dfn>.</p>
-
-<h2 id="terminology"><span class="secno">2 </span>Terminology</h2>
+<h2 id="terminology"><span class="secno">2 </span>용어</h2>
 
 <p>The term <dfn id="context-object">context object</dfn> means the object on which the algorithm,
 attribute getter, attribute setter, or method being discussed was called. When the
