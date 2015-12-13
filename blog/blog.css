@@ -1,0 +1,16 @@
+body {
+	font-size:16px;
+}
+article {
+	max-width:960px;
+	margin:0 auto;
+	font-size:1.1em;
+	line-height:1.8em;
+	font-family:"HelveticaNEUE-LIGHT","APPLESDGothicNEO-LIGHT", sans-serif;
+}
+blockquote {
+	margin-left:1em;
+	padding-left:1em;
+	border-left:1px solid #555;
+	color:#555
+}
