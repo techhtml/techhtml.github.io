@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>FastShop</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+	<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Josefin+Sans:300' rel='stylesheet' type='text/css'>
+	
+	<script src="/lib/jquery/dist/jquery.js"></script>
+	<script src="/js/main.min.js"></script>
+	
+</head>
+<body>
+	<header id="globalHeader" class="clearbox">
+		<div class="container">
+			<div class="header-bar">
+				<form action="/browse/all" class="search">
+					<input type="search" name="q" placeholder="Search..." value="">
+					<button type="submit"><i class="fa fa-search"></i></button>
+				</form>
+			</div>
+			<ul class="links">
+				
+				<li><a href="/login">로그인</a></li>
+				<li><a href="/signup">회원가입</a></li>
+				<li><a href="/faq">고객센터</a><ul>
+					<li><a href="/faq">자주묻는질문</a></li>
+					<li><a href="/">1:1 문의하기</a></li>
+					<li><a href="/refund">환불안내</a></li>
+				</ul></li>
+				<li class="cart"><a href="/cart"><i class="fa fa-shopping-cart"></i> 장바구니 <em class="count">0</em></a>
+					<div class="items">
+						<ul>
+							<li><a href="#"><img src="/img/blank.gif"> <strong>상품이름</strong><small>색상, 사이즈</small></a></li>
+						</ul>
+						<a href="/cart">Go to Cart</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</header>
+	<main id="main">
+		<div class="container">
+			<h1 class="logo"><a href="/"><img src="img/logo.png"></a></h1>
+			<div class="menubar clearbox">
+				<ul>
+					<li><a href="/browse/all">What's new</a></li>
+					<li><a href="/browse/clothing">Clothing</a><ul class="submenu"><li><a href="/browse/dresses">Dresses</a></li><li><a href="/browse/jackets_coats">Jackets / Coats</a></li><li><a href="/browse/jeans">Jeans</a></li><li><a href="/browse/lingerie">Lingerie</a></li><li><a href="/browse/shorts">Shorts</a></li><li><a href="/browse/skirts">Skirts</a></li></ul></li>
+					<li><a href="/browse/shoes">Shoes</a><ul class="submenu"><li><a href="/browse/boots">Boots</a></li><li><a href="/browse/flats">Flats</a></li><li><a href="/browse/sandals">Sandals</a></li><li><a href="/browse/sneakers">Sneakers</a></li></ul></li>
+					<li><a href="/browse/bags">Bags</a><ul class="submenu"><li><a href="/browse/baby_bags">Baby Bags</a></li><li><a href="/browse/backpacks">Backpacks</a></li><li><a href="/browse/clutches">Clutches</a></li><li><a href="/browse/luggage">Luggage</a></li><li><a href="/browse/totes">Totes</a></li></ul></li>
+					<li><a href="/browse/accessories">Accessories</a><ul class="submenu"><li><a href="/browse/jewelry">Jewelry</a></li><li><a href="/browse/belts">Belts</a></li><li><a href="/browse/gloves">Gloves</a></li><li><a href="/browse/hats">Hats</a></li><li><a href="/browse/travel">Travel</a></li><li><a href="/browse/watches">Watches</a></li></ul></li>
+					<li><a href="/browse/all?sale=true">Sale</a><ul class="submenu"><li><a href="/browse/clothing?sale=true">Clothing</a><li><a href="/browse/shoes?sale=true">Shoes</a><li><a href="/browse/bags?sale=true">Bags</a><li><a href="/browse/accessories?sale=true">Accessories</a></ul></li>
+				</ul>
+			</div>
+			<div id="content" class="">
+			<div class="carousel">
+	<a href="#prev" class="prev" title="이전 슬라이드"><i class="fa fa-arrow-circle-left"></i></a>
+	<a href="#next" class="next" title="다음 슬라이드"><i class="fa fa-arrow-circle-right"></i></a>
+	<ul>
+		<li><a href="#1" style="background-image:url(img/carousel_1.jpg)"></a></li>
+		<li><a href="#2" style="background-image:url(img/carousel_2.jpg)"></a></li>
+		<li><a href="#3" style="background-image:url(img/carousel_3.jpg)"></a></li>
+		<li><a href="#4" style="background-image:url(img/carousel_4.jpg)"></a></li>
+	</ul>
+</div>
+<div class="items clearbox">
+	<h2>Weekly Most Wanted</h2>
+	<ul>
+		<li><a href="#" style="background-image:url(img/weekly_1.jpg)"><p>Our Best Jumpsuits<small>Shop Now <i class="fa fa-angle-right"></i></small></p></a></li>
+		<li><a href="#" style="background-image:url(img/weekly_2.jpg)"><p>Stylish. Warm. Done.<small>Top Selling Winter Coats <i class="fa fa-angle-right"></i></small></p></a></li>
+		<li><a href="#" style="background-image:url(img/weekly_3.jpg)"><p>Black &amp; White Vision<small>Our Fashion Director's Faves <i class="fa fa-angle-right"></i></small></p></a></li>
+	</ul>
+</div>
+<div class="items">
+	<h2>New Arrivals</h2>
+	<ul>
+	</ul>
+</div>
+
+			</div>
+		</div>
+	</main>
+	<footer id="globalFooter" class="clearbox">
+		<div class="container">
+			<img src="img/logo_small.png" class="logo">
+			<section>
+				<h3>Information</h3>
+				<ul>
+					<li><a href="#">회사소개</a></li>
+					<li><a href="#">인재채용</a></li>
+					<li><a href="#">제휴문의</a></li>
+					<li><a href="#">환불 및 교환</a></li>
+				</ul>
+			</section>
+			<section>
+				<h3>Privacy</h3>
+				<ul>
+					<li><a href="#">개인정보 취급방침</a></li>
+					<li><a href="#">이메일 무단수집거부</a></li>
+					<li><a href="#">청보년 보호 정책</a></li>
+				</ul>
+			</section>
+			<section>
+				<h3>Browse Shop</h3>
+				<ul>
+					<li><a href="/browse/clothing">Clothing</a></li>
+					<li><a href="/browse/shoes">Shoes</a></li>
+					<li><a href="/browse/bags">Bags</a></li>
+					<li><a href="/browse/accessories">Accessories</a></li>
+					<li><a href="/browse/all?sale=true">Sale</a></li>
+				</ul>
+			</section>
+			<section class="connect">
+				<h3>Stay Connect</h3>
+				<ul>
+					<li><a href="#"><i class="fa fa-facebook-square"></i> 페이스북</a></li>
+					<li><a href="#"><i class="fa fa-twitter-square"></i> 트위터</a></li>
+					<li><a href="#"><i class="fa fa-instagram"></i> 인스타그램</a></li>
+					<li><a href="#"><i class="fa fa-pinterest-square"></i> 핀터레스트</a></li>
+				</ul>
+			</section>
+			<address>&copy;Copyright 2014 Fast Shop. All Rights Reserved.</address>
+		</div>
+	</footer>
+</body>
+</html>
