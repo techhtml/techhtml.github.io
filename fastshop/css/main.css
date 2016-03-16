@@ -6,9 +6,6 @@ body {
   padding: 0;
   margin: 0;
 }
-.Montserrat {
-  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
-}
 a {
   color: inherit;
   text-decoration: none;
@@ -229,6 +226,7 @@ a {
   color: #fff;
 }
 #main {
+  display: block;
   background: #fff;
   padding: 40px 0;
 }
