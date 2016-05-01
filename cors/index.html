@@ -24,8 +24,19 @@
         hr:not(.top) { display:block; background:none; border:none; padding:0; margin:2em 0; height:auto }
     </style>
     <link href="http://www.w3.org/StyleSheets/TR/W3C-REC" rel="stylesheet">
+    <link href="trans.css" rel="stylesheet">
 </head>
 <body>
+<div class="headernotes">
+    <p>이 문서는 <a href="https://www.w3.org/TR/cors/">Cross-Origin Resource Sharing</a>의 한국어 번역 문서입니다.<br>
+       번역을 진행 중이며 2016년 5월 15일까지는 완료 예정입니다.<br>
+       번역으로 인한 오류가 존재할 수 있기 때문에 반드시 원문도 확인하시길 바랍니다.
+    </p>
+    <dl class="meta">
+        <dt>번역자:</dt>
+        <dd>조은 &lt;<a href="mailto:apes0123@gmail.com">apes0123@gmail.com</a>&gt;</dd>
+    </dl>
+</div>
 <div class="head">
     <!--begin-logo-->
     <p><a href="http://www.w3.org/"><img alt="W3C" height="48" src="http://www.w3.org/Icons/w3c_home" width="72"></a></p>
@@ -60,6 +71,7 @@
     <p>
         이 스펙 문서의 표준은 영문 버전만 존재합니다.
         표준이 아닌 <a href="http://www.w3.org/Consortium/Translation/">번역본</a>이 존재할 수도 있습니다.
+        <span class="transnote">이 번역본은 한국어 번역본 입니다</span>
     </p>
     <div class="w3conly">
         <!--begin-copyright-->
@@ -81,46 +93,47 @@
     </p>
 
     <h2 class="no-num no-toc" id="sotd">이 문서의 상태</h2>
+    <p><em>
+        이 섹션은 이 문서를 공개했을 때 상태에 대해 설명합니다.
+        다른 문서가 이 문서를 덮어쓸 가능성이 있으니 주의하시길 바랍니다.
+        이 문서 및 W3C에서 공개한 다른 문서의 최신 버전은 <a href="http://www.w3.org/TR/">W3C technical reports index</a> at http://www.w3.org/TR/에서 확인 가능합니다.
+    </em></p>
 
-    <!-- todo: 다른 문서에서 따와야 하는 내용 -->
-    <p><em>This section describes the status of this document at the time of
-        its publication. Other documents may supersede this document. A list of
-        current W3C publications and the latest revision of this technical report
-        can be found in the
-        <a href="http://www.w3.org/TR/">W3C technical reports index</a> at
-        http://www.w3.org/TR/.</em></p>
+    <p>이 문서는 <abbr title="World Wide Web Consortium">W3C</abbr> 멤버, 소프트웨어 개발자, 그리고 다른 <abbr title="World Wide Web Consortium">W3C</abbr> 그룹 및 관계자들이 평가를 진행하여, 디렉터에 의해 <abbr title="World Wide Web Consortium">W3C</abbr> 권고안으로 발표했습니다.
+        이 문서는 안정적이며, 참고자료로 사용하거나 다른 문서에서 인용해도 좋습니다.
+        스펙 문서의 권고를 통해 <abbr title="World Wide Web Consortium">W3C</abbr>가 하는 역할은 스펙 문서에 관심을 모으고 다방면으로 퍼뜨리는 일입니다.
+        이를 통해 웹의 기능과 상호운용성 향상을 기대할 수 있습니다.</p>
 
-    <p>This document has been reviewed by <abbr title="World Wide Web Consortium">W3C</abbr> Members, by software developers,
-        and by other <abbr title="World Wide Web Consortium">W3C</abbr> groups and interested parties, and is endorsed by the
-        Director as a <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation. It is a stable document and may be
-        used as reference material or cited from another document. <abbr title="World Wide Web Consortium">W3C</abbr>'s role in
-        making the Recommendation is to draw attention to the specification and
-        to promote its widespread deployment. This enhances the functionality
-        and interoperability of the Web.</p>
-
-    <p>This W3C Recommendation of CORS was produced jointly by the
-        <a href="http://www.w3.org/2008/webapps/">Web Applications</a> (WebApps)
-        and
-        <a href="http://www.w3.org/2011/webappsec/">Web Application
-            Security</a> (WebAppSec) Working Groups, and published by the
-        WebAppSec Working Group. No changes were made since the previous
-        publication as Proposed Recommendation.</p>
-
-    <p>If you wish to make comments regarding this document, please send them to
-        <a href="mailto:public-webappsec@w3.org">public-webappsec@w3.org</a>
-        (<a href="mailto:public-webappsec-request@w3.org?subject=subscribe">subscribe</a>,
-        <a href="http://lists.w3.org/Archives/Public/public-webappsec/">archives</a>).
+    <p>
+        이 CORS W3C 권고안은
+        <a href="http://www.w3.org/2008/webapps/">Web Applications</a> (WebApps)과
+        <a href="http://www.w3.org/2011/webappsec/">Web Application Security</a> 워킹 그룹에서 주로 관리하며,
+        WebAppSec 워킹그룹에 의해 발행되었습니다.
+        이전 후보 권고안 발행 버전과 차이점은 없습니다.
     </p>
 
-    <p> This document was produced by groups operating under the <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004 W3C Patent Policy</a>. W3C maintains a public list of any patent disclosures for the <a rel="disclosure" href="http://www.w3.org/2004/01/pp-impl/49309/status">WebAppSec WG</a> and the <a rel="disclosure" href="http://www.w3.org/2004/01/pp-impl/42538/status">WebApps WG</a>  made in connection with the deliverables of the group; that page also includes instructions for disclosing a patent. An individual who has actual knowledge of a patent which the individual believes contains <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential Claim(s)</a> must disclose the information in accordance with <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section 6 of the W3C Patent Policy</a>. </p>
+    <p>
+        만약 이 문서에 대한 코멘트를 남기고 싶다면,
+        <a href="mailto:public-webappsec@w3.org">public-webappsec@w3.org</a>
+        (<a href="mailto:public-webappsec-request@w3.org?subject=subscribe">subscribe</a>,
+        <a href="http://lists.w3.org/Archives/Public/public-webappsec/">archives</a>)으로 보내주시길 바랍니다.
+    </p>
 
-    <p>By publishing this Recommendation W3C expects that the functionality
-        specified in this Cross-Origin Resource Sharing Recommendation will
-        not be affected by changes to HTML5 or to HTTP Status Code 308
-        as those specifications proceed to Recommendation and RFC status
-        respectively.</p>
+    <p>이 문서는 <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/">2004년 2월 6일 W3C 특허 정책</a>을 따르는 그룹에서 작성하였습니다.
+        W3C는 그룹의 성과물에 관련하여 <a href="http://www.w3.org/2004/01/pp-impl/40318/status" rel="disclosure">모든 공개 특허 공개 리스트</a>를 관리합니다.
+        여기에는 특허 공개에 대한 지시사항도 포함합니다.
+        특허에 대해서 충분한 지식이 있는 사람이, 스펙 문서의 <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential Claim(s)</a>에 인정된다고 파악되는 경우, <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">W3C 특허 정책 제 6장</a>에 의거하여 정보를 공개해야 할 필요가 있습니다.</p>
 
-    <p> An initial <a href="http://odinho.html5.org/CORS/testsuite-report.html">implementation report</a> is available, with a <a href="http://webappsec-test.info/~bhill2/pub/CORS/cors-test-supplement.htm">supplement for changes since Candidate Recommendation</a>. </p>
+    <p>
+        이 권고안을 발행함으로써 W3C는 이 권고안 내 정의된 기능들이
+        HTML5나 HTTP Status Code 308이 권고안 및 RFC 상태 진행으로 인해 내용이 변경되더라도
+        영향을 받지 않을 거라 기대하고 있습니다.
+    </p>
+
+    <p>
+        <a href="http://webappsec-test.info/~bhill2/pub/CORS/cors-test-supplement.htm">예비 권고안부터 변경사항</a>을 포함한
+        <a href="http://odinho.html5.org/CORS/testsuite-report.html">구현보고서</a>를 사용할 수 있습니다.
+    </p>
 
 </div>
 
@@ -428,23 +441,23 @@
 
 <h2 id="security"><span class="secno">4 </span>보안 고려사항</h2>
 
-<p><em>This section is non-normative.</em></p>
-
-<p>Security requirements and considerations are listed throughout this
-    specification. This section lists advice that did not fit anywhere
-    else.</p>
-
+<p><em>이 섹션은 표준에 준하지 않습니다.</em></p>
+<p>
+    이 스펙 내 존재하는 보안 요구사항 및 고려사항을 리스팅해둔 내용입니다.
+    다른 곳에서는 적합하지 않는 부분을 이 섹션에서 조언합니다.
+</p>
 <hr>
-
-<p>A <a href="#simple-cross-origin-request">simple cross-origin request</a> has been defined as congruent
+<p>
+    A <a href="#simple-cross-origin-request">simple cross-origin request</a> has been defined as congruent
     with those which may be generated by currently deployed user agents that do
-    not conform to this specification. Simple cross-origin requests generated
-    outside this specification (such as cross-origin form submissions using
+    not conform to this specification.
+
+    Simple cross-origin requests generated outside this specification (such as cross-origin form submissions using
     <code>GET</code> or <code>POST</code> or cross-origin <code>GET</code>
     requests resulting from <code>script</code> elements) typically include
     <a href="#user-credentials">user credentials</a>, so resources conforming to this specification
-    must always be prepared to expect simple cross-origin requests with
-    credentials.
+    must always be prepared to expect simple cross-origin requests with credentials.
+</p>
 
 <p>Because of this, resources for which simple requests have significance
     other than retrieval must protect themselves from Cross-Site Request Forgery
@@ -577,29 +590,34 @@
         is vital for secure web applications.</p>
 
 
-    <h2 id="syntax"><span class="secno">5 </span>Syntax</h2>
+    <h2 id="syntax"><span class="secno">5 </span>문법</h2>
 
-    <p>This section defines the syntax of the new headers this specification
-        introduces. It also provides a short description of the function of each
-        header.</p>
+    <p>
+        이 섹션에서는 이 스펙문서에서 소개하는 새로운 헤더의 문법을 정의합니다.
+        또 각 헤더에서 사용하는 함수의 짧은 설명을 제공합니다.
+    </p>
 
-    <p>The <a href="#resource-processing-model">resource processing model</a>
-        section details how resources are to use these headers in a response.
-        Likewise, the
-        <a href="#user-agent-processing-model">user agent processing model</a>
-        section details how user agents are to use these headers.</p>
+    <p>
+        <a href="#resource-processing-model">리소스 처리 모델</a> 섹션은 리소스가 어떻게
+        응답 안 헤더에서 사용하는 지 디테일을 소개합니다.
 
-    <p>The ABNF syntax used in this section is from HTTP/1.1.
-        <a href="#refsHTTP">[HTTP]</a></p>
+        마찬가지로, <a href="#user-agent-processing-model">유저 에이전트 처리 모델</a> 섹션은
+        리소스를 어떻게 헤더에서 사용하는 지 디테일을 소개합니다.
+    </p>
 
-    <p class="note">HTTP/1.1 is used as ABNF basis to ensure that the new
+    <p>
+        이 섹션에서 사용하는 ABNF 문법은 HTTP/1.1에서 가져왔습니다. <a href="#refsHTTP">[HTTP]</a>
+    </p>
+
+    <p class="note">
+        HTTP/1.1 is used as ABNF basis to ensure that the new
         headers have equivalent parsing rules to those introduced in that
         specification.</p>
 
     <p class="note">HTTP/1.1 currently does not make leading OWS implied in
         header value definitions but that form is assumed here.</p>
 
-    <h3 id="access-control-allow-origin-response-header"><span class="secno">5.1 </span><code title="">Access-Control-Allow-Origin</code> Response Header</h3>
+    <h3 id="access-control-allow-origin-response-header"><span class="secno">5.1 </span><code title="">Access-Control-Allow-Origin</code> 응답 헤더</h3>
 
     <p>The
         <dfn id="http-access-control-allow-origin" title="http-access-control-allow-origin"><code>Access-Control-Allow-Origin</code></dfn>
