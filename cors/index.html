@@ -131,8 +131,8 @@
 <!-- todo: 소개까지 번역 완료 -->
 <ol class="toc">
     <li><a href="#introduction"><span class="secno">1 </span>소개</a></li>
-    <li><a href="#conformance"><span class="secno">2 </span>Conformance</a></li>
-    <li><a href="#terminology"><span class="secno">3 </span>Terminology</a></li>
+    <li><a href="#conformance"><span class="secno">2 </span>적합 요구사항</a></li>
+    <li><a href="#terminology"><span class="secno">3 </span>용어</a></li>
     <li><a href="#security"><span class="secno">4 </span>Security Considerations</a></li>
     <li><a href="#syntax"><span class="secno">5 </span>Syntax</a>
         <ol class="toc">
@@ -208,7 +208,6 @@
 </li>
 <li>
     <p>
-
         유저 에이전트는 주어진 오리진에서 non-<a href="#simple-method">simple method</a>를 사용하여,
         크로스 오리진 리소스 요청을 수락할 준비가 되어있는지 여부를,
         <a href="#preflight-request">preflight request</a>를 통해 발견할 수 있습니다.
@@ -217,7 +216,6 @@
 </li>
 
 <li>
-
     <p>
         서버 사이드 어플리케이션은 <code title="http-origin"><a href="#http-origin">오리진</a></code> 헤더를 통해,
         HTTP 요청이 유저 에이전트간 크로스 오리진 요청인지 여기는 지 발견할 수 있습니다.
@@ -302,45 +300,44 @@
        }</code></pre>
 </div>
 
+<h2 id="conformance"><span class="secno">2 </span>적합 요구사항</h2>
+<p>
+    이 스펙문서는 리소스 작성자와 유저 에이전트를 위해 작성했습니다.
+    이 스펙문서 내에서 정의하는 <a href="#cross-origin-request">크로스 오리진 요청</a>
+    알고리즘을 사용하는 API를 정의하는 스펙문서&mdash;CORS API 정의&mdash;를 위한 조언을 포함하며,
+    일반 <a href="#security">보안 고려사항</a> 섹션은 클라이언트 사이드 웹 어플리케이션 작성자를 위한
+    몇가지 조언을 포함하고 있습니다.
+</p>
+<p>
+    이 스펙문서 내에서 표준에 준하지 않는다 따로 표시한 섹션과 부록, 모든 다이어그램, 예제, 노트는 표준에 준하지 않습니다.
+    그 외는 모두 표준에 준합니다.
+</p>
 
+<p>
+    이 스펙문서에서, must와 may같은 단어는 RFC 2119에서 소개하는 대로 해석합니다.
+    <a href="#refsRFC2119">[RFC2119]</a>
+</p>
 
+<p>
+    반드시 해야한다고 나타낸 알고리즘의 일부(예를 들어, "알고리즘을 종료") 요구사항은
+    알고리즘 소개에서 사용하는 키워드(예를 들어, must)의 의미로 해석해야합니다.
+</p>
+<p>
+    순응 리소스는 이 스펙문서에 나와있는 리소스에 적용할 수 있는 모든 요구사항을 구현하는 것입니다.
+</p>
 
-<h2 id="conformance"><span class="secno">2 </span>Conformance</h2>
+<p>
+    순응 유저 에이전트는 이 스펙문서에 나와있는 유저 에이전트에 적용할 수 있는 모든 요구사항을 구현하는 것입니다.
+</p>
 
-<p>This specification is written for resource authors and user agents. It
-    includes advice for specifications that define APIs that use the
-    <a href="#cross-origin-request">cross-origin request</a> algorithm defined in this specification
-    &mdash; CORS API specifications &mdash; and the general
-    <a href="#security">security considerations</a> section includes some
-    advice for client-side Web application authors.</p>
+<p>
+    유저 에이전트와 리소스 작성자는 스펙문서의 알고리즘으로 얻어진 것인지 결과 구분이 안되는 동안에는,
+    이 스펙의 구현체의 임의의 알고리즘을 사용할 수 있습니다.
+</p>
 
-<p>As well as sections and appendices marked as non-normative, all
-    diagrams, examples, and notes in this specification are non-normative.
-    Everything else in this specification is normative.</p>
+<h2 id="terminology"><span class="secno">3 </span>용어</h2>
 
-<p>In this specification, The words must and
-    may are to be interpreted as described in RFC 2119.
-    <a href="#refsRFC2119">[RFC2119]</a></p>
-
-<p>Requirements phrased in the imperative as part of algorithms (e.g.
-    "terminate the algorithm") are to be interpreted with the meaning of the
-    key word (e.g. must) used in introducing the
-    algorithm.</p>
-
-<p>A conformant resource is one that implements all the requirements
-    listed in this specification that are applicable to resources.</p>
-
-<p>A conformant user agent is one that implements all the requirements
-    listed in this specification that are applicable to user agents.</p>
-
-<p>User agents and resource authors may employ any
-    algorithm to implement this specification, so long as the end result is
-    indistinguishable from the result that would be obtained by the
-    specification's algorithms.</p>
-
-
-<h2 id="terminology"><span class="secno">3 </span>Terminology</h2>
-
+<!-- todo: 용어 번역해야함 -->
 <p>Some terminology in this specification is from
     <cite>The Web Origin Concept</cite>,
     <cite>HTML</cite>,<!--fetch-->
