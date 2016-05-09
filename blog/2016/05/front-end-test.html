@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>프론트엔드에 테스트를 도입 - techhtml</title>
+    <link rel="stylesheet" href="../../blog.css">
+    <meta name="viewport" content="initial-scale=1">
+</head>
+<body>
+    <article>
+        <div class="warning">
+            <p>이 글은 <a href="http://qiita.com/">qiita</a>에 올라온 <a href="http://qiita.com/howdy39/items/cdd5b252096f5a2fa438?utm_source=Qiita%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9&utm_campaign=ceac222e15-Qiita_newsletter_206_05_03_2016&utm_medium=email&utm_term=0_e44feaa081-ceac222e15-33136201">フロントエンドにテストを導入</a>이라는 아티클을
+                원 저자의 허락을 받고 번역한 글입니다.<br>
+                오역이나 오타에 대한 지적은 환영합니다. 그림은 번역하지 않았습니다.<br></p>
+        </div>
+        <h1>프론트엔드에 테스트를 도입</h1>
+        <p>
+            이 글은 스크린상 JavaScript 테스트를 해본 적이 없는 분
+            Mocha? webpack? karma? 각각을 다루는 글을 봤지만 전체적인 그림을 잘 모르겠는 분을 대상으로 합니다. (며칠 전의 나)
+            전체적인 도입 흐름을 설명하는 아티클이 있으면 전체적인 그림이 보기 쉬울 거 같다고 생각하여 작성합니다.
+        </p>
+        <h2>전제</h2>
+        <p>Nodejs,npm,chrome이 설치되어 있어야 합니다.</p>
+        <h2>흐름</h2>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Step <th>표제 <th>목적
+                </tr>
+                <tr>
+                    <th>Step 0 <td>테스트 대상 어플리케이션을 작성 <td>
+                </tr>
+                <tr>
+                    <th><a href="https://github.com/howdy39/study-frontend-testing/tree/step-1">Step 1</a> <td>라이브러리를 사용하지 않고 테스트 <td>브라우저의 console 기능을 이용한 테스트
+                </tr>
+                <tr>
+                    <th><a href="https://github.com/howdy39/study-frontend-testing/tree/step-2">Step 2</a> <td>Mocha 도입 <td>테스트 결과를 리치하게
+                </tr>
+                <tr>
+                    <th><a href="https://github.com/howdy39/study-frontend-testing/tree/step-3">Step 3</a> <td>Nodejs로 테스트 실행 <td>브라우저의 세계에서 Nodejs의 세계로 테스트를 가져가라, 후속 Step으로 이어짐
+                </tr>
+                <tr>
+                    <th><a href="https://github.com/howdy39/study-frontend-testing/tree/step-4">Step 4</a> <td>webpack 도입 <td>브라우저상에서 모듈을 읽어들일 수 있도록
+                </tr>
+                <tr>
+                    <th><a href="https://github.com/howdy39/study-frontend-testing/tree/step-5">Step 5</a> <td>assert 도입 <td>테스트 코드의 assertion 최적화
+                </tr>
+                <tr>
+                    <th><a href="https://github.com/howdy39/study-frontend-testing/tree/step-6">Step 6</a> <td>karma 도입<td>브라우저에서 테스트를 실행
+                </tr>
+            </tbody>
+        </table>
+        <p>링크는 소스로 이어집니다</p>
+        <h2>목표</h2>
+        <img src="goal.png" class="img-max" alt="">
+        <p>
+            이후 스텝 마지막에도 넣어두었지만,<br>
+            파란 배경이 실행관련 파일,<br>
+            초록 배경이 테스트 관련 파일,<br>
+            빨간 배경이 step 자체로 구분했습니다.
+        </p>
+        <h2>STEP 0 테스트 대상 어플리케이션 제작</h2>
+        <p>텍스트 박스가 2개 있고, 계산 버튼을 누르면 더해서 보여주는 어플리케이션을 작성함</p>
+        <pre data-filename="index.html">&lt;body&gt;
+&lt;div&gt;
+    &lt;input type="number" id="value1"&gt; +
+    &lt;input type="number" id="value2"&gt; =
+    &lt;span id="result"&gt;&lt;/span&gt;&lt;br&gt;
+    &lt;input type="button" id="calc" value="계산"&gt;&lt;/input&gt;
+&lt;/div&gt;
+&lt;script src="/src/calc-util.js"&gt;&lt;/script&gt;
+&lt;script src="/src/index.js"&gt;&lt;/script&gt;
+&lt;/body&gt;</pre>
+        <pre data-filename="index.js">document.getElementById('calc').addEventListener('click', function () {
+    var value1 = Number(document.getElementById('value1').value);
+    var value2 = Number(document.getElementById('value2').value);
+
+    var result = add(value1, value2);
+    document.getElementById('result').innerText = result;
+});</pre>
+        <p>아래가 테스트 코드입니다.</p>
+        <pre data-filename="calc-util.js">function add(value1, value2) {
+    return value1 + value2;
+}</pre>
+        <img src="step0.png" width="193" alt="">
+        <h2>STEP 1 라이브러리를 사용하지 않고 테스트</h2>
+        <p>JS를 실행시키기 위한 HTML을 적당히 작성해서, 개발자 도구에서 로그를 보는 형태입니다.</p>
+        <pre data-filename="spec.html">&lt;body&gt;
+&lt;script src="/src/calc-util.js"&gt;&lt;/script&gt;
+&lt;script src="/src/index.js"&gt;&lt;/script&gt;
+&lt;/body&gt;</pre>
+        <pre data-filename="calc-util-spec.js">console.info('add 함수 테스트');
+console.info('1+2는3이어야 한다');
+
+if (add(1, 2) === 3) {
+    console.info('성공')
+} else {
+    console.error('실패')
+}
+</pre>
+        <img src="step1.png" width="357" alt="">
+        <h2>STEP 2 모카를 도입</h2>
+        <p>
+            이전 환경에서 일단 테스트를 작성해봤지만, 콘솔상 에러를 찾는게 꽤 힘듭니다.<br>
+            그 문제를 해결하기 위해 <a href="https://mochajs.org/">Mocha</a>나 <a href="http://jasmine.github.io/">Jasmine</a>같은 테스트 프레임워크를 사용합니다.<br>
+            이번에는 Mocha를 사용합니다.
+        </p>
+        <h3>테스트 코드를 수정</h3>
+        <p>
+            describe로 묶고 it으로 검증을 정의합니다.<br>
+            성공케이스만 하면 재미없으니 실패 케이스에 대해서도 추가합니다.<br>
+            ※심플하게 하기 위해서 테스트 자체를 틀리게 했습니다 m(_ _)m
+        </p>
+<pre data-filename="calc-util-spec.js">
+describe('add함수 테스트', function() {
+    it('1+2는 3이다', function() {
+        if (add(1, 2) === 3) {
+        } else {
+            throw new Error('실패');
+        }
+    });
+    it('1+2는 4다', function() {
+        if (add(1, 2) === 4) {
+        } else {
+            throw new Error('실패');
+        }
+    });
+});
+</pre>
+        <h3>테스트 실행용 HTML 수정</h3>
+        <p>CSS와 JS를 읽어들이는 부분과 세트업 수정, 출력결과 장소 등을 추가했습니다.</p>
+<pre data-filename="spec.html">
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Step 2 spec&lt;/title&gt;
+    &lt;link href="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.css" rel="stylesheet" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id="mocha"&gt;&lt;/div&gt;
+
+&lt;script src="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.js"&gt;&lt;/script&gt;
+&lt;script&gt;mocha.setup('bdd')&lt;/script&gt;
+
+&lt;script src="/src/calc-util.js"&gt;&lt;/script&gt;
+&lt;script src="/test/calc-util-spec.js"&gt;&lt;/script&gt;
+
+&lt;script&gt;mocha.run();&lt;/script&gt;
+&lt;/body&gt;
+</pre>
+        <h3>실행결과</h3>
+        <img src="test_result.png" width="939" alt="">
+        <img src="specs.png" width="362" alt="">
+        <h2>STEP3 Nodejs로 테스트 실행</h2>
+        <p>
+            수정을 할 때마다 브라우저에서 실행시키는 건 힘듭니다.<br>
+            또 CI를 실행시키기 위해서도 브라우저를 사용하지 않고 Nodejs로 실행시킬 필요가 있습니다.<br>
+            Mocha는 npm으로 설치하여 console에서 실행할 수 있습니다.
+        </p>
+        <h3>package.json을 작성</h3>
+        <p>package.json(설정파일)을 만드는 것이라면 그냥 계속 OK만 누르면 됩니다</p>
+        <pre>npm init</pre>
+        <h3>Mocha를 설치</h3>
+        <pre>npm i -D mocha</pre>
+        <h3>테스트 코드 수정</h3>
+        <p>테스트 대상 코드를 읽어들이기 위해 require로 설정합니다.</p>
+<pre data-filename="calc-util-spec.js">
+var calcUtil = require('../src/calc-util.js');
+
+describe('add 함수 테스트', function() {
+    it('1+2는 3이다', function() {
+        if (calcUtil.add(1, 2) === 3) {
+        } else {
+            throw new Error('실패');
+        }
+    });
+    it('1+2는 4다', function() {
+        if (calcUtil.add(1, 2) === 4) {
+        } else {
+            throw new Error('실패');
+        }
+    });
+});
+</pre>
+        <h3>테스트 대상 코드를 수정</h3>
+        <p>
+            require로 읽으들이기 위해서 module.export로 묶습니다.<br>
+            ※실제로 동작하는 화면이 동작하지 않게 되지만 이 부분은 다음 step에서 해결됩니다. 일단 test를 합시다.
+        </p>
+<pre data-filename="calc-util.js">
+module.exports = {
+    add : function (value1, value2) {
+        return value1 + value2;
+    }
+}
+</pre>
+        <h3>package.json을 수정</h3>
+        <p>
+            아래와 같이 test를 mocha로 수정하고, npm test로 실행시킵니다.<br>
+            ※테스트 대상 기반이 test/*.js라서 Spec파일을 지정할 필요가 없습니다.
+        </p>
+<pre data-filename="package.json">
+"scripts": {
+    "test": "mocha",
+</pre>
+        <h3>테스트 실행</h3>
+        <pre>npm test</pre>
+        <img src="npm_test_result.png" width="419" alt="">
+        <img src="npm_test_spec.png" width="431" alt="">
+        <h2>Step4 webpack 도입</h2>
+        <p>
+            require를 사용하기 위해 add 함수를 바꾼 탓에 실제 화면에서 동작하지 않습니다.<br>
+            이를 해결하기 위해 <a href="https://webpack.github.io/">webpack</a>이나 <a href="http://browserify.org/">browserify</a>같은 툴을 사용합니다.<br>
+            이번에는 webpack을 사용합니다.
+        </p>
+        <h3>webpack을 설치</h3>
+        <pre>npm i -D webpack</pre>
+        <h3>config 파일 작성</h3>
+        <p>
+            설정의 상세한 부분은 <a href="http://qiita.com/ossan-engineer/items/8352bdeab9ce8c8c00ef">webpack入門(일본어)</a>이라는 글에서 쉽게 설명하고 있습니다.<br>
+            간단하게 작성하면 index.js와 require되어있는 calc-util.js를 app.bundle.js로 묶는 설정입니다.</p>
+        <pre>touch webpack.config.js</pre>
+<pre data-filename="webpack.config.js">
+module.exports = {
+    entry: {
+        app: './src/index.js'
+    },
+    output: {
+        path: './dist',
+        filename: '[name].bundle.js'
+    }
+};
+        </pre>
+        <h3>package.json을 수정</h3>
+        <p>
+            아래와 같은 build를 추가해서, <code>npm run build</code>로 실행시킵니다.<br>
+            ※ webpack이라고만 해두면 기본으로 webpack.config.js를 사용합니다.
+        </p>
+<pre data-filename="package.json">
+"scripts": {
+    "test": "mocha",
+    "build": "webpack",
+</pre>
+        <h3>add 함수를 부르는 js를 수정</h3>
+        <p>테스트 코드와 같이 require를 사용해서 아래와 같이 수정합니다.</p>
+<pre data-filename="index.js">
+var calcUtil = require('./calc-util.js');
+
+document.getElementById('calc').addEventListener('click', function () {
+    var value1 = Number(document.getElementById('value1').value);
+    var value2 = Number(document.getElementById('value2').value);
+
+    var result = calcUtil.add(value1, value2);
+    document.getElementById('result').innerText = result;
+});
+</pre>
+        <h3>webpack을 실행</h3>
+        <pre>npm run build</pre>
+        <p>이로써 app.bundle.js가 작성되어 브라우저에서 읽을 수 있게 됩니다.</p>
+        <h3>불러들이는 HTML작성</h3>
+        <p>원래 2개를 불러들이던 js가 1개로 줄어듭니다.</p>
+<pre data-filename="index.html">
+&lt;body>
+&lt;div>
+    &lt;input type="number" id="value1"> + &lt;input type="number" id="value2"> = &lt;span id="result">&lt;/span>&lt;br>
+    &lt;input type="button" id="calc" value="計算">&lt;/input>
+    &lt;/div>
+&lt;!--    &lt;script src="/src/calc-util.js">&lt;/script> --&gt;
+&lt;!--    &lt;script src="/src/index.js">&lt;/script> --&gt;
+&lt;script src="/dist/app.bundle.js">&lt;/script>
+&lt;/body>
+</pre>
+        <p>부가적으로 add 함수가 글로벌을 오염시키지 않는 메리트도 생깁니다.</p>
+        <img src="webpack_spec.png" width="563" alt="">
+        <h2>Step 5 assert 도입</h2>
+        <p>
+            테스트를 좀 더 쉽게 해봅시다.<br>
+            it이나 throw가 장황해보입니다. 이를 가능하게 하는 게 assert입니다.<br>
+            Nodejs에 기본으로 탑재되어있는 라이브러리입니다<br>
+            require('assert')로 불러들이고 assert()로 테스트 대상을 지정합니다.
+        </p>
+<pre data-filename="calc-util-spec.js">
+var assert = require('assert');
+var calcUtil = require('../src/calc-util.js');
+
+describe('add 함수 테스트', function() {
+    it('1+2는 3이다', function() {
+        assert(calcUtil.add(1, 2) === 3);
+    });
+    it('1+2는 4다', function() {
+        assert(calcUtil.add(1, 2) === 4);
+    });
+});
+</pre>
+        <p>꽤 깔끔해졌습니다.</p>
+        <img src="assert_result.png" width="421" alt="">
+        <img src="assert_spec.png" width="562" alt="">
+        <h2>Step 6 karma 도입</h2>
+        <p>
+            지금까지는 Nodejs의 세계에서 테스트를 했습니다.<br>
+            그러나 브라우저에 따라 동작하지 않는 함수를 사용하면 에러가 될 수도 있습니다.<br>
+            이걸 해결하기 위해 <a href="https://karma-runner.github.io/0.13/index.html">karma</a>라고 하는 브라우저상에서 동작하는 라이브러리를 사용합니다.
+        </p>
+        <h3>karma 관련 모듈 설치</h3>
+        <pre>npm i -D karma karma-chrome-launcher karma-mocha karma-webpack</pre>
+        <p>
+            karma가 본체입니다. 이외에는 플러그인이며,<br>
+            karma-chrome-launcher는 chrome실행용<br>
+            karma-mocha가 mocha용<br>
+            karma-webpack이 webpack용입니다.
+        </p>
+        <h4>2016-05-08 추가</h4>
+        <p>karma-cli 글로벌 설치를 필요로 합니다.</p>
+        <pre>npm i -g karma-cli</pre>
+        <h3>초기설정파일을 작성</h3>
+        <p>커맨드를 입력하여 질문에 답하는 걸로 간단한 설정파일(karma.config.js)을 만들 수 있습니다.</p>
+<pre>
+karma init
+
+Which testing framework do you want to use ?
+Press tab to list possible options. Enter to move to the next question.
+> mocha
+
+Do you want to use Require.js ?
+This will add Require.js plugin.
+Press tab to list possible options. Enter to move to the next question.
+> no
+
+Do you want to capture any browsers automatically ?
+Press tab to list possible options. Enter empty string to move to the next question.
+> Chrome
+>
+
+What is the location of your source and test files ?
+You can use glob patterns, eg. "js/*.js" or "test/**/*Spec.js".
+Enter empty string to move to the next question.
+> test/**/*spec.js
+18 04 2016 20:26:02.739:WARN [init]: There is no file matching this pattern.
+
+>
+
+Should any of the files included by the previous patterns be excluded ?
+You can use glob patterns, eg. "**/*.swp".
+Enter empty string to move to the next question.
+>
+
+Do you want Karma to watch all the files and run the tests on change ?
+Press tab to list possible options.
+> yes
+</pre>
+        <p>
+            Require.js는 필요한 듯 보이지만 실제로는 필요없습니다.
+            ※karma-webpack에서 require를 변환한 파일을 만들기 때문입니다.
+        </p>
+        <h3>karma.config.js 수정</h3>
+        <p>
+            위에 작성한걸 후술한 <code>karma start</code>로 실행시키면 <code>Uncaught ReferenceError: require is not defined</code>라 나옵니다.<br>
+            브라우저 상에서 동작시키기 때문에 require를 찾지 못하기 때문입니다.<br>
+            <strong>Step 4</strong>에서 webpack을 통해 require를 변환시켰을 때와 같은 스텝이 필요합니다.<br>
+            karma에서는 preprocessors 설정으로 webpack을 통하도록 설정할 수 있습니다.
+        </p>
+<pre data-filename="karma.config.js(before)">
+preprocessors: {
+},
+</pre>
+<pre data-filename="karma.config.js(after)">
+preprocessors: {
+    'test/**/**spec.js': ['webpack']
+},
+</pre>
+        <h3>package.json 수정</h3>
+        <p><code>npm test</code>로 실행하기 위한 설정이 필요합니다.</p>
+<pre data-filename="package.json(before)">"test": "mocha",</pre>
+<pre data-filename="package.json(after)">"test": "karma start",</pre>
+        <h3>karma 구동</h3>
+        <pre>npm test</pre>
+        <img src="karma_result.png" width="1038" alt="">
+        <p>
+            크롬이 실행된 뒤 터미널 상에 테스트 결과가 표시됩니다.<br>
+            설정 파일을 만들었을 때 마지막 질문을 true라고 했기 때문에 테스트 파일이나 테스트 대상 파일을 수정할 때마다, 자동으로 테스트합니다.<br>
+            테스트나 소스를 수정한 뒤 브라우저 화면을 F5로 갱신하여 확인하는 수고도 덜어집니다.
+        </p>
+        <img src="karma_spec.png" width="892" alt="">
+        <h2>여담</h2>
+        <p>
+            그림은 <a href="https://www.draw.io/">draw.io</a>에서 1파일 안에서 모두 만들고 png 엑스포트해서 각각 범위 선택 캡쳐했습니다.<br>
+            더 좋은 방법이 있다면 알려주세요.m(_ _)m
+        </p>
+    </article>
+    <script src="../../../ga.js"></script>
+    <script>
+        'use strict';
+
+        (function(d, w) {
+            var preElems = document.querySelectorAll("pre");
+            function drawFileName(target) {
+                var targetFileName = target.getAttribute("data-filename") !== null ? target.getAttribute("data-filename") : "console";
+                var title = "<strong class='syntax-filename'>" + targetFileName + "</strong>";
+                var tempHTML = target.innerHTML;
+                target.innerHTML = title + tempHTML;
+            }
+            for(var i = 0; i < preElems.length; i += 1) {
+                drawFileName(preElems[i]);
+            }
+        })(document, window)
+    </script>
+</body>
+</html>
