@@ -1,13 +1,15 @@
 @charset "UTF-8";
 
 body {
-	font-size:1em;
-	line-height:180%;
-	font-family: 'Slabo 27px', sans-serif;
+	line-height:1.5;
+	font-size:2.2vmax;
+	font-family: "APPLESDGothicNEO-LIGHT", sans-serif;
 }
-li span {
-	font-size:0.8em;
+
+a {
+	color:#7a43b6;
 }
-li span::before {
-	content:"Translated ";
+p {
+	width:50vmax;
+	margin:2em auto;
 }
