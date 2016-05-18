@@ -625,23 +625,23 @@
     </p>
 
 </section><nav id="toc"><h2 class="introductory" id="table-of-contents" resource="#table-of-contents"><span property="xhv:role" resource="xhv:heading">Table of Contents</span></h2><ul class="toc" role="directory"><li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>
-    Introduction
-</a></li><li class="tocline"><a href="#conformance" class="tocxref"><span class="secno">2. </span>Conformance</a></li><li class="tocline"><a href="#terminology" class="tocxref"><span class="secno">3. </span>
-    Terminology
+    소개
+</a></li><li class="tocline"><a href="#conformance" class="tocxref"><span class="secno">2. </span>적합 요구사항</a></li><li class="tocline"><a href="#terminology" class="tocxref"><span class="secno">3. </span>
+    용어
 </a></li><li class="tocline"><a href="#security-and-privacy-considerations" class="tocxref"><span class="secno">4. </span>
-    Security and privacy considerations
+    보안 및 프라이버시 고려사항
 </a></li><li class="tocline"><a href="#the-navigator-interface" class="tocxref"><span class="secno">5. </span>
-    The <span class="formerLink"><code>Navigator</code></span> interface
+    <span class="formerLink"><code>Navigator</code></span> 인터페이스
 </a></li><li class="tocline"><a href="#the-batterymanager-interface" class="tocxref"><span class="secno">6. </span>
-    The <span class="formerLink"><code>BatteryManager</code></span> interface
+    <span class="formerLink"><code>BatteryManager</code></span> 인터페이스
 </a><ul class="toc"><li class="tocline"><a href="#multiple-batteries" class="tocxref"><span class="secno">6.1 </span>
-    Multiple batteries
+    다중 배터리
 </a></li><li class="tocline"><a href="#event-handlers" class="tocxref"><span class="secno">6.2 </span>
-    Event handlers
+    이벤트 핸들러
 </a></li></ul></li><li class="tocline"><a href="#examples" class="tocxref"><span class="secno">7. </span>
-    Examples
+    예제
 </a></li><li class="tocline"><a href="#acknowledgements" class="tocxref"><span class="secno">A. </span>
-    Acknowledgements
+    감사의 말
 </a></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">B. </span>References</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">B.1 </span>Normative references</a></li></ul></li></ul></nav>
 
 <section class="informative" id="introduction" typeof="bibo:Chapter" resource="#introduction" property="bibo:hasPart">
@@ -808,7 +808,7 @@
         호스팅 디바이스의 <dfn data-dfn-type="dfn" id="dfn-current-battery-status-information">현재 배터리 상태 정보</dfn>를 나타냅니다.
         <code>charging</code> 속성은 시스템 배터리의 충전 상태를 나타냅니다.
         <code>chargingTime</code> 속성은 시스템 배터리가 완전히 차기까지 남은 시간을 나타냅니다.
-        <code>dischargingTime</code> 속성은 시스템 배터리가 완전히 충전되지 않을 때의 시간과 시스템이 꺼지기까지의 시간을 나타내며,
+        <code>dischargingTime</code> 속성은 시스템 배터리가 완전히 충전 중이지 않은 시간과 시스템이 꺼지기까지의 시간을 나타내며,
         <code>level</code> 속성은 시스템 배터리 레벨을 나타냅니다.
     </p>
       <pre class="idl"><span class="idlInterface" id="idl-def-BatteryManager">interface <span class="idlInterfaceID">BatteryManager</span> : <span class="idlSuperclass">EventTarget</span> {
@@ -835,112 +835,109 @@
         <code>level</code>은 반드시 1.0으로 설정합니다 [<em class="rfc2119" title="MUST">MUST</em>.
     </p>
     <p>
-        The <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> is said to be <dfn data-dfn-type="dfn" id="dfn-unable-to-report-the-battery-status-information">unable to report the battery
-        status information</dfn>, if it is not able to report the values for
-        any of the attributes, for example, due to a user or system preference,
-        setting, or limitation.
+        예를 들어 유저나 시스템 선호, 세팅, 제한으로 인해 만약 속성의 어떤 값도 리포트하지 못하는 경우
+        <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">유저 에이전트</a>는 <dfn data-dfn-type="dfn" id="dfn-unable-to-report-the-battery-status-information">배터리 상태 정보 리포트를 사용하지 못하는 경우</dfn>를 말해야합니다.
     </p>
-    <div class="note"><div class="note-title marker" aria-level="3" role="heading" id="h-note1"><span>Note</span></div><p class="">
-        Implementations <a href="#dfn-unable-to-report-the-battery-status-information" class="internalDFN" data-link-type="dfn">unable to report the battery status information</a>
-        emulate a fully charged and plugged in battery to reduce the potential
-        for fingerprinting and prevent applications from degrading performance,
-        if the battery status information is not made available, for example.
+    <div class="note"><div class="note-title marker" aria-level="3" role="heading" id="h-note1"><span>노트</span></div><p class="">
+        구현체가 <a href="#dfn-unable-to-report-the-battery-status-information" class="internalDFN" data-link-type="dfn">배터리 상태 정보 리포트를 사용하지 못하는 경우</a>
+        예를 들어, 만약 배터리 상태 정보를 사용하지 못하는 경우, 퍼포먼스 저하로부터 막거나,
+        완전히 충전되거나, 배터리 접속 핑거프린팅 가능성을 줄일 수 있습니다.
     </p></div>
     <p>
-        The <code id="widl-BatteryManager-charging">charging</code> attribute
-        <em class="rfc2119" title="MUST">MUST</em> be set to false if the battery is discharging, and set to true, if
-        the battery is charging, the implementation is unable to report the
-        state, or there is no battery attached to the system, or otherwise.
-        When the battery charging state is updated, the <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> <em class="rfc2119" title="MUST">MUST</em>
-        <a href="#dfn-queue-a-task" class="internalDFN" data-link-type="dfn">queue a task</a> which sets the <code>charging</code> attribute's
-        value and <a href="#dfn-fires-a-simple-event" class="internalDFN" data-link-type="dfn">fires a simple event</a> named
-        <code><a href="#dfn-chargingchange" class="internalDFN" data-link-type="dfn"><code>chargingchange</code></a></code> at the <a href="#idl-def-BatteryManager" class="idlType"><code>BatteryManager</code></a> object.
+        <code id="widl-BatteryManager-charging">charging</code> 속성은 반드시,
+        충전중이지 않을 때는 false로,
+        충전 중인 경우, 구현체가 상태 보고를 사용하지 못할 경우, 시스템의 배터리가 첨부되지 않은 경우, 그 외의 경우에는 true로 세트해야합니다 [<em class="rfc2119" title="MUST">MUST</em>].
+        배터리 충전 상태가 업데이트 될 때,
+        <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">유저 에이전트</a>는 반드시
+        <code>charging</code> 속성의 값을 <a href="#dfn-queue-a-task" class="internalDFN" data-link-type="dfn">태스크 큐</a>로 설정하고,
+        <a href="#idl-def-BatteryManager" class="idlType"><code>BatteryManager</code></a> 객체의
+        <code><a href="#dfn-chargingchange" class="internalDFN" data-link-type="dfn"><code>chargingchange</code></a></code>
+        <a href="#dfn-fires-a-simple-event" class="internalDFN" data-link-type="dfn">이벤트를 발생</a>시켜야 합니다 [<em class="rfc2119" title="MUST">MUST</em>].
     </p>
     <p>
-        The <code id="widl-BatteryManager-chargingTime">chargingTime</code>
-        attribute <em class="rfc2119" title="MUST">MUST</em> be set to 0, if the battery is full or there is no
-        battery attached to the system, and to the value positive Infinity if
-        the battery is discharging, the implementation is unable to report the
-        remaining charging time, or otherwise. When the battery charging time
-        is updated, the <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> <em class="rfc2119" title="MUST">MUST</em> <a href="#dfn-queue-a-task" class="internalDFN" data-link-type="dfn">queue a task</a> which sets
-        the <code>chargingTime</code> attribute's value and <a href="#dfn-fires-a-simple-event" class="internalDFN" data-link-type="dfn">fires a simple
-        event</a> named <code><a href="#dfn-chargingtimechange" class="internalDFN" data-link-type="dfn"><code>chargingtimechange</code></a></code> at the
-        <a href="#idl-def-BatteryManager" class="idlType"><code>BatteryManager</code></a> object.
+        <code id="widl-BatteryManager-chargingTime">chargingTime</code> 속성은 반드시
+        시스템의 배터리가 첨부되지 않았거나 배터리 상태가 풀인 경우 0으로 세팅해야 하며,
+        배터리가 충전중이지 않은 경우나 구현체가 충전 시간 리포트를 사용하지 못하는 경우, 그 외의 경우에는 양수 무한대로 값을 정합니다 [<em class="rfc2119" title="MUST">MUST</em>].
+
+        배터리 충전 시간이 업데이트 될 때,
+        <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">유저 에이전트</a>는 반드시
+        <code>chargingtime</code> 속성의 값을 <a href="#dfn-queue-a-task" class="internalDFN" data-link-type="dfn">태스크 큐</a>로 설정하고,
+        <a href="#idl-def-BatteryManager" class="idlType"><code>BatteryManager</code></a> 객체의
+        <code><a href="#dfn-chargingtimechange" class="internalDFN" data-link-type="dfn"><code>chargingtimechange</code></a></code>
+        <a href="#dfn-fires-a-simple-event" class="internalDFN" data-link-type="dfn">이벤트를 발생</a>시켜야 합니다 [<em class="rfc2119" title="MUST">MUST</em>].
     </p>
     <p>
-        The <code id="widl-BatteryManager-dischargingTime">dischargingTime</code> attribute
-        <em class="rfc2119" title="MUST">MUST</em> be set to the value positive Infinity, if the battery is charging,
-        the implementation is unable to report the remaining discharging time,
-        there is no battery attached to the system, or otherwise. When the
-        battery discharging time is updated, the <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> <em class="rfc2119" title="MUST">MUST</em>
-        <a href="#dfn-queue-a-task" class="internalDFN" data-link-type="dfn">queue a task</a> which sets the <code>dischargingTime</code>
-        attribute's value and <a href="#dfn-fires-a-simple-event" class="internalDFN" data-link-type="dfn">fires a simple event</a> named
-        <code><a href="#dfn-dischargingtimechange" class="internalDFN" data-link-type="dfn"><code>dischargingtimechange</code></a></code> at the <a href="#idl-def-BatteryManager" class="idlType"><code>BatteryManager</code></a>
-        object.
+        <code id="widl-BatteryManager-dischargingTime">dischargingTime</code> 속성은 반드시
+        배터리가 충전중이거나, 구현체가 충전을 안한 시간 나머지의 보고를 사용하지 못하거나, 시스템에 배터리가 첨부되지 않았거나, 그 외의 경우에
+        값을 양수 무한대로 지정해야 합니다.
+
+        배터리 비충전 시간이 업데이트 될 때,
+        <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">유저 에이전트</a>는 반드시
+        <code>dischargingTime</code> 속성의 값을 <a href="#dfn-queue-a-task" class="internalDFN" data-link-type="dfn">태스크 큐</a>로 설정하고,
+        <a href="#idl-def-BatteryManager" class="idlType"><code>BatteryManager</code></a> 객체의
+        <code><a href="#dfn-dischargingtimechange" class="internalDFN" data-link-type="dfn"><code>dischargingtimechange</code></a></code>
+        <a href="#dfn-fires-a-simple-event" class="internalDFN" data-link-type="dfn">이벤트를 발생</a>시켜야 합니다.
     </p>
     <p>
-        The <code id="widl-BatteryManager-level">level</code> attribute <em class="rfc2119" title="MUST">MUST</em> be
-        set to 0 if the system's battery is depleted and the system is about to
-        be suspended, and to 1.0 if the battery is full, the implementation is
-        unable to report the battery's level, or there is no battery attached
-        to the system. When the battery level is updated, the <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a>
-        <em class="rfc2119" title="MUST">MUST</em> <a href="#dfn-queue-a-task" class="internalDFN" data-link-type="dfn">queue a task</a> which sets the <code>level</code> attribute's
-        value and <a href="#dfn-fires-a-simple-event" class="internalDFN" data-link-type="dfn">fires a simple event</a> named
-        <code><a href="#dfn-levelchange" class="internalDFN" data-link-type="dfn"><code>levelchange</code></a></code> at the <a href="#idl-def-BatteryManager" class="idlType"><code>BatteryManager</code></a> object.
+        <code id="widl-BatteryManager-level">level</code> 속성은 반드시
+        시스템의 배터리가 고갈되거나, 시스템이 꺼진 경우 0으로 지정하고,
+        배터리가 가득 차있거나, 구현체가 배터리의 레벨 리포트를 사용하지 못하는 경우,
+        시스템에 배터리가 첨부되지 않은 경우에는 1.0으로 지정합니다.
+
+        배터리 레벨이 업데이트 될 때,
+        <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">유저 에이전트</a>는 반드시
+        <code>level</code> 속성의 값을 <a href="#dfn-queue-a-task" class="internalDFN" data-link-type="dfn">태스크 큐</a>로 설정하고,
+        <a href="#idl-def-BatteryManager" class="idlType"><code>BatteryManager</code></a> 객체의
+        <code><a href="#dfn-levelchange" class="internalDFN" data-link-type="dfn"><code>levelchange</code></a></code>
+        <a href="#dfn-fires-a-simple-event" class="internalDFN" data-link-type="dfn">이벤트를 발생</a>시켜야 합니다.
     </p>
-    <div class="note"><div class="note-title marker" aria-level="3" role="heading" id="h-note2"><span>Note</span></div><p class="">
-        The definition of how often the <code><a href="#dfn-chargingtimechange" class="internalDFN" data-link-type="dfn"><code>chargingtimechange</code></a></code>,
-        <code><a href="#dfn-dischargingtimechange" class="internalDFN" data-link-type="dfn"><code>dischargingtimechange</code></a></code>, and
-        <code><a href="#dfn-levelchange" class="internalDFN" data-link-type="dfn"><code>levelchange</code></a></code> events are fired is left to the
-        implementation.
+    <div class="note"><div class="note-title marker" aria-level="3" role="heading" id="h-note2"><span>노트</span></div><p class="">
+        얼마나 자주 <code><a href="#dfn-chargingtimechange" class="internalDFN" data-link-type="dfn"><code>chargingtimechange</code></a></code>,
+        <code><a href="#dfn-dischargingtimechange" class="internalDFN" data-link-type="dfn"><code>dischargingtimechange</code></a></code>,
+        <code><a href="#dfn-levelchange" class="internalDFN" data-link-type="dfn"><code>levelchange</code></a></code> 이벤트가 발생할 지에 대한 정의는 구현체에 따릅니다.
     </p></div>
     <section id="multiple-batteries" typeof="bibo:Chapter" resource="#multiple-batteries" property="bibo:hasPart">
         <h3 id="h-multiple-batteries" resource="#h-multiple-batteries"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.1 </span>
-          Multiple batteries
+          다중 배터리
         </span></h3>
         <p>
-            If a hosting device contains more than one battery,
-            <a href="#idl-def-BatteryManager" class="idlType"><code>BatteryManager</code></a> <em class="rfc2119" title="SHOULD">SHOULD</em> expose an unified view of the batteries.
+            호스팅 디바이스가 하나 이상의 배터리를 사용하는 경우
+            <a href="#idl-def-BatteryManager" class="idlType"><code>BatteryManager</code></a>는 배터리들을 통합하여 관측해야합니다.
+            [<em class="rfc2119" title="SHOULD">SHOULD</em>]
         </p>
         <p>
-            The <code>charging</code> attribute <em class="rfc2119" title="MUST">MUST</em> be set to true if at least
-            one battery's <code>charging</code> state as described above is true.
-            Otherwise, it <em class="rfc2119" title="MUST">MUST</em> be set to false.
+            <code>charging</code> 속성은 최소한 하나의 배터리의 <code>charging</code> 상태가 위에서 소개한 대로 true라면 true로 세팅해야만 합니다 [<em class="rfc2119" title="MUST">MUST</em>].
+            그 외의 경우에는 반드시 false입니다 [<em class="rfc2119" title="MUST">MUST</em>].
         </p>
         <p>
-            The <code>chargingTime</code> attribute can be set to the maximum
-            charging time of the individual batteries if charging in parallel,
-            and to the sum of the individual charging times if charging serially.
+            <code>chargingTime</code> 속성은 만약 병렬 충전이라면 개별 배터리의 최대 충전 시간으로 설정하며,
+            직렬 충전이라면 각 배터리별 충전 시간의 합계로 설정합니다.
         </p>
         <p>
-            The <code>dischargingTime</code> attribute can be set to the maximum
-            discharging time of the individual batteries if discharging in
-            parallel, and to the sum of individual discharging times if
-            discharging serially.
+            <code>dischargingTime</code> 속성은 만약 병렬 비충전이라면 개별 배터리의 최대 충전 시간으로 설정하며,
+            직렬 비충전이라면 각 배터리별 비충전 시간의 합계로 설정합니다.
         </p>
         <p>
-            The <code>level</code> attribute can be set to the average of the
-            levels of batteries of same capacity, or the weighted average of the
-            battery level attributes for batteries of different capacities.
+            <code>level</code> 속성은 같은 정도라면 배터리의 레벨의 평균,
+            다른 정도라면 배터리 레벨의 가중 평균으로 설정합니다.
         </p>
     </section>
     <section id="event-handlers" typeof="bibo:Chapter" resource="#event-handlers" property="bibo:hasPart">
         <h3 id="h-event-handlers" resource="#h-event-handlers"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.2 </span>
-          Event handlers
+          이벤트 핸들러
         </span></h3>
         <p>
-            The following are the <a href="#dfn-event-handlers" class="internalDFN" data-link-type="dfn">event handlers</a> (and their corresponding
-            <a href="#dfn-event-handler-event-types" class="internalDFN" data-link-type="dfn">event handler event types</a>) that <em class="rfc2119" title="MUST">MUST</em> be supported as
-            attributes by the <a href="#idl-def-BatteryManager" class="idlType"><code>BatteryManager</code></a> object:
+            아래 목록은 <a href="#idl-def-BatteryManager" class="idlType"><code>BatteryManager</code></a> 객체에서 속성으로 지원해야만 하는
+            (그리고 그 <a href="#dfn-event-handler-event-types" class="internalDFN" data-link-type="dfn">이벤트 핸들러 이벤트 타입</a>에 해당하는) <a href="#dfn-event-handlers" class="internalDFN" data-link-type="dfn">이벤트 핸들러</a>입니다.
         </p>
         <table class="simple">
             <thead>
             <tr>
                 <th>
-                    event handler
+                    이벤트 핸들러
                 </th>
                 <th>
-                    event handler event type
+                    이벤트 핸들러 이벤트 타입
                 </th>
             </tr>
             </thead>
@@ -983,11 +980,10 @@
 </section>
 <section class="informative" id="examples" typeof="bibo:Chapter" resource="#examples" property="bibo:hasPart">
     <!--OddPage--><h2 id="h-examples" resource="#h-examples"><span property="xhv:role" resource="xhv:heading"><span class="secno">7. </span>
-        Examples
-      </span></h2><p><em>This section is non-normative.</em></p>
+        예제
+      </span></h2><p><em>이 섹션은 표준에 준하지 않습니다.</em></p>
     <p>
-        This trivial example writes the battery level to the console each time
-        the level changes:
+        아래 사소한 에제에서 배터리 레벨이 바뀔 때마다 콘솔에 배터리 레벨을 찍어주고 있습니다:
     </p>
     <div class="example"><div class="example-title marker"><span>Example 1</span></div><pre class="highlight prettyprint prettyprinted" style=""><span class="com">// We get the initial value when the promise resolves ...</span><span class="pln">
 navigator</span><span class="pun">.</span><span class="pln">getBattery</span><span class="pun">().</span><span class="kwd">then</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(</span><span class="pln">battery</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
@@ -998,8 +994,7 @@ navigator</span><span class="pun">.</span><span class="pln">getBattery</span><sp
   </span><span class="pun">};</span><span class="pln">
 </span><span class="pun">});</span></pre></div>
     <p>
-        Alternatively, the same using the <code>addEventListener()</code>
-        method:
+        대신하여, 같은 동작으로 <code>addEventListener()</code> 메서드를 사용했습니다.
     </p>
     <div class="example"><div class="example-title marker"><span>Example 2</span></div><pre class="highlight prettyprint prettyprinted" style=""><span class="pln">navigator</span><span class="pun">.</span><span class="pln">getBattery</span><span class="pun">().</span><span class="kwd">then</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(</span><span class="pln">battery</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
   console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">battery</span><span class="pun">.</span><span class="pln">level</span><span class="pun">);</span><span class="pln">
@@ -1008,8 +1003,7 @@ navigator</span><span class="pun">.</span><span class="pln">getBattery</span><sp
   </span><span class="pun">});</span><span class="pln">
 </span><span class="pun">});</span></pre></div>
     <p>
-        The following example updates the indicators to show the charging
-        state, level and time remaining in minutes:
+        아래 예제는 인디케이터를 업데이트하여 충전 상태, 레벨과 일분에 남아있는 시간을 보여줍니다.
     </p>
     <div class="example"><div class="example-title marker"><span>Example 3</span></div><pre class="highlight prettyprint prettyprinted" style=""><span class="dec">&lt;!DOCTYPE html&gt;</span><span class="pln">
 </span><span class="tag">&lt;html&gt;</span><span class="pln">
@@ -1052,7 +1046,7 @@ navigator</span><span class="pun">.</span><span class="pln">getBattery</span><sp
 </section>
 <section class="appendix" id="acknowledgements" typeof="bibo:Chapter" resource="#acknowledgements" property="bibo:hasPart">
     <!--OddPage--><h2 id="h-acknowledgements" resource="#h-acknowledgements"><span property="xhv:role" resource="xhv:heading"><span class="secno">A. </span>
-        Acknowledgements
+        감사의 말
       </span></h2>
     <p>
         The group is deeply indebted to Mounir Lamouri, Jonas Sicking, and the
