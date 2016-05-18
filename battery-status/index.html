@@ -1,0 +1,1079 @@
+
+<!DOCTYPE html>
+<html lang="ko" dir="ltr" typeof="bibo:Document w3p:PR" prefix="bibo: http://purl.org/ontology/bibo/ w3p: http://www.w3.org/2001/02pd/rec54#">
+<head>
+    <meta lang="" property="dc:language" content="ko">
+    <title>배터리 상태 API</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+    <style>
+/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+    /* --- INLINES --- */
+    em.rfc2119 {
+        text-transform:     lowercase;
+        font-variant:       small-caps;
+        font-style:         normal;
+        color:              #900;
+    }
+
+    h1 acronym, h2 acronym, h3 acronym, h4 acronym, h5 acronym, h6 acronym, a acronym,
+    h1 abbr, h2 abbr, h3 abbr, h4 abbr, h5 abbr, h6 abbr, a abbr {
+        border: none;
+    }
+
+    dfn {
+        font-weight:    bold;
+    }
+
+    a.internalDFN {
+        color:  inherit;
+        border-bottom:  1px solid #99c;
+        text-decoration:    none;
+    }
+
+    a.externalDFN {
+        color:  inherit;
+        border-bottom:  1px dotted #ccc;
+        text-decoration:    none;
+    }
+
+    a.bibref {
+        text-decoration:    none;
+    }
+
+    cite .bibref {
+        font-style: normal;
+    }
+
+    code {
+        color:  #C83500;
+    }
+
+    /* --- TOC --- */
+    .toc a, .tof a {
+        text-decoration:    none;
+    }
+
+    a .secno, a .figno {
+        color:  #000;
+    }
+
+    ul.tof, ol.tof {
+        list-style: none outside none;
+    }
+
+    .caption {
+        margin-top: 0.5em;
+        font-style:   italic;
+    }
+
+    /* --- TABLE --- */
+    table.simple {
+        border-spacing: 0;
+        border-collapse:    collapse;
+        border-bottom:  3px solid #005a9c;
+    }
+
+    .simple th {
+        background: #005a9c;
+        color:  #fff;
+        padding:    3px 5px;
+        text-align: left;
+    }
+
+    .simple th[scope="row"] {
+        background: inherit;
+        color:  inherit;
+        border-top: 1px solid #ddd;
+    }
+
+    .simple td {
+        padding:    3px 10px;
+        border-top: 1px solid #ddd;
+    }
+
+    .simple tr:nth-child(even) {
+        background: #f0f6ff;
+    }
+
+    /* --- DL --- */
+    .section dd > p:first-child {
+        margin-top: 0;
+    }
+
+    .section dd > p:last-child {
+        margin-bottom: 0;
+    }
+
+    .section dd {
+        margin-bottom:  1em;
+    }
+
+    .section dl.attrs dd, .section dl.eldef dd {
+        margin-bottom:  0;
+    }
+
+    @media print {
+        .removeOnSave {
+            display: none;
+        }
+    }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>/* --- EXAMPLES --- */
+    div.example-title {
+        min-width: 7.5em;
+        color: #b9ab2d;
+    }
+    div.example-title span {
+        text-transform: uppercase;
+    }
+    aside.example, div.example, div.illegal-example {
+        padding: 0.5em;
+        margin: 1em 0;
+        position: relative;
+        clear: both;
+    }
+    div.illegal-example { color: red }
+    div.illegal-example p { color: black }
+    aside.example, div.example {
+        padding: .5em;
+        border-left-width: .5em;
+        border-left-style: solid;
+        border-color: #e0cb52;
+        background: #fcfaee;
+    }
+
+    aside.example div.example {
+        border-left-width: .1em;
+        border-color: #999;
+        background: #fff;
+    }
+    aside.example div.example div.example-title {
+        color: #999;
+    }
+    </style><style>/* --- ISSUES/NOTES --- */
+    div.issue-title, div.note-title , div.ednote-title, div.warning-title {
+        padding-right:  1em;
+        min-width: 7.5em;
+        color: #b9ab2d;
+    }
+    div.issue-title { color: #e05252; }
+    div.note-title, div.ednote-title { color: #2b2; }
+    div.warning-title { color: #f22; }
+    div.issue-title span, div.note-title span, div.ednote-title span, div.warning-title span {
+        text-transform: uppercase;
+    }
+    div.note, div.issue, div.ednote, div.warning {
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+    .note > p:first-child, .ednote > p:first-child, .issue > p:first-child, .warning > p:first-child { margin-top: 0 }
+    .issue, .note, .ednote, .warning {
+        padding: .5em;
+        border-left-width: .5em;
+        border-left-style: solid;
+    }
+    div.issue, div.note , div.ednote,  div.warning {
+        padding: 1em 1.2em 0.5em;
+        margin: 1em 0;
+        position: relative;
+        clear: both;
+    }
+    span.note, span.ednote, span.issue, span.warning { padding: .1em .5em .15em; }
+
+    .issue {
+        border-color: #e05252;
+        background: #fbe9e9;
+    }
+    .note, .ednote {
+        border-color: #52e052;
+        background: #e9fbe9;
+    }
+
+    .warning {
+        border-color: #f11;
+        border-width: .2em;
+        border-style: solid;
+        background: #fbe9e9;
+    }
+
+    .warning-title:before{
+        content: "⚠"; /*U+26A0 WARNING SIGN*/
+        font-size: 3em;
+        float: left;
+        height: 100%;
+        padding-right: .3em;
+        vertical-align: top;
+        margin-top: -0.5em;
+    }
+
+    li.task-list-item {
+        list-style: none;
+    }
+
+    input.task-list-item-checkbox {
+        margin: 0 0.35em 0.25em -1.6em;
+        vertical-align: middle;
+    }
+    </style><style>/* HIGHLIGHTS */
+    code.prettyprint {
+        color:  inherit;
+    }
+
+    /* this from google-code-prettify */
+    .pln{color:#000}@media screen{.str{color:#080}.kwd{color:#008}.com{color:#800}.typ{color:#606}.lit{color:#066}.pun,.opn,.clo{color:#660}.tag{color:#008}.atn{color:#606}.atv{color:#080}.dec,.var{color:#606}.fun{color:red}}@media print,projection{.str{color:#060}.kwd{color:#006;font-weight:bold}.com{color:#600;font-style:italic}.typ{color:#404;font-weight:bold}.lit{color:#044}.pun,.opn,.clo{color:#440}.tag{color:#006;font-weight:bold}.atn{color:#404}.atv{color:#060}}ol.linenums{margin-top:0;margin-bottom:0}li.L0,li.L1,li.L2,li.L3,li.L5,li.L6,li.L7,li.L8{list-style-type:none}li.L1,li.L3,li.L5,li.L7,li.L9{background:#eee}
+    </style><style>/* --- WEB IDL --- */
+    pre.idl {
+        border-top: 1px solid #90b8de;
+        border-bottom: 1px solid #90b8de;
+        padding:    1em;
+        line-height:    120%;
+    }
+
+    @media print {
+        pre.idl {
+            white-space: pre-wrap;
+        }
+    }
+
+    pre.idl::before {
+        content:    "WebIDL";
+        display:    block;
+        width:      150px;
+        background: #90b8de;
+        color:  #fff;
+        font-family:    sans-serif;
+        padding:    3px;
+        font-weight:    bold;
+        margin: -1em 0 1em -1em;
+    }
+
+    .idlType {
+        color:  #ff4500;
+        font-weight:    bold;
+        text-decoration:    none;
+    }
+
+    /*.idlModule*/
+    /*.idlModuleID*/
+    /*.idlInterface*/
+    .idlInterfaceID, .idlDictionaryID, .idlCallbackID, .idlEnumID {
+        font-weight:    bold;
+        color:  #005a9c;
+    }
+    a.idlEnumItem {
+        color:  #000;
+        border-bottom:  1px dotted #ccc;
+        text-decoration: none;
+    }
+
+    .idlSuperclass {
+        font-style: italic;
+        color:  #005a9c;
+    }
+
+    /*.idlAttribute*/
+    .idlAttrType, .idlFieldType, .idlMemberType {
+        color:  #005a9c;
+    }
+    .idlAttrName, .idlFieldName, .idlMemberName {
+        color:  #ff4500;
+    }
+    .idlAttrName a, .idlFieldName a, .idlMemberName a {
+        color:  #ff4500;
+        border-bottom:  1px dotted #ff4500;
+        text-decoration: none;
+    }
+
+    /*.idlMethod*/
+    .idlMethType, .idlCallbackType {
+        color:  #005a9c;
+    }
+    .idlMethName {
+        color:  #ff4500;
+    }
+    .idlMethName a {
+        color:  #ff4500;
+        border-bottom:  1px dotted #ff4500;
+        text-decoration: none;
+    }
+
+    /*.idlCtor*/
+    .idlCtorName {
+        color:  #ff4500;
+    }
+    .idlCtorName a {
+        color:  #ff4500;
+        border-bottom:  1px dotted #ff4500;
+        text-decoration: none;
+    }
+
+    /*.idlParam*/
+    .idlParamType {
+        color:  #005a9c;
+    }
+    .idlParamName, .idlDefaultValue {
+        font-style: italic;
+    }
+
+    .extAttr {
+        color:  #666;
+    }
+
+    /*.idlSectionComment*/
+    .idlSectionComment {
+        color: gray;
+    }
+
+    /*.idlIterable*/
+    .idlIterableKeyType, .idlIterableValueType {
+        color:  #005a9c;
+    }
+
+    /*.idlMaplike*/
+    .idlMaplikeKeyType, .idlMaplikeValueType {
+        color:  #005a9c;
+    }
+
+    /*.idlConst*/
+    .idlConstType {
+        color:  #005a9c;
+    }
+    .idlConstName {
+        color:  #ff4500;
+    }
+    .idlConstName a {
+        color:  #ff4500;
+        border-bottom:  1px dotted #ff4500;
+        text-decoration: none;
+    }
+
+    /*.idlException*/
+    .idlExceptionID {
+        font-weight:    bold;
+        color:  #c00;
+    }
+
+    .idlTypedefID, .idlTypedefType {
+        color:  #005a9c;
+    }
+
+    .idlRaises, .idlRaises a.idlType, .idlRaises a.idlType code, .excName a, .excName a code {
+        color:  #c00;
+        font-weight:    normal;
+    }
+
+    .excName a {
+        font-family:    monospace;
+    }
+
+    .idlRaises a.idlType, .excName a.idlType {
+        border-bottom:  1px dotted #c00;
+    }
+
+    .excGetSetTrue, .excGetSetFalse, .prmNullTrue, .prmNullFalse, .prmOptTrue, .prmOptFalse {
+        width:  45px;
+        text-align: center;
+    }
+    .excGetSetTrue, .prmNullTrue, .prmOptTrue { color:  #0c0; }
+    .excGetSetFalse, .prmNullFalse, .prmOptFalse { color:  #c00; }
+
+    .idlImplements a {
+        font-weight:    bold;
+    }
+
+    dl.attributes, dl.methods, dl.constants, dl.constructors, dl.fields, dl.dictionary-members {
+        margin-left:    2em;
+    }
+
+    .attributes dt, .methods dt, .constants dt, .constructors dt, .fields dt, .dictionary-members dt {
+        font-weight:    normal;
+    }
+
+    .attributes dt code, .methods dt code, .constants dt code, .constructors dt code, .fields dt code, .dictionary-members dt code {
+        font-weight:    bold;
+        color:  #000;
+        font-family:    monospace;
+    }
+
+    .attributes dt code, .fields dt code, .dictionary-members dt code {
+        background:  #ffffd2;
+    }
+
+    .attributes dt .idlAttrType code, .fields dt .idlFieldType code, .dictionary-members dt .idlMemberType code {
+        color:  #005a9c;
+        background:  transparent;
+        font-family:    inherit;
+        font-weight:    normal;
+        font-style: italic;
+    }
+
+    .methods dt code {
+        background:  #d9e6f8;
+    }
+
+    .constants dt code {
+        background:  #ddffd2;
+    }
+
+    .constructors dt code {
+        background:  #cfc;
+    }
+
+    .attributes dd, .methods dd, .constants dd, .constructors dd, .fields dd, .dictionary-members dd {
+        margin-bottom:  1em;
+    }
+
+    table.parameters, table.exceptions {
+        border-spacing: 0;
+        border-collapse:    collapse;
+        margin: 0.5em 0;
+        width:  100%;
+    }
+    table.parameters { border-bottom:  1px solid #90b8de; }
+    table.exceptions { border-bottom:  1px solid #deb890; }
+
+    .parameters th, .exceptions th {
+        color:  #fff;
+        padding:    3px 5px;
+        text-align: left;
+        font-weight:    normal;
+        text-shadow:    #666 1px 1px 0;
+    }
+    .parameters th { background: #90b8de; }
+    .exceptions th { background: #deb890; }
+
+    .parameters td, .exceptions td {
+        padding:    3px 10px;
+        border-top: 1px solid #ddd;
+        vertical-align: top;
+    }
+
+    .parameters tr:first-child td, .exceptions tr:first-child td {
+        border-top: none;
+    }
+
+    .parameters td.prmName, .exceptions td.excName, .exceptions td.excCodeName {
+        width:  100px;
+    }
+
+    .parameters td.prmType {
+        width:  120px;
+    }
+
+    table.exceptions table {
+        border-spacing: 0;
+        border-collapse:    collapse;
+        width:  100%;
+    }
+    </style><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-PR"><!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]--><script id="initialUserConfig" type="application/json">{
+        "specStatus": "PR",
+        "shortName": "battery-status",
+        "publishDate": "2016-03-29",
+        "previousPublishDate": "2014-12-09",
+        "previousMaturity": "CR",
+        "edDraftURI": "https://w3c.github.io/battery/",
+        "lcEnd": "2014-10-02",
+        "prEnd": "2016-04-29",
+        "editors": [
+            {
+                "name": "Anssi Kostiainen",
+                "company": "Intel",
+                "companyURL": "http://intel.com/"
+            },
+            {
+                "name": "Mounir Lamouri",
+                "company": "Google Inc.",
+                "companyURL": "http://google.com/",
+                "note": "previously Mozilla"
+            }
+        ],
+        "inlineCSS": true,
+        "noIDLIn": true,
+        "noLegacyStyle": true,
+        "wg": "Device APIs Working Group",
+        "wgURI": "http://www.w3.org/2009/dap/",
+        "wgPublicList": "public-device-apis",
+        "wgPatentURI": "http://www.w3.org/2004/01/pp-impl/43696/status",
+        "testSuiteURI": "http://w3c-test.org/battery-status/",
+        "implementationReportURI": "https://w3c.github.io/test-results/battery-status/20160226.html",
+        "scheme": "https",
+        "processVersion": 2005
+    }</script></head>
+<body class="h-entry" role="document" id="respecDocument"><div class="head" role="contentinfo" id="respecHeader">
+    <p>
+        <a class="logo" href="http://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
+    </p>
+    <h1 class="title p-name" id="title" property="dcterms:title">배터리 상태 API</h1>
+    <h2 id="w3c-proposed-recommendation-29-march-2016"><time property="dcterms:issued" class="dt-published" datetime="2016-03-29">2016년 3월 29일</time> <abbr title="World Wide Web Consortium">W3C</abbr> 후보 권고안</h2>
+    <dl>
+        <dt>이 버전:</dt>
+        <dd><a class="u-url" href="http://www.w3.org/TR/2016/PR-battery-status-20160329/">http://www.w3.org/TR/2016/PR-battery-status-20160329/</a></dd>
+        <dt>최신 발행 버전:</dt>
+        <dd><a href="http://www.w3.org/TR/battery-status/">http://www.w3.org/TR/battery-status/</a></dd>
+        <dt>최신 에디터 발행 버전:</dt>
+        <dd><a href="https://w3c.github.io/battery/">https://w3c.github.io/battery/</a></dd>
+        <dt>Test suite:</dt>
+        <dd><a href="http://w3c-test.org/battery-status/">http://w3c-test.org/battery-status/</a></dd>
+        <dt>구현 보고서:</dt>
+        <dd><a href="https://w3c.github.io/test-results/battery-status/20160226.html">https://w3c.github.io/test-results/battery-status/20160226.html</a></dd>
+        <dt>이전 버전:</dt>
+        <dd><a rel="dcterms:replaces" href="http://www.w3.org/TR/2014/CR-battery-status-20141209/">http://www.w3.org/TR/2014/CR-battery-status-20141209/</a></dd>
+        <dt>에디터:</dt>
+        <dd class="p-author h-card vcard" property="bibo:editor" resource="_:editor0"><span property="rdf:first" typeof="foaf:Person"><span property="foaf:name" class="p-name fn">Anssi Kostiainen</span>, <a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="http://intel.com/">Intel</a></span>
+            <span property="rdf:rest" resource="_:editor1"></span>
+        </dd>
+        <dd class="p-author h-card vcard" resource="_:editor1"><span property="rdf:first" typeof="foaf:Person"><span property="foaf:name" class="p-name fn">Mounir Lamouri</span>, <a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="http://google.com/">Google Inc.</a> (previously Mozilla)</span>
+            <span property="rdf:rest" resource="rdf:nil"></span>
+        </dd>
+
+    </dl>
+    <p class="copyright">
+        <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> ©
+        2016
+
+        <a href="http://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup>
+        (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
+        <a href="http://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>,
+        <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>).
+        <abbr title="World Wide Web Consortium">W3C</abbr> <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
+        <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and
+        <a rel="license" href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a>
+        rules apply.
+    </p>
+    <hr title="Separator for header">
+</div>
+<section id="abstract" class="introductory" property="dc:abstract"><h2 id="h-abstract" resource="#h-abstract"><span property="xhv:role" resource="xhv:heading">Abstract</span></h2><p>
+    이 스펙에서는 호스팅 디바이스의 배터리 상태에 대한 정보를 제공하는 API를 정의합니다.
+</p></section><section id="sotd" class="introductory"><h2 id="h-sotd" resource="#h-sotd"><span property="xhv:role" resource="xhv:heading">Status of This Document</span></h2>
+    <p>
+        <em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this technical report can be found in the <a href="http://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at http://www.w3.org/TR/.</em>
+    </p>
+
+    <p>
+        No substantial changes have been made to the Battery Status API since
+        the <a href="https://www.w3.org/TR/2014/CR-battery-status-20141209/"><abbr title="World Wide Web Consortium">W3C</abbr> Candidate
+        Recommendation</a> of December 2014 (<a href="PR-diff.html">diff</a>) ,
+        however the document now has more detailed privacy considerations,
+        including advice regarding the implications of high precision readouts,
+        based on feedback from <a href="https://lists.w3.org/Archives/Public/public-device-apis/2015Aug/0000.html">
+        implementation experience</a>. It also has updated references.
+    </p>
+    <p>
+        The <a href="https://w3c.github.io/test-results/battery-status/20160226.html">implementation
+        report</a> of the API shows all features have been implemented by two
+        independent deployed browsers, meeting the CR exit criteria. We had no
+        CR features marked as 'at-risk'.
+    </p>
+    <p>
+        There is a known issue with some WebIDL implementations that are not
+        specific to the Battery Status API; the interoperability effect of that
+        issue is minimal, since it only affects error handling in case where
+        the API is mis-used, which is in practice detected at development time
+        rather than usage time.
+    </p>
+
+    <p>
+        This document was published by the <a href="http://www.w3.org/2009/dap/">Device APIs Working Group</a> as a Proposed Recommendation.
+        This document is intended to become a <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation.
+
+        The <abbr title="World Wide Web Consortium">W3C</abbr> Membership and other interested parties are invited to review the document and
+        send comments to
+        <a rel="discussion" href="mailto:public-device-apis@w3.org">public-device-apis@w3.org</a>
+        (<a href="mailto:public-device-apis-request@w3.org?subject=subscribe">subscribe</a>,
+        <a href="http://lists.w3.org/Archives/Public/public-device-apis/">archives</a>)
+        through 29 April 2016. Advisory Committee Representatives should consult their
+        <a href="https://www.w3.org/2002/09/wbs/myQuestionnaires">WBS questionnaires</a>.
+        Note that substantive technical comments were expected during the Last Call review
+        period that ended 02 October 2014.
+    </p>
+    <p>
+        Please see the Working Group's  <a href="https://w3c.github.io/test-results/battery-status/20160226.html">implementation
+        report</a>.
+    </p>
+    <p>
+        Publication as a Proposed Recommendation does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr>
+        Membership. This is a draft document and may be updated, replaced or obsoleted by other
+        documents at any time. It is inappropriate to cite this document as other than work in
+        progress.
+    </p>
+    <p>
+        This document was produced by
+        a group
+        operating under the
+        <a id="sotd_patent" property="w3p:patentRules" href="http://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004 <abbr title="World Wide Web Consortium">W3C</abbr> Patent
+            Policy</a>.
+        <abbr title="World Wide Web Consortium">W3C</abbr> maintains a <a href="http://www.w3.org/2004/01/pp-impl/43696/status" rel="disclosure">public list of any patent
+        disclosures</a>
+        made in connection with the deliverables of
+        the group; that page also includes
+        instructions for disclosing a patent. An individual who has actual knowledge of a patent
+        which the individual believes contains
+        <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential
+            Claim(s)</a> must disclose the information in accordance with
+        <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section
+            6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
+    </p>
+    <p>
+        This document is governed by the  <a id="w3c_process_revision" href="http://www.w3.org/2005/10/Process-20051014/">14 October 2005 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
+    </p>
+
+</section><nav id="toc"><h2 class="introductory" id="table-of-contents" resource="#table-of-contents"><span property="xhv:role" resource="xhv:heading">Table of Contents</span></h2><ul class="toc" role="directory"><li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>
+    Introduction
+</a></li><li class="tocline"><a href="#conformance" class="tocxref"><span class="secno">2. </span>Conformance</a></li><li class="tocline"><a href="#terminology" class="tocxref"><span class="secno">3. </span>
+    Terminology
+</a></li><li class="tocline"><a href="#security-and-privacy-considerations" class="tocxref"><span class="secno">4. </span>
+    Security and privacy considerations
+</a></li><li class="tocline"><a href="#the-navigator-interface" class="tocxref"><span class="secno">5. </span>
+    The <span class="formerLink"><code>Navigator</code></span> interface
+</a></li><li class="tocline"><a href="#the-batterymanager-interface" class="tocxref"><span class="secno">6. </span>
+    The <span class="formerLink"><code>BatteryManager</code></span> interface
+</a><ul class="toc"><li class="tocline"><a href="#multiple-batteries" class="tocxref"><span class="secno">6.1 </span>
+    Multiple batteries
+</a></li><li class="tocline"><a href="#event-handlers" class="tocxref"><span class="secno">6.2 </span>
+    Event handlers
+</a></li></ul></li><li class="tocline"><a href="#examples" class="tocxref"><span class="secno">7. </span>
+    Examples
+</a></li><li class="tocline"><a href="#acknowledgements" class="tocxref"><span class="secno">A. </span>
+    Acknowledgements
+</a></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">B. </span>References</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">B.1 </span>Normative references</a></li></ul></li></ul></nav>
+
+<section class="informative" id="introduction" typeof="bibo:Chapter" resource="#introduction" property="bibo:hasPart">
+    <!--OddPage--><h2 id="h-introduction" resource="#h-introduction"><span property="xhv:role" resource="xhv:heading"><span class="secno">1. </span>
+        Introduction
+      </span></h2><p><em>This section is non-normative.</em></p>
+    <p>
+        배터리 상태 API 스펙은 웹 개발자가 호스팅 디바이스의 배터리 상태를 측정할 수 있도록 함을 의미합니다
+        디바이스의 배터리 상태에 대한 지식 없이 웹 개발자는 가질 수 있는 충분한 양의 배터리를 가정해서 웹 어플리케이션을 설계해야합니다.
+        웹 개발자가 배터리 상태를 기준으로 하여 제작할 수 없기 때문에, 디바이스의 배터리는 기대한 것보다 훨씬 빨리 닳겁니다.
+        배터리 상태에 대한 지식을 통해, 웹 개발자는 효율적인 파워를 사용하여 웹 콘텐츠와 어플리케이션을 제작할 수 있고,
+        이는 곧 유저 경험의 향상으로 이어질 겁니다.
+        작성자는 인지해야 하며, 이 API의 네이티브 구현체는 배터리 라이프에 안좋은 영향을 줄 수도 있습니다.
+    </p>
+    <p>
+        배터리 상태 API는 배터리 잔량이 낮거나 충전중이지 않을 때 일의 크기를 줄이거나 지연시키는 게 가능합니다.
+        더 나은 웹 어플리케이션의 전형으로, 웹 기반 이메일 클라이언트를 예로 들면,
+        기기의 배터리를 충전 중일 때는 몇 초 마다 새 이메일을 서버에서 체크하고,
+        배터리 잔량이 낮거나 충전중이지 않을 때는 그 빈도를 줄일 수도 있습니다.
+        다른 예제로는 웹 기반 워드 프로세서에서 배터리 레벨을 체크해
+        배터리를 다 쓰기 전에 변경점을 저장해 데이터 유실을 막을 수 있습니다.
+    </p>
+</section>
+<section id="conformance" typeof="bibo:Chapter" resource="#conformance" property="bibo:hasPart"><!--OddPage--><h2 id="h-conformance" resource="#h-conformance"><span property="xhv:role" resource="xhv:heading"><span class="secno">2. </span>적합 요구사항</span></h2>
+    <p>
+        이 스펙문서에서 표준에 준하지 않는 내용이 아닙니다라 표기된 섹션, 작성 가이드라인, 다이어그램, 예제 및 노트는 표준에 준하는 내용이 아닙니다.
+        그 외의 모든 건 표준에 준하는 내용입니다.
+    </p>
+    <p id="respecRFC2119">
+        이 스펙문서 내 키워드
+        <em class="rfc2119" title="MAY">MAY</em>, <em class="rfc2119" title="MUST">MUST</em>, <em class="rfc2119" title="MUST NOT">MUST NOT</em>, <em class="rfc2119" title="SHOULD">SHOULD</em>는
+        [<cite><a class="bibref" href="#bib-RFC2119">RFC2119</a></cite>]에서 기술하는대로 해석합니다.
+    </p>
+
+    <p>
+        이 스펙문서는 하나의 제품에 적용할 수 있는 적합 요건을 정의합니다
+        : 위 내용을 포함한 인터페이스를 구현한 <dfn data-dfn-type="dfn" id="dfn-user-agent">user agent</dfn>
+    </p>
+
+    <p>
+        ECMAScript를 사용하는 구현체는 이 스펙문서에서 정의하는 API 구현체를
+        Web IDL 스펙 [<cite><a class="bibref" href="#bib-WEBIDL">WEBIDL</a></cite>]에서 정의하는 ECMAScript 바인딩 방법으로 구현해야 합니다.
+        이 스펙문서에서는 저 스펙문서와 용어를 사용합니다.
+    </p>
+</section>
+<section id="terminology" typeof="bibo:Chapter" resource="#terminology" property="bibo:hasPart">
+    <!--OddPage--><h2 id="h-terminology" resource="#h-terminology"><span property="xhv:role" resource="xhv:heading"><span class="secno">3. </span>
+        용어
+      </span></h2>
+    <p>
+        아래 목록의 컨셉, 용어, 인터페이스는 [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>]에서 정의합니다:
+    </p>
+    <ul>
+        <li>
+            <code><a href="http://www.w3.org/TR/html5/webappapis.html#navigator">Navigator</a></code>
+        </li>
+        <li>
+            <code><a href="http://www.w3.org/TR/html5/webappapis.html#eventhandler">EventHandler</a></code>
+        </li>
+        <li>
+            <dfn data-dfn-type="dfn" id="dfn-queue-a-task"><a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">queue a
+                task</a></dfn>
+        </li>
+        <li>
+            <dfn data-dfn-type="dfn" id="dfn-fires-a-simple-event"><a href="http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event">fires
+                a simple event</a></dfn>
+        </li>
+        <li>
+            <dfn data-dfn-type="dfn" id="dfn-event-handlers"><a href="http://www.w3.org/TR/html5/webappapis.html#event-handlers">event
+                handlers</a></dfn>
+        </li>
+        <li>
+            <dfn data-dfn-type="dfn" id="dfn-event-handler-event-types"><a href="http://www.w3.org/TR/html5/webappapis.html#event-handler-event-type">
+                event handler event types</a></dfn>
+        </li>
+        <li>
+            <dfn data-dfn-type="dfn" id="dfn-browsing-context"><a href="http://www.w3.org/TR/html5/browsers.html#browsing-context">browsing
+                context</a></dfn>
+        </li>
+    </ul>
+    <p>
+        <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-promise-objects"><dfn data-dfn-type="dfn" id="dfn-promise">
+            Promise</dfn></a> 객체는 [<cite><a class="bibref" href="#bib-ECMASCRIPT">ECMASCRIPT</a></cite>]에서 정의합니다.
+    </p>
+</section>
+<section class="informative" id="security-and-privacy-considerations" typeof="bibo:Chapter" resource="#security-and-privacy-considerations" property="bibo:hasPart">
+    <!--OddPage--><h2 id="h-security-and-privacy-considerations" resource="#h-security-and-privacy-considerations"><span property="xhv:role" resource="xhv:heading"><span class="secno">4. </span>
+        보안 및 프라이버시 고려사항
+      </span></h2><p><em>이 섹션은 표준에 준하지 않습니다.</em></p>
+    <p>
+        이 스펙문서에서 정의하는 API는 호스팅 디바이스의 배터리 상태를 측정하는 데 사용합니다.
+    </p>
+    <p>
+        유저 에이전트는 새로운 지문 벡터를 소개할 수 있는 배터리 상태 정보의 고정밀 해독을 드러내서는 안됩니다.
+        [<em class="rfc2119" title="SHOULD">SHOULD</em>]
+    </p>
+    <p>
+        유저 에이전트는 유저에게 배터리 상태 정보 접근권한을 물어볼 수도 있으며,
+        다른 방법으로, 개인 정보 보호 브라우징 모드에서 유저 접근 권한 요청을 강요할 수 있습니다.
+        [<em class="rfc2119" title="MAY">MAY</em>]
+    </p>
+    <p>
+        유저에이전트는 투명성을 위해 눈에 띄지 않는 스크립트로 API 사용하는 경우 유저에게 알려야하고,
+        유저가 API 접근을 막을 수 있는 방법을 제공해야합니다.
+        [<em class="rfc2119" title="SHOULD">SHOULD</em>]
+    </p>
+    <p>
+        유저 에이전트는 호스팅 디바이스의 가짜 값이 노출되거나, 충전 중이거나, 배터리가 없는 상태를
+        작성자가 직접적으로 알지 못하게 하기 위해, 노출 값을 알기 어렵게 할 수 있습니다.
+        [<em class="rfc2119" title="MAY">MAY</em>]
+    </p>
+</section>
+<section id="the-navigator-interface" typeof="bibo:Chapter" resource="#the-navigator-interface" property="bibo:hasPart">
+    <!--OddPage--><h2 id="h-the-navigator-interface" resource="#h-the-navigator-interface"><span property="xhv:role" resource="xhv:heading"><span class="secno">5. </span>
+        <a href="#idl-def-Navigator" class="idlType"><code>Navigator</code></a> 인터페이스
+      </span></h2>
+      <pre class="idl"><span class="idlInterface" id="idl-def-Navigator">partial interface <span class="idlInterfaceID">Navigator</span> {
+<span class="idlMethod">    <span class="idlMethType">Promise&lt;<a href="#idl-def-BatteryManager" class="idlType"><code>BatteryManager</code></a>&gt;</span> <span class="idlMethName"><a href="#widl-Navigator-getBattery-Promise-BatteryManager">getBattery</a></span> ();</span>
+};</span></pre>
+    <p>
+
+        각 <a href="#dfn-browsing-context" class="internalDFN" data-link-type="dfn">browsing context</a>는
+        <dfn data-dfn-type="dfn" id="dfn-battery-promise">battery promise</dfn>이며 <code>null</code>로 초기화되어있습니다.
+
+        각 <a href="#dfn-browsing-context" class="internalDFN" data-link-type="dfn">browsing context</a>는
+        <a href="#idl-def-BatteryManager" class="idlType"><code>BatteryManager</code></a>에 홀드되어있는
+        <a href="#dfn-promise" class="internalDFN" data-link-type="dfn">Promise</a> 객체입니다.
+    </p>
+    <p>
+        <code id="widl-Navigator-getBattery-Promise-BatteryManager">getBattery()</code> 메소드는 호출 되었을 때,
+        반드시 다음 순서대로 실행해야 합니다. [<em class="rfc2119" title="MUST">MUST</em>]
+    </p>
+    <ul>
+        <li>
+            만약 <a href="#dfn-battery-promise" class="internalDFN" data-link-type="dfn">battery promise</a>가 <code>null</code>이 아니라면,
+            <a href="#dfn-battery-promise" class="internalDFN" data-link-type="dfn">battery promise</a>를 리턴하고 이 스텝을 넘깁니다.
+        </li>
+        <li>
+            그 외의 경우, <a href="#dfn-battery-promise" class="internalDFN" data-link-type="dfn">battery promise</a>를 새로 생성한
+            <a href="#dfn-promise" class="internalDFN" data-link-type="dfn">Promise</a>로 지정합니다.
+        </li>
+        <li>
+            <a href="#dfn-battery-promise" class="internalDFN" data-link-type="dfn">battery promise</a>를 리턴하고 비동기로 계속합니다.
+        </li>
+        <li>
+            <a href="#dfn-create-a-new-batterymanager-object" class="internalDFN" data-link-type="dfn">새 <code>BatteryManager</code> 객체를 생성</a>하고,
+            <var>battery</var>를 해당 객체로 지정합니다.
+        </li>
+        <li>
+            <var>battery</var>와 함께 <a href="#dfn-battery-promise" class="internalDFN" data-link-type="dfn">battery promise</a>를 <dfn data-dfn-type="dfn" id="dfn-resolve">Resolve</dfn>합니다.
+        </li>
+    </ul>
+    <p>
+        <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">유저 에이전트</a>는 <a href="#dfn-battery-promise" class="internalDFN" data-link-type="dfn">battery promise</a>를 거부해서는 안됩니다.
+        [<em class="rfc2119" title="MUST NOT">MUST NOT</em>]
+    </p>
+</section>
+<section id="the-batterymanager-interface" typeof="bibo:Chapter" resource="#the-batterymanager-interface" property="bibo:hasPart">
+    <!--OddPage--><h2 id="h-the-batterymanager-interface" resource="#h-the-batterymanager-interface"><span property="xhv:role" resource="xhv:heading"><span class="secno">6. </span>
+        <a href="#idl-def-BatteryManager" class="idlType"><code>BatteryManager</code></a> 인터페이스
+      </span></h2>
+    <p>
+        <a href="#idl-def-BatteryManager" class="idlType"><code>BatteryManager</code></a> 인터페이스는
+        호스팅 디바이스의 <dfn data-dfn-type="dfn" id="dfn-current-battery-status-information">현재 배터리 상태 정보</dfn>를 나타냅니다.
+        <code>charging</code> 속성은 시스템 배터리의 충전 상태를 나타냅니다.
+        <code>chargingTime</code> 속성은 시스템 배터리가 완전히 차기까지 남은 시간을 나타냅니다.
+        <code>dischargingTime</code> 속성은 시스템 배터리가 완전히 충전되지 않을 때의 시간과 시스템이 꺼지기까지의 시간을 나타내며,
+        <code>level</code> 속성은 시스템 배터리 레벨을 나타냅니다.
+    </p>
+      <pre class="idl"><span class="idlInterface" id="idl-def-BatteryManager">interface <span class="idlInterfaceID">BatteryManager</span> : <span class="idlSuperclass">EventTarget</span> {
+<span class="idlAttribute">    readonly        attribute <span class="idlAttrType">boolean</span>             <span class="idlAttrName"><a href="#widl-BatteryManager-charging">charging</a></span>;</span>
+<span class="idlAttribute">    readonly        attribute <span class="idlAttrType">unrestricted double</span> <span class="idlAttrName"><a href="#widl-BatteryManager-chargingTime">chargingTime</a></span>;</span>
+<span class="idlAttribute">    readonly        attribute <span class="idlAttrType">unrestricted double</span> <span class="idlAttrName"><a href="#widl-BatteryManager-dischargingTime">dischargingTime</a></span>;</span>
+<span class="idlAttribute">    readonly        attribute <span class="idlAttrType">double</span>              <span class="idlAttrName"><a href="#widl-BatteryManager-level">level</a></span>;</span>
+<span class="idlAttribute">                    attribute <span class="idlAttrType">EventHandler</span>        <span class="idlAttrName"><a href="#widl-BatteryManager-onchargingchange">onchargingchange</a></span>;</span>
+<span class="idlAttribute">                    attribute <span class="idlAttrType">EventHandler</span>        <span class="idlAttrName"><a href="#widl-BatteryManager-onchargingtimechange">onchargingtimechange</a></span>;</span>
+<span class="idlAttribute">                    attribute <span class="idlAttrType">EventHandler</span>        <span class="idlAttrName"><a href="#widl-BatteryManager-ondischargingtimechange">ondischargingtimechange</a></span>;</span>
+<span class="idlAttribute">                    attribute <span class="idlAttrType">EventHandler</span>        <span class="idlAttrName"><a href="#widl-BatteryManager-onlevelchange">onlevelchange</a></span>;</span>
+};</span></pre>
+    <p>
+        <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">유저 에이전트</a>는
+        <dfn data-dfn-type="dfn" id="dfn-create-a-new-batterymanager-object">새로운 <code>BatteryManager</code> 객체를 생성</dfn>할 때,
+        반드시 새 <a href="#idl-def-BatteryManager" class="idlType"><code>BatteryManager</code></a> 객체를 사용하여야 하고 [<em class="rfc2119" title="MUST">MUST</em>],
+        그 속성값을 <a href="#dfn-unable-to-report-the-battery-status-information" class="internalDFN" data-link-type="dfn">배터리 상태 정보 리포트를 사용하지 못하는 경우</a>를 제외하고,
+        <a href="#dfn-current-battery-status-information" class="internalDFN" data-link-type="dfn">현재 배터리 상태 정보</a>로 해야하며,
+        배터리 상태 정보 리포트를 사용하지 못하는 경우, 반드시 <dfn data-dfn-type="dfn" id="dfn-default-values">기본 값</dfn>을 아래 순서대로 해야합니다 [<em class="rfc2119" title="MUST">MUST</em>].
+
+        <code>charging</code>은 반드시 true로 [<em class="rfc2119" title="MUST">MUST</em>],
+        <code>chargingTime</code>은 반드시 0으로 [<em class="rfc2119" title="MUST">MUST</em>],
+        <code>dischargingTime</code>은 반드시 양수 무한대로 [<em class="rfc2119" title="MUST">MUST</em>],
+        <code>level</code>은 반드시 1.0으로 설정합니다 [<em class="rfc2119" title="MUST">MUST</em>.
+    </p>
+    <p>
+        The <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> is said to be <dfn data-dfn-type="dfn" id="dfn-unable-to-report-the-battery-status-information">unable to report the battery
+        status information</dfn>, if it is not able to report the values for
+        any of the attributes, for example, due to a user or system preference,
+        setting, or limitation.
+    </p>
+    <div class="note"><div class="note-title marker" aria-level="3" role="heading" id="h-note1"><span>Note</span></div><p class="">
+        Implementations <a href="#dfn-unable-to-report-the-battery-status-information" class="internalDFN" data-link-type="dfn">unable to report the battery status information</a>
+        emulate a fully charged and plugged in battery to reduce the potential
+        for fingerprinting and prevent applications from degrading performance,
+        if the battery status information is not made available, for example.
+    </p></div>
+    <p>
+        The <code id="widl-BatteryManager-charging">charging</code> attribute
+        <em class="rfc2119" title="MUST">MUST</em> be set to false if the battery is discharging, and set to true, if
+        the battery is charging, the implementation is unable to report the
+        state, or there is no battery attached to the system, or otherwise.
+        When the battery charging state is updated, the <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> <em class="rfc2119" title="MUST">MUST</em>
+        <a href="#dfn-queue-a-task" class="internalDFN" data-link-type="dfn">queue a task</a> which sets the <code>charging</code> attribute's
+        value and <a href="#dfn-fires-a-simple-event" class="internalDFN" data-link-type="dfn">fires a simple event</a> named
+        <code><a href="#dfn-chargingchange" class="internalDFN" data-link-type="dfn"><code>chargingchange</code></a></code> at the <a href="#idl-def-BatteryManager" class="idlType"><code>BatteryManager</code></a> object.
+    </p>
+    <p>
+        The <code id="widl-BatteryManager-chargingTime">chargingTime</code>
+        attribute <em class="rfc2119" title="MUST">MUST</em> be set to 0, if the battery is full or there is no
+        battery attached to the system, and to the value positive Infinity if
+        the battery is discharging, the implementation is unable to report the
+        remaining charging time, or otherwise. When the battery charging time
+        is updated, the <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> <em class="rfc2119" title="MUST">MUST</em> <a href="#dfn-queue-a-task" class="internalDFN" data-link-type="dfn">queue a task</a> which sets
+        the <code>chargingTime</code> attribute's value and <a href="#dfn-fires-a-simple-event" class="internalDFN" data-link-type="dfn">fires a simple
+        event</a> named <code><a href="#dfn-chargingtimechange" class="internalDFN" data-link-type="dfn"><code>chargingtimechange</code></a></code> at the
+        <a href="#idl-def-BatteryManager" class="idlType"><code>BatteryManager</code></a> object.
+    </p>
+    <p>
+        The <code id="widl-BatteryManager-dischargingTime">dischargingTime</code> attribute
+        <em class="rfc2119" title="MUST">MUST</em> be set to the value positive Infinity, if the battery is charging,
+        the implementation is unable to report the remaining discharging time,
+        there is no battery attached to the system, or otherwise. When the
+        battery discharging time is updated, the <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> <em class="rfc2119" title="MUST">MUST</em>
+        <a href="#dfn-queue-a-task" class="internalDFN" data-link-type="dfn">queue a task</a> which sets the <code>dischargingTime</code>
+        attribute's value and <a href="#dfn-fires-a-simple-event" class="internalDFN" data-link-type="dfn">fires a simple event</a> named
+        <code><a href="#dfn-dischargingtimechange" class="internalDFN" data-link-type="dfn"><code>dischargingtimechange</code></a></code> at the <a href="#idl-def-BatteryManager" class="idlType"><code>BatteryManager</code></a>
+        object.
+    </p>
+    <p>
+        The <code id="widl-BatteryManager-level">level</code> attribute <em class="rfc2119" title="MUST">MUST</em> be
+        set to 0 if the system's battery is depleted and the system is about to
+        be suspended, and to 1.0 if the battery is full, the implementation is
+        unable to report the battery's level, or there is no battery attached
+        to the system. When the battery level is updated, the <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a>
+        <em class="rfc2119" title="MUST">MUST</em> <a href="#dfn-queue-a-task" class="internalDFN" data-link-type="dfn">queue a task</a> which sets the <code>level</code> attribute's
+        value and <a href="#dfn-fires-a-simple-event" class="internalDFN" data-link-type="dfn">fires a simple event</a> named
+        <code><a href="#dfn-levelchange" class="internalDFN" data-link-type="dfn"><code>levelchange</code></a></code> at the <a href="#idl-def-BatteryManager" class="idlType"><code>BatteryManager</code></a> object.
+    </p>
+    <div class="note"><div class="note-title marker" aria-level="3" role="heading" id="h-note2"><span>Note</span></div><p class="">
+        The definition of how often the <code><a href="#dfn-chargingtimechange" class="internalDFN" data-link-type="dfn"><code>chargingtimechange</code></a></code>,
+        <code><a href="#dfn-dischargingtimechange" class="internalDFN" data-link-type="dfn"><code>dischargingtimechange</code></a></code>, and
+        <code><a href="#dfn-levelchange" class="internalDFN" data-link-type="dfn"><code>levelchange</code></a></code> events are fired is left to the
+        implementation.
+    </p></div>
+    <section id="multiple-batteries" typeof="bibo:Chapter" resource="#multiple-batteries" property="bibo:hasPart">
+        <h3 id="h-multiple-batteries" resource="#h-multiple-batteries"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.1 </span>
+          Multiple batteries
+        </span></h3>
+        <p>
+            If a hosting device contains more than one battery,
+            <a href="#idl-def-BatteryManager" class="idlType"><code>BatteryManager</code></a> <em class="rfc2119" title="SHOULD">SHOULD</em> expose an unified view of the batteries.
+        </p>
+        <p>
+            The <code>charging</code> attribute <em class="rfc2119" title="MUST">MUST</em> be set to true if at least
+            one battery's <code>charging</code> state as described above is true.
+            Otherwise, it <em class="rfc2119" title="MUST">MUST</em> be set to false.
+        </p>
+        <p>
+            The <code>chargingTime</code> attribute can be set to the maximum
+            charging time of the individual batteries if charging in parallel,
+            and to the sum of the individual charging times if charging serially.
+        </p>
+        <p>
+            The <code>dischargingTime</code> attribute can be set to the maximum
+            discharging time of the individual batteries if discharging in
+            parallel, and to the sum of individual discharging times if
+            discharging serially.
+        </p>
+        <p>
+            The <code>level</code> attribute can be set to the average of the
+            levels of batteries of same capacity, or the weighted average of the
+            battery level attributes for batteries of different capacities.
+        </p>
+    </section>
+    <section id="event-handlers" typeof="bibo:Chapter" resource="#event-handlers" property="bibo:hasPart">
+        <h3 id="h-event-handlers" resource="#h-event-handlers"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.2 </span>
+          Event handlers
+        </span></h3>
+        <p>
+            The following are the <a href="#dfn-event-handlers" class="internalDFN" data-link-type="dfn">event handlers</a> (and their corresponding
+            <a href="#dfn-event-handler-event-types" class="internalDFN" data-link-type="dfn">event handler event types</a>) that <em class="rfc2119" title="MUST">MUST</em> be supported as
+            attributes by the <a href="#idl-def-BatteryManager" class="idlType"><code>BatteryManager</code></a> object:
+        </p>
+        <table class="simple">
+            <thead>
+            <tr>
+                <th>
+                    event handler
+                </th>
+                <th>
+                    event handler event type
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <strong><code id="widl-BatteryManager-onchargingchange">onchargingchange</code></strong>
+                </td>
+                <td>
+                    <code><dfn data-dfn-type="dfn" id="dfn-chargingchange">chargingchange</dfn></code>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong><code id="widl-BatteryManager-onchargingtimechange">onchargingtimechange</code></strong>
+                </td>
+                <td>
+                    <code><dfn data-dfn-type="dfn" id="dfn-chargingtimechange">chargingtimechange</dfn></code>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong><code id="widl-BatteryManager-ondischargingtimechange">ondischargingtimechange</code></strong>
+                </td>
+                <td>
+                    <code><dfn data-dfn-type="dfn" id="dfn-dischargingtimechange">dischargingtimechange</dfn></code>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong><code id="widl-BatteryManager-onlevelchange">onlevelchange</code></strong>
+                </td>
+                <td>
+                    <code><dfn data-dfn-type="dfn" id="dfn-levelchange">levelchange</dfn></code>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</section>
+<section class="informative" id="examples" typeof="bibo:Chapter" resource="#examples" property="bibo:hasPart">
+    <!--OddPage--><h2 id="h-examples" resource="#h-examples"><span property="xhv:role" resource="xhv:heading"><span class="secno">7. </span>
+        Examples
+      </span></h2><p><em>This section is non-normative.</em></p>
+    <p>
+        This trivial example writes the battery level to the console each time
+        the level changes:
+    </p>
+    <div class="example"><div class="example-title marker"><span>Example 1</span></div><pre class="highlight prettyprint prettyprinted" style=""><span class="com">// We get the initial value when the promise resolves ...</span><span class="pln">
+navigator</span><span class="pun">.</span><span class="pln">getBattery</span><span class="pun">().</span><span class="kwd">then</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(</span><span class="pln">battery</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">battery</span><span class="pun">.</span><span class="pln">level</span><span class="pun">);</span><span class="pln">
+  </span><span class="com">// ... and any subsequent updates.</span><span class="pln">
+  battery</span><span class="pun">.</span><span class="pln">onlevelchange </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">.</span><span class="pln">level</span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">};</span><span class="pln">
+</span><span class="pun">});</span></pre></div>
+    <p>
+        Alternatively, the same using the <code>addEventListener()</code>
+        method:
+    </p>
+    <div class="example"><div class="example-title marker"><span>Example 2</span></div><pre class="highlight prettyprint prettyprinted" style=""><span class="pln">navigator</span><span class="pun">.</span><span class="pln">getBattery</span><span class="pun">().</span><span class="kwd">then</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(</span><span class="pln">battery</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">battery</span><span class="pun">.</span><span class="pln">level</span><span class="pun">);</span><span class="pln">
+  battery</span><span class="pun">.</span><span class="pln">addEventListener</span><span class="pun">(</span><span class="str">'levelchange'</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">.</span><span class="pln">level</span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">});</span><span class="pln">
+</span><span class="pun">});</span></pre></div>
+    <p>
+        The following example updates the indicators to show the charging
+        state, level and time remaining in minutes:
+    </p>
+    <div class="example"><div class="example-title marker"><span>Example 3</span></div><pre class="highlight prettyprint prettyprinted" style=""><span class="dec">&lt;!DOCTYPE html&gt;</span><span class="pln">
+</span><span class="tag">&lt;html&gt;</span><span class="pln">
+</span><span class="tag">&lt;head&gt;</span><span class="pln">
+  </span><span class="tag">&lt;title&gt;</span><span class="pln">Battery Status API Example</span><span class="tag">&lt;/title&gt;</span><span class="pln">
+  </span><span class="tag">&lt;script&gt;</span><span class="pln">
+    window</span><span class="pun">.</span><span class="pln">onload </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      </span><span class="kwd">function</span><span class="pln"> updateBatteryStatus</span><span class="pun">(</span><span class="pln">battery</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        document</span><span class="pun">.</span><span class="pln">querySelector</span><span class="pun">(</span><span class="str">'#charging'</span><span class="pun">).</span><span class="pln">textContent </span><span class="pun">=</span><span class="pln"> battery</span><span class="pun">.</span><span class="pln">charging </span><span class="pun">?</span><span class="pln"> </span><span class="str">'charging'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">'not charging'</span><span class="pun">;</span><span class="pln">
+        document</span><span class="pun">.</span><span class="pln">querySelector</span><span class="pun">(</span><span class="str">'#level'</span><span class="pun">).</span><span class="pln">textContent </span><span class="pun">=</span><span class="pln"> battery</span><span class="pun">.</span><span class="pln">level</span><span class="pun">;</span><span class="pln">
+        document</span><span class="pun">.</span><span class="pln">querySelector</span><span class="pun">(</span><span class="str">'#dischargingTime'</span><span class="pun">).</span><span class="pln">textContent </span><span class="pun">=</span><span class="pln"> battery</span><span class="pun">.</span><span class="pln">dischargingTime </span><span class="pun">/</span><span class="pln"> </span><span class="lit">60</span><span class="pun">;</span><span class="pln">
+      </span><span class="pun">}</span><span class="pln">
+
+      navigator</span><span class="pun">.</span><span class="pln">getBattery</span><span class="pun">().</span><span class="pln">then</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(</span><span class="pln">battery</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="com">// Update the battery status initially when the promise resolves ...</span><span class="pln">
+        updateBatteryStatus</span><span class="pun">(</span><span class="pln">battery</span><span class="pun">);</span><span class="pln">
+
+        </span><span class="com">// .. and for any subsequent updates.</span><span class="pln">
+        battery</span><span class="pun">.</span><span class="pln">onchargingchange </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+          updateBatteryStatus</span><span class="pun">(</span><span class="pln">battery</span><span class="pun">);</span><span class="pln">
+        </span><span class="pun">};</span><span class="pln">
+
+        battery</span><span class="pun">.</span><span class="pln">onlevelchange </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+          updateBatteryStatus</span><span class="pun">(</span><span class="pln">battery</span><span class="pun">);</span><span class="pln">
+        </span><span class="pun">};</span><span class="pln">
+
+        battery</span><span class="pun">.</span><span class="pln">ondischargingtimechange </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+          updateBatteryStatus</span><span class="pun">(</span><span class="pln">battery</span><span class="pun">);</span><span class="pln">
+        </span><span class="pun">};</span><span class="pln">
+      </span><span class="pun">});</span><span class="pln">
+    </span><span class="pun">};</span><span class="pln">
+  </span><span class="tag">&lt;/script&gt;</span><span class="pln">
+</span><span class="tag">&lt;/head&gt;</span><span class="pln">
+</span><span class="tag">&lt;body&gt;</span><span class="pln">
+  </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"charging"</span><span class="tag">&gt;</span><span class="pln">(charging state unknown)</span><span class="tag">&lt;/div&gt;</span><span class="pln">
+  </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"level"</span><span class="tag">&gt;</span><span class="pln">(battery level unknown)</span><span class="tag">&lt;/div&gt;</span><span class="pln">
+  </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"dischargingTime"</span><span class="tag">&gt;</span><span class="pln">(discharging time unknown)</span><span class="tag">&lt;/div&gt;</span><span class="pln">
+</span><span class="tag">&lt;/body&gt;</span><span class="pln">
+</span><span class="tag">&lt;/html&gt;</span></pre></div>
+</section>
+<section class="appendix" id="acknowledgements" typeof="bibo:Chapter" resource="#acknowledgements" property="bibo:hasPart">
+    <!--OddPage--><h2 id="h-acknowledgements" resource="#h-acknowledgements"><span property="xhv:role" resource="xhv:heading"><span class="secno">A. </span>
+        Acknowledgements
+      </span></h2>
+    <p>
+        The group is deeply indebted to Mounir Lamouri, Jonas Sicking, and the
+        Mozilla WebAPI team in general for their invaluable feedback based on
+        prototype implementations. Many thanks to the people behind the System
+        Information API and Device Orientation Event specification for the
+        initial inspiration. Also thanks to the nice folks bringing us the Page
+        Visibility specification, which motivated the editor of this
+        specification to write the introduction chapter discussing some
+        real-world high value use cases that apply equally to this
+        specification. Special thanks to all the participants of the Device
+        APIs Working Group and others who have sent in substantial feedback and
+        comments, and made the Web a better place for everyone by doing so.
+        Finally, thanks to Lukasz Olejnik, Gunes Acar, Claude Castelluccia, and
+        Claudia Diaz for the privacy analysis of the API.
+    </p>
+</section>
+
+
+<section id="references" class="appendix" typeof="bibo:Chapter" resource="#references" property="bibo:hasPart"><!--OddPage--><h2 id="h-references" resource="#h-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">B. </span>References</span></h2><section id="normative-references" typeof="bibo:Chapter" resource="#normative-references" property="bibo:hasPart"><h3 id="h-normative-references" resource="#h-normative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">B.1 </span>Normative references</span></h3><dl class="bibliography" resource=""><dt id="bib-ECMASCRIPT">[ECMASCRIPT]</dt><dd>Ecma International. <a href="https://tc39.github.io/ecma262/" property="dc:requires"><cite>ECMAScript Language Specification</cite></a>. URL: <a href="https://tc39.github.io/ecma262/" property="dc:requires">https://tc39.github.io/ecma262/</a>
+</dd><dt id="bib-HTML5">[HTML5]</dt><dd>Ian Hickson; Robin Berjon; Steve Faulkner; Travis Leithead; Erika Doyle Navara; Edward O'Connor; Silvia Pfeiffer. W3C. <a href="http://www.w3.org/TR/html5/" property="dc:requires"><cite>HTML5</cite></a>. 28 October 2014. W3C Recommendation. URL: <a href="http://www.w3.org/TR/html5/" property="dc:requires">http://www.w3.org/TR/html5/</a>
+</dd><dt id="bib-RFC2119">[RFC2119]</dt><dd>S. Bradner. IETF. <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires">https://tools.ietf.org/html/rfc2119</a>
+</dd><dt id="bib-WEBIDL">[WEBIDL]</dt><dd>Cameron McCormack; Boris Zbarsky. W3C. <a href="http://www.w3.org/TR/WebIDL-1/" property="dc:requires"><cite>WebIDL Level 1</cite></a>. 8 March 2016. W3C Candidate Recommendation. URL: <a href="http://www.w3.org/TR/WebIDL-1/" property="dc:requires">http://www.w3.org/TR/WebIDL-1/</a>
+</dd></dl></section></section><p role="navigation" id="back-to-top"><a href="#toc"><abbr title="Back to Top">↑</abbr></a></p><script async="" defer="" src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>
