@@ -4,9 +4,9 @@ body {
 article {
 	max-width:960px;
 	margin:0 auto;
-	font-size:1.1em;
-	line-height:1.8em;
-	font-family:"HelveticaNEUE-LIGHT","APPLESDGothicNEO-LIGHT", sans-serif;
+	font-size:2vmax;
+	line-height:180%;
+	font-family:"APPLESDGothicNEO-LIGHT", sans-serif;
 }
 .img-max {
 	width:100%;
