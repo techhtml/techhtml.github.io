@@ -51,3 +51,6 @@ pre .syntax-filename {
 .warning {
 	border-bottom:5px solid #555;
 }
+figure {
+	text-align:center;
+}
