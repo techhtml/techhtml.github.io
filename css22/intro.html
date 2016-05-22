@@ -216,7 +216,7 @@ class="propinst-font-family">'font-family'</span></a> 속성의 값을 상속받
 "em" 단위는 요소의 폰트 사이즈를 참조합니다.
 이 케이스의 결과로는 BODY 요소의 사이 마진은 폰트 사이즈보다 3배 크게 나타날겁니다.
 
-<H2>2.2 <a name="xml-tutorial">A brief CSS&nbsp;2.2 XML을 위한 튜토리얼</a></H2>
+<H2>2.2 <a name="xml-tutorial">XML을 위한 간단한 CSS&nbsp;2.2 튜토리얼</a></H2>
 
 <p>This section is non-normative.
 
@@ -325,7 +325,7 @@ href="conform.html#doctree">문서 트리</a>를 생성합니다.</li>
 
 <li>타겟 <a href="media.html">미디어 타입</a>을 정의합니다.
 
-<li> 타겟 <a href="media.html">미디어 타입</a> 정의와 관련된 문서의 모든 스타일 시트를 가져옵니다.
+<li>타겟 <a href="media.html">미디어 타입</a> 정의와 관련된 문서의 모든 스타일 시트를 가져옵니다.
 
 <li>Annotate every element of the document tree by assigning a single
 value to every <a href="syndata.html#properties">property</a> that is
@@ -408,57 +408,56 @@ the document will be rendered.
 interface</a>).
 </ul>
 
-<H2>2.4 <a name="design-principles">CSS design principles</a></H2>
+<H2>2.4 <a name="design-principles">CSS 설계 원칙</a></H2>
 
 <p>This section is non-normative.
 
-<P>CSS&nbsp;2.2, as CSS2 and CSS1 before it, is based on a set of design principles:</p>
+<P>CSS&nbsp;2.2, 그 이전의 CSS2와 CSS1는 몇몇 설계 원칙에 기반을 둡니다:</p>
 
 <UL>
 
 <LI>
-<P><STRONG>Forward and backward compatibility</STRONG>. CSS&nbsp;2.2 user
-agents will be able to understand CSS1 style sheets. CSS1 user agents
-will be able to read CSS&nbsp;2.2 style sheets and discard parts they do not
-understand. Also, user agents with no CSS support will be able to
-display style-enhanced documents. Of course, the stylistic
-enhancements made possible by CSS will not be rendered, but all
-content will be presented.</P>
+<P><STRONG>상위 및 하위호환성</STRONG>.
+CSS&nbsp;2.2 유저 에이전트는 CSS1 스타일 시트를 이해할 수 있습니다.
+CSS1 유저 에이전트는 CSS&nbsp;2.2 스타일 시트를 읽는 게 가능하며, 이해하지 못하는 폐기 파트도 있습니다.
+또한, CSS를 지원하지 않는 유저 에이전트는 스타일이 강화된 문서를 표현할 수 있습니다.
+당연히, CSS에 의한 스타일 향상 부분은 렌더링되지 않겠지만, 모든 콘텐츠는 제대로 보여줄 수 있습니다.
+</P>
 </LI>
 
 <LI>
-<P><STRONG>Complementary to structured documents</STRONG>. Style
-sheets complement structured documents (e.g., HTML and XML
-applications), providing
-stylistic information for the marked-up text. It should be easy to
-change the style sheet with little or no impact on the markup.</P>
+<P><STRONG>구조화된 문서에 대한 보완</STRONG>.
+스타일 시트는 구조화된 문서를 보완하며 (즉 HTML과 XML 어플리케이션),
+마크업 텍스트에 스타일적 정보를 제공합니다.
+마크업에 약간의 영향을 주거나 아예 영향 없이 스타일을 바꾸는 게 쉽습니다.
+</P>
 </LI>
 
 <LI>
-<P><STRONG>Vendor, platform, and device independence</STRONG>. Style
-sheets enable documents to remain vendor, platform, and device
-independent. Style sheets themselves are also vendor and platform
-independent, but CSS&nbsp;2.2 allows you to target a style sheet for a group of
-devices (e.g., printers).</P>
+<P><STRONG>벤더, 플랫폼, 기기 독립</STRONG>.
+스타일 시트가 사용 가능한 문서는 벤더, 플랫폼, 그리고 디바이스에 독립적입니다.
+스타일 시트 자체 또한 벤더와 플랫폼에 독립적이며,
+CSS&nbsp;2.2는 디바이스의 그룹(예를 들면, 프린터)을 위한 스타일 시트를 타겟으로 허용하기도 합니다.
+</P>
 </LI>
 
 <LI>
-<P><STRONG>Maintainability</STRONG>. By pointing to style sheets from
-documents, webmasters can simplify site maintenance and retain
-consistent look and feel throughout the site. For example, if
-the organization's background color changes, only one file needs to be
-changed.</P>
+<P><STRONG>유지보수성</STRONG>.
+문서로부터의 스타일 시트로 초점을 두면,
+웹 마스터는 간단히 사이트를 유지보수할 수 있고, 사이트 전체의 룩과 느낌의 일관성을 유지할 수 있습니다.
+예를 들어, 조직의 배경 색을 바꾸고자 할 때, 하나의 파일만 변경하면 됩니다.
+</P>
 </LI>
 
 <LI>
-<P><STRONG>Simplicity</STRONG>. CSS is a simple style language which
-is human readable and writable. The CSS properties are kept
-independent of each other to the largest extent possible and there is
+<P><STRONG>간소함</STRONG>.
+CSS는 사람이 읽고 쓰기에 좋은 간단한 스타일 언어입니다.
+The CSS properties are kept independent of each other to the largest extent possible and there is
 generally only one way to achieve a certain effect.</P>
 </LI>
 
 <LI>
-<P><STRONG>Network performance</STRONG>. CSS provides for compact
+<P><STRONG>네트워크 성능</STRONG>. CSS provides for compact
 encodings of how to present content. Compared to images or audio
 files, which are often used by authors to achieve certain rendering
 effects, style sheets most often decrease the content size. Also,
@@ -466,7 +465,7 @@ fewer network connections have to be opened which further increases
 network performance.</P> </LI>
 
 <LI>
-<P><STRONG>Flexibility</STRONG>. CSS can be applied to content in
+<P><STRONG>유연성</STRONG>. CSS can be applied to content in
 several ways. The key feature is the ability to cascade style
 information specified in the default (user agent) style sheet, user
 style sheets, linked style sheets, the document head, and in
@@ -474,7 +473,7 @@ attributes for the elements forming the document body.</P>
 </LI>
 
 <LI>
-<P><STRONG>Richness</STRONG>. Providing authors with a rich set of
+<P><STRONG>풍부함</STRONG>. Providing authors with a rich set of
 rendering effects increases the richness of the Web as a medium of
 expression. Designers have been longing for functionality commonly
 found in desktop publishing and slide-show applications. Some of
@@ -483,7 +482,7 @@ CSS&nbsp;2.2 goes a long way toward granting designers their requests.</P>
 </LI>
 
 <LI>
-<P><STRONG>Alternative language bindings</STRONG>. The set of CSS
+<P><STRONG>대체 언어 바인딩</STRONG>. The set of CSS
 properties described in this specification form a consistent
 formatting model for visual and aural presentations. This formatting
 model can be accessed through the CSS language, but bindings to other
@@ -493,7 +492,7 @@ class="propinst-color">'color'</span></a> property.</P>
 </LI>
 
 <LI>
-<P><STRONG>Accessibility</STRONG>. Several CSS
+<P><STRONG>접근성</STRONG>. Several CSS
 features will make the Web more accessible
 to users with disabilities:</p>
 
