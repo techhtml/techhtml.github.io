@@ -1,0 +1,538 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="ko">
+<HEAD>
+<TITLE>CSS&nbsp;2.2 소개</TITLE>
+<link rel="stylesheet" href="style/default.css" type="text/css">
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-WD.css" type="text/css">
+<link rel="prev" href="about.html">
+<link rel="next" href="conform.html">
+<link rel="contents" href="Overview.html#minitoc">
+<link rel="CSS-properties" href="propidx.html" title="properties">
+<link rel="index" href="indexlist.html" title="index">
+<link rel="first" href="Overview.html">
+<script type="text/javascript" src="https://www.w3.org/scripts/TR/2016/fixup.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</HEAD>
+<BODY>
+<div class="navbar">
+<p><a href="about.html">previous</a> &nbsp;
+<a href="conform.html">next</a> &nbsp;
+<a href="Overview.html#minitoc">contents</a> &nbsp;
+<a href="propidx.html">properties</a> &nbsp;
+<a href="indexlist.html">index</a> &nbsp;
+</div>
+<hr class="navbar">
+
+<H1><a name="q0">2 CSS&nbsp;2.2</a> 소개</H1>
+<div id="toc" class="subtoc">
+<p><strong>Contents</strong>
+  <ul class="toc">
+    <li><a href="intro.html#html-tutorial" class="tocxref">2.1 HTML을 위한 간단한 CSS&nbsp;2.2 튜토리얼</a>
+    <li><a href="intro.html#xml-tutorial" class="tocxref">2.2 XML을 위한 간단한 CSS&nbsp;2.2 튜토리얼</a>
+    <li><a href="intro.html#processing-model" class="tocxref">2.3 CSS&nbsp;2.2 프로세싱 모델</a>
+    <ul class="toc">
+      <li><a href="intro.html#the-canvas" class="tocxref">2.3.1 캔버스</a>
+      <li><a href="intro.html#addressing" class="tocxref">2.3.2 CSS&nbsp;2.2 어드레싱 모델</a>
+    </ul>
+    <li><a href="intro.html#design-principles" class="tocxref">2.4 CSS 설계 원칙</a>
+  </ul>
+</div>
+
+
+<H2>2.1 <a name="html-tutorial">HTML을 위한 간단한 CSS&nbsp;2.2 튜토리얼</a></H2>
+
+<p>This section is non-normative.
+
+<P>
+  이 튜토리얼에서, 간단한 스타일 시트를 이용해 얼마나 쉽게 디자인할 수 있는 지 모여줍니다.
+  이 튜토리얼을 위해, 당신은 간단한 HTML 지식이 있어야 하며(see <a href="refs.html#ref-HTML4" rel="biblioentry" class="noxref"><span class="informref">[HTML4]</span></a>),
+  기본적인 데스크탑 퍼블리싱 용어에 대해 알아야합니다.
+
+<P>작은 HTML 문서로 시작합니다:</p>
+
+<PRE class="html example">
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"&gt;
+&lt;HTML&gt;
+  &lt;HEAD&gt;
+  &lt;TITLE&gt;Bach's home page&lt;/TITLE&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;H1&gt;Bach's home page&lt;/H1&gt;
+    &lt;P&gt;Johann Sebastian Bach was a prolific composer.
+  &lt;/BODY&gt;
+&lt;/HTML&gt;
+</PRE>
+
+<P>
+H1 요소의 텍스트 컬러를 빨강색으로 표현하기 위해, 다음과 같은 CSS 룰을 작성할 수 있습니다:
+</P>
+
+<PRE class="example">
+  h1 { color: red }
+</PRE>
+
+<P>CSS 룰은 두 메인 파트를 가집니다: <a
+href="selector.html">셀렉터</a> ('h1') 와 선언
+('color:&nbsp;red')입니다.
+HTML에서, 요소 이름은 대소문자를 구분하지 않으므로 'h1'은 'H1'과 동일하게 동작합니다.
+선언은 두 파트로 나뉩니다:
+속성 명('color')과 속성 값 ('red')입니다.
+
+위 예제는 HTML 문서를 렌더링 하기 위해 필요한 속성 중 하나에 영향을 주며, 그 자체가 스타일시트입니다.
+다른 스타일 시트와 결합하고(CSS의 근본적인 특징 중 하나는 스타일시트가 합쳐지는 것입니다.),
+룰들이 문서의 최종 표시형태를 결정합니다.
+
+<P>
+  HTML 4 스펙에서 스타일 시트 룰이 HTML 문서를 위해 어떻게 정의되어야 하는지 정의합니다:
+  HTML 문서 내에 포함되거나, 외부 스타일 시트를 사용합니다.
+  스타일 시트를 문서 내에 넣기 위해, STYLE 요소를 사용합니다:
+</p>
+
+<PRE class="html example">
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"&gt;
+&lt;HTML&gt;
+  &lt;HEAD&gt;
+  &lt;TITLE&gt;Bach's home page&lt;/TITLE&gt;
+  &lt;STYLE type="text/css"&gt;
+    h1 { color: red }
+  &lt;/STYLE&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;H1&gt;Bach's home page&lt;/H1&gt;
+    &lt;P&gt;Johann Sebastian Bach was a prolific composer.
+  &lt;/BODY&gt;
+&lt;/HTML&gt;
+</PRE>
+
+<P>
+  유연성을 최대로 하기 위해, 우리는 작성자가 외부 스타일시트를 정의하기를 권장합니다;
+  이 방법을 사용하면 HTML 문서의 수정 없이 변경이 가능하며,
+  몇 문서에서 공통으로 공유할 수 있습니다.
+  외부 스타일 시트를 연결하기 위해, LINK 요소를 사용할 수 있습니다:
+</p>
+
+<PRE class="html example">
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"&gt;
+&lt;HTML&gt;
+  &lt;HEAD&gt;
+  &lt;TITLE&gt;Bach's home page&lt;/TITLE&gt;
+  &lt;LINK rel="stylesheet" href="bach.css" type="text/css"&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;H1&gt;Bach's home page&lt;/H1&gt;
+    &lt;P&gt;Johann Sebastian Bach was a prolific composer.
+  &lt;/BODY&gt;
+&lt;/HTML&gt;
+</PRE>
+
+<P>LINK 요소의 정의는:</p>
+
+<ul>
+<li>link:의 타입을 "stylesheet"로 정의합니다.
+<li>스타일 시트의 위치를 "href" 속성으로 지정합니다.
+<li>연결된 스타일 시트의 타입은 "text/css"입니다.
+</ul>
+
+<P>
+스타일시트와 구조화된 마크업의 밀접한 관계를 나타내기 위해,
+우리는 튜토리얼에서 STYLE 요소를 사용합니다.
+더 많은 색을 추가해봅시다:
+
+<PRE class="html example">
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"&gt;
+&lt;HTML&gt;
+  &lt;HEAD&gt;
+  &lt;TITLE&gt;Bach's home page&lt;/TITLE&gt;
+  &lt;STYLE type="text/css"&gt;
+    body { color: black; background: white }
+    h1 { color: red; background: white }
+  &lt;/STYLE&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;H1&gt;Bach's home page&lt;/H1&gt;
+    &lt;P&gt;Johann Sebastian Bach was a prolific composer.
+  &lt;/BODY&gt;
+&lt;/HTML&gt;
+</PRE>
+
+<P>
+지금 스타일 시트는 네개의 룰을 가지고 있습니다.
+첫번째 두 세트는 BODY 요소의 color와 background고 (텍스트 컬러와 배경 컬러를 함께 지정하는 건 좋은 아이디어입니다),
+마지막 두 세트는 H1 요소의 color와 background입니다.
+
+P 요소를 위한 컬러가 정의되어있지 않지만,
+BODY라 명명된, 부모 요소로부터 컬러를 상속받습니다.
+
+H1 요소도 BODY 요소의 자식이지만 두번째 룰이 상속값을 덮어씌울겁니다.
+
+CSS에서 다른 값 사이에 충돌이 일어나기도 하며,
+이 스펙문서에서는 그를 어떻게 해결하는 지 설명합니다.
+
+<P>CSS&nbsp;2.2는 <a href="colors.html#propdef-color" class="noxref"><span
+class="propinst-color">'color'</span></a> 속성을 포함한 90개 이상의 속성을 가집니다.
+다른 것들도 살펴봅시다:
+
+<PRE class="example">
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"&gt;
+&lt;HTML&gt;
+  &lt;HEAD&gt;
+  &lt;TITLE&gt;Bach's home page&lt;/TITLE&gt;
+  &lt;STYLE type="text/css"&gt;
+    body {
+      font-family: "Gill Sans", sans-serif;
+      font-size: 12pt;
+      margin: 3em;
+    }
+  &lt;/STYLE&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;H1&gt;Bach's home page&lt;/H1&gt;
+    &lt;P&gt;Johann Sebastian Bach was a prolific composer.
+  &lt;/BODY&gt;
+&lt;/HTML&gt;
+</PRE>
+
+<P>
+첫번째는 여러개의 선언이 중괄호로 에워싼 블록을 통해 그룹화 시킬 수 있고,
+각 선언은 세미콜론에 의해 나뉘어지며, 마지막 선언 또한 이어서 세미콜론을 가질 수도 있다를 나타냅니다.
+
+<P>
+첫번째 선언은 BODY 요소의 폰트 패밀리를 "Gill Sans"로 설정합니다.
+만약 그 폰트를 사용할 수 없다면, 유저 에이전트(보통 "browser"를 참조합니다)는
+모든 유저에이전트가 알고 있는 다섯개의 범용적인 폰트 패밀리 중 하나인 'sans-serif' 폰트 패밀리를 사용할 겁니다.
+BODY의 자식 요소는 <a href="fonts.html#propdef-font-family" class="noxref"><span
+class="propinst-font-family">'font-family'</span></a> 속성의 값을 상속받을 겁니다.
+
+<P>
+두번째 선언은 BODY 요소의 폰트 사이즈를 12 포인트로 설정합니다.
+"point" 단위는 보통 프린트 기반의 폰트 사이즈와 다른 길이 값을 가리키는 타이포그래피를 위해 사용합니다.
+이는 환경의 스케일에 영향을 받지 않는 절대 단위 예제입니다.
+
+<P>
+세번째 선언은 주변과 관련해 스케일에 영향을 받는 상대 단위를 사용합니다.
+"em" 단위는 요소의 폰트 사이즈를 참조합니다.
+이 케이스의 결과로는 BODY 요소의 사이 마진은 폰트 사이즈보다 3배 크게 나타날겁니다.
+
+<H2>2.2 <a name="xml-tutorial">A brief CSS&nbsp;2.2 XML을 위한 튜토리얼</a></H2>
+
+<p>This section is non-normative.
+
+<P>
+CSS는 어떤 구조적 문서 포맷에서도 사용할 수 있습니다. 예를 들면 확장형 마크업 언어
+<a href="refs.html#ref-XML11" rel="biblioentry" class="noxref"><span class="informref">[XML11]</span></a>로 이루어진 어플리케이션입니다.
+사실상, XML은 HTML보다 스타일 시트에 더 영향을 받으며,
+작성자가 그 스스로 요소를 생성하기 때문에, 유저 에이전트는 어떻게 표시해야할 지 알 수 없습니다.
+
+<P>여기 간단한 XML 코드 조각입니다:
+
+<PRE class="xml example">
+&lt;ARTICLE&gt;
+  &lt;HEADLINE&gt;Fredrick the Great meets Bach&lt;/HEADLINE&gt;
+  &lt;AUTHOR&gt;Johann Nikolaus Forkel&lt;/AUTHOR&gt;
+  &lt;PARA&gt;
+    One evening, just as he was getting his
+    &lt;INSTRUMENT&gt;flute&lt;/INSTRUMENT&gt; ready and his
+    musicians were assembled, an officer brought him a list of
+    the strangers who had arrived.
+  &lt;/PARA&gt;
+&lt;/ARTICLE&gt;
+</PRE>
+
+<P>
+  이 조각을 문서와 비슷하게 보여주기 위해,
+  우리는 첫번째로 몇몇 요소를 inline-level(즉, 줄바꿈이 일어나지 않습니다)로,
+  몇몇 요소는 block-level(즉, 줄바꿈이 일어납니다)로 지정해야 합니다.
+
+<PRE class="example">
+INSTRUMENT { display: inline }
+ARTICLE, HEADLINE, AUTHOR, PARA { display: block }
+</PRE>
+
+<P>
+첫번째 룰은 INSTRUMENT를 inline으로 지정하고,
+두번째 룰은 콤마로 구분된 셀렉터 목록과 함께, 다른 모든 요소를 block-level로 지정합니다.
+XML 내 요소 이름은 대소문자를 구분하기 때문에, 셀렉터는 소문자로 작성 된 것(즉, 'instrument')과
+대문자로 작성된 것(즉, 'INSTRUMENT')이 다릅니다.
+
+<P>
+XML 문서에서 스타일 시트를 연결하는 방법 중 하나로 프로세싱 지침을 사용할 수 있습니다:
+
+<PRE class="xml example">
+&lt;?xml-stylesheet type="text/css" href="bach.css"?&gt;
+&lt;ARTICLE&gt;
+  &lt;HEADLINE&gt;Fredrick the Great meets Bach&lt;/HEADLINE&gt;
+  &lt;AUTHOR&gt;Johann Nikolaus Forkel&lt;/AUTHOR&gt;
+  &lt;PARA&gt;
+    One evening, just as he was getting his
+    &lt;INSTRUMENT&gt;flute&lt;/INSTRUMENT&gt; ready and his
+    musicians were assembled, an officer brought him a list of
+    the strangers who had arrived.
+  &lt;/PARA&gt;
+&lt;/ARTICLE&gt;
+</PRE>
+
+<P>비주얼 유저 에이전트는 위 예제를 다음과 같이 보여줍니다:
+
+<div class="figure">
+<p><img src="images/bach1.png" alt="Example rendering"><SPAN class="dlink">&nbsp;&nbsp;&nbsp;<A name="img-bach1" href="images/longdesc/bach1-desc.html" title="Long description for the first Bach/XML formatting example">[D]</A></SPAN>
+</div>
+
+<P>
+"flute"가 인라인 요소 INSTRUMENT의 콘텐츠이기 때문에 문장 내에 남아 있는 걸 알 수 있습니다.
+
+<P>
+여전히, 텍스트는 당신이 원하는 대로 보이지 않습니다.
+예를 들어, 헤드라인 폰트 사이즈는 다른 텍스트의 폰트 사이즈보다는 커야할 거 같고,
+작성자의 이름을 기울임꼴(이탤릭)으로 보이게 하고 싶습니다:</P>
+
+<PRE class="example">
+INSTRUMENT { display: inline }
+ARTICLE, HEADLINE, AUTHOR, PARA { display: block }
+HEADLINE { font-size: 1.3em }
+AUTHOR { font-style: italic }
+ARTICLE, HEADLINE, AUTHOR, PARA { margin: 0.5em }
+</PRE>
+
+<P>비주얼 유저 에이전트는 위 예제를 다음과 같이 보여줍니다:
+
+<div class="figure">
+<p><img src="images/bach2.png" alt="Example rendering"><SPAN class="dlink">&nbsp;&nbsp;&nbsp;<A name="img-bach2" href="images/longdesc/bach2-desc.html" title="Long description for the second Bach/XML formatting example">[D]</A></SPAN>
+</div>
+
+<P>
+유저 에이전트에 더 많은 룰을 추가하여 문서의 표시 방법을 더욱 설명할 수 있습니다.
+
+
+<H2>2.3 <a name="processing-model">CSS&nbsp;2.2 프로세싱 모델</a></H2>
+
+<p>This section up to but not including its subsections is non-normative.
+
+<P>
+이 섹션은 유저 에이전트가 CSS 동작을 어떻게 지원할지에 대한 프로세싱 모델 중 하나를 나타냅니다.
+이는 컨셉 모델이며, 실제 구현체와는 다를 수 있습니다.
+
+<P>
+이 모델에서, 유저 에이전트는 소스를 아래 스텝대로 처리해야합니다.
+</P>
+
+<ol>
+<li>
+  문서 소스를 파싱하고 <a
+href="conform.html#doctree">문서 트리</a>를 생성합니다.</li>
+
+<li>타겟 <a href="media.html">미디어 타입</a>을 정의합니다.
+
+<li> 타겟 <a href="media.html">미디어 타입</a> 정의와 관련된 문서의 모든 스타일 시트를 가져옵니다.
+
+<li>Annotate every element of the document tree by assigning a single
+value to every <a href="syndata.html#properties">property</a> that is
+applicable to the target <a href="media.html">media type</a>.
+Properties are assigned values according to the mechanisms described
+in the section on <a href="cascade.html">cascading and
+inheritance</a>.
+
+<P>Part of the calculation of values depends on the formatting
+algorithm appropriate for the target <a href="media.html">media
+type</a>. For example, if the target medium is the screen, user agents
+apply the <a href="visuren.html">visual formatting model</a>.
+
+<li>From the annotated document tree, generate a
+<span class="index-def" title="formatting structure">
+<a name="formatting-structure"><dfn>formatting
+structure</dfn></a></span>.  Often, the formatting structure closely
+resembles the document tree, but it may also differ significantly,
+notably when authors make use of pseudo-elements and generated content.
+First, the formatting structure need not be "tree-shaped" at all -- the
+nature of the structure depends on the implementation.  Second, the
+formatting structure may contain more or less information than the
+document tree. For instance, if an element in the document tree has a
+value of 'none' for the <a href="visuren.html#propdef-display" class="noxref"><span
+class="propinst-display">'display'</span></a> property, that element will
+generate nothing in the formatting structure.  A list element, on the
+other hand, may generate more information in the formatting structure:
+the list element's content and list style information (e.g., a bullet
+image).
+
+<P>Note that the CSS user agent does not alter the document tree
+during this phase. In particular, content generated due to style
+sheets is not fed back to the document language processor (e.g., for
+reparsing).
+
+<li>Transfer the formatting structure to the target medium (e.g., print
+the results, display them on the screen, render them as speech,
+etc.).
+</ol>
+
+<h3>2.3.1 <a name="the-canvas">The canvas</a></h3>
+
+<P>For all media, the term <span class="index-def" title="canvas"> <a
+name="canvas"><dfn>canvas</dfn></a></span> describes "the space where
+the formatting structure is rendered."  The canvas is infinite for each
+dimension of the space, but rendering generally occurs within
+a finite region of the canvas, established by the user agent
+according to the target medium. For instance, user agents rendering
+to a screen generally impose a minimum width and choose an initial
+width based on the dimensions of the <a href="visuren.html#viewport">
+viewport</a>. User agents rendering to a page generally impose
+width and height constraints. Aural user agents may impose limits
+in audio space, but not in time.
+
+<h3>2.3.2 <a name="addressing">CSS&nbsp;2.2 addressing model</a></h3>
+
+<P> CSS&nbsp;2.2 <a href="selector.html">selectors</a> and properties allow
+style sheets to refer to the following parts of a document
+or user agent:</p>
+
+<ul>
+<li>Elements in the document tree and certain relationships between
+them (see the section on <a href="selector.html">selectors</a>).
+
+<li>Attributes of elements in the document tree, and values of those
+attributes (see the section on <a
+href="selector.html#attribute-selectors">attribute selectors</a>).
+
+<li>Some parts of element content (see the <a
+href="selector.html#first-line">:first-line</a> and <a
+href="selector.html#first-letter">:first-letter</a> pseudo-elements).
+
+<li>Elements of the document tree when they are in a certain state
+(see the section on <a href="selector.html#pseudo-classes">pseudo-classes</a>).
+
+<li>Some aspects of the <a href="#canvas">canvas</a> where
+the document will be rendered.
+
+<li>Some system information (see the section on <a href="ui.html">user
+interface</a>).
+</ul>
+
+<H2>2.4 <a name="design-principles">CSS design principles</a></H2>
+
+<p>This section is non-normative.
+
+<P>CSS&nbsp;2.2, as CSS2 and CSS1 before it, is based on a set of design principles:</p>
+
+<UL>
+
+<LI>
+<P><STRONG>Forward and backward compatibility</STRONG>. CSS&nbsp;2.2 user
+agents will be able to understand CSS1 style sheets. CSS1 user agents
+will be able to read CSS&nbsp;2.2 style sheets and discard parts they do not
+understand. Also, user agents with no CSS support will be able to
+display style-enhanced documents. Of course, the stylistic
+enhancements made possible by CSS will not be rendered, but all
+content will be presented.</P>
+</LI>
+
+<LI>
+<P><STRONG>Complementary to structured documents</STRONG>. Style
+sheets complement structured documents (e.g., HTML and XML
+applications), providing
+stylistic information for the marked-up text. It should be easy to
+change the style sheet with little or no impact on the markup.</P>
+</LI>
+
+<LI>
+<P><STRONG>Vendor, platform, and device independence</STRONG>. Style
+sheets enable documents to remain vendor, platform, and device
+independent. Style sheets themselves are also vendor and platform
+independent, but CSS&nbsp;2.2 allows you to target a style sheet for a group of
+devices (e.g., printers).</P>
+</LI>
+
+<LI>
+<P><STRONG>Maintainability</STRONG>. By pointing to style sheets from
+documents, webmasters can simplify site maintenance and retain
+consistent look and feel throughout the site. For example, if
+the organization's background color changes, only one file needs to be
+changed.</P>
+</LI>
+
+<LI>
+<P><STRONG>Simplicity</STRONG>. CSS is a simple style language which
+is human readable and writable. The CSS properties are kept
+independent of each other to the largest extent possible and there is
+generally only one way to achieve a certain effect.</P>
+</LI>
+
+<LI>
+<P><STRONG>Network performance</STRONG>. CSS provides for compact
+encodings of how to present content. Compared to images or audio
+files, which are often used by authors to achieve certain rendering
+effects, style sheets most often decrease the content size. Also,
+fewer network connections have to be opened which further increases
+network performance.</P> </LI>
+
+<LI>
+<P><STRONG>Flexibility</STRONG>. CSS can be applied to content in
+several ways. The key feature is the ability to cascade style
+information specified in the default (user agent) style sheet, user
+style sheets, linked style sheets, the document head, and in
+attributes for the elements forming the document body.</P>
+</LI>
+
+<LI>
+<P><STRONG>Richness</STRONG>. Providing authors with a rich set of
+rendering effects increases the richness of the Web as a medium of
+expression. Designers have been longing for functionality commonly
+found in desktop publishing and slide-show applications. Some of
+the requested rendering effects conflict with device independence, but
+CSS&nbsp;2.2 goes a long way toward granting designers their requests.</P>
+</LI>
+
+<LI>
+<P><STRONG>Alternative language bindings</STRONG>. The set of CSS
+properties described in this specification form a consistent
+formatting model for visual and aural presentations. This formatting
+model can be accessed through the CSS language, but bindings to other
+languages are also possible. For example, a JavaScript program may
+dynamically change the value of a certain element's <a href="colors.html#propdef-color" class="noxref"><span
+class="propinst-color">'color'</span></a> property.</P>
+</LI>
+
+<LI>
+<P><STRONG>Accessibility</STRONG>. Several CSS
+features will make the Web more accessible
+to users with disabilities:</p>
+
+<UL>
+
+<LI>Properties to control font appearance allow authors
+to eliminate inaccessible bit-mapped text images.
+
+<li>Positioning properties allow authors to eliminate
+mark-up tricks (e.g., invisible images) to force layout.
+
+<LI>The semantics of
+<tt>!important</tt> rules mean that users with
+particular presentation requirements
+can override the author's style sheets.
+
+<li>The 'inherit' value for all properties
+improves cascading generality and allows for
+easier and more consistent style tuning.
+
+<li>Improved media support, including media groups and the
+braille, embossed, and tty media types, will allow users and
+authors to tailor pages to those devices.
+
+</UL>
+
+<div class="note"><P> <em><strong>Note.</strong> For more information
+about designing accessible documents using CSS and HTML, see <a href="refs.html#ref-WCAG20" rel="biblioentry" class="noxref"><span class="informref">[WCAG20]</span></a>.</em>
+</div>
+</UL>
+
+
+<hr class="navbar">
+
+<div class="navbar">
+<p><a href="about.html">previous</a> &nbsp;
+<a href="conform.html">next</a> &nbsp;
+<a href="Overview.html#minitoc">contents</a> &nbsp;
+<a href="propidx.html">properties</a> &nbsp;
+<a href="indexlist.html">index</a> &nbsp;
+</div>
+</BODY>
+</HTML>
