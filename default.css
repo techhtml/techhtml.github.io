@@ -1,18 +1,21 @@
 @charset "UTF-8";
 
 body {
-	line-height:1.5;
-	font-size:2.2vmax;
-	font-family: "APPLESDGothicNEO-LIGHT", sans-serif;
+	font-size:4vmin;
+	line-height:2;
+	font-family: "APPLESDGothicNEO-UltraLIGHT", sans-serif;
+	color:#333;
 }
 
 a {
 	color:#7a43b6;
 }
-p {
-	width:51vmax;
-	margin:2em auto;
+
+h1, ul, li {
+	width:61vmax;
+	margin:1em auto;
 }
-li {
-	margin:1em 0;
+p {
+	width:65vmax;
+	margin:1em auto;
 }
