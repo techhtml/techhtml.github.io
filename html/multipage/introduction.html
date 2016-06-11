@@ -287,7 +287,7 @@
   </style><script src=/link-fixup.js></script><body onload=init()>
   <header id=head class="head with-buttons">
    <p><a href=https://whatwg.org/ class=logo><img alt=WHATWG src=https://resources.whatwg.org/logo.svg width=100 height=100></a></p>
-   <hgroup><h1 class=allcaps>HTML</h1><h2 id=living-standard class="no-num no-toc">Living Standard — Last Updated <span class=pubdate>6 June 2016</span></h2></hgroup>
+   <hgroup><h1 class=allcaps>HTML</h1><h2 id=living-standard class="no-num no-toc">Living Standard — Last Updated <span class=pubdate>11 June 2016</span></h2></hgroup>
    
    
   </header>
@@ -304,7 +304,7 @@
 
   
 
-  <nav><a href=index.html>Table of Contents</a> — <a href=infrastructure.html>2 Common infrastructure →</a></nav><ol class=toc><li id=toc-introduction><a href=introduction.html#introduction>1 소개</a><ol><li><a href=introduction.html#abstract>1.1 이 스펙문서는 어디에 적합한가?</a><li><a href=introduction.html#is-this-html5?>1.2 이 스펙은 HTML5인가?</a><li><a href=introduction.html#배경>1.3 배경</a><li><a href=introduction.html#독자>1.4 독자</a><li><a href=introduction.html#범위>1.5 범위</a><li><a href=introduction.html#역사>1.6 역사</a><li><a href=introduction.html#design-notes>1.7 Design notes</a><ol><li><a href=introduction.html#serialisability-of-script-execution>1.7.1 Serialisability of script execution</a><li><a href=introduction.html#compliance-with-other-specifications>1.7.2 Compliance with other specifications</a><li><a href=introduction.html#extensibility>1.7.3 Extensibility</a></ol><li><a href=introduction.html#html-vs-xhtml>1.8 HTML vs XHTML</a><li><a href=introduction.html#structure-of-this-specification>1.9 Structure of this specification</a><ol><li><a href=introduction.html#how-to-read-this-specification>1.9.1 How to read this specification</a><li><a href=introduction.html#typographic-conventions>1.9.2 Typographic conventions</a></ol><li><a href=introduction.html#fingerprint>1.10 Privacy concerns</a><ol><li><a href=introduction.html#fingerprint-postMessage>1.10.1 Cross-site communication</a></ol><li><a href=introduction.html#a-quick-introduction-to-html>1.11 A quick introduction to HTML</a><ol><li><a href=introduction.html#writing-secure-applications-with-html>1.11.1 Writing secure applications with HTML</a><li><a href=introduction.html#common-pitfalls-to-avoid-when-using-the-scripting-apis>1.11.2 Common pitfalls to avoid when using the scripting APIs</a><li><a href=introduction.html#how-to-catch-mistakes-when-writing-html:-validators-and-conformance-checkers>1.11.3 How to catch mistakes when writing HTML: validators and conformance checkers</a></ol><li><a href=introduction.html#conformance-requirements-for-authors>1.12 Conformance requirements for authors</a><ol><li><a href=introduction.html#presentational-markup>1.12.1 Presentational markup</a><li><a href=introduction.html#syntax-errors>1.12.2 Syntax errors</a><li><a href=introduction.html#restrictions-on-content-models-and-on-attribute-values>1.12.3 Restrictions on content models and on attribute values</a></ol><li><a href=introduction.html#suggested-reading>1.13 Suggested reading</a></ol></ol><h2 id=introduction>1 소개</h2><div class=status><input onclick=toggleStatus(this) value=⋰ type=button><p class=bugs><strong>Spec bugs:</strong> <a href="https://www.w3.org/Bugs/Public/show_bug.cgi?id=23036" title="Either drop all mention of mutation events, or specify them in full detail">23036</a></div>
+  <nav><a href=index.html>Table of Contents</a> — <a href=infrastructure.html>2 Common infrastructure →</a></nav><ol class=toc><li id=toc-introduction><a href=introduction.html#introduction>1 소개</a><ol><li><a href=introduction.html#abstract>1.1 이 스펙문서는 어디에 적합한가?</a><li><a href=introduction.html#is-this-html5?>1.2 이 스펙은 HTML5인가?</a><li><a href=introduction.html#배경>1.3 배경</a><li><a href=introduction.html#독자>1.4 독자</a><li><a href=introduction.html#범위>1.5 범위</a><li><a href=introduction.html#역사>1.6 역사</a><li><a href=introduction.html#설계-노트>1.7 설계 노트</a><ol><li><a href=introduction.html#스크립트-실행-순차성>1.7.1 스크립트 실행 순차성</a><li><a href=introduction.html#다른-스펙-준수>1.7.2 다른 스펙 준수</a><li><a href=introduction.html#확장성>1.7.3 확장성</a></ol><li><a href=introduction.html#html-vs-xhtml>1.8 HTML vs XHTML</a><li><a href=introduction.html#structure-of-this-specification>1.9 Structure of this specification</a><ol><li><a href=introduction.html#how-to-read-this-specification>1.9.1 How to read this specification</a><li><a href=introduction.html#typographic-conventions>1.9.2 Typographic conventions</a></ol><li><a href=introduction.html#fingerprint>1.10 Privacy concerns</a><ol><li><a href=introduction.html#fingerprint-postMessage>1.10.1 Cross-site communication</a></ol><li><a href=introduction.html#a-quick-introduction-to-html>1.11 A quick introduction to HTML</a><ol><li><a href=introduction.html#writing-secure-applications-with-html>1.11.1 Writing secure applications with HTML</a><li><a href=introduction.html#common-pitfalls-to-avoid-when-using-the-scripting-apis>1.11.2 Common pitfalls to avoid when using the scripting APIs</a><li><a href=introduction.html#how-to-catch-mistakes-when-writing-html:-validators-and-conformance-checkers>1.11.3 How to catch mistakes when writing HTML: validators and conformance checkers</a></ol><li><a href=introduction.html#conformance-requirements-for-authors>1.12 Conformance requirements for authors</a><ol><li><a href=introduction.html#presentational-markup>1.12.1 Presentational markup</a><li><a href=introduction.html#syntax-errors>1.12.2 Syntax errors</a><li><a href=introduction.html#restrictions-on-content-models-and-on-attribute-values>1.12.3 Restrictions on content models and on attribute values</a></ol><li><a href=introduction.html#suggested-reading>1.13 Suggested reading</a></ol></ol><h2 id=introduction>1 소개</h2><div class=status><input onclick=toggleStatus(this) value=⋰ type=button><p class=bugs><strong>Spec bugs:</strong> <a href="https://www.w3.org/Bugs/Public/show_bug.cgi?id=23036" title="Either drop all mention of mutation events, or specify them in full detail">23036</a></div>
 
   
 
@@ -415,37 +415,34 @@
   XHTML 1.0 이후, XHTML의 모듈화라는 이름 아래, W3C의 중심과제는 다른 워킹그룹에서 XHTML의 확장을 더 쉽게하는 데 초점을 맞춥니다.
   이와 동시에, W3C는 이전의 HTML과 XHTML 언어와 호환하지 않는 새로운 언어, XHTML 2를 작업하고 있었습니다.</p>
 
-  <p>HTML의 개정이 1998년에 멈춘 이후로, 브라우저 벤더에 의해 개발된 HTML을 위한 API의 일부를
-  DOM Level 1 (1998년)과 DOM Level 2 코어와 
-  DOM Level 2 HTML (2000년에 시작하여 2003년에 정점에 달함)을 정의하고 발행했습니다.
-  이러한 일련의 작업은 2004년에 발행된 DOM Level 3 스펙과 함께 점차 소멸하고,
-  워킹 그룹은 모든 Level 3 초안을 종료하기 전에 중단했습니다.</p>
+  <p>HTML의 발전은 1998년에 멈추었고, 브라우저 벤더사들이 HTML을 위한 API의 일부를 개발하고 정의하고
+  DOM Level 1 (1998년)과 DOM Level 2 코어 그리고 DOM Level 2 HTML (2000년에 시작해서 2003년까지 진행)이라는 이름으로
+  발행했습니다. 이런 노력은 점차 사라지고, 몇 DOM level 3 스펙이 2004년에 발행되었지만, 
+  워킹그룹은 모든 레벨 3가 완료되기 전에 닫아버렸습니다.</p>
 
-  <p>2003년에 이르러, 웹 폼의 차세대로 자리잡은 기술인 XForms의 발행은,
-  HTML의 대체를 찾기보다, HTML 자체에 대한 개선으로 다시 관심을 가지게 하였습니다.
-  이러한 관심은 웹 기술로써 XML의 개발이 실제로는 기존에 존재하는 기술(HTML 같은)을 대체한다기 보다,
-  완전히 새로운 기술에 한정(RSS나 이후 Atom 같은)하고 있다는 인식에서 시작했습니다.</p>
+  <p>2003년, Web forms의 미래 세대로 자리잡은 기술인 XForms의 발행은, HTML의 대체품을 찾는 게 아닌 
+  HTML 그 자체의 발전에 관심을 가지도록 하였습니다. 이러한 관심은 XML의 전개가 실제로 공개된(HTML같은) 기술을
+  대체한다기보단 완전히 새로운 웹 기술(RSS나 Atom같은)에 한정되고 있다는 확신에서 탄생했습니다.</p>
 
-  <p>A proof of concept to show that it was possible to extend HTML4's forms to provide many of the
-  features that XForms 1.0 introduced, without requiring browsers to implement rendering engines
-  that were incompatible with existing HTML Web pages, was the first result of this renewed
-  interest. At this early stage, while the draft was already publicly available, and input was
-  already being solicited from all sources, the specification was only under Opera Software's
-  copyright.</p>
+  <p>XForms 1.0에서 소개한 HTML4의 forms의 다양한 특징을 확장하여 제공하는 컨셉을 증명함으로써,
+  기존에 존재하는 HTML 웹 페이지와 호환하지 않는 렌더링 엔진 구현을 브라우저에 요구하지 않아도 되며,
+  이는 새로운 관심의 첫 결과였습니다. 초기 단계에서, 초안이 이미 공개되어 사용 가능했고,
+  모든 자원의 투입을 요구하고 있었지만, 스펙은 Opera Software의 저작권 아래에 있었습니다. </p>
 
-  <p>The idea that HTML's evolution should be reopened was tested at a W3C workshop in 2004, where
-  some of the principles that underlie the HTML5 work (described below), as well as the
-  aforementioned early draft proposal covering just forms-related features, were presented to the
-  W3C jointly by Mozilla and Opera. The proposal was rejected on the grounds that the proposal
-  conflicted with the previously chosen direction for the Web's evolution; the W3C staff and
-  membership voted to continue developing XML-based replacements instead.</p>
+  <p>HTML의 발전을 다시 진행해야한다는 이야기는 2004년 W3C 워크샵에서 나왔으며,
+  여기서 (이후에 설명하는) HTML5 작업의 근간을 이루는 몇가지 원칙이 탄생하였으며,
+  뿐만 아니라, 앞서 말한 form과 관련한 특징만을 커버하는 초기 문서 제안을,
+  Mozilla와 Opera가 공동으로 W3C에 공식적으로 발표합니다. 이 제안은 이전에 선택한 웹의 진화 
+  방향과 충돌이 있었기 때문에 받아들여지지 않았습니다. W3C의 스태프와 멤버십은
+  XML 기반의 대체품을 계속 개발하기로 결정하였습니다.</p>
 
-  <p>Shortly thereafter, Apple, Mozilla, and Opera jointly announced their intent to continue
-  working on the effort under the umbrella of a new venue called the WHATWG. A public mailing list
-  was created, and the draft was moved to the WHATWG site. The copyright was subsequently amended to
-  be jointly owned by all three vendors, and to allow reuse of the specification.</p>
+  <p>그 뒤로 얼마 지나지 않아, Apple, Mozilla, Opera는 WHATWG라는 새로운 무대에서,
+  계속 작업을 진행하기로 선언하였습니다. 공개 메일링 리스트가 만들어지고, 문서는 WHATWG 사이트로 옮겨졌습니다.
+  저작권은 세개의 벤더사에서 공동 소유하기로 하고, 스펙을 다시 사용하는 걸 허용했습니다.</p>
 
-  <p>The WHATWG was based on several core principles, in particular that technologies need to be
+  
+  <p>
+  The WHATWG was based on several core principles, in particular that technologies need to be
   backwards compatible, that specifications and implementations need to match even if this means
   changing the specification rather than the implementations, and that specifications need to be
   detailed enough that implementations can achieve complete interoperability without
@@ -472,43 +469,40 @@
   changes).</p>
 
 
-
-  <h3 id=design-notes>1.7 Design notes</h3>
+  <h3 id=설계-노트>1.7 설계 노트</h3>
 
   <p><i>This section is non-normative.</i></p>
 
-  <p>It must be admitted that many aspects of HTML appear at first glance to be nonsensical and
-  inconsistent.</p>
+  <p>한 눈에 봤을 때 HTML의 특징들이 엉터리같고 일관성 없어 보이는 걸 인정해야 합니다.</p>
 
-  <p>HTML, its supporting DOM APIs, as well as many of its supporting technologies, have been
-  developed over a period of several decades by a wide array of people with different priorities
-  who, in many cases, did not know of each other's existence.</p>
+  <p>HTML과 DOM API를 지원하는 HTML, 그리고 HTML을 지원하는 기술의 대부분은 서로의 존재를 모른채로,
+  서로 다른 우선순위를 가진 많은 사람들에 인해 수십년간 개발되어 왔습니다.</p>
 
   <p>Features have thus arisen from many sources, and have not always been designed in especially
   consistent ways. Furthermore, because of the unique characteristics of the Web, implementation
   bugs have often become de-facto, and now de-jure, standards, as content is often unintentionally
   written in ways that rely on them before they can be fixed.</p>
 
-  <p>Despite all this, efforts have been made to adhere to certain design goals. These are described
-  in the next few subsections.</p>
+  <p>이런 상황에도 불구하고, 특정한 설계 목표를 고수하기 위해 노력하고 있습니다.
+  이는 아래 서브섹션에서 소개합니다.</p>
 
 
   
 
-  <h4 id=serialisability-of-script-execution>1.7.1 Serialisability of script execution</h4>
+  <h4 id=스크립트-실행-순차성>1.7.1 스크립트 실행 순차성</h4>
 
   <p><i>This section is non-normative.</i></p>
 
   <p>To avoid exposing Web authors to the complexities of multithreading, the HTML and DOM APIs are
   designed such that no script can ever detect the simultaneous execution of other scripts. Even
-  with <a href=workers.html#worker id=serialisability-of-script-execution:worker>workers</a>, the intent is that the behaviour of implementations can
-  be thought of as completely serialising the execution of all scripts in all <a href=browsers.html#browsing-context id=serialisability-of-script-execution:browsing-context>browsing contexts</a>.</p>
+  with <a href=workers.html#worker id=스크립트-실행-순차성:worker>workers</a>, the intent is that the behaviour of implementations can
+  be thought of as completely serialising the execution of all scripts in all <a href=browsers.html#browsing-context id=스크립트-실행-순차성:browsing-context>browsing contexts</a>.</p>
 
   
 
 
 
-  <h4 id=compliance-with-other-specifications>1.7.2 Compliance with other specifications</h4>
+  <h4 id=다른-스펙-준수>1.7.2 다른 스펙 준수</h4>
 
   <p><i>This section is non-normative.</i></p>
 
@@ -520,27 +514,27 @@
 
 
 
-  <h4 id=extensibility>1.7.3 Extensibility</h4>
+  <h4 id=확장성>1.7.3 확장성</h4>
 
   <p><i>This section is non-normative.</i></p>
 
   <p>HTML has a wide array of extensibility mechanisms that can be used for adding semantics in a
   safe manner:</p>
 
-  <ul><li><p>Authors can use the <code id=extensibility:classes><a href=dom.html#classes>class</a></code> attribute to extend elements,
+  <ul><li><p>Authors can use the <code id=확장성:classes><a href=dom.html#classes>class</a></code> attribute to extend elements,
    effectively creating their own elements, while using the most applicable existing "real" HTML
    element, so that browsers and other tools that don't know of the extension can still support it
    somewhat well. This is the tack used by microformats, for example.<li><p>Authors can include data for inline client-side scripts or server-side site-wide scripts
-   to process using the <code id=extensibility:attr-data-*><a href=dom.html#attr-data-*>data-*=""</a></code> attributes. These are guaranteed
+   to process using the <code id=확장성:attr-data-*><a href=dom.html#attr-data-*>data-*=""</a></code> attributes. These are guaranteed
    to never be touched by browsers, and allow scripts to include data on HTML elements that scripts
-   can then look for and process.<li><p>Authors can use the <code id=extensibility:the-meta-element><a href=semantics.html#the-meta-element>&lt;meta name="" content=""></a></code> mechanism to
-   include page-wide metadata by registering <a href=semantics.html#concept-meta-extensions id=extensibility:concept-meta-extensions>extensions to
-   the predefined set of metadata names</a>.<li><p>Authors can use the <code id=extensibility:attr-hyperlink-rel><a href=semantics.html#attr-hyperlink-rel>rel=""</a></code> mechanism to annotate
-   links with specific meanings by registering <a href=semantics.html#concept-rel-extensions id=extensibility:concept-rel-extensions>extensions to
-   the predefined set of link types</a>. This is also used by microformats.<li><p>Authors can embed raw data using the <code id=extensibility:the-script-element><a href=scripting.html#the-script-element>&lt;script type=""></a></code>
-   mechanism with a custom type, for further handling by inline or server-side scripts.<li><p>Authors can create <a href=infrastructure.html#plugin id=extensibility:plugin>plugins</a> and invoke them using the
-   <code id=extensibility:the-embed-element><a href=embedded-content.html#the-embed-element>embed</a></code> element. This is how Flash works.<li><p>Authors can extend APIs using the JavaScript prototyping mechanism. This is widely used by
-   script libraries, for instance.<li><p>Authors can use the microdata feature (the <code id=extensibility:attr-itemscope><a href=microdata.html#attr-itemscope>itemscope=""</a></code> and <code id=extensibility:names:-the-itemprop-attribute><a href=microdata.html#names:-the-itemprop-attribute>itemprop=""</a></code>
+   can then look for and process.<li><p>Authors can use the <code id=확장성:the-meta-element><a href=semantics.html#the-meta-element>&lt;meta name="" content=""></a></code> mechanism to
+   include page-wide metadata by registering <a href=semantics.html#concept-meta-extensions id=확장성:concept-meta-extensions>extensions to
+   the predefined set of metadata names</a>.<li><p>Authors can use the <code id=확장성:attr-hyperlink-rel><a href=semantics.html#attr-hyperlink-rel>rel=""</a></code> mechanism to annotate
+   links with specific meanings by registering <a href=semantics.html#concept-rel-extensions id=확장성:concept-rel-extensions>extensions to
+   the predefined set of link types</a>. This is also used by microformats.<li><p>Authors can embed raw data using the <code id=확장성:the-script-element><a href=scripting.html#the-script-element>&lt;script type=""></a></code>
+   mechanism with a custom type, for further handling by inline or server-side scripts.<li><p>Authors can create <a href=infrastructure.html#plugin id=확장성:plugin>plugins</a> and invoke them using the
+   <code id=확장성:the-embed-element><a href=embedded-content.html#the-embed-element>embed</a></code> element. This is how Flash works.<li><p>Authors can extend APIs using the JavaScript prototyping mechanism. This is widely used by
+   script libraries, for instance.<li><p>Authors can use the microdata feature (the <code id=확장성:attr-itemscope><a href=microdata.html#attr-itemscope>itemscope=""</a></code> and <code id=확장성:names:-the-itemprop-attribute><a href=microdata.html#names:-the-itemprop-attribute>itemprop=""</a></code>
    attributes) to embed nested name-value pairs of data to be shared with other applications and
    sites.</ul>
 

@@ -351,8 +351,13 @@
    <p>이 경우, 값은 <a data-link-type="dfn" href="#inheritance" id="ref-for-inheritance-1">상속</a>된 값을 찾거나 속성의 <a data-link-type="dfn" href="#initial-value" id="ref-for-initial-value-1">초기화 값</a>을 찾습니다.</p>
    <p><a href="#cascade" id="ref-for-cascade-2">캐스케이딩</a>과 <a href="#defaulting">초기화</a> 프로세스는 선언 셋을 입력으로 받고, 각 요소의 각 속성을 위한 정의된 값을 출력으로 합니다.
      문서 내 모든 요소상 모든 요소의 정의된 값을 찾는 규칙도 이 스펙에서 설명합니다. 페이지 컨텍스트와 마진 박스 내 정의된 값을 찾는 규칙은 [<a data-link-type="biblio" href="#biblio-css3page">[CSS3PAGE]</a>]에서 설명합니다.</p>
+
    <h2 class="heading settled" data-level="2" id="at-import"><span class="secno">2. </span><span class="content"> Importing Style Sheets: the <a class="css" data-link-type="maybe" href="#at-ruledef-import" id="ref-for-at-ruledef-import-1">@import</a> rule</span><a class="self-link" href="#at-import"></a></h2>
-   <p>The <dfn class="dfn-paneled css" data-dfn-type="at-rule" data-export="" id="at-ruledef-import">@import</dfn> rule allows users to import style rules from other style sheets.
+   <p>
+
+     <dfn class="dfn-paneled css" data-dfn-type="at-rule" data-export="" id="at-ruledef-import">@import</dfn> rule은 유저가 다른 스타일시트로부터 스타일 규칙을 가져오는 걸 허용합니다.
+     <a class="css" data-link-type="maybe" href="#at-ruledef-import" id="ref-for-at-ruledef-import-2">@import</a> 룰이 유효한 스타일시트를 참조한다면,
+     The <dfn class="dfn-paneled css" data-dfn-type="at-rule" data-export="" id="at-ruledef-import">@import</dfn> rule allows users to import style rules from other style sheets.
 	If an <a class="css" data-link-type="maybe" href="#at-ruledef-import" id="ref-for-at-ruledef-import-2">@import</a> rule refers to a valid stylesheet,
 	user agents must treat the contents of the stylesheet as if they were written in place of the <a class="css" data-link-type="maybe" href="#at-ruledef-import" id="ref-for-at-ruledef-import-3">@import</a> rule.</p>
    <p class="example" id="example-24add34d"><a class="self-link" href="#example-24add34d"></a> For example, declarations in style rules from imported stylesheets interact with the cascade
