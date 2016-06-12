@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>HTML 5.1: 4. HTML의 요소</title>
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <meta content="WD" name="w3c-status">
+    <link href="styles/styles-html.css" rel="stylesheet" type="text/css">
+    <meta content="Bikeshed 1.0.0" name="generator">
+    <style>
+        .dfn-panel {
+            display: inline-block;
+            position: absolute;
+            z-index: 35;
+            height: auto;
+            width: -webkit-fit-content;
+            max-width: 300px;
+            max-height: 500px;
+            overflow: auto;
+            padding: 0.5em 0.75em;
+            font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
+            background: #DDDDDD;
+            color: black;
+            border: outset 0.2em;
+        }
+        .dfn-panel:not(.on) { display: none; }
+        .dfn-panel * { margin: 0; padding: 0; text-indent: 0; }
+        .dfn-panel > b { display: block; }
+        .dfn-panel a { color: black; }
+        .dfn-panel a:not(:hover) { text-decoration: none !important; border-bottom: none !important; }
+        .dfn-panel > b + b { margin-top: 0.25em; }
+        .dfn-panel > span { display: list-item; list-style: inside; }
+        .dfn-panel.activated {
+            display: inline-block;
+            position: fixed;
+            left: .5em;
+            bottom: .5em;
+            margin: 0 auto;
+            max-width: calc(100vw - 1.5em - .4em - .5em);
+            max-height: 30vh;
+        }
+
+        .dfn-paneled { cursor: pointer; }
+    </style>
+    <style>.highlight .hll { background-color: #ffffcc }
+    .highlight  { background: #ffffff; }
+    .highlight .c { color: #708090 } /* Comment */
+    .highlight .k { color: #990055 } /* Keyword */
+    .highlight .l { color: #000000 } /* Literal */
+    .highlight .n { color: #0077aa } /* Name */
+    .highlight .o { color: #999999 } /* Operator */
+    .highlight .p { color: #999999 } /* Punctuation */
+    .highlight .cm { color: #708090 } /* Comment.Multiline */
+    .highlight .cp { color: #708090 } /* Comment.Preproc */
+    .highlight .c1 { color: #708090 } /* Comment.Single */
+    .highlight .cs { color: #708090 } /* Comment.Special */
+    .highlight .kc { color: #990055 } /* Keyword.Constant */
+    .highlight .kd { color: #990055 } /* Keyword.Declaration */
+    .highlight .kn { color: #990055 } /* Keyword.Namespace */
+    .highlight .kp { color: #990055 } /* Keyword.Pseudo */
+    .highlight .kr { color: #990055 } /* Keyword.Reserved */
+    .highlight .kt { color: #990055 } /* Keyword.Type */
+    .highlight .ld { color: #000000 } /* Literal.Date */
+    .highlight .m { color: #000000 } /* Literal.Number */
+    .highlight .s { color: #a67f59 } /* Literal.String */
+    .highlight .na { color: #0077aa } /* Name.Attribute */
+    .highlight .nc { color: #0077aa } /* Name.Class */
+    .highlight .no { color: #0077aa } /* Name.Constant */
+    .highlight .nd { color: #0077aa } /* Name.Decorator */
+    .highlight .ni { color: #0077aa } /* Name.Entity */
+    .highlight .ne { color: #0077aa } /* Name.Exception */
+    .highlight .nf { color: #0077aa } /* Name.Function */
+    .highlight .nl { color: #0077aa } /* Name.Label */
+    .highlight .nn { color: #0077aa } /* Name.Namespace */
+    .highlight .py { color: #0077aa } /* Name.Property */
+    .highlight .nt { color: #669900 } /* Name.Tag */
+    .highlight .nv { color: #0077aa } /* Name.Variable */
+    .highlight .ow { color: #999999 } /* Operator.Word */
+    .highlight .mf { color: #000000 } /* Literal.Number.Float */
+    .highlight .mh { color: #000000 } /* Literal.Number.Hex */
+    .highlight .mi { color: #000000 } /* Literal.Number.Integer */
+    .highlight .mo { color: #000000 } /* Literal.Number.Oct */
+    .highlight .sb { color: #a67f59 } /* Literal.String.Backtick */
+    .highlight .sc { color: #a67f59 } /* Literal.String.Char */
+    .highlight .sd { color: #a67f59 } /* Literal.String.Doc */
+    .highlight .s2 { color: #a67f59 } /* Literal.String.Double */
+    .highlight .se { color: #a67f59 } /* Literal.String.Escape */
+    .highlight .sh { color: #a67f59 } /* Literal.String.Heredoc */
+    .highlight .si { color: #a67f59 } /* Literal.String.Interpol */
+    .highlight .sx { color: #a67f59 } /* Literal.String.Other */
+    .highlight .sr { color: #a67f59 } /* Literal.String.Regex */
+    .highlight .s1 { color: #a67f59 } /* Literal.String.Single */
+    .highlight .ss { color: #a67f59 } /* Literal.String.Symbol */
+    .highlight .vc { color: #0077aa } /* Name.Variable.Class */
+    .highlight .vg { color: #0077aa } /* Name.Variable.Global */
+    .highlight .vi { color: #0077aa } /* Name.Variable.Instance */
+    .highlight .il { color: #000000 } /* Literal.Number.Integer.Long */
+    .highlight { background: hsl(24, 20%, 95%); }
+    code.highlight { padding: .1em; border-radius: .3em; }
+    pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em 0; overflow: auto; border-radius: 0; }
+    </style>
+    <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-WD" rel="stylesheet" type="text/css">
+</head><body class="h-entry">
+<div class="head">
+    <header>
+        <p data-fill-with="logo"><a href="http://www.w3.org/"><img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"></a></p>
+        <h1 class="p-name no-ref allcaps" id="title">HTML 5.1</h1>
+        <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">W3C Working Draft, <time class="dt-updated" datetime="2016-06-02">2 June 2016</time></span></h2>
+    </header>
+</div>
+
+<nav data-fill-with="table-of-contents" id="toc"><p class="prev_next">← <a href="dom.html#dom"><span class="secno">3</span> <span class="content">시맨틱, 구조, HTML 문서의 API</span></a> — <a href="index.html#contents">Table of contents</a> — <a href="document-metadata.html#document-metadata"><span class="secno">4.2</span> <span class="content">Document metadata</span></a> →</p>
+    <h2 class="no-num no-toc no-ref" id="contents">목차</h2>
+    <ol class="toc" role="directory"><li>
+        <a href="semantics.html#semantics"><span class="secno">4</span> <span class="content">HTML의 요소</span></a>
+        <ol class="toc">
+            <li>
+                <a href="semantics.html#the-root-element"><span class="secno">4.1</span> <span class="content">루트 요소</span></a>
+                <ol class="toc">
+                    <li><a href="semantics.html#the-html-element"><span class="secno">4.1.1</span> <span class="content"><span><code>html</code></span> 요소</span></a>
+                    </li></ol>
+            </li></ol>
+    </li></ol>
+</nav><main><section><h2 class="heading settled" data-level="4" id="semantics"><span class="secno">4. </span><span class="content">HTML의 요소</span><a class="self-link" href="semantics.html#semantics"></a></h2><section>
+    <h3 class="heading settled" data-level="4.1" id="the-root-element"><span class="secno">4.1. </span><span class="content">루트 요소</span><a class="self-link" href="semantics.html#the-root-element"></a></h3>
+    <h4 class="heading settled" data-level="4.1.1" id="the-html-element"><span class="secno">4.1.1. </span><span class="content"><dfn class="dfn-paneled" data-dfn-type="element" data-export="" data-lt="html" id="elementdef-html"><code>html</code><span class="dfn-panel" data-deco=""><b><a href="semantics.html#elementdef-html">#elementdef-html</a></b><b>Referenced in:</b><span><a href="introduction.html#ref-for-elementdef-html-1">1.9. A quick introduction to HTML</a> <a href="introduction.html#ref-for-elementdef-html-2">(2)</a></span><span><a href="dom.html#ref-for-elementdef-html-3">3.1.3. DOM tree accessors</a> <a href="dom.html#ref-for-elementdef-html-4">(2)</a> <a href="dom.html#ref-for-elementdef-html-5">(3)</a> <a href="dom.html#ref-for-elementdef-html-6">(4)</a></span><span><a href="dom.html#ref-for-elementdef-html-7">3.2.5.3.
+        The lang and xml:lang attributes </a></span><span><a href="dom.html#ref-for-elementdef-html-8">3.2.5.6. The dir attribute</a> <a href="dom.html#ref-for-elementdef-html-9">(2)</a> <a href="dom.html#ref-for-elementdef-html-10">(3)</a> <a href="dom.html#ref-for-elementdef-html-11">(4)</a></span><span><a href="semantics.html#ref-for-elementdef-html-12">4.1.1. html 요소</a> <a href="semantics.html#ref-for-elementdef-html-13">(2)</a> <a href="semantics.html#ref-for-elementdef-html-14">(3)</a> <a href="semantics.html#ref-for-elementdef-html-15">(4)</a> <a href="semantics.html#ref-for-elementdef-html-16">(5)</a> <a href="semantics.html#ref-for-elementdef-html-17">(6)</a> <a href="semantics.html#ref-for-elementdef-html-18">(7)</a> <a href="semantics.html#ref-for-elementdef-html-19">(8)</a></span><span><a href="document-metadata.html#ref-for-elementdef-html-20">4.2.1. The head element</a></span><span><a href="sections.html#ref-for-elementdef-html-21">4.3.1. The body element</a> <a href="sections.html#ref-for-elementdef-html-22">(2)</a></span><span><a href="semantics-embedded-content.html#ref-for-elementdef-html-23">4.7.6. The iframe element</a> <a href="semantics-embedded-content.html#ref-for-elementdef-html-24">(2)</a></span><span><a href="browsers.html#ref-for-elementdef-html-25">6.1. Browsing contexts</a></span><span><a href="browsers.html#ref-for-elementdef-html-26">6.7.6. Page load processing model for media</a> <a href="browsers.html#ref-for-elementdef-html-27">(2)</a></span><span><a href="browsers.html#ref-for-elementdef-html-28">6.7.7. Page load processing model for content that uses plugins</a> <a href="browsers.html#ref-for-elementdef-html-29">(2)</a></span><span><a href="syntax.html#ref-for-elementdef-html-30">8.1. Writing HTML documents</a> <a href="syntax.html#ref-for-elementdef-html-31">(2)</a> <a href="syntax.html#ref-for-elementdef-html-32">(3)</a> <a href="syntax.html#ref-for-elementdef-html-33">(4)</a> <a href="syntax.html#ref-for-elementdef-html-34">(5)</a> <a href="syntax.html#ref-for-elementdef-html-35">(6)</a></span><span><a href="syntax.html#ref-for-elementdef-html-36">8.1.2.4. Optional tags</a> <a href="syntax.html#ref-for-elementdef-html-37">(2)</a> <a href="syntax.html#ref-for-elementdef-html-38">(3)</a> <a href="syntax.html#ref-for-elementdef-html-39">(4)</a> <a href="syntax.html#ref-for-elementdef-html-40">(5)</a> <a href="syntax.html#ref-for-elementdef-html-41">(6)</a> <a href="syntax.html#ref-for-elementdef-html-42">(7)</a> <a href="syntax.html#ref-for-elementdef-html-43">(8)</a></span><span><a href="syntax.html#ref-for-elementdef-html-44">8.2.3.1. The insertion mode</a></span><span><a href="syntax.html#ref-for-elementdef-html-45">8.2.3.2. The stack of open elements</a> <a href="syntax.html#ref-for-elementdef-html-46">(2)</a> <a href="syntax.html#ref-for-elementdef-html-47">(3)</a> <a href="syntax.html#ref-for-elementdef-html-48">(4)</a> <a href="syntax.html#ref-for-elementdef-html-49">(5)</a></span><span><a href="syntax.html#ref-for-elementdef-html-50">8.2.5.1. Creating and inserting nodes</a></span><span><a href="syntax.html#ref-for-elementdef-html-51">8.2.5.4.2. The "before html" insertion mode</a></span><span><a href="syntax.html#ref-for-elementdef-html-52">8.2.5.4.7. The "in body" insertion mode</a> <a href="syntax.html#ref-for-elementdef-html-53">(2)</a> <a href="syntax.html#ref-for-elementdef-html-54">(3)</a> <a href="syntax.html#ref-for-elementdef-html-55">(4)</a></span><span><a href="syntax.html#ref-for-elementdef-html-56">8.2.5.4.9. The "in table" insertion mode</a> <a href="syntax.html#ref-for-elementdef-html-57">(2)</a></span><span><a href="syntax.html#ref-for-elementdef-html-58">8.2.5.4.13. The "in table body" insertion mode</a> <a href="syntax.html#ref-for-elementdef-html-59">(2)</a></span><span><a href="syntax.html#ref-for-elementdef-html-60">8.2.5.4.14. The "in row" insertion mode</a> <a href="syntax.html#ref-for-elementdef-html-61">(2)</a></span><span><a href="syntax.html#ref-for-elementdef-html-62">8.2.5.4.19. The "after body" insertion mode</a></span><span><a href="syntax.html#ref-for-elementdef-html-63">8.2.5.4.20. The "in frameset" insertion mode</a> <a href="syntax.html#ref-for-elementdef-html-64">(2)</a> <a href="syntax.html#ref-for-elementdef-html-65">(3)</a></span><span><a href="syntax.html#ref-for-elementdef-html-66">8.2.8.1. Misnested tags: &lt;b&gt;&lt;i&gt;&lt;/b&gt;&lt;/i&gt;</a> <a href="syntax.html#ref-for-elementdef-html-67">(2)</a> <a href="syntax.html#ref-for-elementdef-html-68">(3)</a> <a href="syntax.html#ref-for-elementdef-html-69">(4)</a></span><span><a href="syntax.html#ref-for-elementdef-html-70">8.2.8.2. Misnested tags: &lt;b&gt;&lt;p&gt;&lt;/b&gt;&lt;/p&gt;</a> <a href="syntax.html#ref-for-elementdef-html-71">(2)</a> <a href="syntax.html#ref-for-elementdef-html-72">(3)</a> <a href="syntax.html#ref-for-elementdef-html-73">(4)</a> <a href="syntax.html#ref-for-elementdef-html-74">(5)</a> <a href="syntax.html#ref-for-elementdef-html-75">(6)</a></span><span><a href="syntax.html#ref-for-elementdef-html-76">8.2.8.3. Unexpected markup in tables</a> <a href="syntax.html#ref-for-elementdef-html-77">(2)</a> <a href="syntax.html#ref-for-elementdef-html-78">(3)</a> <a href="syntax.html#ref-for-elementdef-html-79">(4)</a> <a href="syntax.html#ref-for-elementdef-html-80">(5)</a> <a href="syntax.html#ref-for-elementdef-html-81">(6)</a> <a href="syntax.html#ref-for-elementdef-html-82">(7)</a> <a href="syntax.html#ref-for-elementdef-html-83">(8)</a> <a href="syntax.html#ref-for-elementdef-html-84">(9)</a> <a href="syntax.html#ref-for-elementdef-html-85">(10)</a> <a href="syntax.html#ref-for-elementdef-html-86">(11)</a></span><span><a href="syntax.html#ref-for-elementdef-html-87">8.2.8.4. Scripts that modify the page as it is being parsed</a> <a href="syntax.html#ref-for-elementdef-html-88">(2)</a> <a href="syntax.html#ref-for-elementdef-html-89">(3)</a></span><span><a href="syntax.html#ref-for-elementdef-html-90">8.2.8.6. Unclosed formatting elements</a></span><span><a href="syntax.html#ref-for-elementdef-html-91">8.4. Parsing HTML fragments</a></span><span><a href="obsolete.html#ref-for-elementdef-html-92">11.2. Non-conforming features</a></span><span><a href="obsolete.html#ref-for-elementdef-html-93">11.3.4. Other elements, attributes and APIs</a></span><span><a href="fullindex.html#ref-for-elementdef-html-94">요소</a> <a href="fullindex.html#ref-for-elementdef-html-95">(2)</a> <a href="fullindex.html#ref-for-elementdef-html-96">(3)</a></span><span><a href="fullindex.html#ref-for-elementdef-html-97">Element Interfaces</a></span></span></dfn> 요소</span><a class="self-link" href="semantics.html#the-html-element"></a></h4>
+    <dl class="element">
+        <dt><a data-link-type="dfn" href="dom.html#categories" id="ref-for-categories-2">카테고리</a>:
+        </dt><dd>없음.
+    </dd><dt><a data-link-type="dfn" href="dom.html#contexts-in-which-this-element-can-be-used" id="ref-for-contexts-in-which-this-element-can-be-used-1">이 요소를 사용할 수 있는 콘텍스트</a>:
+    </dt><dd>문서의 루트 요소로써
+    </dd><dd>복합 문서에서 허용하는 서브문서 프래그먼트 어디든
+    </dd><dt><a data-link-type="dfn" href="dom.html#content-model" id="ref-for-content-model-4">콘텐츠 모델</a>:
+    </dt><dd><code><a data-link-type="element" href="document-metadata.html#elementdef-head" id="ref-for-elementdef-head-12">head</a></code> 요소와 그 뒤를 따르는 <code><a data-link-type="element" href="sections.html#elementdef-body" id="ref-for-elementdef-body-20">body</a></code> 요소.
+    </dd><dt><a data-link-type="dfn" href="dom.html#tag-omission-in-text-html" id="ref-for-tag-omission-in-text-html-1">text/html에서 태그 생략</a>:
+    </dt><dd><code><a data-link-type="element" href="semantics.html#elementdef-html" id="ref-for-elementdef-html-13">html</a></code> 요소 내 첫번째 것이 <a data-link-type="dfn" href="syntax.html#comment" id="ref-for-comment-1">주석</a>이 아니라면 <code><a data-link-type="element" href="semantics.html#elementdef-html" id="ref-for-elementdef-html-12">html</a></code> 요소의 <a data-link-type="dfn" href="syntax.html#start-tag" id="ref-for-start-tag-3">여는 태그</a>는 생략 가능합니다.
+    </dd><dd><code><a data-link-type="element" href="semantics.html#elementdef-html" id="ref-for-elementdef-html-14">html</a></code> 요소에 바로 따라서 <a data-link-type="dfn" href="syntax.html#comment" id="ref-for-comment-2">주석</a>이 존재하지 않는다면 <code><a data-link-type="element" href="semantics.html#elementdef-html" id="ref-for-elementdef-html-14">html</a></code> 요소의 <a data-link-type="dfn" href="syntax.html#end-tag" id="ref-for-end-tag-4">닫는 태그</a>는 생략 가능합니다.
+    </dd><dt><a data-link-type="dfn" href="dom.html#content-attribute" id="ref-for-content-attribute-2">콘텐츠 속성</a>:
+    </dt><dd><a data-link-type="dfn" href="dom.html#global-attributes" id="ref-for-global-attributes-1">전역 속성</a>
+    </dd><dt>허용하는 <a href="dom.html#aria-role-attribute">ARIA role 속성</a> 값:
+    </dt><dd>없음
+    </dd><dt>허용하는 <a href="dom.html#state-and-property-attributes">ARIA 상태 및 프로퍼티 속성</a>:
+    </dt><dd><a data-link-type="dfn" href="dom.html#global-aria--attributes" id="ref-for-global-aria--attributes-3">전역 aria-* 속성</a>
+    </dd><dt><a data-link-type="dfn" href="dom.html#dom-interface" id="ref-for-dom-interface-1">DOM 인터페이스</a>:
+    </dt><dd>
+<pre class="idl def" data-highlight="webidl">interface <dfn class="dfn-paneled idl-code" data-dfn-for="HTMLHtmlElement" data-dfn-type="interface" data-export="" data-lt="HTMLHtmlElement" id="htmlhtmlelement-htmlhtmlelement">HTMLHtmlElement<span class="dfn-panel" data-deco=""><b><a href="semantics.html#htmlhtmlelement-htmlhtmlelement">#htmlhtmlelement-htmlhtmlelement</a></b><b>Referenced in:</b><span><a href="obsolete.html#ref-for-htmlhtmlelement-htmlhtmlelement-1">11.3.4. Other elements, attributes and APIs</a></span><span><a href="fullindex.html#ref-for-htmlhtmlelement-htmlhtmlelement-2">Elements</a></span><span><a href="fullindex.html#ref-for-htmlhtmlelement-htmlhtmlelement-3">Element Interfaces</a></span></span></dfn> : <a data-link-type="idl-name" href="dom.html#htmlelement-htmlelement" id="ref-for-htmlelement-htmlelement-11">HTMLElement</a> {};
+</pre>
+    </dd></dl>
+    <p><code><a data-link-type="element" href="semantics.html#elementdef-html" id="ref-for-elementdef-html-16">html</a></code> 요소는 HTML문서의 루트를 <a data-link-type="dfn" href="dom.html#represent" id="ref-for-represent-4">나타냅니다</a></p>
+    <p>
+      작성자는 루트 <code><a data-link-type="element" href="semantics.html#elementdef-html" id="ref-for-elementdef-html-17">html</a></code> 요소에
+      <code><a data-link-type="element-sub" href="dom.html#element-attrdef-global-lang" id="ref-for-element-attrdef-global-lang-24">lang</a></code> 속성을 정의하여,
+      문서에 언어를 주기를 권장합니다.
+      이는 음성 합성 도구가 어떤 발음을 사용할 지, 번역 도구가 어떤 규칙을 사용할 지 등을 돕습니다.
+    </p>
+    <p class="note" role="note"> It is recommended to keep the usage of attributes and their values defined on the <code><a data-link-type="element" href="semantics.html#elementdef-html" id="ref-for-elementdef-html-18">html</a></code> element to a minimum to allow for proper detection of the <a data-link-type="dfn" href="document-metadata.html#character-encoding-declaration" id="ref-for-character-encoding-declaration-1">character encoding declaration</a> within the first 1024 bytes. </p>
+    <div class="example" id="example-ea73cf5a">
+        <a class="self-link" href="semantics.html#example-ea73cf5a"></a> 아래 예제의 <code><a data-link-type="element" href="semantics.html#elementdef-html" id="ref-for-elementdef-html-19">html</a></code> 요소에 문서 언어를 영어로 설정하고 있습니다.
+<pre class="highlight"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Swapping Songs<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>Swapping Songs<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Tonight I swapped some of the songs I wrote with some friends, who
+    gave me some of the songs they wrote. I love sharing my music.<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></pre>
+    </div>
+</section></section></main>
+
+<script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script>
+<script>
+    document.body.addEventListener("click", function(e) {
+        var queryAll = function(sel) { return [].slice.call(document.querySelectorAll(sel)); }
+        // Find the dfn element or panel, if any, that was clicked on.
+        var el = e.target;
+        var target;
+        while(el.parentElement) {
+            if(el.tagName == "DFN") {
+                target = "dfn";
+                break;
+            }
+            if(/H\d/.test(el.tagName) && el.getAttribute('data-dfn-type') != null) {
+                target = "dfn";
+                break;
+            }
+            if(el.classList.contains("dfn-panel")) {
+                target = "dfn-panel";
+                break;
+            }
+            el = el.parentElement;
+        }
+        if(target != "dfn-panel") {
+            // Turn off any currently "on" or "activated" panels.
+            queryAll(".dfn-panel.on, .dfn-panel.activated").forEach(function(el){
+                el.classList.remove("on");
+                el.classList.remove("activated");
+            });
+        }
+        if(target == "dfn") {
+            // open the panel
+            var dfnPanel = el.querySelector(".dfn-panel");
+            if(dfnPanel) {
+                dfnPanel.classList.add("on");
+            }
+        } else if(target == "dfn-panel") {
+            // Switch it to "activated" state, which pins it.
+            el.classList.add("activated");
+        }
+
+    });
+</script>
+<p class="prev_next">← <a href="dom.html#dom"><span class="secno">3</span> <span class="content">Semantics, structure, and APIs of HTML documents</span></a> — <a href="index.html#contents">Table of contents</a> — <a href="document-metadata.html#document-metadata"><span class="secno">4.2</span> <span class="content">Document metadata</span></a> →</p></body></html>
