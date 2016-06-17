@@ -1,5 +1,6 @@
 body {
 	font-size:16px;
+	margin: 20px;
 }
 article {
 	max-width:1120px;
@@ -35,9 +36,11 @@ a:visited {
 	color:blueviolet;
 }
 code {
+	display:inline-block;
 	padding:0 6px;
 	color:white;
 	background:hotpink;
+	line-height:1.4em;
 	font-family:"menlo", monospace;
 }
 pre {

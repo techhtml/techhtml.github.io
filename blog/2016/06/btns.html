@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>버튼 예제</title>
+  <style>
+  .btn {
+    display: inline-block;
+    padding: 2px 6px;
+    border: 1px solid gray;
+    color: gray;
+    background: transparent;
+    border-radius: 1em;
+    cursor: pointer;
+  }
+  .btn.btn_filled {
+    color: #fff;
+  }
+  .btn.btn_borderd {
+    background: transparent;
+  }
+  .btn.btn_link {
+    border: none;
+    background: transparent;
+  }
+  .btn_red {
+    color: red;
+    background: red;
+    border-color: red;
+  }
+  </style>
+</head>
+<body>
+  <button type="button" class="btn">기본 버튼</button>
+  <button type="button" class="btn btn_filled btn_red">기본 버튼</button>
+  <button type="button" class="btn btn_borderd btn_red">기본 버튼</button>
+  <button type="button" class="btn btn_link btn_red">기본 버튼</button>
+</body>
+</html>
