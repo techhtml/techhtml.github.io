@@ -51,7 +51,7 @@ pre {
 	font-size:0.6em;
 	line-height:2em;
 	font-family:"menlo", monospace;
-	white-space:wrap;
+	white-space:pre-wrap;
 }
 pre .syntax-filename {
 	position:absolute;
@@ -83,4 +83,9 @@ ins.ch_st {
 }
 figure {
 	text-align:center;
+}
+@media (max-width:960px) {
+	article {
+		font-size: 3.5vmax;
+	}
 }
