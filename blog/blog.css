@@ -2,11 +2,12 @@ body {
 	font-size:16px;
 }
 article {
-	max-width:960px;
+	max-width:1120px;
 	margin:0 auto;
 	font-size:2vmax;
 	line-height:180%;
-	font-family:"APPLESDGothicNEO-LIGHT", sans-serif;
+	font-family:sans-serif;
+	font-weight:300;
 }
 .img-max {
 	width:100%;
@@ -33,14 +34,21 @@ a {
 a:visited {
 	color:blueviolet;
 }
+code {
+	padding:0 6px;
+	color:white;
+	background:hotpink;
+	font-family:"menlo", monospace;
+}
 pre {
 	position:relative;
-	background:#000;
+	background:#222;
 	padding:35px 25px 25px;
-	color:lime;
-	font-size:14px;
+	color:white;
+	font-size:0.6em;
 	line-height:2em;
 	font-family:"menlo", monospace;
+	white-space:wrap;
 }
 pre .syntax-filename {
 	position:absolute;
@@ -48,8 +56,27 @@ pre .syntax-filename {
 	top:10px;
 	color:red;
 }
+.ch_sl {
+	color:hotpink;
+}
+.ch_vl {
+	color:orange;
+}
+.ch_st {
+	color:#2ac1bc;
+}
 .warning {
 	border-bottom:5px solid #555;
+}
+strong {
+	border-bottom:3px solid currentColor;
+}
+ins.ch_sl,
+ins.ch_vl,
+ins.ch_st {
+	color:hotpink;
+	font-weight:bold;
+	text-decoration: underline;
 }
 figure {
 	text-align:center;
