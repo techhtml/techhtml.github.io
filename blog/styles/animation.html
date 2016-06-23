@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>CSS3 Animation - techHTML</title>
+  <meta name="viewport" content="initial-scale=1" />
+  <link rel="stylesheet" href="../blog.css" />
+  <style>
+  div {}
+  .hello {}
+  @keyframes identifier {
+
+  }
+  </style>
+</head>
+<body>
+<article>
+<h1>CSS 애니메이션</h1>
+
+<p><code>animation</code> 속성은 CSS에서 변화할 수 있는 값을 변화시킴과 동시에 애니메이션을 부여한다. 상식선에서 '이건 animation이 동작하겠지?' 라고 생각하는 거라면 대부분 애니메이션을 넣을 수 있다.
+   문법은 크게 <code>animation</code> 속성과 <code>@keyframes</code> 룰로 구분한다.
+
+<p>브라우저 지원율은 링크를 참고해보자 (<a href="http://caniuse.com/#feat=css-animation" target="_blank">http://caniuse.com/#feat=css-animation</a>)
+
+<p>위 지원 브라우저에서도 안된다면 문의해도 좋지만, 'IE 9 이하에서는 어떻게 하는가.' '혹시 풀페이지의 소스를 받아볼 수 있겠는가?'는 무시하도록 하겠다.
+  이 글은 어디까지나 '애니메이션을 사용하는 법'에 대한 글이지 모든 브라우저 환경대응하자는 글이 아니다.
+
+<pre>
+<span class="ch_sl">div</span> {
+  width: <span class="ch_vl">120px</span>;
+  height: <span class="ch_vl">120px</span>;
+  animation: <span class="ch_vl">move 5s infinite</span>;
+}
+
+<span class="ch_sl">@keyframes move</span> {
+  <span class="ch_sl">0%</span> {
+    margin-left: <span class="ch_vl">0</span>;
+  }
+  <span class="ch_sl">100%</span> {
+    margin-left: <span class="ch_vl">100px</span>;
+  }
+}
+</pre>
+<p><code>@keyframes</code> 룰은 애니메이션의 상세 내역을 작성하며, <code>animation</code> 속성을 이용해 <code>@keyframes</code>와 태그를 연결해주며 부가 옵션을 부여한다. <code>animation</code> 속성의 서브속성은 아래와 같다.
+<p>위의 예제를 서브속성으로 풀어 쓰면 다음 코드처럼 작성할 수 있다.
+<pre>
+<span class="ch_sl">div</span> {
+  width: <span class="ch_vl">120px</span>;
+  height: <span class="ch_vl">120px</span>;
+  animation-name: <span class="ch_vl">move</span>;
+  animation-duration: <span class="ch_vl">5s</span>;
+  animation-iteration-count: <span class="ch_vl">infinite</span>;
+}
+
+<span class="ch_sl">@keyframes move</span> {
+  <span class="ch_sl">0%</span> {
+    margin-left: <span class="ch_vl">0</span>;
+  }
+  <span class="ch_sl">100%</span> {
+    margin-left: <span class="ch_vl">100px</span>;
+  }
+}
+</pre>
+<p>이제 CSS 애니메이션을 이용해서 간단한 progress-bar를 구현해보자. 실제 로딩시간과는 아무런 관련이 없지만 적어도 유저에게 '로딩을 하고있다'라는 인식을 주기에는 좋을 것이다. 먼저 간단한 HTML과 CSS가 있다.
+<pre>&lt;<span class="ch_sl">div</span> class=<span class="ch_st">"progress-bar"</span>&gt;&lt;/<span class="ch_sl">div</span>&gt;</pre>
+<pre>
+<span class="ch_sl">.progress-bar</span> {
+  position: <span class="ch_vl">absolute</span>;
+  left: <span class="ch_vl">20px</span>;
+  right: <span class="ch_vl">20px</span>;
+  top: <span class="ch_vl">20px</span>;
+  height: <span class="ch_vl">3px</span>;
+  background: <span class="ch_vl">rgba(255,255,255,0.8)</span>;
+}
+</pre>
+<p>여기에 애니메이션을 추가해보자</p>
+<pre>
+<span class="ch_sl">.progress-bar::before</span> {
+  content: <span class="ch_vl">''</span>;
+  display: <span class="ch_vl">block</span>;
+  position: <span class="ch_vl">absolute</span>;
+  left: <span class="ch_vl">0</span>;
+  top: <span class="ch_vl">0</span>;
+  height: <span class="ch_vl">3px</span>;
+  background: <span class="ch_vl">rgba(50,200,0,0.9)</span>;
+  animation: <span class="ch_vl">3s loading infinite</span>;
+}
+<span class="ch_sl">@keyframes loading</span> {
+  <span class="ch_vl">0%</span> {
+    width: <span class="ch_vl">0</span>;
+  }
+  <span class="ch_vl">100%</span> {
+    width: <span class="ch_vl">100%</span>;
+  }
+}
+</pre>
+<p>하지만 animation 속성은 비교적 나온지 얼마 되지 않았기 때문에 Safari 등 브라우저에서는 <code>-webkit-</code> 접두어를 붙여야지만 작동하는 경우가 있다. 이 부분을 고려하여 작업할 때는 다음과 같이 코드를 구현한다.
+<pre>
+<span class="ch_sl">.progress-bar::before</span> {
+  content: <span class="ch_vl">''</span>;
+  display: <span class="ch_vl">block</span>;
+  position: <span class="ch_vl">absolute</span>;
+  left: <span class="ch_vl">0</span>;
+  top: <span class="ch_vl">0</span>;
+  height: <span class="ch_vl">3px</span>;
+  background: <span class="ch_vl">rgba(50,200,0,0.9)</span>;
+  -webkit-animation: <span class="ch_vl">3s loading infinite</span>;
+  animation: <span class="ch_vl">3s loading infinite</span>;
+}
+<span class="ch_sl">@-webkit-keyframes loading</span> {
+  <span class="ch_vl">0%</span> {
+    width: <span class="ch_vl">0</span>;
+  }
+  <span class="ch_vl">100%</span> {
+    width: <span class="ch_vl">100%</span>;
+  }
+}
+<span class="ch_sl">@keyframes loading</span> {
+  <span class="ch_vl">0%</span> {
+    width: <span class="ch_vl">0</span>;
+  }
+  <span class="ch_vl">100%</span> {
+    width: <span class="ch_vl">100%</span>;
+  }
+}
+</pre>
+<p><code>-webkit-</code> 접두어는 webkit 엔진 기반의 브라우저들에서 사용하는 접두어로, 아직 권고안이 아닌 속성들을 대응하고자 할 때 위같은 벤더 프리픽스를 붙여서 사용한다. 아직 벤더 프리픽스를 사용하는 브라우저가 있어 대응을 위해 사용하기는 하나 언젠가 그런 날이 없어지리라 믿는다.
+<aside>
+  <h2>참고자료</h2>
+  <dl>
+    <dt>CSS Animations
+    <dd>Dean Jackson; et al. CSS Animations. 19 February 2013. W3C Working Draft. URL : <a href="http://www.w3.org/TR/css3-animations/">http://www.w3.org/TR/css3-animations/</a>
+  </dl>
+</aside>
+</article>
+</body>
+</html>
