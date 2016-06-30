@@ -1,0 +1,1784 @@
+
+<!DOCTYPE html>
+<html lang="ko" dir="ltr" typeof="bibo:Document " prefix="bibo: http://purl.org/ontology/bibo/ w3p: http://www.w3.org/2001/02pd/rec54#">
+<head><meta lang="" property="dc:language" content="en">
+    <title>결제 요청 API</title>
+    <meta charset="utf-8">
+    <style>
+    dt { margin-top: 0.75em; }
+    table { margin-top: 0.75em; border-collapse:collapse; border-style:hidden hidden none hidden }
+    table thead { border-bottom:solid }
+    table tbody th:first-child { border-left:solid }
+    table td, table th { border-left:solid; border-right:solid; border-bottom:solid thin; vertical-align:top; padding:0.2em }
+    li { margin-top: 0.5em; margin-bottom: 0.5em;}
+    </style>
+  <style>/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* --- INLINES --- */
+em.rfc2119 {
+    text-transform:     lowercase;
+    font-variant:       small-caps;
+    font-style:         normal;
+    color:              #900;
+}
+
+h1 acronym, h2 acronym, h3 acronym, h4 acronym, h5 acronym, h6 acronym, a acronym,
+h1 abbr, h2 abbr, h3 abbr, h4 abbr, h5 abbr, h6 abbr, a abbr {
+    border: none;
+}
+
+dfn {
+    font-weight:    bold;
+}
+
+a.internalDFN {
+    color:  inherit;
+    border-bottom:  1px solid #99c;
+    text-decoration:    none;
+}
+
+a.externalDFN {
+    color:  inherit;
+    border-bottom:  1px dotted #ccc;
+    text-decoration:    none;
+}
+
+a.bibref {
+    text-decoration:    none;
+}
+
+cite .bibref {
+    font-style: normal;
+}
+
+code {
+    color:  #C83500;
+}
+
+/* --- TOC --- */
+.toc a, .tof a {
+    text-decoration:    none;
+}
+
+a .secno, a .figno {
+    color:  #000;
+}
+
+ul.tof, ol.tof {
+    list-style: none outside none;
+}
+
+.caption {
+    margin-top: 0.5em;
+    font-style:   italic;
+}
+
+/* --- TABLE --- */
+table.simple {
+    border-spacing: 0;
+    border-collapse:    collapse;
+    border-bottom:  3px solid #005a9c;
+}
+
+.simple th {
+    background: #005a9c;
+    color:  #fff;
+    padding:    3px 5px;
+    text-align: left;
+}
+
+.simple th[scope="row"] {
+    background: inherit;
+    color:  inherit;
+    border-top: 1px solid #ddd;
+}
+
+.simple td {
+    padding:    3px 10px;
+    border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+    background: #f0f6ff;
+}
+
+/* --- DL --- */
+.section dd > p:first-child {
+    margin-top: 0;
+}
+
+.section dd > p:last-child {
+    margin-bottom: 0;
+}
+
+.section dd {
+    margin-bottom:  1em;
+}
+
+.section dl.attrs dd, .section dl.eldef dd {
+    margin-bottom:  0;
+}
+
+@media print {
+    .removeOnSave {
+        display: none;
+    }
+}
+</style><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
+div.example-title {
+    min-width: 7.5em;
+    color: #b9ab2d;
+}
+div.example-title span {
+    text-transform: uppercase;
+}
+aside.example, div.example, div.illegal-example {
+    padding: 0.5em;
+    margin: 1em 0;
+    position: relative;
+    clear: both;
+}
+div.illegal-example { color: red }
+div.illegal-example p { color: black }
+aside.example, div.example {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+    border-color: #e0cb52;
+    background: #fcfaee;
+}
+
+aside.example div.example {
+    border-left-width: .1em;
+    border-color: #999;
+    background: #fff;
+}
+aside.example div.example div.example-title {
+    color: #999;
+}
+</style><style>/* --- ISSUES/NOTES --- */
+div.issue-title, div.note-title , div.ednote-title, div.warning-title {
+    padding-right:  1em;
+    min-width: 7.5em;
+    color: #b9ab2d;
+}
+div.issue-title { color: #e05252; }
+div.note-title, div.ednote-title { color: #2b2; }
+div.warning-title { color: #f22; }
+div.issue-title span, div.note-title span, div.ednote-title span, div.warning-title span {
+    text-transform: uppercase;
+}
+div.note, div.issue, div.ednote, div.warning {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.note > p:first-child, .ednote > p:first-child, .issue > p:first-child, .warning > p:first-child { margin-top: 0 }
+.issue, .note, .ednote, .warning {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+}
+div.issue, div.note , div.ednote,  div.warning {
+    padding: 1em 1.2em 0.5em;
+    margin: 1em 0;
+    position: relative;
+    clear: both;
+}
+span.note, span.ednote, span.issue, span.warning { padding: .1em .5em .15em; }
+
+.issue {
+    border-color: #e05252;
+    background: #fbe9e9;
+}
+.note, .ednote {
+    border-color: #52e052;
+    background: #e9fbe9;
+}
+
+.warning {
+    border-color: #f11;
+    border-width: .2em;
+    border-style: solid;
+    background: #fbe9e9;
+}
+
+.warning-title:before{
+    content: "⚠"; /*U+26A0 WARNING SIGN*/
+    font-size: 3em;
+    float: left;
+    height: 100%;
+    padding-right: .3em;
+    vertical-align: top;
+    margin-top: -0.5em;
+}
+
+li.task-list-item {
+    list-style: none;
+}
+
+input.task-list-item-checkbox {
+    margin: 0 0.35em 0.25em -1.6em;
+    vertical-align: middle;
+}
+</style><style>/* HIGHLIGHTS */
+code.prettyprint {
+    color:  inherit;
+}
+
+/* this from google-code-prettify */
+.pln{color:#000}@media screen{.str{color:#080}.kwd{color:#008}.com{color:#800}.typ{color:#606}.lit{color:#066}.pun,.opn,.clo{color:#660}.tag{color:#008}.atn{color:#606}.atv{color:#080}.dec,.var{color:#606}.fun{color:red}}@media print,projection{.str{color:#060}.kwd{color:#006;font-weight:bold}.com{color:#600;font-style:italic}.typ{color:#404;font-weight:bold}.lit{color:#044}.pun,.opn,.clo{color:#440}.tag{color:#006;font-weight:bold}.atn{color:#404}.atv{color:#060}}ol.linenums{margin-top:0;margin-bottom:0}li.L0,li.L1,li.L2,li.L3,li.L5,li.L6,li.L7,li.L8{list-style-type:none}li.L1,li.L3,li.L5,li.L7,li.L9{background:#eee}
+</style><style>/* --- WEB IDL --- */
+pre.idl {
+    border-top: 1px solid #90b8de;
+    border-bottom: 1px solid #90b8de;
+    padding:    1em;
+    line-height:    120%;
+}
+
+@media print {
+  pre.idl {
+      white-space: pre-wrap;
+  }
+}
+
+pre.idl::before {
+    content:    "WebIDL";
+    display:    block;
+    width:      150px;
+    background: #90b8de;
+    color:  #fff;
+    font-family:    sans-serif;
+    padding:    3px;
+    font-weight:    bold;
+    margin: -1em 0 1em -1em;
+}
+
+.idlType {
+    color:  #ff4500;
+    font-weight:    bold;
+    text-decoration:    none;
+}
+
+/*.idlModule*/
+/*.idlModuleID*/
+/*.idlInterface*/
+.idlInterfaceID, .idlDictionaryID, .idlCallbackID, .idlEnumID {
+    font-weight:    bold;
+    color:  #005a9c;
+}
+a.idlEnumItem {
+    color:  #000;
+    border-bottom:  1px dotted #ccc;
+    text-decoration: none;
+}
+
+.idlSuperclass {
+    font-style: italic;
+    color:  #005a9c;
+}
+
+/*.idlAttribute*/
+.idlAttrType, .idlFieldType, .idlMemberType {
+    color:  #005a9c;
+}
+.idlAttrName, .idlFieldName, .idlMemberName {
+    color:  #ff4500;
+}
+.idlAttrName a, .idlFieldName a, .idlMemberName a {
+    color:  #ff4500;
+    border-bottom:  1px dotted #ff4500;
+    text-decoration: none;
+}
+
+/*.idlMethod*/
+.idlMethType, .idlCallbackType {
+    color:  #005a9c;
+}
+.idlMethName {
+    color:  #ff4500;
+}
+.idlMethName a {
+    color:  #ff4500;
+    border-bottom:  1px dotted #ff4500;
+    text-decoration: none;
+}
+
+/*.idlCtor*/
+.idlCtorName {
+    color:  #ff4500;
+}
+.idlCtorName a {
+    color:  #ff4500;
+    border-bottom:  1px dotted #ff4500;
+    text-decoration: none;
+}
+
+/*.idlParam*/
+.idlParamType {
+    color:  #005a9c;
+}
+.idlParamName, .idlDefaultValue {
+    font-style: italic;
+}
+
+.extAttr {
+    color:  #666;
+}
+
+/*.idlSectionComment*/
+.idlSectionComment {
+    color: gray;
+}
+
+/*.idlIterable*/
+.idlIterableKeyType, .idlIterableValueType {
+    color:  #005a9c;
+}
+
+/*.idlMaplike*/
+.idlMaplikeKeyType, .idlMaplikeValueType {
+    color:  #005a9c;
+}
+
+/*.idlConst*/
+.idlConstType {
+    color:  #005a9c;
+}
+.idlConstName {
+    color:  #ff4500;
+}
+.idlConstName a {
+    color:  #ff4500;
+    border-bottom:  1px dotted #ff4500;
+    text-decoration: none;
+}
+
+/*.idlException*/
+.idlExceptionID {
+    font-weight:    bold;
+    color:  #c00;
+}
+
+.idlTypedefID, .idlTypedefType {
+    color:  #005a9c;
+}
+
+.idlRaises, .idlRaises a.idlType, .idlRaises a.idlType code, .excName a, .excName a code {
+    color:  #c00;
+    font-weight:    normal;
+}
+
+.excName a {
+    font-family:    monospace;
+}
+
+.idlRaises a.idlType, .excName a.idlType {
+    border-bottom:  1px dotted #c00;
+}
+
+.excGetSetTrue, .excGetSetFalse, .prmNullTrue, .prmNullFalse, .prmOptTrue, .prmOptFalse {
+    width:  45px;
+    text-align: center;
+}
+.excGetSetTrue, .prmNullTrue, .prmOptTrue { color:  #0c0; }
+.excGetSetFalse, .prmNullFalse, .prmOptFalse { color:  #c00; }
+
+.idlImplements a {
+    font-weight:    bold;
+}
+
+dl.attributes, dl.methods, dl.constants, dl.constructors, dl.fields, dl.dictionary-members {
+    margin-left:    2em;
+}
+
+.attributes dt, .methods dt, .constants dt, .constructors dt, .fields dt, .dictionary-members dt {
+    font-weight:    normal;
+}
+
+.attributes dt code, .methods dt code, .constants dt code, .constructors dt code, .fields dt code, .dictionary-members dt code {
+    font-weight:    bold;
+    color:  #000;
+    font-family:    monospace;
+}
+
+.attributes dt code, .fields dt code, .dictionary-members dt code {
+    background:  #ffffd2;
+}
+
+.attributes dt .idlAttrType code, .fields dt .idlFieldType code, .dictionary-members dt .idlMemberType code {
+    color:  #005a9c;
+    background:  transparent;
+    font-family:    inherit;
+    font-weight:    normal;
+    font-style: italic;
+}
+
+.methods dt code {
+    background:  #d9e6f8;
+}
+
+.constants dt code {
+    background:  #ddffd2;
+}
+
+.constructors dt code {
+    background:  #cfc;
+}
+
+.attributes dd, .methods dd, .constants dd, .constructors dd, .fields dd, .dictionary-members dd {
+    margin-bottom:  1em;
+}
+
+table.parameters, table.exceptions {
+    border-spacing: 0;
+    border-collapse:    collapse;
+    margin: 0.5em 0;
+    width:  100%;
+}
+table.parameters { border-bottom:  1px solid #90b8de; }
+table.exceptions { border-bottom:  1px solid #deb890; }
+
+.parameters th, .exceptions th {
+    color:  #fff;
+    padding:    3px 5px;
+    text-align: left;
+    font-weight:    normal;
+    text-shadow:    #666 1px 1px 0;
+}
+.parameters th { background: #90b8de; }
+.exceptions th { background: #deb890; }
+
+.parameters td, .exceptions td {
+    padding:    3px 10px;
+    border-top: 1px solid #ddd;
+    vertical-align: top;
+}
+
+.parameters tr:first-child td, .exceptions tr:first-child td {
+    border-top: none;
+}
+
+.parameters td.prmName, .exceptions td.excName, .exceptions td.excCodeName {
+    width:  100px;
+}
+
+.parameters td.prmType {
+    width:  120px;
+}
+
+table.exceptions table {
+    border-spacing: 0;
+    border-collapse:    collapse;
+    width:  100%;
+}
+</style><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-WD"><!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]--><script id="initialUserConfig" type="application/json">{
+  "shortName": "payment-request",
+  "edDraftURI": "https://w3c.github.io/browser-payment-api/specs/paymentrequest.html",
+  "specStatus": "FPWD",
+  "publishDate": "2016-04-21",
+  "editors": [
+    {
+      "name": "Adrian Bateman",
+      "company": "Microsoft Corporation"
+    },
+    {
+      "name": "Zach Koch",
+      "company": "Google"
+    },
+    {
+      "name": "Richard Barnes",
+      "company": "Mozilla Foundation"
+    },
+    {
+      "name": "Roy McElmurry",
+      "company": "Facebook"
+    }
+  ],
+  "useExperimentalStyles": true,
+  "license": "w3c-software-doc",
+  "wg": "Web Payments Working Group",
+  "wgURI": "https://www.w3.org/Payments/WG/",
+  "wgPublicList": "public-payments-wg",
+  "wgPatentURI": "https://www.w3.org/2004/01/pp-impl/83744/status",
+  "issueBase": "https://github.com/w3c/browser-payment-api/issues/",
+  "localBiblio": {
+    "PAYMENTARCH": {
+      "title": "Payment Request Architecture",
+      "href": "https://w3c.github.io/browser-payment-api/specs/architecture.html",
+      "authors": [
+        "Adrian Bateman",
+        "Zach Koch",
+        "Richard Barnes",
+        "Roy McElmurry"
+      ],
+      "status": "ED"
+    },
+    "METHODIDENTIFIERS": {
+      "title": "Payment Method Identifiers",
+      "href": "https://www.w3.org/TR/payment-method-id/",
+      "authors": [
+        "Adrian Bateman",
+        "Zach Koch",
+        "Richard Barnes",
+        "Roy McElmurry"
+      ],
+      "status": "ED"
+    }
+  }
+}</script>
+<style>
+body{font-family:sans-serif;font-weight:300;font-size:18px;}
+:lang(en) {font-family:"Helvetica NEUE",sans-serif;font-size:14px;color:#888;}
+</style></head>
+  <body class="h-entry toc-inline" role="document" id="respecDocument"><div class="head" role="contentinfo" id="respecHeader">
+  <p>
+            <a class="logo" href="http://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
+  </p>
+  <h1 class="title p-name" id="title" property="dcterms:title">결제 요청 API</h1>
+  <h2 id="w3c-first-public-working-draft-21-april-2016"><time property="dcterms:issued" class="dt-published" datetime="2016-04-21">2016년 4월 21일</time> <abbr title="World Wide Web Consortium">W3C</abbr> 첫번째 공개 워킹 드래프트</h2>
+  <dl>
+      <dt>이 버전:</dt>
+      <dd><a class="u-url" href="http://www.w3.org/TR/2016/WD-payment-request-20160421/">http://www.w3.org/TR/2016/WD-payment-request-20160421/</a></dd>
+      <dt>최신 발행 버전:</dt>
+      <dd><a href="http://www.w3.org/TR/payment-request/">http://www.w3.org/TR/payment-request/</a></dd>
+      <dt>최신 에디터 버전:</dt>
+      <dd><a href="https://w3c.github.io/browser-payment-api/specs/paymentrequest.html">https://w3c.github.io/browser-payment-api/specs/paymentrequest.html</a></dd>
+    <dt>에디터:</dt>
+    <dd class="p-author h-card vcard" property="bibo:editor" resource="_:editor0"><span property="rdf:first" typeof="foaf:Person"><span property="foaf:name" class="p-name fn">Adrian Bateman</span>, Microsoft Corporation</span>
+<span property="rdf:rest" resource="_:editor1"></span>
+</dd>
+<dd class="p-author h-card vcard" resource="_:editor1"><span property="rdf:first" typeof="foaf:Person"><span property="foaf:name" class="p-name fn">Zach Koch</span>, Google</span>
+<span property="rdf:rest" resource="_:editor2"></span>
+</dd>
+<dd class="p-author h-card vcard" resource="_:editor2"><span property="rdf:first" typeof="foaf:Person"><span property="foaf:name" class="p-name fn">Richard Barnes</span>, Mozilla Foundation</span>
+<span property="rdf:rest" resource="_:editor3"></span>
+</dd>
+<dd class="p-author h-card vcard" resource="_:editor3"><span property="rdf:first" typeof="foaf:Person"><span property="foaf:name" class="p-name fn">Roy McElmurry</span>, Facebook</span>
+<span property="rdf:rest" resource="rdf:nil"></span>
+</dd>
+
+  </dl>
+      <p class="copyright">
+        <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> ©
+        2016
+
+        <a href="http://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup>
+        (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
+        <a href="http://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>,
+        <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>).
+        <abbr title="World Wide Web Consortium">W3C</abbr> <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
+        <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and
+            <a rel="license" href="http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document">permissive document license</a>
+        rules apply.
+      </p>
+  <hr title="Separator for header">
+</div>
+    <section id="abstract" class="introductory" property="dc:abstract"><h2 id="h-abstract" resource="#h-abstract"><span property="xhv:role" resource="xhv:heading">개요</span></h2>
+      <p lang="ko">
+        (예를 들어 웹 사이트에서 물리적 혹은 디지털 상품을 판매하는) 판매자가 다양한 결제 방법에서 쉽게 최소한의 통합으로 결제를 받을 수 있게 허용하는 웹 API를 설명합니다.
+        유저 에이전트 (즉 브라우저)는 판매자와 유저 사이의 결제 흐름을 용이하게 해야합니다.
+      </p>
+      <p lang="en">This specification describes a web API to allow merchants (i.e. web sites selling
+      physical or digital goods) to easily accept payments from different payment methods with
+      minimal integration. User agents (e.g. browsers) will facilitate the payment flow between
+      merchant and user.</p>
+    </section><section id="sotd" class="introductory"><h2 id="h-sotd" resource="#h-sotd"><span property="xhv:role" resource="xhv:heading">이 문서의 상태</span></h2>
+      <p lang="ko">
+        역주 : 이 문서는 Working Draft이기 때문에 구태여 Status of Document는 번역하지 않습니다.
+      </p>
+        <p>
+          <em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this technical report can be found in the <a href="http://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at http://www.w3.org/TR/.</em>
+        </p>
+
+      <p>
+        The working group maintains <a href="https://github.com/w3c/browser-payment-api/issues">a
+        list of all bug reports that the group has not yet addressed</a>.
+        This draft highlights some of the pending issues that are still to be discussed in the working
+        group. No decision has been taken on the outcome of these issues including whether they are valid.
+        Pull requests with proposed specification text for outstanding issues are strongly encouraged.
+      </p>
+      <p>
+        This specification was derived from a report published previously by the
+        <a href="https://www.w3.org/community/wicg/">Web Platform Incubator Community Group</a>.
+      </p>
+
+          <p>
+            This document was published by the <a href="https://www.w3.org/Payments/WG/">Web Payments Working Group</a> as a First Public Working Draft.
+              This document is intended to become a <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation.
+              If you wish to make comments regarding this document, please send them to
+              <a href="mailto:public-payments-wg@w3.org">public-payments-wg@w3.org</a>
+              (<a href="mailto:public-payments-wg-request@w3.org?subject=subscribe">subscribe</a>,
+              <a href="http://lists.w3.org/Archives/Public/public-payments-wg/">archives</a>).
+
+              All comments are welcome.
+          </p>
+            <p>
+              Publication as a First Public Working Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr>
+              Membership. This is a draft document and may be updated, replaced or obsoleted by other
+              documents at any time. It is inappropriate to cite this document as other than work in
+              progress.
+            </p>
+          <p>
+              This document was produced by
+              a group
+               operating under the
+              <a id="sotd_patent" property="w3p:patentRules" href="http://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004 <abbr title="World Wide Web Consortium">W3C</abbr> Patent
+              Policy</a>.
+                <abbr title="World Wide Web Consortium">W3C</abbr> maintains a <a href="https://www.w3.org/2004/01/pp-impl/83744/status" rel="disclosure">public list of any patent
+                disclosures</a>
+              made in connection with the deliverables of
+              the group; that page also includes
+              instructions for disclosing a patent. An individual who has actual knowledge of a patent
+              which the individual believes contains
+              <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential
+              Claim(s)</a> must disclose the information in accordance with
+              <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section
+              6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
+          </p>
+            <p>This document is governed by the <a id="w3c_process_revision" href="http://www.w3.org/2015/Process-20150901/">1 September 2015 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
+            </p>
+
+</section><nav id="toc"><h2 class="introductory" id="table-of-contents" resource="#table-of-contents"><span property="xhv:role" resource="xhv:heading">목차</span></h2><ul class="toc" role="directory"><li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>소개</a><ul class="toc"><li class="tocline"><a href="#goals" class="tocxref"><span class="secno">1.1 </span>목표</a></li><li class="tocline"><a href="#non-goals" class="tocxref"><span class="secno">1.2 </span>목표 아님</a></li></ul></li><li class="tocline"><a href="#conformance" class="tocxref"><span class="secno">2. </span>적합성</a></li><li class="tocline"><a href="#dependencies" class="tocxref"><span class="secno">3. </span>의존성</a></li><li class="tocline"><a href="#paymentrequest-interface" class="tocxref"><span class="secno">4. </span>PaymentRequest interface</a><ul class="toc"><li class="tocline"><a href="#paymentrequest-constructor" class="tocxref"><span class="secno">4.1 </span>PaymentRequest constructor</a></li><li class="tocline"><a href="#show" class="tocxref"><span class="secno">4.2 </span>show()</a></li><li class="tocline"><a href="#abort" class="tocxref"><span class="secno">4.3 </span>abort()</a></li><li class="tocline"><a href="#state-transitions" class="tocxref"><span class="secno">4.4 </span>State transitions</a></li><li class="tocline"><a href="#shippingaddress" class="tocxref"><span class="secno">4.5 </span>shippingAddress</a></li><li class="tocline"><a href="#shippingoption" class="tocxref"><span class="secno">4.6 </span>shippingOption</a></li><li class="tocline"><a href="#internal-slots" class="tocxref"><span class="secno">4.7 </span>Internal Slots</a></li></ul></li><li class="tocline"><a href="#currencyamount" class="tocxref"><span class="secno">5. </span>CurrencyAmount</a></li><li class="tocline"><a href="#paymentdetails-dictionary" class="tocxref"><span class="secno">6. </span>PaymentDetails dictionary</a></li><li class="tocline"><a href="#paymentoptions-dictionary" class="tocxref"><span class="secno">7. </span>PaymentOptions dictionary</a></li><li class="tocline"><a href="#paymentitem-dictionary" class="tocxref"><span class="secno">8. </span>PaymentItem dictionary</a></li><li class="tocline"><a href="#shippingaddress-interface" class="tocxref"><span class="secno">9. </span>ShippingAddress interface</a></li><li class="tocline"><a href="#shippingoption-interface" class="tocxref"><span class="secno">10. </span>ShippingOption interface</a></li><li class="tocline"><a href="#paymentresponse-interface" class="tocxref"><span class="secno">11. </span>PaymentResponse interface</a><ul class="toc"><li class="tocline"><a href="#complete" class="tocxref"><span class="secno">11.1 </span>complete()</a></li><li class="tocline"><a href="#internal-slots-1" class="tocxref"><span class="secno">11.2 </span>Internal Slots</a></li></ul></li><li class="tocline"><a href="#events" class="tocxref"><span class="secno">12. </span>Events</a><ul class="toc"><li class="tocline"><a href="#summary" class="tocxref"><span class="secno">12.1 </span>Summary</a></li><li class="tocline"><a href="#paymentrequestupdateevent" class="tocxref"><span class="secno">12.2 </span>PaymentRequestUpdateEvent</a></li></ul></li><li class="tocline"><a href="#algorithms" class="tocxref"><span class="secno">13. </span>Algorithms</a><ul class="toc"><li class="tocline"><a href="#shipping-address-changed-algorithm" class="tocxref"><span class="secno">13.1 </span>Shipping address changed algorithm</a></li><li class="tocline"><a href="#shipping-option-changed-algorithm" class="tocxref"><span class="secno">13.2 </span>Shipping option changed algorithm</a></li><li class="tocline"><a href="#paymentrequest-updated-algorithm" class="tocxref"><span class="secno">13.3 </span>PaymentRequest updated algorithm</a></li><li class="tocline"><a href="#user-agent-delegates-payment-request-algorithm" class="tocxref"><span class="secno">13.4 </span>User agent delegates payment request algorithm</a></li><li class="tocline"><a href="#user-accepts-the-payment-request-algorithm" class="tocxref"><span class="secno">13.5 </span>User accepts the payment request algorithm</a></li></ul></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">A. </span>References</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">A.1 </span>Normative references</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">A.2 </span>Informative references</a></li></ul></li></ul></nav>
+
+
+
+    <section class="informative" id="introduction" typeof="bibo:Chapter" resource="#introduction" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-introduction" resource="#h-introduction"><span property="xhv:role" resource="xhv:heading"><span class="secno">1. </span>소개</span></h2><p><em>이 섹션은 표준에 준하지 않습니다.</em></p>
+        <p>
+          웹에서 물건을 사는 건, 특히 모바일에서, 유저에게 좌절감을 주는 경험일 수 있습니다.
+          각 웹 사이트는 제각각의 흐름과 검증(valication) 규칙을 가지고, 유저에게 같은 정보 셋을 매번 수동으로 입력하기를 요청합니다.
+          마찬가지로, 개발자가 좋은 결제 흐름과 다양한 결제 스킴을 지원하는 건 시간이 오래 걸리고 어렵습니다.
+        </p>
+        <p lang="en">Buying things on the web, particularly on mobile, can be a frustrating experience for users.
+        Every web site has its own flow and its own validation rules, and most require users to manually type in the same set of information
+        over and over again. Likewise, it is difficult and time consuming for developers to create good
+        checkout flows that support various payment schemes.</p>
+        <p>
+          이 스펙에서는 <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">유저 에이전트</a>가 매 거래 때마다 세 주요 그룹 사이의 중간으로써 동작할 수 있게 하는 API를 설명합니다. 세 주요 그룹에는 판매자 (예: 온라인 웹 스토어), 구매자 (예: 온라인 웹 스토어에서 구매하려는 유저), 그리고 <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">결제 수단</a> (예: 신용 카드)이 있습니다.
+          거래를 확인하고 처리하기 위한 정보는 구매자가 흐름을 타기 위해 필요한 인증 및 승인을 거친 <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">유저 에이전트를</a> 통해 판매자와 <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">결제 수단</a> 사이에 전달됩니다.
+        </p>
+        <p lang="en">This specification describes an API that allows <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agents</a> (e.g. browsers) to act
+        as an intermediary between the three key parties in every transaction: the merchant (e.g. an
+        online web store), the buyer (e.g. the user buying from the online web store), and the
+        <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">Payment Method</a> (e.g. credit card).
+
+        Information necessary to process and confirm a
+        transaction is passed between the <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">Payment Method</a> and the merchant via the <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a>
+        with the buyer confirming and authorizing as necessary across the flow.</p>
+        <p>
+          더불어 좋고, 더 일관된 사용자 경험을 제공하고,
+          웹 사이트에서 표준 자바스크립트 라이브러리로 구현할 수 없는 더 안전한 결제 스킴 (예: 토큰화 및 시스템 수준의 인증)을 제공하는 이점을 취할 수 있습니다.
+          이는 판매자에 대한 책임을 감소시키고, 예민한 유저 정보를 보호하는 데 도움을 줍니다.
+        </p>
+        <p lang="en">
+          In addition to better, more consistent user experiences, this also enables web sites to take
+        advantage of more secure payment schemes (e.g. tokenization and system-level authentication)
+        that are not possible with standard JavaScript libraries. This has the potential to reduce
+        liability for the merchant and helps protect sensitive user information.</p>
+        <p>이 문서에서 설명하는 API는 결제 요청 아키텍쳐 [<cite><a class="bibref" href="#bib-PAYMENTARCH">PAYMENTARCH</a></cite>] 문서 내 결제 요청 시스템의 일부로 구성되어있습니다.</p>
+        <p lang="en">The API described in this document forms part of the Payment Request system described in
+        the Payment Request Architecture [<cite><a class="bibref" href="#bib-PAYMENTARCH">PAYMENTARCH</a></cite>] document.</p>
+      <section id="goals" typeof="bibo:Chapter" resource="#goals" property="bibo:hasPart">
+        <h3 id="h-goals" resource="#h-goals"><span property="xhv:role" resource="xhv:heading"><span class="secno">1.1 </span>목표</span></h3>
+        <ul>
+          <li>
+            유저 에이전트가 판매자, 유저, <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">결제 수단</a>의 중간에서 동작할 수 있게 허용함
+            <p lang="en">Allow the user agent to act as intermediary between merchants, users, and <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">payment methods</a></p></li>
+          <li>
+            판매자, 유저 에이전트, <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">결제 수단</a> 사이의 커뮤니케이션 흐름을 (그 의미가 있을 정도로) 표준화함.
+            <p lang="en">Standardize (to the extent that it makes sense) the communication flow between a
+          merchant, user agent, and <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">payment method</a></p></li>
+          <li>
+            웹에서 더 안전한 결제 거래를 일으키는 <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">결제 수단</a>을 허용함
+            <p lang="en">
+            Allow <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">payment methods</a> to bring more secure payment transactions to the web</p></li>
+        </ul>
+      </section>
+
+      <section id="non-goals" typeof="bibo:Chapter" resource="#non-goals" property="bibo:hasPart">
+        <h3 id="h-non-goals" resource="#h-non-goals"><span property="xhv:role" resource="xhv:heading"><span class="secno">1.2 </span>목표 아님</span></h3>
+          <ul>
+            <li>
+              새로운 <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">결제 수단</a>을 만들고자 하지 않음
+              <p lang="en">Not trying to create a new <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">payment method</a></p></li>
+            <li>
+              결제 프로세서를 직접적으로 통합하고자 하지 않음
+              <p lang="en">Not trying to integrate directly with payment processors</p>
+            </li>
+          </ul>
+      </section>
+
+    </section>
+
+    <section id="conformance" typeof="bibo:Chapter" resource="#conformance" property="bibo:hasPart"><!--OddPage--><h2 id="h-conformance" resource="#h-conformance"><span property="xhv:role" resource="xhv:heading"><span class="secno">2. </span>적합성</span></h2>
+<p>
+  As well as sections marked as non-normative, all authoring guidelines, diagrams, examples,
+  and notes in this specification are non-normative. Everything else in this specification is
+  normative.
+</p>
+<p id="respecRFC2119">The key words <em class="rfc2119" title="MAY">MAY</em>, <em class="rfc2119" title="MUST">MUST</em>, and <em class="rfc2119" title="SHOULD">SHOULD</em> are
+  to be interpreted as described in [<cite><a class="bibref" href="#bib-RFC2119">RFC2119</a></cite>].
+</p>
+
+      <p>
+        This specification defines one class of products:
+      </p>
+      <dl>
+      <dt><dfn data-dfn-type="dfn" id="dfn-conforming-user-agent">Conforming user agent</dfn></dt>
+      <dd>
+        <p>
+        A <dfn data-dfn-type="dfn" id="dfn-user-agent">user agent</dfn> <em class="rfc2119" title="MUST">MUST</em> behave as described in this specification
+        in order to be considered conformant. In this specification, <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> means a <em>Web
+        browser or other interactive user agent</em> as defined in [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>].
+        </p>
+        <p>
+        User agents <em class="rfc2119" title="MAY">MAY</em> implement algorithms given in this
+        specification in any way desired, so long as the end result is
+        indistinguishable from the result that would be obtained by the
+        specification's algorithms.
+        </p>
+        <p>
+        A conforming Payment Request API user agent <em class="rfc2119" title="MUST">MUST</em> also be a
+        <em>conforming implementation</em> of the IDL fragments
+        of this specification, as described in the
+        “Web IDL” specification. [<cite><a class="bibref" href="#bib-WEBIDL">WEBIDL</a></cite>]
+        </p>
+
+        <div class="note"><div class="note-title marker" aria-level="3" role="heading" id="h-note1"><span>Note</span></div><aside class="">
+        This specification uses both the terms "conforming user agent(s)"
+        and "user agent(s)" to refer to this product class.
+        </aside></div>
+      </dd>
+      </dl>
+    </section>
+
+    <section id="dependencies" typeof="bibo:Chapter" resource="#dependencies" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-dependencies" resource="#h-dependencies"><span property="xhv:role" resource="xhv:heading"><span class="secno">3. </span>의존성</span></h2>
+      <p>이 스펙은 여러 다른 스펙에 의존합니다</p>
+      <p lang="en">
+      This specification relies on several other underlying specifications.
+      </p>
+      <dl>
+        <dt>Payment Request Architecture</dt>
+        <dd>The terms <dfn data-dfn-type="dfn" id="dfn-payment-method">Payment Method</dfn>,
+        <dfn data-dfn-type="dfn" id="dfn-payment-app">Payment App</dfn>, and <dfn data-dfn-type="dfn" id="dfn-payment-transaction-message-specification">Payment Transaction
+        Message Specification</dfn> are defined by the Payment Request Architecture document
+        [<cite><a class="bibref" href="#bib-PAYMENTARCH">PAYMENTARCH</a></cite>].</dd>
+        <dt>Payment Method Identifiers</dt>
+        <dd>The term <dfn data-dfn-type="dfn" id="dfn-payment-method-identifier">Payment
+        Method Identifier</dfn> is defined by the Payment Method Identifiers specification
+        [<cite><a class="bibref" href="#bib-METHODIDENTIFIERS">METHODIDENTIFIERS</a></cite>].</dd>
+        <dt>HTML5</dt>
+        <dd>The terms <dfn data-dfn-type="dfn" id="dfn-global-object">global object</dfn>,
+        <dfn data-dfn-type="dfn" id="dfn-queue-a-task">queue a task</dfn>, <dfn data-dfn-type="dfn" id="dfn-browsing-context">browsing context</dfn>, and
+        <dfn data-dfn-type="dfn" id="dfn-top-level-browsing-context">top-level browsing context</dfn> are defined by [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>].</dd>
+        <dt>ECMA-262 6th Edition, The ECMAScript 2015 Language Specification</dt>
+        <dd>
+          The terms <dfn data-dfn-type="dfn" id="dfn-promise">Promise</dfn>, <dfn data-dfn-type="dfn" id="dfn-internal-slot">internal slot</dfn>, <dfn data-dfn-type="dfn" id="dfn-typeerror"><code>TypeError</code></dfn>, <dfn data-dfn-type="dfn" id="dfn-json.stringify">JSON.stringify</dfn>, and <dfn data-dfn-type="dfn" id="dfn-json.parse">JSON.parse</dfn> are
+          defined by [<cite><a class="bibref" href="#bib-ECMA-262-2015">ECMA-262-2015</a></cite>].
+          <p>This document uses the format <em>object</em>@[[slotname]] to mean the internal slot [[slotname]]
+          of the object <em>object</em>.</p>
+          <p>The term <dfn data-dfn-type="dfn" id="dfn-json-serializable-object">JSON-serializable object</dfn> used in this specification means an object that can
+          be serialized to a string using <a href="#dfn-json.stringify" class="internalDFN" data-link-type="dfn">JSON.stringify</a> and later deserialized back to an object
+          using <a href="#dfn-json.parse" class="internalDFN" data-link-type="dfn">JSON.parse</a> with no loss of data.</p>
+        </dd>
+        <dt>DOM4</dt>
+        <dd>
+        The <code><dfn data-dfn-type="dfn" id="dfn-event">Event</dfn></code> type and the terms <dfn data-dfn-type="dfn" id="dfn-fire-an-event">fire an event</dfn>, <dfn data-dfn-type="dfn" id="dfn-dispatch-flag">dispatch flag</dfn>,
+        <dfn data-dfn-type="dfn" id="dfn-stop-propagation-flag">stop propagation flag</dfn>, and <dfn data-dfn-type="dfn" id="dfn-stop-immediate-propagation-flag">stop immediate propagation flag</dfn> are defined by [<cite><a class="bibref" href="#bib-DOM4">DOM4</a></cite>].
+        <p><dfn data-dfn-type="dfn" id="dfn-domexception">DOMException</dfn> and the following DOMException types from [<cite><a class="bibref" href="#bib-DOM4">DOM4</a></cite>] are used:</p>
+        <table>
+        <tbody><tr><th>Type</th><th>Message (optional)</th></tr>
+        <tr><td><code><dfn data-dfn-type="dfn" id="dfn-invalidstateerror">InvalidStateError</dfn></code></td><td>The object is in an invalid state</td></tr>
+        <tr><td><code><dfn data-dfn-type="dfn" id="dfn-notsupportederror">NotSupportedError</dfn></code></td><td>The payment method was not supported</td></tr>
+        <tr><td><code><dfn data-dfn-type="dfn" id="dfn-securityerror">SecurityError</dfn></code></td><td>The operation is only supported in a secure context</td></tr>
+        </tbody></table>
+        </dd>
+        <dt>WebIDL</dt>
+        <dd>When this specification says to <dfn data-dfn-type="dfn" id="dfn-throw">throw</dfn> an error, the <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> must throw an
+        error as described in [<cite><a class="bibref" href="#bib-WEBIDL">WEBIDL</a></cite>]. When this occurs in a sub-algorithm, this results in
+        termination of execution of the sub-algorithm and all ancestor algorithms until one is
+        reached that explicitly describes procedures for catching exceptions.</dd>
+        <dt>Secure Contexts</dt>
+        <dd>The term <dfn data-dfn-type="dfn" id="dfn-secure-context">secure context</dfn> is defined by the Secure Contexts specification
+        [<cite><a class="bibref" href="#bib-POWERFUL-FEATURES">POWERFUL-FEATURES</a></cite>].</dd>
+      </dl>
+    </section>
+
+    <section id="paymentrequest-interface" typeof="bibo:Chapter" resource="#paymentrequest-interface" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-paymentrequest-interface" resource="#h-paymentrequest-interface"><span property="xhv:role" resource="xhv:heading"><span class="secno">4. </span>PaymentRequest 인터페이스</span></h2>
+      <pre class="def idl"><span class="idlInterface" id="idl-def-paymentrequest" data-idl="" data-title="PaymentRequest">[<span class="idlCtor"><span class="extAttrName">Constructor</span>(<span class="idlParam"><span class="idlParamType">sequence&lt;DOMString&gt;</span> <span class="idlParamName">supportedMethods</span></span>, <span class="idlParam"><span class="idlParamType"><a href="#dom-paymentdetails" class="internalDFN" data-link-type="dfn"><code>PaymentDetails</code></a></span> <span class="idlParamName">details</span></span>, <span class="idlParam">optional <span class="idlParamType"><a href="#dom-paymentoptions" class="internalDFN" data-link-type="dfn"><code>PaymentOptions</code></a></span> <span class="idlParamName">options</span></span>, <span class="idlParam">optional <span class="idlParamType">object</span> <span class="idlParamName">data</span></span>)</span>]
+interface <span class="idlInterfaceID">PaymentRequest</span> : <span class="idlSuperclass">EventTarget</span> {
+<span class="idlMethod" id="idl-def-paymentrequest-show()" data-idl="" data-title="show" data-dfn-for="paymentrequest">    <span class="idlMethType">Promise&lt;<a href="#dom-paymentresponse" class="internalDFN" data-link-type="dfn"><code>PaymentResponse</code></a>&gt;</span> <span class="idlMethName">show</span>();</span>
+<span class="idlMethod" id="idl-def-paymentrequest-abort()" data-idl="" data-title="abort" data-dfn-for="paymentrequest">    <span class="idlMethType">void</span>                     <span class="idlMethName">abort</span>();</span>
+
+<span class="idlAttribute" id="dom-shippingaddress" data-idl="" data-title="shippingAddress" data-dfn-for=""><code>    readonly attribute <span class="idlAttrType"><a href="#idl-def-shippingaddress" class="internalDFN" data-link-type="dfn"><code>ShippingAddress</code></a>?</span> <span class="idlAttrName">shippingAddress</span>;</code></span>
+<span class="idlAttribute" id="dom-shippingoption" data-idl="" data-title="shippingOption" data-dfn-for=""><code>    readonly attribute <span class="idlAttrType">DOMString?</span>       <span class="idlAttrName">shippingOption</span>;</code></span>
+
+<span class="idlSectionComment">    // Supports "shippingaddresschange" event </span>
+<span class="idlAttribute" id="idl-def-paymentrequest-onshippingaddresschange" data-idl="" data-title="onshippingaddresschange" data-dfn-for="paymentrequest">             attribute <span class="idlAttrType">EventHandler</span>     <span class="idlAttrName">onshippingaddresschange</span>;</span>
+
+<span class="idlSectionComment">    // Supports "shippingoptionchange" event </span>
+<span class="idlAttribute" id="idl-def-paymentrequest-onshippingoptionchange" data-idl="" data-title="onshippingoptionchange" data-dfn-for="paymentrequest">             attribute <span class="idlAttrType">EventHandler</span>     <span class="idlAttrName">onshippingoptionchange</span>;</span>
+};</span></pre>
+
+      <p>
+        A web page creates a <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> to make a payment request. This is
+        typically associated with the user initiating a payment process
+        (e.g., selecting a "Power Up" in an interactive game, pulling up to an automated kiosk in a parking structure,
+        or activating a "Buy", "Purchase", or "Checkout" button).
+        The <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> allows the web page to exchange information with the
+        <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> while the user is providing input before approving or denying a payment request.
+      </p>
+
+      <p>The following example shows how to construct a <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> and begin the
+      user interaction:</p>
+
+      <div class="example"><div class="example-title marker"><span>Example 1</span></div><pre class="highlight prettyprint prettyprinted"><span class="kwd">var</span><span class="pln"> payment </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">PaymentRequest</span><span class="pun">(</span><span class="pln">supportedMethods</span><span class="pun">,</span><span class="pln"> details</span><span class="pun">,</span><span class="pln"> options</span><span class="pun">,</span><span class="pln"> data</span><span class="pun">);</span><span class="pln">
+payment</span><span class="pun">.</span><span class="pln">addEventListener</span><span class="pun">(</span><span class="str">"shippingaddresschange"</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">(</span><span class="pln">changeEvent</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="com">// Process shipping address change</span><span class="pln">
+</span><span class="pun">});</span><span class="pln">
+
+payment</span><span class="pun">.</span><span class="pln">show</span><span class="pun">().</span><span class="kwd">then</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(</span><span class="pln">paymentResponse</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="com">// Process paymentResponse</span><span class="pln">
+  </span><span class="com">// paymentResponse.methodName contains the selected payment method</span><span class="pln">
+  </span><span class="com">// paymentResponse.details contains a payment method specific response</span><span class="pln">
+  paymentResponse</span><span class="pun">.</span><span class="pln">complete</span><span class="pun">(</span><span class="kwd">true</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}).</span><span class="kwd">catch</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(</span><span class="pln">err</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  console</span><span class="pun">.</span><span class="pln">error</span><span class="pun">(</span><span class="str">"Uh oh, something bad happened"</span><span class="pun">,</span><span class="pln"> err</span><span class="pun">.</span><span class="pln">message</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">});</span></pre></div>
+
+      <section id="paymentrequest-constructor" typeof="bibo:Chapter" resource="#paymentrequest-constructor" property="bibo:hasPart">
+        <h3 id="h-paymentrequest-constructor" resource="#h-paymentrequest-constructor"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1 </span>PaymentRequest constructor</span></h3>
+        <p>
+          The <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> is constructed using the supplied <code>supportedMethods</code>
+          list, the payment <code>details</code>, the payment <code>options</code>, and any <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">payment
+          method</a> specific <code>data</code>.
+        </p>
+        <div class="issue" id="issue-40"><div class="issue-title marker" aria-level="4" role="heading" id="h-issue1"><a href="https://github.com/w3c/browser-payment-api/issues/40"><span>Issue 40</span></a><span style="text-transform: none">: How does a website pass additional (not payment method specific) data to the payment app?</span></div><div class="">
+          It is proposed that a conformance criteria for implementations of this API be
+          that any data passed into the request is passed on to the payment app unaltered.
+          This would allow extensions of the data schema such as the addition of
+          properties that are not documented in this specification or known to implementors
+          such as JSON-LD @context or similar to be passed between the website and
+          payment app.
+        </div></div>
+        <div class="note"><div class="note-title marker" aria-level="4" role="heading" id="h-note2"><span>Note</span></div><div class="">
+          <p>The <code>supportedMethods</code> sequence contains the <a href="#dfn-payment-method-identifier" class="internalDFN" data-link-type="dfn">payment method identifiers</a>
+          for the <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">payment methods</a> that the merchant web site accepts.</p>
+          <div class="example"><div class="example-title marker"><span>Example 2</span></div><pre class="highlight prettyprint prettyprinted"><span class="pun">[</span><span class="str">"visa"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"bitcoin"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"bobpay.com"</span><span class="pun">]</span></pre></div>
+
+          <p>The <code>details</code> object contains information about the transaction that the
+          user is being asked to complete such as the line items in an order.</p>
+          <div class="example"><div class="example-title marker"><span>Example 3</span></div><pre class="highlight prettyprint prettyprinted"><span class="pun">{</span><span class="pln">
+  </span><span class="str">"items"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+      </span><span class="str">"id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"basket"</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"label"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Sub-total"</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"amount"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="str">"currency"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"USD"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"value"</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">"55.00"</span><span class="pln"> </span><span class="pun">},</span><span class="pln"> </span><span class="com">// US$55.00</span><span class="pln">
+    </span><span class="pun">},</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+      </span><span class="str">"id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"tax"</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"label"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Sales Tax"</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"amount"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="str">"currency"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"USD"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"value"</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">"5.00"</span><span class="pln"> </span><span class="pun">},</span><span class="pln"> </span><span class="com">// US$5.00</span><span class="pln">
+    </span><span class="pun">},</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+      </span><span class="str">"id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"total"</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"label"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Total due"</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"amount"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="str">"currency"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"USD"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"value"</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">"60.00"</span><span class="pln"> </span><span class="pun">},</span><span class="pln"> </span><span class="com">// US$60.00</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+  </span><span class="pun">]</span><span class="pln">
+</span><span class="pun">}</span></pre></div>
+
+          <p>The <code>options</code> object contains information about what options the web page
+          wishes to use from the payment request system.</p>
+
+          <div class="example"><div class="example-title marker"><span>Example 4</span></div><pre class="highlight prettyprint prettyprinted"><span class="pun">{</span><span class="pln">
+  </span><span class="str">"requestShipping"</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pln">
+</span><span class="pun">}</span></pre></div>
+
+          <p><code>data</code> is a <a href="#dfn-json-serializable-object" class="internalDFN" data-link-type="dfn">JSON-serializable object</a> that provides optional information that might
+          be needed by the supported <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">payment methods</a>.</p>
+          <div class="example"><div class="example-title marker"><span>Example 5</span></div><pre class="highlight prettyprint prettyprinted"><span class="pun">{</span><span class="pln">
+  </span><span class="str">"bobpay.com"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      </span><span class="str">"merchantIdentifier"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"XXXX"</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"bobPaySpecificField"</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pln">
+  </span><span class="pun">},</span><span class="pln">
+  </span><span class="str">"bitcoin"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      </span><span class="str">"address"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"XXXX"</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></pre></div>
+        </div></div>
+
+        <div class="issue" id="issue-15"><div class="issue-title marker" aria-level="4" role="heading" id="h-issue2"><a href="https://github.com/w3c/browser-payment-api/issues/15"><span>Issue 15</span></a><span style="text-transform: none">: Combine API parameters into a single request object + options</span></div><div class="">
+          There is an open issue about whether <code>supportedMethods</code>, <code>details</code>, and <code>data</code>
+          should be combined into a single object.
+        </div></div>
+
+        <div class="issue" id="issue-16"><div class="issue-title marker" aria-level="4" role="heading" id="h-issue3"><a href="https://github.com/w3c/browser-payment-api/issues/16"><span>Issue 16</span></a><span style="text-transform: none">: Use navigator.payments singleton, factory method, or PaymentRequest constructor</span></div><div class="">
+          There is an open issue about how a payment request is initiated. The options proposed include using a singleton
+          at <code>navigator.payments</code>, using a factory method to create an instance, or using a constructor as
+          currently described in the specification.
+        </div></div>
+
+        <div class="issue" id="issue-47"><div class="issue-title marker" aria-level="4" role="heading" id="h-issue4"><a href="https://github.com/w3c/browser-payment-api/issues/47"><span>Issue 47</span></a><span style="text-transform: none">: Should a payment request be just data, or a programmable object?</span></div><div class="">
+          There is an open issue about whether the payment request should
+          be a programmable object or should be just pure data that can be
+          operated on by methods.
+        </div></div>
+
+        <div class="issue" id="issue-19"><div class="issue-title marker" aria-level="4" role="heading" id="h-issue5"><a href="https://github.com/w3c/browser-payment-api/issues/19"><span>Issue 19</span></a><span style="text-transform: none">: Should the API handle pre-auth, recurring payments, and similar scenarios</span></div><div class="">
+          There is an open issue about whether the API should handle occasions when a site wants to request a payment
+          method but not actually make a charge immediately. These may include identification validation, pre-auth
+          for a deposit, pre-auth for a later payment, making recurring payments, and more.
+        </div></div>
+
+        <div class="issue" id="issue-23"><div class="issue-title marker" aria-level="4" role="heading" id="h-issue6"><a href="https://github.com/w3c/browser-payment-api/issues/23"><span>Issue 23</span></a><span style="text-transform: none">: Can the merchant influence order of presentation of payment apps to the user</span></div><div class="">
+          There is an open issue about whether the merchant can influence order of presentation of
+          payment apps to the user. There is a suggestion that we should support merchants specifying
+          a preference and allow users to express a preference that overrides merchant preferences.
+        </div></div>
+
+        <div class="issue" id="issue-48"><div class="issue-title marker" aria-level="4" role="heading" id="h-issue7"><a href="https://github.com/w3c/browser-payment-api/issues/48"><span>Issue 48</span></a><span style="text-transform: none">: Should list of accepted payment methods be strings or objects?</span></div><div class="">
+          There is an open issue about whether the list of supported payment
+          methods should be passed to the user agent as a simple sequence of
+          strings or as a more complex and flexible object structure.
+        </div></div>
+
+        <div class="issue" id="issue-51"><div class="issue-title marker" aria-level="4" role="heading" id="h-issue8"><a href="https://github.com/w3c/browser-payment-api/issues/51"><span>Issue 51</span></a><span style="text-transform: none">: Should the payment API be more conversational or less conversational?</span></div><div class="">
+          There is an open issue regarding whether the current pattern of using
+          events for exchange of data between the user agent and the website is
+          the best design for this API. An alternative pattern has been
+          proposed in the issue thread.
+        </div></div>
+
+        <p>
+          The <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> constructor <em class="rfc2119" title="MUST">MUST</em> act as follows:
+        </p>
+        <ol>
+          <li>
+            If the length of the <code>supportedMethods</code> sequence is zero, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a>
+            a <a href="#dfn-typeerror" class="internalDFN" data-link-type="dfn"><code><code>TypeError</code></code></a>.
+          </li>
+          <li>
+            If the <a href="#dfn-global-object" class="internalDFN" data-link-type="dfn">global object</a> of the script calling the constructor is
+            not considered a <a href="#dfn-secure-context" class="internalDFN" data-link-type="dfn">secure context</a>, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> a <a href="#dfn-securityerror" class="internalDFN" data-link-type="dfn"><code><code>SecurityError</code></code></a>.
+            <div class="issue" id="issue-22"><div class="issue-title marker" aria-level="4" role="heading" id="h-issue9"><a href="https://github.com/w3c/browser-payment-api/issues/22"><span>Issue 22</span></a><span style="text-transform: none">: Spec should use [SecureContext] once that is defined in Web IDL</span></div><div class="">
+              Using [SecureContext] in Web IDL will allow us to eliminate this prose.
+            </div></div>
+          </li>
+          <li>
+            If the <a href="#dfn-browsing-context" class="internalDFN" data-link-type="dfn">browsing context</a> of the script calling the constructor is
+            not a <a href="#dfn-top-level-browsing-context" class="internalDFN" data-link-type="dfn">top-level browsing context</a>, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> a <a href="#dfn-securityerror" class="internalDFN" data-link-type="dfn"><code><code>SecurityError</code></code></a>.
+            <div class="issue" id="issue-2"><div class="issue-title marker" aria-level="4" role="heading" id="h-issue10"><a href="https://github.com/w3c/browser-payment-api/issues/2"><span>Issue 2</span></a><span style="text-transform: none">: Should the Payment Request API only be available in a top-level browsing context? </span></div><div class="">
+              <p>There is an open issue about requiring
+              a top-level browsing context for using <code>PaymentRequest</code>. Requiring one
+              is a mitigation for a user being tricked into thinking a trusted site is asking for
+              payment when in fact an untrusted iframe is asking for payment. The problem is some iframes may
+              have a legitimate reason to request payment.</p>
+            </div></div>
+          </li>
+          <li>
+            If <code>details</code> does not contain a sequence of <code>items</code> with length greater
+            than zero, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> a <a href="#dfn-typeerror" class="internalDFN" data-link-type="dfn"><code><code>TypeError</code></code></a>.
+          </li>
+          <li>
+            If <code>data</code> is not a <a href="#dfn-json-serializable-object" class="internalDFN" data-link-type="dfn">JSON-serializable object</a>, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> a <a href="#dfn-typeerror" class="internalDFN" data-link-type="dfn"><code><code>TypeError</code></code></a>.
+          </li>
+          <li>
+            If the name of any top level field of <code>data</code> does not match one of the <a href="#dfn-payment-method-identifier" class="internalDFN" data-link-type="dfn">payment method identifiers</a>
+            in <code>supportedMethods</code>, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> a <a href="#dfn-typeerror" class="internalDFN" data-link-type="dfn"><code><code>TypeError</code></code></a>.
+          </li>
+          <li>
+            If the value of any top level field is not a <a href="#dfn-json-serializable-object" class="internalDFN" data-link-type="dfn">JSON-serializable object</a>, then
+            <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> a <a href="#dfn-typeerror" class="internalDFN" data-link-type="dfn"><code><code>TypeError</code></code></a>.
+          </li>
+          <li>Let <em>request</em> be a new <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a>.</li>
+          <li>Store <code>supportedMethods</code> into <em>request</em>@[[supportedMethods]].</li>
+          <li>Store <code>details</code> into <em>request</em>@[[details]].</li>
+          <li>Store <code>options</code> into <em>request</em>@[[options]].</li>
+          <li>Store <code>data</code> into <em>request</em>@[[data]].</li>
+          <li>Set the value <em>request</em>@[[state]] to <em>created</em>.</li>
+          <li>
+            Set the value of the <a href="#idl-def-shippingaddress" class="internalDFN" data-link-type="dfn"><code><code>shippingAddress</code></code></a> attribute on <em>request</em> to <em>null</em>.
+          </li>
+          <li>
+            Set the value of the <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>shippingOption</code></code></a> attribute on <em>request</em> to <em>null</em>.
+          </li>
+          <li>
+            If <code>details</code> contains a <code>shippingOptions</code> sequence with a
+            length of 1, then set <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>shippingOption</code></code></a> to the <code>id</code> of
+            the only <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>ShippingOption</code></code></a> in the sequence.
+          </li>
+          <li>Set the value <em>request</em>@[[updating]] to <em>false</em>.</li>
+          <li>Return <em>request</em>.</li>
+        </ol>
+      </section>
+
+      <section id="show" typeof="bibo:Chapter" resource="#show" property="bibo:hasPart">
+        <h3 id="h-show" resource="#h-show"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.2 </span>show()</span></h3>
+        <p>
+          The <code><dfn data-dfn-type="dfn" id="dfn-show">show</dfn></code> method is called when the page wants to begin user interaction for the
+          payment request. The <code>show</code> method will return a <a href="#dfn-promise" class="internalDFN" data-link-type="dfn">Promise</a> that will be resolved when the
+          <a href="#dfn-user-accepts-the-payment-request-algorithm" class="internalDFN" data-link-type="dfn">user accepts the payment request</a>. Some kind of user interface will be presented to the user to facilitate the
+          payment request after the <code>show</code> method returns.
+        </p>
+
+        <div class="issue" id="issue-56"><div class="issue-title marker" aria-level="4" role="heading" id="h-issue11"><a href="https://github.com/w3c/browser-payment-api/issues/56"><span>Issue 56</span></a><span style="text-transform: none">: Should a website be able to provide a label for the 'Buy' or 'Checkout' button displayed in the payment app?</span></div><p class="">
+          It may help users understand what they are accepting if the web site
+          is able to label the "accept" button. For example, if a user is about
+          to "Buy" something, "Reserve" something, "Subscribe" to something,
+          etc. That said, this may create payment interface/experience issues
+          and accidentally lead to customers thinking they're performing
+          actions like a one-time purchase, when they are in fact signing up
+          for a subscription.
+        </p></div>
+        <p>
+          The <a href="#dfn-show" class="internalDFN" data-link-type="dfn"><code><code>show</code></code></a> method <em class="rfc2119" title="MUST">MUST</em> act as follows:
+        </p>
+        <ol>
+          <li>
+            Let <em>request</em> be the <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> object on which the method is called..
+          </li>
+          <li>If the value of <em>request</em>@[[state]] is not <em>created</em> then
+          <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> an <a href="#dfn-invalidstateerror" class="internalDFN" data-link-type="dfn"><code><code>InvalidStateError</code></code></a>.</li>
+          <li>
+            Set the value of <em>request</em>@[[state]] to <em>interactive</em>.
+          </li>
+          <li>
+            Let <em>acceptPromise</em> be a new <a href="#dfn-promise" class="internalDFN" data-link-type="dfn">Promise</a>.
+          </li>
+          <li>
+            Store <em>acceptPromise</em> in <em>request</em>@[[acceptPromise]].
+          </li>
+          <li>
+            Return <em>acceptPromise</em> and asynchronously perform the remaining steps.
+          </li>
+          <li>
+            Let <em>acceptedMethods</em> be the sequence of payment method identifiers <em>request</em>@[[supportedMethods]]
+            with all identifiers removed that the <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> does not accept.
+          </li>
+          <li>
+            If the length of <em>acceptedMethods</em> is zero, then reject <em>acceptPromise</em> with a <a href="#dfn-notsupportederror" class="internalDFN" data-link-type="dfn"><code><code>NotSupportedError</code></code></a>.
+          </li>
+          <li>
+            Show a user interface to allow the user to interact with the payment request process. The <em>acceptPromise</em> will
+            later be resolved by the <a href="#dfn-user-accepts-the-payment-request-algorithm" class="internalDFN" data-link-type="dfn">user accepts the payment request algorithm</a> through interaction with the user interface.
+          </li>
+        </ol>
+      </section>
+
+      <section id="abort" typeof="bibo:Chapter" resource="#abort" property="bibo:hasPart">
+        <h3 id="h-abort" resource="#h-abort"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.3 </span>abort()</span></h3>
+        <p>The <code><dfn data-dfn-type="dfn" id="dfn-abort">abort</dfn></code> method may be called if the web page wishes to abort the payment
+        request after the <a href="#dfn-show" class="internalDFN" data-link-type="dfn"><code><code>show</code></code></a> method has been called and before the [[acceptPromise]]
+        has been resolved.</p>
+
+        <p>The <a href="#dfn-abort" class="internalDFN" data-link-type="dfn"><code><code>abort</code></code></a> method <em class="rfc2119" title="MUST">MUST</em> act as follows:</p>
+        <ol>
+          <li>If the value of [[state]] is not <em>interactive</em> then
+          <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> an <a href="#dfn-invalidstateerror" class="internalDFN" data-link-type="dfn"><code><code>InvalidStateError</code></code></a>.</li>
+          <li>Set the value of the internal slot [[state]] to <em>closed</em>.</li>
+          <li>Return from the method and asynchronously perform the remaining steps.</li>
+          <li>Abort the current user interaction and close down any remaining user interface</li>
+        </ol>
+      </section>
+
+      <section typeof="bibo:Chapter" resource="#state-transitions" property="bibo:hasPart">
+        <h3 id="state-transitions" class="informative" resource="#state-transitions"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.4 </span>State transitions</span></h3>
+          <p>The internal slot [[state]] follows the following state transitions:</p>
+          <img alt="Transition diagram for internal slot state of a PaymentRequest object" src="state-transitions.svg" width="608" height="235">
+      </section>
+
+      <section id="shippingaddress" typeof="bibo:Chapter" resource="#shippingaddress" property="bibo:hasPart">
+        <h3 id="h-shippingaddress" resource="#h-shippingaddress"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.5 </span>shippingAddress</span></h3>
+        <p>
+          <code>shippingAddress</code> is populated when the user provides a shipping
+          address. It is <em>null</em> by default.
+          When a user provides a shipping address, the <a href="#dfn-shipping-address-changed-algorithm" class="internalDFN" data-link-type="dfn">shipping address changed algorithm</a> runs.
+        </p>
+        <p>
+          <code><dfn data-dfn-type="dfn" id="dfn-onshippingaddresschange">onshippingaddresschange</dfn></code> is an <code>EventHandler</code> for an
+          <code>Event</code> named <code>shippingaddresschange</code>.
+        </p>
+      </section>
+
+      <section id="shippingoption" typeof="bibo:Chapter" resource="#shippingoption" property="bibo:hasPart">
+        <h3 id="h-shippingoption" resource="#h-shippingoption"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.6 </span>shippingOption</span></h3>
+        <p>
+          <code>shippingOption</code> is populated when the user chooses a shipping
+          option. It is <em>null</em> by default.
+          When a user chooses a shipping option, the <a href="#dfn-shipping-option-changed-algorithm" class="internalDFN" data-link-type="dfn">shipping option changed algorithm</a> runs.
+        </p>
+        <p>
+          <code><dfn data-dfn-type="dfn" id="dfn-onshippingoptionchange">onshippingoptionchange</dfn></code> is an <code>EventHandler</code> for an
+          <code>Event</code> named <code>shippingoptionchange</code>.
+        </p>
+      </section>
+
+      <section id="internal-slots" typeof="bibo:Chapter" resource="#internal-slots" property="bibo:hasPart">
+        <h3 id="h-internal-slots" resource="#h-internal-slots"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.7 </span>Internal Slots</span></h3>
+        <p>Instances of <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> are created with the internal slots in
+        the following table:</p>
+        <table>
+          <tbody><tr><th>Internal Slot</th><th>Description (<em>non-normative</em>)</th></tr>
+          <tr>
+            <td>[[supportedMethods]]</td>
+            <td>The <code>supportMethods</code> supplied to the constructor.</td>
+          </tr>
+          <tr>
+            <td>[[details]]</td>
+            <td>
+              The current <a href="#dom-paymentdetails" class="internalDFN" data-link-type="dfn"><code><code>PaymentDetails</code></code></a> for the payment request initially
+              supplied to the constructor and then updated with calls to <a href="#dfn-updatewith" class="internalDFN" data-link-type="dfn"><code><code>updateWith</code></code></a>.
+            </td>
+          </tr>
+          <tr>
+            <td>[[options]]</td>
+            <td>The <a href="#dom-paymentoptions" class="internalDFN" data-link-type="dfn"><code><code>PaymentOptions</code></code></a> supplied to the constructor.</td>
+          </tr>
+          <tr>
+            <td>[[data]]</td>
+            <td>
+              The payment method specific <code>data</code> supplied to the constructor used
+              by a <a href="#dfn-payment-app" class="internalDFN" data-link-type="dfn">Payment App</a> to influence the app's behavior.
+            </td>
+          </tr>
+          <tr>
+            <td>[[state]]</td>
+            <td>The current <a class="internalDFN" href="#state-transitions">state</a> of the payment request.</td>
+          </tr>
+          <tr>
+            <td>[[updating]]</td>
+            <td>
+               <em>true</em> is there is a pending <a href="#dfn-updatewith" class="internalDFN" data-link-type="dfn"><code><code>updateWith</code></code></a> call to update
+               the payment request and <em>false</em> otherwise.
+            </td>
+          </tr>
+          <tr>
+            <td>[[acceptPromise]]</td>
+            <td>
+              The pending <a href="#dfn-promise" class="internalDFN" data-link-type="dfn">Promise</a> created during <a href="#dfn-show" class="internalDFN" data-link-type="dfn"><code><code>show</code></code></a> that will be
+              resolved if the user accepts the payment request.
+            </td>
+          </tr>
+        </tbody></table>
+      </section>
+
+    </section>
+
+    <section id="currencyamount" typeof="bibo:Chapter" resource="#currencyamount" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-currencyamount" resource="#h-currencyamount"><span property="xhv:role" resource="xhv:heading"><span class="secno">5. </span>CurrencyAmount</span></h2>
+      <pre class="def idl"><span class="idlDictionary" id="idl-def-currencyamount" data-idl="" data-title="CurrencyAmount">dictionary <span class="idlDictionaryID">CurrencyAmount</span> {
+<span class="idlMember" id="idl-def-currencyamount-currency" data-idl="" data-title="currency" data-dfn-for="currencyamount">    required <span class="idlMemberType">DOMString</span> <span class="idlMemberName">currency</span>;</span>
+<span class="idlMember" id="idl-def-currencyamount-value" data-idl="" data-title="value" data-dfn-for="currencyamount">    required <span class="idlMemberType">DOMString</span> <span class="idlMemberName">value</span>;</span>
+};</span></pre>
+      <div class="issue" id="issue-119"><div class="issue-title marker" aria-level="3" role="heading" id="h-issue12"><a href="https://github.com/w3c/browser-payment-api/issues/119"><span>Issue 119</span></a><span style="text-transform: none">: Should negative amounts be reflected using signed values?</span></div><div class="">
+      The resolution of the WG per <a href="https://github.com/w3c/webpayments/issues/57"> Issue #57</a> defined
+      a format for currencies and amounts that lacked support for negative values. The format below adds this
+      capability in a way that is not common for financial messaging standards (using signed numbers). The
+      rationale for negative numbers is to support discounts. The group is still discussing whether functionality
+      to support discounts might be implemented in a different manner (e.g., via a transaction type).
+      </div></div>
+      <p>
+        A <a href="#idl-def-currencyamount" class="internalDFN" data-link-type="dfn"><code><code>CurrencyAmount</code></code></a> dictionary is used to supply monetary amounts.
+        The following fields <em class="rfc2119" title="MUST">MUST</em> be supplied for a <a href="#idl-def-currencyamount" class="internalDFN" data-link-type="dfn"><code><code>CurrencyAmount</code></code></a> to be valid:
+      </p>
+      <dl>
+        <dt><code><dfn data-dfn-type="dfn" id="dfn-currency">currency</dfn></code></dt>
+        <dd>
+          <code>currency</code> is a string containing a currency identifier. The most common
+          identifiers are three-letter alphabetic codes as defined by [<cite><a class="bibref" href="#bib-ISO4217">ISO4217</a></cite>] (for example,
+          <code>"USD"</code> for US Dollars) however any string is considered valid and
+          <a data-lt="user agents" href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agents</a> <em class="rfc2119" title="MUST">MUST</em> not attempt to validate this string.
+        </dd>
+        <dt><code><dfn data-dfn-type="dfn" id="dfn-value">value</dfn></code></dt>
+        <dd>
+          A string containing the decimal monetary value. If a decimal separator is needed then the string
+          <em class="rfc2119" title="MUST">MUST</em> use a single U+002E FULL STOP character as the decimal separator. The string <em class="rfc2119" title="MUST">MUST</em> begin
+          with a single U+002D HYPHEN-MINUS character if the value is negative. All other characters must
+          be characters in the range U+0030 DIGIT ZERO (0) to U+0039 DIGIT NINE (9).
+          <div class="note"><div class="note-title marker" aria-level="3" role="heading" id="h-note3"><span>Note</span></div><div class="">
+            The string should match the regular expression <code>^-?[0-9]+(\.[0-9]+)?$</code>.
+          </div></div>
+        </dd>
+      </dl>
+
+      <p>The following example shows how to represent US$55.00.</p>
+      <div class="example"><div class="example-title marker"><span>Example 6</span></div><pre class="highlight prettyprint prettyprinted"><span class="pun">{</span><span class="pln">
+  </span><span class="str">"currency"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"USD"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"value"</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">"55.00"</span><span class="pln">
+</span><span class="pun">}</span></pre></div>
+    </section>
+
+    <section id="paymentdetails-dictionary" typeof="bibo:Chapter" resource="#paymentdetails-dictionary" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-paymentdetails-dictionary" resource="#h-paymentdetails-dictionary"><span property="xhv:role" resource="xhv:heading"><span class="secno">6. </span>PaymentDetails dictionary</span></h2>
+      <pre class="def idl"><span class="idlDictionary" id="idl-def-paymentdetails" data-idl="" data-title="PaymentDetails">dictionary <span class="idlDictionaryID"><a data-lt="PaymentDetails" href="#dom-paymentdetails" class="internalDFN" data-link-type="dfn" data-for=""><code>PaymentDetails</code></a></span> {
+<span class="idlMember" id="idl-def-paymentdetails-items" data-idl="" data-title="items" data-dfn-for="paymentdetails">    <span class="idlMemberType">sequence&lt;<a href="#idl-def-paymentitem" class="internalDFN" data-link-type="dfn"><code>PaymentItem</code></a>&gt;</span>    <span class="idlMemberName">items</span>;</span>
+<span class="idlMember" id="idl-def-paymentdetails-shippingoptions" data-idl="" data-title="shippingOptions" data-dfn-for="paymentdetails">    <span class="idlMemberType">sequence&lt;<a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code>ShippingOption</code></a>&gt;</span> <span class="idlMemberName">shippingOptions</span>;</span>
+};</span></pre>
+
+      <p>
+        The <code><dfn data-dfn-for="" data-dfn-type="dfn" id="dom-paymentdetails" data-idl="">PaymentDetails</dfn></code> dictionary is passed to the <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a>
+        constructor and provides information about the requested transaction. The <code>PaymentDetails</code>
+        dictionary is also used to update the payment request using <a href="#dfn-updatewith" class="internalDFN" data-link-type="dfn"><code><code>updateWith</code></code></a>.
+      </p>
+      <p>
+        The following fields are part of the <code>PaymentDetails</code> dictionary:
+      </p>
+      <dl>
+        <dt><code>items</code></dt>
+        <dd>
+          This sequence of <a href="#idl-def-paymentitem" class="internalDFN" data-link-type="dfn"><code><code>PaymentItem</code></code></a> dictionaries indicates what the payment
+          request is for. The sequence must contain at least one <code>PaymentItem</code>. The last
+          <code>PaymentItem</code> in the sequence represents the total amount of the payment
+          request. It is the responsibility of the calling code to ensure that the total amount is
+          the sum of the preceding items. The <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> <em class="rfc2119" title="MAY">MAY</em> not validate that this is true.
+        </dd>
+        <dt><code>shippingOptions</code></dt>
+        <dd>
+          A sequence containing the different shipping options that the use may choose from.
+          <p>If the sequence is empty, then this indicates that the merchant
+          cannot ship to the current <a href="#idl-def-shippingaddress" class="internalDFN" data-link-type="dfn"><code><code>shippingAddress</code></code></a>.</p>
+          <p>If the sequence only contains one item, then this is the shipping option that
+          will be used and <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>shippingOption</code></code></a> will be set to the <code>id</code>
+          of this option without running the <a href="#dfn-shipping-option-changed-algorithm" class="internalDFN" data-link-type="dfn">shipping option changed algorithm</a>.</p>
+        </dd>
+      </dl>
+
+      <div class="issue" id="issue-18"><div class="issue-title marker" aria-level="3" role="heading" id="h-issue13"><a href="https://github.com/w3c/browser-payment-api/issues/18"><span>Issue 18</span></a><span style="text-transform: none">: Constructor should not include "total" in list of items</span></div><div class="">
+        There is an open issue about whether the <code>items</code> sequence should special-case the last
+        item in the sequence to represent the total.
+      </div></div>
+    </section>
+
+    <section id="paymentoptions-dictionary" typeof="bibo:Chapter" resource="#paymentoptions-dictionary" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-paymentoptions-dictionary" resource="#h-paymentoptions-dictionary"><span property="xhv:role" resource="xhv:heading"><span class="secno">7. </span>PaymentOptions dictionary</span></h2>
+      <pre class="def idl"><span class="idlDictionary" id="idl-def-paymentoptions" data-idl="" data-title="PaymentOptions">dictionary <span class="idlDictionaryID"><a data-lt="PaymentOptions" href="#dom-paymentoptions" class="internalDFN" data-link-type="dfn" data-for=""><code>PaymentOptions</code></a></span> {
+<span class="idlMember" id="idl-def-paymentoptions-requestshipping" data-idl="" data-title="requestShipping" data-dfn-for="paymentoptions">    <span class="idlMemberType">boolean</span> <span class="idlMemberName">requestShipping</span> = <span class="idlMemberValue">false</span>;</span>
+};</span></pre>
+
+      <p>
+        The <code><dfn data-dfn-for="" data-dfn-type="dfn" id="dom-paymentoptions" data-idl="">PaymentOptions</dfn></code> dictionary is passed to the <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a>
+        constructor and provides information about the options desired for the payment request.
+      </p>
+      <p>
+        The following fields <em class="rfc2119" title="MAY">MAY</em> be passed to the <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> constructor:
+      </p>
+      <dl>
+        <dt><code><dfn data-dfn-type="dfn" id="dfn-requestshipping">requestShipping</dfn></code></dt>
+        <dd>
+          This <em>boolean</em> value indicates whether the <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> should collect and return
+          a shipping address as part of the payment request. For example, this would be set to
+          <code>true</code> when physical goods need to be shipped by the merchant to the user.
+          This would be set to <code>false</code> for an online-only electronic purchase transaction.
+          If this value is not supplied then the the <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> behaves as
+          if a value of <code>false</code> had been supplied.
+        </dd>
+      </dl>
+    </section>
+
+    <section id="paymentitem-dictionary" typeof="bibo:Chapter" resource="#paymentitem-dictionary" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-paymentitem-dictionary" resource="#h-paymentitem-dictionary"><span property="xhv:role" resource="xhv:heading"><span class="secno">8. </span>PaymentItem dictionary</span></h2>
+      <pre class="def idl"><span class="idlDictionary" id="idl-def-paymentitem" data-idl="" data-title="PaymentItem">dictionary <span class="idlDictionaryID">PaymentItem</span> {
+<span class="idlMember" id="idl-def-paymentitem-id" data-idl="" data-title="id" data-dfn-for="paymentitem">    required <span class="idlMemberType">DOMString</span>      <span class="idlMemberName">id</span>;</span>
+<span class="idlMember" id="idl-def-paymentitem-label" data-idl="" data-title="label" data-dfn-for="paymentitem">    required <span class="idlMemberType">DOMString</span>      <span class="idlMemberName">label</span>;</span>
+<span class="idlMember" id="idl-def-paymentitem-amount" data-idl="" data-title="amount" data-dfn-for="paymentitem">    required <span class="idlMemberType"><a href="#idl-def-currencyamount" class="internalDFN" data-link-type="dfn"><code>CurrencyAmount</code></a></span> <span class="idlMemberName">amount</span>;</span>
+};</span></pre>
+      <p>
+        A sequence of one or more <code>PaymentItem</code> dictionaries is included in the <a href="#dom-paymentdetails" class="internalDFN" data-link-type="dfn"><code><code>PaymentDetails</code></code></a>
+        dictionary to indicate the what the payment request is for and the value asked for.
+      </p>
+      <p>
+        The following fields <em class="rfc2119" title="MUST">MUST</em> be included in a <code>PaymentItem</code> for it to be valid:
+      </p>
+      <dl>
+        <dt><code>id</code></dt>
+        <dd>This is a string identifier used to reference this <code>PaymentItem</code>. It <em class="rfc2119" title="MUST">MUST</em> be
+        unique for a given <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a>.</dd>
+        <dt><code>label</code></dt>
+        <dd>This is a human-readable description of the item. The <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> may display
+        this to the user.</dd>
+        <dt><code>amount</code></dt>
+        <dd>
+          A <a href="#idl-def-currencyamount" class="internalDFN" data-link-type="dfn"><code><code>CurrencyAmount</code></code></a> containing the monetary amount for the item.
+          <div class="issue" id="issue-3"><div class="issue-title marker" aria-level="3" role="heading" id="h-issue14"><a href="https://github.com/w3c/browser-payment-api/issues/3"><span>Issue 3</span></a><span style="text-transform: none">: Should it be possible to provide amounts in more than one currency</span></div><div class="">
+            There is an open issue about whether it should be possible to provide a <code>PaymentItem</code>
+            with amounts in more than once currency.
+          </div></div>
+          <div class="issue" id="issue-4"><div class="issue-title marker" aria-level="3" role="heading" id="h-issue15"><a href="https://github.com/w3c/browser-payment-api/issues/4"><span>Issue 4</span></a><span style="text-transform: none">: Should it be possible to vary amounts depending on payment method</span></div><div class="">
+            There is an open issue about whether it should be possible to provide a different amounts depending
+            upon the payment method.
+          </div></div>
+          <div class="issue" id="issue-14"><div class="issue-title marker" aria-level="3" role="heading" id="h-issue16"><a href="https://github.com/w3c/browser-payment-api/issues/14"><span>Issue 14</span></a><span style="text-transform: none">: Handling non-decimal currencies</span></div><div class="">
+            There is an open issue about whether and how to handle
+            <a href="https://en.wikipedia.org/wiki/Non-decimal_currency">non-decimal currencies</a>.
+          </div></div>
+        </dd>
+      </dl>
+    </section>
+
+    <section id="shippingaddress-interface" typeof="bibo:Chapter" resource="#shippingaddress-interface" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-shippingaddress-interface" resource="#h-shippingaddress-interface"><span property="xhv:role" resource="xhv:heading"><span class="secno">9. </span>ShippingAddress interface</span></h2>
+      <pre class="def idl"><span class="idlInterface" id="idl-def-shippingaddress" data-idl="" data-title="ShippingAddress">interface <span class="idlInterfaceID"><a data-lt="ShippingAddress" href="#idl-def-shippingaddress" class="internalDFN" data-link-type="dfn" data-for=""><code>ShippingAddress</code></a></span> {
+<span class="idlSectionComment">    // [...] fields TBC </span>
+};</span></pre>
+      <p>
+        If the <a href="#dfn-requestshipping" class="internalDFN" data-link-type="dfn"><code>requestShipping</code></a> flag was set to <code>true</code> in the <a href="#dom-paymentoptions" class="internalDFN" data-link-type="dfn"><code>PaymentOptions</code></a>
+        passed to the <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code>PaymentRequest</code></a> constructor, then the <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> will populate the
+        <code>shippingAddress</code> field of the <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> object with
+        the user's selected shipping address.
+      </p>
+      <div class="issue" id="issue-6"><div class="issue-title marker" aria-level="3" role="heading" id="h-issue17"><a href="https://github.com/w3c/browser-payment-api/issues/6"><span>Issue 6</span></a><span style="text-transform: none">: Write-up proposal for shipping address fields</span></div><div class="">
+        The fields of the <a href="#idl-def-shippingaddress" class="internalDFN" data-link-type="dfn"><code><code>ShippingAddress</code></code></a> interface are
+        yet to be defined.
+      </div></div>
+      <div class="issue" id="issue-1"><div class="issue-title marker" aria-level="3" role="heading" id="h-issue18"><a href="https://github.com/w3c/browser-payment-api/issues/1"><span>Issue 1</span></a><span style="text-transform: none">: Should the merchant be able to request your email and recipient phone number</span></div><div class="">
+        There is an open question about what data beyond shipping address the merchant might be able
+        to request from the <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a>. Is capturing email and recipient phone important to you?
+      </div></div>
+    </section>
+
+    <section id="shippingoption-interface" typeof="bibo:Chapter" resource="#shippingoption-interface" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-shippingoption-interface" resource="#h-shippingoption-interface"><span property="xhv:role" resource="xhv:heading"><span class="secno">10. </span>ShippingOption interface</span></h2>
+      <pre class="def idl"><span class="idlDictionary" id="idl-def-shippingoption" data-idl="" data-title="ShippingOption">dictionary <span class="idlDictionaryID"><a data-lt="ShippingOption" href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn" data-for=""><code>ShippingOption</code></a></span> {
+<span class="idlMember" id="idl-def-shippingoption-id" data-idl="" data-title="id" data-dfn-for="shippingoption">    required <span class="idlMemberType">string</span>         <span class="idlMemberName">id</span>;</span>
+<span class="idlMember" id="idl-def-shippingoption-label" data-idl="" data-title="label" data-dfn-for="shippingoption">    required <span class="idlMemberType">string</span>         <span class="idlMemberName">label</span>;</span>
+<span class="idlMember" id="idl-def-shippingoption-amount" data-idl="" data-title="amount" data-dfn-for="shippingoption">    required <span class="idlMemberType"><a href="#idl-def-currencyamount" class="internalDFN" data-link-type="dfn"><code>CurrencyAmount</code></a></span> <span class="idlMemberName">amount</span>;</span>
+};</span></pre>
+      <p>
+        The <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code>ShippingOption</code></a> dictionary has fields describing a shipping option. A web page can
+        provide the user with one or more shipping options by calling the <a href="#dfn-updatewith" class="internalDFN" data-link-type="dfn"><code>updateWith</code></a>
+        method in response to a change event.
+      </p>
+      <p>
+        The following fields <em class="rfc2119" title="MUST">MUST</em> be included in a <code>PaymentItem</code> for it to be valid:
+      </p>
+      <dl>
+        <dt><code>id</code></dt>
+        <dd>This is a string identifier used to reference this <code>ShippingOption</code>. It <em class="rfc2119" title="MUST">MUST</em> be
+        unique for a given <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a>.</dd>
+        <dt><code>label</code></dt>
+        <dd>This is a human-readable description of the item. The <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> <em class="rfc2119" title="SHOULD">SHOULD</em> use this
+        string to display the shipping option to the user.</dd>
+        <dt><code>amount</code></dt>
+        <dd>
+          A <a href="#idl-def-currencyamount" class="internalDFN" data-link-type="dfn"><code><code>CurrencyAmount</code></code></a> containing the monetary amount for the item.
+        </dd>
+      </dl>
+    </section>
+
+    <section id="paymentresponse-interface" typeof="bibo:Chapter" resource="#paymentresponse-interface" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-paymentresponse-interface" resource="#h-paymentresponse-interface"><span property="xhv:role" resource="xhv:heading"><span class="secno">11. </span>PaymentResponse interface</span></h2>
+      <pre class="def idl"><span class="idlInterface" id="idl-def-paymentresponse" data-idl="" data-title="PaymentResponse">interface <span class="idlInterfaceID"><a data-lt="PaymentResponse" href="#dom-paymentresponse" class="internalDFN" data-link-type="dfn" data-for=""><code>PaymentResponse</code></a></span> {
+<span class="idlAttribute" id="idl-def-paymentresponse-methodname" data-idl="" data-title="methodName" data-dfn-for="paymentresponse">    readonly attribute <span class="idlAttrType">DOMString</span> <span class="idlAttrName">methodName</span>;</span>
+<span class="idlAttribute" id="idl-def-paymentresponse-details" data-idl="" data-title="details" data-dfn-for="paymentresponse">    readonly attribute <span class="idlAttrType">object</span>    <span class="idlAttrName">details</span>;</span>
+
+<span class="idlMethod" id="idl-def-paymentresponse-complete(boolean)" data-idl="" data-title="complete" data-dfn-for="paymentresponse">    <span class="idlMethType">Promise&lt;void&gt;</span> <span class="idlMethName">complete</span>(<span class="idlParam"><span class="idlParamType">boolean</span> <span class="idlParamName">success</span></span>);</span>
+};</span></pre>
+
+      <p>
+        A <code><dfn data-dfn-for="" data-dfn-type="dfn" id="dom-paymentresponse" data-idl="">PaymentResponse</dfn></code> is returned when a user has selected a payment method and
+        approved a payment request. It contains the following fields:
+      </p>
+      <dl>
+      <dt><code><dfn data-dfn-type="dfn" id="dfn-methodname">methodName</dfn></code></dt>
+      <dd>
+        The <a href="#dfn-payment-method-identifier" class="internalDFN" data-link-type="dfn">payment method identifier</a> for the <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">payment method</a> that the user selected
+        to fulfil the transaction.
+      </dd>
+      <dt><code><dfn data-dfn-type="dfn" id="dfn-details">details</dfn></code></dt>
+      <dd>
+        A <a href="#dfn-json-serializable-object" class="internalDFN" data-link-type="dfn">JSON-serializable object</a> that provides a <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">payment method</a> specific message used by the merchant to
+        process the transaction and determine successful fund transfer.
+      </dd>
+      </dl>
+
+      <section id="complete" typeof="bibo:Chapter" resource="#complete" property="bibo:hasPart">
+        <h3 id="h-complete" resource="#h-complete"><span property="xhv:role" resource="xhv:heading"><span class="secno">11.1 </span>complete()</span></h3>
+        <p>The <code><dfn data-dfn-type="dfn" id="dfn-complete">complete</dfn></code> method must be called after the user has accepted the payment
+        request and the [[acceptPromise]] has been resolved. The <code>complete</code> method
+        takes a boolean argument that indicates the payment was successfully processed if <code>true</code> and
+        that processing failed if <code>false</code>. Calling the <code>complete</code> method tells the user
+        agent that the user interaction is over (and should cause any remaining user interface to be closed).</p>
+
+        <div class="issue" id="issue-17"><div class="issue-title marker" aria-level="4" role="heading" id="h-issue19"><a href="https://github.com/w3c/browser-payment-api/issues/17"><span>Issue 17</span></a><span style="text-transform: none">: complete() should take a string argument not boolean</span></div><div class="">
+          There is an open issue about what values can be supplied to complete. These may depend on the
+          payment method selected and should then be defined in Payment Transaction Message specifications
+          such as the Basic Card Payment document.
+        </div></div>
+
+        <p>The <a href="#dfn-complete" class="internalDFN" data-link-type="dfn"><code><code>complete</code></code></a> method <em class="rfc2119" title="MUST">MUST</em> act as follows:</p>
+        <ol>
+          <li>Let <em>promise</em> be a new <a href="#dfn-promise" class="internalDFN" data-link-type="dfn">Promise</a>.</li>
+          <li>
+            If the value of the internal slot [[completeCalled]] is <em>true</em>, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> an <a href="#dfn-invalidstateerror" class="internalDFN" data-link-type="dfn"><code><code>InvalidStateError</code></code></a>.
+          </li>
+          <li>Set the value of the internal slot [[completeCalled]] to <em>true</em>.</li>
+          <li>Return <em>promise</em> and asynchronously perform the remaining steps.</li>
+          <li>
+            Pass the value of <code>success</code> to the <a href="#dfn-payment-app" class="internalDFN" data-link-type="dfn">Payment App</a> that accepted the
+            payment request.
+          </li>
+          <li>Close down any remaining user interface.</li>
+          <li>Resolve <em>promise</em> with <code>undefined</code>.</li>
+        </ol>
+
+        <div class="issue" id="issue-5"><div class="issue-title marker" aria-level="4" role="heading" id="h-issue20"><a href="https://github.com/w3c/browser-payment-api/issues/5"><span>Issue 5</span></a><span style="text-transform: none">: Should the web page be able to provide status information before calling complete()</span></div><div class="">
+        There is an open issue about whether there should be a way for a merchant to keep the user
+        informed about the progress of a transaction after the user approves the payment request.
+        </div></div>
+      </section>
+
+      <section id="internal-slots-1" typeof="bibo:Chapter" resource="#internal-slots-1" property="bibo:hasPart">
+        <h3 id="h-internal-slots-1" resource="#h-internal-slots-1"><span property="xhv:role" resource="xhv:heading"><span class="secno">11.2 </span>Internal Slots</span></h3>
+        <p>Instances of <a href="#dom-paymentresponse" class="internalDFN" data-link-type="dfn"><code><code>PaymentResponse</code></code></a> are created with the internal slots in
+        the following table:</p>
+        <table>
+          <tbody><tr><th>Internal Slot</th><th>Description (<em>non-normative</em>)</th></tr>
+          <tr>
+            <td>[[completeCalled]]</td>
+            <td>
+              <em>true</em> if the <a href="#dfn-complete" class="internalDFN" data-link-type="dfn"><code><code>complete</code></code></a> method has been called and <em>false</em>
+              otherwise.
+            </td>
+          </tr>
+        </tbody></table>
+      </section>
+
+    </section>
+
+    <section id="events" typeof="bibo:Chapter" resource="#events" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-events" resource="#h-events"><span property="xhv:role" resource="xhv:heading"><span class="secno">12. </span>Events</span></h2>
+
+      <section class="informative" id="summary" typeof="bibo:Chapter" resource="#summary" property="bibo:hasPart">
+        <h3 id="h-summary" resource="#h-summary"><span property="xhv:role" resource="xhv:heading"><span class="secno">12.1 </span>Summary</span></h3><p><em>This section is non-normative.</em></p>
+
+        <table>
+          <tbody><tr><th>Event name</th><th>Interface</th><th>Dispatched when...</th></tr>
+          <tr>
+            <td><code>shippingaddresschange</code></td>
+            <td><a href="#idl-def-paymentrequestupdateevent" class="internalDFN" data-link-type="dfn"><code>PaymentRequestUpdateEvent</code></a></td>
+            <td>The user provides a new shipping address.</td>
+          </tr>
+          <tr>
+            <td><code>shippingoptionchange</code></td>
+            <td><a href="#idl-def-paymentrequestupdateevent" class="internalDFN" data-link-type="dfn"><code>PaymentRequestUpdateEvent</code></a></td>
+            <td>The user chooses a new shipping option.</td>
+          </tr>
+        </tbody></table>
+      </section>
+
+      <section id="paymentrequestupdateevent" typeof="bibo:Chapter" resource="#paymentrequestupdateevent" property="bibo:hasPart">
+        <h3 id="h-paymentrequestupdateevent" resource="#h-paymentrequestupdateevent"><span property="xhv:role" resource="xhv:heading"><span class="secno">12.2 </span>PaymentRequestUpdateEvent</span></h3>
+        <pre class="def idl"><span class="idlInterface" id="idl-def-paymentrequestupdateevent" data-idl="" data-title="PaymentRequestUpdateEvent">[<span class="idlCtor"><span class="extAttrName">Constructor</span>(<span class="idlParam"><span class="idlParamType">DOMString</span> <span class="idlParamName">type</span></span>, <span class="idlParam">optional <span class="idlParamType"><a href="#idl-def-paymentrequestupdateeventinit" class="internalDFN" data-link-type="dfn"><code>PaymentRequestUpdateEventInit</code></a></span> <span class="idlParamName">eventInitDict</span></span>)</span>]
+interface <span class="idlInterfaceID">PaymentRequestUpdateEvent</span> : <span class="idlSuperclass"><a href="#dfn-event" class="internalDFN" data-link-type="dfn"><code>Event</code></a></span> {
+<span class="idlMethod" id="idl-def-paymentrequestupdateevent-updatewith(promise<paymentdetails>)" data-idl="" data-title="updateWith" data-dfn-for="paymentrequestupdateevent">    <span class="idlMethType">void</span> <span class="idlMethName">updateWith</span>(<span class="idlParam"><span class="idlParamType">Promise&lt;<a href="#dom-paymentdetails" class="internalDFN" data-link-type="dfn"><code>PaymentDetails</code></a>&gt;</span> <span class="idlParamName">d</span></span>);</span>
+};</span>
+
+<span class="idlDictionary" id="idl-def-paymentrequestupdateeventinit" data-idl="" data-title="PaymentRequestUpdateEventInit">dictionary <span class="idlDictionaryID">PaymentRequestUpdateEventInit</span> : <span class="idlSuperclass">EventInit</span> {
+};</span></pre>
+        <p>The <a href="#idl-def-paymentrequestupdateevent" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequestUpdateEvent</code></code></a> enables the web page to update
+        the details of the payment request in response to a user interaction.</p>
+        <p>If the web page wishes to update the payment request then it should call <a href="#dfn-updatewith" class="internalDFN" data-link-type="dfn"><code><code>updateWith</code></code></a>
+        and provide a promise that will resolve with a <a href="#dom-paymentdetails" class="internalDFN" data-link-type="dfn"><code><code>PaymentDetails</code></code></a>
+        dictionary containing changed values that the <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> <em class="rfc2119" title="SHOULD">SHOULD</em> present to the user.</p>
+        <p>The PaymentRequestUpdateEvent constructor <em class="rfc2119" title="MUST">MUST</em> set the internal slot [[waitForUpdate]]
+        to <em>false</em>.</p>
+        <p>The <code><dfn data-dfn-type="dfn" id="dfn-updatewith">updateWith</dfn></code> method <em class="rfc2119" title="MUST">MUST</em> act as follows:</p>
+        <ol>
+          <li>
+            Let <em>target</em> be the <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> object that is the target of
+            the event.
+          </li>
+          <li>If the <a href="#dfn-dispatch-flag" class="internalDFN" data-link-type="dfn">dispatch flag</a> is unset, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> an <a href="#dfn-invalidstateerror" class="internalDFN" data-link-type="dfn"><code><code>InvalidStateError</code></code></a>.</li>
+          <li>
+            If [[waitForUpdate]] is <em>true</em>, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> an <a href="#dfn-invalidstateerror" class="internalDFN" data-link-type="dfn"><code><code>InvalidStateError</code></code></a>.
+          </li>
+          <li>
+            If <em>target</em>@[[state]] is not <em>interactive</em>, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> an
+            <a href="#dfn-invalidstateerror" class="internalDFN" data-link-type="dfn"><code><code>InvalidStateError</code></code></a>.
+          </li>
+          <li>
+            If <em>target</em>@[[updating]] is <em>true</em>, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a>
+            an <a href="#dfn-invalidstateerror" class="internalDFN" data-link-type="dfn"><code><code>InvalidStateError</code></code></a>.
+          </li>
+          <li>Set the <a href="#dfn-stop-propagation-flag" class="internalDFN" data-link-type="dfn">stop propagation flag</a> and <a href="#dfn-stop-immediate-propagation-flag" class="internalDFN" data-link-type="dfn">stop immediate propagation flag</a>.</li>
+          <li>Set [[waitForUpdate]] to <em>true</em>.</li>
+          <li>Set <em>target</em>@[[updating]] to <em>true</em>.</li>
+          <li>
+            The <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> <em class="rfc2119" title="SHOULD">SHOULD</em> disable the user interface that allows the user to accept
+            the payment request. This is to ensure that the payment is not accepted until the web page
+            has made changes required by the change. The web page <em class="rfc2119" title="MUST">MUST</em> settle the promise <code>d</code>
+            to indicate that the payment request is valid again.
+            <p>The <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> <em class="rfc2119" title="SHOULD">SHOULD</em> disable any part of the user interface that could cause
+            another update event to be fired. Only one update may be processed at a time.</p>
+            <div class="issue"><div class="issue-title marker" aria-level="4" role="heading" id="h-issue21"><span>Issue</span><span style="text-transform: none">: Consider adding a timeout to the updating flag in case page doesn't resolve promise from updateWith</span></div><div class="">
+              We should consider adding a timeout mechanism so that if the page never resolves
+              the promise within a reasonable amount of time then the user agent behaves as if
+              the promise was rejected.
+            </div></div>
+          </li>
+          <li>Return from the method and asynchronously perform the remaining steps.</li>
+          <li>Wait until <code>d</code> settles.</li>
+          <li>If <code>d</code> is resolved with <code>details</code> and <code>details</code> is a
+          <a href="#dom-paymentdetails" class="internalDFN" data-link-type="dfn"><code><code>PaymentDetails</code></code></a> dictionary, then:
+            <ol>
+              <li>
+                If <code>details</code> contains an <code>items</code> value, then copy
+                this value to the <code>items</code> field of <em>target</em>@[[details]].
+              </li>
+              <li>
+                If <code>details</code> contains a <code>shippingOptions</code> sequence, then
+                copy this value to the <code>shippingOptions</code> field of <em>target</em>@[[details]].
+              </li>
+              <li>Let <em>newOption</em> be <em>null</em>.</li>
+              <li>
+                If <code>details</code> contains a <code>shippingOptions</code> sequence with a
+                length of 1, then set <em>newOption</em> to the <code>id</code> of the only
+                <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>ShippingOption</code></code></a> in the sequence.
+              </li>
+              <li>
+                Set the value of <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>shippingOption</code></code></a> on <em>target</em> to
+                <em>newOption</em>.
+              </li>
+            </ol>
+          </li>
+          <li>Set [[waitForUpdate]] to <em>false</em>.</li>
+          <li>Set <em>target</em>@[[updating]] to <em>false</em>.</li>
+          <li>
+            The <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> should update the user interface based on any changed values
+            in <em>target</em>. The user agent <em class="rfc2119" title="SHOULD">SHOULD</em> re-enable user interface elements that might
+            have been disabled in the steps above if appropriate.
+          </li>
+        </ol>
+
+      </section>
+    </section>
+
+    <div class="issue" id="issue-53"><div class="issue-title marker" aria-level="2" role="heading" id="h-issue22"><a href="https://github.com/w3c/browser-payment-api/issues/53"><span>Issue 53</span></a><span style="text-transform: none">: Add section on internationalization</span></div><p class="">
+      The spec needs to clearly state how it will handle internationalization
+      issues (such as selection order for language via explicit preferences,
+      Accept-Language headers, etc.)
+    </p></div>
+
+
+    <div class="issue" id="issue-55"><div class="issue-title marker" aria-level="2" role="heading" id="h-issue23"><a href="https://github.com/w3c/browser-payment-api/issues/55"><span>Issue 55</span></a><span style="text-transform: none">: Add section on security considerations</span></div><p class="">
+      The spec should indicate how data might be passed securely through the API using
+      mechanisms such as field level encryption and message signing. While these may not
+      be standardised a reference to the payment method specifications would be appropriate
+      as well as some examples of how those specifcations might implement secure messaging.
+    </p></div>
+
+    <section id="algorithms" typeof="bibo:Chapter" resource="#algorithms" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-algorithms" resource="#h-algorithms"><span property="xhv:role" resource="xhv:heading"><span class="secno">13. </span>Algorithms</span></h2>
+
+      <p>When the internal slot [[state]] of a <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> object is set to
+      <em>interactive</em>, the <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> will trigger the following algorithms based
+      on user interaction.</p>
+
+      <section id="shipping-address-changed-algorithm" typeof="bibo:Chapter" resource="#shipping-address-changed-algorithm" property="bibo:hasPart">
+        <h3 id="h-shipping-address-changed-algorithm" resource="#h-shipping-address-changed-algorithm"><span property="xhv:role" resource="xhv:heading"><span class="secno">13.1 </span>Shipping address changed algorithm</span></h3>
+        <p>
+          The <dfn data-dfn-type="dfn" id="dfn-shipping-address-changed-algorithm">shipping address changed algorithm</dfn> runs when the user provides a new shipping
+          address. It <em class="rfc2119" title="MUST">MUST</em> run the following steps:
+        </p>
+        <ol>
+          <li>Let <em>request</em> be the <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> object that the user is
+          interacting with.</li>
+          <li>Let <em>name</em> be <code><dfn data-dfn-type="dfn" id="dfn-shippingaddresschange">shippingaddresschange</dfn></code>.</li>
+          <li>
+            Set the <a href="#idl-def-shippingaddress" class="internalDFN" data-link-type="dfn"><code><code>shippingAddress</code></code></a> attribute on <em>request</em> to the
+            shipping address provided by the user.
+          </li>
+          <li>
+            Run the <a href="#dfn-paymentrequest-updated-algorithm" class="internalDFN" data-link-type="dfn">PaymentRequest updated algorithm</a> with <em>request</em> and <em>name</em>.
+          </li>
+        </ol>
+      </section>
+
+      <section id="shipping-option-changed-algorithm" typeof="bibo:Chapter" resource="#shipping-option-changed-algorithm" property="bibo:hasPart">
+        <h3 id="h-shipping-option-changed-algorithm" resource="#h-shipping-option-changed-algorithm"><span property="xhv:role" resource="xhv:heading"><span class="secno">13.2 </span>Shipping option changed algorithm</span></h3>
+        <p>
+          The <dfn data-dfn-type="dfn" id="dfn-shipping-option-changed-algorithm">shipping option changed algorithm</dfn> runs when the user chooses a new shipping
+          option. It <em class="rfc2119" title="MUST">MUST</em> run the following steps:
+        </p>
+        <ol>
+          <li>Let <em>request</em> be the <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> object that the user is
+          interacting with.</li>
+          <li>Let <em>name</em> be <code><dfn data-dfn-type="dfn" id="dfn-shippingoptionchange">shippingoptionchange</dfn></code>.</li>
+          <li>
+            Set the <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>shippingOption</code></code></a> attribute on <em>request</em> to the
+            <code>id</code> string of the <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>ShippingOption</code></code></a> provided by the user.
+          </li>
+          <li>
+            Run the <a href="#dfn-paymentrequest-updated-algorithm" class="internalDFN" data-link-type="dfn">PaymentRequest updated algorithm</a> with <em>request</em> and <em>name</em>.
+          </li>
+        </ol>
+      </section>
+
+      <section id="paymentrequest-updated-algorithm" typeof="bibo:Chapter" resource="#paymentrequest-updated-algorithm" property="bibo:hasPart">
+        <h3 id="h-paymentrequest-updated-algorithm" resource="#h-paymentrequest-updated-algorithm"><span property="xhv:role" resource="xhv:heading"><span class="secno">13.3 </span>PaymentRequest updated algorithm</span></h3>
+        <p>
+          The <dfn data-dfn-type="dfn" id="dfn-paymentrequest-updated-algorithm">PaymentRequest updated algorithm</dfn> is run by other algorithms above to fire
+          an event to indicate that a user has made a change to a <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a>
+          called <em>request</em> with an event name of <em>name</em>.</p>
+        <p>It <em class="rfc2119" title="MUST">MUST</em> run the following steps:</p>
+        <ol>
+          <li>
+            If the <em>request</em>@[[updating]] is <em>true</em>, then terminate
+            this algorithm and take no further action. Only one update may take place at a time. This
+            should never occur.
+          </li>
+          <li>
+            If the <em>request</em>@[[state]] is not set to <em>interactive</em>,
+            then terminate this algorithm and take no further action. The <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> user interface
+            should ensure that this never occurs.
+          </li>
+          <li>Let <em>event</em> be a new <a href="#idl-def-paymentrequestupdateevent" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequestUpdateEvent</code></code></a>.</li>
+          <li>
+            <a href="#dfn-queue-a-task" class="internalDFN" data-link-type="dfn">Queue a task</a> to <a href="#dfn-fire-an-event" class="internalDFN" data-link-type="dfn">fire an event</a> named <em>name</em> of type <em>event</em>
+            at <em>request</em>.
+          </li>
+        </ol>
+      </section>
+
+      <section id="user-agent-delegates-payment-request-algorithm" typeof="bibo:Chapter" resource="#user-agent-delegates-payment-request-algorithm" property="bibo:hasPart">
+        <h3 id="h-user-agent-delegates-payment-request-algorithm" resource="#h-user-agent-delegates-payment-request-algorithm"><span property="xhv:role" resource="xhv:heading"><span class="secno">13.4 </span>User agent delegates payment request algorithm</span></h3>
+
+        <p>
+          The <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> interface allows a web page to call <code>abort</code>
+          to tell the <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> to abort the payment request and to tear down any user interface that
+          might be shown. For example, a web page may choose to do this the goods they are selling are
+          only available for a limited amount of time. If the user does not accept the payment request
+          within the allowed time period, then the request will be aborted.
+        </p>
+
+        <p>
+          A <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> may not always be able to abort a request. For example, if the <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a>
+          has delegated responsibility for the request to another app. To support this situation,
+          the <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> must run the <dfn data-dfn-type="dfn" id="dfn-user-agent-delegates-payment-request-algorithm">User agent delegates payment request algorithm</dfn>.
+          The algorithm <em class="rfc2119" title="MUST">MUST</em> run the following steps:
+        </p>
+
+        <ol>
+          <li>
+            Let <em>request</em> be the <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> object that the user is
+            interacting with.
+          </li>
+          <li>
+            If the <em>request</em>@[[updating]] is <em>true</em>, then terminate this
+            algorithm and take no further action. The <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> user interface should ensure
+            that this never occurs.
+          </li>
+          <li>
+            If the <em>request</em>@[[state]] is not <em>interactive</em>, then terminate this
+            algorithm and take no further action. The <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> user interface should ensure
+            that this never occurs.
+          </li>
+          <li>
+            Set <em>request</em>@[[state]] to <em>delegated</em>.
+          </li>
+        </ol>
+
+        <div class="issue" id="issue-39"><div class="issue-title marker" aria-level="4" role="heading" id="h-issue24"><a href="https://github.com/w3c/browser-payment-api/issues/39"><span>Issue 39</span></a><span style="text-transform: none">: How are web-based payment apps supported?</span></div><p class="">
+          The architecture document suggests that payment apps may take
+          numerous forms, including as web-based apps. This specification
+          should describe how the user-agent will pass the payment request
+          data and the complete signal to a web-based payment app and also how
+          it will receive the payment response from the payment app.
+        </p></div>
+
+        <div class="issue" id="issue-7"><div class="issue-title marker" aria-level="4" role="heading" id="h-issue25"><a href="https://github.com/w3c/browser-payment-api/issues/7"><span>Issue 7</span></a><span style="text-transform: none">: Should we support a delegated state for PaymentRequest?</span></div><div class="">
+          <p>We believe there are <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> configurations that can cause the UI to get into a state
+          where cancellation by the web page during user interaction is difficult. Users should still
+          be able to cancel the payment but script will not be able to. We need to investigate in more
+          detail the consequences of this and whether it is really needed.</p>
+          <p>If we specify <code>delegated</code> then it isn't necessary for all <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agents</a> to be
+          able to move to this state but it would be necessary for all payment flows that wish to call
+          <a href="#dfn-abort" class="internalDFN" data-link-type="dfn"><code><code>abort</code></code></a> to account for the situation where this may fail in the <code>delegated</code>
+          state.</p>
+        </div></div>
+
+        <div class="issue" id="issue-50"><div class="issue-title marker" aria-level="4" role="heading" id="h-issue26"><a href="https://github.com/w3c/browser-payment-api/issues/50"><span>Issue 50</span></a><span style="text-transform: none">: How are payment requests and responses passed between the browser and third-party native wallets?</span></div><p class="">
+          This specification should describe how the user agent will pass the
+          payment request data and the complete signal to a native payment app
+          and also how it will receive the payment response from the payment app.
+        </p></div>
+
+      </section>
+
+      <section id="user-accepts-the-payment-request-algorithm" typeof="bibo:Chapter" resource="#user-accepts-the-payment-request-algorithm" property="bibo:hasPart">
+        <h3 id="h-user-accepts-the-payment-request-algorithm" resource="#h-user-accepts-the-payment-request-algorithm"><span property="xhv:role" resource="xhv:heading"><span class="secno">13.5 </span>User accepts the payment request algorithm</span></h3>
+        <p>
+          The <dfn data-dfn-type="dfn" id="dfn-user-accepts-the-payment-request-algorithm">user accepts the payment request
+          algorithm</dfn> runs when the user accepts the payment request and confirms that they want
+          to pay. It <em class="rfc2119" title="MUST">MUST</em> run the following steps:
+        </p>
+        <ol>
+          <li>
+            Let <em>request</em> be the <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> object that the user is
+            interacting with.
+          </li>
+          <li>
+            If the <em>request</em>@[[updating]] is <em>true</em>, then terminate this
+            algorithm and take no further action. The <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> user interface should ensure
+            that this never occurs.
+          </li>
+          <li>
+            If <em>request</em>@[[state]] is not <em>interactive</em> and
+            the not <code>delegated</code>, then terminate this algorithm and take no further action.
+            The <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> user interface should ensure that this never occurs.
+          </li>
+          <li>
+            If the <code>requestShipping</code> value of <em>request</em>@[[options]]
+            is <code>true</code>, then if the <code>shippingAddress</code> attribute of <em>request</em>
+            is <code>null</code> or if the <code>shippingOption</code> attribute of <em>request</em>
+            is <code>null</code>, then terminate this algorithm and take no further action. This should
+            never occur.
+          </li>
+          <li>
+            Let <em>response</em> be a new <a href="#dom-paymentresponse" class="internalDFN" data-link-type="dfn"><code><code>PaymentResponse</code></code></a>.
+          </li>
+          <li>
+            Set the <code>methodName</code> attribute value of <em>response</em> to the <a href="#dfn-payment-method-identifier" class="internalDFN" data-link-type="dfn">payment method identifier</a>
+            for the <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">payment method</a> that the user selected to accept the payment.
+          </li>
+          <li>
+            Set the <code>details</code> attribute value of <em>response</em> to a <a href="#dfn-json-serializable-object" class="internalDFN" data-link-type="dfn">JSON-serializable object</a>
+            containing the <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">payment method</a> specific message used by the merchant to process
+            the transaction. The format of this response will be defined by a <a href="#dfn-payment-transaction-message-specification" class="internalDFN" data-link-type="dfn">Payment Transaction
+            Message Specification</a>.
+          </li>
+          <li>
+            Set <em>response</em>@[[completeCalled]] to <em>false</em>.
+          </li>
+          <li>
+            Set <em>request</em>@[[state]] to <em>closed</em>.
+          </li>
+          <li>
+            Resolve the pending promise <em>request</em>@[[acceptPromise]].
+          </li>
+        </ol>
+      </section>
+    </section>
+
+    <div class="issue" id="issue-20"><div class="issue-title marker" aria-level="2" role="heading" id="h-issue27"><a href="https://github.com/w3c/browser-payment-api/issues/20"><span>Issue 20</span></a><span style="text-transform: none">: Ensure references are up-to-date</span></div><div class="">
+      The references in the spec need to be up-to-date.
+    </div></div>
+
+
+
+<section id="references" class="appendix" typeof="bibo:Chapter" resource="#references" property="bibo:hasPart"><!--OddPage--><h2 id="h-references" resource="#h-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">A. </span>References</span></h2><section id="normative-references" typeof="bibo:Chapter" resource="#normative-references" property="bibo:hasPart"><h3 id="h-normative-references" resource="#h-normative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">A.1 </span>Normative references</span></h3><dl class="bibliography" resource=""><dt id="bib-DOM4">[DOM4]</dt><dd>Anne van Kesteren; Aryeh Gregor; Ms2ger; Alex Russell; Robin Berjon. W3C. <a href="http://www.w3.org/TR/dom/" property="dc:requires"><cite>W3C DOM4</cite></a>. 19 November 2015. W3C Recommendation. URL: <a href="http://www.w3.org/TR/dom/" property="dc:requires">http://www.w3.org/TR/dom/</a>
+</dd><dt id="bib-ECMA-262-2015">[ECMA-262-2015]</dt><dd>Allen Wirfs-Brock. Ecma International. <a href="http://www.ecma-international.org/ecma-262/6.0/index.html" property="dc:requires"><cite>ECMA-262 6th Edition, The ECMAScript 2015 Language Specification</cite></a>. June 2015. Standard. URL: <a href="http://www.ecma-international.org/ecma-262/6.0/index.html" property="dc:requires">http://www.ecma-international.org/ecma-262/6.0/index.html</a>
+</dd><dt id="bib-HTML5">[HTML5]</dt><dd>Ian Hickson; Robin Berjon; Steve Faulkner; Travis Leithead; Erika Doyle Navara; Edward O'Connor; Silvia Pfeiffer. W3C. <a href="http://www.w3.org/TR/html5/" property="dc:requires"><cite>HTML5</cite></a>. 28 October 2014. W3C Recommendation. URL: <a href="http://www.w3.org/TR/html5/" property="dc:requires">http://www.w3.org/TR/html5/</a>
+</dd><dt id="bib-ISO4217">[ISO4217]</dt><dd><cite><a href="http://www.iso.org/iso/home/standards/currency_codes.htm">ISO 4217: Codes for the representation of currencies and funds</a></cite>. ISO.
+</dd><dt id="bib-METHODIDENTIFIERS">[METHODIDENTIFIERS]</dt><dd>Adrian Bateman; Zach Koch; Richard Barnes; Roy McElmurry. <a href="https://www.w3.org/TR/payment-method-id/" property="dc:requires"><cite>Payment Method Identifiers</cite></a>. W3C Editor's Draft. URL: <a href="https://www.w3.org/TR/payment-method-id/" property="dc:requires">https://www.w3.org/TR/payment-method-id/</a>
+</dd><dt id="bib-POWERFUL-FEATURES">[POWERFUL-FEATURES]</dt><dd>Mike West. W3C. <a href="http://www.w3.org/TR/powerful-features/" property="dc:requires"><cite>Secure Contexts</cite></a>. 13 April 2016. W3C Working Draft. URL: <a href="http://www.w3.org/TR/powerful-features/" property="dc:requires">http://www.w3.org/TR/powerful-features/</a>
+</dd><dt id="bib-RFC2119">[RFC2119]</dt><dd>S. Bradner. IETF. <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires">https://tools.ietf.org/html/rfc2119</a>
+</dd><dt id="bib-WEBIDL">[WEBIDL]</dt><dd>Cameron McCormack; Boris Zbarsky. W3C. <a href="http://www.w3.org/TR/WebIDL-1/" property="dc:requires"><cite>WebIDL Level 1</cite></a>. 8 March 2016. W3C Candidate Recommendation. URL: <a href="http://www.w3.org/TR/WebIDL-1/" property="dc:requires">http://www.w3.org/TR/WebIDL-1/</a>
+</dd></dl></section><section id="informative-references" typeof="bibo:Chapter" resource="#informative-references" property="bibo:hasPart"><h3 id="h-informative-references" resource="#h-informative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">A.2 </span>Informative references</span></h3><dl class="bibliography" resource=""><dt id="bib-PAYMENTARCH">[PAYMENTARCH]</dt><dd>Adrian Bateman; Zach Koch; Richard Barnes; Roy McElmurry. <a href="https://w3c.github.io/browser-payment-api/specs/architecture.html" property="dc:references"><cite>Payment Request Architecture</cite></a>. W3C Editor's Draft. URL: <a href="https://w3c.github.io/browser-payment-api/specs/architecture.html" property="dc:references">https://w3c.github.io/browser-payment-api/specs/architecture.html</a>
+</dd></dl></section></section><p role="navigation" id="back-to-top"><a href="#toc"><abbr title="Back to Top">↑</abbr></a></p><script async="" defer="" src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>
