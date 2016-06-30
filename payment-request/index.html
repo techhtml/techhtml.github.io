@@ -641,7 +641,7 @@ body{font-family:sans-serif;font-weight:300;font-size:18px;}
             <p>This document is governed by the <a id="w3c_process_revision" href="http://www.w3.org/2015/Process-20150901/">1 September 2015 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
             </p>
 
-</section><nav id="toc"><h2 class="introductory" id="table-of-contents" resource="#table-of-contents"><span property="xhv:role" resource="xhv:heading">목차</span></h2><ul class="toc" role="directory"><li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>소개</a><ul class="toc"><li class="tocline"><a href="#goals" class="tocxref"><span class="secno">1.1 </span>목표</a></li><li class="tocline"><a href="#non-goals" class="tocxref"><span class="secno">1.2 </span>목표 아님</a></li></ul></li><li class="tocline"><a href="#conformance" class="tocxref"><span class="secno">2. </span>적합성</a></li><li class="tocline"><a href="#dependencies" class="tocxref"><span class="secno">3. </span>의존성</a></li><li class="tocline"><a href="#paymentrequest-interface" class="tocxref"><span class="secno">4. </span>PaymentRequest interface</a><ul class="toc"><li class="tocline"><a href="#paymentrequest-constructor" class="tocxref"><span class="secno">4.1 </span>PaymentRequest constructor</a></li><li class="tocline"><a href="#show" class="tocxref"><span class="secno">4.2 </span>show()</a></li><li class="tocline"><a href="#abort" class="tocxref"><span class="secno">4.3 </span>abort()</a></li><li class="tocline"><a href="#state-transitions" class="tocxref"><span class="secno">4.4 </span>State transitions</a></li><li class="tocline"><a href="#shippingaddress" class="tocxref"><span class="secno">4.5 </span>shippingAddress</a></li><li class="tocline"><a href="#shippingoption" class="tocxref"><span class="secno">4.6 </span>shippingOption</a></li><li class="tocline"><a href="#internal-slots" class="tocxref"><span class="secno">4.7 </span>Internal Slots</a></li></ul></li><li class="tocline"><a href="#currencyamount" class="tocxref"><span class="secno">5. </span>CurrencyAmount</a></li><li class="tocline"><a href="#paymentdetails-dictionary" class="tocxref"><span class="secno">6. </span>PaymentDetails dictionary</a></li><li class="tocline"><a href="#paymentoptions-dictionary" class="tocxref"><span class="secno">7. </span>PaymentOptions dictionary</a></li><li class="tocline"><a href="#paymentitem-dictionary" class="tocxref"><span class="secno">8. </span>PaymentItem dictionary</a></li><li class="tocline"><a href="#shippingaddress-interface" class="tocxref"><span class="secno">9. </span>ShippingAddress interface</a></li><li class="tocline"><a href="#shippingoption-interface" class="tocxref"><span class="secno">10. </span>ShippingOption interface</a></li><li class="tocline"><a href="#paymentresponse-interface" class="tocxref"><span class="secno">11. </span>PaymentResponse interface</a><ul class="toc"><li class="tocline"><a href="#complete" class="tocxref"><span class="secno">11.1 </span>complete()</a></li><li class="tocline"><a href="#internal-slots-1" class="tocxref"><span class="secno">11.2 </span>Internal Slots</a></li></ul></li><li class="tocline"><a href="#events" class="tocxref"><span class="secno">12. </span>Events</a><ul class="toc"><li class="tocline"><a href="#summary" class="tocxref"><span class="secno">12.1 </span>Summary</a></li><li class="tocline"><a href="#paymentrequestupdateevent" class="tocxref"><span class="secno">12.2 </span>PaymentRequestUpdateEvent</a></li></ul></li><li class="tocline"><a href="#algorithms" class="tocxref"><span class="secno">13. </span>Algorithms</a><ul class="toc"><li class="tocline"><a href="#shipping-address-changed-algorithm" class="tocxref"><span class="secno">13.1 </span>Shipping address changed algorithm</a></li><li class="tocline"><a href="#shipping-option-changed-algorithm" class="tocxref"><span class="secno">13.2 </span>Shipping option changed algorithm</a></li><li class="tocline"><a href="#paymentrequest-updated-algorithm" class="tocxref"><span class="secno">13.3 </span>PaymentRequest updated algorithm</a></li><li class="tocline"><a href="#user-agent-delegates-payment-request-algorithm" class="tocxref"><span class="secno">13.4 </span>User agent delegates payment request algorithm</a></li><li class="tocline"><a href="#user-accepts-the-payment-request-algorithm" class="tocxref"><span class="secno">13.5 </span>User accepts the payment request algorithm</a></li></ul></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">A. </span>References</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">A.1 </span>Normative references</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">A.2 </span>Informative references</a></li></ul></li></ul></nav>
+</section><nav id="toc"><h2 class="introductory" id="table-of-contents" resource="#table-of-contents"><span property="xhv:role" resource="xhv:heading">목차</span></h2><ul class="toc" role="directory"><li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>소개</a><ul class="toc"><li class="tocline"><a href="#goals" class="tocxref"><span class="secno">1.1 </span>목표</a></li><li class="tocline"><a href="#non-goals" class="tocxref"><span class="secno">1.2 </span>목표 아님</a></li></ul></li><li class="tocline"><a href="#conformance" class="tocxref"><span class="secno">2. </span>적합성</a></li><li class="tocline"><a href="#dependencies" class="tocxref"><span class="secno">3. </span>의존성</a></li><li class="tocline"><a href="#paymentrequest-interface" class="tocxref"><span class="secno">4. </span>PaymentRequest 인터페이스</a><ul class="toc"><li class="tocline"><a href="#paymentrequest-constructor" class="tocxref"><span class="secno">4.1 </span>PaymentRequest 생성자</a></li><li class="tocline"><a href="#show" class="tocxref"><span class="secno">4.2 </span>show()</a></li><li class="tocline"><a href="#abort" class="tocxref"><span class="secno">4.3 </span>abort()</a></li><li class="tocline"><a href="#state-transitions" class="tocxref"><span class="secno">4.4 </span>상태 변화</a></li><li class="tocline"><a href="#shippingaddress" class="tocxref"><span class="secno">4.5 </span>shippingAddress</a></li><li class="tocline"><a href="#shippingoption" class="tocxref"><span class="secno">4.6 </span>shippingOption</a></li><li class="tocline"><a href="#internal-slots" class="tocxref"><span class="secno">4.7 </span>내장 슬롯</a></li></ul></li><li class="tocline"><a href="#currencyamount" class="tocxref"><span class="secno">5. </span>CurrencyAmount</a></li><li class="tocline"><a href="#paymentdetails-dictionary" class="tocxref"><span class="secno">6. </span>PaymentDetails dictionary</a></li><li class="tocline"><a href="#paymentoptions-dictionary" class="tocxref"><span class="secno">7. </span>PaymentOptions dictionary</a></li><li class="tocline"><a href="#paymentitem-dictionary" class="tocxref"><span class="secno">8. </span>PaymentItem dictionary</a></li><li class="tocline"><a href="#shippingaddress-interface" class="tocxref"><span class="secno">9. </span>ShippingAddress interface</a></li><li class="tocline"><a href="#shippingoption-interface" class="tocxref"><span class="secno">10. </span>ShippingOption interface</a></li><li class="tocline"><a href="#paymentresponse-interface" class="tocxref"><span class="secno">11. </span>PaymentResponse interface</a><ul class="toc"><li class="tocline"><a href="#complete" class="tocxref"><span class="secno">11.1 </span>complete()</a></li><li class="tocline"><a href="#internal-slots-1" class="tocxref"><span class="secno">11.2 </span>Internal Slots</a></li></ul></li><li class="tocline"><a href="#events" class="tocxref"><span class="secno">12. </span>Events</a><ul class="toc"><li class="tocline"><a href="#summary" class="tocxref"><span class="secno">12.1 </span>Summary</a></li><li class="tocline"><a href="#paymentrequestupdateevent" class="tocxref"><span class="secno">12.2 </span>PaymentRequestUpdateEvent</a></li></ul></li><li class="tocline"><a href="#algorithms" class="tocxref"><span class="secno">13. </span>Algorithms</a><ul class="toc"><li class="tocline"><a href="#shipping-address-changed-algorithm" class="tocxref"><span class="secno">13.1 </span>Shipping address changed algorithm</a></li><li class="tocline"><a href="#shipping-option-changed-algorithm" class="tocxref"><span class="secno">13.2 </span>Shipping option changed algorithm</a></li><li class="tocline"><a href="#paymentrequest-updated-algorithm" class="tocxref"><span class="secno">13.3 </span>PaymentRequest updated algorithm</a></li><li class="tocline"><a href="#user-agent-delegates-payment-request-algorithm" class="tocxref"><span class="secno">13.4 </span>User agent delegates payment request algorithm</a></li><li class="tocline"><a href="#user-accepts-the-payment-request-algorithm" class="tocxref"><span class="secno">13.5 </span>User accepts the payment request algorithm</a></li></ul></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">A. </span>References</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">A.1 </span>Normative references</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">A.2 </span>Informative references</a></li></ul></li></ul></nav>
 
 
 
@@ -1054,25 +1054,60 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
               <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> a <a href="#dfn-typeerror" class="internalDFN" data-link-type="dfn"><code><code>TypeError</code></code></a>.
             </p>
           </li>
-          <li>Let <em>request</em> be a new <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a>.</li>
-          <li>Store <code>supportedMethods</code> into <em>request</em>@[[supportedMethods]].</li>
-          <li>Store <code>details</code> into <em>request</em>@[[details]].</li>
-          <li>Store <code>options</code> into <em>request</em>@[[options]].</li>
-          <li>Store <code>data</code> into <em>request</em>@[[data]].</li>
-          <li>Set the value <em>request</em>@[[state]] to <em>created</em>.</li>
           <li>
-            Set the value of the <a href="#idl-def-shippingaddress" class="internalDFN" data-link-type="dfn"><code><code>shippingAddress</code></code></a> attribute on <em>request</em> to <em>null</em>.
+            <em>request</em>를 새 <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a>로 합니다.
+            <p lang="en">Let <em>request</em> be a new <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a>.</p>
           </li>
           <li>
-            Set the value of the <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>shippingOption</code></code></a> attribute on <em>request</em> to <em>null</em>.
+            <em>request</em>@[[supportedMethods]]에 <code>supportedMethods</code>를 담습니다.
+            <p lang="en">Store <code>supportedMethods</code> into <em>request</em>@[[supportedMethods]].</p>
           </li>
           <li>
-            If <code>details</code> contains a <code>shippingOptions</code> sequence with a
-            length of 1, then set <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>shippingOption</code></code></a> to the <code>id</code> of
-            the only <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>ShippingOption</code></code></a> in the sequence.
+            <em>request</em>@[[details]]에 <code>details</code>를 담습니다.
+            <p lang="en">Store <code>details</code> into <em>request</em>@[[details]].</p>
           </li>
-          <li>Set the value <em>request</em>@[[updating]] to <em>false</em>.</li>
-          <li>Return <em>request</em>.</li>
+          <li>
+            <em>request</em>@[[options]]에 <code>options</code>를 담습니다.
+            <p lang="en">Store <code>options</code> into <em>request</em>@[[options]].</p>
+          </li>
+          <li>
+            <em>request</em>@[[data]]에 <code>data</code>를 담습니다.
+            <p lang="en">Store <code>data</code> into <em>request</em>@[[data]].</p>
+          </li>
+          <li>
+            <em>request</em>@[[state]] 값을 <em>created</em>로 정의합니다.
+            <p lang="en">Set the value <em>request</em>@[[state]] to <em>created</em>.</p>
+          </li>
+          <li>
+            <em>request</em>의 <a href="#idl-def-shippingaddress" class="internalDFN" data-link-type="dfn"><code><code>shippingAddress</code></code></a> 속성 값을 <em>null</em>로 정의합니다.
+            <p lang="en">
+              Set the value of the <a href="#idl-def-shippingaddress" class="internalDFN" data-link-type="dfn"><code><code>shippingAddress</code></code></a> attribute on <em>request</em> to <em>null</em>.
+            </p>
+          </li>
+          <li>
+            <em>request</em>의 <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>shippingOption</code></code></a> 속성 값을 <em>null</em>로 정의합니다.
+            <p lang="en">
+              Set the value of the <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>shippingOption</code></code></a> attribute on <em>request</em> to <em>null</em>.
+            </p>
+          </li>
+          <li>
+            <code>details</code>가 길이가 1인 <code>shippingOptions</code> 시퀀스를 포함하고 있다면,
+            <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>shippingOption</code></code></a>을
+            시퀀스 내 단일 <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>ShippingOption</code></code></a>의 <code>id</code>로 정의합니다.
+            <p lang="en">
+              If <code>details</code> contains a <code>shippingOptions</code> sequence with a
+              length of 1, then set <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>shippingOption</code></code></a> to the <code>id</code> of
+              the only <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>ShippingOption</code></code></a> in the sequence.
+            </p>
+          </li>
+          <li>
+            <em>request</em>@[[updating]] 값을 <em>false</em>로 정의합니다.
+            <p lang="en">Set the value <em>request</em>@[[updating]] to <em>false</em>.</p>
+          </li>
+          <li>
+            <em>request</em>를 반환합니다.
+            <p lang="en">Return <em>request</em>.</p>
+          </li>
         </ol>
       </section>
 
