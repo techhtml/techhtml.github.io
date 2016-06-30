@@ -843,7 +843,7 @@ interface <span class="idlInterfaceID">PaymentRequest</span> : <span class="idlS
       </p>
 
       <p>
-        다음 예제는 <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a>를 어떻게 구성해야하고 유저 인터렉션의 시작을 나타내는 예제입니다.
+        다음 예제는 <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a>를 어떻게 구성해야 하는 지와 유저 인터렉션의 시작을 나타내는 예제입니다.
       </p>
       <p lang="en">
         The following example shows how to construct a <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> and begin the
@@ -867,6 +867,11 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
       <section id="paymentrequest-constructor" typeof="bibo:Chapter" resource="#paymentrequest-constructor" property="bibo:hasPart">
         <h3 id="h-paymentrequest-constructor" resource="#h-paymentrequest-constructor"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1 </span>PaymentRequest 생성자</span></h3>
         <p>
+          <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a>는 제공된
+          <code>supportedMethods</code> 목록, 결제 <code>details</code>, 결제 <code>options</code>, 그리고 <code>data</code>로 정의된 어떤
+          <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">결제 수단</a>으로 구성합니다.
+        </p>
+        <p lang="en">
           The <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> is constructed using the supplied <code>supportedMethods</code>
           list, the payment <code>details</code>, the payment <code>options</code>, and any <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">payment
           method</a> specific <code>data</code>.
@@ -880,11 +885,11 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
           payment app.
         </div></div>
         <div class="note"><div class="note-title marker" aria-level="4" role="heading" id="h-note2"><span>Note</span></div><div class="">
-          <p>The <code>supportedMethods</code> sequence contains the <a href="#dfn-payment-method-identifier" class="internalDFN" data-link-type="dfn">payment method identifiers</a>
-          for the <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">payment methods</a> that the merchant web site accepts.</p>
+          <p><code>supportedMethods</code> 시퀀스는 판매자가 웹 사이트에서 허용하는 <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">결제 수단</a>을 위한 <a href="#dfn-payment-method-identifier" class="internalDFN" data-link-type="dfn">결제 수단 인식자</a>를 포함합니다.</p>
+          <p lang="en">The <code>supportedMethods</code> sequence contains the <a href="#dfn-payment-method-identifier" class="internalDFN" data-link-type="dfn">payment method identifiers</a> for the <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">payment methods</a> that the merchant web site accepts.</p>
           <div class="example"><div class="example-title marker"><span>Example 2</span></div><pre class="highlight prettyprint prettyprinted"><span class="pun">[</span><span class="str">"visa"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"bitcoin"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"bobpay.com"</span><span class="pun">]</span></pre></div>
-
-          <p>The <code>details</code> object contains information about the transaction that the
+          <p><code>details</code> 객체는 유저가 주문에서 라인 아이템을 완료하기 위해 요구되는 거래 관련 정보를 포함합니다.</p>
+          <p lang="en">The <code>details</code> object contains information about the transaction that the
           user is being asked to complete such as the line items in an order.</p>
           <div class="example"><div class="example-title marker"><span>Example 3</span></div><pre class="highlight prettyprint prettyprinted"><span class="pun">{</span><span class="pln">
   </span><span class="str">"items"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
@@ -906,14 +911,17 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
   </span><span class="pun">]</span><span class="pln">
 </span><span class="pun">}</span></pre></div>
 
-          <p>The <code>options</code> object contains information about what options the web page
+          <p><code>options</code> 객체는 웹 페이지가 결제 요청 시스템으로부터 사용하기를 원하는 옵션에 대한 정보를 포함합니다.</p>
+          <p lang="en">The <code>options</code> object contains information about what options the web page
           wishes to use from the payment request system.</p>
 
           <div class="example"><div class="example-title marker"><span>Example 4</span></div><pre class="highlight prettyprint prettyprinted"><span class="pun">{</span><span class="pln">
   </span><span class="str">"requestShipping"</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pln">
 </span><span class="pun">}</span></pre></div>
 
-          <p><code>data</code> is a <a href="#dfn-json-serializable-object" class="internalDFN" data-link-type="dfn">JSON-serializable object</a> that provides optional information that might
+          <p><code>data</code>는 지원하는 <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">결제 수단</a>에서 필요로 할 수 있는 옵션 정보를 가지는
+            <a href="#dfn-json-serializable-object" class="internalDFN" data-link-type="dfn">시리얼화된 JSON 객체</a>입니다.</p>
+          <p lang="en"><code>data</code> is a <a href="#dfn-json-serializable-object" class="internalDFN" data-link-type="dfn">JSON-serializable object</a> that provides optional information that might
           be needed by the supported <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">payment methods</a>.</p>
           <div class="example"><div class="example-title marker"><span>Example 5</span></div><pre class="highlight prettyprint prettyprinted"><span class="pun">{</span><span class="pln">
   </span><span class="str">"bobpay.com"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
@@ -969,23 +977,42 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
         </div></div>
 
         <p>
+          <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> 생성자는 반드시 아래 순서대로 동작해야합니다. [<em class="rfc2119" title="MUST">MUST</em>]
+        </p>
+        <p lang="en">
           The <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> constructor <em class="rfc2119" title="MUST">MUST</em> act as follows:
         </p>
         <ol>
           <li>
-            If the length of the <code>supportedMethods</code> sequence is zero, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a>
-            a <a href="#dfn-typeerror" class="internalDFN" data-link-type="dfn"><code><code>TypeError</code></code></a>.
+            <code>supportedMethods</code> 시퀀스의 길이가 0이라면,
+            <a href="#dfn-typeerror" class="internalDFN" data-link-type="dfn"><code><code>TypeError</code></code></a>를 <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">던집니다</a>.
+            <p lang="en">
+              If the length of the <code>supportedMethods</code> sequence is zero, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a>
+              a <a href="#dfn-typeerror" class="internalDFN" data-link-type="dfn"><code><code>TypeError</code></code></a>.
+            </p>
           </li>
           <li>
-            If the <a href="#dfn-global-object" class="internalDFN" data-link-type="dfn">global object</a> of the script calling the constructor is
-            not considered a <a href="#dfn-secure-context" class="internalDFN" data-link-type="dfn">secure context</a>, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> a <a href="#dfn-securityerror" class="internalDFN" data-link-type="dfn"><code><code>SecurityError</code></code></a>.
+            생성자를 호출하는 스크립트의 <a href="#dfn-global-object" class="internalDFN" data-link-type="dfn">전역 객체</a>가
+            <a href="#dfn-secure-context" class="internalDFN" data-link-type="dfn">보안 콘텍스트</a>를 고려하지 않았다면,
+            <a href="#dfn-securityerror" class="internalDFN" data-link-type="dfn"><code><code>SecurityError</code></code></a>를
+            <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">던집니다</a>.
+            <p lang="en">
+              If the <a href="#dfn-global-object" class="internalDFN" data-link-type="dfn">global object</a> of the script calling the constructor is
+              not considered a <a href="#dfn-secure-context" class="internalDFN" data-link-type="dfn">secure context</a>, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> a <a href="#dfn-securityerror" class="internalDFN" data-link-type="dfn"><code><code>SecurityError</code></code></a>.
+            </p>
             <div class="issue" id="issue-22"><div class="issue-title marker" aria-level="4" role="heading" id="h-issue9"><a href="https://github.com/w3c/browser-payment-api/issues/22"><span>Issue 22</span></a><span style="text-transform: none">: Spec should use [SecureContext] once that is defined in Web IDL</span></div><div class="">
               Using [SecureContext] in Web IDL will allow us to eliminate this prose.
             </div></div>
           </li>
           <li>
-            If the <a href="#dfn-browsing-context" class="internalDFN" data-link-type="dfn">browsing context</a> of the script calling the constructor is
-            not a <a href="#dfn-top-level-browsing-context" class="internalDFN" data-link-type="dfn">top-level browsing context</a>, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> a <a href="#dfn-securityerror" class="internalDFN" data-link-type="dfn"><code><code>SecurityError</code></code></a>.
+            생성자를 호출하는 스크립트의 <a href="#dfn-browsing-context" class="internalDFN" data-link-type="dfn">브라우징 콘텍스트</a>가
+            <a href="#dfn-top-level-browsing-context" class="internalDFN" data-link-type="dfn">상위 레벨 브라우징 콘텍스트</a>가 아니라면,
+            <a href="#dfn-securityerror" class="internalDFN" data-link-type="dfn"><code><code>SecurityError</code></code></a>를
+            <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">던집니다</a>.
+            <p lang="en">
+              If the <a href="#dfn-browsing-context" class="internalDFN" data-link-type="dfn">browsing context</a> of the script calling the constructor is
+              not a <a href="#dfn-top-level-browsing-context" class="internalDFN" data-link-type="dfn">top-level browsing context</a>, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> a <a href="#dfn-securityerror" class="internalDFN" data-link-type="dfn"><code><code>SecurityError</code></code></a>.
+            </p>
             <div class="issue" id="issue-2"><div class="issue-title marker" aria-level="4" role="heading" id="h-issue10"><a href="https://github.com/w3c/browser-payment-api/issues/2"><span>Issue 2</span></a><span style="text-transform: none">: Should the Payment Request API only be available in a top-level browsing context? </span></div><div class="">
               <p>There is an open issue about requiring
               a top-level browsing context for using <code>PaymentRequest</code>. Requiring one
@@ -995,19 +1022,37 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
             </div></div>
           </li>
           <li>
-            If <code>details</code> does not contain a sequence of <code>items</code> with length greater
-            than zero, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> a <a href="#dfn-typeerror" class="internalDFN" data-link-type="dfn"><code><code>TypeError</code></code></a>.
+            <code>details</code>가 0개보다 더 큰 길이인 <code>items</code>의 시퀀스를 포함하지 않는다면,
+            <a href="#dfn-typeerror" class="internalDFN" data-link-type="dfn"><code><code>TypeError</code></code></a>를
+            <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">던집니다</a>.
+            <p lang="en">
+              If <code>details</code> does not contain a sequence of <code>items</code> with length greater
+              than zero, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> a <a href="#dfn-typeerror" class="internalDFN" data-link-type="dfn"><code><code>TypeError</code></code></a>.
+            </p>
           </li>
           <li>
-            If <code>data</code> is not a <a href="#dfn-json-serializable-object" class="internalDFN" data-link-type="dfn">JSON-serializable object</a>, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> a <a href="#dfn-typeerror" class="internalDFN" data-link-type="dfn"><code><code>TypeError</code></code></a>.
+            <code>data</code>가 <a href="#dfn-json-serializable-object" class="internalDFN" data-link-type="dfn">시리얼화된 JSON 객체</a>가 아니라면,
+            <a href="#dfn-typeerror" class="internalDFN" data-link-type="dfn"><code><code>TypeError</code></code></a>를 <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">던집니다</a>.
+            <p lang="en">
+              If <code>data</code> is not a <a href="#dfn-json-serializable-object" class="internalDFN" data-link-type="dfn">JSON-serializable object</a>, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> a <a href="#dfn-typeerror" class="internalDFN" data-link-type="dfn"><code><code>TypeError</code></code></a>.
+            </p>
           </li>
           <li>
-            If the name of any top level field of <code>data</code> does not match one of the <a href="#dfn-payment-method-identifier" class="internalDFN" data-link-type="dfn">payment method identifiers</a>
-            in <code>supportedMethods</code>, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> a <a href="#dfn-typeerror" class="internalDFN" data-link-type="dfn"><code><code>TypeError</code></code></a>.
+            <code>data</code>의 어떤 상위 레벨 필드의 이름이
+            <code>supportedMethods</code> 내  <a href="#dfn-payment-method-identifier" class="internalDFN" data-link-type="dfn">결제 수단 인식자</a> 중 하나라도 매치되지 않는다면,
+            <a href="#dfn-typeerror" class="internalDFN" data-link-type="dfn"><code><code>TypeError</code></code></a>를 <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">던집니다</a>.
+            <p lang="en">
+              If the name of any top level field of <code>data</code> does not match one of the <a href="#dfn-payment-method-identifier" class="internalDFN" data-link-type="dfn">payment method identifiers</a>
+              in <code>supportedMethods</code>, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> a <a href="#dfn-typeerror" class="internalDFN" data-link-type="dfn"><code><code>TypeError</code></code></a>.
+            </p>
           </li>
           <li>
-            If the value of any top level field is not a <a href="#dfn-json-serializable-object" class="internalDFN" data-link-type="dfn">JSON-serializable object</a>, then
-            <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> a <a href="#dfn-typeerror" class="internalDFN" data-link-type="dfn"><code><code>TypeError</code></code></a>.
+            어떤 상위 레벨 필드의 값이 <a href="#dfn-json-serializable-object" class="internalDFN" data-link-type="dfn">시리얼화된 JSON 객체</a>가 아니라면,
+            <a href="#dfn-typeerror" class="internalDFN" data-link-type="dfn"><code><code>TypeError</code></code></a>를 <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">던집니다</a>.
+            <p lang="en">
+              If the value of any top level field is not a <a href="#dfn-json-serializable-object" class="internalDFN" data-link-type="dfn">JSON-serializable object</a>, then
+              <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> a <a href="#dfn-typeerror" class="internalDFN" data-link-type="dfn"><code><code>TypeError</code></code></a>.
+            </p>
           </li>
           <li>Let <em>request</em> be a new <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a>.</li>
           <li>Store <code>supportedMethods</code> into <em>request</em>@[[supportedMethods]].</li>
