@@ -826,6 +826,14 @@ interface <span class="idlInterfaceID">PaymentRequest</span> : <span class="idlS
 };</span></pre>
 
       <p>
+        웹 페이지는 결제 요청을 만들기 위해 <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a>를 생성합니다.
+        이는 보통 결제 프로세스에 진입하는 유저와 관련있습니다.
+        (예: 게임에서 "파워 업"을 선택했을 때, 자동으로 주차장 구조의 키오스크가 나오거나, "구매", "결제", "체크아웃"버튼이 활성화 되거나 하는 등)
+        <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a>는
+        유저가 결제 요청을 승인하거나 거절하기 전에 입력을 제공하여,
+        웹 페이지가 <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">유저 에이전트</a>와 정보를 교환할 수 있게 합니다.
+      </p>
+      <p lang="en">
         A web page creates a <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> to make a payment request. This is
         typically associated with the user initiating a payment process
         (e.g., selecting a "Power Up" in an interactive game, pulling up to an automated kiosk in a parking structure,
@@ -834,25 +842,30 @@ interface <span class="idlInterfaceID">PaymentRequest</span> : <span class="idlS
         <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> while the user is providing input before approving or denying a payment request.
       </p>
 
-      <p>The following example shows how to construct a <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> and begin the
-      user interaction:</p>
+      <p>
+        다음 예제는 <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a>를 어떻게 구성해야하고 유저 인터렉션의 시작을 나타내는 예제입니다.
+      </p>
+      <p lang="en">
+        The following example shows how to construct a <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> and begin the
+      user interaction:
+    </p>
 
       <div class="example"><div class="example-title marker"><span>Example 1</span></div><pre class="highlight prettyprint prettyprinted"><span class="kwd">var</span><span class="pln"> payment </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">PaymentRequest</span><span class="pun">(</span><span class="pln">supportedMethods</span><span class="pun">,</span><span class="pln"> details</span><span class="pun">,</span><span class="pln"> options</span><span class="pun">,</span><span class="pln"> data</span><span class="pun">);</span><span class="pln">
 payment</span><span class="pun">.</span><span class="pln">addEventListener</span><span class="pun">(</span><span class="str">"shippingaddresschange"</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">(</span><span class="pln">changeEvent</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
-    </span><span class="com">// Process shipping address change</span><span class="pln">
+</span><span class="com">// 배송 주소 변경 처리</span><span class="pln">
 </span><span class="pun">});</span><span class="pln">
 
 payment</span><span class="pun">.</span><span class="pln">show</span><span class="pun">().</span><span class="kwd">then</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(</span><span class="pln">paymentResponse</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
-  </span><span class="com">// Process paymentResponse</span><span class="pln">
-  </span><span class="com">// paymentResponse.methodName contains the selected payment method</span><span class="pln">
-  </span><span class="com">// paymentResponse.details contains a payment method specific response</span><span class="pln">
+</span><span class="com">// paymentResponse 처리</span><span class="pln">
+</span><span class="com">// paymentResponse.methodName이 선택된 결제 수단을 포함함</span><span class="pln">
+</span><span class="com">// paymentResponse.details가 응답에서 정의한 결제 수단을 포함함 </span><span class="pln">
   paymentResponse</span><span class="pun">.</span><span class="pln">complete</span><span class="pun">(</span><span class="kwd">true</span><span class="pun">);</span><span class="pln">
 </span><span class="pun">}).</span><span class="kwd">catch</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(</span><span class="pln">err</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
-  console</span><span class="pun">.</span><span class="pln">error</span><span class="pun">(</span><span class="str">"Uh oh, something bad happened"</span><span class="pun">,</span><span class="pln"> err</span><span class="pun">.</span><span class="pln">message</span><span class="pun">);</span><span class="pln">
+  console</span><span class="pun">.</span><span class="pln">error</span><span class="pun">(</span><span class="str">"어머, 뭔가 이상해요"</span><span class="pun">,</span><span class="pln"> err</span><span class="pun">.</span><span class="pln">message</span><span class="pun">);</span><span class="pln">
 </span><span class="pun">});</span></pre></div>
 
       <section id="paymentrequest-constructor" typeof="bibo:Chapter" resource="#paymentrequest-constructor" property="bibo:hasPart">
-        <h3 id="h-paymentrequest-constructor" resource="#h-paymentrequest-constructor"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1 </span>PaymentRequest constructor</span></h3>
+        <h3 id="h-paymentrequest-constructor" resource="#h-paymentrequest-constructor"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1 </span>PaymentRequest 생성자</span></h3>
         <p>
           The <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> is constructed using the supplied <code>supportedMethods</code>
           list, the payment <code>details</code>, the payment <code>options</code>, and any <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">payment
