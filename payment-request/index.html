@@ -1075,17 +1075,17 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
             <p lang="en">Store <code>data</code> into <em>request</em>@[[data]].</p>
           </li>
           <li>
-            <em>request</em>@[[state]] 값을 <em>created</em>로 정의합니다.
+            <em>request</em>@[[state]] 값을 <em>created</em>로 지정합니다.
             <p lang="en">Set the value <em>request</em>@[[state]] to <em>created</em>.</p>
           </li>
           <li>
-            <em>request</em>의 <a href="#idl-def-shippingaddress" class="internalDFN" data-link-type="dfn"><code><code>shippingAddress</code></code></a> 속성 값을 <em>null</em>로 정의합니다.
+            <em>request</em>의 <a href="#idl-def-shippingaddress" class="internalDFN" data-link-type="dfn"><code><code>shippingAddress</code></code></a> 속성 값을 <em>null</em>로 지정합니다.
             <p lang="en">
               Set the value of the <a href="#idl-def-shippingaddress" class="internalDFN" data-link-type="dfn"><code><code>shippingAddress</code></code></a> attribute on <em>request</em> to <em>null</em>.
             </p>
           </li>
           <li>
-            <em>request</em>의 <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>shippingOption</code></code></a> 속성 값을 <em>null</em>로 정의합니다.
+            <em>request</em>의 <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>shippingOption</code></code></a> 속성 값을 <em>null</em>로 지정합니다.
             <p lang="en">
               Set the value of the <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>shippingOption</code></code></a> attribute on <em>request</em> to <em>null</em>.
             </p>
@@ -1093,7 +1093,7 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
           <li>
             <code>details</code>가 길이가 1인 <code>shippingOptions</code> 시퀀스를 포함하고 있다면,
             <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>shippingOption</code></code></a>을
-            시퀀스 내 단일 <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>ShippingOption</code></code></a>의 <code>id</code>로 정의합니다.
+            시퀀스 내 단일 <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>ShippingOption</code></code></a>의 <code>id</code>로 지정합니다.
             <p lang="en">
               If <code>details</code> contains a <code>shippingOptions</code> sequence with a
               length of 1, then set <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>shippingOption</code></code></a> to the <code>id</code> of
@@ -1101,7 +1101,7 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
             </p>
           </li>
           <li>
-            <em>request</em>@[[updating]] 값을 <em>false</em>로 정의합니다.
+            <em>request</em>@[[updating]] 값을 <em>false</em>로 지정합니다.
             <p lang="en">Set the value <em>request</em>@[[updating]] to <em>false</em>.</p>
           </li>
           <li>
@@ -1113,10 +1113,18 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
 
       <section id="show" typeof="bibo:Chapter" resource="#show" property="bibo:hasPart">
         <h3 id="h-show" resource="#h-show"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.2 </span>show()</span></h3>
+        <!-- @todo: translate -->
         <p>
+          <code><dfn data-dfn-type="dfn" id="dfn-show">show</dfn></code> 메서드는 페이지에서 결제 요청에 따른 유저 인터렉션을 시작하고 싶을 때 호출합니다.
+          <code>show</code> 메서드는 <a href="#dfn-user-accepts-the-payment-request-algorithm" class="internalDFN" data-link-type="dfn">유저가 결제 요청을 승인</a>했을 때
+          해소되는 <a href="#dfn-promise" class="internalDFN" data-link-type="dfn">Promise</a>를 반환합니다.
+          유저 인터페이스 중 몇가지는 유저가 결제 요청을 원활하게 하도록 <code>show</code> 메서드 반환 이후 보여집니다.
+        </p>
+        <p lang="en">
           The <code><dfn data-dfn-type="dfn" id="dfn-show">show</dfn></code> method is called when the page wants to begin user interaction for the
           payment request. The <code>show</code> method will return a <a href="#dfn-promise" class="internalDFN" data-link-type="dfn">Promise</a> that will be resolved when the
-          <a href="#dfn-user-accepts-the-payment-request-algorithm" class="internalDFN" data-link-type="dfn">user accepts the payment request</a>. Some kind of user interface will be presented to the user to facilitate the
+          <a href="#dfn-user-accepts-the-payment-request-algorithm" class="internalDFN" data-link-type="dfn">user accepts the payment request</a>.
+          Some kind of user interface will be presented to the user to facilitate the
           payment request after the <code>show</code> method returns.
         </p>
 
@@ -1130,70 +1138,127 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
           for a subscription.
         </p></div>
         <p>
+          <a href="#dfn-show" class="internalDFN" data-link-type="dfn"><code><code>show</code></code></a> 메서드는 <em class="rfc2119" title="MUST">반드시</em> 아래 순서대로 동작해야합니다. [<em class="rfc2119" title="MUST">MUST</em>]
+        </p>
+        <p lang="en">
           The <a href="#dfn-show" class="internalDFN" data-link-type="dfn"><code><code>show</code></code></a> method <em class="rfc2119" title="MUST">MUST</em> act as follows:
         </p>
         <ol>
           <li>
-            Let <em>request</em> be the <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> object on which the method is called..
-          </li>
-          <li>If the value of <em>request</em>@[[state]] is not <em>created</em> then
-          <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> an <a href="#dfn-invalidstateerror" class="internalDFN" data-link-type="dfn"><code><code>InvalidStateError</code></code></a>.</li>
-          <li>
-            Set the value of <em>request</em>@[[state]] to <em>interactive</em>.
+            메소드가 호출되면 <em>request</em>를 <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> 객체로 합니다.
+            <p lang="en">Let <em>request</em> be the <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> object on which the method is called..</p>
           </li>
           <li>
-            Let <em>acceptPromise</em> be a new <a href="#dfn-promise" class="internalDFN" data-link-type="dfn">Promise</a>.
+            <em>request</em>@[[state]] 값이 <em>created</em>가 아니라면
+            <a href="#dfn-invalidstateerror" class="internalDFN" data-link-type="dfn"><code><code>InvalidStateError</code></code></a>를 <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">던집니다</a>.
+            <p lang="en">
+              If the value of <em>request</em>@[[state]] is not <em>created</em> then
+            <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> an <a href="#dfn-invalidstateerror" class="internalDFN" data-link-type="dfn"><code><code>InvalidStateError</code></code></a>.
+          </p>
           </li>
           <li>
-            Store <em>acceptPromise</em> in <em>request</em>@[[acceptPromise]].
+            <em>request</em>@[[state]] 값을 <em>interactive</em>로 지정합니다.
+            <p lang="en">Set the value of <em>request</em>@[[state]] to <em>interactive</em>.</p>
           </li>
           <li>
-            Return <em>acceptPromise</em> and asynchronously perform the remaining steps.
+            <em>acceptPromise</em>를 새 <a href="#dfn-promise" class="internalDFN" data-link-type="dfn">Promise</a>로 합니다.
+            <p lang="en">Let <em>acceptPromise</em> be a new <a href="#dfn-promise" class="internalDFN" data-link-type="dfn">Promise</a>.</p>
           </li>
           <li>
-            Let <em>acceptedMethods</em> be the sequence of payment method identifiers <em>request</em>@[[supportedMethods]]
-            with all identifiers removed that the <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> does not accept.
+            <em>request</em>@[[acceptPromise]]에 <em>acceptPromise</em>를 담습니다.
+            <p lang="en">Store <em>acceptPromise</em> in <em>request</em>@[[acceptPromise]].</p>
           </li>
           <li>
-            If the length of <em>acceptedMethods</em> is zero, then reject <em>acceptPromise</em> with a <a href="#dfn-notsupportederror" class="internalDFN" data-link-type="dfn"><code><code>NotSupportedError</code></code></a>.
+            <em>acceptPromise</em>를 반환받을 나머지 스텝을 비동기로 수행합니다.
+            <p lang="en">Return <em>acceptPromise</em> and asynchronously perform the remaining steps.</p>
           </li>
           <li>
-            Show a user interface to allow the user to interact with the payment request process. The <em>acceptPromise</em> will
-            later be resolved by the <a href="#dfn-user-accepts-the-payment-request-algorithm" class="internalDFN" data-link-type="dfn">user accepts the payment request algorithm</a> through interaction with the user interface.
+            <em>acceptedMethods</em>를 <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">유저 에이전트</a>가 허용하지 않는 모든 식별자를 제거한 결제 수단 식별자 <em>request</em>@[[supportedMethods]]의 시퀀스로 합니다.
+            <!-- @todo -->
+            <p lang="en">
+              Let <em>acceptedMethods</em> be the sequence of payment method identifiers <em>request</em>@[[supportedMethods]]
+              with all identifiers removed that the <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> does not accept.
+            </p>
+          </li>
+          <li>
+            <em>acceptedMethods</em>의 길이가 0이라면, <a href="#dfn-notsupportederror" class="internalDFN" data-link-type="dfn"><code><code>NotSupportedError</code></code></a>와 함께 <em>acceptPromise</em>를 받지 않습니다.
+            <p lang="en">
+              If the length of <em>acceptedMethods</em> is zero, then reject <em>acceptPromise</em> with a <a href="#dfn-notsupportederror" class="internalDFN" data-link-type="dfn"><code><code>NotSupportedError</code></code></a>.
+            </p>
+          </li>
+          <li>
+            결제 요청 프로세스가 유저와 상호작용할 수 있게 하는 유저 인터페이스를 보여줍니다.
+            <em>acceptPromise</em>는
+            유저 인터페이스의 인터렉션을 통한 <a href="#dfn-user-accepts-the-payment-request-algorithm" class="internalDFN" data-link-type="dfn">유저 에이전트 결제 요청 알고리즘</a>에 의해 해결됩니다.
+            <p lang="en">
+              Show a user interface to allow the user to interact with the payment request process.
+              The <em>acceptPromise</em> will later be resolved by the <a href="#dfn-user-accepts-the-payment-request-algorithm" class="internalDFN" data-link-type="dfn">user accepts the payment request algorithm</a> through interaction with the user interface.
+            </p>
           </li>
         </ol>
       </section>
 
       <section id="abort" typeof="bibo:Chapter" resource="#abort" property="bibo:hasPart">
         <h3 id="h-abort" resource="#h-abort"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.3 </span>abort()</span></h3>
-        <p>The <code><dfn data-dfn-type="dfn" id="dfn-abort">abort</dfn></code> method may be called if the web page wishes to abort the payment
+        <p><code><dfn data-dfn-type="dfn" id="dfn-abort">abort</dfn></code> 메소드는 웹 페이지에서
+          <a href="#dfn-show" class="internalDFN" data-link-type="dfn"><code><code>show</code></code></a> 메서드가 호출된 이후 [[acceptPromise]]가 해결되기 전에 결제 요청을 취소하기를 원할 때 호출합니다.</p>
+        <p lang="en">The <code><dfn data-dfn-type="dfn" id="dfn-abort">abort</dfn></code> method may be called if the web page wishes to abort the payment
         request after the <a href="#dfn-show" class="internalDFN" data-link-type="dfn"><code><code>show</code></code></a> method has been called and before the [[acceptPromise]]
         has been resolved.</p>
 
-        <p>The <a href="#dfn-abort" class="internalDFN" data-link-type="dfn"><code><code>abort</code></code></a> method <em class="rfc2119" title="MUST">MUST</em> act as follows:</p>
+        <p><a href="#dfn-abort" class="internalDFN" data-link-type="dfn"><code><code>abort</code></code></a> 메서드는 <em class="rfc2119" title="MUST">반드시</em> 아래 순서대로 동작해야합니다. [<em class="rfc2119" title="MUST">MUST</em>]</p>
+        <p lang="en">The <a href="#dfn-abort" class="internalDFN" data-link-type="dfn"><code><code>abort</code></code></a> method <em class="rfc2119" title="MUST">MUST</em> act as follows:</p>
+
         <ol>
-          <li>If the value of [[state]] is not <em>interactive</em> then
-          <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> an <a href="#dfn-invalidstateerror" class="internalDFN" data-link-type="dfn"><code><code>InvalidStateError</code></code></a>.</li>
-          <li>Set the value of the internal slot [[state]] to <em>closed</em>.</li>
-          <li>Return from the method and asynchronously perform the remaining steps.</li>
-          <li>Abort the current user interaction and close down any remaining user interface</li>
+          <li>
+            만약 [[state]] 값이 <em>interactive</em>가 아니라면
+            <a href="#dfn-invalidstateerror" class="internalDFN" data-link-type="dfn"><code><code>InvalidStateError</code></code></a>를
+            <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">던집니다</a>.
+            <p lang="en">
+              If the value of [[state]] is not <em>interactive</em> then
+              <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> an <a href="#dfn-invalidstateerror" class="internalDFN" data-link-type="dfn"><code><code>InvalidStateError</code></code></a>.
+            </p>
+          </li>
+          <li>
+            내장 슬롯 [[state]]의 값을 <em>closed</em>로 지정합니다.
+            <p lang="en">Set the value of the internal slot [[state]] to <em>closed</em>.</p>
+          </li>
+          <li>
+            메소드로부터 반환받을 나머지 스텝을 비동기로 수행합니다.
+            <p lang="en">Return from the method and asynchronously perform the remaining steps.</p>
+          </li>
+          <li>
+            현재 유저 인터렉션을 취소하고 남은 유저 인터페이스를 닫습니다.
+            <p lang="en">Abort the current user interaction and close down any remaining user interface</p>
+          </li>
         </ol>
       </section>
 
       <section typeof="bibo:Chapter" resource="#state-transitions" property="bibo:hasPart">
-        <h3 id="state-transitions" class="informative" resource="#state-transitions"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.4 </span>State transitions</span></h3>
-          <p>The internal slot [[state]] follows the following state transitions:</p>
+        <h3 id="state-transitions" class="informative" resource="#state-transitions"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.4 </span>상태 변화</span></h3>
+          <p>내장 슬롯 [[state]]는 아래의 상태 변화를 따릅니다:</p>
+          <p lang="en">The internal slot [[state]] follows the following state transitions:</p>
+          <p>역주: 아래 이미지는 원래 엑박이에요..</p>
           <img alt="Transition diagram for internal slot state of a PaymentRequest object" src="state-transitions.svg" width="608" height="235">
       </section>
 
       <section id="shippingaddress" typeof="bibo:Chapter" resource="#shippingaddress" property="bibo:hasPart">
         <h3 id="h-shippingaddress" resource="#h-shippingaddress"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.5 </span>shippingAddress</span></h3>
         <p>
+          <code>shippingAddress</code>는 유저가 배송 주소를 제공할 때 채워집니다.
+          기본값은 <em>null</em>입니다.
+          유저가 배송 주소를 제공할 때, <a href="#dfn-shipping-address-changed-algorithm" class="internalDFN" data-link-type="dfn">배송 주소 변경 알고리즘</a>이 동작합니다.
+        </p>
+        <p lang="en">
           <code>shippingAddress</code> is populated when the user provides a shipping
           address. It is <em>null</em> by default.
           When a user provides a shipping address, the <a href="#dfn-shipping-address-changed-algorithm" class="internalDFN" data-link-type="dfn">shipping address changed algorithm</a> runs.
         </p>
         <p>
+          <code><dfn data-dfn-type="dfn" id="dfn-onshippingaddresschange">onshippingaddresschange</dfn></code>는
+          <code>shippingaddresschange</code> <code>Event</code>를 위한 <code>EventHandler</code>입니다.
+        </p>
+        <p lang="en">
           <code><dfn data-dfn-type="dfn" id="dfn-onshippingaddresschange">onshippingaddresschange</dfn></code> is an <code>EventHandler</code> for an
           <code>Event</code> named <code>shippingaddresschange</code>.
         </p>
@@ -1202,25 +1267,39 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
       <section id="shippingoption" typeof="bibo:Chapter" resource="#shippingoption" property="bibo:hasPart">
         <h3 id="h-shippingoption" resource="#h-shippingoption"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.6 </span>shippingOption</span></h3>
         <p>
+          <code>shippingOption</code>은 유저가 배송 옵션을 선택했을 때 채워집니다.
+          기본값은 <em>null</em>입니다.
+          유저가 배송 옵션을 선택했을 때, <a href="#dfn-shipping-option-changed-algorithm" class="internalDFN" data-link-type="dfn">배송 옵션 변경 알고리즘</a>이 동작합니다.
+        </p>
+        <p lang="en">
           <code>shippingOption</code> is populated when the user chooses a shipping
           option. It is <em>null</em> by default.
           When a user chooses a shipping option, the <a href="#dfn-shipping-option-changed-algorithm" class="internalDFN" data-link-type="dfn">shipping option changed algorithm</a> runs.
         </p>
         <p>
+          <code><dfn data-dfn-type="dfn" id="dfn-onshippingoptionchange">onshippingoptionchange</dfn></code>는
+          <code>shippingoptionchange</code> <code>Event</code>를 위한 <code>EventHandler</code>입니다.
+        </p>
+        <p lang="en">
           <code><dfn data-dfn-type="dfn" id="dfn-onshippingoptionchange">onshippingoptionchange</dfn></code> is an <code>EventHandler</code> for an
           <code>Event</code> named <code>shippingoptionchange</code>.
         </p>
       </section>
 
       <section id="internal-slots" typeof="bibo:Chapter" resource="#internal-slots" property="bibo:hasPart">
-        <h3 id="h-internal-slots" resource="#h-internal-slots"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.7 </span>Internal Slots</span></h3>
-        <p>Instances of <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> are created with the internal slots in
+        <h3 id="h-internal-slots" resource="#h-internal-slots"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.7 </span>내장 슬롯</span></h3>
+        <p><a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a>의 인스턴스는 아래 표의 내장 슬롯과 함께 생성됩니다.</p>
+        <p lang="en">Instances of <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> are created with the internal slots in
         the following table:</p>
+        <!-- @todo : tables -->
         <table>
-          <tbody><tr><th>Internal Slot</th><th>Description (<em>non-normative</em>)</th></tr>
+          <tbody><tr><th>내장 슬롯</th><th>설명 (<em>표준이 아님</em>)</th></tr>
           <tr>
             <td>[[supportedMethods]]</td>
-            <td>The <code>supportMethods</code> supplied to the constructor.</td>
+            <td>
+              <code>supportMethods</code>는 생성자를 제공합니다.
+              <p lang="en">The <code>supportMethods</code> supplied to the constructor.</p>
+            </td>
           </tr>
           <tr>
             <td>[[details]]</td>
@@ -1277,7 +1356,12 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
       to support discounts might be implemented in a different manner (e.g., via a transaction type).
       </div></div>
       <p>
-        A <a href="#idl-def-currencyamount" class="internalDFN" data-link-type="dfn"><code><code>CurrencyAmount</code></code></a> dictionary is used to supply monetary amounts.
+        <a href="#idl-def-currencyamount" class="internalDFN" data-link-type="dfn"><code><code>CurrencyAmount</code></code></a> 사전은 금전 합계를 제공할 때 사용합니다.
+        아래 필드는 유효한 <a href="#idl-def-currencyamount" class="internalDFN" data-link-type="dfn"><code><code>CurrencyAmount</code></code></a>를 위해,
+        <em class="rfc2119" title="MUST">반드시</em> 제공해야합니다.
+      </p>
+      <p lang="en">
+        The <a href="#idl-def-currencyamount" class="internalDFN" data-link-type="dfn"><code><code>CurrencyAmount</code></code></a> dictionary is used to supply monetary amounts.
         The following fields <em class="rfc2119" title="MUST">MUST</em> be supplied for a <a href="#idl-def-currencyamount" class="internalDFN" data-link-type="dfn"><code><code>CurrencyAmount</code></code></a> to be valid:
       </p>
       <dl>
