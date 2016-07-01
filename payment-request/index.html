@@ -530,7 +530,7 @@ table.exceptions table {
   }
 }</script>
 <style>
-body{font-family:sans-serif;font-weight:300;font-size:18px;}
+body{font-size:18px;font-family:sans-serif;font-weight:300}
 :lang(en) {font-family:"Helvetica NEUE",sans-serif;font-size:14px;color:#888;}
 </style></head>
   <body class="h-entry toc-inline" role="document" id="respecDocument"><div class="head" role="contentinfo" id="respecHeader">
@@ -1367,13 +1367,20 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
       <dl>
         <dt><code><dfn data-dfn-type="dfn" id="dfn-currency">currency</dfn></code></dt>
         <dd>
-          <code>currency</code> is a string containing a currency identifier. The most common
-          identifiers are three-letter alphabetic codes as defined by [<cite><a class="bibref" href="#bib-ISO4217">ISO4217</a></cite>] (for example,
-          <code>"USD"</code> for US Dollars) however any string is considered valid and
-          <a data-lt="user agents" href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agents</a> <em class="rfc2119" title="MUST">MUST</em> not attempt to validate this string.
+          <code>currency</code>는 화폐 인식자를 포함하는 문자열입니다.
+          대부분의 인식자는 [<cite><a class="bibref" href="#bib-ISO4217">ISO4217</a></cite>]에서 정의하는 알파벳으로 구성된 세 글자 코드(예를 들어, <code>"USD"</code>는 US 달러를 나타냅니다)로 이루어져 있으나,
+          임의의 문자열도 유효할 수 있도록 고려해야하며,
+          <a data-lt="user agents" href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agents</a>는 <em class="rfc2119" title="MUST">반드시</em> 이 문자열의 유효성을 검증해서는 안됩니다.
+          <p lang="en">
+            <code>currency</code> is a string containing a currency identifier. The most common
+            identifiers are three-letter alphabetic codes as defined by [<cite><a class="bibref" href="#bib-ISO4217">ISO4217</a></cite>] (for example,
+            <code>"USD"</code> for US Dollars) however any string is considered valid and
+            <a data-lt="user agents" href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agents</a> <em class="rfc2119" title="MUST">MUST</em> not attempt to validate this string.
+          </p>
         </dd>
         <dt><code><dfn data-dfn-type="dfn" id="dfn-value">value</dfn></code></dt>
         <dd>
+          <!-- @todo -->
           A string containing the decimal monetary value. If a decimal separator is needed then the string
           <em class="rfc2119" title="MUST">MUST</em> use a single U+002E FULL STOP character as the decimal separator. The string <em class="rfc2119" title="MUST">MUST</em> begin
           with a single U+002D HYPHEN-MINUS character if the value is negative. All other characters must
@@ -1384,7 +1391,8 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
         </dd>
       </dl>
 
-      <p>The following example shows how to represent US$55.00.</p>
+      <p>다음 예제는 US$55.00을 나타냅니다.</p>
+      <p lang="en">The following example shows how to represent US$55.00.</p>
       <div class="example"><div class="example-title marker"><span>Example 6</span></div><pre class="highlight prettyprint prettyprinted"><span class="pun">{</span><span class="pln">
   </span><span class="str">"currency"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"USD"</span><span class="pun">,</span><span class="pln">
   </span><span class="str">"value"</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">"55.00"</span><span class="pln">
@@ -1392,18 +1400,28 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
     </section>
 
     <section id="paymentdetails-dictionary" typeof="bibo:Chapter" resource="#paymentdetails-dictionary" property="bibo:hasPart">
-      <!--OddPage--><h2 id="h-paymentdetails-dictionary" resource="#h-paymentdetails-dictionary"><span property="xhv:role" resource="xhv:heading"><span class="secno">6. </span>PaymentDetails dictionary</span></h2>
+      <!--OddPage--><h2 id="h-paymentdetails-dictionary" resource="#h-paymentdetails-dictionary"><span property="xhv:role" resource="xhv:heading"><span class="secno">6. </span>PaymentDetails 사전</span></h2>
       <pre class="def idl"><span class="idlDictionary" id="idl-def-paymentdetails" data-idl="" data-title="PaymentDetails">dictionary <span class="idlDictionaryID"><a data-lt="PaymentDetails" href="#dom-paymentdetails" class="internalDFN" data-link-type="dfn" data-for=""><code>PaymentDetails</code></a></span> {
 <span class="idlMember" id="idl-def-paymentdetails-items" data-idl="" data-title="items" data-dfn-for="paymentdetails">    <span class="idlMemberType">sequence&lt;<a href="#idl-def-paymentitem" class="internalDFN" data-link-type="dfn"><code>PaymentItem</code></a>&gt;</span>    <span class="idlMemberName">items</span>;</span>
 <span class="idlMember" id="idl-def-paymentdetails-shippingoptions" data-idl="" data-title="shippingOptions" data-dfn-for="paymentdetails">    <span class="idlMemberType">sequence&lt;<a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code>ShippingOption</code></a>&gt;</span> <span class="idlMemberName">shippingOptions</span>;</span>
 };</span></pre>
 
       <p>
+        <code><dfn data-dfn-for="" data-dfn-type="dfn" id="dom-paymentdetails" data-idl="">PaymentDetails</dfn></code> 사전은
+        <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> 생성자로 전달되며,
+        요청 거래에 대한 정보를 제공합니다. <code>PaymentDetails</code> 사전 또한
+        <a href="#dfn-updatewith" class="internalDFN" data-link-type="dfn"><code><code>updateWith</code></code></a>를 사용하여
+        거래 요청을 갱신할 수 있습니다.
+      </p>
+      <p lang="en">
         The <code><dfn data-dfn-for="" data-dfn-type="dfn" id="dom-paymentdetails" data-idl="">PaymentDetails</dfn></code> dictionary is passed to the <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a>
         constructor and provides information about the requested transaction. The <code>PaymentDetails</code>
         dictionary is also used to update the payment request using <a href="#dfn-updatewith" class="internalDFN" data-link-type="dfn"><code><code>updateWith</code></code></a>.
       </p>
       <p>
+        다음 필드는 <code>PaymentDetails</code> 사전의 일부입니다.
+      </p>
+      <p lang="en">
         The following fields are part of the <code>PaymentDetails</code> dictionary:
       </p>
       <dl>
