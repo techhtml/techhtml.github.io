@@ -1,5 +1,15 @@
 @charset "UTF-8";
 
+body {
+	font-size: 18px;
+	font-weight: 300;
+}
+
+p {
+	maring: 1.5em 0;
+	line-height:2em;
+}
+
 .headernotes {
   margin: 0;
   margin-bottom: 2em;
