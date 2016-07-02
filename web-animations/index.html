@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<title>웹 애니메이션</title>
+	</head>
+<body>
+<h1>웹 애니메이션</h1>
+
+<h2>작성자 드래프트, 2016년 6월 30일</h2>
+
+<p>이 버전 :</p>
+
+<p><a href="[https://w3c.github.io/web-animations/]">https://w3c.github.io/web-animations/</a></p>
+
+<p>최신 발행 버전 :</p>
+
+<p><a href="https://www.w3.org/TR/web-animations-1/">https://www.w3.org/TR/web-animations-1/</a></p>
+
+<p>이전 버전 :</p>
+
+<p><a href="https://www.w3.org/TR/2015/WD-web-animations-1-20150707/">https://www.w3.org/TR/2015/WD-web-animations-1-20150707/</a></p>
+
+<p><a href="https://www.w3.org/TR/2014/WD-web-animations-20140605/">https://www.w3.org/TR/2014/WD-web-animations-20140605/</a></p>
+
+<p><a href="https://www.w3.org/TR/2013/WD-web-animations-20130625/">https://www.w3.org/TR/2013/WD-web-animations-20130625/</a></p>
+
+<p>버전 히스토리 :</p>
+
+<p><a href="https://github.com/w3c/web-animations/commits/master">https://github.com/w3c/web-animations/commits/master</a></p>
+
+<p>피드백 :</p>
+
+<p>public-fx@w3.org with subject line “<a href="">web-animations</a> … message topic …” (archives)</p>
+
+<p>이슈 트래킹 :</p>
+
+<p>GitHub</p>
+
+<p>Inline In Spec</p>
+
+<p>작성자 :</p>
+
+<p>Brian Birtles (Mozilla Japan)</p>
+
+<p>Shane Stephens (Google Inc)</p>
+
+<p>Alex Danilo (Google Inc)</p>
+
+<p>Tab Atkins (Google Inc)</p>
+
+<h2>개요</h2>
+
+<p>이 스펙은 웹 페이지의 표시 변경 타이밍 및 동기화 모델을 정의한다.</p>
+
+<p>This specification also defines an application programming interface for interacting with this model and it is expected that further specifications will define declarative means for exposing these features.</p>
+
+<h2>1. 소개</h2>
+
+<p>이 섹션은 표준에 준하지 않는다.</p>
+
+<p>웹 애니메이션은 웹 플랫폼에서 동기화 및 애니메이션을 지원하는 모델을 정의한다. 이는 다른 스펙이 이 모델을 이용해 구축하고 선언적 의미를 통해 특징을 드러내기를 의도한다. 또한 이 스펙은 스크립트 지원을 제공하는 유저 에이전트에 의해 구현된 모델의 프로그래밍 인터페이스를 정의한다.</p>
+
+<h3>1.1. 사용 예시</h3>
+
+<p>웹 애니메이션 모델은 CSS 트랜지션, CSS 애니메이션 및 SVG를 표현하기 위해 필요한 특징을 제공하는 걸 의도한다. 따라서, 웹 애니메이션 모델 사용 예시는 세가지 스펙 사용 예시의 조합이다.</p>
+
+<p>프로그래밍 인터페이스를 위한 사용 예시는 아래 내용을 포함한다:</p>
+
+<p><strong>동작 중인 애니메이션 감지</strong></p>
+
+<p>웹 어플리케이션은 때로 어떤 상태를 업데이트 하기 전에 완료되는 특정 애니메이션 효과를 기다려야 한다. 이 스펙 내 프로그래밍 인터페이스는 CSS 트랜지션, CSS 애니메이션, SVG 애니메이션 및 프로그래밍 인터페이스를 직접 사용하여 구현되어 정의된 여부에 관계 없이 현재 동작 중인 애니메이션이 모두 완료되기를 어플리케이션이 기다리는 걸 허용한다.</p>
+
+<pre><code>예제 1. 
+// 요소를 삭제하기 전에 모든 애니메이션이 완료되기를 기다린다.
+Promise.all(
+  elem.getAnimations().map(animation =&gt; animation.finished)
+).then(() =&gt; elem.remove());
+</code></pre>
+
+<p>또한, 어플리케이션은 기다리지 않고 애니메이션의 재생 상태를 조회할 수도 있다.</p>
+
+<pre><code>예제 2.
+var isAnimating = elem.getAnimations().some(
+  animation =&gt; animation.playState == &#39;running&#39;
+);
+</code></pre>
+
+<p><strong>동작 중인 애니메이션 제어</strong></p>
+
+<p>때론 애니메이션이 외부 입력에 응답할 수 있도록 재생 제어를 수행하는 게 유용하다. 예를 들면, 사용자의 집중을 방해하지 않도록 모달 다이얼로그를 표시하기 전에 기존 모든 애니메이션을 멈출 필요가 있을 수 있다.</p>
+
+<pre><code>예제 3.
+// 문서 내 모든 애니메이션을 정지한다.
+document.getAnimations().forEach(
+  animation =&gt; animation.pause()
+);
+</code></pre>
+
+<p><strong>스크립트를 통한 애니메이션 생성</strong></p>
+
+<p>While it is possible to use ECMAScript to perform animation using requestAnimationFrame<a href="">ANIMATION-TIMING</a>, such animations behave differently to declarative animation in terms of how they are represented in the CSS cascade and the performance optimizations that are possible such as performing the animation on a separate thread. Using the Web Animations programming interface, it is possible to create animations from script that have the same behavior and performance characteristics as declarative animations.</p>
+
+<pre><code>예제 4.
+// 빠르게 페이드 아웃
+elem.animate({ transform: &#39;scale(0)&#39;, opacity: 0 }, 300);
+</code></pre>
+
+<p><strong>애니메이션 디버깅</strong></p>
+
+<p>복잡한 어플리케이션에서는, 요소의 현재 상태에 도착하는 방법을 정의하기 어려울 수도 있다. 웹 애니메이션 프로그래밍 인터페이스를 “왜 이 요소의 opacity가 변경되고 있는가?” 같은 질문에 대한 답으로 애니메이션 동작을 감지하는 데 사용할 수 있다</p>
+
+<pre><code>예제 5.
+// elem 중 opacity 애니메이션이 일어나고 있는 것의 id를 표시한다.
+elem.getAnimations().filter(
+  animation =&gt;
+animation.effect instanceof KeyframeEffectReadOnly &amp;&amp;
+animation.effect.getKeyframes().some(
+  frame =&gt; frame.hasOwnProperty(&#39;opacity&#39;)
+)
+).forEach(animation =&gt; console.log(animation.id));
+</code></pre>
+
+<p>마찬가지로, 애니메이션을 미세 조정하기 위해, 애니메이션 자체의 재생속도를 감소시키고 다시 재생하는 게 때로 필요하다.</p>
+
+<pre><code>예제 6
+// transform 애니메이션의 속도를 느리게하고 다시 재생한다.
+elem.getAnimations().filter(
+  animation =&gt;
+animation.effect instanceof KeyframeEffectReadOnly &amp;&amp;
+animation.effect.getKeyframes().some(
+  frame =&gt; frame.hasOwnProperty(&#39;transform&#39;)
+)
+).forEach(animation =&gt; {
+  animation.currentTime = 0;
+  animation.playbackRate = 0.5;
+});
+</code></pre>
+
+<p><strong>테스팅 애니메이션</strong></p>
+
+<p>In order to test applications that make use of animations it is often impractical to wait for such animations to run to completion. Rather, it is desirable to seek the animations to specific times.</p>
+
+<pre><code>예제 7.
+// Seek to the half-way point of an animation and check that the opacity is 50%
+elem.getAnimations().forEach(
+  animation =&gt;
+animation.currentTime =
+  animation.effect.getComputedTiming().delay +
+  animation.effect.getComputedTiming().activeDuration / 2;
+);
+assert.strictEqual(getComputedStyle(elem).opacity, &#39;0.5&#39;);
+
+// Check that the loading screen is hidden after the animations finish
+elem.getAnimations().forEach(
+  animation =&gt; animation.finish()
+);
+// Wait one frame so that event handlers have a chance to run
+requestAnimationFrame(() =&gt; {
+  assert.strictEqual(
+getComputedStyle(document.querySelector(&#39;#loading&#39;)).display, &#39;none&#39;);
+});
+</code></pre>
+
+</body>
+</html>
+
