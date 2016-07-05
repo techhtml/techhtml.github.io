@@ -1297,44 +1297,65 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
           <tr>
             <td>[[supportedMethods]]</td>
             <td>
-              <code>supportMethods</code>는 생성자를 제공합니다.
+              <code>supportMethods</code>는 생성자로 제공됩니다.
               <p lang="en">The <code>supportMethods</code> supplied to the constructor.</p>
             </td>
           </tr>
           <tr>
             <td>[[details]]</td>
             <td>
-              The current <a href="#dom-paymentdetails" class="internalDFN" data-link-type="dfn"><code><code>PaymentDetails</code></code></a> for the payment request initially
-              supplied to the constructor and then updated with calls to <a href="#dfn-updatewith" class="internalDFN" data-link-type="dfn"><code><code>updateWith</code></code></a>.
+              결제 요청을 위한 현재 <a href="#dom-paymentdetails" class="internalDFN" data-link-type="dfn"><code><code>PaymentDetails</code></code></a>는 생성자에 의해 초기화되고 생성되며
+              <a href="#dfn-updatewith" class="internalDFN" data-link-type="dfn"><code><code>updateWith</code></code></a>를 호출하여 갱신합니다.
+              <p lang="en">
+                The current <a href="#dom-paymentdetails" class="internalDFN" data-link-type="dfn"><code><code>PaymentDetails</code></code></a> for the payment request initially
+                supplied to the constructor and then updated with calls to <a href="#dfn-updatewith" class="internalDFN" data-link-type="dfn"><code><code>updateWith</code></code></a>.
+              </p>
             </td>
           </tr>
           <tr>
             <td>[[options]]</td>
-            <td>The <a href="#dom-paymentoptions" class="internalDFN" data-link-type="dfn"><code><code>PaymentOptions</code></code></a> supplied to the constructor.</td>
+            <td>
+              <a href="#dom-paymentoptions" class="internalDFN" data-link-type="dfn"><code><code>PaymentOptions</code></code></a>은 생성자로 제공됩니다.
+              <p lang="en">The <a href="#dom-paymentoptions" class="internalDFN" data-link-type="dfn"><code><code>PaymentOptions</code></code></a> supplied to the constructor.</p>
+            </td>
           </tr>
           <tr>
             <td>[[data]]</td>
             <td>
-              The payment method specific <code>data</code> supplied to the constructor used
-              by a <a href="#dfn-payment-app" class="internalDFN" data-link-type="dfn">Payment App</a> to influence the app's behavior.
+              <code>data</code>에 정의된 결제 수단은 앱의 동작에 영향을 주는 <a href="#dfn-payment-app" class="internalDFN" data-link-type="dfn">Payment App</a>에서 사용하는 생성자로 제공됩니다.
+              <p lang="en">
+                The payment method specific <code>data</code> supplied to the constructor used
+                by a <a href="#dfn-payment-app" class="internalDFN" data-link-type="dfn">Payment App</a> to influence the app's behavior.
+              </p>
             </td>
           </tr>
           <tr>
             <td>[[state]]</td>
-            <td>The current <a class="internalDFN" href="#state-transitions">state</a> of the payment request.</td>
+            <td>
+              결제 요청 중 현재 <a class="internalDFN" href="#state-transitions">상태</a>입니다.
+              <p lang="en">The current <a class="internalDFN" href="#state-transitions">state</a> of the payment request.</p>
+            </td>
           </tr>
           <tr>
             <td>[[updating]]</td>
             <td>
-               <em>true</em> is there is a pending <a href="#dfn-updatewith" class="internalDFN" data-link-type="dfn"><code><code>updateWith</code></code></a> call to update
-               the payment request and <em>false</em> otherwise.
+               <em>true</em>는 결제 요청을 업데이트하기 위해 <a href="#dfn-updatewith" class="internalDFN" data-link-type="dfn"><code><code>updateWith</code></code></a>을 호출한 상태이고,
+               <em>false</em>는 그 외의 경우입니다.
+               <p lang="en">
+                 <em>true</em> is there is a pending <a href="#dfn-updatewith" class="internalDFN" data-link-type="dfn"><code><code>updateWith</code></code></a> call to update
+                 the payment request and <em>false</em> otherwise.
+               </p>
             </td>
           </tr>
           <tr>
             <td>[[acceptPromise]]</td>
             <td>
-              The pending <a href="#dfn-promise" class="internalDFN" data-link-type="dfn">Promise</a> created during <a href="#dfn-show" class="internalDFN" data-link-type="dfn"><code><code>show</code></code></a> that will be
-              resolved if the user accepts the payment request.
+              <a href="#dfn-show" class="internalDFN" data-link-type="dfn"><code><code>show</code></code></a> 중에 생성된
+              보류중인 <a href="#dfn-promise" class="internalDFN" data-link-type="dfn">Promise</a>는 유저가 결제 요청을 수락하면 해결됩니다.
+              <p lang="en">
+                The pending <a href="#dfn-promise" class="internalDFN" data-link-type="dfn">Promise</a> created during <a href="#dfn-show" class="internalDFN" data-link-type="dfn"><code><code>show</code></code></a> that will be
+                resolved if the user accepts the payment request.
+              </p>
             </td>
           </tr>
         </tbody></table>
@@ -1358,7 +1379,7 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
       <p>
         <a href="#idl-def-currencyamount" class="internalDFN" data-link-type="dfn"><code><code>CurrencyAmount</code></code></a> 사전은 금전 합계를 제공할 때 사용합니다.
         아래 필드는 유효한 <a href="#idl-def-currencyamount" class="internalDFN" data-link-type="dfn"><code><code>CurrencyAmount</code></code></a>를 위해,
-        <em class="rfc2119" title="MUST">반드시</em> 제공해야합니다.
+        <em class="rfc2119" title="MUST">반드시</em> 제공해야합니다. [<em class="rfc2119" title="MUST">MUST</em>]
       </p>
       <p lang="en">
         The <a href="#idl-def-currencyamount" class="internalDFN" data-link-type="dfn"><code><code>CurrencyAmount</code></code></a> dictionary is used to supply monetary amounts.
