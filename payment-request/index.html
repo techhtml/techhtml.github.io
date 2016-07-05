@@ -1401,13 +1401,19 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
         </dd>
         <dt><code><dfn data-dfn-type="dfn" id="dfn-value">value</dfn></code></dt>
         <dd>
-          <!-- @todo -->
-          A string containing the decimal monetary value. If a decimal separator is needed then the string
-          <em class="rfc2119" title="MUST">MUST</em> use a single U+002E FULL STOP character as the decimal separator. The string <em class="rfc2119" title="MUST">MUST</em> begin
-          with a single U+002D HYPHEN-MINUS character if the value is negative. All other characters must
-          be characters in the range U+0030 DIGIT ZERO (0) to U+0039 DIGIT NINE (9).
+          10진수 화폐 값을 포함하는 문자열입니다. 만약 10진수 구분자가 필요하다면 문자열은 <em class="rfc2119" title="MUST">반드시</em>
+          single U+002E FULL STOP을 10진수 구분자로 사용하여야 합니다 [<em class="rfc2119" title="MUST">MUST</em>].
+          값이 음수라면 문자열은 <em class="rfc2119" title="MUST">반드시</em> single U+002D HYPHEN-MINUS로 시작해야합니다 [<em class="rfc2119" title="MUST">MUST</em>].
+          그 밖의 모든 문자는 반드시 U+0030 DIGIT ZERO (0)부터 U+0039 DIGIT NINE (9) 범위에 속하는 문자로 시작해야합니다.
+          <p lang="en">
+            A string containing the decimal monetary value. If a decimal separator is needed then the string
+            <em class="rfc2119" title="MUST">MUST</em> use a single U+002E FULL STOP character as the decimal separator. The string <em class="rfc2119" title="MUST">MUST</em> begin
+            with a single U+002D HYPHEN-MINUS character if the value is negative. All other characters must
+            be characters in the range U+0030 DIGIT ZERO (0) to U+0039 DIGIT NINE (9).
+          </p>
           <div class="note"><div class="note-title marker" aria-level="3" role="heading" id="h-note3"><span>Note</span></div><div class="">
-            The string should match the regular expression <code>^-?[0-9]+(\.[0-9]+)?$</code>.
+            문자열은 반드시 이 정규 표현식과 매칭해야 합니다. <code>^-?[0-9]+(\.[0-9]+)?$</code>
+            <p lang="en">The string should match the regular expression <code>^-?[0-9]+(\.[0-9]+)?$</code>.</p>
           </div></div>
         </dd>
       </dl>
