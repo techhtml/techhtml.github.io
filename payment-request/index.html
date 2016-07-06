@@ -853,7 +853,7 @@ interface <span class="idlInterfaceID">PaymentRequest</span> : <span class="idlS
 
       <div class="example"><div class="example-title marker"><span>Example 1</span></div><pre class="highlight prettyprint prettyprinted"><span class="kwd">var</span><span class="pln"> payment </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">PaymentRequest</span><span class="pun">(</span><span class="pln">supportedMethods</span><span class="pun">,</span><span class="pln"> details</span><span class="pun">,</span><span class="pln"> options</span><span class="pun">,</span><span class="pln"> data</span><span class="pun">);</span><span class="pln">
 payment</span><span class="pun">.</span><span class="pln">addEventListener</span><span class="pun">(</span><span class="str">"shippingaddresschange"</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">(</span><span class="pln">changeEvent</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
-</span><span class="com">// 배송 주소 변경 처리</span><span class="pln">
+</span><span class="com">// 배송지 변경 처리</span><span class="pln">
 </span><span class="pun">});</span><span class="pln">
 
 payment</span><span class="pun">.</span><span class="pln">show</span><span class="pun">().</span><span class="kwd">then</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(</span><span class="pln">paymentResponse</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
@@ -1076,17 +1076,17 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
             <p lang="en">Store <code>data</code> into <em>request</em>@[[data]].</p>
           </li>
           <li>
-            <em>request</em>@[[state]] 값을 <em>created</em>로 지정합니다.
+            <em>request</em>@[[state]] 값을 <em>created</em>로 설정합니다.
             <p lang="en">Set the value <em>request</em>@[[state]] to <em>created</em>.</p>
           </li>
           <li>
-            <em>request</em>의 <a href="#idl-def-shippingaddress" class="internalDFN" data-link-type="dfn"><code><code>shippingAddress</code></code></a> 속성 값을 <em>null</em>로 지정합니다.
+            <em>request</em>의 <a href="#idl-def-shippingaddress" class="internalDFN" data-link-type="dfn"><code><code>shippingAddress</code></code></a> 속성 값을 <em>null</em>로 설정합니다.
             <p lang="en">
               Set the value of the <a href="#idl-def-shippingaddress" class="internalDFN" data-link-type="dfn"><code><code>shippingAddress</code></code></a> attribute on <em>request</em> to <em>null</em>.
             </p>
           </li>
           <li>
-            <em>request</em>의 <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>shippingOption</code></code></a> 속성 값을 <em>null</em>로 지정합니다.
+            <em>request</em>의 <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>shippingOption</code></code></a> 속성 값을 <em>null</em>로 설정합니다.
             <p lang="en">
               Set the value of the <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>shippingOption</code></code></a> attribute on <em>request</em> to <em>null</em>.
             </p>
@@ -1094,7 +1094,7 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
           <li>
             <code>details</code>가 길이가 1인 <code>shippingOptions</code> 시퀀스를 포함하고 있다면,
             <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>shippingOption</code></code></a>을
-            시퀀스 내 단일 <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>ShippingOption</code></code></a>의 <code>id</code>로 지정합니다.
+            시퀀스 내 단일 <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>ShippingOption</code></code></a>의 <code>id</code>로 설정합니다.
             <p lang="en">
               If <code>details</code> contains a <code>shippingOptions</code> sequence with a
               length of 1, then set <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>shippingOption</code></code></a> to the <code>id</code> of
@@ -1102,7 +1102,7 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
             </p>
           </li>
           <li>
-            <em>request</em>@[[updating]] 값을 <em>false</em>로 지정합니다.
+            <em>request</em>@[[updating]] 값을 <em>false</em>로 설정합니다.
             <p lang="en">Set the value <em>request</em>@[[updating]] to <em>false</em>.</p>
           </li>
           <li>
@@ -1158,7 +1158,7 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
           </p>
           </li>
           <li>
-            <em>request</em>@[[state]] 값을 <em>interactive</em>로 지정합니다.
+            <em>request</em>@[[state]] 값을 <em>interactive</em>로 설정합니다.
             <p lang="en">Set the value of <em>request</em>@[[state]] to <em>interactive</em>.</p>
           </li>
           <li>
@@ -1221,7 +1221,7 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
             </p>
           </li>
           <li>
-            내장 슬롯 [[state]]의 값을 <em>closed</em>로 지정합니다.
+            내장 슬롯 [[state]]의 값을 <em>closed</em>로 설정합니다.
             <p lang="en">Set the value of the internal slot [[state]] to <em>closed</em>.</p>
           </li>
           <li>
@@ -1246,9 +1246,9 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
       <section id="shippingaddress" typeof="bibo:Chapter" resource="#shippingaddress" property="bibo:hasPart">
         <h3 id="h-shippingaddress" resource="#h-shippingaddress"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.5 </span>shippingAddress</span></h3>
         <p>
-          <code>shippingAddress</code>는 유저가 배송 주소를 제공할 때 채워집니다.
+          <code>shippingAddress</code>는 유저가 배송지를 제공할 때 채워집니다.
           기본값은 <em>null</em>입니다.
-          유저가 배송 주소를 제공할 때, <a href="#dfn-shipping-address-changed-algorithm" class="internalDFN" data-link-type="dfn">배송 주소 변경 알고리즘</a>이 동작합니다.
+          유저가 배송지를 제공할 때, <a href="#dfn-shipping-address-changed-algorithm" class="internalDFN" data-link-type="dfn">배송지 변경 알고리즘</a>이 동작합니다.
         </p>
         <p lang="en">
           <code>shippingAddress</code> is populated when the user provides a shipping
@@ -1517,9 +1517,9 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
         <dt><code><dfn data-dfn-type="dfn" id="dfn-requestshipping">requestShipping</dfn></code></dt>
         <dd>
           이 <em>boolean</em> 값은 <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">유저 에이전트가</a>
-          결제 요청의 일부로 배송 주소를 모으고 반환해줄 지 결정합니다.
-          예를 들어, 판매자가 유저에게 물리적인 물건을 배송해야할 때 이 값을 <code>true</code>로 지정합니다.
-          온라인에서만 판매하는 전자 상품 거래인 경우에는 이 값을 <code>false</code>로 지정합니다.
+          결제 요청의 일부로 배송지를 모으고 반환해줄 지 결정합니다.
+          예를 들어, 판매자가 유저에게 물리적인 물건을 배송해야할 때 이 값을 <code>true</code>로 설정합니다.
+          온라인에서만 판매하는 전자 상품 거래인 경우에는 이 값을 <code>false</code>로 설정합니다.
           만약 이 값이 제공되지 않은 경우 <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a>는
           <code>false</code> 값이 제공되었다고 가정하여 동작합니다.
           <p lang="en">
@@ -1608,7 +1608,7 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
         <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">유저 에이전트</a>는
         <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> 객체의
         <code>shippingAddress</code> 필드를
-        사용자가 선택한 배송 주소로 채웁니다.
+        사용자가 선택한 배송지로 채웁니다.
       </p>
       <p lang="en">
         If the <a href="#dfn-requestshipping" class="internalDFN" data-link-type="dfn"><code>requestShipping</code></a> flag was set to <code>true</code> in the <a href="#dom-paymentoptions" class="internalDFN" data-link-type="dfn"><code>PaymentOptions</code></a>
@@ -1754,7 +1754,7 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
             </p>
           </li>
           <li>
-            내장 슬롯 [[completeCalled]]의 값을 <em>true</em>로 지정합니다.
+            내장 슬롯 [[completeCalled]]의 값을 <em>true</em>로 설정합니다.
             <p lang="en">Set the value of the internal slot [[completeCalled]] to <em>true</em>.</p>
           </li>
           <li>
@@ -1820,7 +1820,7 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
             <td><code>shippingaddresschange</code></td>
             <td><a href="#idl-def-paymentrequestupdateevent" class="internalDFN" data-link-type="dfn"><code>PaymentRequestUpdateEvent</code></a></td>
             <td>
-              유저가 새로운 배송 주소를 제공한다.
+              유저가 새로운 배송지를 제공한다.
               <p lang="en">The user provides a new shipping address.</p>
             </td>
           </tr>
@@ -1906,17 +1906,17 @@ interface <span class="idlInterfaceID">PaymentRequestUpdateEvent</span> : <span 
           </li>
           <li>
             <a href="#dfn-stop-propagation-flag" class="internalDFN" data-link-type="dfn">stop propagation flag</a>와
-            <a href="#dfn-stop-immediate-propagation-flag" class="internalDFN" data-link-type="dfn">stop immediate propagation flag</a>를 지정합니다.
+            <a href="#dfn-stop-immediate-propagation-flag" class="internalDFN" data-link-type="dfn">stop immediate propagation flag</a>를 설정합니다.
             <p lang="en">
               Set the <a href="#dfn-stop-propagation-flag" class="internalDFN" data-link-type="dfn">stop propagation flag</a> and <a href="#dfn-stop-immediate-propagation-flag" class="internalDFN" data-link-type="dfn">stop immediate propagation flag</a>.
             </p>
           </li>
           <li>
-            [[waitForUpdate]]를 <em>true</em>로 지정합니다.
+            [[waitForUpdate]]를 <em>true</em>로 설정합니다.
             <p lang="en">Set [[waitForUpdate]] to <em>true</em>.</p>
           </li>
           <li>
-            <em>target</em>@[[updating]]를 <em>true</em>로 지정합니다.
+            <em>target</em>@[[updating]]를 <em>true</em>로 설정합니다.
             <p lang="en">Set <em>target</em>@[[updating]] to <em>true</em>.</p>
           </li>
           <li>
@@ -1986,7 +1986,7 @@ interface <span class="idlInterfaceID">PaymentRequestUpdateEvent</span> : <span 
               </li>
               <li>
                 만약 <code>details</code>가 <code>shippingOptions</code> 시퀀스를 가지고 그 길이가 1이라면,
-                <em>newOption</em>을 시퀀스 내 단일 <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>ShippingOption</code></code></a>의 <code>id</code>로 지정합니다.
+                <em>newOption</em>을 시퀀스 내 단일 <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>ShippingOption</code></code></a>의 <code>id</code>로 설정합니다.
                 <p lang="en">
                   If <code>details</code> contains a <code>shippingOptions</code> sequence with a
                   length of 1, then set <em>newOption</em> to the <code>id</code> of the only
@@ -1996,7 +1996,7 @@ interface <span class="idlInterfaceID">PaymentRequestUpdateEvent</span> : <span 
               <li>
                 <em>target</em>의
                 <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>shippingOption</code></code></a> 값을
-                <em>newOption</em>으로 지정합니다.
+                <em>newOption</em>으로 설정합니다.
                 <p lang="en">
                   Set the value of <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>shippingOption</code></code></a> on <em>target</em> to
                   <em>newOption</em>.
@@ -2005,11 +2005,11 @@ interface <span class="idlInterfaceID">PaymentRequestUpdateEvent</span> : <span 
             </ol>
           </li>
           <li>
-            [[waitForUpdate]]를 <em>fasle</em>로 지정합니다.
+            [[waitForUpdate]]를 <em>fasle</em>로 설정합니다.
             <p lang="en">Set [[waitForUpdate]] to <em>false</em>.</p>
           </li>
           <li>
-            <em>target</em>@[[updating]]을 <em>false</em>로 지정합니다.
+            <em>target</em>@[[updating]]을 <em>false</em>로 설정합니다.
             <p lang="en">Set <em>target</em>@[[updating]] to <em>false</em>.</p>
           </li>
           <li>
@@ -2041,48 +2041,87 @@ interface <span class="idlInterfaceID">PaymentRequestUpdateEvent</span> : <span 
     </p></div>
 
     <section id="algorithms" typeof="bibo:Chapter" resource="#algorithms" property="bibo:hasPart">
-      <!--OddPage--><h2 id="h-algorithms" resource="#h-algorithms"><span property="xhv:role" resource="xhv:heading"><span class="secno">13. </span>Algorithms</span></h2>
+      <!--OddPage--><h2 id="h-algorithms" resource="#h-algorithms"><span property="xhv:role" resource="xhv:heading"><span class="secno">13. </span>알고리즘</span></h2>
 
-      <p>When the internal slot [[state]] of a <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> object is set to
+      <p>
+        <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> 객체의 내장 슬롯 [[state]]가
+        <em>interactive</em>로 지정되었을 때,
+        <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">유저 에이전트</a>는 아래 알고리즘을 유저 인터렉션을 기반으로 일으켜야합니다.
+      </p>
+      <p lang="en">When the internal slot [[state]] of a <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> object is set to
       <em>interactive</em>, the <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> will trigger the following algorithms based
       on user interaction.</p>
 
       <section id="shipping-address-changed-algorithm" typeof="bibo:Chapter" resource="#shipping-address-changed-algorithm" property="bibo:hasPart">
-        <h3 id="h-shipping-address-changed-algorithm" resource="#h-shipping-address-changed-algorithm"><span property="xhv:role" resource="xhv:heading"><span class="secno">13.1 </span>Shipping address changed algorithm</span></h3>
+        <h3 id="h-shipping-address-changed-algorithm" resource="#h-shipping-address-changed-algorithm"><span property="xhv:role" resource="xhv:heading"><span class="secno">13.1 </span>배송지 변경 알고리즘</span></h3>
         <p>
-          The <dfn data-dfn-type="dfn" id="dfn-shipping-address-changed-algorithm">shipping address changed algorithm</dfn> runs when the user provides a new shipping
+          <dfn data-dfn-type="dfn" id="dfn-shipping-address-changed-algorithm">배송지 변경 알고리즘</dfn>은 유저가 새 배송지를 제공했을 때 동작합니다.
+          이는 반드시 아래 순서대로 동작해야합니다. [<em class="rfc2119" title="MUST">MUST</em>]
+        </p>
+        <p lang="en">
+          The <dfn data-dfn-type="dfn">shipping address changed algorithm</dfn> runs when the user provides a new shipping
           address. It <em class="rfc2119" title="MUST">MUST</em> run the following steps:
         </p>
         <ol>
-          <li>Let <em>request</em> be the <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> object that the user is
-          interacting with.</li>
-          <li>Let <em>name</em> be <code><dfn data-dfn-type="dfn" id="dfn-shippingaddresschange">shippingaddresschange</dfn></code>.</li>
           <li>
-            Set the <a href="#idl-def-shippingaddress" class="internalDFN" data-link-type="dfn"><code><code>shippingAddress</code></code></a> attribute on <em>request</em> to the
-            shipping address provided by the user.
+            <em>request</em>를 사용자와 인터렉션하는 <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> 객체로 합니다.
+            <p lang="en">
+            Let <em>request</em> be the <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> object that the user is
+          interacting with.</p></li>
+          <li>
+            <em>name</em>을 <code><dfn data-dfn-type="dfn" id="dfn-shippingaddresschange">shippingaddresschange</dfn></code>로 합니다.
+            <p lang="en">Let <em>name</em> be <code><dfn data-dfn-type="dfn">shippingaddresschange</dfn></code>.</p>
           </li>
           <li>
-            Run the <a href="#dfn-paymentrequest-updated-algorithm" class="internalDFN" data-link-type="dfn">PaymentRequest updated algorithm</a> with <em>request</em> and <em>name</em>.
+            <em>request</em>의 <a href="#idl-def-shippingaddress" class="internalDFN" data-link-type="dfn"><code><code>shippingAddress</code></code></a> 속성을 유저가 제공한 배송지로 설정합니다.
+            <p lang="en">
+              Set the <a href="#idl-def-shippingaddress" class="internalDFN" data-link-type="dfn"><code><code>shippingAddress</code></code></a> attribute on <em>request</em> to the
+              shipping address provided by the user.
+            </p>
+          </li>
+          <li>
+            <em>request</em> 및 <em>name</em>과 함께
+            <a href="#dfn-paymentrequest-updated-algorithm" class="internalDFN" data-link-type="dfn">PaymentRequest 갱신 알고리즘</a>을 돌립니다.
+            <p lang="en">
+              Run the <a href="#dfn-paymentrequest-updated-algorithm" class="internalDFN" data-link-type="dfn">PaymentRequest updated algorithm</a> with <em>request</em> and <em>name</em>.
+            </p>
           </li>
         </ol>
       </section>
 
       <section id="shipping-option-changed-algorithm" typeof="bibo:Chapter" resource="#shipping-option-changed-algorithm" property="bibo:hasPart">
-        <h3 id="h-shipping-option-changed-algorithm" resource="#h-shipping-option-changed-algorithm"><span property="xhv:role" resource="xhv:heading"><span class="secno">13.2 </span>Shipping option changed algorithm</span></h3>
-        <p>
-          The <dfn data-dfn-type="dfn" id="dfn-shipping-option-changed-algorithm">shipping option changed algorithm</dfn> runs when the user chooses a new shipping
+        <h3 id="h-shipping-option-changed-algorithm" resource="#h-shipping-option-changed-algorithm"><span property="xhv:role" resource="xhv:heading"><span class="secno">13.2 </span>배송 옵션 변경 알고리즘</span></h3>
+        <p><dfn data-dfn-type="dfn" id="dfn-shipping-option-changed-algorithm">배송 옵션 변경 알고리즘</dfn>은 유저가 새로운 배송 옵션을 선택했을 때 동작합니다.
+          이는 반드시 아래 순서대로 동작해야합니다. [<em class="rfc2119" title="MUST">MUST</em>]</p>
+        <p lang="en">
+          The <dfn data-dfn-type="dfn">shipping option changed algorithm</dfn> runs when the user chooses a new shipping
           option. It <em class="rfc2119" title="MUST">MUST</em> run the following steps:
         </p>
         <ol>
-          <li>Let <em>request</em> be the <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> object that the user is
-          interacting with.</li>
-          <li>Let <em>name</em> be <code><dfn data-dfn-type="dfn" id="dfn-shippingoptionchange">shippingoptionchange</dfn></code>.</li>
           <li>
-            Set the <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>shippingOption</code></code></a> attribute on <em>request</em> to the
-            <code>id</code> string of the <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>ShippingOption</code></code></a> provided by the user.
+            <em>request</em>를 사용자와 인터렉션하는 <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> 객체로 합니다.
+            <p lang="en">
+              Let <em>request</em> be the <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> object that the user is interacting with.
+            </p>
           </li>
           <li>
-            Run the <a href="#dfn-paymentrequest-updated-algorithm" class="internalDFN" data-link-type="dfn">PaymentRequest updated algorithm</a> with <em>request</em> and <em>name</em>.
+            <em>name</em>을 <code><dfn data-dfn-type="dfn" id="dfn-shippingoptionchange">shippingoptionchange</dfn></code>로 합니다.
+            <p lang="en">Let <em>name</em> be <code><dfn data-dfn-type="dfn">shippingoptionchange</dfn></code>.</p>
+          </li>
+          <li>
+            <em>request</em>의 <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>shippingOption</code></code></a> 속성을 유저가 제공한 <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>ShippingOption</code></code></a>의
+            <code>id</code> 문자열로 설정합니다.
+            <p lang="en">
+              Set the <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>shippingOption</code></code></a> attribute on <em>request</em> to the
+              <code>id</code> string of the <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>ShippingOption</code></code></a> provided by the user.
+            </p>
+          </li>
+          <li>
+            <em>request</em> 및 <em>name</em>과 함께
+            <a href="#dfn-paymentrequest-updated-algorithm" class="internalDFN" data-link-type="dfn">PaymentRequest 갱신 알고리즘</a>을 돌립니다.
+            <p lang="en">
+              Run the <a href="#dfn-paymentrequest-updated-algorithm" class="internalDFN" data-link-type="dfn">PaymentRequest updated algorithm</a> with <em>request</em> and <em>name</em>.
+            </p>
           </li>
         </ol>
       </section>
