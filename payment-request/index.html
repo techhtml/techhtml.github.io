@@ -1709,7 +1709,9 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
       </dd>
       <dt><code><dfn data-dfn-type="dfn" id="dfn-details">details</dfn></code></dt>
       <dd>
-        번역 예정
+        거래를 처리하고 성공적인 계좌 대치를 결정하기 위해 판매자가 사용하는
+        <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">결제 수단</a> 특정 메시지를 제공하는
+        <a href="#dfn-json-serializable-object" class="internalDFN" data-link-type="dfn">시리얼화된 JSON 객체</a>입니다.
         <p lang="en">
           A <a href="#dfn-json-serializable-object" class="internalDFN" data-link-type="dfn">JSON-serializable object</a> that provides a <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">payment method</a> specific message used by the merchant to
         process the transaction and determine successful fund transfer.
@@ -2127,33 +2129,60 @@ interface <span class="idlInterfaceID">PaymentRequestUpdateEvent</span> : <span 
       </section>
 
       <section id="paymentrequest-updated-algorithm" typeof="bibo:Chapter" resource="#paymentrequest-updated-algorithm" property="bibo:hasPart">
-        <h3 id="h-paymentrequest-updated-algorithm" resource="#h-paymentrequest-updated-algorithm"><span property="xhv:role" resource="xhv:heading"><span class="secno">13.3 </span>PaymentRequest updated algorithm</span></h3>
+        <h3 id="h-paymentrequest-updated-algorithm" resource="#h-paymentrequest-updated-algorithm"><span property="xhv:role" resource="xhv:heading"><span class="secno">13.3 </span>PaymentRequest 갱신 알고리즘</span></h3>
         <p>
-          The <dfn data-dfn-type="dfn" id="dfn-paymentrequest-updated-algorithm">PaymentRequest updated algorithm</dfn> is run by other algorithms above to fire
+          <dfn data-dfn-type="dfn" id="dfn-paymentrequest-updated-algorithm">PaymentRequest 갱신 알고리즘</dfn>은
+          유저가 <em>name</em>의 이벤트 네임과 함께 <em>request</em>로 호출되는
+          <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a>를 변경을 나타내기 위해
+          이벤트를 발생시키는 위의 다른 알고리즘에 의해 동작합니다.
+        </p>
+        <p lang="en">
+          The <dfn data-dfn-type="dfn">PaymentRequest updated algorithm</dfn> is run by other algorithms above to fire
           an event to indicate that a user has made a change to a <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a>
           called <em>request</em> with an event name of <em>name</em>.</p>
         <p>It <em class="rfc2119" title="MUST">MUST</em> run the following steps:</p>
         <ol>
           <li>
-            If the <em>request</em>@[[updating]] is <em>true</em>, then terminate
-            this algorithm and take no further action. Only one update may take place at a time. This
-            should never occur.
+            <em>request</em>@[[updating]]이 <em>true</em>라면,
+            이 알고리즘을 제거하고 추후 조치를 취하지 않습니다.
+            한번에 하나의 업데이트만 가능합니다. 이 일은 발생해서는 안됩니다.
+            <p lang="en">
+              If the <em>request</em>@[[updating]] is <em>true</em>, then terminate
+              this algorithm and take no further action. Only one update may take place at a time. This
+              should never occur.
+            </p>
           </li>
           <li>
-            If the <em>request</em>@[[state]] is not set to <em>interactive</em>,
-            then terminate this algorithm and take no further action. The <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> user interface
-            should ensure that this never occurs.
+            <em>request</em>@[[state]]가 <em>interactive</em>로 설정되어있지 않다면
+            이 알고리즘을 제거하고 추후 조치를 취하지 않습니다.
+            <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">유저 에이전트</a> 유저 인터페이스는
+            이런 일이 일어나지 않도록 안전하게 해야합니다.
+            <p lang="en">
+              If the <em>request</em>@[[state]] is not set to <em>interactive</em>,
+              then terminate this algorithm and take no further action. The <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> user interface
+              should ensure that this never occurs.
+            </p>
           </li>
-          <li>Let <em>event</em> be a new <a href="#idl-def-paymentrequestupdateevent" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequestUpdateEvent</code></code></a>.</li>
           <li>
-            <a href="#dfn-queue-a-task" class="internalDFN" data-link-type="dfn">Queue a task</a> to <a href="#dfn-fire-an-event" class="internalDFN" data-link-type="dfn">fire an event</a> named <em>name</em> of type <em>event</em>
-            at <em>request</em>.
+            <em>event</em>를 새 <a href="#idl-def-paymentrequestupdateevent" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequestUpdateEvent</code></code></a>로 합니다.
+            <p lang="en">
+              Let <em>event</em> be a new <a href="#idl-def-paymentrequestupdateevent" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequestUpdateEvent</code></code></a>.
+            </p>
+          </li>
+          <li>
+            <em>request</em>에 따라 <em>event</em> 타입의 <em>name</em>으로 정의된
+            <a href="#dfn-fire-an-event" class="internalDFN" data-link-type="dfn">이벤트의 작동</a>을
+            <a href="#dfn-queue-a-task" class="internalDFN" data-link-type="dfn">작업 대기열</a>에 담을 수 있습니다.
+            <p lang="en">
+              <a href="#dfn-queue-a-task" class="internalDFN" data-link-type="dfn">Queue a task</a> to <a href="#dfn-fire-an-event" class="internalDFN" data-link-type="dfn">fire an event</a> named <em>name</em> of type <em>event</em>
+              at <em>request</em>.
+            </p>
           </li>
         </ol>
       </section>
 
       <section id="user-agent-delegates-payment-request-algorithm" typeof="bibo:Chapter" resource="#user-agent-delegates-payment-request-algorithm" property="bibo:hasPart">
-        <h3 id="h-user-agent-delegates-payment-request-algorithm" resource="#h-user-agent-delegates-payment-request-algorithm"><span property="xhv:role" resource="xhv:heading"><span class="secno">13.4 </span>User agent delegates payment request algorithm</span></h3>
+        <h3 id="h-user-agent-delegates-payment-request-algorithm" resource="#h-user-agent-delegates-payment-request-algorithm"><span property="xhv:role" resource="xhv:heading"><span class="secno">13.4 </span>유저 에이전트 위임 결제 요청 알고리즘</span></h3>
 
         <p>
           The <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> interface allows a web page to call <code>abort</code>
