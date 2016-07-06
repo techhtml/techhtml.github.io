@@ -1739,18 +1739,43 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
         <p><a href="#dfn-complete" class="internalDFN" data-link-type="dfn"><code><code>complete</code></code></a> 메서드는 반드시 아래 순서대로 동작해야합니다. [<em class="rfc2119" title="MUST">MUST</em>]</p>
         <p lang="en">The <a href="#dfn-complete" class="internalDFN" data-link-type="dfn"><code><code>complete</code></code></a> method <em class="rfc2119" title="MUST">MUST</em> act as follows:</p>
         <ol>
-          <li>Let <em>promise</em> be a new <a href="#dfn-promise" class="internalDFN" data-link-type="dfn">Promise</a>.</li>
           <li>
-            If the value of the internal slot [[completeCalled]] is <em>true</em>, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> an <a href="#dfn-invalidstateerror" class="internalDFN" data-link-type="dfn"><code><code>InvalidStateError</code></code></a>.
+            <em>promise</em>를 새 <a href="#dfn-promise" class="internalDFN" data-link-type="dfn">Promise</a>로 합니다.
+            <p lang="en">Let <em>promise</em> be a new <a href="#dfn-promise" class="internalDFN" data-link-type="dfn">Promise</a>.</p>
           </li>
-          <li>Set the value of the internal slot [[completeCalled]] to <em>true</em>.</li>
-          <li>Return <em>promise</em> and asynchronously perform the remaining steps.</li>
           <li>
-            Pass the value of <code>success</code> to the <a href="#dfn-payment-app" class="internalDFN" data-link-type="dfn">Payment App</a> that accepted the
-            payment request.
+            만약 내장 슬롯 [[completeCalled]]의 값이 <em>true</em>라면
+            <a href="#dfn-invalidstateerror" class="internalDFN" data-link-type="dfn"><code><code>InvalidStateError</code></code></a>를
+            <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">던집니다</a>.
+
+            <p lang="en">
+              If the value of the internal slot [[completeCalled]] is <em>true</em>, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> an <a href="#dfn-invalidstateerror" class="internalDFN" data-link-type="dfn"><code><code>InvalidStateError</code></code></a>.
+            </p>
           </li>
-          <li>Close down any remaining user interface.</li>
-          <li>Resolve <em>promise</em> with <code>undefined</code>.</li>
+          <li>
+            내장 슬롯 [[completeCalled]]의 값을 <em>true</em>로 지정합니다.
+            <p lang="en">Set the value of the internal slot [[completeCalled]] to <em>true</em>.</p>
+          </li>
+          <li>
+            <em>promise</em>를 반환하고 남은 스텝을 비동기로 수행합니다.
+            <p lang="en">Return <em>promise</em> and asynchronously perform the remaining steps.</p>
+          </li>
+          <li>
+            <code>success</code> 값을
+            결제 요청을 허용하는 <a href="#dfn-payment-app" class="internalDFN" data-link-type="dfn">Payment App</a>으로 전달합니다.
+            <p lang="en">
+              Pass the value of <code>success</code> to the <a href="#dfn-payment-app" class="internalDFN" data-link-type="dfn">Payment App</a> that accepted the
+              payment request.
+            </p>
+          </li>
+          <li>
+            남아있는 유저 인터페이스를 닫습니다.
+            <p lang="en">Close down any remaining user interface.</p>
+          </li>
+          <li>
+            <em>promise</em>를 <em>undefined</em>로 해결합니다.
+            <p lang="en">Resolve <em>promise</em> with <code>undefined</code>.</p>
+          </li>
         </ol>
 
         <div class="issue" id="issue-5"><div class="issue-title marker" aria-level="4" role="heading" id="h-issue20"><a href="https://github.com/w3c/browser-payment-api/issues/5"><span>Issue 5</span></a><span style="text-transform: none">: Should the web page be able to provide status information before calling complete()</span></div><div class="">
@@ -1760,16 +1785,21 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
       </section>
 
       <section id="internal-slots-1" typeof="bibo:Chapter" resource="#internal-slots-1" property="bibo:hasPart">
-        <h3 id="h-internal-slots-1" resource="#h-internal-slots-1"><span property="xhv:role" resource="xhv:heading"><span class="secno">11.2 </span>Internal Slots</span></h3>
-        <p>Instances of <a href="#dom-paymentresponse" class="internalDFN" data-link-type="dfn"><code><code>PaymentResponse</code></code></a> are created with the internal slots in
+        <h3 id="h-internal-slots-1" resource="#h-internal-slots-1"><span property="xhv:role" resource="xhv:heading"><span class="secno">11.2 </span>내장 슬롯</span></h3>
+        <p><a href="#dom-paymentresponse" class="internalDFN" data-link-type="dfn"><code><code>PaymentResponse</code></code></a>의 인스턴스는 아래 표의 내장 슬롯과 함께 생성됩니다.</p>
+        <p lang="en">Instances of <a href="#dom-paymentresponse" class="internalDFN" data-link-type="dfn"><code><code>PaymentResponse</code></code></a> are created with the internal slots in
         the following table:</p>
         <table>
-          <tbody><tr><th>Internal Slot</th><th>Description (<em>non-normative</em>)</th></tr>
+          <tbody><tr><th>내장 슬롯</th><th>설명 (<em>표준이 아님</em>)</th></tr>
           <tr>
             <td>[[completeCalled]]</td>
             <td>
-              <em>true</em> if the <a href="#dfn-complete" class="internalDFN" data-link-type="dfn"><code><code>complete</code></code></a> method has been called and <em>false</em>
-              otherwise.
+              만약 <a href="#dfn-complete" class="internalDFN" data-link-type="dfn"><code><code>complete</code></code></a> 메서드가 호출되었다면
+              <em>true</em>, 그 외의 경우 <em>false</em>
+              <p lang="en">
+                <em>true</em> if the <a href="#dfn-complete" class="internalDFN" data-link-type="dfn"><code><code>complete</code></code></a> method has been called and <em>false</em>
+                otherwise.
+              </p>
             </td>
           </tr>
         </tbody></table>
@@ -1778,22 +1808,28 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
     </section>
 
     <section id="events" typeof="bibo:Chapter" resource="#events" property="bibo:hasPart">
-      <!--OddPage--><h2 id="h-events" resource="#h-events"><span property="xhv:role" resource="xhv:heading"><span class="secno">12. </span>Events</span></h2>
+      <!--OddPage--><h2 id="h-events" resource="#h-events"><span property="xhv:role" resource="xhv:heading"><span class="secno">12. </span>이벤트</span></h2>
 
       <section class="informative" id="summary" typeof="bibo:Chapter" resource="#summary" property="bibo:hasPart">
-        <h3 id="h-summary" resource="#h-summary"><span property="xhv:role" resource="xhv:heading"><span class="secno">12.1 </span>Summary</span></h3><p><em>This section is non-normative.</em></p>
+        <h3 id="h-summary" resource="#h-summary"><span property="xhv:role" resource="xhv:heading"><span class="secno">12.1 </span>개요</span></h3><p><em>이 섹션은 표준에 준하지 않습니다.</em></p>
 
         <table>
-          <tbody><tr><th>Event name</th><th>Interface</th><th>Dispatched when...</th></tr>
+          <tbody><tr><th>이벤트 이름</th><th>인터페이스</th><th>언제 전달되는 지...</th></tr>
           <tr>
             <td><code>shippingaddresschange</code></td>
             <td><a href="#idl-def-paymentrequestupdateevent" class="internalDFN" data-link-type="dfn"><code>PaymentRequestUpdateEvent</code></a></td>
-            <td>The user provides a new shipping address.</td>
+            <td>
+              유저가 새로운 배송 주소를 제공한다.
+              <p lang="en">The user provides a new shipping address.</p>
+            </td>
           </tr>
           <tr>
             <td><code>shippingoptionchange</code></td>
             <td><a href="#idl-def-paymentrequestupdateevent" class="internalDFN" data-link-type="dfn"><code>PaymentRequestUpdateEvent</code></a></td>
-            <td>The user chooses a new shipping option.</td>
+            <td>
+              유저가 새로운 배송 옵션을 선택한다.
+              <p lang="en">The user chooses a new shipping option.</p>
+            </td>
           </tr>
         </tbody></table>
       </section>
