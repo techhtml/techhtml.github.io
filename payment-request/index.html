@@ -885,7 +885,7 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
           payment app.
         </div></div>
         <div class="note"><div class="note-title marker" aria-level="4" role="heading" id="h-note2"><span>Note</span></div><div class="">
-          <p><code>supportedMethods</code> 시퀀스는 판매자가 웹 사이트에서 허용하는 <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">결제 수단</a>을 위한 <a href="#dfn-payment-method-identifier" class="internalDFN" data-link-type="dfn">결제 수단 인식자</a>를 포함합니다.</p>
+          <p><code>supportedMethods</code> 시퀀스는 판매자가 웹 사이트에서 허용하는 <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">결제 수단</a>을 위한 <a href="#dfn-payment-method-identifier" class="internalDFN" data-link-type="dfn">결제 수단 식별자</a>를 포함합니다.</p>
           <p lang="en">The <code>supportedMethods</code> sequence contains the <a href="#dfn-payment-method-identifier" class="internalDFN" data-link-type="dfn">payment method identifiers</a> for the <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">payment methods</a> that the merchant web site accepts.</p>
           <div class="example"><div class="example-title marker"><span>Example 2</span></div><pre class="highlight prettyprint prettyprinted"><span class="pun">[</span><span class="str">"visa"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"bitcoin"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"bobpay.com"</span><span class="pun">]</span></pre></div>
           <p><code>details</code> 객체는 유저가 주문에서 라인 아이템을 완료하기 위해 요구되는 거래 관련 정보를 포함합니다.</p>
@@ -1039,7 +1039,7 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
           </li>
           <li>
             <code>data</code>의 어떤 상위 레벨 필드의 이름이
-            <code>supportedMethods</code> 내  <a href="#dfn-payment-method-identifier" class="internalDFN" data-link-type="dfn">결제 수단 인식자</a> 중 하나라도 매치되지 않는다면,
+            <code>supportedMethods</code> 내  <a href="#dfn-payment-method-identifier" class="internalDFN" data-link-type="dfn">결제 수단 식별자</a> 중 하나라도 매치되지 않는다면,
             <a href="#dfn-typeerror" class="internalDFN" data-link-type="dfn"><code><code>TypeError</code></code></a>를 <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">던집니다</a>.
             <p lang="en">
               If the name of any top level field of <code>data</code> does not match one of the <a href="#dfn-payment-method-identifier" class="internalDFN" data-link-type="dfn">payment method identifiers</a>
@@ -1388,8 +1388,8 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
       <dl>
         <dt><code><dfn data-dfn-type="dfn" id="dfn-currency">currency</dfn></code></dt>
         <dd>
-          <code>currency</code>는 화폐 인식자를 포함하는 문자열입니다.
-          대부분의 인식자는 [<cite><a class="bibref" href="#bib-ISO4217">ISO4217</a></cite>]에서 정의하는 알파벳으로 구성된 세 글자 코드(예를 들어, <code>"USD"</code>는 US 달러를 나타냅니다)로 이루어져 있으나,
+          <code>currency</code>는 화폐 식별자를 포함하는 문자열입니다.
+          대부분의 식별자는 [<cite><a class="bibref" href="#bib-ISO4217">ISO4217</a></cite>]에서 정의하는 알파벳으로 구성된 세 글자 코드(예를 들어, <code>"USD"</code>는 US 달러를 나타냅니다)로 이루어져 있으나,
           임의의 문자열도 유효할 수 있도록 고려해야하며,
           <a data-lt="user agents" href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agents</a>는 <em class="rfc2119" title="MUST">반드시</em> 이 문자열의 유효성을 검증해서는 안됩니다.
           <p lang="en">
@@ -1438,7 +1438,7 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
         <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> 생성자로 전달되며,
         요청 거래에 대한 정보를 제공합니다. <code>PaymentDetails</code> 사전 또한
         <a href="#dfn-updatewith" class="internalDFN" data-link-type="dfn"><code><code>updateWith</code></code></a>를 사용하여
-        거래 요청을 갱신할 수 있습니다.
+        결제 요청을 갱신할 수 있습니다.
       </p>
       <p lang="en">
         The <code><dfn data-dfn-for="" data-dfn-type="dfn" id="dom-paymentdetails" data-idl="">PaymentDetails</dfn></code> dictionary is passed to the <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a>
@@ -1515,40 +1515,69 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
       <dl>
         <dt><code><dfn data-dfn-type="dfn" id="dfn-requestshipping">requestShipping</dfn></code></dt>
         <dd>
-          This <em>boolean</em> value indicates whether the <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> should collect and return
-          a shipping address as part of the payment request. For example, this would be set to
-          <code>true</code> when physical goods need to be shipped by the merchant to the user.
-          This would be set to <code>false</code> for an online-only electronic purchase transaction.
-          If this value is not supplied then the the <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> behaves as
-          if a value of <code>false</code> had been supplied.
+          이 <em>boolean</em> 값은 <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">유저 에이전트가</a>
+          결제 요청의 일부로 배송 주소를 모으고 반환해줄 지 결정합니다.
+          예를 들어, 판매자가 유저에게 물리적인 물건을 배송해야할 때 이 값을 <code>true</code>로 지정합니다.
+          온라인에서만 판매하는 전자 상품 거래인 경우에는 이 값을 <code>false</code>로 지정합니다.
+          만약 이 값이 제공되지 않은 경우 <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a>는
+          <code>false</code> 값이 제공되었다고 가정하여 동작합니다.
+          <p lang="en">
+            This <em>boolean</em> value indicates whether the <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> should collect and return
+            a shipping address as part of the payment request. For example, this would be set to
+            <code>true</code> when physical goods need to be shipped by the merchant to the user.
+            This would be set to <code>false</code> for an online-only electronic purchase transaction.
+            If this value is not supplied then the the <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> behaves as
+            if a value of <code>false</code> had been supplied.
+          </p>
         </dd>
       </dl>
     </section>
 
     <section id="paymentitem-dictionary" typeof="bibo:Chapter" resource="#paymentitem-dictionary" property="bibo:hasPart">
-      <!--OddPage--><h2 id="h-paymentitem-dictionary" resource="#h-paymentitem-dictionary"><span property="xhv:role" resource="xhv:heading"><span class="secno">8. </span>PaymentItem dictionary</span></h2>
+      <!--OddPage--><h2 id="h-paymentitem-dictionary" resource="#h-paymentitem-dictionary"><span property="xhv:role" resource="xhv:heading"><span class="secno">8. </span>PaymentItem 사전</span></h2>
       <pre class="def idl"><span class="idlDictionary" id="idl-def-paymentitem" data-idl="" data-title="PaymentItem">dictionary <span class="idlDictionaryID">PaymentItem</span> {
 <span class="idlMember" id="idl-def-paymentitem-id" data-idl="" data-title="id" data-dfn-for="paymentitem">    required <span class="idlMemberType">DOMString</span>      <span class="idlMemberName">id</span>;</span>
 <span class="idlMember" id="idl-def-paymentitem-label" data-idl="" data-title="label" data-dfn-for="paymentitem">    required <span class="idlMemberType">DOMString</span>      <span class="idlMemberName">label</span>;</span>
 <span class="idlMember" id="idl-def-paymentitem-amount" data-idl="" data-title="amount" data-dfn-for="paymentitem">    required <span class="idlMemberType"><a href="#idl-def-currencyamount" class="internalDFN" data-link-type="dfn"><code>CurrencyAmount</code></a></span> <span class="idlMemberName">amount</span>;</span>
 };</span></pre>
       <p>
+        하나 혹은 그 이상의 <code>PaymentItem</code> 사전 시퀀스는
+        <a href="#dom-paymentdetails" class="internalDFN" data-link-type="dfn"><code><code>PaymentDetails</code></code></a> 사전에 포함되어 있으며,
+        결제 요청이 있을 때 요청한 값이 무엇인 지 나타냅니다.
+      </p>
+      <p lang="en">
         A sequence of one or more <code>PaymentItem</code> dictionaries is included in the <a href="#dom-paymentdetails" class="internalDFN" data-link-type="dfn"><code><code>PaymentDetails</code></code></a>
         dictionary to indicate the what the payment request is for and the value asked for.
       </p>
       <p>
+        아래 필드는 반드시 <code>PaymentItem</code>에 유효한 값으로 포함해야 합니다. [<em class="rfc2119" title="MUST">MUST</em>]
+      </p>
+      <p lang="en">
         The following fields <em class="rfc2119" title="MUST">MUST</em> be included in a <code>PaymentItem</code> for it to be valid:
       </p>
       <dl>
         <dt><code>id</code></dt>
-        <dd>This is a string identifier used to reference this <code>PaymentItem</code>. It <em class="rfc2119" title="MUST">MUST</em> be
-        unique for a given <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a>.</dd>
+        <dd>
+          이 <code>PaymentItem</code>에 참조하기 위해 사용하는 문자열 식별자입니다.
+          이 값은 반드시 <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a>에 고유한 값으로 주어야 합니다. [<em class="rfc2119" title="MUST">MUST</em>]
+          <p lang="en">
+          This is a string identifier used to reference this <code>PaymentItem</code>. It <em class="rfc2119" title="MUST">MUST</em> be
+            unique for a given <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a>.
+          </p>
+
+      </dd>
         <dt><code>label</code></dt>
-        <dd>This is a human-readable description of the item. The <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> may display
-        this to the user.</dd>
+        <dd>
+          아이템에 대한 사람이 읽기좋은 설명입니다.
+          <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">유저 에이전트</a>는 이 값을 유저에게 보여줄 수도 있습니다.
+          <p lang="en">This is a human-readable description of the item. The <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> may display
+        this to the user.</p></dd>
         <dt><code>amount</code></dt>
         <dd>
-          A <a href="#idl-def-currencyamount" class="internalDFN" data-link-type="dfn"><code><code>CurrencyAmount</code></code></a> containing the monetary amount for the item.
+          아이템을 위한 금전 합계를 포함하는 <a href="#idl-def-currencyamount" class="internalDFN" data-link-type="dfn"><code><code>CurrencyAmount</code></code></a>입니다.
+          <p lang="en">
+            A <a href="#idl-def-currencyamount" class="internalDFN" data-link-type="dfn"><code><code>CurrencyAmount</code></code></a> containing the monetary amount for the item.
+          </p>
           <div class="issue" id="issue-3"><div class="issue-title marker" aria-level="3" role="heading" id="h-issue14"><a href="https://github.com/w3c/browser-payment-api/issues/3"><span>Issue 3</span></a><span style="text-transform: none">: Should it be possible to provide amounts in more than one currency</span></div><div class="">
             There is an open issue about whether it should be possible to provide a <code>PaymentItem</code>
             with amounts in more than once currency.
@@ -1566,11 +1595,21 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
     </section>
 
     <section id="shippingaddress-interface" typeof="bibo:Chapter" resource="#shippingaddress-interface" property="bibo:hasPart">
-      <!--OddPage--><h2 id="h-shippingaddress-interface" resource="#h-shippingaddress-interface"><span property="xhv:role" resource="xhv:heading"><span class="secno">9. </span>ShippingAddress interface</span></h2>
+      <!--OddPage--><h2 id="h-shippingaddress-interface" resource="#h-shippingaddress-interface"><span property="xhv:role" resource="xhv:heading"><span class="secno">9. </span>ShippingAddress 인터페이스</span></h2>
       <pre class="def idl"><span class="idlInterface" id="idl-def-shippingaddress" data-idl="" data-title="ShippingAddress">interface <span class="idlInterfaceID"><a data-lt="ShippingAddress" href="#idl-def-shippingaddress" class="internalDFN" data-link-type="dfn" data-for=""><code>ShippingAddress</code></a></span> {
 <span class="idlSectionComment">    // [...] fields TBC </span>
 };</span></pre>
       <p>
+        만약 <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code>PaymentRequest</code></a>에서 전달한
+        <a href="#dom-paymentoptions" class="internalDFN" data-link-type="dfn"><code>PaymentOptions</code></a> 내의
+        <a href="#dfn-requestshipping" class="internalDFN" data-link-type="dfn"><code>requestShipping</code></a> 플래그가
+        <code>true</code>로 설정되어 있다면,
+        <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">유저 에이전트</a>는
+        <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> 객체의
+        <code>shippingAddress</code> 필드를
+        사용자가 선택한 배송 주소로 채웁니다.
+      </p>
+      <p lang="en">
         If the <a href="#dfn-requestshipping" class="internalDFN" data-link-type="dfn"><code>requestShipping</code></a> flag was set to <code>true</code> in the <a href="#dom-paymentoptions" class="internalDFN" data-link-type="dfn"><code>PaymentOptions</code></a>
         passed to the <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code>PaymentRequest</code></a> constructor, then the <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> will populate the
         <code>shippingAddress</code> field of the <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> object with
@@ -1587,36 +1626,59 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
     </section>
 
     <section id="shippingoption-interface" typeof="bibo:Chapter" resource="#shippingoption-interface" property="bibo:hasPart">
-      <!--OddPage--><h2 id="h-shippingoption-interface" resource="#h-shippingoption-interface"><span property="xhv:role" resource="xhv:heading"><span class="secno">10. </span>ShippingOption interface</span></h2>
+      <!--OddPage--><h2 id="h-shippingoption-interface" resource="#h-shippingoption-interface"><span property="xhv:role" resource="xhv:heading"><span class="secno">10. </span>ShippingOption 인터페이스</span></h2>
       <pre class="def idl"><span class="idlDictionary" id="idl-def-shippingoption" data-idl="" data-title="ShippingOption">dictionary <span class="idlDictionaryID"><a data-lt="ShippingOption" href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn" data-for=""><code>ShippingOption</code></a></span> {
 <span class="idlMember" id="idl-def-shippingoption-id" data-idl="" data-title="id" data-dfn-for="shippingoption">    required <span class="idlMemberType">string</span>         <span class="idlMemberName">id</span>;</span>
 <span class="idlMember" id="idl-def-shippingoption-label" data-idl="" data-title="label" data-dfn-for="shippingoption">    required <span class="idlMemberType">string</span>         <span class="idlMemberName">label</span>;</span>
 <span class="idlMember" id="idl-def-shippingoption-amount" data-idl="" data-title="amount" data-dfn-for="shippingoption">    required <span class="idlMemberType"><a href="#idl-def-currencyamount" class="internalDFN" data-link-type="dfn"><code>CurrencyAmount</code></a></span> <span class="idlMemberName">amount</span>;</span>
 };</span></pre>
       <p>
+        <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code>ShippingOption</code></a> 사전은 배송 옵션을 설명하는 필드를 가집니다.
+        웹 페이지에서는 유저에게 하나 혹은 그 이상의 배송 옵션을 <a href="#dfn-updatewith" class="internalDFN" data-link-type="dfn"><code>updateWith</code></a> 메소드를 호출 한 뒤 변경 이벤트를 받아서 제공할 수 있습니다.
+      </p>
+      <p lang="en">
         The <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code>ShippingOption</code></a> dictionary has fields describing a shipping option. A web page can
         provide the user with one or more shipping options by calling the <a href="#dfn-updatewith" class="internalDFN" data-link-type="dfn"><code>updateWith</code></a>
         method in response to a change event.
       </p>
       <p>
+        아래 필드는 반드시 <code>PaymentItem</code>에 유효한 값으로 포함해야 합니다. [<em class="rfc2119" title="MUST">MUST</em>]
+      </p>
+      <p lang="en">
         The following fields <em class="rfc2119" title="MUST">MUST</em> be included in a <code>PaymentItem</code> for it to be valid:
       </p>
       <dl>
         <dt><code>id</code></dt>
-        <dd>This is a string identifier used to reference this <code>ShippingOption</code>. It <em class="rfc2119" title="MUST">MUST</em> be
-        unique for a given <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a>.</dd>
+        <dd>
+          이 <code>ShippingOption</code>에 참조하기 위해 사용하는 문자열 식별자입니다.
+          이 값은 반드시 <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a>에 고유한 값으로 주어야 합니다. [<em class="rfc2119" title="MUST">MUST</em>]
+          <p lang="en">
+              This is a string identifier used to reference this <code>ShippingOption</code>. It <em class="rfc2119" title="MUST">MUST</em> be
+              unique for a given <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a>.
+          </p>
+      </dd>
         <dt><code>label</code></dt>
-        <dd>This is a human-readable description of the item. The <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> <em class="rfc2119" title="SHOULD">SHOULD</em> use this
-        string to display the shipping option to the user.</dd>
+        <dd>
+          아이템에 대한 사람이 읽기좋은 설명입니다
+          <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">유저 에이전트</a>는 이 문자열을 사용하여 유저에게 배송 옵션을 보여줘야 합니다.
+          [<em class="rfc2119" title="SHOULD">SHOULD</em>]
+          <p lang="en">
+            This is a human-readable description of the item. The <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> <em class="rfc2119" title="SHOULD">SHOULD</em> use this
+            string to display the shipping option to the user.
+          </p>
+        </dd>
         <dt><code>amount</code></dt>
         <dd>
-          A <a href="#idl-def-currencyamount" class="internalDFN" data-link-type="dfn"><code><code>CurrencyAmount</code></code></a> containing the monetary amount for the item.
+          아이템을 위한 금전 합계를 포함하는 <a href="#idl-def-currencyamount" class="internalDFN" data-link-type="dfn"><code><code>CurrencyAmount</code></code></a>입니다.
+          <p lang="en">
+            A <a href="#idl-def-currencyamount" class="internalDFN" data-link-type="dfn"><code><code>CurrencyAmount</code></code></a> containing the monetary amount for the item.
+          </p>
         </dd>
       </dl>
     </section>
 
     <section id="paymentresponse-interface" typeof="bibo:Chapter" resource="#paymentresponse-interface" property="bibo:hasPart">
-      <!--OddPage--><h2 id="h-paymentresponse-interface" resource="#h-paymentresponse-interface"><span property="xhv:role" resource="xhv:heading"><span class="secno">11. </span>PaymentResponse interface</span></h2>
+      <!--OddPage--><h2 id="h-paymentresponse-interface" resource="#h-paymentresponse-interface"><span property="xhv:role" resource="xhv:heading"><span class="secno">11. </span>PaymentResponse 인터페이스</span></h2>
       <pre class="def idl"><span class="idlInterface" id="idl-def-paymentresponse" data-idl="" data-title="PaymentResponse">interface <span class="idlInterfaceID"><a data-lt="PaymentResponse" href="#dom-paymentresponse" class="internalDFN" data-link-type="dfn" data-for=""><code>PaymentResponse</code></a></span> {
 <span class="idlAttribute" id="idl-def-paymentresponse-methodname" data-idl="" data-title="methodName" data-dfn-for="paymentresponse">    readonly attribute <span class="idlAttrType">DOMString</span> <span class="idlAttrName">methodName</span>;</span>
 <span class="idlAttribute" id="idl-def-paymentresponse-details" data-idl="" data-title="details" data-dfn-for="paymentresponse">    readonly attribute <span class="idlAttrType">object</span>    <span class="idlAttrName">details</span>;</span>
@@ -1625,25 +1687,45 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
 };</span></pre>
 
       <p>
+        <code><dfn data-dfn-for="" data-dfn-type="dfn" id="dom-paymentresponse" data-idl="">PaymentResponse</dfn></code>는
+        유저가 결제 방법을 선택하고 결제 요청을 동의했을 때 반환됩니다.
+        이는 아래 필드를 포함합니다.
+      </p>
+      <p lang="en">
         A <code><dfn data-dfn-for="" data-dfn-type="dfn" id="dom-paymentresponse" data-idl="">PaymentResponse</dfn></code> is returned when a user has selected a payment method and
         approved a payment request. It contains the following fields:
       </p>
       <dl>
       <dt><code><dfn data-dfn-type="dfn" id="dfn-methodname">methodName</dfn></code></dt>
       <dd>
-        The <a href="#dfn-payment-method-identifier" class="internalDFN" data-link-type="dfn">payment method identifier</a> for the <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">payment method</a> that the user selected
-        to fulfil the transaction.
+        유저가 거래를 이행하고자 선택한
+        <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">결제 수단</a>을 위한
+        <a href="#dfn-payment-method-identifier" class="internalDFN" data-link-type="dfn">결제 수단 식별자</a>입니다.
+        <p lang="en">
+          The <a href="#dfn-payment-method-identifier" class="internalDFN" data-link-type="dfn">payment method identifier</a> for the <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">payment method</a> that the user selected
+          to fulfil the transaction.
+        </p>
       </dd>
       <dt><code><dfn data-dfn-type="dfn" id="dfn-details">details</dfn></code></dt>
       <dd>
-        A <a href="#dfn-json-serializable-object" class="internalDFN" data-link-type="dfn">JSON-serializable object</a> that provides a <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">payment method</a> specific message used by the merchant to
+        번역 예정
+        <p lang="en">
+          A <a href="#dfn-json-serializable-object" class="internalDFN" data-link-type="dfn">JSON-serializable object</a> that provides a <a href="#dfn-payment-method" class="internalDFN" data-link-type="dfn">payment method</a> specific message used by the merchant to
         process the transaction and determine successful fund transfer.
+        </p>
       </dd>
       </dl>
 
       <section id="complete" typeof="bibo:Chapter" resource="#complete" property="bibo:hasPart">
         <h3 id="h-complete" resource="#h-complete"><span property="xhv:role" resource="xhv:heading"><span class="secno">11.1 </span>complete()</span></h3>
-        <p>The <code><dfn data-dfn-type="dfn" id="dfn-complete">complete</dfn></code> method must be called after the user has accepted the payment
+        <p><code><dfn data-dfn-type="dfn" id="dfn-complete">complete</dfn></code> 메서드는 반드시 유저가 결제 요청을 허락하고
+          [[acceptPromise]가 해결된 뒤 호출해야합니다.
+          <code>complete</code> 메서드는 불리언 타입의 인수를 가지며,
+          이 인수가 <code>true</code>인 경우 프로세스를 성공적으로 진행한 것이며,
+          <code>false</code>인 경우 프로세스를 실패한 것입니다.
+          <code>complete</code> 메서드를 호출하여 유저 에이전트의 유저 인터렉션을 끝내도록 지시합니다. (그리고 나머지 유저 인터페이스도 다 닫아야합니다.)
+        </p>
+        <p lang="en">The <code><dfn data-dfn-type="dfn">complete</dfn></code> method must be called after the user has accepted the payment
         request and the [[acceptPromise]] has been resolved. The <code>complete</code> method
         takes a boolean argument that indicates the payment was successfully processed if <code>true</code> and
         that processing failed if <code>false</code>. Calling the <code>complete</code> method tells the user
@@ -1654,8 +1736,8 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
           payment method selected and should then be defined in Payment Transaction Message specifications
           such as the Basic Card Payment document.
         </div></div>
-
-        <p>The <a href="#dfn-complete" class="internalDFN" data-link-type="dfn"><code><code>complete</code></code></a> method <em class="rfc2119" title="MUST">MUST</em> act as follows:</p>
+        <p><a href="#dfn-complete" class="internalDFN" data-link-type="dfn"><code><code>complete</code></code></a> 메서드는 반드시 아래 순서대로 동작해야합니다. [<em class="rfc2119" title="MUST">MUST</em>]</p>
+        <p lang="en">The <a href="#dfn-complete" class="internalDFN" data-link-type="dfn"><code><code>complete</code></code></a> method <em class="rfc2119" title="MUST">MUST</em> act as follows:</p>
         <ol>
           <li>Let <em>promise</em> be a new <a href="#dfn-promise" class="internalDFN" data-link-type="dfn">Promise</a>.</li>
           <li>
