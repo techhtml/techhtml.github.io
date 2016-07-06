@@ -1454,18 +1454,32 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
       <dl>
         <dt><code>items</code></dt>
         <dd>
-          This sequence of <a href="#idl-def-paymentitem" class="internalDFN" data-link-type="dfn"><code><code>PaymentItem</code></code></a> dictionaries indicates what the payment
-          request is for. The sequence must contain at least one <code>PaymentItem</code>. The last
-          <code>PaymentItem</code> in the sequence represents the total amount of the payment
-          request. It is the responsibility of the calling code to ensure that the total amount is
-          the sum of the preceding items. The <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> <em class="rfc2119" title="MAY">MAY</em> not validate that this is true.
+          이 <a href="#idl-def-paymentitem" class="internalDFN" data-link-type="dfn"><code><code>PaymentItem</code></code></a> 사전의 시퀀스는
+          결제 요청이 무엇을 위한 것인지 감지합니다. 이 시퀀스는 반드시 최소한 하나 이상 <code>PaymentItem</code>을 가져야합니다.
+          시퀀스 내 마지막 <code>PaymentItem</code>은 결제 요청의 총량을 나타냅니다.
+          이 호출 코드가 담당하는 건 이전 아이템의 합이 총량이 되도록 하는 것입니다.
+          <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">유저 에이전트는</a> 만약 이 값이 true라면 검증을 하지 않을 수도 있습니다. [<em class="rfc2119" title="MAY">MAY</em>]
+          <p lang="en">
+            This sequence of <a href="#idl-def-paymentitem" class="internalDFN" data-link-type="dfn"><code><code>PaymentItem</code></code></a> dictionaries indicates what the payment
+            request is for. The sequence must contain at least one <code>PaymentItem</code>. The last
+            <code>PaymentItem</code> in the sequence represents the total amount of the payment
+            request. It is the responsibility of the calling code to ensure that the total amount is
+            the sum of the preceding items. The <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> <em class="rfc2119" title="MAY">MAY</em> not validate that this is true.
+          </p>
         </dd>
         <dt><code>shippingOptions</code></dt>
         <dd>
-          A sequence containing the different shipping options that the use may choose from.
-          <p>If the sequence is empty, then this indicates that the merchant
+          <p>선택에 사용할 수 있는 다른 배송 옵션을 포함하는 시퀀스입니다.
+          <p>만약 시퀀스가 비어있다면,
+            이는 판매자가 현재 <a href="#idl-def-shippingaddress" class="internalDFN" data-link-type="dfn"><code><code>shippingAddress</code></code></a>에 배송할 수 없다고 감지합니다.
+          <p>만약 시퀀스가 하나의 아이템만 가지고 있다면,
+            이는 이후에 사용될 배송 옵션이 되고 <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>shippingOption</code></code></a>은
+            <a href="#dfn-shipping-option-changed-algorithm" class="internalDFN" data-link-type="dfn">배송 옵션 변경 알고리즘</a>을 사용하지 않는 옵션의 <code>id</code>로 정의됩니다.
+
+          <p lang="en">A sequence containing the different shipping options that the use may choose from.</p>
+          <p lang="en">If the sequence is empty, then this indicates that the merchant
           cannot ship to the current <a href="#idl-def-shippingaddress" class="internalDFN" data-link-type="dfn"><code><code>shippingAddress</code></code></a>.</p>
-          <p>If the sequence only contains one item, then this is the shipping option that
+          <p lang="en">If the sequence only contains one item, then this is the shipping option that
           will be used and <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>shippingOption</code></code></a> will be set to the <code>id</code>
           of this option without running the <a href="#dfn-shipping-option-changed-algorithm" class="internalDFN" data-link-type="dfn">shipping option changed algorithm</a>.</p>
         </dd>
@@ -1478,16 +1492,24 @@ payment</span><span class="pun">.</span><span class="pln">show</span><span class
     </section>
 
     <section id="paymentoptions-dictionary" typeof="bibo:Chapter" resource="#paymentoptions-dictionary" property="bibo:hasPart">
-      <!--OddPage--><h2 id="h-paymentoptions-dictionary" resource="#h-paymentoptions-dictionary"><span property="xhv:role" resource="xhv:heading"><span class="secno">7. </span>PaymentOptions dictionary</span></h2>
+      <!--OddPage--><h2 id="h-paymentoptions-dictionary" resource="#h-paymentoptions-dictionary"><span property="xhv:role" resource="xhv:heading"><span class="secno">7. </span>PaymentOptions 사전</span></h2>
       <pre class="def idl"><span class="idlDictionary" id="idl-def-paymentoptions" data-idl="" data-title="PaymentOptions">dictionary <span class="idlDictionaryID"><a data-lt="PaymentOptions" href="#dom-paymentoptions" class="internalDFN" data-link-type="dfn" data-for=""><code>PaymentOptions</code></a></span> {
 <span class="idlMember" id="idl-def-paymentoptions-requestshipping" data-idl="" data-title="requestShipping" data-dfn-for="paymentoptions">    <span class="idlMemberType">boolean</span> <span class="idlMemberName">requestShipping</span> = <span class="idlMemberValue">false</span>;</span>
 };</span></pre>
 
-      <p>
+      <p><code><dfn data-dfn-for="" data-dfn-type="dfn" id="dom-paymentoptions" data-idl="">PaymentOptions</dfn></code> 사전은
+        <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> 생성자로 전달되며,
+        결제 요청 시 원하는 옵션에 대한 정보를 제공합니다.
+      </p>
+      <p lang="en">
         The <code><dfn data-dfn-for="" data-dfn-type="dfn" id="dom-paymentoptions" data-idl="">PaymentOptions</dfn></code> dictionary is passed to the <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a>
         constructor and provides information about the options desired for the payment request.
       </p>
       <p>
+        아래 필드들은 <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> 생성자로 인해
+        전달될 수도 있습니다. [<em class="rfc2119" title="MAY">MAY</em>]
+      </p>
+      <p lang="en">
         The following fields <em class="rfc2119" title="MAY">MAY</em> be passed to the <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> constructor:
       </p>
       <dl>
