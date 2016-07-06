@@ -532,6 +532,7 @@ table.exceptions table {
 <style>
 body{font-size:18px;font-family:sans-serif;font-weight:300}
 :lang(en) {font-family:"Helvetica NEUE",sans-serif;font-size:14px;color:#888;}
+table td,table th {vertical-align:middle}
 </style></head>
   <body class="h-entry toc-inline" role="document" id="respecDocument"><div class="head" role="contentinfo" id="respecHeader">
   <p>
@@ -1843,78 +1844,182 @@ interface <span class="idlInterfaceID">PaymentRequestUpdateEvent</span> : <span 
 
 <span class="idlDictionary" id="idl-def-paymentrequestupdateeventinit" data-idl="" data-title="PaymentRequestUpdateEventInit">dictionary <span class="idlDictionaryID">PaymentRequestUpdateEventInit</span> : <span class="idlSuperclass">EventInit</span> {
 };</span></pre>
-        <p>The <a href="#idl-def-paymentrequestupdateevent" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequestUpdateEvent</code></code></a> enables the web page to update
+        <p><a href="#idl-def-paymentrequestupdateevent" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequestUpdateEvent</code></code></a> 는 웹 페이지가 유저 인터렉션에 반응하여 결제 요청 디테일을 업데이트 할 수 있게 합니다.</p>
+        <p lang="en">The <a href="#idl-def-paymentrequestupdateevent" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequestUpdateEvent</code></code></a> enables the web page to update
         the details of the payment request in response to a user interaction.</p>
-        <p>If the web page wishes to update the payment request then it should call <a href="#dfn-updatewith" class="internalDFN" data-link-type="dfn"><code><code>updateWith</code></code></a>
+
+        <p>만약 웹 페이지가 결제 요청을 갱신하기를 원한다면 <a href="#dfn-updatewith" class="internalDFN" data-link-type="dfn"><code><code>updateWith</code></code></a>를 호출하고,
+        <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">유저 에이전트</a>가 유저에게 보여주는 [<a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> <em class="rfc2119" title="SHOULD">SHOULD</em>]
+        변경 값을 포함하는 <a href="#dom-paymentdetails" class="internalDFN" data-link-type="dfn"><code><code>PaymentDetails</code></code></a> 사전과 함께 해결되는 promise를 제공해야 합니다.</p>
+        <p lang="en">If the web page wishes to update the payment request then it should call <a href="#dfn-updatewith" class="internalDFN" data-link-type="dfn"><code><code>updateWith</code></code></a>
         and provide a promise that will resolve with a <a href="#dom-paymentdetails" class="internalDFN" data-link-type="dfn"><code><code>PaymentDetails</code></code></a>
         dictionary containing changed values that the <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> <em class="rfc2119" title="SHOULD">SHOULD</em> present to the user.</p>
-        <p>The PaymentRequestUpdateEvent constructor <em class="rfc2119" title="MUST">MUST</em> set the internal slot [[waitForUpdate]]
+
+        <p>PaymentRequestUpdateEvent 생성자는 반드시 내장 슬롯 [[waitForUpdate]]를 <em>false</em>로 해야합니다. [<em class="rfc2119" title="MUST">MUST</em>]</p>
+        <p lang="en">The PaymentRequestUpdateEvent constructor <em class="rfc2119" title="MUST">MUST</em> set the internal slot [[waitForUpdate]]
         to <em>false</em>.</p>
-        <p>The <code><dfn data-dfn-type="dfn" id="dfn-updatewith">updateWith</dfn></code> method <em class="rfc2119" title="MUST">MUST</em> act as follows:</p>
+
+        <p><code><dfn data-dfn-type="dfn" id="dfn-updatewith">updateWith</dfn></code> 메서드는 반드시 아래 순서대로 동작해야합니다. [<em class="rfc2119" title="MUST">MUST</em>]</p>
+        <p lang="en">The <code><dfn data-dfn-type="dfn" id="dfn-updatewith">updateWith</dfn></code> method <em class="rfc2119" title="MUST">MUST</em> act as follows:</p>
         <ol>
           <li>
-            Let <em>target</em> be the <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> object that is the target of
-            the event.
-          </li>
-          <li>If the <a href="#dfn-dispatch-flag" class="internalDFN" data-link-type="dfn">dispatch flag</a> is unset, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> an <a href="#dfn-invalidstateerror" class="internalDFN" data-link-type="dfn"><code><code>InvalidStateError</code></code></a>.</li>
-          <li>
-            If [[waitForUpdate]] is <em>true</em>, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> an <a href="#dfn-invalidstateerror" class="internalDFN" data-link-type="dfn"><code><code>InvalidStateError</code></code></a>.
-          </li>
-          <li>
-            If <em>target</em>@[[state]] is not <em>interactive</em>, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> an
-            <a href="#dfn-invalidstateerror" class="internalDFN" data-link-type="dfn"><code><code>InvalidStateError</code></code></a>.
+            <em>target</em>을 이벤트의 타겟인
+            <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> 객체로 합니다.
+            <p lang="en">
+              Let <em>target</em> be the <a href="#idl-def-paymentrequest" class="internalDFN" data-link-type="dfn"><code><code>PaymentRequest</code></code></a> object that is the target of
+              the event.
+            </p>
           </li>
           <li>
-            If <em>target</em>@[[updating]] is <em>true</em>, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a>
-            an <a href="#dfn-invalidstateerror" class="internalDFN" data-link-type="dfn"><code><code>InvalidStateError</code></code></a>.
+            만약 <a href="#dfn-dispatch-flag" class="internalDFN" data-link-type="dfn">dispatch flag</a>가 지정되지 않았다면,
+            a href="#dfn-invalidstateerror" class="internalDFN" data-link-type="dfn"><code><code>InvalidStateError</code></code></a>를
+            <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">던집니다</a>.
+            <p lang="en">
+              If the <a href="#dfn-dispatch-flag" class="internalDFN" data-link-type="dfn">dispatch flag</a> is unset, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> an <a href="#dfn-invalidstateerror" class="internalDFN" data-link-type="dfn"><code><code>InvalidStateError</code></code></a>.
+            </p>
           </li>
-          <li>Set the <a href="#dfn-stop-propagation-flag" class="internalDFN" data-link-type="dfn">stop propagation flag</a> and <a href="#dfn-stop-immediate-propagation-flag" class="internalDFN" data-link-type="dfn">stop immediate propagation flag</a>.</li>
-          <li>Set [[waitForUpdate]] to <em>true</em>.</li>
-          <li>Set <em>target</em>@[[updating]] to <em>true</em>.</li>
           <li>
+            만약 [[waitForUpdate]]가 <em>true</em>라면
+            <a href="#dfn-invalidstateerror" class="internalDFN" data-link-type="dfn"><code><code>InvalidStateError</code></code></a>를
+            <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">던집니다</a>.
+            <p lang="en">
+              If [[waitForUpdate]] is <em>true</em>, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> an <a href="#dfn-invalidstateerror" class="internalDFN" data-link-type="dfn"><code><code>InvalidStateError</code></code></a>.
+            </p>
+          </li>
+          <li>
+            <em>target</em>@[[state]]가 <em>interactive</em>가 아니라면,
+            <a href="#dfn-invalidstateerror" class="internalDFN" data-link-type="dfn"><code><code>InvalidStateError</code></code></a>를
+            <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">던집니다</a>.
+            <p lang="en">
+              If <em>target</em>@[[state]] is not <em>interactive</em>, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a> an
+              <a href="#dfn-invalidstateerror" class="internalDFN" data-link-type="dfn"><code><code>InvalidStateError</code></code></a>.
+            </p>
+          </li>
+          <li>
+            <em>target</em>@[[updating]]가 <em>true</em>라면,
+            <a href="#dfn-invalidstateerror" class="internalDFN" data-link-type="dfn"><code><code>InvalidStateError</code></code></a>를
+            <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">던집니다</a>.
+            <p lang="en">
+              If <em>target</em>@[[updating]] is <em>true</em>, then <a href="#dfn-throw" class="internalDFN" data-link-type="dfn">throw</a>
+              an <a href="#dfn-invalidstateerror" class="internalDFN" data-link-type="dfn"><code><code>InvalidStateError</code></code></a>.
+            </p>
+          </li>
+          <li>
+            <a href="#dfn-stop-propagation-flag" class="internalDFN" data-link-type="dfn">stop propagation flag</a>와
+            <a href="#dfn-stop-immediate-propagation-flag" class="internalDFN" data-link-type="dfn">stop immediate propagation flag</a>를 지정합니다.
+            <p lang="en">
+              Set the <a href="#dfn-stop-propagation-flag" class="internalDFN" data-link-type="dfn">stop propagation flag</a> and <a href="#dfn-stop-immediate-propagation-flag" class="internalDFN" data-link-type="dfn">stop immediate propagation flag</a>.
+            </p>
+          </li>
+          <li>
+            [[waitForUpdate]]를 <em>true</em>로 지정합니다.
+            <p lang="en">Set [[waitForUpdate]] to <em>true</em>.</p>
+          </li>
+          <li>
+            <em>target</em>@[[updating]]를 <em>true</em>로 지정합니다.
+            <p lang="en">Set <em>target</em>@[[updating]] to <em>true</em>.</p>
+          </li>
+          <li>
+            <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">유저 에이전트</a>는
+            유저가 허락한 결제 요청을 허용하는 유저 인터페이스를 비활성화해야합니다.
+            [<a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> <em class="rfc2119" title="SHOULD">SHOULD</em>]
+
+            웹 페이지가 변경을 요청한 내용이 변경되기 전에 이 결제가 허용되지 않게 하기 위함입니다.
+            웹페이지는 반드시 결제 요청이 유효함을 다시 나타내기 위해 promise <code>d</code>를 해결해야합니다.
+            [<em class="rfc2119" title="MUST">MUST</em>]
+            <p lang="en">
             The <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> <em class="rfc2119" title="SHOULD">SHOULD</em> disable the user interface that allows the user to accept
-            the payment request. This is to ensure that the payment is not accepted until the web page
-            has made changes required by the change. The web page <em class="rfc2119" title="MUST">MUST</em> settle the promise <code>d</code>
+            the payment request.
+
+            This is to ensure that the payment is not accepted until the web page
+            has made changes required by the change.
+
+            The web page <em class="rfc2119" title="MUST">MUST</em> settle the promise <code>d</code>
             to indicate that the payment request is valid again.
-            <p>The <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> <em class="rfc2119" title="SHOULD">SHOULD</em> disable any part of the user interface that could cause
+            </p>
+            <p>
+              <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">유저 에이전트</a>는 다른 갱신 이벤트 발생을 박기 위해 유저 인터페이스의 모든 부분을 비활성화해야합니다. [<em class="rfc2119" title="SHOULD">SHOULD</em>] 한번에 하나의 갱신만 처리합니다.
+            </p>
+            <p lang="en">The <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> <em class="rfc2119" title="SHOULD">SHOULD</em> disable any part of the user interface that could cause
             another update event to be fired. Only one update may be processed at a time.</p>
+
             <div class="issue"><div class="issue-title marker" aria-level="4" role="heading" id="h-issue21"><span>Issue</span><span style="text-transform: none">: Consider adding a timeout to the updating flag in case page doesn't resolve promise from updateWith</span></div><div class="">
               We should consider adding a timeout mechanism so that if the page never resolves
               the promise within a reasonable amount of time then the user agent behaves as if
               the promise was rejected.
             </div></div>
           </li>
-          <li>Return from the method and asynchronously perform the remaining steps.</li>
-          <li>Wait until <code>d</code> settles.</li>
-          <li>If <code>d</code> is resolved with <code>details</code> and <code>details</code> is a
-          <a href="#dom-paymentdetails" class="internalDFN" data-link-type="dfn"><code><code>PaymentDetails</code></code></a> dictionary, then:
+          <li>
+            메서드로부터 반환받고 나머지 스텝을 비동기로 수행합니다.
+            <p lang="en">Return from the method and asynchronously perform the remaining steps.</p>
+          </li>
+          <li>
+            <code>d</code>가 놓일 때까지 기다립니다.
+            <p lang="en">Wait until <code>d</code> settles.</p>
+          </li>
+          <li>
+            만약 <code>d</code>가 <code>details</code>와 함께 해결되었고 <code>details</code>가 <a href="#dom-paymentdetails" class="internalDFN" data-link-type="dfn"><code><code>PaymentDetails</code></code></a> 사전이라면:
+            <p lang="en">
+              If <code>d</code> is resolved with <code>details</code> and <code>details</code> is a
+              <a href="#dom-paymentdetails" class="internalDFN" data-link-type="dfn"><code><code>PaymentDetails</code></code></a> dictionary, then:
+            </p>
             <ol>
               <li>
-                If <code>details</code> contains an <code>items</code> value, then copy
-                this value to the <code>items</code> field of <em>target</em>@[[details]].
+                만약 <code>details</code>가 <code>items</code> 값을 가진다면,
+                이 값을 <em>target</em>@[[details]]의 <code>items</code> 필드에 복사합니다.
+                <p lang="en">
+                  If <code>details</code> contains an <code>items</code> value, then copy
+                  this value to the <code>items</code> field of <em>target</em>@[[details]].
+                </p>
               </li>
               <li>
-                If <code>details</code> contains a <code>shippingOptions</code> sequence, then
-                copy this value to the <code>shippingOptions</code> field of <em>target</em>@[[details]].
-              </li>
-              <li>Let <em>newOption</em> be <em>null</em>.</li>
-              <li>
-                If <code>details</code> contains a <code>shippingOptions</code> sequence with a
-                length of 1, then set <em>newOption</em> to the <code>id</code> of the only
-                <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>ShippingOption</code></code></a> in the sequence.
+                만약 <code>details</code>가 <code>shippingOptions</code> 시퀀스를 가진다면,
+                이 값을 <em>target</em>@[[details]]의 <code>shippingOptions</code> 필드에 복사합니다.
+                <p lang="en">
+                  If <code>details</code> contains a <code>shippingOptions</code> sequence, then
+                  copy this value to the <code>shippingOptions</code> field of <em>target</em>@[[details]].
+                </p>
               </li>
               <li>
-                Set the value of <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>shippingOption</code></code></a> on <em>target</em> to
-                <em>newOption</em>.
+                <em>newOption</em>을 <em>null</em>로 합니다.
+                <p lang="en">Let <em>newOption</em> be <em>null</em>.</p>
+              </li>
+              <li>
+                만약 <code>details</code>가 <code>shippingOptions</code> 시퀀스를 가지고 그 길이가 1이라면,
+                <em>newOption</em>을 시퀀스 내 단일 <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>ShippingOption</code></code></a>의 <code>id</code>로 지정합니다.
+                <p lang="en">
+                  If <code>details</code> contains a <code>shippingOptions</code> sequence with a
+                  length of 1, then set <em>newOption</em> to the <code>id</code> of the only
+                  <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>ShippingOption</code></code></a> in the sequence.
+                </p>
+              </li>
+              <li>
+                <em>target</em>의
+                <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>shippingOption</code></code></a> 값을
+                <em>newOption</em>으로 지정합니다.
+                <p lang="en">
+                  Set the value of <a href="#idl-def-shippingoption" class="internalDFN" data-link-type="dfn"><code><code>shippingOption</code></code></a> on <em>target</em> to
+                  <em>newOption</em>.
+                </p>
               </li>
             </ol>
           </li>
-          <li>Set [[waitForUpdate]] to <em>false</em>.</li>
-          <li>Set <em>target</em>@[[updating]] to <em>false</em>.</li>
           <li>
-            The <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> should update the user interface based on any changed values
-            in <em>target</em>. The user agent <em class="rfc2119" title="SHOULD">SHOULD</em> re-enable user interface elements that might
-            have been disabled in the steps above if appropriate.
+            [[waitForUpdate]]를 <em>fasle</em>로 지정합니다.
+            <p lang="en">Set [[waitForUpdate]] to <em>false</em>.</p>
+          </li>
+          <li>
+            <em>target</em>@[[updating]]을 <em>false</em>로 지정합니다.
+            <p lang="en">Set <em>target</em>@[[updating]] to <em>false</em>.</p>
+          </li>
+          <li>
+            <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">유저 에이전트</a>는 <em>target</em> 안의 변경 값을 기반으로 유저 인터페이스를 갱신합니다.
+            유저 에이전트는 필요한 경우 위 스텝에서 비활성화 시켰을 수도 있는 사용자 인터페이스를 다시 사용하도록 설정해야 합니다. [<em class="rfc2119" title="SHOULD">SHOULD</em>]
+            <p lang="en">
+              The <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> should update the user interface based on any changed values
+              in <em>target</em>. The user agent <em class="rfc2119" title="SHOULD">SHOULD</em> re-enable user interface elements that might
+              have been disabled in the steps above if appropriate.
+            </p>
           </li>
         </ol>
 
