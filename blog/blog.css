@@ -10,6 +10,7 @@ article {
 	font-family:sans-serif;
 	font-weight:300;
 	letter-spacing:-0.065em;
+	color:#222;
 }
 .img-max {
 	width:100%;
@@ -38,9 +39,9 @@ a:visited {
 }
 code {
 	display:inline-block;
-	padding:0 6px;
+	padding:0 0.2em;
 	color:white;
-	background:coral;
+	background:#444;
 	line-height:1.4em;
 	font-family:"menlo", monospace;
 }
