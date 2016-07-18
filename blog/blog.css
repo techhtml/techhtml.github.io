@@ -1,14 +1,15 @@
 body {
-	font-size:16px;
+	font-size:22px;
 	margin: 20px;
 }
 article {
 	max-width:1120px;
 	margin:0 auto;
-	font-size:2vmax;
+	font-size:1em;
 	line-height:180%;
 	font-family:sans-serif;
 	font-weight:300;
+	letter-spacing:-0.065em;
 }
 .img-max {
 	width:100%;
