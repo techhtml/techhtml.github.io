@@ -32,9 +32,12 @@ table th {
 }
 a {
 	font-weight:700;
-	color:blue;
+	letter-spacing:-0.035em;
 }
-a:visited {
+:link {
+	color:royalblue;
+}
+:visited {
 	color:blueviolet;
 }
 code {
