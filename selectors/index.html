@@ -4,9 +4,9 @@
 <html lang=ko>
  <head>
   <title>셀렉터 레벨 3</title>
+  <link href="http://www.w3.org/StyleSheets/TR/W3C-REC.css" rel=stylesheet type="text/css">
   <link href=default.css rel=stylesheet type="text/css">
   <link href=trans.css rel=stylesheet type="text/css">
-  <link href="http://www.w3.org/StyleSheets/TR/W3C-REC.css" rel=stylesheet type="text/css">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
  <body>
   <div class=headernotes>
@@ -34,12 +34,12 @@
      http://www.w3.org/TR/2011/REC-css3-selectors-20110929/</a>
      <!-- <a href="http://dev.w3.org/csswg/selectors3">
              http://dev.w3.org/csswg/selectors3</a> -->
-     
+
      <dt>최신 버전:
 
     <dd><a href="http://www.w3.org/TR/css3-selectors/">
      http://www.w3.org/TR/css3-selectors/</a>
-     
+
     <dt>최신 셀렉터 스펙 문서:
 
     <dd><a href="http://www.w3.org/TR/selectors/">
@@ -73,11 +73,11 @@
     <dd class=vcard><span class=fn>John Williams</span> (former editor, <span
      class=company><a href="http://www.quark.com/">Quark, Inc.</a></span>)
    </dl>
-   
+
    <p>스펙 문서의 규범적인 정의에 수정이 있을 가능성이 있기 때문에 <a href="http://www.w3.org/Style/2011/REC-css3-selectors-20110929-errata.html"><strong>errata</strong></a>도 확인하시길 바랍니다</p>
-   
+
    <p><a href="http://www.w3.org/2003/03/Translations/byTechnology?technology=css3-selectors"><strong>번역본</strong></a>도 있습니다.</p>
-   
+
    <!--begin-copyright-->
 <p class="copyright"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> &copy; 2011 <a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>&reg;</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>), All Rights Reserved. W3C <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.</p>
    <!--end-copyright-->
@@ -85,7 +85,7 @@
   </div>
 
   <h2 class="no-num no-toc" id=abstract>개요</h2>
-  <p lang="ko"><em>셀렉터</em>는 트리 요소에 매치하는 패턴이며 
+  <p lang="ko"><em>셀렉터</em>는 트리 요소에 매치하는 패턴이며
   XML 문서에서 노드를 선택할 때 사용하는 방법 중 하나입니다.
   셀렉터는 HTML이나 XML에서 사용하는 것에 최적화 되어있으며
   성능이 중요한 코드에서 사용하기 쉽게 설계하였습니다.
@@ -94,7 +94,7 @@
    nodes in an XML document. Selectors have been optimized for use with HTML
    and XML, and are designed to be usable in performance-critical code.
 
-  <p lang="ko"><acronym title="Cascading Style Sheets">CSS</acronym> (Cascading Style Sheets)는 
+  <p lang="ko"><acronym title="Cascading Style Sheets">CSS</acronym> (Cascading Style Sheets)는
   <acronym title="Hypertext Markup Language">HTML</acronym>과 <acronym title="Extensible Markup Language">XML</acronym> 문서가
   스크린, 종이 매체, 음성 매체 등에서 렌더링 되는 방법을 정의하는 언어입니다.
   CSS는 문서 내의 요소에 style 속성을 묶어주기 위해 셀렉터를 사용합니다.
@@ -104,11 +104,11 @@
    title="Extensible Markup Language">XML</acronym> documents on screen, on
    paper, in speech, etc. CSS uses Selectors for binding style properties to
    elements in the document.
-  
-  <p lang="ko">이 문서는 <abbr title="CSS level 1">CSS1</abbr> <a href="#CSS1" rel=biblioentry>[CSS1]<!--{{CSS1}}--></a> 및 
+
+  <p lang="ko">이 문서는 <abbr title="CSS level 1">CSS1</abbr> <a href="#CSS1" rel=biblioentry>[CSS1]<!--{{CSS1}}--></a> 및
     <abbr title="CSS level 2">CSS2</abbr> <a href="#CSS21" rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a>에 이미 존재하던 셀렉터에
     <abbr title="CSS level 3">CSS3</abbr> 및 다른 언어에서 필요로 하는 셀렉터를 소개합니다.
-  
+
   <p lang="en">This document describes the selectors that already exist in <abbr
    title="CSS level 1">CSS1</abbr> <a href="#CSS1"
    rel=biblioentry>[CSS1]<!--{{CSS1}}--></a> and <abbr title="CSS level
@@ -124,7 +124,7 @@
   <p lang="ko">
     즉 요소와 셀렉터가 주어졌을 때,
     그 요소가 어떤 셀렉터에 매치하는 지 이 스펙문서에서 정의합니다.
-  
+
   <p lang="en">That is, given an element and a selector, this specification defines
    whether that element matches the selector.
   <p lang="ko">
@@ -144,7 +144,7 @@
   <p lang=ko><em>
     이 섹션은 이 문서를 공개했을 때 상태에 대해 설명합니다.
     다른 문서가 이 문서를 덮어쓸 가능성이 있으니 주의하시길 바랍니다.
-    이 문서 및 W3C에서 공개한 다른 문서의 최신 버전은 
+    이 문서 및 W3C에서 공개한 다른 문서의 최신 버전은
     <a href="http://www.w3.org/TR/">W3C technical reports index</a> at http://www.w3.org/TR/에서
     확인 가능합니다.</em>
   </p>
@@ -180,9 +180,9 @@
    sending e-mail, please put the text &#8220;css3-selectors&#8221; in the
    subject, preferably like this: &#8220;[<!---->css3-selectors<!---->]
    <em>&hellip;summary of comment&hellip;</em>&#8221;
-   <p lang="ko">이 문서는 W3C 멤버, 소프트웨어 개발자, 그리고 다른 W3C 그룹 및 관계자들이 평가를 진행하여, 디렉터에 의해 W3C 권고안으로 발표했습니다. 
-    이 문서는 안정적이며, 참고자료로 사용하거나 다른 문서에서 인용해도 좋습니다. 
-    스펙 문서의 권고를 통해 W3C가 하는 역할은 스펙 문서에 관심을 모으고 다방면으로 퍼뜨리는 일입니다. 
+   <p lang="ko">이 문서는 W3C 멤버, 소프트웨어 개발자, 그리고 다른 W3C 그룹 및 관계자들이 평가를 진행하여, 디렉터에 의해 W3C 권고안으로 발표했습니다.
+    이 문서는 안정적이며, 참고자료로 사용하거나 다른 문서에서 인용해도 좋습니다.
+    스펙 문서의 권고를 통해 W3C가 하는 역할은 스펙 문서에 관심을 모으고 다방면으로 퍼뜨리는 일입니다.
     이를 통해 웹의 기능과 상호운용성 향상을 기대할 수 있습니다.</p>
    <p lang="en">This document has been reviewed by W3C Members, by software developers, and by other W3C groups and interested parties, and is endorsed by the Director as a W3C Recommendation. It is a stable document and may be used as reference material or cited from another document. W3C's role in making the Recommendation is to draw attention to the specification and to promote its widespread deployment. This enhances the functionality and interoperability of the Web.</p>
   <p lang="ko">이 문서는 <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/">2004년 2월 6일 W3C 특허 정책</a>을 따르는 그룹에서 작성하였습니다.
@@ -226,7 +226,7 @@
      <li><a href="#dependencies"><span class=secno>1.1.</span>의존성</a>
 
      <li><a href="#terminology"><span class=secno>1.2. </span>용어</a>
-      
+
 
      <li><a href="#changesFromCSS2"><span class=secno>1.3. </span>CSS2와 다른 점</a>
     </ul>
@@ -413,7 +413,7 @@
 
   <h2 id=context><span class=secno>1. </span>소개</h2>
   <p lang="ko">
-   셀렉터 레벨 1과 셀렉터 레벨 2는 <a href="http://www.w3.org/TR/REC-CSS1">CSS1</a> 및 
+   셀렉터 레벨 1과 셀렉터 레벨 2는 <a href="http://www.w3.org/TR/REC-CSS1">CSS1</a> 및
    <a href="http://www.w3.org/TR/CSS21/">CSS2.1</a>에서 각자 기능적으로 정의한 셀렉터의 서브셋을 정의하였습니다.
   <p lang="en">
    Selectors Level 1 and Selectors Level 2 are defined as the subsets of
@@ -435,7 +435,7 @@
   <h3 id=terminology><span class=secno>1.2. </span>용어</h3>
 
   <p lang="ko">
-    이 스펙문서 내에서 예제, 노트, 명시적으로 '이 섹션은 표준에 준하는 내용이 아닙니다'라 표기된 내용을 제외한 텍스트는 
+    이 스펙문서 내에서 예제, 노트, 명시적으로 '이 섹션은 표준에 준하는 내용이 아닙니다'라 표기된 내용을 제외한 텍스트는
     모두 표준에 준하는 내용입니다.
   </p>
   <p lang="en">All of the text of this specification is normative except examples,
@@ -489,7 +489,7 @@
     and new pseudo-classes</div>
 
    <li>
-    새로운 의사 클래스와 의사 요소를 위한 "::" 컨벤션을 소개합니다. 
+    새로운 의사 클래스와 의사 요소를 위한 "::" 컨벤션을 소개합니다.
     <div lang="en">new pseudo-elements, and introduction of the "::" convention for
     pseudo-elements</div>
 
@@ -584,7 +584,7 @@
     <tr>
      <td class=pattern>E[foo~="bar"]
 
-     <td class=meaning>"foo" 속성값이 공백으로 구분된 값 목록에서, 하나 이상이 문자열 "bar"와 일치하는 요소 
+     <td class=meaning>"foo" 속성값이 공백으로 구분된 값 목록에서, 하나 이상이 문자열 "bar"와 일치하는 요소
 
      <td class=described><a href="#attribute-selectors">속성 셀렉터</a>
 
@@ -611,7 +611,7 @@
     <tr>
      <td class=pattern>E[foo*="bar"]
 
-     <td class=meaning>"foo" 속성값에 문자열 "bar"를 포함하는 요소 
+     <td class=meaning>"foo" 속성값에 문자열 "bar"를 포함하는 요소
 
      <td class=described><a href="#attribute-selectors">속성 셀렉터</a>
 
@@ -622,7 +622,7 @@
 
      <td class=meaning>
        "foo" 속성값이 하이픈으로 구분되는 리스트에서 (왼쪽을 기준으로) "en"으로 시작하는 요소
-     
+
      <td class=described><a href="#attribute-selectors">속성 셀렉터</a>
 
      <td class=origin>2
@@ -924,9 +924,9 @@
 
   <h2 id=selector-syntax><span class=secno>4. </span>셀렉터 문법</h2>
   <p lang="ko">
-    <dfn id=selector>셀렉터</dfn>는 <a href="#combinators">콤비네이터</a>로 구분된 한개 이상의 
+    <dfn id=selector>셀렉터</dfn>는 <a href="#combinators">콤비네이터</a>로 구분된 한개 이상의
     <a href="#sequence">심플 셀렉터 시퀀스</a> 체인입니다.
-    셀렉터 중 심플 셀렉터의 마지막 시퀀스인 경우 하나의 
+    셀렉터 중 심플 셀렉터의 마지막 시퀀스인 경우 하나의
     <a href="#pseudo-elements">의사 요소</a>를 넣는 것도 가능합니다.
   </p>
   <p lang="en">A selector is a chain of one or more <a
@@ -949,8 +949,8 @@
    href="#type-selectors">type selector</a> or a <a
    href="#universal-selector">universal selector</a>. No other type selector
    or universal selector is allowed in the sequence.
-  
-       
+
+
   <p lang="ko"><dfn id=simple-selector><a name=simple-selectors-dfn></a><a
    href="#simple-selectors">심플 셀렉터</a></dfn>는 <a
    href="#type-selectors">타입 셀렉터</a>, <a
@@ -966,14 +966,14 @@
    href="#attribute-selectors">attribute selector</a>, <a
    href="#class-html">class selector</a>, <a href="#id-selectors">ID
    selector</a>, or <a href="#pseudo-classes">pseudo-class</a>.
-  
+
   <p lang="ko"><dfn id=combinators0>콤비네이터</dfn>는: 공백 문자,
    &quot;~보다 큰 기호&quot; (U+003E, <code>&gt;</code>), &quot;덧셈 기호&quot; (U+002B, <code>+</code>) 및 &quot;물결표시&quot; (U+007E,
    <code>~</code>)입니다. 콤비네이터와 심플 셀렉터 사이에 공백 문자를 표시할 수 있습니다.
     <a name=whitespace></a>공백 문자에는
    "space" (U+0020), "tab" (U+0009), "line feed" (U+000A), "carriage return"
    (U+000D), "form feed" (U+000C) 문자만 사용할 수 있습니다.
-    
+
    "em-space" (U+2003)나 "ideographic space"(U+3000) 같은
     다른 공백과 비슷한 문자는 공백 문자로 사용할 수 없습니다.
 
@@ -986,7 +986,7 @@
    (U+000D), and "form feed" (U+000C) can occur in whitespace. Other
    space-like characters, such as "em-space" (U+2003) and "ideographic space"
    (U+3000), are never part of whitespace.
-  <p lang="ko">셀렉터로 인해 나타나는 문서 내 요소는 
+  <p lang="ko">셀렉터로 인해 나타나는 문서 내 요소는
     <dfn id=subjects-of-the-selector><a name=subject></a>셀렉터 대상</dfn>이라 부릅니다.
     하나의 심플 셀렉터 시퀀스로 구성된 셀렉터는 요구사항을 만족하는 어떤 요소라도 나타냅니다.
     여기에 새로운 심플 셀렉터 시퀀스를 주어, 이를 콤비네이터로 엮은 케이스는, 매치하는 제한을 더합니다.
@@ -995,7 +995,7 @@
   <p lang="en">The elements of a document tree that are represented by a selector are
    the <dfn><a name=subject></a>subjects of the
    selector</dfn>. A selector consisting of a single sequence of simple
-   selectors represents any element satisfying its requirements. 
+   selectors represents any element satisfying its requirements.
     Prepending another sequence of simple selectors and a combinator to a sequence
    imposes additional matching constraints, so the subjects of a selector are
    always a subset of the elements represented by the last sequence of simple
@@ -1054,7 +1054,7 @@ h3 { font-family: sans-serif }</pre>
    <pre>h1, h2, h3 { font-family: sans-serif }</pre>
   </div>
 
-  <p lang="ko"><strong>주의</strong>: 
+  <p lang="ko"><strong>주의</strong>:
     이 예제가 true인 이유는 예제의 셀렉터가 모두 유효한 셀렉터이기 때문입니다.
     만약 이 예제 중 하나라도 유효하지 않다면, 모든 셀렉터 그룹은 유효하지 않다고 간주어집니다.
     후자에서 그렇게 되면, 3개 헤딩 요소 모두 규칙이 유효하지 않다고 간주합니다.
@@ -1110,7 +1110,7 @@ h3 { font-family: sans-serif }</pre>
     네임스페이스 컴포넌트는 사전에 <a href="#nsdecl">선언</a>된 네임스페이스 접두사와 요소명을
     네임스페이스 구분자 &quot;vertical bar&quot; (U+007C, <code>|</code>)로 구분한 것을 나타냅니다.
     (XML에서 사용하는 네임스페이스 이용 예시는 <a href="#XML-NAMES" rel=biblioentry>[XML-NAMES]<!--{{XML-NAMES}}--></a>를 참고하시길 바랍니다)
-    
+
   <p lang=en>Type selectors allow an optional namespace component: a namespace prefix
    that has been previously <a href="#nsdecl">declared</a> may be prepended
    to the element name separated by the namespace separator &quot;vertical
@@ -1187,7 +1187,7 @@ h3 { font-family: sans-serif }</pre>
  h1 { color: green }</pre>
 
    <p>
-    (<code>@namespace</code> 규칙을 포함하지 않는) 첫번째 룰은 
+    (<code>@namespace</code> 규칙을 포함하지 않는) 첫번째 룰은
     "http://www.example.com" 네임스페이스 내 <code>h1</code> 요소에만 매치할 것입니다.
     <span lang=en>The first rule (not counting the <code>@namespace</code> at-rule) will
     match only <code>h1</code> elements in the "http://www.example.com"
@@ -1221,13 +1221,13 @@ h3 { font-family: sans-serif }</pre>
    로컬명으로 별표(<code>*</code> U+002A)와 함께 <a href="http://www.w3.org/TR/css3-namespace/#css-qnames">CSS qualified
    name</a> <a href="#CSS3NAMESPACE" rel=biblioentry>[CSS3NAMESPACE]<!--{{!CSS3NAMESPACE}}--></a>으로써 작성된
    <dfn id=universal-selector0>전역셀렉터</dfn>는, 모든 요소 타입의 수식명을 나타냅니다.
-    
-   이는 기본 네임스페이스가 셀렉터에 대해 지정되어있는 경우를 제외하고, 
+
+   이는 기본 네임스페이스가 셀렉터에 대해 지정되어있는 경우를 제외하고,
    (네임스페이스가 없는 것을 포함한) 모든 네임스페이스 내 문서 트리 안 모든 개별 요소를 나타냅니다.
-    
+
    만약 기본 네임스페이스가 정의되어 있다면,
    <a href="#univnmsp">전역 셀렉터와 네임스페이스</a>를 참고하시길 바랍니다.
-  
+
   <p lang=en>The <dfn>universal selector</dfn>, written as a
    <a href="http://www.w3.org/TR/css3-namespace/#css-qnames">CSS qualified
    name</a> <a href="#CSS3NAMESPACE"
@@ -1337,7 +1337,7 @@ h3 { font-family: sans-serif }</pre>
     <code>att</code> 속성을 가지며 속성의 값이 <a href="#whitespace">공백 문자</a>로 구분된 문자의 목록일 때,
     목록 중 하나가 "val"와 일치하는 요소를 나타냅니다.
     만약 "val"이 빈 문자열이라면, 그 무엇도 표현하지 않습니다.
-    
+
     <div lang=en>Represents an element with the <code>att</code> attribute whose value
     is a <a href="#whitespace">whitespace</a>-separated list of words, one of
     which is exactly "val". If "val" contains whitespace, it will never
@@ -1345,7 +1345,7 @@ h3 { font-family: sans-serif }</pre>
     Also if "val" is the empty string, it will never represent anything.</div>
 
    <dt><code>[att|=val]</code>
-   
+
    <dd>
     <code>att</code> 속성을 가지며,
     그 값이 "val" 혹은, "val"에 이어 "-"(U+002D) 문자열로 이어지는 문자열로 시작하는 요소를 나타냅니다.
@@ -1354,7 +1354,7 @@ h3 { font-family: sans-serif }</pre>
      언어의 서브코드 매칭(HTML <code>a</code> 요소의 <code>hreflang</code> 속성 등)을 할 수 있게 이루어져 있습니다.
     <code>lang</code> (혹은 <code>xml:lang</code>)속성에 의한 언어 서브코드 매칭은
     <a href="#lang-pseudo">the <code>:lang</code> 의사 클래스</a>를 확인하시길 바랍니다.
-     
+
     <div lang="en">Represents an element with the <code>att</code> attribute, its value
     either being exactly "val" or beginning with "val" immediately followed
     by "-" (U+002D). This is primarily intended to allow language subcode
@@ -1365,13 +1365,13 @@ h3 { font-family: sans-serif }</pre>
     please see <a href="#lang-pseudo">the <code>:lang</code>
     pseudo-class</a>.</div>
   </dl>
-  
-  <p lang=ko>속성명은 반드시 CSS 
+
+  <p lang=ko>속성명은 반드시 CSS
    <a href="http://www.w3.org/TR/CSS21/syndata.html#value-def-identifier">식별자</a>나
    <a href="http://www.w3.org/TR/CSS21/syndata.html#strings">문자열</a>이여야 합니다.
-   <a href="#CSS21" rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a> 
+   <a href="#CSS21" rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a>
    셀렉터 내의 속성명과 값의 대소문자 구별에 관해서는 문서 언어에 의존합니다.
-    
+
   <p lang=en>Attribute values must be CSS <a
    href="http://www.w3.org/TR/CSS21/syndata.html#value-def-identifier">identifiers</a>
    or <a href="http://www.w3.org/TR/CSS21/syndata.html#strings">strings</a>.
@@ -1482,9 +1482,9 @@ DIALOGUE[character=juliet]</pre>
     Represents an element with the <code>att</code> attribute whose value
     ends with the suffix "val". If "val" is the empty string then the
     selector does not represent anything.</div>
-     
+
    <dt><code>[att*=val]</code>
-   
+
    <dd>
     <code>att</code> 속성을 가지며 해당 속성 값이 "val" 부분 문자열을 최소 1개 이상 포함하는 요소를 나타냅니다.
      만약 "val"이 빈 문자열이라면 셀렉터는 아무 것도 나타내지 않습니다.
@@ -1493,12 +1493,12 @@ DIALOGUE[character=juliet]</pre>
     contains at least one instance of the substring "val". If "val" is the
     empty string then the selector does not represent anything.</div>
   </dl>
-  <p lang=ko>속성명은 반드시 CSS 
+  <p lang=ko>속성명은 반드시 CSS
    <a href="http://www.w3.org/TR/CSS21/syndata.html#value-def-identifier">식별자</a>나
    <a href="http://www.w3.org/TR/CSS21/syndata.html#strings">문자열</a>이여야 합니다.
-   <a href="#CSS21" rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a> 
+   <a href="#CSS21" rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a>
    셀렉터 내의 속성명과 값의 대소문자 구별에 관해서는 문서 언어에 의존합니다.
-    
+
   <p lang=en>
    Attribute values must be CSS <a
    href="http://www.w3.org/TR/CSS21/syndata.html#value-def-identifier">identifiers</a>
@@ -1555,7 +1555,7 @@ DIALOGUE[character=juliet]</pre>
    selector is to match all attribute names without regard to the attribute's
    namespace.
   <p lang=ko>속성 셀렉터 내의 속성명에 네임스페이스 접두사르 가지면서,
-    그 접두사에 대한 <a href="#nsdecl">선언</a>을 하지 않은 경우, 
+    그 접두사에 대한 <a href="#nsdecl">선언</a>을 하지 않은 경우,
     이는 <a href="#Conformance">유효하지 않은</a> 셀렉터입니다.
   <p lang=en>An attribute selector with an attribute name containing a namespace
    prefix that has not been previously <a href="#nsdecl">declared</a> is an
@@ -1571,7 +1571,7 @@ DIALOGUE[character=juliet]</pre>
 [att] { color: green }</pre>
 
    <p>
-    첫번째 규칙은 "http://www.example.com" 네임스페이스 안에서 <code>att</code>  속성을 가지며, 
+    첫번째 규칙은 "http://www.example.com" 네임스페이스 안에서 <code>att</code>  속성을 가지며,
     값이 "val"인 요소를 나타냅니다.
     <span lang=en>The first rule will match only elements with the attribute
     <code>att</code> in the "http://www.example.com" namespace with the value
@@ -1654,7 +1654,7 @@ EXAMPLE[radix=octal]   { /*... other settings...*/ }</pre>
     즉 속성이 명시적으로 지정되어있지 않은 것에 매치하지 않을 가능성이 있습니다.
     모든 가능성에 대비하기 위해, 기본 값에 대한 속성 셀렉터는 제거하지 않으면 안됩니다.
     <span lang=en>
-      the first rule might not match elements whose <code>radix</code> attribute is set by default, 
+      the first rule might not match elements whose <code>radix</code> attribute is set by default,
       i.e. not set explicitly. To catch all cases, the attribute selector for the default value must be dropped:</span>
    </p>
 
@@ -1667,7 +1667,7 @@ EXAMPLE[radix=octal]   { /*... other settings...*/ }</pre>
      2번째 규칙에 있는 스타일 선언이 1번째 스타일 선언을 덮어쓸 것입니다.
      디폴트 상태에서 적용하는 모든 속성 선언은,
      그 외의 상태에 대해 적용하는 스타일 룰에 덮어쓰여지는 점에 주의하시길 바랍니다.
-     
+
     <span lang=en>Here, because the selector <code>EXAMPLE[radix=octal]</code> is more
     specific than the type selector alone, the style declarations in the
     second rule will override those in the first for elements that have a
@@ -1698,7 +1698,7 @@ EXAMPLE[radix=octal]   { /*... other settings...*/ }</pre>
     MathML 1.01 <a href="#MATHML" rel=biblioentry>[MATHML]<!--{{MATHML}}--></a>도 마찬가지로 <a
    href="http://www.w3.org/1999/07/REC-MathML-19990707/chapter2.html#sec2.3.4">MathML
    <code>class</code> 속성</a>을 정의하고 있습니다)
-    
+
   <p lang=en>UAs may apply selectors using the period (.) notation in XML documents
    if the UA has namespace-specific knowledge that allows it to determine
    which attribute is the "class" attribute for the respective namespace. One
@@ -1724,7 +1724,7 @@ EXAMPLE[radix=octal]   { /*... other settings...*/ }</pre>
 
    <p>
      혹은 단순하게
-     <span lang=en>or just</span> 
+     <span lang=en>or just</span>
    </p>
 
    <pre>.pastoral { color: green }  /* all elements with class~=pastoral */</pre>
@@ -1792,7 +1792,7 @@ EXAMPLE[radix=octal]   { /*... other settings...*/ }</pre>
   <p lang=ko>문서 언어는 ID 타입으로 선언된 속성을 가질 수 있습니다.
     ID 타입 속성이 특별한 이유는 결합된 문서에서 속성이 주어지는 요소의 타입을 묻지 않고,
     같은 값을 가진 속성이 두개 존재할 수 없기 때문입니다.
-    
+
     문서 언어가 무엇이던, ID 타입 속성은 요소를 유니크하게 만들 때 사용합니다.
     HTML 언어에 있어 ID 타입 속성은 모든 "id"라는 이름을 가집니다.
     XML 언어에서는 ID 타입 속성이 다른 이름을 가질 수 있지만, ID 타입 속성의 성질은 다르지 않습니다.
@@ -1831,14 +1831,14 @@ EXAMPLE[radix=octal]   { /*... other settings...*/ }</pre>
    <pre>h1#chapter1</pre>
 
    <p>
-    다음 ID 셀렉터는 ID 타입 속성 값으로 "chapter1"을 가지는 모든 요소를 나타냅니다. 
+    다음 ID 셀렉터는 ID 타입 속성 값으로 "chapter1"을 가지는 모든 요소를 나타냅니다.
     <span lang=en>The following ID selector represents any element whose ID-typed
     attribute has the value "chapter1":</span></p>
 
    <pre>#chapter1</pre>
 
    <p>
-    다음 셀렉터는 ID 타입 속성 값으로 "z98y"를 가지는 모든 요소를 나타냅니다. 
+    다음 셀렉터는 ID 타입 속성 값으로 "z98y"를 가지는 모든 요소를 나타냅니다.
     <span lang=en>The following selector represents any element whose ID-typed attribute
     has the value "z98y".</span></p>
 
@@ -1853,7 +1853,7 @@ EXAMPLE[radix=octal]   { /*... other settings...*/ }</pre>
    그 UA가 요소의 ID를 모른다면, 스타일시트의 작성자가 알고있는, 혹은 추측 가능한 경우,
    ID 셀렉터가 아닌 속성 셀렉터를 사용해야 합니다.
    즉 <code>#p371</code> 대신에 <code>[name=p371]</code>를 사용합니다.
-    
+
   <p class=note lang=en><strong>Note:</strong> In XML 1.0 <a href="#XML10"
    rel=biblioentry>[XML10]<!--{{XML10}}--></a>, the information about which
    attribute contains an element's IDs is contained in a DTD or a schema.
@@ -1870,7 +1870,7 @@ EXAMPLE[radix=octal]   { /*... other settings...*/ }</pre>
    namespace-specific knowledge.
 
   <h3 id=pseudo-classes><span class=secno>6.6. </span>의사 클래스</h3>
-  
+
   <p lang=ko>
    의사 클래스는 문서 트리 범위에 포함하지 않는 정보나, 심플 셀렉터로는 표현 불가능한 것을
    선택 가능하도록 도입한 컨셉입니다.
@@ -1929,7 +1929,7 @@ EXAMPLE[radix=octal]   { /*... other settings...*/ }</pre>
      <div lang=en>The <code>:visited</code> pseudo-class applies once the link has been
      visited by the user.</div>
   </ul>
-  <p lang=ko>일정 시간이 지나면, UA는 이미 방문한 링크를 
+  <p lang=ko>일정 시간이 지나면, UA는 이미 방문한 링크를
     (방문하지 않은 링크인) &lsquo;<code class=css>:link</code>&rsquo; 상태로 변환합니다.
   <p lang=en>After some amount of time, user agents may choose to return a visited
    link to the (unvisited) &lsquo;<code class=css>:link</code>&rsquo; state.
@@ -1947,7 +1947,7 @@ EXAMPLE[radix=octal]   { /*... other settings...*/ }</pre>
 
    <pre>a.external:visited</pre>
   </div>
-  <p class=note lang=ko><strong>노트:</strong> 
+  <p class=note lang=ko><strong>노트:</strong>
     스타일시트 작성자가 :link, :visited 의사 클래스를 악용하여,
     유저가 어떤 사이트에 접속했는지 유저의 허락 없이 확인할 수 있습니다.
   <p class=note lang=en><strong>Note:</strong> It is possible for style sheet authors
@@ -1990,7 +1990,7 @@ EXAMPLE[radix=octal]   { /*... other settings...*/ }</pre>
     href="http://www.w3.org/TR/REC-CSS2/media.html#interactive-media-group">interactive
     media</a> may not be able to support this pseudo-class (e.g., a pen
     device that does not detect hovering).</div>
-   
+
    <li>
     <code>:active</code> 의사 클래스는 유저가 활성화시킨 요소를 나타냅니다.
      예를 들어, 유저가 마우스 버튼을 누르고 뗄 때까지의 시간에 적용됩니다.
@@ -2028,11 +2028,11 @@ EXAMPLE[radix=octal]   { /*... other settings...*/ }</pre>
   <p lang=en>Selectors doesn't define if the parent of an element that is
    &lsquo;<code class=css>:active</code>&rsquo; or &lsquo;<code
    class=css>:hover</code>&rsquo; is also in that state.
-  
-  <p class=note lang=ko><strong>노트:</strong> 
-    그 요소의 자식이 포인팅 디바이스에서 지정되었으며 요소 자신이 &lsquo;<code class=css>:hover</code>&rsquo; 상태가 되는 경우, 
+
+  <p class=note lang=ko><strong>노트:</strong>
+    그 요소의 자식이 포인팅 디바이스에서 지정되었으며 요소 자신이 &lsquo;<code class=css>:hover</code>&rsquo; 상태가 되는 경우,
     &lsquo;<code class=css>:hover</code>&rsquo;가 포인팅 디바이스 밑이 아닌 요소에 적용되는 것도 고려해야합니다.
-    
+
   <p class=note lang=en><strong>Note:</strong> If the &lsquo;<code
    class=css>:hover</code>&rsquo; state applies to an element because its
    child is designated by a pointing device, then it's possible for
@@ -2063,7 +2063,7 @@ a:focus:hover</pre>
    class=css>:active</code>&rsquo; (혹은 &lsquo;<code
    class=css>:link</code>&rsquo; 와 &lsquo;<code
    class=css>:active</code>&rsquo;) 양쪽을 동시에 사용 가능합니다.
-    
+
   <p class=note lang=en><strong>Note:</strong> An element can be both &lsquo;<code
    class=css>:visited</code>&rsquo; and &lsquo;<code
    class=css>:active</code>&rsquo; (or &lsquo;<code
@@ -2119,7 +2119,7 @@ a:focus:hover</pre>
     예를 들어 HTML에서 <a href="#HTML401" rel=biblioentry>[HTML401]<!--{{HTML401}}--></a>,
     <code>lang</code> 속성이나 <code>meta</code> 요소, 혹은 프로토콜 (HTTP 헤더 등) 등 몇가지 방법으로 문서의 언어정보를 취득할 수 있습니다.
     XML에서는 <code>xml:lang</code> 속성을 사용하며, 언어 정보를 판별하는 언어 고유의 구조가 있을 가능성이 있습니다.
-    
+
   <p lang=en>If the document language specifies how the human language of an element
    is determined, it is possible to write selectors that represent an element
    based on its language. For example, in HTML <a href="#HTML401"
@@ -2150,7 +2150,7 @@ a:focus:hover</pre>
    href="http://www.w3.org/TR/CSS21/syndata.html#value-def-identifier">identifier</a>
    <a href="#CSS21" rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a> and must not
    be empty. (Otherwise, the selector is invalid.)
-  <p class=note lang=ko><strong>노트:</strong> 
+  <p class=note lang=ko><strong>노트:</strong>
     문서나 프로토콜이 언어 정보를 나타낼 때,
     값은 BCP 47<a href="#BCP47" rel=biblioentry>[BCP47]<!--{{BCP47}}--></a>(혹은 개정판)의 언어 코드를 이용하는 걸 권장합니다.
     또, XML 기반 문서에서 "xml:lang" 속성을 사용할 경우, 그 값에 BCP 47 코드를 사용하게 됩니다. <a href="#XML10" rel=biblioentry>[XML10]<!--{{XML10}}--></a>
@@ -2167,7 +2167,7 @@ a:focus:hover</pre>
    <p>예제:</p>
 
    <p>
-    아래 두 셀렉터는 벨기에식 프랑스어나 독일어로 시작하는 HTML 문서를 나타냅니다. 
+    아래 두 셀렉터는 벨기에식 프랑스어나 독일어로 시작하는 HTML 문서를 나타냅니다.
     그 다음 두 셀렉터는 벨기에식 프랑스어나 독일어라 명시된 임의의 요소의 자식 <code>q</code> 인용구를 나타냅니다.
     <span lang=en>The two following selectors represent an HTML document that is in
     Belgian French or German. The two next selectors represent <code>q</code>
@@ -2445,7 +2445,7 @@ tr:nth-child(2n) /* same */</pre>
   <p lang=en>
    If both <var>a</var> and <var>b</var> are equal to zero, the
    pseudo-class represents no element in the document tree.
-  <p lang=ko><var>a</var> 값은 음수는 가능하나, 
+  <p lang=ko><var>a</var> 값은 음수는 가능하나,
   <var>a</var><code>n</code>+<var>b</var>가 양수 값을 가지는 경우에만 문서 트리의 요소를 나타내는 게 가능합니다.
   <p lang=en>The value <var>a</var> can be negative, but only the positive values of
    <var>a</var><code>n</code>+<var>b</var>, for <code>n</code>&ge;0, may
@@ -2725,7 +2725,7 @@ a:first-child /* Same (assuming a is not the root element) */</pre>
 
   <h4 id=content-selectors><span class=secno>6.6.6. </span>공백</h4>
   <!-- It's the Return of Appendix H!!! Run away! -->
-  <p lang=ko>이 섹션은 의도적으로 비어있습니다. 
+  <p lang=ko>이 섹션은 의도적으로 비어있습니다.
     (이 섹션에는 원래 <code>:contains()</code> 의사 클래스가 정의되어 있었습니다)
   <p lang=en>This section intentionally left blank. (This section previously defined
    a <code>:contains()</code> pseudo-class.)</p>
@@ -2736,7 +2736,7 @@ a:first-child /* Same (assuming a is not the root element) */</pre>
   <p lang=ko>부정 의사 클래스, <code>:not(<var>X</var>)</code>은 함수 표기식이며,
   (부정 의사 클래스 본인을 제외한) <a href="#simple-selectors-dfn">심플 셀렉터</a>를 인수로 가집니다.
   부정 의사 클래스는 인수 내 요소에서 표현하지 않는 요소를 나타냅니다.
-  
+
   <p lang=en>The negation pseudo-class, <code>:not(<var>X</var>)</code>, is a
    functional notation taking a <a href="#simple-selectors-dfn">simple
    selector</a> (excluding the negation pseudo-class itself) as an argument.
@@ -2781,7 +2781,7 @@ a:first-child /* Same (assuming a is not the root element) */</pre>
 
    <p>
     기본 네임스페이스가 "http://example.com"이라고 했을 때,
-    아래 셀렉터는 그 네임스페이스에 속하지 않은 모든 요소를 나타냅니다. 
+    아래 셀렉터는 그 네임스페이스에 속하지 않은 모든 요소를 나타냅니다.
     <span lang=en>Assuming that the default namespace is bound to "http://example.com/",
     the following selector represents all elements that are not in that
     namespace:</span></p>
@@ -2800,7 +2800,7 @@ a:first-child /* Same (assuming a is not the root element) */</pre>
 
    <pre>*|*:not(:hover)</pre>
   </div>
-  
+
   <p class=note><strong>노트</strong>: not() 의사 클래스를 사용해서 의미 없는 셀렉터를 작성할 수 있습니다.
   예를 들어, <code>:not(*|*)</code> 등의 요소도 나타내지 않습니다.
   그 외에도, <code>foo:not(bar)</code>같은 셀렉터도 작성할 수 있습니다.
@@ -2872,11 +2872,11 @@ a:first-child /* Same (assuming a is not the root element) */</pre>
    HTML paragraph such as:
 
   <pre>
-&lt;P&gt;This is a somewhat long HTML 
-paragraph that will be broken into several 
+&lt;P&gt;This is a somewhat long HTML
+paragraph that will be broken into several
 lines. The first line will be identified
-by a fictional tag sequence. The other lines 
-will be treated as ordinary lines in the 
+by a fictional tag sequence. The other lines
+will be treated as ordinary lines in the
 paragraph.&lt;/P&gt;
 </pre>
   <p lang=ko>이 문장이 아래와 같이 행이 나뉘어 표시되었다고 생각합시다:
@@ -2885,8 +2885,8 @@ paragraph.&lt;/P&gt;
   <pre>
 THIS IS A SOMEWHAT LONG HTML PARAGRAPH THAT
 will be broken into several lines. The first
-line will be identified by a fictional tag 
-sequence. The other lines will be treated as 
+line will be identified by a fictional tag
+sequence. The other lines will be treated as
 ordinary lines in the paragraph.
 </pre>
   <p lang=ko>이 문장은 UA에 의해, <code>::first-line</code>의 <em>가상 태그 시퀀스</em>를 포함하도록 "재작성" 될 수 있습니다.
@@ -2896,11 +2896,11 @@ ordinary lines in the paragraph.
    fictional tag sequence helps to show how properties are inherited.
 
   <pre>
-&lt;P&gt;<b>&lt;P::first-line&gt;</b> This is a somewhat long HTML 
+&lt;P&gt;<b>&lt;P::first-line&gt;</b> This is a somewhat long HTML
 paragraph that <b>&lt;/P::first-line&gt;</b> will be broken into several
-lines. The first line will be identified 
-by a fictional tag sequence. The other lines 
-will be treated as ordinary lines in the 
+lines. The first line will be identified
+by a fictional tag sequence. The other lines
+will be treated as ordinary lines in the
 paragraph.&lt;/P&gt;
 </pre>
   <p lang=ko>
@@ -2916,8 +2916,8 @@ paragraph.&lt;/P&gt;
 &lt;P&gt;<b>&lt;SPAN class="test"&gt;</b> This is a somewhat long HTML
 paragraph that will be broken into several
 lines.<b>&lt;/SPAN&gt;</b> The first line will be identified
-by a fictional tag sequence. The other lines 
-will be treated as ordinary lines in the 
+by a fictional tag sequence. The other lines
+will be treated as ordinary lines in the
 paragraph.&lt;/P&gt;
 </pre>
 
@@ -2934,7 +2934,7 @@ paragraph that will <b>&lt;/SPAN&gt;</b>&lt;/P::first-line&gt;<b>&lt;SPAN class=
 broken into several
 lines.<b>&lt;/SPAN&gt;</b> The first line will be identified
 by a fictional tag sequence. The other lines
-will be treated as ordinary lines in the 
+will be treated as ordinary lines in the
 paragraph.&lt;/P&gt;
 </pre>
 
@@ -3066,7 +3066,7 @@ paragraph.&lt;/P&gt;
     UA에 따른 <code>::first-letter</code> 정의는, 적어도 UAX29에서 정의된 규칙의
     자소 클러스터를 포함해야하며, 가능하다면 그 이상이어도 좋습니다.
     예를 들어 네덜란드어에서 "ij"라는 결합문자가 있을 때,
-    두 문자 모두 <code>::first-letter</code> 의사 요소로 고려되야 합니다. 
+    두 문자 모두 <code>::first-letter</code> 의사 요소로 고려되야 합니다.
     <a href="#UAX29" rel=biblioentry>[UAX29]<!--{{UAX29}}--></a>
   <p class=note lang=en><strong>Note:</strong> In some cases the
    <code>::first-letter</code> pseudo-element should include more than just
@@ -3127,11 +3127,11 @@ p::first-line { color: blue }
 
    <pre>&lt;P&gt;
 &lt;P::first-line&gt;
-&lt;P::first-letter&gt; 
-S 
-&lt;/P::first-letter&gt;ome text that 
-&lt;/P::first-line&gt; 
-ends up on two lines 
+&lt;P::first-letter&gt;
+S
+&lt;/P::first-letter&gt;ome text that
+&lt;/P::first-line&gt;
+ends up on two lines
 &lt;/P&gt;</pre>
 
    <p>
@@ -3336,7 +3336,7 @@ En dagelix geschrey de bange stad ontzet.
 &lt;P::first-letter&gt;
 T
 &lt;/P::first-letter&gt;he first
-&lt;/SPAN&gt; 
+&lt;/SPAN&gt;
 few words of an article in the Economist.
 &lt;/P&gt;
 </pre>
@@ -3431,7 +3431,7 @@ is &lt;em&gt;very&lt;/em&gt; important&lt;/span&gt;&lt;/h1&gt;</pre>
     <code>p</code></span>.</p>
 
    <p>
-    아래 셀렉터는 자손 콤비네이터와 <a href="#attribute-selectors">속성 셀렉터</a>를 조합하여, 
+    아래 셀렉터는 자손 콤비네이터와 <a href="#attribute-selectors">속성 셀렉터</a>를 조합하여,
     <code>div</code> 요소 안에 있는 <code>p</code> 요소의 자손 중, <code>href</code> 속성이 정의된 요소를 나타냅니다.
     <span lang=en>The following selector, which combines descendant combinators and <a
     href="#attribute-selectors">attribute selectors</a>, represents an
@@ -3612,7 +3612,7 @@ LI.red.level    /* a=0 b=2 c=1 -&gt; specificity =  21 */
     이는 전역 LL(1)과 지역 LL(2)가 있습니다. (하지만 구문 파싱 컨벤션을 표현하지 않기 때문에,
     대부분의 UA는 직접 사용하지 않도록 주의를 요합니다)
     생성 형식은 인간의 소비와 일부 Yacc(<a href="#YACC" rel=biblioentry>[YACC]<!--{{!YACC}}--></a> 참조)를 넘은 약칭 표기법을 사용합니다.
-    
+
 
   <p lang=en>The grammar below defines the syntax of Selectors. It is globally LL(1)
    and can be locally LL(2) (but note that most UAs should not use it
