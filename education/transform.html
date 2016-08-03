@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Hello Transform</title>
+  <style>
+    /*
+     * CSS Transform 101
+     * 2016-08-02 (화)
+     * 사내공유용 자료
+     */
+     body {
+       margin:0;
+       padding:200px;
+     }
+     /*
+      * transform
+      * 2D vs 3D
+      * transform2D
+      * 2D vs 3D 성능차이
+      * 3D가 당연히.. 성능상의 이슈..
+      * 지원 : 2D, 3D 동일
+      */
+      div {
+        width:200px;
+        height:200px;
+      }
+      .orangebox:hover {
+        transform:rotateX(180deg);
+      }
+      .orangebox {
+        background:orange;
+        transition:0.5s all ease;
+        transform-style:preserve-3d;
+
+        /*
+         * 자기 자신을 변형함
+         * translate (이동)
+         * px, %, em, rem
+
+         * rotate (회전)
+         * deg
+
+         * scale (크기)
+         * 실수
+         */
+      }
+      .applebox {
+        background:orangered;
+      }
+      .applebox:hover .apple {
+
+      }
+      .apple {
+        width:150px;
+        height:150px;
+        background:green;
+        margin:0 auto;
+        transform:matrix(1px,1px,0,0,1px,1px);
+        transition:0.5s all ease;
+      }
+  </style>
+</head>
+<body>
+  <div class="orangebox"></div>
+  <div class="applebox">
+    <div class="apple"></div>
+  </div>
+</body>
+</html>
