@@ -72,8 +72,8 @@ main section ul {
   margin:0;
 }
 main section li {
-  min-width:12em;
   position:relative;
+  min-width:12em;
   line-height:1.8em;
   padding:2em;
   background:#292929;
@@ -96,6 +96,19 @@ main section li dt {
 }
 main section li dd {
   margin:0;
+}
+.rest::after {
+  content:'EXIT';
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%, -50%) rotate(45deg);
+  padding:0.5em 1.5em;
+  font-size:3em;
+  background:rgba(0,0,0,0.8);
+  white-space:nowrap;
+  letter-spacing:0.2em;
+  font-weight:900;
 }
 @media (max-width:1535px) {
   .main-contents {
