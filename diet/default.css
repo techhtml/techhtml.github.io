@@ -14,7 +14,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 .main-contents {
-  padding:70px 50px 120px;
+  padding:70px 15px 120px;
   overflow:hidden;
 }
 aside {
@@ -96,4 +96,22 @@ main section li dt {
 }
 main section li dd {
   margin:0;
+}
+@media (max-width:1535px) {
+  .main-contents {
+    padding:70px 15px 120px;
+  }
+  aside {
+    float:none;
+    width:100%
+  }
+  main {
+    width:100%;
+    float:none;
+  }
+  main section li {
+    flex:auto;
+    min-width:50%;
+    box-sizing:border-box;
+  }
 }
