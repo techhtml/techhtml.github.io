@@ -1,8 +1,7 @@
 body {
   margin:0;
-  font-family: 'Special Elite', cursive;
+  font-family: 'Helvetica NEUE', sans-serif;
   background: #222;
-  font-size:14px;
 }
 .title {
   color: white;
@@ -74,9 +73,9 @@ main section ul {
 }
 main section li {
   position:relative;
-  min-width:11em;
+  min-width:12em;
   line-height:1.8em;
-  padding:1em;
+  padding:2em;
   background:#292929;
   color:#fff;
   list-style:none;
@@ -107,8 +106,10 @@ main section li dd {
   padding:0.5em 1.5em 0.3em;
   font-size:3em;
   background:rgba(0,0,0,0.8);
+  color:orange;
   white-space:nowrap;
-  letter-spacing:0.2em;
+  letter-spacing:0.5em;
+  font-family: 'Special Elite', cursive;
   font-weight:900;
 }
 @media (max-width:1535px) {
