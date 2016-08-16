@@ -120,7 +120,7 @@ main section li dd {
   top:50%;
   transform:translate(-50%, -50%) rotate(45deg);
   padding:0.5em 1.5em 0.3em;
-  font-size:3em;
+  font-size:2em;
   background:rgba(0,0,0,0.8);
   color:orange;
   white-space:nowrap;
