@@ -113,6 +113,21 @@ main section li dd {
   font-family: 'Special Elite', cursive;
   font-weight:900;
 }
+.vacation::after {
+  content:'VACATION';
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%, -50%) rotate(45deg);
+  padding:0.5em 1.5em 0.3em;
+  font-size:3em;
+  background:rgba(0,0,0,0.8);
+  color:orange;
+  white-space:nowrap;
+  letter-spacing:0.5em;
+  font-family: 'Special Elite', cursive;
+  font-weight:900;
+}
 @media (max-width:1535px) {
   .main-contents {
     padding:70px 15px 120px;
