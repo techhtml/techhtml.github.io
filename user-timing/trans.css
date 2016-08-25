@@ -1,5 +1,17 @@
 @charset "UTF-8";
 
+body {
+  font-weight:300;
+  font-family: "APPLESDGothicNEO-LIGHT", sans-serif;
+  font-size:1.1em;
+  line-height:1.5em;
+}
+code, pre {
+  font-family: "menlo", "monaco", monospace;
+}
+pre {
+  font-size:0.9em;
+}
 
 .headernotes {
   margin: 0;
