@@ -13,8 +13,9 @@ article {
 	color:#222;
 }
 .tit-strong {
-	font-size: 5em;
+	font-size: 4em;
 	margin: 0.5em 0;
+	word-break: break-all;
 }
 .lst-strong {
 	font-size: 1.35em;
@@ -24,8 +25,8 @@ article {
 	margin: 0;
 }
 .lst-strong li {
-	border-top: 1px solid pink;
-	border-bottom: 1px solid pink;
+	border-top: 1px solid #efefef;
+	border-bottom: 1px solid #efefef;
 }
 .lst-strong li + li {
 	border-top: 0;
