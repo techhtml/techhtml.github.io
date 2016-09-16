@@ -13,9 +13,11 @@ article {
 	color:#222;
 }
 .tit-strong {
-	font-size: 4em;
-	margin: 0.5em 0;
+	font-size: 2.5em;
+	margin: 0.3em 0;
 	word-break: break-all;
+	font-family: "Helvetica NEUE", sans-serif;
+	font-weight: 900;
 }
 .lst-strong {
 	font-size: 1.35em;
@@ -125,12 +127,12 @@ figure {
 
 @media (max-width: 720px) {
 	.lst-strong {
-		font-size: 1.5em;
+		font-size: 1em;
 		line-height: 1.4em;
 	}
 	.lst-strong a {
 		display: block;
-		padding: 0.7em 0;
+		padding: 0.45em 0;
 	}
 	.lst-strong a small {
 		display: block;
