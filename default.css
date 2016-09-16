@@ -1,21 +1,142 @@
-@charset "UTF-8";
-
 body {
-	font-size:4vmin;
-	line-height:2;
-	font-family: "APPLESDGothicNEO-UltraLIGHT", sans-serif;
-	color:#333;
+	font-size:22px;
+	margin: 20px;
 }
-
+article {
+	max-width:1120px;
+	margin:0 auto;
+	font-size:1em;
+	line-height:180%;
+	font-family:sans-serif;
+	font-weight:300;
+	letter-spacing:-0.065em;
+	color:#222;
+}
+.tit-strong {
+	font-size: 2.5em;
+	margin: 0.3em 0;
+	word-break: break-all;
+	font-family: "Helvetica NEUE", sans-serif;
+	font-weight: 900;
+}
+.lst-strong {
+	font-size: 1.35em;
+	line-height: 3em;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.lst-strong li {
+	border-top: 1px solid #efefef;
+	border-bottom: 1px solid #efefef;
+}
+.lst-strong li + li {
+	border-top: 0;
+}
+.lst-strong a {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
+	color: crimson;
+	text-decoration: none;
+	font-weight: 300;
+	font-family: "Helvetica NEUE", sans-serif;
+}
+.lst-strong small {
+	font-size: 0.7em;
+	margin-left: 0.5em;
+}
+.img-max {
+	width:100%;
+	max-width:960px;
+}
+blockquote {
+	margin-left:1em;
+	padding-left:1em;
+	border-left:1px solid #555;
+	color:#555
+}
+table {
+	border-collapse:collapse;
+}
+table td,
+table th {
+	border:1px solid #555;
+	padding:0.5em;
+}
 a {
-	color:#7a43b6;
+	font-weight:700;
+	letter-spacing:-0.035em;
+}
+:link {
+	color:royalblue;
+}
+:visited {
+	color:blueviolet;
+}
+code {
+	display:inline-block;
+	padding:0 0.2em;
+	color:white;
+	background:#444;
+	line-height:1.4em;
+	font-family:"menlo", monospace;
+}
+pre {
+	position:relative;
+	background:#222;
+	padding:1em 2em 0.7em;
+	color:white;
+	font-size:0.6em;
+	line-height:2em;
+	font-family:"menlo", monospace;
+	white-space:pre-wrap;
+}
+pre .syntax-filename {
+	position:absolute;
+	left:25px;
+	top:10px;
+	color:red;
+}
+.ch_sl {
+	color:coral;
+}
+.ch_vl {
+	color:orange;
+}
+.ch_st {
+	color:#2ac1bc;
+}
+.warning {
+	border-bottom:5px solid #555;
+}
+strong {
+	border-bottom:3px solid currentColor;
+}
+ins.ch_sl,
+ins.ch_vl,
+ins.ch_st {
+	color:coral;
+	font-weight:bold;
+	text-decoration: underline;
+}
+figure {
+	text-align:center;
 }
 
-h1, ul, li {
-	width:61vmax;
-	margin:1em auto;
-}
-p {
-	width:65vmax;
-	margin:1em auto;
+@media (max-width: 720px) {
+	.lst-strong {
+		font-size: 1em;
+		line-height: 1.4em;
+	}
+	.lst-strong a {
+		display: block;
+		padding: 0.45em 0;
+	}
+	.lst-strong a small {
+		display: block;
+		margin: 0.4em 0 0;
+		line-height: 1em;
+	}
 }
