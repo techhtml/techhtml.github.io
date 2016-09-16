@@ -12,6 +12,38 @@ article {
 	letter-spacing:-0.065em;
 	color:#222;
 }
+.tit-strong {
+	font-size: 5em;
+	margin: 0.5em 0;
+}
+.lst-strong {
+	font-size: 1.35em;
+	line-height: 3em;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.lst-strong li {
+	border-top: 1px solid pink;
+	border-bottom: 1px solid pink;
+}
+.lst-strong li + li {
+	border-top: 0;
+}
+.lst-strong a {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
+	color: crimson;
+	text-decoration: none;
+	font-weight: 300;
+	font-family: "Helvetica NEUE", sans-serif;
+}
+.lst-strong small {
+	font-size: 0.7em;
+	margin-left: 0.5em;
+}
 .img-max {
 	width:100%;
 	max-width:960px;
@@ -88,4 +120,20 @@ ins.ch_st {
 }
 figure {
 	text-align:center;
+}
+
+@media (max-width: 720px) {
+	.lst-strong {
+		font-size: 1.5em;
+		line-height: 1.4em;
+	}
+	.lst-strong a {
+		display: block;
+		padding: 0.7em 0;
+	}
+	.lst-strong a small {
+		display: block;
+		margin: 0.4em 0 0;
+		line-height: 1em;
+	}
 }
