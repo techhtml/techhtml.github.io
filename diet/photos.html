@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Hello Bodies</title>
+	<meta name="viewport" content="initial-scale=1, width=device-width">
+	<style>
+		body {
+			margin:0;
+		}
+		.container {
+			display: -webkit-box;
+			display: -webkit-flex;
+			display: flex;
+		}
+		.items {
+			-webkit-flex: 1;
+			flex: 1;
+			display: -webkit-box;
+			display: -webkit-flex;
+			display: flex;
+			-webkit-flex-direction: column;
+			flex-direction: column;
+		}
+		.items input {
+			position: absolute;
+			left: -100%;
+		}
+		.items h1 {
+			text-align: center;
+		}
+		.items [class*=btn] {
+			display:block;
+			width:100%;
+			padding: 15px 0;
+			text-align:center;
+			color: white;
+			background: crimson;
+		}
+		.photo-zone {
+			-webkit-flex: 1;
+			flex: 1;
+			display: -webkit-box;
+			display: -webkit-flex;
+			display: flex;
+			-webkit-align-items: flex-end;
+			align-items: flex-end;
+		}
+		.photo-zone img {
+			width:100%;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="items">
+			<h1>BEFORE</h1>
+			<input type="file" id="before">
+			<div class="photo-zone"><img src="" alt="" id="img-before"></div>
+			<label for="before" class="btn-before">사진올리기</label>
+		</div>
+		<div class="items">
+			<h1>AFTER</h1>
+			<input type="file" id="after">
+			<div class="photo-zone"><img src="" alt="" id="img-after"></div>
+			<label for="after" class="btn-after">사진올리기</label>
+		</div>
+	</div>
+	<script>
+		var beforeInp = document.querySelector("#before"),
+				beforeImg = document.querySelector("#img-before"),
+				afterInp = document.querySelector("#after"),
+				afterImg = document.querySelector("#img-after");
+
+		function readFile(file, target) {
+			var reader = new FileReader();
+			reader.onload = function() {
+				target.src = reader.result;
+			};
+			reader.readAsDataURL(file);
+		}
+
+		beforeInp.addEventListener("change", function() {
+			readFile(this.files[0], beforeImg);
+		})
+		afterInp.addEventListener("change", function() {
+			readFile(this.files[0], afterImg);
+		})
+	</script>
+</body>
+</html>
