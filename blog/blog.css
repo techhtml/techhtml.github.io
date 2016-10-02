@@ -94,10 +94,7 @@ pre {
 	white-space:pre-wrap;
 }
 pre .syntax-filename {
-	position:absolute;
-	left:25px;
-	top:10px;
-	color:red;
+	display: block;
 }
 .ch_sl {
 	color:coral;
@@ -110,9 +107,6 @@ pre .syntax-filename {
 }
 .warning {
 	border-bottom:5px solid #555;
-}
-strong {
-	border-bottom:3px solid currentColor;
 }
 ins.ch_sl,
 ins.ch_vl,
