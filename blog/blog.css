@@ -1,16 +1,23 @@
-body {
-	font-size:22px;
-	margin: 20px;
+html, body {
+	font-size: 18px;
+	margin: 1.5rem;
+	background: #eee;
 }
 article {
-	max-width:1120px;
+	max-width: 60rem;
 	margin:0 auto;
-	font-size:1em;
-	line-height:180%;
+	padding: 1rem 1.75rem;
+	background:#fff;
+	font-size:1rem;
+	line-height:1.8rem;
 	font-family:sans-serif;
-	font-weight:300;
+	font-weight:200;
 	letter-spacing:-0.065em;
 	color:#222;
+	box-sizing:border-box;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-weight:500;
 }
 .tit-strong {
 	font-size: 2.5em;
@@ -76,18 +83,14 @@ a {
 	color:blueviolet;
 }
 code {
-	display:inline-block;
-	padding:0 0.2em;
-	color:white;
-	background:#444;
-	line-height:1.4em;
+	color:crimson;
 	font-family:"menlo", monospace;
 }
 pre {
 	position:relative;
 	background:#222;
 	padding:1em 2em 0.7em;
-	color:white;
+	color: crimson;
 	font-size:0.6em;
 	line-height:2em;
 	font-family:"menlo", monospace;
@@ -120,6 +123,16 @@ figure {
 }
 
 @media (max-width: 720px) {
+	html, body {
+		font-size: 16px;
+		margin: 1rem;
+	}
+	article {
+		max-width: 80rem;
+		margin:0 auto;
+		padding: 0.3rem 1rem;
+		letter-spacing: 0px;
+	}
 	.lst-strong {
 		font-size: 1em;
 		line-height: 1.4em;
