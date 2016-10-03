@@ -1,0 +1,223 @@
+<!doctype html>
+<html amp lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<title>나는 왜 갑자기 입개발자가 되었는가? - techHTML</title>
+		<link rel="canonical" href="http://techhtml.github.io/blog/2016/05/developer.html" />
+		<script type="application/ld+json">
+			{
+				"@context": "http://schema.org",
+				"@type": "NewsArticle",
+				"headline": "Open-source framework for publishing content",
+				"datePublished": "2016-05-30"
+			}
+		</script>
+		<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+		<style amp-custom>
+		html, body {
+			font-size: 18px;
+			margin: 1.5rem;
+			background: #;
+		}
+		article {
+			max-width: 60rem;
+			margin:0 auto;
+			padding: 1rem 1.75rem;
+			background:#fff;
+			font-size:1rem;
+			line-height:1.8rem;
+			font-family:sans-serif;
+			font-weight:200;
+			letter-spacing:-0.065em;
+			color:#222;
+			box-sizing:border-box;
+		}
+		h1,h2,h3,h4,h5,h6 {
+			font-weight:500;
+		}
+		.tit-strong {
+			font-size: 2.5em;
+			margin: 0.3em 0;
+			word-break: break-all;
+			font-family: "Helvetica NEUE", sans-serif;
+			font-weight: 900;
+		}
+		.lst-strong {
+			font-size: 1.35em;
+			line-height: 3em;
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+		.lst-strong li {
+			border-top: 1px solid #efefef;
+			border-bottom: 1px solid #efefef;
+		}
+		.lst-strong li + li {
+			border-top: 0;
+		}
+		.lst-strong a {
+			display: -webkit-flex;
+			display: flex;
+			-webkit-justify-content: space-between;
+			justify-content: space-between;
+			color: crimson;
+			text-decoration: none;
+			font-weight: 300;
+			font-family: "Helvetica NEUE", sans-serif;
+		}
+		.lst-strong small {
+			font-size: 0.7em;
+			margin-left: 0.5em;
+		}
+		.img-max {
+			width:100%;
+			max-width:960px;
+		}
+		blockquote {
+			margin-left:1em;
+			padding-left:1em;
+			border-left:1px solid #555;
+			color:#555
+		}
+		table {
+			border-collapse:collapse;
+		}
+		table td,
+		table th {
+			border:1px solid #555;
+			padding:0.5em;
+		}
+		a {
+			font-weight:700;
+			letter-spacing:-0.035em;
+		}
+		:link {
+			color:royalblue;
+		}
+		:visited {
+			color:blueviolet;
+		}
+		code {
+			color:crimson;
+			font-family:"menlo", monospace;
+		}
+		pre {
+			position:relative;
+			background:#222;
+			padding:1em 2em 0.7em;
+			color: crimson;
+			font-size:0.6em;
+			line-height:2em;
+			font-family:"menlo", monospace;
+			white-space:pre-wrap;
+		}
+		pre .syntax-filename {
+			display: block;
+		}
+		.ch_sl {
+			color:coral;
+		}
+		.ch_vl {
+			color:orange;
+		}
+		.ch_st {
+			color:#2ac1bc;
+		}
+		.warning {
+			border-bottom:5px solid #555;
+		}
+		ins.ch_sl,
+		ins.ch_vl,
+		ins.ch_st {
+			color:coral;
+			font-weight:bold;
+			text-decoration: underline;
+		}
+		figure {
+			text-align:center;
+		}
+
+		@media (max-width: 720px) {
+			html, body {
+				font-size: 16px;
+				margin: 1rem;
+			}
+			article {
+				max-width: 80rem;
+				margin:0 auto;
+				padding: 0.3rem 1rem;
+				letter-spacing: 0px;
+			}
+			.lst-strong {
+				font-size: 1em;
+				line-height: 1.4em;
+			}
+			.lst-strong a {
+				display: block;
+				padding: 0.45em 0;
+			}
+			.lst-strong a small {
+				display: block;
+				margin: 0.4em 0 0;
+				line-height: 1em;
+			}
+		}
+		</style>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+		<script async src="https://cdn.ampproject.org/v0.js"></script>
+	</head>
+  <body>
+    <article>
+        <h1>공유는 문화다</h1>
+        <p>
+            일단 이 글은 분명히 말하자면 아웃스탠딩 기사 (<a href="http://outstanding.kr/scout20160518/">왜냐면 우리가 원하는 사람은 입기획자가 아니거든</a>)에 대한 반박글이다.
+            이번 달에는 글을 하나만 쓰고 끝내려고 했지만 이 글에 대해서 공감하거나 납득하는 사람이 많고
+            그로 인해서 개발의 좋은 문화 하나가 사라지는 걸 원하지 않기 때문이다.
+            원글에서는 기획의 이야기라고 했지만 사실 우리 모두 생각해봐야 하는 일이다.
+        </p>
+        <h2>공유는 성장하는 데 도움을 준다</h2>
+        <p>
+            지금도 많은 개발자들이 회사에서 개발을 하고 있고, 블로그에 글을 쓰고 있으며 새로운 지식을 전파하기 위해 부단한 노력을 하고 있다.
+            누군가는 그런 일을 쓸 데 없는 일이라고 생각할 수 있지만 개발자에게는 분명히 성장해나가는 과정 중 하나다.
+
+            누군가에게 새로운 지식을 전파하고 공유한다는 건 그 지식에 대해서 다른 사람보다 약간이라도 더 안다는 걸 전제로 한다.
+            공유를 받는 상대방은 "새로운 지식을 얻고싶다"라는 요구를 충족하기 위해서 공유를 받는 것이다.
+
+            세미나를 참석하는데 반나절이 걸리지만, 세미나를 준비하는데에는 한달이 걸리고,
+            그 한달동안 얻은 지식은 나만 가지고 있는, 그리고 누군가에게 유용한 지식이 될 지식이다.
+
+            나는 그 시간을 "바쁜데 그런 데 신경 쓸 겨를이 있나?"라고 생각하지 않는다.
+            중장기적으로는 분명히 나에게 도움이 되고, 나아가서 더 많은 사람들에게 도움을 줄 것이다.
+
+            이는 곧 긍정적인 순환 관계를 이루고,
+            많은 사람들이 지식을 공유하고 공유받음으로써 하나의 멋진 문화를 만들어 내는 것이다.
+
+            본문에서 '그저 에반젤리스트'라는 말을 쓰고 있는데,
+            에반젤리스트는 그렇게 취급당할 사람이 아니다.
+        </p>
+        <h2>외부 모임이 쓸데없는가?</h2>
+        <p>
+            개인이 세미나를 발표하기 위해 반나절을 비우고,
+            한달동안 세미나 준비로 일에 약간 소홀해진다고 해서 회사에 큰 타격이 온다면,
+            그건 조직에 문제가 있는것이다.
+
+            본문에서는 세미나를 나가는 행위 자체를 마치 굉장히 시간을 날린다는 등의 표현을 쓰고 있는데,
+            세미나는 단순히 시간 날리겠다고 발표하러 가는 자리가 아니다.
+
+            회사의 대표가 세미나 때문에 반나절 자리를 비우면, 그 회사가 사라지기라도 하는 건가?
+            반나절 자리 비우지 못할 정도로 대표는 바빠야하는가?
+            그리고 무엇보다 세미나는 왜 일에 끼지 못하는가?
+
+            세미나의 장이 누군가에게는 비즈니스 장일 수 있다.
+            새로운 사람을 채용하기 위해 세미나에 가서 발표하는 경우도 있고,
+            경쟁사의 트렌드를 얻기 위해서 갈 수도 있으며, 관련 업계가 어떻게 돌아가는 지 동향을 보기 위해 갈 수도 있다.
+        </p>
+        <h2>음 그래서..</h2>
+        <p>
+            간혹 나와서 공유도 하고 지식도 전파하면 좋습니다.
+            행복하세요.
+        </p>
+    </article>
+</body>
+</html>
