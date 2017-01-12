@@ -1,0 +1,28 @@
+body {
+  margin:0;
+  padding:35px;
+  font-family: 'VT323', cursive;
+  font-size:1.25em;
+  background: #111;
+  color:#fff;
+}
+.wrap {
+  position:relative;
+  max-width:1080px;
+  margin:0 auto;
+}
+.thumb {
+  float:right;
+  width:150px;
+}
+dt {
+  color:crimson;
+}
+a {
+  color:royalblue;
+}
+@media (min-width:720px) {
+.thumb {
+  width:300px;
+}
+}
