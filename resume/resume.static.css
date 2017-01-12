@@ -12,7 +12,6 @@ body {
   margin:0 auto;
 }
 .thumb {
-  float:right;
   width:150px;
 }
 dt {
@@ -23,6 +22,7 @@ a {
 }
 @media (min-width:720px) {
 .thumb {
+  float:right;
   width:300px;
 }
 }
