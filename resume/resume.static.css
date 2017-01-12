@@ -1,7 +1,7 @@
 body {
   margin:0;
   padding:35px;
-  font-family: 'VT323', 'Fixedsys', cursive;
+  font-family: 'VT323', 'enikusu HG', 'Fixedsys', sans-serif;
   font-size:1.25em;
   background: #111;
   color:#fff;
@@ -21,8 +21,8 @@ a {
   color:royalblue;
 }
 @media (min-width:720px) {
-.thumb {
-  float:right;
-  width:300px;
-}
+  .thumb {
+    float:right;
+    width:300px;
+  }
 }
