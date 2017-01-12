@@ -1,9 +1,9 @@
 @font-face {
 	font-family:"enikusu HG";
-	src:url("https://techhtml.github.io/resume/enksh__.eot?") format("eot"),
-	url("https://techhtml.github.io/resume/enksh__.woff") format("woff"),
-	url("https://techhtml.github.io/resume/enksh__.ttf") format("truetype"),
-	url("https://techhtml.github.io/resume/enksh__.svg#enikusuHG") format("svg");
+	src:url("https://techhtml.github.io/resume/fonts/enksh__.eot?") format("eot"),
+	url("https://techhtml.github.io/resume/fonts/enksh__.woff") format("woff"),
+	url("https://techhtml.github.io/resume/fonts/enksh__.ttf") format("truetype"),
+	url("https://techhtml.github.io/resume/fonts/enksh__.svg#enikusuHG") format("svg");
 	font-weight:normal;
 	font-style:normal;
 }
