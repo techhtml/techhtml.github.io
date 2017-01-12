@@ -1,0 +1,8 @@
+@font-face {
+  font-family: "Fixedsys";
+  font-style: normal;
+  font-weight:400;
+  src: local("DungGeunMo"),
+  url(fonts/DungGeunMo.woff) format('woff');
+}
+
