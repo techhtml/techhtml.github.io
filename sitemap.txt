@@ -1,6 +1,4 @@
 https://techhtml.github.io/index.html
-https://techhtml.github.io/technical-report.html
-https://techhtml.github.io/blog/index.html
 https://techhtml.github.io/blog/2015/12/index.html
 https://techhtml.github.io/blog/2016/05/index.html
 https://techhtml.github.io/blog/2016/05/developer.html

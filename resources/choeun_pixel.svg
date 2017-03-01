@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 144">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #842828;
+      }
+
+      .cls-2 {
+        fill: #f7c79a;
+      }
+
+      .cls-3 {
+        fill: #1c1b1a;
+      }
+
+      .cls-4 {
+        fill: #363d56;
+      }
+
+      .cls-5 {
+        fill: #262222;
+      }
+
+      .cls-6 {
+        fill: #4f4f4f;
+      }
+
+      .cls-7 {
+        fill: #f76d6d;
+      }
+
+      .cls-8 {
+        fill: #161414;
+      }
+
+      .cls-9 {
+        fill: #ffa9a9;
+      }
+
+      .cls-10 {
+        fill: #3f3e3d;
+      }
+
+      .cls-11 {
+        fill: #404759;
+      }
+
+      .cls-12 {
+        fill: #ddd;
+      }
+
+      .cls-13 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <title>choeun_pixel</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_1-2" data-name="Layer 1">
+      <polygon class="cls-1" points="104 96 96 96 88 96 88 88 80 88 72 88 64 88 64 92 60 92 60 96 56 96 48 96 40 96 32 96 32 104 40 104 48 104 56 104 56 112 56 120 64 120 72 120 72 112 72 104 72 96 80 96 80 104 80 112 80 116 76 116 76 120 80 120 88 120 88 112 88 104 96 104 104 104 112 104 112 96 104 96"/>
+      <g>
+        <rect class="cls-2" x="112" y="96" width="8" height="8"/>
+        <path class="cls-2" d="M112,56V40h-8V32H64V24H56v8H48v8H40V56H32v8h8v8h8v8h56V72h8V64h8V56Zm-8,0H96V48h8ZM48,48h8v8H48ZM88,72H60V68h4V64H88v4h4v4Z"/>
+        <rect class="cls-2" x="24" y="96" width="8" height="8"/>
+      </g>
+      <rect class="cls-3" x="96" y="48" width="8" height="8"/>
+      <rect class="cls-4" x="80" y="136" width="8" height="8"/>
+      <rect class="cls-4" x="56" y="136" width="8" height="8"/>
+      <polygon class="cls-5" points="80 120 72 120 64 120 56 120 56 128 56 136 64 136 64 132 68 132 68 128 72 128 76 128 76 132 80 132 80 136 88 136 88 128 88 120 80 120"/>
+      <rect class="cls-3" x="48" y="48" width="8" height="8"/>
+      <rect class="cls-6" x="32" y="64" width="8" height="8"/>
+      <polygon class="cls-6" points="32 40 32 32 24 32 24 40 24 48 24 56 32 56 40 56 40 48 40 40 32 40"/>
+      <polygon class="cls-7" points="80 68 72 68 72 76 68 76 68 80 72 80 80 80 84 80 84 76 88 76 88 68 80 68"/>
+      <g>
+        <polygon class="cls-8" points="112 24 112 16 104 16 104 8 96 8 96 0 88 0 80 0 72 0 64 0 56 0 48 0 40 0 40 8 32 8 32 16 32 24 24 24 24 32 32 32 32 40 40 40 48 40 48 32 56 32 56 24 64 24 64 32 72 32 80 32 88 32 96 32 104 32 104 40 112 40 112 45 108 45 108 60 112 60 112 56 120 56 120 48 120 40 120 32 120 24 112 24"/>
+        <rect class="cls-8" x="92" y="60" width="16" height="4"/>
+        <rect class="cls-8" x="92" y="41" width="16" height="4"/>
+        <polygon class="cls-8" points="88 45 88 50 64 50 64 45 60 45 60 60 64 60 64 54 88 54 88 60 92 60 92 45 88 45"/>
+        <rect class="cls-8" x="44" y="60" width="16" height="4"/>
+        <rect class="cls-8" x="44" y="41" width="16" height="4"/>
+        <rect class="cls-8" x="40" y="45" width="4" height="15"/>
+      </g>
+      <polygon class="cls-9" points="72 68 64 68 64 76 72 76 72 72 76 72 76 68 72 68"/>
+      <g>
+        <polygon class="cls-10" points="104 72 104 76 100 76 100 80 96 80 88 80 80 80 72 80 64 80 56 80 52 80 52 76 48 76 48 72 40 72 40 80 48 80 48 88 56 88 64 88 72 88 80 88 88 88 96 88 104 88 104 80 112 80 112 72 104 72"/>
+        <polygon class="cls-10" points="64 72 68 72 68 68 72 68 80 68 84 68 84 72 88 72 88 76 92 76 92 68 89 68 88 68 88 64 80 64 72 64 64 64 64 68 60 68 60 76 64 76 64 72"/>
+      </g>
+      <polygon class="cls-11" points="80 88 80 92 72 92 72 88 68 88 68 92 68 96 72 96 72 104 72 116 72 120 76 120 76 116 80 116 80 104 80 96 84 96 84 92 84 88 80 88"/>
+      <rect class="cls-12" y="64" width="48" height="32"/>
+      <rect class="cls-13" x="26" y="73" width="2" height="2"/>
+      <rect class="cls-13" x="24" y="75" width="2" height="2"/>
+      <polygon class="cls-13" points="26 85 26 81 28 81 28 79 20 79 20 81 18 81 18 85 20 85 20 87 28 87 28 85 26 85"/>
+    </g>
+  </g>
+</svg>

@@ -1,192 +1,121 @@
-<!doctype html>
-<html amp lang="ko">
-	<head>
-		<meta charset="utf-8">
-		<title>techHTML</title>
-		<link rel="canonical" href="http://techhtml.github.io/index.html" />
-		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-		<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
-		<style amp-custom>
-        body{font-family:"noto","Roboto", sans-serif}
-        #sidebar {background:#fff;padding:15px 0;}
-        #sidebar ul{padding:0;margin:0}
-        #sidebar li{list-style:none;}
-        #sidebar li a{display:block;font-weight:400;padding:8px 15px;text-decoration:none;}
-        #sidebar li a:hover {color:#fff;background:royalblue}
-        .btn-sidebar {font-size:25px;background:none;padding:0 5px;margin:0;border:0}
-        .st0{fill:#231F20;}
-        html, body {
-            font-size: 18px;
-            margin: 1.5rem;
-        }
-        article {
-            max-width: 60rem;
-            margin:0 auto;
-            padding: 1rem 1.75rem;
-            background:#fff;
-            font-size:1rem;
-            line-height:1.8rem;
-            font-family:sans-serif;
-            font-weight:200;
-            letter-spacing:-0.065em;
-            color:#222;
-            box-sizing:border-box;
-        }
-        h1,h2,h3,h4,h5,h6 {
-            font-weight:500;
-        }
-        .tit-strong {
-            font-size: 2.5em;
-            margin: 0.3em 0;
-            word-break: break-all;
-            font-family: "Helvetica NEUE", sans-serif;
-            font-weight: 900;
-        }
-        .lst-strong {
-            font-size: 1.35em;
-            line-height: 3em;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .lst-strong li {
-            border-top: 1px solid #efefef;
-            border-bottom: 1px solid #efefef;
-        }
-        .lst-strong li + li {
-            border-top: 0;
-        }
-        .lst-strong a {
-            display: -webkit-flex;
-            display: flex;
-            -webkit-justify-content: space-between;
-            justify-content: space-between;
-            color: crimson;
-            text-decoration: none;
-            font-weight: 300;
-            font-family: "Helvetica NEUE", sans-serif;
-        }
-        .lst-strong small {
-            font-size: 0.7em;
-            margin-left: 0.5em;
-        }
-        .img-max {
-            width:100%;
-            max-width:960px;
-        }
-        blockquote {
-            margin-left:1em;
-            padding-left:1em;
-            border-left:1px solid #555;
-            color:#555
-        }
-        table {
-            border-collapse:collapse;
-        }
-        table td,
-        table th {
-            border:1px solid #555;
-            padding:0.5em;
-        }
-        a {
-            font-weight:700;
-            letter-spacing:-0.035em;
-        }
-        :link {
-            color:royalblue;
-        }
-        :visited {
-            color:blueviolet;
-        }
-        code {
-            color:crimson;
-            font-family:"menlo", monospace;
-        }
-        pre {
-            position:relative;
-            background:#222;
-            padding:1em 2em 0.7em;
-            color: crimson;
-            font-size:0.6em;
-            line-height:2em;
-            font-family:"menlo", monospace;
-            white-space:pre-wrap;
-        }
-        pre .syntax-filename {
-            display: block;
-        }
-        .ch_sl {
-            color:coral;
-        }
-        .ch_vl {
-            color:orange;
-        }
-        .ch_st {
-            color:#2ac1bc;
-        }
-        .warning {
-            border-bottom:5px solid #555;
-        }
-        ins.ch_sl,
-        ins.ch_vl,
-        ins.ch_st {
-            color:coral;
-            font-weight:bold;
-            text-decoration: underline;
-        }
-        figure {
-            text-align:center;
-        }
+<!DOCTYPE html>
+<html amp>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1">
+    <title>Hello AMPs</title>
+    <link rel="canonical" href="index.html">
+    <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400|Material+Icons" rel="stylesheet">
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <style amp-custom>
+    :root {
+      --color-gray: #424242;
+      --color-blue-500: #2196F3;
+      --color-blue-800: #1565C0;
+    }
 
-        @media (max-width: 720px) {
-            html, body {
-                font-size: 16px;
-                margin: 1rem;
-            }
-            article {
-                max-width: 80rem;
-                margin:0 auto;
-                padding: 0.3rem 1rem;
-                letter-spacing: 0px;
-            }
-            .lst-strong {
-                font-size: 1em;
-                line-height: 1.4em;
-            }
-            .lst-strong a {
-                display: block;
-                padding: 0.45em 0;
-            }
-            .lst-strong a small {
-                display: block;
-                margin: 0.4em 0 0;
-                line-height: 1em;
-            }
-        }</style>
-		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-		<script async src="https://cdn.ampproject.org/v0.js"></script>
-		<script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
-	</head>
-<body>
+    body {
+      font-size:13px;
+      line-height:1.425;
+      font-family: "Roboto", "Noto Sans KR", sans-serif;
+      color:var(--color-gray);
+      font-weight:300;
+    }
+    h1,h2,h3 {
+      font-weight:300;
+    }
+    h4,h5 {
+      font-weight:400;
+    }
+    h6 {
+      font-weight:500;
+    }
+    strong {
+      font-weight:400;
+    }
+    input {
+      font:inherit;
+    }
+    ul,ol {
+      list-style:none;
+      padding:0;
+    }
+    li a {
+      display:block;
+      padding:0.675rem 1rem 0.75rem;
+    }
+    li i {
+      padding-right:0.5rem;
+      vertical-align:middle;
+    }
 
-<button class="btn-sidebar" on="tap:sidebar.open"> = </button>
-<amp-sidebar id="sidebar" layout="nodisplay">
-  <ul>
-  <li><a href="/blog/2015/12/">번역회고록 - 왜 남의나라 말은 어려운가</a></li>
-  <li><a href="/blog/2016/05/">프론트엔드에 테스트를 도입</a></li>
-  <li><a href="/blog/2016/05/developer">나는 왜 갑자기 입개발자가 되었는가?</a></li>
-  <li><a href="/blog/2016/06/">Module CSS</a></li>
-  <li><a href="/blog/2016/09/">할 수 있는 일</a></li>
-  <li><a href="/blog/2016/09/education">누구나 쉽게하는 웹 프론트엔드</a></li>
-  </ul>
-</amp-sidebar>
+    /*
+     * links
+     */
+    a {
+      color:var(--color-blue-500);
+      text-decoration:none;
+    }
+    a:hover {
+      color:var(--color-blue-800);
+    }
 
-<article class="main">
-  	<p>안녕하세요. <a href="/interactive">조은</a>입니다.</p>
-  	<p>저는 <a href="http://w3.org/TR/">W3C 권고안</a>을 <a href="https://www.w3.org/2005/11/Translations/Lists/ListLang-ko.html">한국어</a>로 번역합니다.</p>
-  	<p>HTML, CSS를 이용하여 주로 개발하고, JavaScript로도 개발하고 있습니다. GDG Korea Webtech 운영자도 겸하고있습니다.</p>
-  	<p>지금까지 번역한 문서는 <a href="/technical-report.html">기술 문서 목록</a>에 있고, 블로그는 <a href="./blog/">여기</a>에서 확인 가능합니다.</p>
-  	<p><a href="http://facebook.com/eun.cho.161">facebook</a>, <a href="http://twitter.com/apes01234">twitter</a>, <a href="https://github.com/techhtml">github</a>도 있습니다.</p>
-</article>
-</body>
+    /*
+     * article padding
+     */
+
+    .contents {
+      max-width:720px;
+      box-sizing:border-box;
+      padding:0 1.25rem;
+      margin: auto;
+    }
+
+    @media (min-width: 1440px) {
+      .contents {
+        max-width:940px;
+      }
+    }
+    </style>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+  </head>
+  <body>
+    <main class="contents">
+      <h1>techHTML</h1>
+      <a href="http://facebook.com/eun.cho.161">Facebook</a>
+      <a href="https://twitter.com/apes01234">Twitter</a>
+      <a href="https://github.com/techhtml">github</a>
+      <h2>Blog</h2>
+      <ul>
+        <li><a href="/blog/2015/12/">번역회고록 - 왜 남의나라 말은 어려운가</a></li>
+        <li><a href="/blog/2016/05/">프론트엔드에 테스트를 도입</a></li>
+        <li><a href="/blog/2016/05/developer">나는 왜 갑자기 입개발자가 되었는가?</a></li>
+        <li><a href="/blog/2016/06/">Module CSS</a></li>
+        <li><a href="/blog/2016/09/">할 수 있는 일</a></li>
+        <li><a href="/blog/2016/09/education">누구나 쉽게하는 웹 프론트엔드</a></li>
+      </ul>
+      <h2>Translations</h2>
+      <ul class="lst-strong">
+      	<li><a href="/css3-color">CSS 컬러 모듈 Level 3</a></li>
+        <li><a href="/2015/09/">웹 페이먼츠 워킹 그룹 프레스 릴리즈</a></li>
+        <li><a href="/css-style-attr">CSS 스타일 속성</a></li>
+        <li><a href="/css3-mediaqueries">미디어 쿼리</a></li>
+        <li><a href="/selectors">셀렉터 레벨 3</a></li>
+        <li><a href="/css3-namespace">CSS 네임스페이스 모듈 레벨 3</a></li>
+        <li><a href="/view-mode">'view-mode' 미디어 특성</a></li>
+        <li><a href="/page-visibility">페이지 가시성 (세컨드 에디션)</a></li>
+        <li><a href="/notifications">웹 알림 (Web Notifications)</a></li>
+        <li><a href="/performance-timeline">성능 타임라인 (Performance Timeline)</a></li>
+        <li><a href="/user-timing">유저 타이밍 (User Timing)</a></li>
+        <li><a href="/pointerevents">포인터 이벤트 (Pointer Events)</a></li>
+        <li><a href="/role-attribute">Role 속성 1.0 (Role Attribute 1.0)</a></li>
+        <li><a href="/vibration">진동 API (Vibration API)</a></li>
+        <li><a href="/rfc/RFC2119.html">RFC 2119 - RFC 내에서 요구하는 레벨을 탐지하기 위한 키워드들</a></li>
+        <li><a href="/ECMA-404/">JSON 데이터 교환 포맷</a></li>
+        <li><a href="/battery-status/">배터리 상태 API</a></li>
+        <li><a href="/payment-request/">결제 요청 API</a></li>
+      </ul>
+    </main>
+  </body>
 </html>

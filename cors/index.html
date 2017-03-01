@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Cross-Origin Resource Sharing</title>
     <style>
-        body {font-size:1.5em;font-family:"APPLESDGothicNEO-LIGHT", sans-serif;}
+        body {font-family:sans-serif;}
         .example { margin-left:1em; padding-left:1em; border-left:double; color:#222; background:#fcfcfc }
         .example code strong { color:inherit; background:#ff0 }
         .note { margin-left:2em; font-weight:bold; font-style:italic; color:green }
@@ -193,14 +193,13 @@
 <p><em>이 섹션은 표준에 준하지 않습니다.</em></p>
 
 <p>
-    유저 에이전트는 보통 네트워크 요청에서 같은 오리진 제한(same-origin restrictions)을 적용합니다.
-    이 제한은 클라이언트 사이드 웹 어플리케이션이 하나의 오리진에서 동작할 때 다른 오리진에서 데이터를 취득하는 걸 제한하며,
-    동작 중인 어플리케이션 오리진에서 다른 목적지로 자동으로 향하기 시작하는게 가능한 안전하지 않은 HTTP 요청에 제한을 둡니다.
+    유저 에이전트는 보통 네트워크 요청에서 동일 오리진 제한(same-origin restrictions)을 적용합니다.
+    이로 인해 특정 오리진 클라이언트측 웹 어플리케이션이 다른 출처의 데이터를 검색하는 걸 제한하고 현재 실행 중인 어플리케이션의 오리진과 다른 안전하지 않은 HTTP 요청이 자동으로 발신하는 걸 제한합니다.
 </p>
 
 <p>
-    유저 에이전트에서 이런 패턴을 따를 경우,
-    네트워크 요청은 물리적으로 HTTP 인증과 쿠키 정보를 포함한 크로스 오리진 요청과 함께 유저 인증서를 포함합니다.
+    위 패턴을 따르는 유저 에이전트는,
+    HTTP 인증, cookie 정보 등 사용자의 자격 증명이 포함된 전형적 네트워크 요청이 있습니다.
 </p>
 
 <p>
