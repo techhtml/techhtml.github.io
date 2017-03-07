@@ -1,26 +1,132 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="og:title" content="Resume: ChoEun">
-  <meta name="og:description" content="for jobs">
-  <meta name="og:image" content="">
-  <title>Resume</title>
-  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-  <link href="./resume.css" rel="stylesheet">
-</head>
-<body>
-  <div class="display--start">
-    <h1 class="resume--title">CHOEUN<br>QUEST</h1>
-    <p>Press any key to start</p>
-  </div>
-  <div class="display--dialog">
-    <p>
-      hey! it's good yo see you.
-      My name is <strong>choeun</strong><br>
-      This game made for my job interview.
-    </p>
-    <button type="button" class="btn--next">&gt;</button>
-  </div>
-</body>
+<html amp>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1">
+    <title>Resume for Google</title>
+    <link rel="canonical" href="index.html">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <style amp-custom>
+    :root {
+      --color-light-gray: #F5F5F5;
+      --color-gray: #424242;
+      --color-blue-500: #2196F3;
+      --color-blue-800: #1565C0;
+    }
+    body {
+      font-size:1.125rem;
+      line-height:1.425;
+      font-family: "Roboto", sans-serif;
+      color:var(--color-gray);
+      font-weight:300;
+      background:var(--color-light-gray)
+    }
+    strong {
+      font-weight:400;
+    }
+    input {
+      font:inherit;
+    }
+    ul,ol {
+      list-style:none;
+      padding:0;
+    }
+    li a {
+      display:block;
+      padding:0.675rem 1rem 0.75rem;
+    }
+    li i {
+      padding-right:0.5rem;
+      vertical-align:middle;
+    }
+
+    /*
+     * links
+     */
+    a {
+      color:var(--color-blue-500);
+      text-decoration:none;
+    }
+    a:hover {
+      color:var(--color-blue-800);
+    }
+
+    /*
+     * article padding
+     */
+
+    .contents {
+      max-width:720px;
+      box-sizing:border-box;
+      padding:1px 1.25rem;
+      margin: auto;
+      background:white;
+    }
+    .contents dt {
+      margin-top:1em;
+      font-weight:700;
+    }
+    .contents dd {
+      margin-left:0.8em;
+    }
+
+    @media (min-width: 1440px) {
+      .contents {
+        max-width:940px;
+      }
+    }
+    </style>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+  </head>
+  <body>
+    <main class="contents">
+      <h1>RESUME</h1>
+      <p>hi there, my name is ChoEun lived in korea. I've worked on WoowaBrothers
+        that developed baedalMinjok.</p>
+      <h2>About me</h2>
+      <dl>
+        <dt>Name:</dt>
+        <dd>ChoEun (@techhtml)</dd>
+        <dt>Birth of date:</dt>
+        <dd>1993-12-28</dd>
+        <dt>Education:</dt>
+        <dd>High School graduation (Busan Information Highschool)</dd>
+        <dt>Language:</dt>
+        <dd>English, Japanese, Korean</dd>
+      </dl>
+      <h2>Career</h2>
+      <section>
+        <h3>Woowa Brohters</h3>
+        <p>UX Engineer | 2015-08-03 ~ Now</p>
+        <p>Create pages basically use HTML, CSS(SCSS), JavaScript(ECMA-2015) and
+        jQuery. I developed WoowahanUI for back office depend on bootstrap UI,
+        and dev standard for HTML&amp;CSS development</p>
+      </section>
+      <section>
+        <h3>NHN Technology Services</h3>
+        <p>HTML &amp; CSS Engineer | 2013-12-02 ~ 2015-06-30</p>
+        <p>I developed NAVER Flights Services HTML, CSS
+          (<a href='http://store.naver.com/flights/'>Desktop</a>,
+          <a href='http://m.store.naver.com/flights/'>Mobile</a>)
+          and build interactions and animations.
+        </p>
+      </section>
+      <section>
+        <h3>SK Communcations</h3>
+        <p>HTML &amp; CSS Engineer | 2012-01-01 ~ 2013-11-29</p>
+        <p>I developed NATE Search service but it's are closed.
+        so i haven't any codes that time.</p>
+      </section>
+      <h2>Personalities</h2>
+      <dl>
+        <dt>Translate AMP docs into korean</dt>
+        <dd>I translate <a href='https://www.ampproject.org/'>AMP Docs</a> into
+          korean. this page also create by AMP Project</dd>
+        <dt>Translate W3C specification into korean</dt>
+        <dd>I translate some W3C specifications into korean,
+          and all of translation lists are can see <a href='https://www.w3.org/2005/11/Translations/Lists/ListLang-ko.html'>here</a></dd>
+      </dl>
+    </main>
+  </body>
 </html>
