@@ -1,15 +1,101 @@
-<!doctype html>
-<html lang="ko">
-<head>
+<!DOCTYPE html>
+<html amp>
+  <head>
     <meta charset="UTF-8">
-    <title>프론트엔드에 테스트를 도입 - techhtml</title>
-    <link rel="stylesheet" href="../../blog.css">
-    <meta name="viewport" content="initial-scale=1">
-</head>
-<body>
-    <article>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1">
+    <title>번역회고록 - 왜 남의나라 말은 어려운가 : techHTML</title>
+    <link rel="canonical" href="index.html">
+    <meta property='og:title' content='번역회고록 - 왜 남의나라 말은 어려운가 : techHTML'>
+    <meta property='og:description' content='techhtml Blog'>
+    <meta property='og:image' content='https://techhtml.github.io/resume/choeun.jpg'>
+    <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <style amp-custom>
+    :root {
+      --color-light-gray: #F5F5F5;
+      --color-gray: #424242;
+      --color-blue-500: #2196F3;
+      --color-blue-800: #1565C0;
+    }
+    body {
+      font-size:1.125rem;
+      line-height:1.425;
+      font-family: "Roboto", sans-serif;
+      color:var(--color-gray);
+      font-weight:300;
+      background:var(--color-light-gray)
+    }
+    strong {
+      font-weight:400;
+    }
+    input {
+      font:inherit;
+    }
+    ul,ol {
+      list-style:none;
+      padding:0;
+    }
+    li a {
+      display:block;
+      padding:0.675rem 1rem 0.75rem;
+    }
+    li i {
+      padding-right:0.5rem;
+      vertical-align:middle;
+    }
+
+    /*
+     * links
+     */
+    a {
+      color:var(--color-blue-500);
+      text-decoration:none;
+    }
+    a:hover {
+      color:var(--color-blue-800);
+    }
+
+    /*
+     * article padding
+     */
+
+    .contents {
+      max-width:720px;
+      box-sizing:border-box;
+      padding:1px 1.25rem;
+      margin: auto;
+      background:white;
+    }
+    .contents dt {
+      margin-top:1em;
+      font-weight:700;
+    }
+    .contents dd {
+      margin-left:0.8em;
+    }
+
+    pre {
+        white-space: pre-wrap;
+        background: var(--color-gray);
+        color: #fff;
+        font-family: "menlo", monospace;
+        padding: 1em;
+        font-size: 0.8rem;
+    }
+
+    @media (min-width: 1440px) {
+      .contents {
+        max-width:940px;
+      }
+    }
+    </style>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+  </head>
+  <body>
+    <article class='contents'>
         <div class="warning">
-            <p>이 글은 <a href="http://qiita.com/">qiita</a>에 올라온 <a href="http://qiita.com/howdy39/items/cdd5b252096f5a2fa438?utm_source=Qiita%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9&utm_campaign=ceac222e15-Qiita_newsletter_206_05_03_2016&utm_medium=email&utm_term=0_e44feaa081-ceac222e15-33136201">フロントエンドにテストを導入</a>이라는 아티클을
+            <p>이 글은 <a href="http://qiita.com/">qiita</a>에 올라온 <a href="http://qiita.com/howdy39/items/cdd5b252096f5a2fa438?utm_source=Qiita%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9&amp;utm_campaign=ceac222e15-Qiita_newsletter_206_05_03_2016&amp;utm_medium=email&amp;utm_term=0_e44feaa081-ceac222e15-33136201">フロントエンドにテストを導入</a>이라는 아티클을
                 원 저자의 허락을 받고 번역한 글입니다.<br>
                 오역이나 오타에 대한 지적은 환영합니다. 그림은 번역하지 않았습니다.<br></p>
         </div>
@@ -52,7 +138,7 @@
         </table>
         <p>링크는 소스로 이어집니다</p>
         <h2>목표</h2>
-        <img src="goal.png" class="img-max" alt="">
+        <amp-img src="goal.png" width='2492' height='708' layout='responsive' alt=""></amp-img>
         <p>
             이후 스텝 마지막에도 넣어두었지만,<br>
             파란 배경이 실행관련 파일,<br>
@@ -82,7 +168,7 @@
         <pre data-filename="calc-util.js">function add(value1, value2) {
     return value1 + value2;
 }</pre>
-        <img src="step0.png" width="193" alt="">
+        <amp-img src="step0.png" width="193" height='406' layout='fixed' alt=""></amp-img>
         <h2>STEP 1 라이브러리를 사용하지 않고 테스트</h2>
         <p>JS를 실행시키기 위한 HTML을 적당히 작성해서, 개발자 도구에서 로그를 보는 형태입니다.</p>
         <pre data-filename="spec.html">&lt;body&gt;
@@ -98,7 +184,7 @@ if (add(1, 2) === 3) {
     console.error('실패')
 }
 </pre>
-        <img src="step1.png" width="357" alt="">
+        <amp-img src="step1.png" width="714" height='620' layout='responsive' alt=""></amp-img>
         <h2>STEP 2 모카를 도입</h2>
         <p>
             이전 환경에서 일단 테스트를 작성해봤지만, 콘솔상 에러를 찾는게 꽤 힘듭니다.<br>
@@ -148,8 +234,8 @@ describe('add함수 테스트', function() {
 &lt;/body&gt;
 </pre>
         <h3>실행결과</h3>
-        <img src="test_result.png" width="939" alt="">
-        <img src="specs.png" width="362" alt="">
+        <amp-img src="test_result.png" width="1878" height="862" layout="responsive" alt=""></amp-img>
+        <amp-img src="specs.png" width="724" height="738" layout="responsive" alt=""></amp-img>
         <h2>STEP3 Nodejs로 테스트 실행</h2>
         <p>
             수정을 할 때마다 브라우저에서 실행시키는 건 힘듭니다.<br>
@@ -204,8 +290,8 @@ module.exports = {
 </pre>
         <h3>테스트 실행</h3>
         <pre>npm test</pre>
-        <img src="npm_test_result.png" width="419" alt="">
-        <img src="npm_test_spec.png" width="431" alt="">
+        <amp-img src="npm_test_result.png" width="838" height="350" layout="responsive" alt=""></amp-img>
+        <amp-img src="npm_test_spec.png" width="862" height="558" layout="responsive" alt=""></amp-img>
         <h2>Step4 webpack 도입</h2>
         <p>
             require를 사용하기 위해 add 함수를 바꾼 탓에 실제 화면에서 동작하지 않습니다.<br>
@@ -270,7 +356,7 @@ document.getElementById('calc').addEventListener('click', function () {
 &lt;/body>
 </pre>
         <p>부가적으로 add 함수가 글로벌을 오염시키지 않는 메리트도 생깁니다.</p>
-        <img src="webpack_spec.png" width="563" alt="">
+        <amp-img src="webpack_spec.png" width="1126" height="500" layout="responsive" alt=""></amp-img>
         <h2>Step 5 assert 도입</h2>
         <p>
             테스트를 좀 더 쉽게 해봅시다.<br>
@@ -292,8 +378,8 @@ describe('add 함수 테스트', function() {
 });
 </pre>
         <p>꽤 깔끔해졌습니다.</p>
-        <img src="assert_result.png" width="421" alt="">
-        <img src="assert_spec.png" width="562" alt="">
+        <amp-img src="assert_result.png" width="842" height="480" layout="responsive" alt=""></amp-img>
+        <amp-img src="assert_spec.png" width="1124" height="490" layout="responsive" alt=""></amp-img>
         <h2>Step 6 karma 도입</h2>
         <p>
             지금까지는 Nodejs의 세계에서 테스트를 했습니다.<br>
@@ -373,35 +459,18 @@ preprocessors: {
 <pre data-filename="package.json(after)">"test": "karma start",</pre>
         <h3>karma 구동</h3>
         <pre>npm test</pre>
-        <img src="karma_result.png" width="1038" alt="">
+        <amp-img src="karma_result.png" width="2076" height="1378" layout="responsive" alt=""></amp-img>
         <p>
             크롬이 실행된 뒤 터미널 상에 테스트 결과가 표시됩니다.<br>
             설정 파일을 만들었을 때 마지막 질문을 true라고 했기 때문에 테스트 파일이나 테스트 대상 파일을 수정할 때마다, 자동으로 테스트합니다.<br>
             테스트나 소스를 수정한 뒤 브라우저 화면을 F5로 갱신하여 확인하는 수고도 덜어집니다.
         </p>
-        <img src="karma_spec.png" width="892" alt="">
+        <amp-img src="karma_spec.png" width="1784" height="502" layout="responsive" alt=""></amp-img>
         <h2>여담</h2>
         <p>
             그림은 <a href="https://www.draw.io/">draw.io</a>에서 1파일 안에서 모두 만들고 png 엑스포트해서 각각 범위 선택 캡쳐했습니다.<br>
             더 좋은 방법이 있다면 알려주세요.m(_ _)m
         </p>
     </article>
-    <script src="../../../ga.js"></script>
-    <script>
-        'use strict';
-
-        (function(d, w) {
-            var preElems = document.querySelectorAll("pre");
-            function drawFileName(target) {
-                var targetFileName = target.getAttribute("data-filename") !== null ? target.getAttribute("data-filename") : "console";
-                var title = "<strong class='syntax-filename'>" + targetFileName + "</strong>";
-                var tempHTML = target.innerHTML;
-                target.innerHTML = title + tempHTML;
-            }
-            for(var i = 0; i < preElems.length; i += 1) {
-                drawFileName(preElems[i]);
-            }
-        })(document, window)
-    </script>
 </body>
 </html>
