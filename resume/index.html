@@ -68,11 +68,11 @@
     .profile {
       position:sticky;
       top:0;
-      width: 180px;
       min-height:100vh;
       padding:1px 2em;
       background: var(--color-blue-800);
       color: white;
+      box-sizing:border-box;
     }
 
     .contents {
@@ -87,6 +87,17 @@
     .contents dd {
       margin-left:0.8em;
     }
+
+    @media (max-width:640px) {
+      .container {
+        display: block;
+      }
+      .profile {
+        position:static;
+        width:100%;
+        min-height:auto;
+      }
+    }
     
     </style>
     <script async src="https://cdn.ampproject.org/v0.js"></script>
@@ -96,7 +107,7 @@
       <div class="profile">
         <h1>ChoEun</h1>
         <h2>FrontEnd Developer</h2>
-        <amp-img src='choeun.jpg' width='364' height='364' layout='responsive' alt=''></amp-img>
+        <amp-img src="choeun.jpg" width="364" height="364" layout="responsive" alt=""></amp-img>
         <h2>Professional Skills</h2>
         <ul>
           <li>HTML</li>
