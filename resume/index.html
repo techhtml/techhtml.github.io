@@ -6,47 +6,41 @@
     <title>Resume : ChoEun</title>
     <link rel="canonical" href="index.html">
     <meta property='og:title' content='Resume - ChoEun'>
-    <meta property='og:description' content='Resume for Google'>
+    <meta property='og:description' content='Resume'>
     <meta property='og:image' content='https://techhtml.github.io/resume/choeun.jpg'>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,900" rel="stylesheet">
     <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
     <style amp-custom>
     :root {
-      --color-light-gray: #F5F5F5;
       --color-gray: #424242;
       --color-blue-500: #2196F3;
       --color-blue-800: #1565C0;
+      --color-red-800: #D32F2F;
     }
     body {
-      font-size:1.125rem;
-      line-height:1.425;
+      line-height:1.8em;
       font-family: "Roboto", sans-serif;
       color:var(--color-gray);
-      font-weight:300;
-      background:var(--color-light-gray)
     }
-    strong {
-      font-weight:400;
+    header h1, header h2 {
+      margin:0;
+      color:#fff;
     }
-    input {
-      font:inherit;
+    header h1 {
+      font-size:1.5em;
+      padding:1.35em 0.67em;
+      background:#6A1B9A;
     }
-    ul,ol {
-      list-style:none;
-      padding:0;
+    header h2 {
+      font-size:1em;
+      padding:1em 0.83em;
+      background:#8E24AA;
     }
-    li a {
-      display:block;
-      padding:0.675rem 1rem 0.75rem;
-    }
-    li i {
-      padding-right:0.5rem;
-      vertical-align:middle;
+    h2,h3,h4,h5,h6,dt {
+      color:var(--color-blue-800);
+      font-weight:900;
     }
 
-    /*
-     * links
-     */
     a {
       color:var(--color-blue-500);
       text-decoration:none;
@@ -58,44 +52,29 @@
     /*
      * article padding
      */
-
-    .container {
-      display:flex;
-      align-items:flex-start;
+    .container, .wrapper {
       max-width: 960px;
       margin: auto;
     }
-    .profile {
-      position:sticky;
-      top:0;
-      min-height:100vh;
-      padding:1px 2em;
-      background: var(--color-blue-800);
-      color: white;
-      box-sizing:border-box;
-    }
-
     .contents {
       box-sizing:border-box;
-      padding:1px 1.25rem;
+      padding:1em;
       background:white;
     }
     .contents dt {
       margin-top:1em;
-      font-weight:700;
     }
     .contents dd {
-      margin-left:0.8em;
+      margin-left:1em;
     }
 
-    @media (max-width:640px) {
+    @media (min-width:720px) {
       .container {
-        display: block;
+        display:flex;
       }
-      .profile {
-        position:static;
-        width:100%;
-        min-height:auto;
+      header {
+        margin-top:2em;
+        min-width:360px;
       }
     }
 
@@ -104,21 +83,14 @@
   </head>
   <body>
     <div class="container">
-      <div class="profile">
-        <h1>ChoEun</h1>
-        <h2>UX Engineer</h2>
-        <amp-img src="choeun.jpg" width="364" height="364" layout="responsive" alt=""></amp-img>
-        <h2>Professional Skills</h2>
-        <ul>
-          <li>HTML</li>
-          <li>CSS</li>
-          <li>JavaScript</li>
-        </ul>
-      </div>
+      <header>
+        <amp-img src="choeun.jpg" alt="my profile picture" layout="responsive" width="720" height="720"></amp-img>
+        <h1><div class="wrapper">Cho Eun</div></h1>
+        <h2><div class="wrapper">UX Engineer</div></h2>
+      </header>
       <main class="contents">
-        <h1>RESUME</h1>
-        <p>Hi there, My name is Cho Eun and I live in South Korea. I'd work for WoowaBrothers that create and operate delivery app named baedalMinjok.
-        All of my career are related UX and UI Engineering on the Web. If you want see my codes, you can see my <a href='https://github.com/techhtml/'>github</a>, <a href='https://www.facebook.com/eun.cho.161/'>facebook</a> and <a href='https://twitter.com/apes01234'>twitter</a></p>.
+        <p>HI there, I'm Cho Eun lived in South Korea.
+        I'd work for Woowahan Brothers that operate BaedalMinjok that for delivery foods. Basically I worked for UX and UI Engineering on the Web. Here is my <a href='https://github.com/techhtml/'>github</a>, <a href='https://www.facebook.com/eun.cho.161/'>facebook</a> and <a href='https://twitter.com/apes01234'>twitter</a>. If you want contant me, use anything that you want.</p>
         <h2>About me</h2>
         <dl>
           <dt>Name:</dt>
@@ -133,6 +105,13 @@
           <dd>English, Japanese, Korean</dd>
         </dl>
         <h2>Projects</h2>
+        <section>
+          <h3>BaeminCook</h3>
+          <p>
+          BaeminCook is delivery system that delivered material for food.
+          I cared HTML,CSS and JavaScripts for BaeminCook system.
+          </p>
+        </section>
         <section>
           <h3>Baemin Ordering System</h3>
           <p>
@@ -152,24 +131,23 @@
         <h2>Skills</h2>
         <section>
           <h3>HTML</h3>
-          <p>HTML skills are my base development skill.
-            I also teach HTML &amp; CSS at academy named fastcampus</p>
+          <p>HTML is my base devleopment skill and all of web programmer should be know about HTML because of that is base technology for the web technologies.</p>
         </section>
         <section>
-          <h3>CSS</h3>
-          <p>also CSS are my base development skill,
-            and i was translated some specifications of css into korean.</p>
+          <h3>CSS, SCSS</h3>
+          <p>CSS is my base development skill, I'd translate all CSS recommendations into Korean.
+          So many people who want know about CSS, they can see my translation docs.</p>
         </section>
         <section>
           <h3>JavaScript (Object Oriented &amp; ES2015)</h3>
-          <p>developed some product base on JavaScript, but use jQuery for IE support.
-          does not support IE, i can develop vanilla JS.</p>
+          <p>Also I developed many services using JavaScript(include ES2015).
+          Sometimes if need legacy IE browsers (Under IE8), I used jQuery for support legacy.</p>
         </section>
         <section>
           <h3>AMP HTML</h3>
-          <p>I have worried about AMP HTML are skill. because AMP HTML are extended HTML,
-          and it's does not quite difficult then HTML. but i wrote that here,
-          I'd translate AMP Docs into korean and almost component are can used.</p>
+          <p>AMP HTML is simmilar than HTML but quite different.
+          AMP is use for create fast mobile web pages and it have good architecutres.
+          I translate AMP documentations for Korean user who does not know about AMP but can't use english.</p>
         </section>
         <h2>Career</h2>
         <section>
@@ -197,11 +175,10 @@
         <h2>Personalities</h2>
         <dl>
           <dt>AMP Project Member</dt>
-          <dd>I'd translate many AMP docs into Korean.
-            Also I create <code>amp-imgur</code> component that for embed imgur at AMP.
+          <dd>I translate many AMP docs into Korean and I created <code>amp-imgur</code> component that for embed imgur at AMP.
           </dd>
           <dt>Translate W3C specification into korean</dt>
-          <dd>also i'd translate some W3C specifications into korean,
+          <dd>Also I translate some W3C specifications into korean,
             and all of translation lists are can see <a href='https://www.w3.org/2005/11/Translations/Lists/ListLang-ko.html'>here</a></dd>
         </dl>
       </main>
