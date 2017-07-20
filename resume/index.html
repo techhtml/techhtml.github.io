@@ -8,11 +8,13 @@
     <meta property='og:title' content='Resume - ChoEun'>
     <meta property='og:description' content='Resume'>
     <meta property='og:image' content='https://techhtml.github.io/resume/choeun.jpg'>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
     <style amp-custom>
     :root {
-      --color-gray: #424242;
+      --color-gray-300: #E0E0E0;
+      --color-gray-700: #616161;
+      --color-gray-800: #424242;
       --color-blue-500: #2196F3;
       --color-blue-800: #1565C0;
       --color-red-800: #D32F2F;
@@ -20,25 +22,36 @@
     body {
       line-height:1.8em;
       font-family: "Roboto", sans-serif;
-      color:var(--color-gray);
+      color:var(--color-gray-800);
     }
-    header h1, header h2 {
+    .profile h1,
+    .profile h2 {
       margin:0;
       color:#fff;
     }
-    header h1 {
-      font-size:2em;
+    .thumb {
+      position:relative;
+    }
+    .thumb::after {
+      content:'';
+      display:block;
+      position:absolute;
+      left:0;
+      top:0;
+      right:0;
+      bottom:0;
+      background:linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0));
+    }
+    .thumb h1 {
+      position:absolute;
+      left:0;
+      bottom:0;
       padding:0.67em 0.6em;
-      background:#6A1B9A;
+      z-index:10;
     }
-    header h2 {
-      font-size:1.5em;
+    .profile h2 {
       padding:0.83em;
-      background:#8E24AA;
-    }
-    h2,h3,h4,h5,h6,dt {
-      color:var(--color-blue-800);
-      font-weight:900;
+      background:#000000;
     }
 
     a {
@@ -49,35 +62,44 @@
       color:var(--color-blue-800);
     }
 
-    /*
-     * article padding
-     */
-    .container, .wrapper {
-      max-width: 960px;
-      margin: auto;
+    .contacts dl, .contacts dt, .contacts dd {
+      margin:0;
+      padding:0;
+    }
+    .contacts-inner {
+      display:flex;
+      align-items:center;
+      padding:1em 1.5em;
+      font-size:1em;
+      line-height:1.5em;
+      color:var(--color-gray-800);
+    }
+    .contacts-inner dd {
+      color:var(--color-gray-700);
+    }
+    .contacts-inner:hover {
+      color:inherit;
+    }
+    .contacts-row svg {
+      margin-right:2em;
     }
     .contents {
-      box-sizing:border-box;
       padding:1em;
-      background:white;
-    }
-    .contents dt {
-      margin-top:1em;
-    }
-    .contents dd {
-      margin-left:1em;
     }
 
     @media (min-width:720px) {
       body {
-        font-size:14px;
+        font-size:16px;
       }
       .container {
         display:flex;
       }
-      header {
-        margin-top:2em;
+      .profile {
+        margin-top:0;
         min-width:360px;
+      }
+      p:first-child {
+        margin-top:0;
       }
     }
 
@@ -86,27 +108,68 @@
   </head>
   <body>
     <div class="container">
-      <header>
-        <amp-img src="choeun.jpg" alt="my profile picture" layout="responsive" width="720" height="720"></amp-img>
-        <h1><div class="wrapper">Cho Eun</div></h1>
-        <h2><div class="wrapper">UX Engineer</div></h2>
-      </header>
+      <div class="profile">
+        <header>
+          <div class="thumb">
+            <amp-img src="choeun.jpg" alt="my profile picture" layout="responsive" width="720" height="720"></amp-img>
+            <h1>Cho Eun</h1>
+          </div>
+          <h2>UX Engineer</h2>
+        </header>
+        <div class="contacts">
+          <div class="contacts-row">
+            <a href='tel:+821037619527' class="contacts-inner">
+              <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+              </svg>
+              <dl>
+                <dt>010-3761-9527</dt>
+                <dd>(Mobile)</dd>
+              </dl>
+            </a>
+          </div>
+          <div class="contacts-row">
+            <a href='mailto:apes0123@gmail.com' class="contacts-inner">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                <path d="M0 0h24v24H0z" fill="none"/>
+              </svg>
+              <dl>
+                <dt>apes0123@gmail.com</dt>
+                <dd>(Personal)</dd>
+              </dl>
+            </a>
+          </div>
+          <div class="contacts-row">
+            <div class="contacts-inner">
+              <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                <path d="M0 0h24v24H0z" fill="none"/>
+              </svg>
+              <dl>
+                <dt>South Korea</dt>
+                <dd>(Seoul)</dd>
+              </dl>
+            </div>
+          </div>
+          <div class="contacts-row">
+            <div class="contacts-inner">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+              </svg>
+              <dl>
+                <dt>High School Graduation</dt>
+                <dd>Pusan Information High School</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
       <main class="contents">
         <p>HI there, I'm Cho Eun lived in South Korea.
         I'd work for Woowahan Brothers that operate BaedalMinjok that for delivery foods. Basically I worked for UX and UI Engineering on the Web. Here is my <a href='https://github.com/techhtml/'>github</a>, <a href='https://www.facebook.com/eun.cho.161/'>facebook</a> and <a href='https://twitter.com/apes01234'>twitter</a>. If you want contant me, use anything that you want.</p>
-        <h2>About me</h2>
-        <dl>
-          <dt>Name:</dt>
-          <dd>Cho Eun (@techhtml)</dd>
-          <dt>Contact:</dt>
-          <dd><a href='tel:+821037619527'>010-3761-9527</a>, <a href='mailto:apes0123@gmail.com'>apes0123@gmail.com</a></dd>
-          <dt>Birth of date:</dt>
-          <dd>1993-12-28</dd>
-          <dt>Education:</dt>
-          <dd>High School graduation (Busan Information Highschool)</dd>
-          <dt>Language:</dt>
-          <dd>English, Japanese, Korean</dd>
-        </dl>
         <h2>Projects</h2>
         <section>
           <h3>BaeminCook</h3>
