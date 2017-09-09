@@ -1,0 +1,155 @@
+a {
+  color: inherit;
+  text-decoration: none; }
+
+h1 {
+  margin: 0; }
+
+ul, li {
+  padding: 0;
+  margin: 0;
+  list-style: none; }
+
+.blind {
+  position: absolute;
+  opacity: 0;
+  z-index: -1; }
+
+body {
+  margin: 9px 15px;
+  font-size: 16px;
+  line-height: 1.2;
+  font-family: "APPLE SD Gothic NEO", "Malgun Gothic", sans-serif; }
+
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both; }
+
+.header {
+  min-width: 1000px;
+  background: #f9f9f9;
+  border-radius: 3px;
+  border: 1px solid #ececec;
+  color: #8a8a8a; }
+
+.logo {
+  float: left;
+  font-size: 20px;
+  font-weight: normal; }
+
+.logo a {
+  display: block;
+  padding: 13px 13px 12px; }
+
+.main-nav {
+  float: left; }
+
+.main-nav-item {
+  float: left;
+  position: relative; }
+
+.main-nav-link {
+  display: block;
+  padding: 16px 13px 14px; }
+
+.main-nav-link:hover {
+  color: #5c6368;
+  background: #ececec; }
+
+.sub-nav-holder {
+  position: absolute;
+  left: 0;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  opacity: 0;
+  z-index: -1; }
+
+.main-nav-link:hover + .sub-nav-holder,
+.sub-nav-holder:hover {
+  opacity: 1;
+  z-index: 100; }
+
+.sub-nav-list {
+  padding: 6px 0; }
+
+.sub-nav-list + .sub-nav-list {
+  border-top: 1px solid #eee; }
+
+.sub-nav-link {
+  display: block;
+  padding: 6px 16px;
+  color: #777777;
+  white-space: nowrap; }
+
+.sub-nav-link:hover {
+  background: #ececec; }
+
+.contents {
+  min-width: 1000px; }
+
+.aside {
+  float: left;
+  width: 200px;
+  height: 400px;
+  margin-top: 20px;
+  background: #f7e7ae; }
+
+.main {
+  float: left;
+  width: 800px; }
+
+.main-container {
+  display: table;
+  width: 100%; }
+
+.main-container-row:first-child {
+  display: table-header-group; }
+
+.main-container-row:last-child {
+  display: table-footer-group; }
+
+.main-item {
+  float: left;
+  position: relative;
+  width: 45%;
+  padding: 10% 0;
+  margin: 2.5%;
+  text-align: center; }
+
+.main-item:nth-child(odd) {
+  background: royalblue; }
+
+.main-item:nth-child(even) {
+  background: hotpink; }
+
+.main-container-reverse .main-item {
+  float: right; }
+
+.main-container-reverse .main-item-row:first-child {
+  display: table-footer-group; }
+
+.main-container-reverse .main-item-row:last-child {
+  display: table-footer-group; }
+
+.accordion-item {
+  position: relative;
+  float: left;
+  width: 20%;
+  padding-top: 50%;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #000000; }
+
+.accordion-item:only-child {
+  width: 100%; }
+
+.accordion:hover .accordion-item {
+  width: 10%; }
+
+.accordion:hover .accordion-item:hover {
+  width: 60%; }
+
+/*# sourceMappingURL=style.css.map*/
