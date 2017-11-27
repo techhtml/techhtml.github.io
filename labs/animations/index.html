@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Web Animations</title>
+  <style>
+	  :root {
+		  --color-light-gray: #F5F5F5;
+		  --color-gray: #212121;
+		  --color-blue-500: #2196F3;
+		  --color-blue-800: #1565C0;
+	  }
+	  html {
+		  font-size:1.125em;
+	  }
+	  body {
+		  font-size:1em;
+		  line-height:1.8;
+		  font-family:"APPLE SD Gothic NEO", sans-serif;
+      font-weight:300;
+		  color:var(--color-gray);
+	  }
+	  h1 { font-size: 2.027em }
+	  h2 { font-size: 1.802em }
+	  h3 { font-size: 1.602em }
+	  h4 { font-size: 1.424em }
+	  h5 { font-size: 1.266em }
+	  h6 { font-size: 1.125em }
+	  h1,h2,h3,h4,h5,h6,strong {
+		  font-family: "APPLESDGothicNEO-HEAVY",sans-serif;
+		  font-weight: 900;
+	  }
+	  input {
+		  font:inherit;
+	  }
+
+	  a {
+		  color:var(--color-blue-500);
+		  text-decoration:none;
+	  }
+	  a:hover {
+		  color:var(--color-blue-800);
+		  text-decoration:underline;
+	  }
+    img {
+      max-width:100%;
+    }
+
+	  /*
+	  * article padding
+	  */
+
+	  .contents {
+		  max-width:960px;
+		  box-sizing:border-box;
+		  padding:1px 1.25rem;
+		  margin: auto;
+		  background:white;
+	  }
+	  .contents dt {
+		  margin-top:1em;
+		  font-weight:700;
+	  }
+	  .contents dd {
+		  margin-left:0.8em;
+	  }
+
+    pre, code {
+      max-width:100%;
+      font-size:0.8em;
+      font-family: "SF Mono", "menlo", "monaco", monospace;
+      word-break: break-all;
+    }
+    code {
+      padding:0.5em 0.25em;
+    }
+    pre {
+      padding:1em 1.25em;
+      background:#333333;
+      color:#ffffff;
+    }
+    .example-container {
+      counter-reset: example;
+    }
+    .example-code::before {
+      display:block;
+      content:'EXAMPLE';
+    }
+    .example::before {
+      display:block;
+      content:'EXAMPLE';
+      font-family:"SF Pro Display", "Helvetica NEUE", sans-serif;
+    }
+
+	  @media (min-width: 1440px) {
+		  .contents {
+			  max-width:960px;
+		  }
+	  }
+
+    /*
+     * in this post
+     */
+    
+    .box {
+      position:relative;
+      width:150px;
+      height:150px;
+      background:royalblue;
+    }
+    .box p {
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%, -50%);
+      color:white;
+      margin:0;
+    }
+    .box-transition {
+      transition:1s background ease;
+    }
+    .box-transition:hover {
+      background:crimson;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    thead th {
+      border-bottom:1px solid #000000;
+    }
+    th, td {
+      font-size:0.75em;
+      padding:1em 0.375em;
+    }
+    tbody th {
+      text-align:right;
+      border-right:1px solid #000000;
+    }
+    tbody td {
+      text-align: center;
+    }
+    tbody th, tbody td {
+      border-bottom:1px solid #555;
+    }
+  </style>
+</head>
+<body>
+  <article class="contents">
+    <h1>Web Animations</h1>
+    <p>우선 웹에서 애니메이션을 다루기 전에 앞서서 애니메이션이라는 것이 무엇인가에 대해서 알아보자. 위키백과에서는 애니메이션을 다음과 같이 설명한다.</p>
+    <blockquote>
+      <p>애니메이션(영어: animation), 만화영화(문화어: 그림영화)는 여러 장의 화면을 연속 촬영, 조작하여 움직이도록 보이게 만든 영화의 일종이다. 이 용어는 "살아있는"을 뜻하는 라틴어 낱말 anima에서 비롯하였다. 간단히 동화(動畵)라고도 부른다. '만화'나 '동화'는 그림의 의미를 갖고 있으나, 각 장면은 그림이 아닐 수 있다. 3차원 모델링을 통해 컴퓨터 화면상으로 재현된 영상의 경우도 애니메이션에 포함된다.
+      <p><cite>출처 : <a href="https://ko.wikipedia.org/wiki/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98" target="_blank">위키백과</a></cite>
+    </blockquote>
+    <p>즉 애니메이션은 여러장의 화면을 연속 촬영하여 움직이도록 보이게 만든 영화의 일종이라고 볼 수 있다. 이 때 여러장의 화면이 돌아갈 때 개별 화면 단위를 Frame이라고 부르며, 1초에 24장의 프레임이 돌아간다면 24FPS(Frame Per Second)라고 부른다.</p>
+    <p>다만 웹에서 특정한 요소(Element)를 이동시키고자 할 때 여러장의 화면을 연속 촬영한다는 것을 프로그램으로 넣기에 리소스가 너무 많이 들기 때문에, 플래시 등 컴퓨터 2D 애니메이션에서 전통적으로 사용해온 키프레임(key frame)이라는 것을 사용한다.</p>
+    <p>키 프레임은 애니메이션의 중간 지점, 혹은 마지막 지점을 찍기 위해 사용하며 이를 전통적인 업계에서는 애니메이션 원화라는 이름으로 사용하기도 한다.</p>
+    <figure>
+      <img src="./static/images/c1.jpg" alt="">
+      <cite><p><a href="http://www.style.fm/book/tokikake/cont.html">이미지 출처: 시간을 달리는 소녀 콘티북</a></p></cite>
+      <figcaption>
+        <p>이미지 1. 후작업을 거쳐 모든 장면에 생동감을 불어넣지만 어떤 장면에서 어떤 인물이 어떤 식으로 행동하는가에 대해서만 서술되어있다</p>
+        <p>위 장면은 시간을 달리는 소녀를 유튜브에서 구매하시면 직접 애니메이션으로 볼 수 있으며, 시간을 달리는 소녀의 전체적인 애니메이션은 <a href="https://youtu.be/ge-CeHgimHU?t=16" target="_blank">링크</a>를 참고하시길 바랍니다</p>
+      </figcaption>
+    </figure>
+    <p>1초에 재생되는 프레임의 갯수가 많아질 수록 영상을 부드럽다고 인식하게 되며, 웹에서는 보통 60FPS (실제로는 59.94 프레임 정도이다)로 애니메이션을 보여주고자 한다.</p>
+    <p>만약 웹에서 보여지는 프레임의 갯수가 60FPS보다 낮다면, 사용자는 이 애니메이션을 부드럽지 않다고 느끼거나 어색하다고 느낄 수 있으므로 애니메이션의 Frame을 일정 수준으로 유지시키는 것이 개발자에게는 아주 중요하다.</p>
+
+    <section>
+      <h2>CSS Animation</h2>
+      <p>단순히 색상을 바꾸는 정도의 애니메이션이라면 문제 없겠지만 실제 세계의 애니메이션은 훨씬 복잡하다. 투명도를 조절하거나 요소를 이동시키고 심지어 가속까지 시키는 등 다양한 형태를 원하고 있다.</p>
+      <p>CSS로 애니메이션을 구현할 때 가장 간단한 속성인 <code>transition</code>이 있다. <code>transition</code>은 이미 두개의 키프레임을 가지고 있을 때, 그 키프레임 사이의 변경점을 애니메이션화 시켜준다</p>
+      <div class="example-container">
+        <pre class="example-code">
+  .box {
+    width: 50px;
+    height: 50px;
+    background: royalblue;
+    transition: 1s background ease;
+  }
+  .box:hover {
+    background: crimson;
+  }
+        </pre>
+        <div class="example">
+          <div class="box box-transition">
+            <p>Hover me!</p>
+          </div>
+        </div>
+      </div>
+      <p>위 예제에서는 이미 키프레임이 두개 존재한다. <code>background:royalblue</code>인 box 요소와 <code>background:crimson</code>인 box 요소이다.</p>
+      <p>transition은 <code>background</code> 속성의 값이 <code>royalblue</code>에서 <code>crimson</code>으로 바뀌어가는 과정을 애니메이션화 시켜준다.</p>
+      <table>
+        <caption>Transition과 관련한 속성들</caption>
+        <thead>
+          <tr>
+            <th>속성명</th>
+            <th>속성값</th>
+            <th>기본값</th>
+            <th>적용 가능한 요소</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>transition</th>
+            <td><단일-transition> [','<단일-transition>]*</td>
+            <td>각 속성을 참고</td>
+            <td>:before와 :after를 포함한 모든 요소</td>
+          </tr>
+          <tr>
+            <th>transition-delay</th>
+            <td>시간 (1s == 1000ms)</td>
+            <td>0s</td>
+            <td>:before와 :after를 포함한 모든 요소</td>
+          </tr>
+          <tr>
+            <th>transition-duration</th>
+            <td>시간 (1s == 1000ms)</td>
+            <td>0s</td>
+            <td>:before와 :after를 포함한 모든 요소</td>
+          </tr>
+          <tr>
+            <th>transition-property</th>
+            <td>none | <단일-transition-속성> [','<단일-transition-속성>]*</td>
+            <td>all</td>
+            <td>:before와 :after를 포함한 모든 요소</td>
+          </tr>
+          <tr>
+            <th>transition-timing-function</th>
+            <td>none | <단일-transition-timing-function> [','<단일-transition-timing-function>]*</td>
+            <td>ease</td>
+            <td>:before와 :after를 포함한 모든 요소</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        속성들 중 duration (얼마나 애니메이션 될 지)이나 delay (얼마 후에 애니메이션 될 지)는 간단하지만 property나 timing-function은 겉보기엔 어떤 걸 의미하는 지 파악하기 어렵다.
+        이 두 속성에 대해서만 더 자세히 살펴보도록 하자.
+      </p>
+      <section>
+        <h3>transition-property</h3>
+        <p>transition property는 어느 속성의 변화에 애니메이션을 줄 지에 대한 값이다. 예를 들어 <code>.box</code>에서 여러값이 바뀔 때 <code>background</code>에만 애니메이션을 주고자 한다면 아래와 같이 코드를 작성할 수 있다</p>
+        <pre>
+.box {
+  width:150px;
+  height:150px;
+  background:#2ac1bc;
+  transition-duration: 1s; /* 1초동안 애니메이션 된다 */
+  transition-property: background; /* background에만 애니메이션이 들어간다 */
+}
+.box:hover {
+  width:300px;
+  height:300px;
+  background:#999999;
+}
+        </pre>
+      </section>
+    </section>
+
+    <h2>JavaScript를 이용한 Animation</h2>
+    <p>웹에서 애니메이션을 만들기 위한 다양한 방법이 있지만, 오래된 방식 중 현재까지도 꾸준히 쓰이는 것 중 하나를 뽑으라고 한다면 단연코 jQuery Animate를 뽑을 수 있다.</p>
+    <p>jQuery Animate는 특정 요소가 변하는 과정을 애니메이션화 시킬 수 있게 하는 jQuery의 내장 인터페이스 중 하나로 지금까지도 많이 사용되고 있다. jQuery Animate로 박스를 1초동안 left:0에서 left:150으로 옮기기 위해 다음 코드를 작성할 수 있다</p>
+    <div class="example-container">
+<pre class="example-code">
+$("element").animate({
+  left: 150
+}, 1000);
+</pre>
+      <div class="example">
+        <div id="box-1" class="box">
+          <p>Click me!</p>
+        </div>
+      </div>
+    </div>
+    <p>위의 예제에서는 박스를 클릭하면 왼쪽으로부터 150px 이동한다.</p>
+    <p>jQuery animate의 초창기 방식은 브라우저에 내장되어있는 타이밍 함수인 setTimeout과 setInterval을 이용한 애니메이션이었는데, 지금은 브라우저 내장 애니메이션 함수인 requestAnimationFream을 사용하고 있다. 과거에 setTimeout이나 setInterval로 어떻게 애니메이션을 구현했는가에 대해서는 <a href="https://codepen.io/underthex/pen/Cqsca">codepen</a>을 참고하길 바란다.</p>
+    <p>jQuery를 이용하지 않은 방식으로는 위에서도 언급한 requestAnimationFream을 사용하는 방법이 있다.</p>
+    <div class="example-container">
+<pre class="example-code">
+const start = null;
+const element = document.querySelector('element');
+
+function step(timestamp) {
+  if (!start) start = timestamp;
+  var progress = timestamp - start;
+  element.style.left = Math.min(progress / 10, 150) + 'px';
+  if (progress &lt; 2000) {
+    window.requestAnimationFrame(step);
+  }
+}
+
+window.requestAnimationFrame(step);
+</pre>
+    <div class="example">
+      <div id="box-2" class="box">
+        <p>Click Me!</p>
+      </div>
+    </div>
+  </div>
+    <p>위에서도 이야기 하였지만 최신 버전 jQuery는 requestAnimationFream으로 구현하고 있기 때문에 jQuery animate로 구현하여도 requestAnimationFrame으로 구현한 코드와 유사하게 동작한다. (100% 동일하다고 볼 수는 없다.)</p>
+  </div>
+  </article>
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script>
+    $("#box-1").click(function(e) {
+      $("#box-1").animate({
+        left: 150
+      }, 1000)
+    })
+  </script>
+  <script>
+      let start = null;
+      let element = document.querySelector('#box-2');
+
+      element.addEventListener("click", () => {
+        function step(timestamp) {
+          if (!start) start = timestamp;
+          var progress = timestamp - start;
+          element.style.left = Math.min(progress / 10, 150) + 'px';
+          if (progress < 2000) {
+            window.requestAnimationFrame(step);
+          }
+        }
+
+        window.requestAnimationFrame(step);
+      })
+    </script>
+</body>
+</html>
