@@ -1,5 +1,13 @@
 @charset "UTF-8";
 
+body {
+  line-height:1.8;
+  font-family:"APPLE SD Gothic NEO", sans-serif;
+}
+pre, code {
+  font-family: "SF Mono", "menlo", "monaco", monospace;
+}
+
 .headernotes {
   margin: 0;
   margin-bottom: 2em;
