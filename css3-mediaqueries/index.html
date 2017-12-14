@@ -12,11 +12,11 @@
     pre { font-family: courier, monospace; font-weight: bold; white-space: pre-wrap }
     .example pre em { font-style: normal }
     span.label { font-style: italic }
-    :lang(en) {display:none}
+    :lang(en) {display:none !important}
   </style>
+  <link type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-REC" rel=stylesheet>
   <link type="text/css" href="default.css" rel=stylesheet>
   <link type="text/css" href="trans.css" rel=stylesheet>
-  <link type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-REC" rel=stylesheet>
  <body>
  <div class=headernotes>
   <p>이 문서는 <a href="http://www.w3.org/TR/css3-mediaqueries/">Media Queries (W3C Recommendation 19 June 2012)</a>의 한국어 번역본입니다.<br>
@@ -528,7 +528,7 @@ and the Media Queries <a href="http://www.w3.org/Style/CSS/Test/MediaQueries/">T
   <p lang="ko">
    미디어 쿼리 리스트가 공백(즉, 선언에 공백문자 혹은 빈 문자열)인 경우 true로 간주됩니다.
   </p>
-  <p>If the media query list is empty (i.e. the declaration is the empty
+  <p lang="en">If the media query list is empty (i.e. the declaration is the empty
    string or consists solely of whitespace) it evaluates to true.
 
   <div class=example>
@@ -597,7 +597,7 @@ and the Media Queries <a href="http://www.w3.org/Style/CSS/Test/MediaQueries/">T
     유저에이전트가 동작하고 있는 디바이스에서 적용할 수 없는 미디어 특성이 존재하는 경우,
     해당 미디어 특성과 관련하는 모든 식은 false가 됩니다.
    </p>
-  <p>If a media feature does not apply to the device where the UA is running,
+  <p lang="en">If a media feature does not apply to the device where the UA is running,
    expressions involving the media feature will be false.
 
   <div class=example>

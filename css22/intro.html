@@ -306,12 +306,12 @@ ARTICLE, HEADLINE, AUTHOR, PARA { margin: 0.5em }
 유저 에이전트에 더 많은 룰을 추가하여 문서의 표시 방법을 더욱 설명할 수 있습니다.
 
 
-<H2>2.3 <a name="processing-model">CSS&nbsp;2.2 프로세싱 모델</a></H2>
+<H2>2.3 <a name="processing-model">CSS&nbsp;2.2 처리 모델</a></H2>
 
 <p>This section up to but not including its subsections is non-normative.
 
 <P>
-이 섹션은 유저 에이전트가 CSS 동작을 어떻게 지원할지에 대한 프로세싱 모델 중 하나를 나타냅니다.
+이 섹션은 유저 에이전트가 CSS 동작을 어떻게 지원할지에 대한 처리 모델 중 하나를 나타냅니다.
 이는 컨셉 모델이며, 실제 구현체와는 다를 수 있습니다.
 
 <P>
@@ -323,89 +323,77 @@ ARTICLE, HEADLINE, AUTHOR, PARA { margin: 0.5em }
   문서 소스를 파싱하고 <a
 href="conform.html#doctree">문서 트리</a>를 생성합니다.</li>
 
-<li>타겟 <a href="media.html">미디어 타입</a>을 정의합니다.
+<li>대상 <a href="media.html">미디어 타입</a>을 정의합니다.
 
-<li>타겟 <a href="media.html">미디어 타입</a> 정의와 관련된 문서의 모든 스타일 시트를 가져옵니다.
+<li>대상 <a href="media.html">미디어 타입</a> 정의와 관련된 문서의 모든 스타일 시트를 가져옵니다.
 
-<li>Annotate every element of the document tree by assigning a single
-value to every <a href="syndata.html#properties">property</a> that is
-applicable to the target <a href="media.html">media type</a>.
-Properties are assigned values according to the mechanisms described
-in the section on <a href="cascade.html">cascading and
-inheritance</a>.
+<li>
+  대상 <a href="media.html">미디어 타입</a>에 적용할 수 있는 모든 <a href="syndata.html#properties">속성</a>에
+  단일 값을 부여하여 문서 트리의 각 요소에 주석을 붙입니다. 속성에는 <a href="cascade.html">캐스케이딩과 상속</a> 섹션에서 설명하는
+  메커니즘에 따라 값을 할당합니다.</a>.
 
-<P>Part of the calculation of values depends on the formatting
-algorithm appropriate for the target <a href="media.html">media
-type</a>. For example, if the target medium is the screen, user agents
-apply the <a href="visuren.html">visual formatting model</a>.
+<P>일부 값 계산은 대상 <a href="media.html">미디어 타입</a>에 적합한 형식 지정 알고리즘에 따라 다릅니다.
+  예를 들어, 만약 대상 미디어가 스크린이라면, 유저 에이전트는 <a href="visuren.html">비주얼 형식 모델</a>을 따릅니다.
 
-<li>From the annotated document tree, generate a
-<span class="index-def" title="formatting structure">
-<a name="formatting-structure"><dfn>formatting
-structure</dfn></a></span>.  Often, the formatting structure closely
-resembles the document tree, but it may also differ significantly,
-notably when authors make use of pseudo-elements and generated content.
-First, the formatting structure need not be "tree-shaped" at all -- the
-nature of the structure depends on the implementation.  Second, the
-formatting structure may contain more or less information than the
-document tree. For instance, if an element in the document tree has a
-value of 'none' for the <a href="visuren.html#propdef-display" class="noxref"><span
-class="propinst-display">'display'</span></a> property, that element will
-generate nothing in the formatting structure.  A list element, on the
-other hand, may generate more information in the formatting structure:
-the list element's content and list style information (e.g., a bullet
-image).
+<li>
+  주석이 달린 문서 트리를 이용해, <span class="index-def" title="formatting structure">
+  <a name="formatting-structure"><dfn>formatting structure</dfn></a></span>를 생성합니다.
+  때로, formatting structure는 문서 트리와 매우 유사하지만 크게 다를 수도 있으며,
+  특히 작성자가 의사 요소나 생성된 콘텐츠를 사용할 때 그렇습니다.
 
-<P>Note that the CSS user agent does not alter the document tree
-during this phase. In particular, content generated due to style
-sheets is not fed back to the document language processor (e.g., for
-reparsing).
+  먼저, formatting structure가 "트리 구조"일 필요는 없습니다.
+  구조의 특성은 구현에 따라 다릅니다.
 
-<li>Transfer the formatting structure to the target medium (e.g., print
-the results, display them on the screen, render them as speech,
-etc.).
+  둘째로, formatting structure는 문서 트리보다 많거나 적은 정보를 포함할 수 있습니다.
+  예를 들어, 문서 트리의 요소가 <a href="visuren.html#propdef-display" class="noxref"><span
+  class="propinst-display">'display'</span></a> 속성 값을 'none'으로 가지는 경우,
+  그 요소는 formatting structure에 생성되지 않습니다.
+  
+  한편 리스트 요소는 formatting structure에서 리스트 요소의 콘텐츠나 리스트의 (불렛 이미지 등의) 스타일 정보와 같이 
+  더 많은 정보를 생성할 수 있습니다.
+
+<P>
+  CSS 유저 에이전트는 이 단계에서 문서 트리를 변경하지 않습니다.
+  특히, 스타일 시트에서 생성된 콘텐츠는 문서 언어 프로세서에 다시 전달되지 않습니다. (예를 들어, 재해석 같은 것)
+
+<li>formatting structure를 대상 미디어로 전달합니다.
+  (예를 들어, 결과 인쇄, 화면에 표시, 음성으로 렌더링 등)
 </ol>
 
 <h3>2.3.1 <a name="the-canvas">The canvas</a></h3>
 
-<P>For all media, the term <span class="index-def" title="canvas"> <a
-name="canvas"><dfn>canvas</dfn></a></span> describes "the space where
-the formatting structure is rendered."  The canvas is infinite for each
-dimension of the space, but rendering generally occurs within
-a finite region of the canvas, established by the user agent
-according to the target medium. For instance, user agents rendering
-to a screen generally impose a minimum width and choose an initial
-width based on the dimensions of the <a href="visuren.html#viewport">
-viewport</a>. User agents rendering to a page generally impose
-width and height constraints. Aural user agents may impose limits
-in audio space, but not in time.
+<P>
+  모든 미디어에서, <span class="index-def" title="canvas"> <a
+    name="canvas"><dfn>canvas</dfn></a></span>라는 용어는 "formatting structure가 
+    렌더링 될 공간"을 의미합니다. canvas는 공간의 각 차원마다 무한하지만,
+    보통 렌더링은 대상 미디어에 따라 유저 에이전트가 설정한 캔버스의 유한 영역 내에 발생합니다.
+    예를 들어, 화면에 렌더링하는 유저 에이전트는 보통 최소 너비를 지정하고
+    <a href="visuren.html#viewport">뷰포트</a>의 크기에 따라 초기 너비를 지정합니다.
+    페이지에 렌더링하는 유저 에이전트는 보통 너비와 높이에 제약을 둡니다.
+    청각 유저 에이전트는 오디오 공간에 제한을 주지만 시간은 제한하지 않을 수 있습니다.
 
-<h3>2.3.2 <a name="addressing">CSS&nbsp;2.2 addressing model</a></h3>
+<h3>2.3.2 <a name="addressing">CSS&nbsp;2.2 연결 모델</a></h3>
 
-<P> CSS&nbsp;2.2 <a href="selector.html">selectors</a> and properties allow
-style sheets to refer to the following parts of a document
-or user agent:</p>
+<P>스타일 시트는 CSS&nbsp;2.2 <a href="selector.html">셀렉터</a>와 속성을 사용하여
+  문서 또는 유저 에이전트의 아래 부분을 참조할 수 있습니다.</p>
 
 <ul>
-<li>Elements in the document tree and certain relationships between
-them (see the section on <a href="selector.html">selectors</a>).
+<li>
+  문서 트리 내 요소와 그 사이 특정 관계 (<a href="selector.html">셀렉터</a> 섹션 참고)
 
-<li>Attributes of elements in the document tree, and values of those
-attributes (see the section on <a
-href="selector.html#attribute-selectors">attribute selectors</a>).
+<li>
+  문서 트리 내 요소 속성과 속성값 (<a href="selector.html#attribute-selectors">속성 셀렉터</a> 섹션 참고).
 
-<li>Some parts of element content (see the <a
-href="selector.html#first-line">:first-line</a> and <a
-href="selector.html#first-letter">:first-letter</a> pseudo-elements).
+<li>요소 콘텐츠의 일부 (<a
+href="selector.html#first-line">:first-line</a>과 <a
+href="selector.html#first-letter">:first-letter</a> 의사 요소 참고).
 
-<li>Elements of the document tree when they are in a certain state
-(see the section on <a href="selector.html#pseudo-classes">pseudo-classes</a>).
+<li>특정 상태에 있는 문서 트리 내 요소
+(<a href="selector.html#pseudo-classes">의사 클래스</a> 섹션 참고).
 
-<li>Some aspects of the <a href="#canvas">canvas</a> where
-the document will be rendered.
+<li>문서가 렌더링 될 <a href="#canvas">canvas</a>의 일부
 
-<li>Some system information (see the section on <a href="ui.html">user
-interface</a>).
+<li>일부 시스템 정보 (<a href="ui.html">유저 인터페이스</a> 섹션 참고).
 </ul>
 
 <H2>2.4 <a name="design-principles">CSS 설계 원칙</a></H2>
@@ -452,75 +440,68 @@ CSS&nbsp;2.2는 디바이스의 그룹(예를 들면, 프린터)을 위한 스�
 <LI>
 <P><STRONG>간소함</STRONG>.
 CSS는 사람이 읽고 쓰기에 좋은 간단한 스타일 언어입니다.
-The CSS properties are kept independent of each other to the largest extent possible and there is
-generally only one way to achieve a certain effect.</P>
+CSS 속성은 가능한 한 최대로 독립적으로 유지되며 특정 효과를 얻는 한가지 방법이 있습니다.</P>
 </LI>
 
 <LI>
-<P><STRONG>네트워크 성능</STRONG>. CSS provides for compact
-encodings of how to present content. Compared to images or audio
-files, which are often used by authors to achieve certain rendering
-effects, style sheets most often decrease the content size. Also,
-fewer network connections have to be opened which further increases
-network performance.</P> </LI>
+<P><STRONG>네트워크 성능</STRONG>. 
+  CSS는 콘텐츠를 표현하는 방법을 간결하게 인코딩합니다.
+  이미지나 오디오 파일과 비교했을 때, 유저가 자주 사용하는 특정 렌더링 효과를 얻기 위해서, 스타일 시트는 콘텐츠 사이즈를 많이 줄입니다.
+  또한, 네트워크 연결 수를 줄이면 네트워크 성능이 향상됩니다.</P> </LI>
 
 <LI>
-<P><STRONG>유연성</STRONG>. CSS can be applied to content in
-several ways. The key feature is the ability to cascade style
-information specified in the default (user agent) style sheet, user
-style sheets, linked style sheets, the document head, and in
-attributes for the elements forming the document body.</P>
+<P><STRONG>유연성</STRONG>. 
+  CSS는 여러가지 방법으로 콘텐츠에 적용될 수 있습니다.
+  주요 기능은 기본 (유저 에이전트) 스타일 시트, 유저 스타일 시트, 연결된 스타일 시트,
+  문서 head 및 문서 body 내의 요소의 속성에 지정된 스타일 정보를 캐스케이딩 하는 것입니다.</P>
 </LI>
 
 <LI>
-<P><STRONG>풍부함</STRONG>. Providing authors with a rich set of
-rendering effects increases the richness of the Web as a medium of
-expression. Designers have been longing for functionality commonly
-found in desktop publishing and slide-show applications. Some of
-the requested rendering effects conflict with device independence, but
-CSS&nbsp;2.2 goes a long way toward granting designers their requests.</P>
+<P><STRONG>풍부함</STRONG>. 
+  작성자에게 다양한 렌더링 효과를 제공하면 표현식의 미디어로써 웹의 풍부함을 높일 수 있습니다.
+  디자이너는 데스크톱 게시 및 슬라이드 쇼 어플리케이션에서 흔히 볼 수 있는 기능을 원합니다.
+  요청된 렌더링 효과 중 일부는 기기 독립성과 상충되지만,
+  CSS&nbsp;2.2는 디자이너의 요구사항을 충족하는 데 많은 도움을 줍니다.</P>
 </LI>
 
 <LI>
-<P><STRONG>대체 언어 바인딩</STRONG>. The set of CSS
-properties described in this specification form a consistent
-formatting model for visual and aural presentations. This formatting
-model can be accessed through the CSS language, but bindings to other
-languages are also possible. For example, a JavaScript program may
-dynamically change the value of a certain element's <a href="colors.html#propdef-color" class="noxref"><span
-class="propinst-color">'color'</span></a> property.</P>
+<P><STRONG>대체 언어 바인딩</STRONG>. 
+  이 스펙에서 설명하는 CSS 속성 그룹은 시각 및 청각 표현을 위한 일관된 형식 모델을 구성합니다.
+  이 형식 모델은 CSS 언어를 통해 접근할 수 있으나, 다른 언어에서도 바인딩하는 것도 가능합니다.
+  예를 들어, JavaScript 프로그램은 특정 요소의 <a href="colors.html#propdef-color" class="noxref"><span
+    class="propinst-color">'color'</span></a> 속성 값을 동적으로 변경할 수 있습니다.
 </LI>
 
 <LI>
-<P><STRONG>접근성</STRONG>. Several CSS
-features will make the Web more accessible
-to users with disabilities:</p>
+<P><STRONG>접근성</STRONG>. 몇가지 CSS 특성은 웹을 장애인 유저에게 더 접근가능하게 만듭니다.</p>
 
 <UL>
 
-<LI>Properties to control font appearance allow authors
-to eliminate inaccessible bit-mapped text images.
+<LI>
+  글꼴 모양을 제어하는 속성을 사용하면 접근할 수 없는 
+  비트맵 텍스트 이미지를 작성자가 제거할 수 있습니다.
 
-<li>Positioning properties allow authors to eliminate
-mark-up tricks (e.g., invisible images) to force layout.
+<li>
+  위치 지정 속성을 사용하면 (보이지 않는 이미지 같은) 마크업 트릭을 제거하고
+  레이아웃을 적용할 수 있습니다.
 
-<LI>The semantics of
-<tt>!important</tt> rules mean that users with
-particular presentation requirements
-can override the author's style sheets.
+<LI>
+  <tt>!important</tt> 룰은 특정 표시 요구사항을 가진 유저가
+  작성자의 스타일 시트를 무시할 수 있음을 의미합니다.
 
-<li>The 'inherit' value for all properties
-improves cascading generality and allows for
-easier and more consistent style tuning.
+<li>
+  모든 속성에 적용할 수 있는 'inherit' 값은
+  캐스케이딩 일반성을 개선하고 보다 쉽고 일관된 스타일 조정을 허용합니다.
 
-<li>Improved media support, including media groups and the
-braille, embossed, and tty media types, will allow users and
-authors to tailor pages to those devices.
+<li>
+  미디어 그룹, 점자, 엠보싱 및 tty 미디어 타입을 포함한 향상된 미디어 지원을 이용하여
+  사용자와 작성자는 페이지를 해당 장치에 맞출 수 있습니다.
 
 </UL>
 
-<div class="note"><P> <em><strong>Note.</strong> For more information
-about designing accessible documents using CSS and HTML, see <a href="refs.html#ref-WCAG20" rel="biblioentry" class="noxref"><span class="informref">[WCAG20]</span></a>.</em>
+<div class="note"><P> <em><strong>Note.</strong> 
+  HTML과 CSS를 이용한 접근가능한 문서를 설계하는 법에 대한 더 자세한 정보는 
+  <a href="refs.html#ref-WCAG20" rel="biblioentry" class="noxref"><span class="informref">[WCAG20]</span></a>를 보시길 바랍니다.</em>
 </div>
 </UL>
 

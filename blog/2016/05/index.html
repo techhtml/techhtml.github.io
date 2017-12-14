@@ -14,51 +14,45 @@
     <style amp-custom>
     :root {
       --color-light-gray: #F5F5F5;
-      --color-gray: #424242;
+      --color-gray: #212121;
       --color-blue-500: #2196F3;
       --color-blue-800: #1565C0;
     }
-    body {
-      font-size:1.125rem;
-      line-height:1.425;
-      font-family: "Roboto", sans-serif;
-      color:var(--color-gray);
-      font-weight:300;
-      background:var(--color-light-gray)
+    html {
+      font-size:1.125em;
     }
-    strong {
-      font-weight:400;
+    body {
+      font-size:1em;
+      line-height:1.8;
+      font-family:sans-serif;
+      color:var(--color-gray);
+    }
+    h1 { font-size: 2.027em }
+    h2 { font-size: 1.802em }
+    h3 { font-size: 1.602em }
+    h4 { font-size: 1.424em }
+    h5 { font-size: 1.266em }
+    h6 { font-size: 1.125em }
+    h1,h2,h3,h4,h5,h6,strong {
+      font-family: "APPLESDGothicNEO-HEAVY",sans-serif;
+      font-weight: 900;
     }
     input {
       font:inherit;
     }
-    ul,ol {
-      list-style:none;
-      padding:0;
-    }
-    li a {
-      display:block;
-      padding:0.675rem 1rem 0.75rem;
-    }
-    li i {
-      padding-right:0.5rem;
-      vertical-align:middle;
-    }
 
-    /*
-     * links
-     */
     a {
       color:var(--color-blue-500);
       text-decoration:none;
     }
     a:hover {
       color:var(--color-blue-800);
+      text-decoration:underline;
     }
 
     /*
-     * article padding
-     */
+    * article padding
+    */
 
     .contents {
       max-width:720px;
@@ -75,18 +69,9 @@
       margin-left:0.8em;
     }
 
-    pre {
-        white-space: pre-wrap;
-        background: var(--color-gray);
-        color: #fff;
-        font-family: "menlo", monospace;
-        padding: 1em;
-        font-size: 0.8rem;
-    }
-
     @media (min-width: 1440px) {
       .contents {
-        max-width:940px;
+          max-width:940px;
       }
     }
     </style>
