@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0041)https://www.w3.org/TR/html-media-capture/ -->
+<!-- saved from url=(0041) -->
 <html lang="ko" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="generator" content="ReSpec 19.0.1"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
 div.example-title {
     min-width: 7.5em;
@@ -783,7 +783,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 .hljs-strong {
   font-weight: bold;
 }
-</style><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-REC"><link rel="canonical" href="https://www.w3.org/TR/html-media-capture/"><script id="initialUserConfig" type="application/json">{
+</style><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-REC"><link rel="canonical" href=""><script id="initialUserConfig" type="application/json">{
   "specStatus": "REC",
   "errata": "https://github.com/w3c/html-media-capture/labels/errata",
   "shortName": "html-media-capture",
@@ -838,10 +838,22 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   ],
   "publishISODate": "2018-02-01T00:00:00.000Z",
   "generatedSubtitle": "Recommendation 01 February 2018"
-}</script></head>
-  <body aria-busy="false" class="h-entry toc-sidebar"><p id="toc-nav"><a id="toc-jump" href="https://www.w3.org/TR/html-media-capture/#toc"><span aria-hidden="true">↑</span> <span>Jump to Table of Contents</span></a><a id="toc-toggle" href="https://www.w3.org/TR/html-media-capture/#toc"><span aria-hidden="true">←</span> <span>Collapse Sidebar</span></a></p><div class="head">
+}</script>
+<link href="trans.css" rel="stylesheet" type="text/css">
+</head>
+  <body aria-busy="false" class="h-entry toc-sidebar"><p id="toc-nav"><a id="toc-jump" href="#toc"><span aria-hidden="true">↑</span> <span>Jump to Table of Contents</span></a><a id="toc-toggle" href="#toc"><span aria-hidden="true">←</span> <span>Collapse Sidebar</span></a></p><div class="head">
+    <div class=headernotes>
+      <p>이 문서는 <a href="https://www.w3.org/TR/html-media-capture/">HTML Media Capture (W3C Recommendation 01 February 2018)</a>의 한국어 번역본입니다.<br>
+      이 문서에 오역 및 오타를 포함할 수 있습니다. 가능하면 원문도 확인하시길 바랍니다.</p>
+      <dl class=meta>
+        <dt>공개일</dt>
+        <dd>2018-02-06</dd>
+        <dt>번역자:</dt>
+        <dd>조은 &lt;<a href="mailto:apes0123@gmail.com">apes0123@gmail.com</a>&gt;</dd>
+      </dl>
+    </div>
     <p>
-      <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="./index_files/W3C" alt="W3C"></a>
+      <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
   <p><!--_hyper: -1561793047;--></p>
   <h1 class="title p-name" id="title">HTML Media Capture</h1>
@@ -910,7 +922,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   <hr title="Separator for header">
 </div>
     <section id="abstract" class="introductory"><h2 id="abstract-0">개요</h2>
-      <cite>HTML Media Capture</cite> 스펙은 파일 업로드 컨트롤에서 카메라, 마이크로폰을 포함한 기기의 <a href="https://www.w3.org/TR/html-media-capture/#dfn-media-capture-mechanism" class="internalDFN" data-link-type="dfn">미디어 캡쳐
+      <cite>HTML Media Capture</cite> 스펙은 파일 업로드 컨트롤에서 카메라, 마이크로폰을 포함한 기기의 <a href="#dfn-media-capture-mechanism" class="internalDFN" data-link-type="dfn">미디어 캡쳐
         메커니즘</a>에 유저가 접속할 수 있도록 하는 HTML form 확장을 정의합니다.
     </section>
     <!-- NON Translate -->
@@ -966,31 +978,31 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
           </p>
         
 
-</section><nav id="toc"><h2 class="introductory" id="table-of-contents">목차</h2><ol class="toc"><li class="tocline"><a href="https://www.w3.org/TR/html-media-capture/#introduction" class="tocxref"><span class="secno">1. </span>
+</section><nav id="toc"><h2 class="introductory" id="table-of-contents">목차</h2><ol class="toc"><li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>
         소개
-      </a></li><li class="tocline"><a href="https://www.w3.org/TR/html-media-capture/#conformance" class="tocxref"><span class="secno">2. </span>적합성</a></li><li class="tocline"><a href="https://www.w3.org/TR/html-media-capture/#terminology" class="tocxref"><span class="secno">3. </span>
+      </a></li><li class="tocline"><a href="#conformance" class="tocxref"><span class="secno">2. </span>적합성</a></li><li class="tocline"><a href="#terminology" class="tocxref"><span class="secno">3. </span>
         용어
-      </a></li><li class="tocline"><a href="https://www.w3.org/TR/html-media-capture/#security" class="tocxref"><span class="secno">4. </span>
+      </a></li><li class="tocline"><a href="#security" class="tocxref"><span class="secno">4. </span>
         보안 및 개인정보 고려사항
-      </a></li><li class="tocline"><a href="https://www.w3.org/TR/html-media-capture/#the-capture-attribute" class="tocxref"><span class="secno">5. </span>
+      </a></li><li class="tocline"><a href="#the-capture-attribute" class="tocxref"><span class="secno">5. </span>
         <span data-dfn-for="htmlinputelement" data-dfn-type="dfn" data-idl="" data-title="capture"><code>capture</code></span> 속성
-      </a></li><li class="tocline"><a href="https://www.w3.org/TR/html-media-capture/#examples" class="tocxref"><span class="secno">A. </span>
+      </a></li><li class="tocline"><a href="#examples" class="tocxref"><span class="secno">A. </span>
         예제
-      </a></li><li class="tocline"><a href="https://www.w3.org/TR/html-media-capture/#references" class="tocxref"><span class="secno">B. </span>참조</a><ol class="toc"><li class="tocline"><a href="https://www.w3.org/TR/html-media-capture/#normative-references" class="tocxref"><span class="secno">B.1 </span>표준 참조</a></li><li class="tocline"><a href="https://www.w3.org/TR/html-media-capture/#informative-references" class="tocxref"><span class="secno">B.2 </span>정보 참조</a></li></ol></li></ol></nav>
+      </a></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">B. </span>참조 문서</a><ol class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">B.1 </span>표준 참조 문서</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">B.2 </span>정보 참조 문서</a></li></ol></li></ol></nav>
     <section class="informative" id="introduction">
       <!--OddPage--><h2 id="x1-introduction"><span class="secno">1. </span>
         소개
       </h2><p><em>이 섹션은 표준이 아닙니다.</em></p>
       <p data-link-for="HTMLInputElement">
-        <cite>HTML Media Capture</cite> 스펙은 <a href="https://www.w3.org/TR/html-media-capture/#dom-htmlinputelement-capture" class="internalDFN" data-link-type="dfn"><code>capture</code></a> 속성을 이용하여
+        <cite>HTML Media Capture</cite> 스펙은 <a href="#dom-htmlinputelement-capture" class="internalDFN" data-link-type="dfn"><code>capture</code></a> 속성을 이용하여
         <a data-link-type="dfn" href="https://www.w3.org/TR/html51/sec-forms.html#htmlinputelement-htmlinputelement"><code>HTMLInputElement</code></a> 인터페이스를 확장합니다.
-        <a href="https://www.w3.org/TR/html-media-capture/#dom-htmlinputelement-capture" class="internalDFN" data-link-type="dfn"><code>capture</code></a> 속성은
-        작성자가 스팟에서 미디어를 캡쳐하기 위해 파일 업로드 컨트롤 내에서 카메라나 마이크로폰 같은 <a href="https://www.w3.org/TR/html-media-capture/#dfn-media-capture-mechanism" class="internalDFN" data-link-type="dfn">미디어 캡쳐 메커니즘</a> 사용 요청을 서술하도록 허용합니다.
+        <a href="#dom-htmlinputelement-capture" class="internalDFN" data-link-type="dfn"><code>capture</code></a> 속성은
+        작성자가 스팟에서 미디어를 캡쳐하기 위해 파일 업로드 컨트롤 내에서 카메라나 마이크로폰 같은 <a href="#dfn-media-capture-mechanism" class="internalDFN" data-link-type="dfn">미디어 캡쳐 메커니즘</a> 사용 요청을 서술하도록 허용합니다.
       </p>
       <p>
         이 확장은 특히 간단하고 선언적으로 설계되었으며 웹 플랫폼의 미디어 캡처 기능의 하위 집합을 다룹니다.
         특히 이 확장은 캡쳐에 대한 자세하 작성자 제어를 제공하지않습니다.
-        세분화된 작성자 제어가 필요한 사용 사례는 다른 스펙인 <cite>Media Capture and Streams</cite> [<cite><a class="bibref" href="https://www.w3.org/TR/html-media-capture/#bib-MEDIACAPTURE-STREAMS">MEDIACAPTURE-STREAMS</a></cite>]
+        세분화된 작성자 제어가 필요한 사용 사례는 다른 스펙인 <cite>Media Capture and Streams</cite> [<cite><a class="bibref" href="#bib-MEDIACAPTURE-STREAMS">MEDIACAPTURE-STREAMS</a></cite>]
         을 사용하여 충족될 수 있습니다.
         예를 들어 호스팅 기기에서 실시간 미디어 스트림에 접근하는 것은 이 스펙의 범위를 벗어납니다.
       </p>
@@ -1001,7 +1013,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   그 외의 모든 것들은 표준입니다.
 </p>
 <p id="respecRFC2119">키워드  <em class="rfc2119">MUST</em>, <em class="rfc2119">MUST NOT</em>, <em class="rfc2119">SHOULD</em> 는
-  [<cite><a class="bibref" href="https://www.w3.org/TR/html-media-capture/#bib-RFC2119">RFC2119</a></cite>]의 설명을 따릅니다.
+  [<cite><a class="bibref" href="#bib-RFC2119">RFC2119</a></cite>]의 설명을 따릅니다.
 </p>
 
       <p>
@@ -1009,7 +1021,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         포함된 인터페이스를 구현하는 <dfn data-dfn-type="dfn" id="dfn-user-agent">user agent</dfn>
       </p>
       <p>
-        이 스펙에 정의된 API를 구현하기 위해 ECMAScript를 사용하는 구현체는 이 스펙에서 Web IDL 스펙 [<cite><a class="bibref" href="https://www.w3.org/TR/html-media-capture/#bib-WEBIDL-1">WEBIDL-1</a></cite>] 명세와 용어를 사용하기 때문에
+        이 스펙에 정의된 API를 구현하기 위해 ECMAScript를 사용하는 구현체는 이 스펙에서 Web IDL 스펙 [<cite><a class="bibref" href="#bib-WEBIDL-1">WEBIDL-1</a></cite>] 명세와 용어를 사용하기 때문에
         Web IDL 스펙에 정의된 ECMAScript 바인딩과 일치하는 방식으로 이를 구현해야합니다.
       </p>
     </section>
@@ -1027,21 +1039,21 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         <dfn data-dfn-type="dfn" id="dfn-missing-value-default"><a href="https://www.w3.org/TR/html51/infrastructure.html#missing-value-default">missing value
         default</a></dfn>, <dfn data-dfn-type="dfn" id="dfn-invalid-value-default"><a href="https://www.w3.org/TR/html51/infrastructure.html#invalid-value-default">invalid
         value default</a></dfn>, <dfn data-dfn-type="dfn" id="dfn-reflect"><a href="https://www.w3.org/TR/html51/infrastructure.html#reflection">reflect</a></dfn>는
-        [<cite><a class="bibref" href="https://www.w3.org/TR/html-media-capture/#bib-HTML51">HTML51</a></cite>]에 정의되어있습니다.
+        [<cite><a class="bibref" href="#bib-HTML51">HTML51</a></cite>]에 정의되어있습니다.
       </p>
-      <p><dfn data-dfn-type="dfn" id="dfn-cereactions"><a href="https://www.w3.org/TR/custom-elements/#cereactions"><code>[CEReactions]</code></a></dfn> WebIDL 확장 속성은 [<cite><a class="bibref" href="https://www.w3.org/TR/html-media-capture/#bib-custom-elements">custom-elements</a></cite>]에 정의되어있습니다.</p>
+      <p><dfn data-dfn-type="dfn" id="dfn-cereactions"><a href="https://www.w3.org/TR/custom-elements/#cereactions"><code>[CEReactions]</code></a></dfn> WebIDL 확장 속성은 [<cite><a class="bibref" href="#bib-custom-elements">custom-elements</a></cite>]에 정의되어있습니다.</p>
       <p>
         <dfn data-dfn-type="dfn" id="dfn-videofacingmodeenum"><a href="https://www.w3.org/TR/mediacapture-streams/#def-constraint-facingMode"><code>VideoFacingModeEnum</code></a></dfn>
-        목록은 [<cite><a class="bibref" href="https://www.w3.org/TR/html-media-capture/#bib-MEDIACAPTURE-STREAMS">MEDIACAPTURE-STREAMS</a></cite>]에 정의되어있습니다.
+        목록은 [<cite><a class="bibref" href="#bib-MEDIACAPTURE-STREAMS">MEDIACAPTURE-STREAMS</a></cite>]에 정의되어있습니다.
       </p>
       <p>
         <dfn data-dfn-type="dfn" id="dfn-filelist"><a href="https://www.w3.org/TR/FileAPI/#dfn-filelist"><code>FileList</code></a></dfn>
-        인터페이스는 [<cite><a class="bibref" href="https://www.w3.org/TR/html-media-capture/#bib-FILE-API">FILE-API</a></cite>]에 정의되어있습니다.
+        인터페이스는 [<cite><a class="bibref" href="#bib-FILE-API">FILE-API</a></cite>]에 정의되어있습니다.
       </p>
       <p>
         이 스펙문서 내에서 <dfn data-dfn-type="dfn" id="dfn-capture-control-type">캡쳐 컨트롤 타입</dfn>이라는 용어는
         <a data-link-type="dfn" href="https://www.w3.org/TR/html51/sec-forms.html#element-attrdef-input-accept"><code>accept</code></a> 속성으로 정의된 MIME type의 미디어를 직접 캡쳐하기위해
-        사용자가 <a href="https://www.w3.org/TR/html-media-capture/#dfn-preferred-facing-mode" class="internalDFN" data-link-type="dfn">선호하는 외장 모드</a>로 <a href="https://www.w3.org/TR/html-media-capture/#dfn-media-capture-mechanism" class="internalDFN" data-link-type="dfn">미디어 캡쳐 메커니즘</a>을 사용하여
+        사용자가 <a href="#dfn-preferred-facing-mode" class="internalDFN" data-link-type="dfn">선호하는 외장 모드</a>로 <a href="#dfn-media-capture-mechanism" class="internalDFN" data-link-type="dfn">미디어 캡쳐 메커니즘</a>을 사용하여
         파일 피커 컨트롤의 특수 타입을 참조합니다.
       </p>
       <p>
@@ -1049,155 +1061,145 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       </p>
       <p>
         <dfn data-dfn-type="dfn" id="dfn-preferred-facing-mode">선호하는 외장 모드</dfn>는 
-        기기의 <a href="https://www.w3.org/TR/html-media-capture/#dfn-media-capture-mechanism" class="internalDFN" data-link-type="dfn">미디어 캡쳐 메커니즘</a> 사용에 접근하기 위한 힌트입니다.
+        기기의 <a href="#dfn-media-capture-mechanism" class="internalDFN" data-link-type="dfn">미디어 캡쳐 메커니즘</a> 사용에 접근하기 위한 힌트입니다.
       </p>
     </section>
     <section id="security" class="informative">
       <!--OddPage--><h2 id="x4-security-and-privacy-considerations"><span class="secno">4. </span>
         보안 및 개인정보 고려사항
-      </h2><p><em>This section is non-normative.</em></p>
+      </h2><p><em>이 섹션은 표준이 아닙니다.</em></p>
       <p>
-        A User Agent implementation of this specification is advised to seek
-        user consent before initiating capture of content by microphone or
-        camera. This may be necessary to meet regulatory, legal and best
-        practice requirements related to the privacy of user data. In addition,
-        the User Agent implementation is advised to provide an indication to
-        the user when an input device is enabled and make it possible for the
-        user to terminate such capture. Similarly, the User Agent is advised to
-        offer user control, such as to allow the user to:
+        이 스펙의 유저 에이전트 구현체는 마이크와 카메라를 통한 콘텐츠 캡쳐를 시작하기 전에
+        사용자에게 동의를 구할 것을 권장합니다. 이는 사용자 데이터 개인정보와 관련한 법률, 규정, 모범사례의
+        요구사항을 충족하기 위해 필수일 수 있습니다. 추가로, 유저 에이전트 구현체는 입력 장치를 활성화 할 때
+        사용자에게 표시하고, 사용자가 그러한 캡쳐를 종료할 수 있도록 할 것을 권장합니다.
+        마찬가지로, 유저 에이전트에서 다음과 같은 상황을 유저에게 허용하는 유저 컨트롤 제공을 권장합니다.
       </p>
       <ul>
-        <li>select the exact media capture device to be used if there exist
-        multiple devices of the same type (e.g. a front-facing camera in
-        addition to a primary camera).
-        </li>
-        <li>disable sound capture when in the video capture mode.
-        </li>
+        <li>동일한 타입의 기기가 여러개 있는 경우 사용할 정확한 미디어 캡쳐 기기 선택
+          (예를 들면, 주 카메라에 추가된 정면 카메라)</li>
+        <li>비디오 캡쳐 모드를 사용할 때 사운드 캡쳐 비활성화하기.</li>
       </ul>
       <p>
-        This specification builds upon the security and privacy protections
-        provided by the <code>&lt;input type="file"&gt;</code> [<cite><a class="bibref" href="https://www.w3.org/TR/html-media-capture/#bib-HTML51">HTML51</a></cite>] and the
-        [<cite><a class="bibref" href="https://www.w3.org/TR/html-media-capture/#bib-FILE-API">FILE-API</a></cite>] specifications; in particular, it is expected that any
-        offer to start capturing content from the user’s device would require a
-        specific user interaction on an HTML element that is entirely
-        controlled by the user agent.
+        이 스펙은 <code>&lt;input type="file"&gt;</code> [<cite><a class="bibref" href="#bib-HTML51">HTML51</a></cite>] 과
+        [<cite><a class="bibref" href="#bib-FILE-API">FILE-API</a></cite>] 스펙에서 제공하고 있는
+        개인정보 보호 및 보안을 기준으로 만들었습니다.
+        특히 사용자 기기에서 콘텐츠를 캡쳐하기 시작하면 유저 에이전트가 완전히 제어하는
+        HTML 요소에 대한 특정 사용자 인터렉션이 필요로합니다.
       </p>
       <p>
-        Implementors should take care to prevent additional leakage of
-        privacy-sensitive data from captured media. For instance, embedding the
-        user’s location in the metadata of captured media (e.g. EXIF) might
-        transmit more private data than the user is expecting.
+        구현자들은 캡쳐된 미디어에서 개인정보에 민감한 데이터가 누출되지 않도록 주의해야합니다.
+        예를 들어 사용자의 위치를 캡쳐된 미디어의 메타데이터 (예: EXIF)에 포함시키는 것은
+        사용자가 기대하는 것보다 많은 개인정보를 전송할 수 있습니다.
       </p>
     </section>
     <section data-dfn-for="HTMLInputElement" data-link-for="HTMLInputElement" id="the-capture-attribute">
       <!--OddPage--><h2 id="x5-the-capture-attribute"><span class="secno">5. </span>
-        The <dfn data-dfn-for="htmlinputelement" data-dfn-type="dfn" id="dom-htmlinputelement-capture" data-idl="" data-title="capture"><code>capture</code></dfn> attribute
+        <dfn data-dfn-for="htmlinputelement" data-dfn-type="dfn" id="dom-htmlinputelement-capture" data-idl="" data-title="capture"><code>capture</code></dfn> 속성
       </h2>
       <p>
-        When an <a data-link-type="dfn" href="https://www.w3.org/TR/html51/sec-forms.html#the-input-element"><code>input</code></a> element's <a data-link-type="dfn" href="https://www.w3.org/TR/html51/sec-forms.html#element-attrdef-input-type"><code>type</code></a> attribute is in the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/sec-forms.html#element-statedef-input-file-upload">File
-        Upload</a> state, and its <a data-link-type="dfn" href="https://www.w3.org/TR/html51/sec-forms.html#element-attrdef-input-accept"><code>accept</code></a> attribute is specified, the
-        rules in this section apply.
+        <a data-link-type="dfn" href="https://www.w3.org/TR/html51/sec-forms.html#the-input-element"><code>input</code></a> 요소의
+        <a data-link-type="dfn" href="https://www.w3.org/TR/html51/sec-forms.html#element-attrdef-input-type"><code>type</code></a> 속성이 <a data-link-type="dfn" href="https://www.w3.org/TR/html51/sec-forms.html#element-statedef-input-file-upload">파일 업로드</a> 상태고,
+        <a data-link-type="dfn" href="https://www.w3.org/TR/html51/sec-forms.html#element-attrdef-input-accept"><code>accept</code></a> 속성이 정의되어있을 때,
+        이 섹션의 규칙이 적용됩니다.
       </p>
       <div><pre class="def idl"><span class="idlInterface" id="idl-def-htmlinputelement-partial-1" data-idl="" data-title="HTMLInputElement">partial interface <span class="idlInterfaceID"><a data-no-default="" data-link-for="" data-lt="" data-link-type="dfn" href="https://www.w3.org/TR/html51/sec-forms.html#htmlinputelement-htmlinputelement"><code>HTMLInputElement</code></a></span> {
 <span class="idlAttribute" id="idl-def-htmlinputelement-capture" data-idl="" data-title="capture" data-dfn-for="htmlinputelement">    [<span class="extAttr"><span class="extAttrName"><a href="https://html.spec.whatwg.org/multipage/#cereactions">CEReactions</a></span></span>]
-    attribute <span class="idlAttrType"><a href="https://heycam.github.io/webidl/#idl-DOMString">DOMString</a></span> <span class="idlAttrName"><a data-no-default="" data-link-for="htmlinputelement" data-lt="" href="https://www.w3.org/TR/html-media-capture/#dom-htmlinputelement-capture" class="internalDFN" data-link-type="dfn"><code>capture</code></a></span>;</span>
+    attribute <span class="idlAttrType"><a href="https://heycam.github.io/webidl/#idl-DOMString">DOMString</a></span> <span class="idlAttrName"><a data-no-default="" data-link-for="htmlinputelement" data-lt="" href="#dom-htmlinputelement-capture" class="internalDFN" data-link-type="dfn"><code>capture</code></a></span>;</span>
 };</span></pre></div>
       <div>
         <p>
-          The <a href="https://www.w3.org/TR/html-media-capture/#dom-htmlinputelement-capture" class="internalDFN" data-link-type="dfn"><code>capture</code></a> attribute is an <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#enumerated-attributes">enumerated attribute</a> whose
-          state specifies the <a href="https://www.w3.org/TR/html-media-capture/#dfn-preferred-facing-mode" class="internalDFN" data-link-type="dfn">preferred facing mode</a> for the <a href="https://www.w3.org/TR/html-media-capture/#dfn-media-capture-mechanism" class="internalDFN" data-link-type="dfn">media
-          capture mechanism</a>.
+            <a href="#dom-htmlinputelement-capture" class="internalDFN" data-link-type="dfn"><code>capture</code></a> 속성은 상태가
+            <a href="#dfn-media-capture-mechanism" class="internalDFN" data-link-type="dfn">미디어 캡쳐 메커니즘</a>의
+            <a href="#dfn-preferred-facing-mode" class="internalDFN" data-link-type="dfn">선호하는 외장 모드</a>를 결정하는 
+            <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#enumerated-attributes">열거형 속성 (enumerated attribute)</a>입니다.
         </p>
         <p>
-          The attribute's keywords are <dfn data-dfn-type="dfn" id="dfn-user"><code>user</code></dfn> and
-          <dfn data-dfn-type="dfn" id="dfn-environment"><code>environment</code></dfn>, which map to the respective
-          states <var>user</var> and <var>environment</var>. The semantics of
-          the states <var>user</var> and <var>environment</var> mirror the
-          similarly named enumeration values defined in
-          <a data-link-type="dfn" href="https://www.w3.org/TR/mediacapture-streams/#def-constraint-facingMode"><code><code>VideoFacingModeEnum</code></code></a>.
+          속성의 키워드는 <dfn data-dfn-type="dfn" id="dfn-user"><code>user</code></dfn>와
+          <dfn data-dfn-type="dfn" id="dfn-environment"><code>environment</code></dfn>이며,
+          각 상태인 <var>user</var>와 <var>environment</var>에 매핑됩니다.
+          <var>user</var> 및 <var>environment</var> 상태의 의미는
+          <a data-link-type="dfn" href="https://www.w3.org/TR/mediacapture-streams/#def-constraint-facingMode"><code><code>VideoFacingModeEnum</code></code></a>에 정의된
+          비슷한 이름의 열거형 값 (enumeration values)을 반영합니다.
         </p>
         <p>
-          In addition, there is a third state, the
-          <var>implementation-specific</var> state.
+          추가로 세번째 상태인 <var>implementation-specific</var> 상태가 있습니다.
         </p>
         <p>
-          The <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#missing-value-default">missing value default</a> is the
-          <var>implementation-specific</var> state. The <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#invalid-value-default">invalid value
-          default</a> is also the <var>implementation-specific</var> state.
+            <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#missing-value-default">누락 값 기본 (missing value default)</a>은
+            <var>implementation-specific</var> 상태입니다.
+            <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#invalid-value-default">유효하지않은 값 기본 (invalid value
+            default)</a> 또한 <var>implementation-specific</var> 상태입니다.
         </p>
         <div class="note"><div role="heading" class="note-title marker" id="h-note" aria-level="3"><span>Note</span></div><p class="">
-          If the user agent is unable to support the <a href="https://www.w3.org/TR/html-media-capture/#dfn-preferred-facing-mode" class="internalDFN" data-link-type="dfn">preferred facing
-          mode</a>, it can fall back to the implementation-specific default
-          facing mode that maps to the <var>implementation-specific</var> state
-          that indicates the implementation is to act according to its default
-          behavior.
+          유저 에이전트가 <a href="#dfn-preferred-facing-mode" class="internalDFN" data-link-type="dfn">선호하는 외장 모드</a>를 지원할 수 없는 경우,
+          구현체에서 정의한 기본 동작에 따라 동작함을 나타내는 <var>implementation-specific</var> 상태에 매핑되는 구현체에서 정의한 기본 외장 모드로 폴백할 수 있습니다.
         </p></div>
         <p>
-          The <a href="https://www.w3.org/TR/html-media-capture/#dom-htmlinputelement-capture" class="internalDFN" data-link-type="dfn"><code>capture</code></a> IDL attribute <em class="rfc2119" title="MUST">MUST</em> <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#reflection">reflect</a> the respective
-          content attribute of the same name.
+          <a href="#dom-htmlinputelement-capture" class="internalDFN" data-link-type="dfn"><code>capture</code></a> IDL 속성은
+          <em class="rfc2119" title="MUST">반드시 [MUST]</em> 같은 이름의 각 콘텐츠 속성을 
+          <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#reflection">반영</a>해야합니다.
         </p>
         <p>
-          When the <a href="https://www.w3.org/TR/html-media-capture/#dom-htmlinputelement-capture" class="internalDFN" data-link-type="dfn"><code>capture</code></a> attribute is specified, the <a href="https://www.w3.org/TR/html-media-capture/#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a>
-          <em class="rfc2119" title="SHOULD">SHOULD</em> invoke a file picker of the specific <a href="https://www.w3.org/TR/html-media-capture/#dfn-capture-control-type" class="internalDFN" data-link-type="dfn">capture control
-          type</a>.
+          <a href="#dom-htmlinputelement-capture" class="internalDFN" data-link-type="dfn"><code>capture</code></a> 속성이 정의되면,
+          <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">유저 에이전트</a>는 특정 <a href="#dfn-capture-control-type" class="internalDFN" data-link-type="dfn">캡쳐 컨트롤 타입</a>의 파일 피커를 호출해야만 합니다.
+          <em class="rfc2119" title="SHOULD">(SHOULD)</em>
         </p>
         <p>
-          When the <a href="https://www.w3.org/TR/html-media-capture/#dom-htmlinputelement-capture" class="internalDFN" data-link-type="dfn"><code>capture</code></a> attribute is specified, the <a href="https://www.w3.org/TR/html-media-capture/#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a>
-          <em class="rfc2119" title="MUST NOT">MUST NOT</em> save the captured media to any data storage, local or
-          remote.
+          <a href="#dom-htmlinputelement-capture" class="internalDFN" data-link-type="dfn"><code>capture</code></a> 속성이 정의되었을 때
+          <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">유저 에이전트</a>는 로컬이나 리모트, 데이터 스토리지를 절대 저장해서는 안됩니다.
+          <em class="rfc2119" title="MUST NOT">(MUST NOT)</em>
         </p>
         <div class="note"><div role="heading" class="note-title marker" id="h-note-0" aria-level="3"><span>Note</span></div><div class="">
-          When scripts gain access to the files selected from the file picker
-          (represented by a <a data-link-type="dfn" href="https://www.w3.org/TR/FileAPI/#dfn-filelist"><code>FileList</code></a> object), they can use various
-          mechanisms to store the captured media. These mechanisms are out of
-          scope for this specification.
+          스크립트가 (<a data-link-type="dfn" href="https://www.w3.org/TR/FileAPI/#dfn-filelist"><code>FileList</code></a> 객체를 통해 나타난) 파일 피커를 통해 선택된 파일에 접근할 수 있을 때,
+          캡쳐된 미디어를 저장하기 위한 다양한 메커니즘을 사용할 수 있습니다.
+          이러한 메커니즘은 이 스펙 문서의 범위가 아닙니다.
         </div></div>
         <p>
-          If the <a data-link-type="dfn" href="https://www.w3.org/TR/html51/sec-forms.html#element-attrdef-input-accept"><code>accept</code></a> attribute's value is set to a MIME type that has
-          no associated <a href="https://www.w3.org/TR/html-media-capture/#dfn-capture-control-type" class="internalDFN" data-link-type="dfn">capture control type</a>, the <a href="https://www.w3.org/TR/html-media-capture/#dfn-user-agent" class="internalDFN" data-link-type="dfn">user agent</a> <em class="rfc2119" title="MUST">MUST</em>
-          act as if there was no <a href="https://www.w3.org/TR/html-media-capture/#dom-htmlinputelement-capture" class="internalDFN" data-link-type="dfn"><code>capture</code></a> attribute.
+          만약 <a data-link-type="dfn" href="https://www.w3.org/TR/html51/sec-forms.html#element-attrdef-input-accept"><code>accept</code></a> 속성의 값이 
+          허용되지 않는 <a href="#dfn-capture-control-type" class="internalDFN" data-link-type="dfn">캡쳐 컨트롤 타입</a> MIME 타입으로 설정되었다면,
+          <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">유저 에이전트</a>는 <em class="rfc2119" title="MUST">반드시 (MUST)</em>
+          <a href="#dom-htmlinputelement-capture" class="internalDFN" data-link-type="dfn"><code>capture</code></a> 속성이 존재하지 않는 것처럼 동작해야합니다.
         </p>
       </div>
     </section>
     <section class="appendix informative" id="examples">
       <!--OddPage--><h2 id="a-examples"><span class="secno">A. </span>
-        Examples
-      </h2><p><em>This section is non-normative.</em></p>
+        예제
+      </h2><p><em>이 섹션은 표준이 아닙니다.</em></p>
       <p>
-        The following examples demonstrate how to give hints that it is
-        preferred for the user to capture media of a specific MIME type using
-        the media capture capabilities of the hosting device. Both a simple
-        declarative example using an HTML form, as well as a more advanced
-        example including scripting, are presented.
+        아래 예제는 유저의 호스팅 기기의 미디어 캡쳐 기능을 이용하여 특정 MIME 타입의 미디어를 캡쳐하는 
+        유저가 선호하는 방법에 대한 힌트를 제공하는 예제입니다.
+        HTML form을 사용하는 간단한 선언적 예제와 스크립팅을 포함한 더 고급 예제도 제시합니다.
       </p>
       <ul>
-        <li id="example-1">To take a picture using the device's user-facing
-        camera, and upload the picture taken using an HTML form:
+        <li id="example-1">
+          기기의 유저 방향 카메라를 사용하여 사진을 찍고 HTML form을 시용하여 찍은 사진을 업로드합니다.
           <div class="example"><div class="example-title marker"><span>Example 1</span></div><pre class="hljs xml" aria-busy="false" aria-live="polite"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"server.cgi"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"post"</span> <span class="hljs-attr">enctype</span>=<span class="hljs-string">"multipart/form-data"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"image"</span> <span class="hljs-attr">accept</span>=<span class="hljs-string">"image/*"</span> <span class="hljs-attr">capture</span>=<span class="hljs-string">"user"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Upload"</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></pre></div>
         </li>
-        <li>Or alternatively, to capture video using the device's local video
-        camera facing the environment:
+        <li>
+          혹은 기기의 로컬 비디오 카메라를 사용하여 비디오를 캡쳐하려면 아래와 같이 할 수 있습니다.
           <div class="example"><div class="example-title marker"><span>Example 2</span></div><pre class="hljs xml" aria-busy="false" aria-live="polite"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"server.cgi"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"post"</span> <span class="hljs-attr">enctype</span>=<span class="hljs-string">"multipart/form-data"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"video"</span> <span class="hljs-attr">accept</span>=<span class="hljs-string">"video/*"</span> <span class="hljs-attr">capture</span>=<span class="hljs-string">"environment"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Upload"</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></pre></div>
         </li>
-        <li>Or alternatively, to capture audio using the device's local
-        microphone (without <a href="https://www.w3.org/TR/html-media-capture/#dfn-preferred-facing-mode" class="internalDFN" data-link-type="dfn">preferred facing mode</a> defined, falls back to
-        the implementation-specific default facing mode):
+        <li>
+          혹은 기기의 로컬 마이크를 사용하여 오디오를 캡쳐하려면 아래와 같이 할 수 있습니다.
+          (<a href="#dfn-preferred-facing-mode" class="internalDFN" data-link-type="dfn">선호하는 외장 모드</a>를 정의되지 않은 상태에서, 구현체에서 정의한 기본 외장 모드로 진입합니다)
           <div class="example"><div class="example-title marker"><span>Example 3</span></div><pre class="hljs xml" aria-busy="false" aria-live="polite"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"server.cgi"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"post"</span> <span class="hljs-attr">enctype</span>=<span class="hljs-string">"multipart/form-data"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"audio"</span> <span class="hljs-attr">accept</span>=<span class="hljs-string">"audio/*"</span> <span class="hljs-attr">capture</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Upload"</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></pre></div>
         </li>
-        <li id="example-4" data-link-for="HTMLInputElement">For more advanced
-        use cases, specify the <a href="https://www.w3.org/TR/html-media-capture/#dom-htmlinputelement-capture" class="internalDFN" data-link-type="dfn"><code>capture</code></a> attribute in markup:
+        <li id="example-4" data-link-for="HTMLInputElement">
+          더 고급 예제로는 마크업에 <a href="#dom-htmlinputelement-capture" class="internalDFN" data-link-type="dfn"><code>capture</code></a> 속성을 정의할 수 있습니다.
           <div class="example"><div class="example-title marker"><span>Example 4</span></div><pre class="hljs javascript" aria-busy="false" aria-live="polite">&lt;input type=<span class="hljs-string">"file"</span> accept=<span class="hljs-string">"image/*"</span> capture&gt;
-<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span></span></pre></div>And handle the file upload in script via
-<code>XMLHttpRequest</code>:
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span></span></pre></div>
+<code>XMLHttpRequest</code>를 이용한 스크립트로 파일 업로드를 제어할 수 있습니다.
           <div class="example"><div class="example-title marker"><span>Example 5</span></div><pre class="hljs javascript" aria-busy="false" aria-live="polite"><span class="hljs-keyword">var</span> input = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'input[type=file]'</span>); <span class="hljs-comment">// see Example 4</span>
 
 input.onchange = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
@@ -1215,9 +1217,9 @@ input.onchange = <span class="hljs-function"><span class="hljs-keyword">function
   form.append(<span class="hljs-string">'image'</span>, file);
   xhr.open(<span class="hljs-string">'post'</span>, <span class="hljs-string">'server.php'</span>, <span class="hljs-literal">true</span>);
   xhr.send(form);
-}</pre></div>The image can also be displayed on the client-side without
-uploading it e.g. for client-side image editing purposes, using the <code>
-          FileReader</code> and a <code>canvas</code> element:
+}</pre></div>
+업로드를 하지 않더라도 이미지는 클라이언트에서 노출시킬 수 있습니다. 예를 들면
+FileReader</code>와 <code>canvas</code> 요소를 사용하여 클라이언트 이미지 편집 목적으로 사용할 수 있습니다.
           <div class="example"><div class="example-title marker"><span>Example 6</span></div><pre class="hljs javascript" aria-busy="false" aria-live="polite"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">drawOnCanvas</span>(<span class="hljs-params">file</span>) </span>{
   <span class="hljs-keyword">var</span> reader = <span class="hljs-keyword">new</span> FileReader();
 
@@ -1237,8 +1239,7 @@ uploading it e.g. for client-side image editing purposes, using the <code>
   };
 
   reader.readAsDataURL(file);
-}</pre></div>Or alternatively, to just display the image, using the <code>
-          createObjectURL()</code> method and an <code>img</code> element:
+}</pre></div>단순히 이미지를 보여주고싶다면 <code>img</code> 요소와 <code>createObjectURL()</code> 메서드를 사용하면 됩니다.
           <div class="example"><div class="example-title marker"><span>Example 7</span></div><pre class="hljs javascript" aria-busy="false" aria-live="polite"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">displayAsImage</span>(<span class="hljs-params">file</span>) </span>{
   <span class="hljs-keyword">var</span> imgURL = URL.createObjectURL(file),
       img = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'img'</span>);
@@ -1253,17 +1254,17 @@ uploading it e.g. for client-side image editing purposes, using the <code>
         </li>
       </ul>
       <p data-link-for="HTMLInputElement">
-        When an <a data-link-type="dfn" href="https://www.w3.org/TR/html51/sec-forms.html#the-input-element"><code>input</code></a> element's <a data-link-type="dfn" href="https://www.w3.org/TR/html51/sec-forms.html#element-attrdef-input-accept"><code>accept</code></a> attribute is set to
-        <code>image/*</code> and the <a href="https://www.w3.org/TR/html-media-capture/#dom-htmlinputelement-capture" class="internalDFN" data-link-type="dfn"><code>capture</code></a> attribute is specified as
-        in the <a href="https://www.w3.org/TR/html-media-capture/#example-1">Example 1</a> or <a href="https://www.w3.org/TR/html-media-capture/#example-4">Example 4</a>, the file picker can be rendered as
-        presented below:
+        <a data-link-type="dfn" href="https://www.w3.org/TR/html51/sec-forms.html#the-input-element"><code>input</code></a> 요소의 
+        <a data-link-type="dfn" href="https://www.w3.org/TR/html51/sec-forms.html#element-attrdef-input-accept"><code>accept</code></a> 속성이 
+        <code>image/*</code>로 정의되어있고 <a href="#example-1">Example 1</a>이나 <a href="#example-4">Example 4</a>처럼
+        <a href="#dom-htmlinputelement-capture" class="internalDFN" data-link-type="dfn"><code>capture</code></a> 속성이 정의되었다면,
+        파일 피커는 다음과 같이 나옵니다.
       </p>
       <p style="overflow: visible;">
         <img alt="A File picker control in the Image Capture state." src="./index_files/image-capture-state.png">
       </p>
       <p>
-        When the attribute is not specified, the file picker can be rendered
-        as represented below:
+        속성이 정의되지않았다면, 파일 피커는 다음과 같이 렌더링될 수 있습니다.
       </p>
       <p style="overflow: visible;">
         <img alt="A File picker control in the File Upload state." src="./index_files/file-upload-state.png">
@@ -1271,12 +1272,12 @@ uploading it e.g. for client-side image editing purposes, using the <code>
     </section>
   
 
-<section id="references" class="appendix"><!--OddPage--><h2 id="b-references"><span class="secno">B. </span>References</h2><section id="normative-references"><h3 id="b-1-normative-references"><span class="secno">B.1 </span>Normative references</h3><dl class="bibliography"><dt id="bib-custom-elements">[custom-elements]</dt><dd><a href="https://www.w3.org/TR/custom-elements/"><cite>Custom Elements</cite></a>. Domenic Denicola. W3C. 13 October 2016. W3C Working Draft. URL: <a href="https://www.w3.org/TR/custom-elements/">https://www.w3.org/TR/custom-elements/</a>
+<section id="references" class="appendix"><!--OddPage--><h2 id="b-references"><span class="secno">B. </span>참조 문서</h2><section id="normative-references"><h3 id="b-1-normative-references"><span class="secno">B.1 </span>표준 참조 문서</h3><dl class="bibliography"><dt id="bib-custom-elements">[custom-elements]</dt><dd><a href="https://www.w3.org/TR/custom-elements/"><cite>Custom Elements</cite></a>. Domenic Denicola. W3C. 13 October 2016. W3C Working Draft. URL: <a href="https://www.w3.org/TR/custom-elements/">https://www.w3.org/TR/custom-elements/</a>
 </dd><dt id="bib-HTML51">[HTML51]</dt><dd><a href="https://www.w3.org/TR/html51/"><cite>HTML 5.1 2nd Edition</cite></a>. Steve Faulkner; Arron Eicholz; Travis Leithead; Alex Danilo. W3C. 3 October 2017. W3C Recommendation. URL: <a href="https://www.w3.org/TR/html51/">https://www.w3.org/TR/html51/</a>
 </dd><dt id="bib-MEDIACAPTURE-STREAMS">[MEDIACAPTURE-STREAMS]</dt><dd><a href="https://www.w3.org/TR/mediacapture-streams/"><cite>Media Capture and Streams</cite></a>. Daniel Burnett; Adam Bergkvist; Cullen Jennings; Anant Narayanan; Bernard Aboba. W3C. 3 October 2017. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/mediacapture-streams/">https://www.w3.org/TR/mediacapture-streams/</a>
 </dd><dt id="bib-RFC2119">[RFC2119]</dt><dd><a href="https://tools.ietf.org/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner. IETF. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a>
 </dd><dt id="bib-WEBIDL-1">[WEBIDL-1]</dt><dd><a href="https://www.w3.org/TR/2016/REC-WebIDL-1-20161215/"><cite>WebIDL Level 1</cite></a>. Cameron McCormack. W3C. 15 December 2016. W3C Recommendation. URL: <a href="https://www.w3.org/TR/2016/REC-WebIDL-1-20161215/">https://www.w3.org/TR/2016/REC-WebIDL-1-20161215/</a>
-</dd></dl></section><section id="informative-references"><h3 id="b-2-informative-references"><span class="secno">B.2 </span>Informative references</h3><dl class="bibliography"><dt id="bib-FILE-API">[FILE-API]</dt><dd><a href="https://www.w3.org/TR/FileAPI/"><cite>File API</cite></a>. Marijn Kruisselbrink. W3C. 26 October 2017. W3C Working Draft. URL: <a href="https://www.w3.org/TR/FileAPI/">https://www.w3.org/TR/FileAPI/</a>
+</dd></dl></section><section id="informative-references"><h3 id="b-2-informative-references"><span class="secno">B.2 </span>정보 참조 문서</h3><dl class="bibliography"><dt id="bib-FILE-API">[FILE-API]</dt><dd><a href="https://www.w3.org/TR/FileAPI/"><cite>File API</cite></a>. Marijn Kruisselbrink. W3C. 26 October 2017. W3C Working Draft. URL: <a href="https://www.w3.org/TR/FileAPI/">https://www.w3.org/TR/FileAPI/</a>
 </dd><dt id="bib-HTML">[HTML]</dt><dd><a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Anne van Kesteren; Domenic Denicola; Ian Hickson; Philip Jägenstedt; Simon Pieters. WHATWG. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a>
 </dd><dt id="bib-WEBIDL">[WEBIDL]</dt><dd><a href="https://heycam.github.io/webidl/"><cite>Web IDL</cite></a>. Cameron McCormack; Boris Zbarsky; Tobie Langel. W3C. 15 December 2016. W3C Editor's Draft. URL: <a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a>
-</dd></dl></section></section><p role="navigation" id="back-to-top"><a href="https://www.w3.org/TR/html-media-capture/#toc"><abbr title="Back to Top">↑</abbr></a></p><script src="./index_files/fixup.js"></script></body></html>
+</dd></dl></section></section><p role="navigation" id="back-to-top"><a href="#toc"><abbr title="Back to Top">↑</abbr></a></p><script src="./index_files/fixup.js"></script></body></html>
