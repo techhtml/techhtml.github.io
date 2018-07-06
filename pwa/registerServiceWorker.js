@@ -9,7 +9,7 @@ const urlsToCache = [
 
 self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open(CHCHE_NAME)
+    caches.open(CACHE_NAME)
       .then(function(cache) {
         console.log("CACHE 등록 완료");
         return cache.addAll(urlsToCache);
