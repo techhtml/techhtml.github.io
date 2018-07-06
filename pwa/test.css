@@ -1,0 +1,5 @@
+#main::after {
+  content: "CSS is ON";
+  display: block;
+  color: white;
+}

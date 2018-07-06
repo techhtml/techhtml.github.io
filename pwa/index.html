@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello World</title>
+  <link rel="stylesheet" href="test.css" />
+</head>
+<body>
+  <header>
+    TEST HEADER
+  </header>
+  <div id="main"></div>
+  <script src="test.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('./registerServiceWorker.js').then(function(registration) {
+          console.log("서비스 워커 등록 완료", registration.scope);
+        }).catch(function(err) {
+          console.log("서비스 워커 등록 실패", err);
+        })
+      })
+    }
+  </script>
+</body>
+</html>
