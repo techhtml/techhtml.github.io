@@ -1,10 +1,10 @@
 const CACHE_NAME = "test-cashe-1";
 
 const urlsToCache = [
-  '/pwa/',
-  '/pwa/index.html',
-  '/pwa/test.css',
-  '/pwa/test.js'
+  '/',
+  '/index.html',
+  '/test.css',
+  '/test.js'
 ]
 
 self.addEventListener('install', function(event) {
@@ -15,4 +15,8 @@ self.addEventListener('install', function(event) {
         return cache.addAll(urlsToCache);
       })
   );
+})
+
+self.addEventListener('install', function(event) {
+  console.log(event.request.url);
 })
