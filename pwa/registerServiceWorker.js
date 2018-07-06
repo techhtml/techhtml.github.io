@@ -2,6 +2,7 @@ const CACHE_NAME = "test-cashe-1";
 
 const urlsToCache = [
   '/pwa/',
+  '/pwa/index.html',
   '/pwa/test.css',
   '/pwa/test.js'
 ]
