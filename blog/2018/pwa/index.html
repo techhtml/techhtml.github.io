@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Progressive Web Apps</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding&amp;subset=korean" rel="stylesheet">
+        <link rel="stylesheet" href="../../blog.css" />
+        <meta property='og:title' content='할 수 있는일 : techHTML'>
+        <meta property='og:description' content='techhtml Blog'>
+        <meta property='og:image' content='https://techhtml.github.io/resume/choeun.jpg'>
+        <style>
+          br {display: none}
+        </style>
+    </head>
+    <body>
+      <article class="contents">
+        <div class="note-wrapper">
+            <h1>Progressive Web Apps</h1>
+<h2>웹에서 새로운 사용자 경험을 제공하는 방법론</h2>
+<br>
+<p>우리가 웹이라고 부르는 환경은 아주 다양한 환경을 가지고 있다. 내가 이 글을 쓰는 시점에는 15인치 맥북 프로로 작성하고 있지만 누군가는 이 글을 아이폰 X로 볼 수도 있고, 갤럭시 S9으로 보고 있을 수도 있다. 혹은 아이패드 프로로 이 글을 보고 있을 수도 있겠다.</p>
+<br>
+<p>우리가 흔히 Desktop으로 부르는 환경에서 Mobile 환경으로 시대가 흘러감에 따라서 웹에서도 Mobile 환경에 적응하기 위한 다양한 노력을 하였다. 누군가는 Desktop 환경과 동일한 환경에서 CSS를 이용해 레이아웃을 변경하는 작업만 하기도 하였지만, 누군가는 Mobile 환경에 맞추어서 리소스를 최적화하고 상대적으로 부족한 컴퓨팅 환경에서 어떻게 좋은 사용자 경험을 제공할 수 있을 지에 대해서 고민하였다.</p>
+<br>
+<p>하지만 Mobile 환경이건 Desktop 환경이건 웹의 여러가지 한계점으로 인해 Application보다 좋은 사용성을 제공하기에는 일부 어려운 점이 있었다. 웹에서 콘텐츠에 접근하려면 반드시 ONLINE 상태여야했고, 리소스를 접속할 때마다 요청하기 때문에 네트워크 사용량이 많아야 했던 점들이 있다.</p>
+<br>
+<p>PWA (Progressive Web Apps)는 웹이 가지는 이러한 한계점들을 극복하고 새로운 사용자 경험을 제공하기 위한 개발 방법론의 집합이다. 따라서 그 구성이 해가 지남에 따라서 일부 달라지기도 하고, 새로이 추가되는 기능이 있기도 하며, 브라우저에서 지원하는 형태에 따라서 구현체가 달라지기도 한다.</p>
+<br>
+<p>이 글에서는 간단한 주소록 앱을 만들어 나가면서 PWA의 특성들과 그 활용법에 대해서 다루어보려고 한다.</p>
+<br>
+<p>주소록 예제는 <a href="https://rawgit.com/techhtml/pwa-contact/master/index.html">https://rawgit.com/techhtml/pwa-contact/master/index.html</a> 에서 확인할 수 있다.</p>
+<br>
+<p><b>목차</b></p>
+<ol start="1"><li>FIRE 원칙
+</li><li>Service Worker
+</li><li>Web App manifest
+</li><li>App Shell 구성하기
+</li></ol>
+<br>
+<h3>Current Status of PWA</h3>
+<ol start="1"><li>iOS에서는 11.3 버전부터 Service Worker를 지원한다.
+</li><li>Chrome은 45버전부터 지원했다.
+</li><li>MS Edge에서도 현재는 Service Worker를 지원한다.
+</li></ol>
+<br>
+<p>PWA에 있는 모든 Feature를 모든 브라우저가 대응하는 것은 아니다. iOS가 11.3 버전에서 Service Worker를 지원하고 있고, MS Edge도 지원하고 있기 때문에 현재 최신 브라우저는 모두 PWA의 핵심 Feature를 지원한다고 이야기할 수 있다.</p>
+<br>
+<p>PWA에서 Progressive는 점진적으로 개선한다는 의미로 모든 Feature를 지원하는 기기에서는 완벽한 환경을 제공할 수 있지만, 일부 Feature를 지원하지 않는 기기에서는 내가 원한 100%의 효과를 내지는 못할 수도 있다.</p>
+<br>
+<h3>FIRE 원칙</h3>
+<ul><li>Fast : 빠르다고 느낄 수 있게 해야한다.
+</li><li>Integrated : 유저의 기기에서 자연스럽게 느낄 수 있어야한다.
+</li><li>Reliable : 접속 환경이 안좋은 환경이더라도, 앱이 언제나 동작하여 유저의 신뢰를 깨트리지 말아야한다.
+</li><li>Engaging : 사용자 경험이 처음부터 미래의 핵심 여정 (Critical journey)까지 쭉 매력적이어야 한다.
+</li></ul>
+<br>
+<p>네 단어의 앞단어를 딴 FIRE 원칙은 PWA를 관통하는 핵심 개념이라고 이야기할 수 있다. 네트워크 환경이 좋지 않거나, 디바이스의 성능이 떨어지는 경우에도 앱이 언제나 동작할 수 있도록 하여 좋은 환경을 제공하는 것이 목표라고 할 수 있다.</p>
+<br>
+<p>예를 들어 빠르다고 느끼게 하려면, Loading 중인 상태에서 Loading Progress를 보여주는 것보다 콘텐츠의 Placeholder를 보여주는 것이 더 효과적이다. 그리고 한번 로딩된 콘텐츠를 캐싱해두면 추후에 같은 웹 어플리케이션에 방문하였을 때 동일한 리소스를 다시 다운로드 받지 않아도 된다.</p>
+<br>
+<p>한국은 다른 나라에 비하면 네트워크 속도가 빠르다는 인식이 있지만, LTE 요금제를 다 사용하여 한시적 3G 요금제를 사용하거나 와이파이를 사용하는 경우에 네트워크 속도가 비약적으로 느려지는 경우가 있다. 특히 우리 집 네트워크 느리다. (슬프다) 그런 경우에도 웹을 잘 사용할 수 있도록 하는 것이 PWA에서 중요한 원칙이라고 이야기할 수 있겠다.</p>
+<br>
+<h3>Service Worker</h3>
+<br>
+<p>서비스 워커 (Service Worker)는 브라우저가 백그라운드에서 실행하는 스크립트로, 웹 페이지와는 별개로 동작하기 때문에 웹 페이지 또는 유저 인터렉션이 필요하지 않는 기능을 사용할 수 있다. 서비스 워커를 이용하면 푸시 알림 (Push Notification, Android Chrome 한정) 이나 백그라운드 동기화 (Background Sync, Android Chrome 한정) 가 가능하며, 다른 무엇보다 중요한 것은 서비스 워커를 이용하면 오프라인 환경을 통제할 수 있다는 점이다.</p>
+<br>
+<p>서비스 워커를 사용할 때 몇가지 유의사항이 있다.</p>
+<ol start="0"><li>반드시 HTTPS여야한다.
+</li><li>서비스 워커는 DOM에 직접 접근할 수 없다. 즉 서비스 워커 자체를 이용해서 DOM을 제어하는 건 불가하다.
+</li><li>서비스 워커는 페이지의 네트워크 요청 처리 방법을 제어할 수 있다.
+</li><li>서비스 워커는 사용되지 않을 때는 종료되고, 다음에 필요할 때 다시 시작된다. 서비스 워커가 종료 상태에서 재시작할 때 다시 사용해야하는 정보가 있는 경우 서비스 워커가 IndexedDB 에 대한 접근 권한을 가진다.
+</li><li>서비스 워커는 Promise를 주로 사용한다.
+</li></ol>
+<br>
+<p>다만 개발자가 로컬에서 HTTPS 환경을 완전히 구축하기 어려우니, 로컬에서 작업하는 경우에는 HTTP에서도 테스트를 할 수 있다.</p>
+<br>
+<h4>서비스 워커 라이프사이클</h4>
+<p>서비스 워커의 라이프사이클은 웹 페이지와 완전히 다르다.</p>
+<br>
+<ol start="1"><li>서비스 워커를 등록한다.
+</li><li>서비스 워커를 설치한다.
+<ol start="1"><li>설치 중 에러가 나면 활성화되지 않는다.
+</li></ol></li><li>정상적으로 설치되면 활성화된다.
+</li><li>유휴 상태 (idle state)를 유지한다.
+<ol start="1"><li>페이지에서 네트워크 요청이나 메시지가 생성될 때 Fetch나 Message 이벤트를 처리한다.
+</li><li>종료된다. (종료되더라도 제어권한을 가지면 다시 유휴 상태로 이동한다)
+</li></ol>
+</li></ol>
+<br>
+<p>서비스 워커는 먼저 페이지에서 등록하고, 서비스 워커를 등록하면 브라우저가 백그라운드에서 서비스 워커를 설치한다. 서비스 워커는 설치 단계에서 Static Resource를 캐시하고, 모든 파일이 성공적으로 캐시되면 서비스 워커가 설치된다. 만약 파일 다운로드 및 캐시에 실패하면 서비스 워커가 설치되지 않는다.</p>
+<br>
+<p>설치가 완료되면 활성화 단계에 접어든다. 활성화 단계 후에는 서비스 워커 범위 안의 모든 페이지를 제어하지만 서비스 워커를 처음으로 등록한 페이지는 다시 로드해야 제어할 수 있다. 서비스 워커에 제어 권한이 부여된 경우 서비스 워커는 메모리를 절약하기 위해 종료되거나 페이지에서 네트워크 요청이나 메시지가 생성될 때 fetch 및 Message 이벤트를 처리한다.</p>
+<br>
+<h4>서비스 워커 등록하기</h4>
+<p>서비스 워커를 등록하는 건 서비스 워커 스크립트 파일이 어디있는 지 브라우저에 알려주는 행위다.</p>
+<br>
+<pre><code class='code-multiline'>index.js
+
+<span class="sf_code_syntax_comment">// 서비스워커를 지원하는 브라우저인 경우
+</span><span class="sf_code_syntax_keyword">if</span> (<span class="sf_code_syntax_string">'serviceWorker'</span> <span class="sf_code_syntax_keyword">in</span> <span class="sf_code_syntax_keyword">navigator</span>) {
+  <span class="sf_code_syntax_comment">// 윈도우가 로딩되었을 때
+</span>  <span class="sf_code_syntax_keyword">window</span>.addEventListener(<span class="sf_code_syntax_string">'load'</span>, <span class="sf_code_syntax_project">function</span>() {
+    <span class="sf_code_syntax_comment">// 서비스워커 (sw.js)를 등록한다.
+</span>    <span class="sf_code_syntax_keyword">navigator</span>.serviceWorker.register(<span class="sf_code_syntax_string">'/sw.js'</span>).then(<span class="sf_code_syntax_project">function</span>(registration) {
+      <span class="sf_code_syntax_comment">// 등록이 성공했다면 (즉 설치가 완료되었다면)
+</span>      <span class="sf_code_syntax_keyword">console</span>.log(<span class="sf_code_syntax_string">"등록이 완료되었습니다"</span>);
+    }).catch(<span class="sf_code_syntax_project">function</span>(err) {
+      <span class="sf_code_syntax_comment">// 등록이 실패했다면
+</span>      <span class="sf_code_syntax_keyword">console</span>.log(<span class="sf_code_syntax_string">"등록이 실패했습니다"</span>);
+    })
+  })
+}</code></pre>
+<p><br></p>
+<p>서비스 워커를 등록하여 페이지가 아닌 브라우저 백그라운드에서 해당 도메인의 제어권을 가질 수 있다.</p>
+<br>
+<h4>서비스 워커 설치하기</h4>
+<p>이번에는 설치 (<code class='code-inline'>install</code>) 이벤트를 처리하는 서비스 워커를 살펴보자. </p>
+<br>
+<pre><code class='code-multiline'><span class="sf_code_syntax_keyword">self</span>. <span class="sf_code_syntax_keyword">addEventListener</span>(<span class="sf_code_syntax_string">'install'</span>, <span class="sf_code_syntax_project">function</span>(event) {
+  <span class="sf_code_syntax_comment">// 설치를 여기서 진행한다
+</span>})</code></pre>
+<p><br></p>
+<p>서비스 워커의 활용 범위에 따라서 내부가 상이하지만, 제일 먼저 하는 일은 리소스를 캐시하는 것이다.</p>
+<br>
+<pre><code class='code-multiline'>
+<span class="sf_code_syntax_comment">// CACHE 네임스페이스
+</span>const CACHE_NAME <span class="sf_code_syntax_keyword">=</span> <span class="sf_code_syntax_string">"contact-app"</span>;
+
+<span class="sf_code_syntax_comment">// CACHE할 파일목록
+</span>
+const cache_urls <span class="sf_code_syntax_keyword">=</span> [
+  <span class="sf_code_syntax_string">'/'</span>,
+  <span class="sf_code_syntax_string">'/index.html'</span>,
+  <span class="sf_code_syntax_string">'/styles/contact.css'</span>,
+  <span class="sf_code_syntax_string">'/scripts/contact.js'</span>
+]
+
+<span class="sf_code_syntax_keyword">self</span>.addEventListener(<span class="sf_code_syntax_string">'install'</span>, <span class="sf_code_syntax_project">function</span>(event) {
+  <span class="sf_code_syntax_comment">// 설치가 시작되면 동작한다.
+</span>  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(<span class="sf_code_syntax_project">function</span>(cache) {
+         <span class="sf_code_syntax_keyword">console</span>.log(<span class="sf_code_syntax_string">'캐시가 열렸습니다'</span>);
+         <span class="sf_code_syntax_keyword">return</span> cache.addAll(cache_urls);
+      })
+  );
+})
+</code></pre>
+<p><br></p>
+<p>이렇게 하면 서비스 워커에 리소스를 캐시해둘 수 있다. 여러가지 장점이 있지만 가장 큰 장점은 유저가 다음에 다시 서비스에 방문하였을 때 리소스를 다시 네트워크에서 로딩할 필요가 없다는 것이다.</p>
+<h4>오프라인 환경 제어하기</h4>
+<p>서비스 워커를 이용하는 또 다른 장점은 오프라인 환경을 제어할 수 있다는 것이다. 정확히는 브라우저에 설치된 서비스 워커가 해당 도메인 스코프 내에서 네트워크 요청이나 메시지를 제어할 수 있기 때문에, 서비스에서 요청하는 네트워크 요청이 이미 캐시된 것이라면 캐시된 리소스에서 불러오게 함으로서 오프라인 환경에서도 브라우저 캐시를 이용해 마치 네트워크에 연결된 것처럼 동작할 수 있게 되는 것이다.</p>
+<br>
+<p>코드는 아주 단순하다.</p>
+<br>
+<pre><code class='code-multiline'><span class="sf_code_syntax_keyword">self</span>.addEventListener(<span class="sf_code_syntax_string">'fetch'</span>, <span class="sf_code_syntax_project">function</span>(event) {
+  <span class="sf_code_syntax_comment">// 'fetch' 이벤트가 발생하였을 때
+</span>  event.respondWith(
+    <span class="sf_code_syntax_comment">// event.request와 일치하는 것을 찾는다
+</span>    caches.match(event.request)
+      .then(<span class="sf_code_syntax_project">function</span>(response) {
+        <span class="sf_code_syntax_comment">// 만약 일치하는 게 있다면 반환한다.
+</span>        <span class="sf_code_syntax_keyword">if</span> (response) {
+          <span class="sf_code_syntax_keyword">return</span> response;
+        }
+        <span class="sf_code_syntax_comment">// 일치하는 게 없다면 이벤트의 요청을 발송한다. (즉 페이지 로딩)
+</span>        <span class="sf_code_syntax_keyword">return</span> fetch(event.request);
+      }
+    )
+  );
+});</code></pre>
+<p><br></p>
+<p>지금은 서비스워커에서 index만 캐시해두었지만 유저의 Critical Journey에 속하는 리소스들을 미리 캐시해둔다면 유저가 오프라인에서건 온라인에서던 비슷한 사용성을 얻을 수 있다.</p>
+<br>
+<h3>Web App 설정하기</h3>
+<p>웹과 앱의 차이는 무엇일까? 여러가지가 있겠지만 몇가지 큰 차이점을 살펴보자</p>
+<br>
+<ol start="1"><li>웹은 브라우저를 통해 접근하고, 앱은 앱 아이콘을 통해 접근한다.
+</li><li>웹은 브라우저 Frame (주소창 등)이 노출되고, 앱은 어플리케이션 UI가 노출된다.
+</li></ol>
+<br>
+<p>하지만 우리가 지금 만들고 있는건 웹 어플리케이션이니 어플리케이션에서 느꼈던 사용성을 웹에서 느낄 수 있게 만들어야 한다. 웹 앱을 설정하는 방법이 Android Chrome과 iOS가 다르지만 개발자는 둘 다 대응해야한다. 따라서 이 글에서는 iOS와 Android Chrome 대응법을 둘 다 작성해둔다.</p>
+<br>
+<h4>App Icon 추가하기</h4>
+<p>App Icon은 <code class='code-inline'>add to homescreen</code> 을 실행하였을 때 노출되는 아이콘으로 웹 어플리케이션에서 중요한 위치를 가지고 있다.</p>
+<br>
+<p><b>Android Chrome & MS Edge</b></p>
+<p>Android에서는 Web App Manifest라고 부르는 JSON 규격을 이용해서 웹 앱을 정의한다. 현재 표준화를 진행하고 있으며 현재는 Android Chrome 및 Chromium을 포크한 구현체, Edge에서 대응하고 있다.</p>
+<br>
+<p>표준 스펙 : <a href="https://w3c.github.io/manifest/#media-type-registration">Web App Manifest</a></p>
+<br>
+<p>우선 가장 간단한 Web App Manifest 파일을 하나 만들어보자.</p>
+<br>
+<pre><code class='code-multiline'>manifest.json
+
+{
+  <span class="sf_code_syntax_string">"name"</span>: <span class="sf_code_syntax_string">"주소록"</span>,
+  <span class="sf_code_syntax_string">"description"</span>: <span class="sf_code_syntax_string">"조은의 번호만 있는 주소록"</span>
+}</code></pre>
+<p><br></p>
+<p>표준 스펙에서는 <code class='code-inline'>webmanifest</code> 확장자 사용을 권고하고 있으나 일반적으로 브라우저는 <code class='code-inline'>json</code> 같은 확장자를 지원한다. 따라서 이 예제에서 확장자는 <code class='code-inline'>.json</code> 을 사용하고자 한다.</p>
+<br>
+<p>Manifest 작성 후에는 <code class='code-inline'>link</code> 요소를 이용해 페이지와 연결하면 된다.</p>
+<br>
+<pre><code class='code-multiline'>index.html
+
+&lt;<span class="sf_code_syntax_character">link</span> <span class="sf_code_syntax_keyword">rel</span>=<span class="sf_code_syntax_string">"manifest"</span> <span class="sf_code_syntax_keyword">href</span>=<span class="sf_code_syntax_string">"/manifest.json"</span> /&gt;</code></pre>
+<p><br></p>
+<p>다시 본론으로 넘어가 아이콘을 추가해보자.  안드로이드의 product 아이콘 사이즈는 48dp인데 dp는 밀도에 의존하지 않는 픽셀 (density independent pixel)이기 때문에 실제 기기의 해상도에 따라서 아이콘 크기가 달라진다.</p>
+<br>
+<pre><code class='code-multiline'>ldpi (0.75x)	@ 48.00dp	= 36.00px
+mdpi (1x)        @ 48.00dp	= 48.00px
+hdpi (1.5x)	@ 48.00dp	= 72.00px
+xhdpi (2x)	@ 48.00dp	= 96.00px
+xxhdpi (3x)	@ 48.00dp	= 144.00px
+xxxhdpi (4x)	@ 48.00dp	= 192.00px</code></pre>
+<p><br></p>
+<p>ldpi나 hdpi는 대응하지 않는다고 가정한다면 네종류의 아이콘을 만들어야한다.</p>
+<br>
+<ol start="1"><li>48 x 48
+</li><li>96 x 96
+</li><li>144 x 144
+</li><li>192 x 192
+</li></ol>
+<br>
+<p>아이콘만 있다면 실제 대응은 간단하다. 아까 작성한 <code class='code-inline'>manifest</code> 파일에 아이콘을 추가하자.</p>
+<br>
+<pre><code class='code-multiline'>manifest.json
+
+{
+  <span class="sf_code_syntax_string">"name"</span>: <span class="sf_code_syntax_string">"주소록"</span>,
+  <span class="sf_code_syntax_string">"description"</span>: <span class="sf_code_syntax_string">"조은의 번호만 있는 주소록"</span>,
+  <span class="sf_code_syntax_string">"icons"</span>: [{
+    <span class="sf_code_syntax_string">"src"</span>: <span class="sf_code_syntax_string">"icon48.png"</span>,
+    <span class="sf_code_syntax_string">"sizes"</span>: <span class="sf_code_syntax_string">"48x48"</span>,
+    <span class="sf_code_syntax_string">"type"</span>: <span class="sf_code_syntax_string">"image/png"</span>
+  }, {
+    <span class="sf_code_syntax_string">"src"</span>: <span class="sf_code_syntax_string">"icon96.png"</span>,
+    <span class="sf_code_syntax_string">"sizes"</span>: <span class="sf_code_syntax_string">"96x96"</span>,
+    <span class="sf_code_syntax_string">"type"</span>: <span class="sf_code_syntax_string">"image/png"</span>
+  }, {
+    <span class="sf_code_syntax_string">"src"</span>: <span class="sf_code_syntax_string">"icon144.png"</span>,
+    <span class="sf_code_syntax_string">"sizes"</span>: <span class="sf_code_syntax_string">"144x144"</span>,
+    <span class="sf_code_syntax_string">"type"</span>: <span class="sf_code_syntax_string">"image/png"</span>
+  }, {
+    <span class="sf_code_syntax_string">"src"</span>: <span class="sf_code_syntax_string">"icon192.png"</span>,
+    <span class="sf_code_syntax_string">"sizes"</span>: <span class="sf_code_syntax_string">"192x192"</span>,
+    <span class="sf_code_syntax_string">"type"</span>: <span class="sf_code_syntax_string">"image/png"</span>
+  }]
+}</code></pre>
+<p><br></p>
+<p>이렇게하면 App icon을 사이트에 추가할 수 있다.</p>
+<br>
+<p><b>iOS</b></p>
+<p>iOS에서는 자체 <code class='code-inline'>meta</code> 규격을 이용해서 App icon을 추가할 수 있도록 하고있다. </p>
+<br>
+<pre><code class='code-multiline'>index.html
+
+&lt;<span class="sf_code_syntax_character">link</span> <span class="sf_code_syntax_keyword">rel</span>=<span class="sf_code_syntax_string">"apple-touch-icon"</span> <span class="sf_code_syntax_keyword">sizes</span>=<span class="sf_code_syntax_string">"180x180"</span> <span class="sf_code_syntax_keyword">href</span>=<span class="sf_code_syntax_string">"touch-icon-iphone-retina.png"</span>&gt;</code></pre>
+<p><br></p>
+<p>iOS에서 권장하는 App icon 사이즈는 다음과 같다.</p>
+<p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/icons-and-images/app-icon/">App Icon - Icons and Images - iOS - Human Interface Guidelines - Apple Developer</a></p>
+<br>
+<ol start="1"><li>180 x 180 (60 x 60 @3x , iPhone)
+</li><li>120 x 120 (60 x 60 @2x, iPhone)
+</li><li>167 x 167 (83.5 x 83.5 @2x, iPad Pro)
+</li><li>152 x 152 (76 x 76 @2x, iPad & iPad mini)
+</li><li>1024 x 1024 (1024 x 1024 @1x, App Store)
+</li></ol>
+<br>
+<p>언젠가 지원할거라는 생각은 들지만 앱 스토어에 PWA 등록은 현재 불가능하기 때문에 iPad 까지만 대응하도록 하자.</p>
+<br>
+<pre><code class='code-multiline'>index.html
+
+&lt;<span class="sf_code_syntax_character">link</span> <span class="sf_code_syntax_keyword">rel</span>=<span class="sf_code_syntax_string">"apple-touch-icon"</span> <span class="sf_code_syntax_keyword">sizes</span>=<span class="sf_code_syntax_string">"180x180"</span> <span class="sf_code_syntax_keyword">href</span>=<span class="sf_code_syntax_string">"touch-icon-iphone-retina.png"</span>&gt;
+&lt;<span class="sf_code_syntax_character">link</span> <span class="sf_code_syntax_keyword">rel</span>=<span class="sf_code_syntax_string">"apple-touch-icon"</span> <span class="sf_code_syntax_keyword">sizes</span>=<span class="sf_code_syntax_string">"120x120"</span> <span class="sf_code_syntax_keyword">href</span>=<span class="sf_code_syntax_string">"touch-icon-iphone.png"</span>&gt;
+&lt;<span class="sf_code_syntax_character">link</span> <span class="sf_code_syntax_keyword">rel</span>=<span class="sf_code_syntax_string">"apple-touch-icon"</span> <span class="sf_code_syntax_keyword">sizes</span>=<span class="sf_code_syntax_string">"167x167"</span> <span class="sf_code_syntax_keyword">href</span>=<span class="sf_code_syntax_string">"touch-icon-ipad-pro.png"</span>&gt;
+&lt;<span class="sf_code_syntax_character">link</span> <span class="sf_code_syntax_keyword">rel</span>=<span class="sf_code_syntax_string">"apple-touch-icon"</span> <span class="sf_code_syntax_keyword">sizes</span>=<span class="sf_code_syntax_string">"152x152"</span> <span class="sf_code_syntax_keyword">href</span>=<span class="sf_code_syntax_string">"touch-icon-ipad.png"</span>&gt;</code></pre>
+<p><br></p>
+<p>이렇게 하면 iOS에서 앱 아이콘을 추가할 수 있다.</p>
+<br>
+<h4>Frame 제거하기</h4>
+<p>이번에는 주소창 등 브라우저에서 기본으로 제공하는 Frame을 제거해보자.</p>
+<br>
+<p><b>Android Chrome & MS Edge</b></p>
+<p>마찬가지로 <code class='code-inline'>manifest</code> 파일에서 설정하는데, <code class='code-inline'>display</code> 값을 변경해서 Frame을 제거할 수 있다.</p>
+<br>
+<pre><code class='code-multiline'>{
+  <span class="sf_code_syntax_string">"display"</span>: <span class="sf_code_syntax_string">"standalone"</span>
+}</code></pre>
+<p><br></p>
+<p>지원하는 속성값은 4개다.</p>
+<ol start="1"><li><code class='code-inline'>fullscreen</code> : 디스플레이 공간에서 사용 가능한 모든 공간을 사용하며, 유저 에이전트 <code class='code-inline'>chrome</code> 도 표시되지 않는다.
+</li><li><code class='code-inline'>standalone</code> : 일반 어플리케이션처럼 보인다. 여기서 유저 에이전트는 navigation을 위한 UI 요소를 제외하지만, status bar 같은 UI 요소는 포함한다.
+</li><li><code class='code-inline'>minimul-ui</code> : <code class='code-inline'>standalone</code> 모드와 비슷하지만 navigation을 위한 UI 요소를 포함한다. 구성 요소는 브라우저에 따라 다르다.
+</li><li><code class='code-inline'>browser</code> : 그냥 브라우저다. (Default)
+</li></ol>
+<br>
+<p><b>iOS</b></p>
+<p>iOS에서는 <code class='code-inline'>meta</code> 를 이용해 Frame을 제어한다. Android에서는 다양하게 제어 가능했지만, iOS는 <code class='code-inline'>standalone</code> 혹은 <code class='code-inline'>browser</code> 로만 대응 가능하다.</p>
+<br>
+<pre><code class='code-multiline'>index.html
+
+&lt;<span class="sf_code_syntax_character">meta</span> <span class="sf_code_syntax_keyword">name</span>=<span class="sf_code_syntax_string">"mobile-web-app-capable"</span> <span class="sf_code_syntax_keyword">content</span>=<span class="sf_code_syntax_string">"yes"</span>&gt;</code></pre>
+<p><br></p>
+<h3>App shell 구성하기</h3>
+<p>작성 중</p>
+        </div></article>
+    </body>
+</html>
