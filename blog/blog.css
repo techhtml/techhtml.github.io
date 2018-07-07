@@ -95,4 +95,7 @@ header h2 {
 	header h1 {
 		font-size: 1.75em;
 	}
+	ol li {
+		margin: 0 20px 15px;
+	}
 }
