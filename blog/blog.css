@@ -1,34 +1,52 @@
 html, body {
 	font-size: 18px;
-	line-height: 180%;
-	font-family: 'Helvetica NEUE', 'APPLE SD Gothic NEO', sans-serif;
+	line-height: 160%;
+	color: #222;
+	margin: 0;
+	font-family: 'Roboto', 'APPLE SD Gothic NEO', sans-serif;
+}
+
+h1,h2,h3,h4,h5,h6,p,ul,ol {
+	padding: 0 25px;
+	max-width: 700px;
+	line-height: 1.6em;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 h1 {
 	font-size: 2em;
+	line-height: 130%;
 }
 
-article {
-	max-width: 960px;
-	margin: auto;
-	padding: 1em;
-}
-
-pre {
-	padding: 2em;
-	background: #222;
-	color: #fff;
-	font-size: 14px;
-	line-height: 150%;
-	font-family: 'Nanum Gothic Coding', monospace;
+p, ul, ol {
+	margin: 1.5em auto;
 }
 
 code {
+	font-size: 18px;
+	line-height: 1.4;
+	font-family: 'Nanum Gothic Coding', monospace;
+}
+
+pre {
 	background: #222;
 	color: #fff;
-	font-size: 14px;
+	font-size: 18px;
+	line-height: 150%;
 	font-family: 'Nanum Gothic Coding', monospace;
-	padding: 0 0.5em ;
+	overflow-x: auto;
+}
+
+.code-multiline {
+	display: block;
+	max-width: 700px;
+	padding: 20px;
+	margin: auto;
+}
+
+pre code {
+	padding: 0;
 }
 
 .sf_code_syntax_comment {
@@ -42,4 +60,39 @@ code {
 .sf_code_syntax_string,
 .sf_code_syntax_character {
 	color: #84a8ff;
+}
+
+a {
+	color: #84a8ff;
+}
+
+header {
+	padding: 10vw 20px 5vw;
+	margin-bottom: 10vw;
+	background: #FFDE03;
+}
+
+header h1,
+header h2 {
+	padding: 0;
+	margin-top:0;
+	margin-bottom:0;
+}
+
+header h1 {
+	font-size: 3em;
+}
+header h2 {
+	margin-top: .5em;
+	font-size: 1em;
+	font-weight: 400;
+}
+
+@media (max-width: 480px) {
+	header {
+		padding: 30vw 20px 10vw;
+	}
+	header h1 {
+		font-size: 1.75em;
+	}
 }

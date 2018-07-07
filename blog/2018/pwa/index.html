@@ -4,9 +4,9 @@
         <title>Progressive Web Apps</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding&amp;subset=korean" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding|Roboto:400,700" rel="stylesheet">
         <link rel="stylesheet" href="../../blog.css" />
-        <meta property='og:title' content='할 수 있는일 : techHTML'>
+        <meta property='og:title' content='Progressive Web Apps - techHTML'>
         <meta property='og:description' content='techhtml Blog'>
         <meta property='og:image' content='https://techhtml.github.io/resume/choeun.jpg'>
         <style>
@@ -16,9 +16,10 @@
     <body>
       <article class="contents">
         <div class="note-wrapper">
+          <header>
             <h1>Progressive Web Apps</h1>
-<h2>웹에서 새로운 사용자 경험을 제공하는 방법론</h2>
-<br>
+            <h2>웹에서 새로운 사용자 경험을 제공하는 방법론</h2>
+          </header>
 <p>우리가 웹이라고 부르는 환경은 아주 다양한 환경을 가지고 있다. 내가 이 글을 쓰는 시점에는 15인치 맥북 프로로 작성하고 있지만 누군가는 이 글을 아이폰 X로 볼 수도 있고, 갤럭시 S9으로 보고 있을 수도 있다. 혹은 아이패드 프로로 이 글을 보고 있을 수도 있겠다.</p>
 <br>
 <p>우리가 흔히 Desktop으로 부르는 환경에서 Mobile 환경으로 시대가 흘러감에 따라서 웹에서도 Mobile 환경에 적응하기 위한 다양한 노력을 하였다. 누군가는 Desktop 환경과 동일한 환경에서 CSS를 이용해 레이아웃을 변경하는 작업만 하기도 하였지만, 누군가는 Mobile 환경에 맞추어서 리소스를 최적화하고 상대적으로 부족한 컴퓨팅 환경에서 어떻게 좋은 사용자 경험을 제공할 수 있을 지에 대해서 고민하였다.</p>
@@ -117,7 +118,7 @@
 <h4>서비스 워커 설치하기</h4>
 <p>이번에는 설치 (<code class='code-inline'>install</code>) 이벤트를 처리하는 서비스 워커를 살펴보자. </p>
 <br>
-<pre><code class='code-multiline'><span class="sf_code_syntax_keyword">self</span>. <span class="sf_code_syntax_keyword">addEventListener</span>(<span class="sf_code_syntax_string">'install'</span>, <span class="sf_code_syntax_project">function</span>(event) {
+<pre><code class='code-multiline'><span class="sf_code_syntax_keyword">self</span>.<span class="sf_code_syntax_keyword">addEventListener</span>(<span class="sf_code_syntax_string">'install'</span>, <span class="sf_code_syntax_project">function</span>(event) {
   <span class="sf_code_syntax_comment">// 설치를 여기서 진행한다
 </span>})</code></pre>
 <p><br></p>
@@ -210,7 +211,7 @@ const cache_urls <span class="sf_code_syntax_keyword">=</span> [
 <p>다시 본론으로 넘어가 아이콘을 추가해보자.  안드로이드의 product 아이콘 사이즈는 48dp인데 dp는 밀도에 의존하지 않는 픽셀 (density independent pixel)이기 때문에 실제 기기의 해상도에 따라서 아이콘 크기가 달라진다.</p>
 <br>
 <pre><code class='code-multiline'>ldpi (0.75x)	@ 48.00dp	= 36.00px
-mdpi (1x)        @ 48.00dp	= 48.00px
+mdpi (1x)        @ 48.00dp    	= 48.00px
 hdpi (1.5x)	@ 48.00dp	= 72.00px
 xhdpi (2x)	@ 48.00dp	= 96.00px
 xxhdpi (3x)	@ 48.00dp	= 144.00px
